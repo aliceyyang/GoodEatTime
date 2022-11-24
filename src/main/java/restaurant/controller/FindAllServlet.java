@@ -24,7 +24,7 @@ public class FindAllServlet extends HttpServlet {
 		RestaurantService service;
 		try {
 			service = new RestaurantServiceImpl();
-			List<RestaurantVO> list = service.findAll();
+			List<RestaurantVO> list = service.getAll();
 			req.setAttribute("list", list);
 			req.getRequestDispatcher("../index.jsp").forward(req, resp);
 		} catch (NamingException e) {
