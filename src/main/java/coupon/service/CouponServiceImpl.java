@@ -70,7 +70,7 @@ public class CouponServiceImpl implements CouponService{
 	}
 	
 	public List<CouponVO> getAll() {
-		return dao.getALL();
+		return dao.getAll();
 	}
 
 	@Override
