@@ -1,0 +1,206 @@
+/*---------------------
+  reservation start-restaurant part
+-----------------------*/
+#reserve_form {
+  height: 410px;
+  ;
+  margin-bottom: 50px;
+}
+
+#reservation {
+  padding-top: 60px;
+  margin-bottom: 10px;
+}
+
+#reserve_text h2 {
+  font-style: normal;
+  font-family: "cwTeXYen", sans-serif;
+}
+
+.breadcrumb__text p {
+  color: #000000;
+  font-weight: 500;
+  font-style: normal;
+  font-family: "cwTeXYen", sans-serif;
+  margin-bottom: 0;
+}
+
+section#reserve_check {
+  text-align: center;
+  background-clip: #F08632;
+  padding: 65px 70px 65px;
+  position: relative;
+  height: auto;
+}
+
+#reserve_innercheck {
+  background-color: white;
+  border: 1.5px dashed #F08632;
+  height: auto;
+  padding-top: 15px;
+}
+
+#reserve_checkText {
+  width: auto;
+  height: 275px;
+  margin: 0px;
+}
+
+#reserve_checkText p {
+  font-size: 24px;
+}
+
+#r_name {
+  font-size: 24px;
+  text-transform: none;
+  display: contents;
+  font-weight: bold;
+}
+
+button#btn_cancel {
+  color: #111111;
+  background: #ffffff;
+  border: 1px solid gray;
+  margin-top: 10px;
+}
+
+#reserveConfirm_inf p {
+  font-size: medium;
+  text-align: center;
+}
+
+#reserveConfirm_inf span {
+  color: #F08632;
+  font-size: larger;
+  font-weight: bold;
+}
+
+/* starLevel */
+.checked {
+  color: orange;
+}
+
+
+/*---------------------
+    reservation start-member part
+  -----------------------*/
+#reserve_search {
+  background-image: url('/img/icon/search.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  flex: 1 1 auto;
+}
+
+#reserver_detail {
+  text-align: center;
+  padding: 12px;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+#reserver_detail tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#reserver_detail tr.header {
+  background-color: #fee192;
+}
+
+#reserver_detail tr:hover {
+  background-color: #fdf8f0;
+}
+
+.table-responsive {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+}
+
+.table-responsive h2 {
+  color: black;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 36px;
+  padding-bottom: 12px;
+}
+
+#member {
+  background-color: rgb(255, 255, 255);
+}
+
+/*-----------------------------------
+    reservation start-restaurant part
+  -------------------------------------*/
+/* 訂位人數設定 */
+  .restaurant_reserveinf h2 {
+  text-align: center;
+  padding: 12px;
+  color: black;
+}
+
+.restaurant_reserveinf h3 {
+  text-align: center;
+  padding: 12px;
+  color: black;
+}
+
+.reserve_set table, td, th{
+  text-align: center;
+  padding: 12px;
+  border-collapse: collapse;
+  border: 1px solid #9a9a75;
+  font-size: 18px;
+  table-layout:fixed
+}
+
+.reserve_set tr{
+  text-align: center;
+}
+
+.reserve_set tr.header {
+  background-color: #fee192;
+}
+
+.reserve_set tr:hover {
+  background-color: #fdf8f0;
+  text-align: center;
+}
+
+.reserve_set input {
+  text-align: center;
+  color: #444444;
+  background: #ffffff;
+  border: none;
+  width: 60%;
+}
+
+#set_store{
+  margin-top: 20px;
+}
+
+/* 訂位狀況 */ 
+.reserve_status table, td, th{
+  text-align: center;
+  padding: 12px;
+  border-collapse: collapse;
+  border: 1px solid #9a9a75;
+  font-size: 18px;
+}
+
+.reserve_status tr{
+  text-align: center;
+}
+
+.reserve_status tr.header {
+  background-color: #fee192;
+}
+
+.reserve_status tr:hover {
+  background-color: #fdf8f0;
+  text-align: center;
+}
