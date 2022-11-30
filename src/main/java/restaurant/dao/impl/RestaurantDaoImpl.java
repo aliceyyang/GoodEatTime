@@ -1,5 +1,6 @@
 package restaurant.dao.impl;
 
+import static common.util.JdbcUtil.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,12 +16,6 @@ import restaurant.dao.RestaurantDao;
 import restaurant.vo.RestaurantVO;
 
 public class RestaurantDaoImpl implements RestaurantDao {
-	private DataSource ds;
-
-	public RestaurantDaoImpl() throws NamingException {
-		ds = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/GoodEatTime");
-
-	}
 	
 	private static final String GET_ALL = "select * from restaurant";
 	private static final String GET_ONE = "select * from restaurant where restaurantNo = ?";
@@ -34,7 +29,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	
 	public void insert(RestaurantVO restaurantVO) {
 		
-		try(Connection con = ds.getConnection();
+		try(Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement(INSERT)) {
 			
 			ps.setString(1,restaurantVO.getrestaurantTel());
@@ -49,7 +44,8 @@ public class RestaurantDaoImpl implements RestaurantDao {
 			ps.setInt(10,restaurantVO.getrestaurantCommentQuantity());
 			ps.setInt(11,restaurantVO.getTotalCommentRating());
 			
-		} catch (SQLException e) {
+			
+		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
@@ -58,7 +54,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
 	@Override
 	public void update(RestaurantVO restaurantVO) {
-		try(Connection con = ds.getConnection();
+		try(Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement(UPDATE)){
 			
 			ps.setString(1,restaurantVO.getrestaurantTel());
@@ -76,7 +72,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 			
 			ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
@@ -84,13 +80,13 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
 	@Override
 	public void delete(Integer restaurantNo) {
-		try(Connection con = ds.getConnection();
+		try(Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement(DELETE)){
 			
 			ps.setInt(1,restaurantNo);
 			ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -99,7 +95,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	@Override
 	public RestaurantVO findByPrimaryKey(Integer restaurantNo) {
 		RestaurantVO vo = null;
-		try(Connection con = ds.getConnection();
+		try(Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement(GET_ONE);
 			ResultSet rs = ps.executeQuery()){
 			
@@ -120,7 +116,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 				vo.setrestaurantCommentQuantity(rs.getInt(11));
 				vo.setTotalCommentRating(rs.getInt(12));
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return vo;
@@ -129,7 +125,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	@Override
 	public List<RestaurantVO> getAll() {
 		List<RestaurantVO> list = new ArrayList<>();
-		try (Connection con = ds.getConnection();
+		try (Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(GET_ALL);
 				ResultSet rs = ps.executeQuery()){
 			while (rs.next()) {
