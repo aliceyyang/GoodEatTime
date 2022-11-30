@@ -1,8 +1,6 @@
 package order.dao;
 
-import static common.Common.URL;
-import static common.Common.USER;
-import static common.Common.PASSWORD;
+import static common.connection.Common.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
