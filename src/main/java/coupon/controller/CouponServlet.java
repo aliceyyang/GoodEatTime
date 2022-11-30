@@ -25,7 +25,7 @@ public class CouponServlet extends HttpServlet{
 		if("getAll".equals(action)) {
 			
 			CouponDaoImpl dao = new CouponDaoImpl();
-			List<CouponVO> list = dao.getALL();
+			List<CouponVO> list = dao.getAll();
 			
 			HttpSession session = req.getSession();
 			session.setAttribute("list", list);

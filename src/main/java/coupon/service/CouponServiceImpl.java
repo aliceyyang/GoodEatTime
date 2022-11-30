@@ -14,6 +14,7 @@ public class CouponServiceImpl implements CouponService{
 		dao = new CouponDaoImpl();
 	}
 	
+	@Override
 	public CouponVO addCoupon(Integer restaurantNo, Integer adminNo, String couponApplyDate, String couponName, String couponStartTime, String couponEndTime, 
 			Boolean verified, String couponContent, Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty, String verificationDetail) {
 		
@@ -71,14 +72,5 @@ public class CouponServiceImpl implements CouponService{
 	
 	public List<CouponVO> getAll() {
 		return dao.getAll();
-	}
-
-	@Override
-	public CouponVO updaCoupon(Integer restaurantNo, Integer adminNo, String couponApplyDate, String couponName,
-			String couponStartTime, String couponEndTime, Boolean verified, String couponContent,
-			Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
-			String verificationDetail) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }
