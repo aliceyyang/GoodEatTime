@@ -1,37 +1,35 @@
 package order.vo;
 
-import org.hibernate.annotations.SQLInsert;
-import org.hibernate.type.BlobType;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 import java.sql.Timestamp;
+
 @Entity
-@Table(name="adOrder")
+@Table(name = "adOrder")
 public class AdOrderVO {
     @Id
-    @Column(name="adOrderNo")
+    @Column(name = "adOrderNo")
     private Integer adOrderNo;
-    @Column(name="restaurantNo")
+    @Column(name = "restaurantNo")
     private Integer restaurantNo;
-    @Column(name="adminNo")
+    @Column(name = "adminNo")
     private Integer adminNo;
-    @Column(name="adOrderTime", insertable=false, updatable = false)
+    @Column(name = "adOrderTime", insertable = false, updatable = false)
     private Timestamp adOrderTime;
-    @Column(name="adStartTime")
+    @Column(name = "adStartTime")
     private Date adStartTime;
-    @Column(name="adEndTime")
+    @Column(name = "adEndTime")
     private Date adEndTime;
-    @Column(name="verified")
+    @Column(name = "verified")
     private Boolean verified;
-    @Column(name="verificationDetail")
+    @Column(name = "verificationDetail")
     private String verificationDetail;
-    @Column(name="adOrderPrice")
+    @Column(name = "adOrderPrice")
     private Integer adOrderPrice;
-    @Column(name="slideshowPic")
+    @Column(name = "slideshowPic")
     private byte[] slideshowPic;
     //type unsure
 
