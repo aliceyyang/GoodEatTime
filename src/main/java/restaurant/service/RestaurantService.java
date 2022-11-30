@@ -12,9 +12,9 @@ public interface RestaurantService {
 	RestaurantVO updateRestaurant(String restaurantTel,String restaurantName,String restaurantTaxIDNo,String restaurantAccountInfo,String restaurantBusinessHour,String restaurantAddr,
 			Boolean restaurantStatus,String restaurantAccount,String restaurantPassword,Integer restaurantCommentQuantity,Integer totalCommentRating,Integer restaurantNO);
 
-	void deleteRestaurant(Integer restaurantNo);
-	
-	RestaurantVO getOneRestaurant(Integer restaurantNo);
+	void deleteRestaurant(StringBuffer errorMsg,Integer restaurantNo);
 	
 	List<RestaurantVO> getAll();
+	
+	RestaurantVO getOneRestaurant(StringBuffer errorMsg, Integer restaurantNo);
 }

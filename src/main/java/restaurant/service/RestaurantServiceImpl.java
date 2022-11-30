@@ -70,13 +70,23 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
-	public void deleteRestaurant(Integer restaurantNo) {
-		dao.delete(restaurantNo);
-		
+	public void deleteRestaurant(StringBuffer errorMsg,Integer restaurantNo) {
+		if(restaurantNo == null) {
+			errorMsg.append("請輸入餐廳編號");
+		}
+		else {
+			dao.delete(restaurantNo);
+		}
 	}
 
 	@Override
-	public RestaurantVO getOneRestaurant(Integer restaurantNo) {
+	public RestaurantVO getOneRestaurant(StringBuffer errorMsg, Integer restaurantNo) {
+		if(restaurantNo == null) {
+			errorMsg.append("請輸入餐廳編號");
+			return null;
+		}
+		
+		
 		return dao.findByPrimaryKey(restaurantNo);
 	}
 

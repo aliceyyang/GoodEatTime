@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import restaurant.service.RestaurantService;
 import restaurant.service.RestaurantServiceImpl;
@@ -20,17 +21,28 @@ public class FindAllServlet extends HttpServlet {
 	
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		doPost(req, res);
+		
+	}
+	
+	public void doPost(HttpServletRequest req,HttpServletResponse res)throws ServletException, IOException{
+		
 		RestaurantService service;
 		try {
 			service = new RestaurantServiceImpl();
 			List<RestaurantVO> list = service.getAll();
-			req.setAttribute("list", list);
-			req.getRequestDispatcher("../index.jsp").forward(req, resp);
+			HttpSession session = req.getSession();
+			session.setAttribute("list", list);
+			req.getRequestDispatcher("../restaurant/RestaurantFindAll.jsp").forward(req, res);
+			
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
+	
+	
+	
+	
 }
