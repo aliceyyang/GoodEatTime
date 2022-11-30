@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 
 import product.vo.ProdCategoryVO;
 
-public class ProdCategoryDAO_JNDI implements ProdCategoryDAO_Interface {
+public class ProdCategoryDAO_JNDI implements ProdCategoryDAO {
 	private DataSource dataSource;
 
 	public ProdCategoryDAO_JNDI() {
@@ -98,5 +98,4 @@ public class ProdCategoryDAO_JNDI implements ProdCategoryDAO_Interface {
 		}
 		return list;
 	}
-
 }

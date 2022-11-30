@@ -3,7 +3,7 @@ package product.dao;
 import java.util.List;
 import product.vo.ProdCategoryVO;
 
-public interface ProdCategoryDAO_Interface {
+public interface ProdCategoryDAO {
 	
 	public void insert(ProdCategoryVO prodCategory);
 	public void update(ProdCategoryVO prodCategory);

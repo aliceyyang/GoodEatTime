@@ -1,4 +1,4 @@
-package product.controller;
+package product.dao;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import product.dao.ProdCategoryDAO_JNDI;
 import product.vo.ProdCategoryVO;
 
 @WebServlet("/TestProdCategoryDAO")
