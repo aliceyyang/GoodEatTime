@@ -20,6 +20,11 @@ public class ProdInfoDAO_JDBC implements ProdInfoDAO{
 		String insertSQL = "insert into prodInfo "
 				+ "(restaurantNo, prodCategoryNo, prodName, prodPrice, prodStock, prodDescription, prodContent)"
 				+ "values(?, ?, ?, ?, ?, ?, ?);";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
 		try(Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement ps = connection.prepareStatement(insertSQL)) {
 			ps.setInt(1, productVO.getRestaurantNo());
@@ -43,7 +48,11 @@ public class ProdInfoDAO_JDBC implements ProdInfoDAO{
 		String updateSQL = "update prodInfo set restaurantNo = ?, prodCategoryNo = ?,"
 				+ " prodName = ?, prodPrice = ?, prodStock = ?, prodDescription = ?,"
 				+ " prodContent = ?, prodCommentQty = ?, totalCommentRating = ? where prodNo = ?;";
-		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
 		try(Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement ps = connection.prepareStatement(updateSQL)) {
 			ps.setInt(1, productVO.getRestaurantNo());
@@ -67,7 +76,11 @@ public class ProdInfoDAO_JDBC implements ProdInfoDAO{
 	public boolean delete(Integer prodNo) {
 		String deleteSQL = "delete from prodInfo where prodNo = ?";
 		int rowCount = 0;
-		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
 		try(Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement ps = connection.prepareStatement(deleteSQL)) {
 			ps.setInt(1, prodNo);
@@ -83,7 +96,11 @@ public class ProdInfoDAO_JDBC implements ProdInfoDAO{
 	public ProdInfoVO findByPrimaryKey(Integer prodNo) {
 		ProdInfoVO myProduct = null;
 		String findByPRimaryKeySQL = "select * from prodInfo where prodNo = ?";
-		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
 		try(Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement ps = connection.prepareStatement(findByPRimaryKeySQL)){
 			ps.setInt(1, prodNo);
@@ -114,8 +131,13 @@ public class ProdInfoDAO_JDBC implements ProdInfoDAO{
 		
 		List<ProdInfoVO> list = new ArrayList<>();
 		ProdInfoVO myProduct = null;
-		
-		try(Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		try(
+				Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement ps = connection.prepareStatement(getAllSQL)){
 			
 			ResultSet rs = ps.executeQuery();
