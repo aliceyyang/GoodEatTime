@@ -1,20 +1,19 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="product.service.*"%>
 <%@ page import="product.vo.*"%>
-<%-- ¦¹­¶½m²ß±Ä¥Î EL ªº¼gªk¨ú­È --%>
+<%-- æ­¤é ç·´ç¿’æŽ¡ç”¨ EL çš„å¯«æ³•å–å€¼ --%>
 
 <%
-    ProdInfoService prodSvc = new ProdInfoService();
-    List<ProdInfoVO> list = prodSvc.getAll();
+    List<ProdInfoVO> list = (List<ProdInfoVO>)session.getAttribute("list");
     pageContext.setAttribute("list",list);
 %>
 
 
 <html>
 <head>
-<title>©Ò¦³²£«~¸ê®Æ - listAllProd.jsp</title>
+<title>æ‰€æœ‰ç”¢å“è³‡æ–™ - listAllProd.jsp</title>
 
 	<style>
 	  table#table-1 {
@@ -52,28 +51,28 @@
 </head>
 <body bgcolor='white'>
 
-<h4>¦¹­¶½m²ß±Ä¥Î EL ªº¼gªk¨ú­È:</h4>
+<h4>æ­¤é ç·´ç¿’æŽ¡ç”¨ EL çš„å¯«æ³•å–å€¼:</h4>
 <table id="table-1">
 	<tr><td>
-		 <h3>©Ò¦³­û¤u¸ê®Æ - listAllProd.jsp</h3>
-		 <h4><a href="selectProduct.jsp"><img src="images/back1.gif" width="100" height="32" border="0">¦^­º­¶</a></h4>
+		 <h3>æ‰€æœ‰å“¡å·¥è³‡æ–™ - listAllProd.jsp</h3>
+		 <h4><a href="selectProduct.jsp"><img src="images/back1.gif" width="100" height="32" border="0">å›žé¦–é </a></h4>
 	</td></tr>
 </table>
 
 <table>
 	<tr>
-		<th>²£«~½s¸¹</th>
-		<th>À\ÆU½s¸¹</th>
-		<th>²£«~Ãþ§O½s¸¹</th>
-		<th>²£«~¦WºÙ</th>
-		<th>²£«~»ù®æ</th>
-		<th>²£«~®w¦s</th>
-		<th>²£«~»¡©ú</th>
-		<th>²£«~³W®æ</th>
-		<th>µû½×¼Æ¶q</th>
-		<th>Á`µû½×¬Pµ¥</th>
-		<th>­×§ï</th>
-		<th>§R°£</th>
+		<th>ç”¢å“ç·¨è™Ÿ</th>
+		<th>é¤å»³ç·¨è™Ÿ</th>
+		<th>ç”¢å“é¡žåˆ¥ç·¨è™Ÿ</th>
+		<th>ç”¢å“åç¨±</th>
+		<th>ç”¢å“åƒ¹æ ¼</th>
+		<th>ç”¢å“åº«å­˜</th>
+		<th>ç”¢å“èªªæ˜Ž</th>
+		<th>ç”¢å“è¦æ ¼</th>
+		<th>è©•è«–æ•¸é‡</th>
+		<th>ç¸½è©•è«–æ˜Ÿç­‰</th>
+		<th>ä¿®æ”¹</th>
+		<th>åˆªé™¤</th>
 	</tr>
 	<%@ include file="page1.file" %> 
 	<c:forEach var="prodVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
@@ -91,13 +90,13 @@
 			<td>${prodVO.totalCommentRating}</td>
 			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/product/ProdInfoController" style="margin-bottom: 0px;">
-			     <input type="submit" value="­×§ï">
+			     <input type="submit" value="ä¿®æ”¹">
 			     <input type="hidden" name="prodNo"  value="${prodVO.prodNo}">
 			     <input type="hidden" name="action"	value="getOne_For_Update"></FORM>
 			</td>
 			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/product/ProdInfoController" style="margin-bottom: 0px;">
-			     <input type="submit" value="§R°£">
+			     <input type="submit" value="åˆªé™¤">
 			     <input type="hidden" name="prodNO"  value="${prodVO.prodNo}">
 			     <input type="hidden" name="action" value="delete"></FORM>
 			</td>

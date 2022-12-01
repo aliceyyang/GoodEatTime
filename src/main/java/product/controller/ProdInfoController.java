@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import product.service.ProdInfoService;
 import product.vo.ProdInfoVO;
@@ -42,10 +43,20 @@ public class ProdInfoController extends HttpServlet {
     	String failureView = "/product/selectProduct.jsp";
     	String updateView = "/product/updateProduct.jsp";
     	String listOneView = "/product/listOneProd.jsp";
+    	String listAllView = "/product/listAllProd.jsp";
     	req.setCharacterEncoding("UTF-8");
     	String action = req.getParameter("action");
+    	ProdInfoService prodSvc = new ProdInfoService();
+    	HttpSession session = req.getSession();
     	
-    	if("getOne_For_Display".equals(action)) {
+    	if ("getAll".equals(action)) {
+    		List<ProdInfoVO> list = prodSvc.getAll();
+    		session.setAttribute("list", list);
+    		requestDispatch(req, res, listAllView);
+    		return;
+    	}
+    	
+    	if ("getOne_For_Display".equals(action)) {
     		Object[] result = getOne_For_Display(req.getParameter("prodNo"));
     		if (result[0] != null) {
     			req.setAttribute("errorMsgs", (List<String>)result[0]);
@@ -57,16 +68,23 @@ public class ProdInfoController extends HttpServlet {
 			return;
     	}
     	
-    	if("getOne_For_Update".equals(action)) {
+    	if ("getOne_For_Update".equals(action)) {
     		Integer prodNo = Integer.valueOf(req.getParameter("prodNo"));
-    		ProdInfoService prodSvc = new ProdInfoService();
     		ProdInfoVO prodInfoVO = prodSvc.getOneProduct(prodNo);
         	req.setAttribute("prodInfoVO", prodInfoVO);
         	requestDispatch(req, res, updateView);
         	return;
     	}
     	
-    	if("update".equals(action)) {
+    	if ("get_FromProdCategory".equals(action)) {
+    		Integer prodCategoryNo = Integer.valueOf(req.getParameter("prodCategoryNo"));
+    		List<ProdInfoVO> list = prodSvc.getByCategory(prodCategoryNo);
+    		session.setAttribute("list", list);
+    		requestDispatch(req, res, listAllView);
+    		return;
+    	}
+    	
+    	if ("update".equals(action)) {
     		Object[] result = update_prod(req.getParameter("prodNo"),
     				req.getParameter("restaurantNo"), req.getParameter("prodCategoryNo"),
     				req.getParameter("prodName"), req.getParameter("prodPrice"), 
@@ -86,7 +104,6 @@ public class ProdInfoController extends HttpServlet {
     	
     	if ("delete".equals(action)) {
     		Integer prodNo = Integer.valueOf(req.getParameter("prodNO"));
-    		ProdInfoService prodSvc = new ProdInfoService();
     		prodSvc.deleteProdInfo(prodNo);
     		requestDispatch(req, res, "/product/listAllProd.jsp");
     		return;

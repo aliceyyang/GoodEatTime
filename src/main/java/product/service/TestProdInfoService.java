@@ -18,9 +18,15 @@ public class TestProdInfoService {
 //			System.out.println(p.toString());
 //		}
 		
+		// Test getByCategory()
+//		List<ProdInfoVO> list = service.getByCategory(3);
+//		for (ProdInfoVO p : list) {
+//			System.out.println(p.toString());
+//		}
+		
 		// Test addProdInfo()
-		ProdInfoVO newProduct = service.addProdInfo(3, 3, "serviceAdd", 3, 3, "serviceAdd1", "serviceAdd2");
-		System.out.println(newProduct);
+//		ProdInfoVO newProduct = service.addProdInfo(3, 3, "serviceAdd", 3, 3, "serviceAdd1", "serviceAdd2");
+//		System.out.println(newProduct);
 		
 		// Test updateProdInfo()
 //		ProdInfoVO updateProduct = service.updateProdInfo(13, 3, 3, "service修改", 1, 1, "service修改1", "service修改2", 1, 5);

@@ -136,8 +136,7 @@ public class ProdInfoDAO_JDBC implements ProdInfoDAO{
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		}
-		try(
-				Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+		try(Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement ps = connection.prepareStatement(getAllSQL)){
 			
 			ResultSet rs = ps.executeQuery();
@@ -161,5 +160,39 @@ public class ProdInfoDAO_JDBC implements ProdInfoDAO{
 		return list;
 	}
 	
-
+	@Override
+	public List<ProdInfoVO> findByProdCategory(Integer ProdCategoryNo) {
+		String findByProdCategorySQL = "select * from prodInfo where prodCategoryNo = ?";
+		List<ProdInfoVO> list = new ArrayList<>();
+		ProdInfoVO myProduct = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		try(Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+				PreparedStatement ps = connection.prepareStatement(findByProdCategorySQL)){
+			ps.setInt(1, ProdCategoryNo);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				myProduct = new ProdInfoVO();
+				myProduct.setProdNo(rs.getInt("prodNo"));
+				myProduct.setRestaurantNo(rs.getInt("restaurantNo"));
+				myProduct.setProdCategoryNo(rs.getInt("prodCategoryNo"));
+				myProduct.setProdName(rs.getString("prodName"));
+				myProduct.setProdPrice(rs.getInt("prodPrice"));
+				myProduct.setProdStock(rs.getInt("prodStock"));
+				myProduct.setProdDescription(rs.getString("prodDescription"));
+				myProduct.setProdContent(rs.getString("prodContent"));
+				myProduct.setProdCommentQty(rs.getInt("prodCommentQty"));
+				myProduct.setTotalCommentRating(rs.getInt("totalCommentRating"));
+				list.add(myProduct);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
 }

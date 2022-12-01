@@ -9,4 +9,5 @@ public interface ProdInfoDAO {
 	public boolean delete(Integer prodNo);
 	public ProdInfoVO findByPrimaryKey(Integer prodNo);
 	public List<ProdInfoVO> getAll();
+	public List<ProdInfoVO> findByProdCategory(Integer ProdCategoryNo);
 }

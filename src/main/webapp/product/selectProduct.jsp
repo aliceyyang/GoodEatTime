@@ -47,7 +47,12 @@
 	</c:if>
 	
 	<ul>
-	  <li><a href='listAllProd.jsp'>List</a> all Products.  <br><br></li>
+	  <li>
+	  <FORM METHOD="post" ACTION="ProdInfoController" >
+	        <input type="hidden" name="action" value="getAll">
+	        <input type="submit" value="List all Products.">
+	    </FORM> 
+	  <br><br></li>
 	  
 	  
 	  <li>
@@ -84,7 +89,7 @@
 	          <option value="${prodCategoryVO.prodCategoryNo}">${prodCategoryVO.prodCategory}
 	         </c:forEach>   
 	       </select>
-	       <input type="hidden" name="action" value="getAll_FromProCategoryNo_For_Display">
+	       <input type="hidden" name="action" value="get_FromProdCategory">
 	       <input type="submit" value="送出">
 	     </FORM>
 	  </li>
