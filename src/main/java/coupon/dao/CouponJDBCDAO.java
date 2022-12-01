@@ -224,7 +224,7 @@ public class CouponJDBCDAO implements CouponDao{
 		}
 
 		@Override
-		public List<CouponVO> getALL() {
+		public List<CouponVO> getAll() {
 			List<CouponVO> list = new ArrayList<CouponVO>();
 			CouponVO couponVO = null;
 			
