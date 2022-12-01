@@ -54,7 +54,7 @@
 	    <FORM METHOD="post" ACTION="ProdInfoController" >
 	        <b>輸入產品編號 (如 1):</b>
 	        <input type="text" name="prodNo">
-	        <input type="hidden" name="action" value="getOne_FromPK_For_Display">
+	        <input type="hidden" name="action" value="getOne_For_Display">
 	        <input type="submit" value="送出">
 	    </FORM>
 	  </li>
@@ -69,7 +69,7 @@
 	          <option value="${productInfoVO.prodNo}">${productInfoVO.prodNo}
 	         </c:forEach>   
 	       </select>
-	       <input type="hidden" name="action" value="getOne_FromProdNo_For_Display">
+	       <input type="hidden" name="action" value="getOne_For_Display">
 	       <input type="submit" value="送出">
 	    </FORM>
 	  </li>
