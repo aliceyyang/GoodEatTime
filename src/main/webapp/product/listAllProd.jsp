@@ -98,7 +98,7 @@
 			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/product/ProdInfoController" style="margin-bottom: 0px;">
 			     <input type="submit" value="§R°£">
-			     <input type="hidden" name="prodVO"  value="${prodVO.prodNo}">
+			     <input type="hidden" name="prodNO"  value="${prodVO.prodNo}">
 			     <input type="hidden" name="action" value="delete"></FORM>
 			</td>
 		</tr>

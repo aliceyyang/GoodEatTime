@@ -10,7 +10,7 @@ public class TestProdInfoService {
 		ProdInfoService service = new ProdInfoService();
 		
 		// Test getOneProduct() 
-		System.out.println(service.getOneProduct(1).toString());
+//		System.out.println(service.getOneProduct(1).toString());
 		
 		// Test getAll()
 //		List<ProdInfoVO> list = service.getAll();
@@ -19,11 +19,11 @@ public class TestProdInfoService {
 //		}
 		
 		// Test addProdInfo()
-//		ProdInfoVO newProduct = service.addProdInfo(3, 3, "serviceAdd", 3, 3, "serviceAdd1", "serviceAdd2");
-//		System.out.println(newProduct);
+		ProdInfoVO newProduct = service.addProdInfo(3, 3, "serviceAdd", 3, 3, "serviceAdd1", "serviceAdd2");
+		System.out.println(newProduct);
 		
 		// Test updateProdInfo()
-//		ProdInfoVO updateProduct = service.updateProdInfo(6, 3, 3, "service修改", 1, 1, "service修改1", "service修改2", 1, 5);
+//		ProdInfoVO updateProduct = service.updateProdInfo(13, 3, 3, "service修改", 1, 1, "service修改1", "service修改2", 1, 5);
 //		System.out.println(updateProduct);
 		
 		// Test deleteProdInfo()
