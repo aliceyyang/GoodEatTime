@@ -2,6 +2,12 @@ package product.dao;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -19,7 +25,8 @@ public class ProdPicDAO_Hibernate implements ProdPicDAO {
 	@Override
 	public ProdPicVO insert(ProdPicVO prodPicVO) {
 		if (prodPicVO != null) {
-			return (ProdPicVO)this.getSession().save(prodPicVO);
+			this.getSession().save(prodPicVO);
+			return prodPicVO;
 		}
 		return null;
 	}
@@ -61,9 +68,21 @@ public class ProdPicDAO_Hibernate implements ProdPicDAO {
 	}
 
 	@Override
-	public List<ProdPicVO> findByProdCategory(Integer ProdPicNo) {
+	public List<ProdPicVO> findByProdNo(Integer prodNo) {
 		// TODO Auto-generated method stub
-		return null;
+		CriteriaBuilder criteriaBuilder = this.getSession().getCriteriaBuilder();
+		CriteriaQuery<ProdPicVO> criteriaQuery = criteriaBuilder.createQuery(ProdPicVO.class);
+		
+		Root<ProdPicVO> root = criteriaQuery.from(ProdPicVO.class);
+		
+		Predicate p1 = criteriaBuilder.equal(root.get("prodNo"), prodNo);
+		
+		criteriaQuery = criteriaQuery.where(p1);
+		
+		TypedQuery<ProdPicVO> typedQurey = this.getSession().createQuery(criteriaQuery);
+		List<ProdPicVO> result = typedQurey.getResultList();
+		
+		return result;
 	}
 
 }

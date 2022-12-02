@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import product.vo.ProdInfoVO;
@@ -16,17 +17,18 @@ public class ProdInfoDAO_JDBC implements ProdInfoDAO{
 	private static String PASSWORD = "password";
 
 	@Override
-	public void insert(ProdInfoVO productVO) {
+	public ProdInfoVO insert(ProdInfoVO productVO) {
 		String insertSQL = "insert into prodInfo "
 				+ "(restaurantNo, prodCategoryNo, prodName, prodPrice, prodStock, prodDescription, prodContent)"
 				+ "values(?, ?, ?, ?, ?, ?, ?);";
+		ProdInfoVO prodInfoVO = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		}
 		try(Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-				PreparedStatement ps = connection.prepareStatement(insertSQL)) {
+				PreparedStatement ps = connection.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS)) {
 			ps.setInt(1, productVO.getRestaurantNo());
 			ps.setInt(2, productVO.getProdCategoryNo());
 			ps.setString(3, productVO.getProdName());
@@ -36,11 +38,16 @@ public class ProdInfoDAO_JDBC implements ProdInfoDAO{
 			ps.setString(7, productVO.getProdContent());
 			
 			ps.executeUpdate();
+			ResultSet rs = ps.getGeneratedKeys();
+			while(rs.next()) {
+				Integer ProdNo = rs.getInt(1);
+				prodInfoVO = findByPrimaryKey(ProdNo);
+			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 		
-		
+		return prodInfoVO;
 	}
 
 	@Override
@@ -121,8 +128,8 @@ public class ProdInfoDAO_JDBC implements ProdInfoDAO{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return myProduct;
+		
 	}
 
 	@Override

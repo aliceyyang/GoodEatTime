@@ -10,5 +10,5 @@ public interface ProdPicDAO {
 	public boolean delete(Integer prodPicNo);
 	public ProdPicVO findByPrimaryKey(Integer prodPicNo);
 	public List<ProdPicVO> getAll();
-	public List<ProdPicVO> findByProdCategory(Integer ProdPicNo);
+	public List<ProdPicVO> findByProdNo(Integer ProdPicNo);
 }

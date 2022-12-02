@@ -24,9 +24,9 @@ public class ProdInfoService {
 		prodInfo.setProdStock(prodStock);
 		prodInfo.setProdDescription(prodDescription);
 		prodInfo.setProdContent(prodContent);
-		dao.insert(prodInfo);
 		
-		return prodInfo;
+		
+		return dao.insert(prodInfo);
 	}
 	
 	public ProdInfoVO updateProdInfo(Integer prodNo, Integer restaurantNo,
