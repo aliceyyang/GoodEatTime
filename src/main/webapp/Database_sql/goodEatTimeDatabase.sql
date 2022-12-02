@@ -481,9 +481,9 @@ CREATE TABLE `reservation` (
   `commentRating` INT NULL COMMENT '評論星等',
   `commentContent` VARCHAR(200) NULL COMMENT '評論內容',
   `commentPic` LONGBLOB NULL COMMENT '評論附圖',
-  `restaurantCommentTime` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `restaurantCommentTime` DATETIME NULL COMMENT '評論時間',
   `restaurantRe` VARCHAR(500) NULL COMMENT '餐廳回覆評論',
-  `restaurantReTime` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT '餐廳回覆時間',
+  `restaurantReTime` DATETIME NULL COMMENT '餐廳回覆時間',
   PRIMARY KEY (`reserveNo`),
   constraint FK_reservation_memberNo foreign key(memberNo) references member(memberNo),
   constraint FK_reservation_restaurantNo foreign key(restaurantNo) references restaurant(restaurantNo)
