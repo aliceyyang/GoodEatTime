@@ -1,4 +1,4 @@
-package reservation.service;
+package reservation.service.impl;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import javax.naming.NamingException;
 
 import reservation.dao.ReserveTimeDao;
 import reservation.dao.impl.ReserveTimeDaoImpl;
+import reservation.service.ReserveTimeService;
 import reservation.vo.ReserveTimeVO;
 
 public class ReserveTimeServiceImpl implements ReserveTimeService {
