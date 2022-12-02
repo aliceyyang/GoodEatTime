@@ -30,16 +30,13 @@ public class FindAllServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req,HttpServletResponse res)throws ServletException, IOException{
 		
 		RestaurantService service;
-		try {
 			service = new RestaurantServiceImpl();
 			List<RestaurantVO> list = service.getAll();
 			HttpSession session = req.getSession();
 			session.setAttribute("list", list);
 			req.getRequestDispatcher("../restaurant/RestaurantFindAll.jsp").forward(req, res);
 			
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
+
 	}
 	
 	
