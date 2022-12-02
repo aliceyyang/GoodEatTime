@@ -6,19 +6,22 @@ import coupon.dao.CouponDao;
 import coupon.dao.impl.CouponDaoImpl;
 import coupon.vo.CouponVO;
 
-public class CouponServiceImpl implements CouponService{
+public class CouponServiceImpl implements CouponService {
 
 	private CouponDao dao;
-	
+
 	public CouponServiceImpl() {
 		dao = new CouponDaoImpl();
 	}
-	
-	public CouponVO addCoupon(Integer restaurantNo, Integer adminNo, String couponApplyDate, String couponName, String couponStartTime, String couponEndTime, 
-			Boolean verified, String couponContent, Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty, String verificationDetail) {
-		
+
+	@Override
+	public CouponVO addCoupon(Integer restaurantNo, Integer adminNo, String couponApplyDate, String couponName,
+			String couponStartTime, String couponEndTime, Boolean verified, String couponContent,
+			Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
+			String verificationDetail) {
+
 		CouponVO couponVO = new CouponVO();
-		
+
 		couponVO.setRestaurantNo(restaurantNo);
 		couponVO.setAdminNo(adminNo);
 		couponVO.setCouponApplyDate(couponApplyDate);
@@ -33,13 +36,16 @@ public class CouponServiceImpl implements CouponService{
 		couponVO.setIssuedQty(issuedQty);
 		couponVO.setVerificationDetail(verificationDetail);
 		dao.insert(couponVO);
-		
+
 		return couponVO;
 	}
-	
-	public CouponVO updateCoupon(Integer restaurantNo, Integer adminNo, String couponApplyDate, String couponName, String couponStartTime, String couponEndTime, 
-			Boolean verified, String couponContent, Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty, String verificationDetail) {
-				
+
+	@Override
+	public CouponVO updateCoupon(Integer restaurantNo, Integer adminNo, String couponApplyDate, String couponName,
+			String couponStartTime, String couponEndTime, Boolean verified, String couponContent,
+			Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
+			String verificationDetail) {
+
 		CouponVO couponVO = new CouponVO();
 		couponVO.setRestaurantNo(restaurantNo);
 		couponVO.setAdminNo(adminNo);
@@ -55,30 +61,33 @@ public class CouponServiceImpl implements CouponService{
 		couponVO.setIssuedQty(issuedQty);
 		couponVO.setVerificationDetail(verificationDetail);
 		dao.update(couponVO);
-		
+
 		return couponVO;
-		
-	}
-	
-	public void deleteCoupon(Integer couponNo) {
-		 dao.delete(couponNo);
-		 
-	}
-	
-	public CouponVO getOneCoupon(Integer couponNo) {
-		return dao.findByPrimaryKey(couponNo);
-	}
-	
-	public List<CouponVO> getAll() {
-		return dao.getALL();
+
 	}
 
 	@Override
-	public CouponVO updaCoupon(Integer restaurantNo, Integer adminNo, String couponApplyDate, String couponName,
-			String couponStartTime, String couponEndTime, Boolean verified, String couponContent,
-			Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
-			String verificationDetail) {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteCoupon(StringBuffer errormsg, Integer couponNo) {
+		if (couponNo == null) {
+			errormsg.append("請輸入優惠券號碼");
+		} else {
+			dao.delete(couponNo);
+		}
+
+	}
+
+	@Override
+	public CouponVO getOneCoupon(StringBuffer errormsg, Integer couponNo) {
+		if (couponNo == null) {
+			errormsg.append("請輸入優惠券號碼");
+			return null;
+		} else {
+			return dao.findByPrimaryKey(couponNo);
+		}
+	}
+
+	@Override
+	public List<CouponVO> getAll() {
+		return dao.getAll();
 	}
 }
