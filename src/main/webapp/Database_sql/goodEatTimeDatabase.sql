@@ -9,18 +9,18 @@ memberLevel: line 71
 restaurant: line 87
 administrator: line 114
 prodInfo: line 135
-member: line 160
-coupon: line 190
-reserveTime: line 228
-restaurantPic: line 286
-adOrder: line 306
-prodPic: line 336
-shoppingCart: line 357
-prodOrder: line 378
-likedRestauranr: line 414
-memberCoupon: line 445
-reservation: line 462
-prodOrderDetail: line 495
+member: line 167
+coupon: line 197
+reserveTime: line 235
+restaurantPic: line 293
+adOrder: line 313
+prodPic: line 343
+shoppingCart: line 364
+prodOrder: line 385
+likedRestauranr: line 421
+memberCoupon: line 452
+reservation: line 469
+prodOrderDetail: line 502
 
 =======================================*/
 
@@ -154,7 +154,14 @@ values(1, 1, '日式親子丼調理包', 199, 50, '母雞帶小雞 迸出新滋�
 (1, 3, 'Uncle Roger特製炒飯', 80, 10, 'HaiYa~', '隔夜飯、雞蛋、蔥、胡蘿蔔再加上滿滿的MSG'),
 (2, 3, '六位一體魔幻麻婆豆腐', 120, 5, '辣香色燙酥麻 六位一體', '大麻'),
 (2, 6, '李嚴特製炸鳳尾蝦', 300, 99, '將核果搗碎後裹在蝦肉上，油炸成為金黃色', '那...那個醬汁呢?'),
-(3, 5, '黃金開口笑', 30, 99, 'ㄤㄤㄤㄤㄤㄤㄤ', '笑到你心裡發麻');
+(3, 5, '黃金開口笑', 30, 99, 'ㄤㄤㄤㄤㄤㄤㄤ', '笑到你心裡發麻'),
+(4, 5, '提拉米蘇', 130, 25, '新鮮乳酪製成慕斯，風味可口清爽，底層採用歐洲進口小麥胚芽餅製作，香味誘人，以進口Barry Callebaut高脂可可粉鋪灑而成，若酌以一杯濃郁咖啡，閒散於午后將是絕配', '馬斯卡彭起司、手指餅乾、蛋黃、蛋白、濃縮咖啡及高純度無糖可可粉'),
+(5, 5, '馬卡龍', 60, 50, '低筋麵粉做的馬卡龍，無添加香草精', '低筋麵粉、糖粉、蛋白、白砂糖、巧克力、鮮奶油'),
+(4, 3, '鱘龍鮮蝦粥', 300, 15, '鱘龍魚有皇帝魚稱號在古代是的珍貴魚種，低脂肪高營養，魚肉中富含膠質、人體所需多種氨基酸、膠原蛋白、軟骨素，DHA、EPA營養價值極高', '鱘龍魚菲力、鱘龍魚輪切塊、大白蝦 、白飯 、蒜瓣、鹽、白胡椒粉、油'),
+(1, 3, '剝皮辣椒雞湯', 200, 60, '主廚喝了都上癮，老菜脯與年輕剝皮辣椒交織，突破你味蕾的極限', '剝皮辣椒、剝皮辣椒醬汁、白蘿蔔、雞腿、青蒜、香菇'),
+(1, 2, '奶油鮭魚牛肝菌炊飯', 180, 35, '鮭魚先用糖鹽醃過，好吃又不會乾柴！牛肝菌本身味道就超級濃郁了，即使沒有炒過，開鍋的時候還是非常的香～', '鮭魚、鹽、糖、米、牛肝菌、洋蔥丁、醬油、奶油'),
+(2, 3, '蒜炒奶油白菜', 120, 80, '奶油白菜是秋天這個季節的蔬菜，外型像故宮的翠玉白菜，只有普通大白菜的十分之一左右大小，葉片呈深綠色，葉梗肥厚呈奶白色，且圓潤細嫩無雜色，真就像奶油一樣潔白，故稱之為奶油白菜。', '奶油白菜、蒜頭、玉米筍、鹽巴、油'),
+(3, 5, '草莓千層雙重奏', 150, 60, '用當季的草莓來做蛋糕和果醬，把草莓迷人的果香融合在這個千層蛋糕中，讓白色聖誕充滿著甜甜的幸福滋味!', '低筋麵粉、糖粉、雞蛋、鮮奶、白砂糖、草莓果醬、草莓、無鹽奶油');
 commit;
 
 --  member
@@ -169,7 +176,7 @@ CREATE TABLE `goodEatTime`.`member` (
   verificationAccount bit(1) NOT NULL default(0) comment'信箱是否以驗證, 0:尚未驗證, 1:已驗證',
   tel VARCHAR(20) NULL,
   point INT NULL,
-  memberPic BLOB NULL,
+  memberPic LONGBLOB NULL,
   PRIMARY KEY (`memberNo`));
  
 ALTER TABLE `goodEatTime`.`member` 
