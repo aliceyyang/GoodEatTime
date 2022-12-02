@@ -176,7 +176,7 @@ CREATE TABLE `goodEatTime`.`member` (
   verificationAccount bit(1) NOT NULL default(0) comment'信箱是否以驗證, 0:尚未驗證, 1:已驗證',
   tel VARCHAR(20) NULL,
   point INT NULL,
-  memberPic BLOB NULL,
+  memberPic LONGBLOB NULL,
   PRIMARY KEY (`memberNo`));
  
 ALTER TABLE `goodEatTime`.`member` 
