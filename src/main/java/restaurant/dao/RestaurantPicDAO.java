@@ -2,19 +2,19 @@ package restaurant.dao;
 
 import java.util.List;
 
-import restaurant.vo.RestaurantPicVo;
+import restaurant.vo.RestaurantPicVO;
 
 public interface RestaurantPicDAO {
 	
-	public void insert(RestaurantPicVo restaurantPicVO);
+	public void insert(RestaurantPicVO restaurantPicVO);
 
-	public void update(RestaurantPicVo restaurantPicVO);
+	public void update(RestaurantPicVO restaurantPicVO);
 
 	public void delete(Integer restaurantPicNo);
 
-	public RestaurantPicVo findByPrimaryKey(Integer restaurantPicNo);
+	public RestaurantPicVO findByPrimaryKey(Integer restaurantPicNo);
 
-	public List<RestaurantPicVo> getAll();
+	public List<RestaurantPicVO> findByRestaurantNo(Integer restaurantNo);
 
 
 }

@@ -3,7 +3,7 @@ package restaurant.vo;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class RestaurantPicVo implements Serializable{
+public class RestaurantPicVO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer restaurantPicNo;
@@ -11,7 +11,7 @@ public class RestaurantPicVo implements Serializable{
 	private byte[] restaurantPic;
 	private String restaurantPicRemark;
 	
-	public RestaurantPicVo() {
+	public RestaurantPicVO() {
 		
 	}
 
@@ -22,16 +22,6 @@ public class RestaurantPicVo implements Serializable{
 				+ "]";
 	}
 	
-	
-
-	public RestaurantPicVo(Integer restaurantPicNo, Integer restaurantNo, byte[] restaurantPic,
-			String restaurantPicRemark) {
-		super();
-		this.restaurantPicNo = restaurantPicNo;
-		this.restaurantNo = restaurantNo;
-		this.restaurantPic = restaurantPic;
-		this.restaurantPicRemark = restaurantPicRemark;
-	}
 
 	public Integer getrestaurantPicNo() {
 		return restaurantPicNo;

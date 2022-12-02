@@ -8,14 +8,21 @@ public class TestProdInfoDAO {
 
 	public static void main(String[] args) {
 		
-//		 findByPrimaryKey 主鍵查詢
-		ProdInfoDAO_JDBC dao = new ProdInfoDAO_JDBC();
-		ProdInfoVO myProduct = dao.findByPrimaryKey(5);
-		System.out.println(myProduct.toString());
+		// findByPrimaryKey 主鍵查詢
+//		ProdInfoDAO_JDBC dao = new ProdInfoDAO_JDBC();
+//		ProdInfoVO myProduct = dao.findByPrimaryKey(5);
+//		System.out.println(myProduct.toString());
 		
 		// getAll 查詢全部
 //		ProdInfoDAO_JDBC dao = new ProdInfoDAO_JDBC();
 //		List<ProdInfoVO> list = dao.getAll();
+//		for(ProdInfoVO myProduct : list) {
+//			System.out.println(myProduct.toString());
+//		}
+		
+		// findByProdCategory 用類別搜尋
+//		ProdInfoDAO_JDBC dao = new ProdInfoDAO_JDBC();
+//		List<ProdInfoVO> list = dao.findByProdCategory(3);
 //		for(ProdInfoVO myProduct : list) {
 //			System.out.println(myProduct.toString());
 //		}

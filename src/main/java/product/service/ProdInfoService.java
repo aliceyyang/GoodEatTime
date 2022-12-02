@@ -62,4 +62,8 @@ public class ProdInfoService {
 		return dao.getAll();
 	}
 	
+	public List<ProdInfoVO> getByCategory(Integer prodCategoryNo) {
+		return dao.findByProdCategory(prodCategoryNo);
+	}
+	
 }

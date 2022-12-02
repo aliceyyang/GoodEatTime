@@ -2,18 +2,19 @@ package restaurant.service;
 
 import java.util.List;
 
-import restaurant.vo.RestaurantVO;
+import restaurant.vo.RestaurantPicVO;
+
 
 public interface RestaurantPicService {
 	
-	RestaurantVO addRestaurantPic(Integer restaurantNO,byte[] restaurantPic,String restaurantPicRemark);
+	RestaurantPicVO addRestaurantPic(Integer restaurantNO,byte[] restaurantPic,String restaurantPicRemark);
 	
-	RestaurantVO updateRestaurant(Integer restaurantPicNo,Integer restaurantNo,byte[] restaurantPic,String restaurantPicRemark);
+	RestaurantPicVO updateRestaurant(byte[] restaurantPic,String restaurantPicRemark,Integer restaurantPicNo);
 
 	void deleteRestaurant(StringBuffer errorMsg,Integer restaurantPicNo);
 	
-	List<RestaurantVO> getAll();
+	List<RestaurantPicVO> getRestaurantPic(Integer restaurantNo);
 	
-	RestaurantVO getOneRestaurant(StringBuffer errorMsg, Integer restaurantPicNo);
+	RestaurantPicVO getOneRestaurantPic(StringBuffer errorMsg, Integer restaurantPicNo);
 
 }
