@@ -22,11 +22,9 @@ public class GetOneServlet extends HttpServlet {
 		
 		RestaurantService service = null;
 		
-		try {
-			service = new RestaurantServiceImpl();
-		} catch (NamingException e1) {
-			e1.printStackTrace();
-		}
+
+		service = new RestaurantServiceImpl();
+
 			
 		StringBuffer errorMsg = new StringBuffer();
 		String str = req.getParameter("restaurantNo");

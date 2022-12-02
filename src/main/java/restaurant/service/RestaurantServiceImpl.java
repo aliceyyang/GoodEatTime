@@ -11,7 +11,7 @@ import restaurant.vo.RestaurantVO;
 public class RestaurantServiceImpl implements RestaurantService {
 	private RestaurantDao dao;
 	
-	public RestaurantServiceImpl() throws NamingException {
+	public RestaurantServiceImpl(){
 		dao = new RestaurantDaoImpl();
 	}
 	
@@ -46,8 +46,8 @@ public class RestaurantServiceImpl implements RestaurantService {
 	@Override
 	public RestaurantVO updateRestaurant(String restaurantTel, String restaurantName,
 			String restaurantTaxIDNo, String restaurantAccountInfo, String restaurantBusinessHour,
-			String restaurantAddr, Boolean restaurantStatus, String restaurantAccount, String restaurantPassword,
-			Integer restaurantCommentQuantity, Integer totalCommentRating,Integer restaurantNO) {
+			String restaurantAddr,String restaurantAccount, String restaurantPassword,
+			Integer restaurantNO) {
 		
 		RestaurantVO vo = new RestaurantVO();
 		
@@ -57,11 +57,8 @@ public class RestaurantServiceImpl implements RestaurantService {
 		vo.setrestaurantAccountInfo(restaurantAccountInfo);
 		vo.setrestaurantBusinessHour(restaurantBusinessHour);
 		vo.setrestaurantAddr(restaurantAddr);
-		vo.setrestaurantStatus(restaurantStatus);
 		vo.setrestaurantAccount(restaurantAccount);
 		vo.setrestaurantPassword(restaurantPassword);
-		vo.setrestaurantCommentQuantity(restaurantCommentQuantity);
-		vo.setTotalCommentRating(totalCommentRating);
 		vo.setrestaurantNo(restaurantNO);
 		
 		dao.update(vo);

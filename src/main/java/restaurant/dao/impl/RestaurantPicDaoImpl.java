@@ -7,23 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import restaurant.dao.RestaurantPicDAO;
-import restaurant.vo.RestaurantPicVo;
+import restaurant.vo.RestaurantPicVO;
 import restaurant.vo.RestaurantVO;
 
 import static common.util.JdbcUtil.*;
 
 public class RestaurantPicDaoImpl implements RestaurantPicDAO{
-	
-	private static final String GET_ALL = "select * from restaurantPic";
-	private static final String GET_ONE = "select * from restaurant where restaurantPicNo = ?";
-	private static final String INSERT = "insert into restaurantPic values(?,?,?)";
-	private static final String DELETE = "delete from restaurant where restaurantPicNo = ?";
-	private static final String UPDATE = "update restaurant set restaurantPic=?,restaurantPicRemark=? where restaurantPicNo = ?";
-	
+
 	@Override
-	public void insert(RestaurantPicVo restaurantPicVO) {
+	public void insert(RestaurantPicVO restaurantPicVO) {
+		String insert = "insert into restaurantPic(restaurantNo,restaurantPic,restaurantPicRemark)"
+				+ "values(?,?,?)";
+		
 		try(Connection con = getConnection();
-			PreparedStatement ps = con.prepareStatement(INSERT)){
+			PreparedStatement ps = con.prepareStatement(insert)){
 			
 			ps.setInt(1,restaurantPicVO.getrestaurantNo());
 			ps.setBytes(2, restaurantPicVO.getrestaurantPic());
@@ -36,10 +33,13 @@ public class RestaurantPicDaoImpl implements RestaurantPicDAO{
 	}
 
 	@Override
-	public void update(RestaurantPicVo restaurantPicVO) {
+	public void update(RestaurantPicVO restaurantPicVO) {
+		String update = "update restaurantPic"
+				+ "set restaurantPic = ? ,restaurantPicRemark = ?"
+				+ "where restaurantPicNo = ?;";
 		
 		try(Connection con = getConnection();
-				PreparedStatement ps = con.prepareStatement(INSERT)){
+				PreparedStatement ps = con.prepareStatement(update)){
 				
 				ps.setBytes(1,restaurantPicVO.getrestaurantPic());
 				ps.setString(2,restaurantPicVO.getrestaurantPicRemark());
@@ -50,15 +50,15 @@ public class RestaurantPicDaoImpl implements RestaurantPicDAO{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		
-		
-		
 	}
 
 	@Override
 	public void delete(Integer restaurantPicNo) {
+		String delete = "delete from restaurantPic"
+				+ "where restaurantPicNo = ?";
+		
 		try(Connection con = getConnection();
-			PreparedStatement ps = con.prepareStatement(DELETE)){
+			PreparedStatement ps = con.prepareStatement(delete)){
 				
 				ps.setInt(1,restaurantPicNo);
 				ps.executeUpdate();
@@ -70,15 +70,16 @@ public class RestaurantPicDaoImpl implements RestaurantPicDAO{
 	}
 
 	@Override
-	public RestaurantPicVo findByPrimaryKey(Integer restaurantPicNo) {
-		RestaurantPicVo vo = null;
+	public RestaurantPicVO findByPrimaryKey(Integer restaurantPicNo) {
+		String findByPrimaryKey = "select * from restaurant where restaurantPicNo = ?";
+		RestaurantPicVO vo = null;
 		try(Connection con = getConnection();
-			PreparedStatement ps = con.prepareStatement(GET_ONE);
+			PreparedStatement ps = con.prepareStatement(findByPrimaryKey);
 			ResultSet rs = ps.executeQuery()){
 			
 			ps.setInt(1, restaurantPicNo);
 			while(rs.next()) {
-				vo = new RestaurantPicVo();
+				vo = new RestaurantPicVO();
 				
 				vo.setrestaurantPicNo(rs.getInt(1));
 				vo.setrestaurantNo(rs.getInt(2));
@@ -92,14 +93,20 @@ public class RestaurantPicDaoImpl implements RestaurantPicDAO{
 		return vo;
 	}
 
+
+
 	@Override
-	public List<RestaurantPicVo> getAll() {
-		List<RestaurantPicVo> list = new ArrayList<>();
+	public List<RestaurantPicVO> findByRestaurantNo(Integer restaurantNo) {
+		String findByRestaurantNo = "select * from restaurantPic"
+				+ "where restaurantNo = ?";
+		
+		List<RestaurantPicVO> list = new ArrayList<>();
+		
 		try (Connection con = getConnection();
-				PreparedStatement ps = con.prepareStatement(GET_ALL);
+				PreparedStatement ps = con.prepareStatement(findByRestaurantNo);
 				ResultSet rs = ps.executeQuery()){
 			while (rs.next()) {
-				RestaurantPicVo vo = new RestaurantPicVo();
+				RestaurantPicVO vo = new RestaurantPicVO();
 				
 				vo.setrestaurantPicNo(rs.getInt(1));
 				vo.setrestaurantNo(rs.getInt(2));

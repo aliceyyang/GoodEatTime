@@ -2,35 +2,30 @@ package restaurant.dao.impl;
 
 import static common.util.JdbcUtil.*;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
 import restaurant.dao.RestaurantDao;
 import restaurant.vo.RestaurantVO;
 
-public class RestaurantDaoImpl implements RestaurantDao {
+public class RestaurantDaoImpl implements RestaurantDao {	
 	
-	private static final String GET_ALL = "select * from restaurant";
-	private static final String GET_ONE = "select * from restaurant where restaurantNo = ?";
-	private static final String INSERT = "insert into restaurant values(?,?,?,?,?,?,?,?,?,?,?)";
-	private static final String DELETE = "delete from restaurant where restaurantNo = ?";
-	private static final String UPDATE = "update restaurant set restaurantTel=?,restaurantName=?,restaurantTaxIDNo=?,restaurantAccountInfo=?,restaurantBusinessHour=?,restaurantAddr=?,"
-			+ "restaurantStatus=?,restaurantAccount=?,restaurantPassword=?,restaurantCommentQuantity=?,totalCommentRating=? where restaurantNo=?";
-	
+	String driver = "com.mysql.cj.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/GoodEatTime";
+	String username = "root";
+	String password = "password";
 	
 	@Override
 	
 	public void insert(RestaurantVO restaurantVO) {
+		String insert = "insert into restaurant(restaurantTel,restaurantName,restaurantTaxIDNo,restaurantAccountInfo,restaurantBusinessHour,restaurantAddr,restaurantStatus,restaurantAccount,restaurantPassword,restaurantCommentQuantity,totalCommentRating)"
+				+ "values(?,?,?,?,?,?,?,?,?,?,?);";
 		
 		try(Connection con = getConnection();
-			PreparedStatement ps = con.prepareStatement(INSERT)) {
+			PreparedStatement ps = con.prepareStatement(insert)) {
 			
 			ps.setString(1,restaurantVO.getrestaurantTel());
 			ps.setString(2,restaurantVO.getrestaurantName());
@@ -54,8 +49,10 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
 	@Override
 	public void update(RestaurantVO restaurantVO) {
+		String update = "update restaurant set restaurantTel=?,restaurantName=?,restaurantTaxIDNo=?,restaurantAccountInfo=?,restaurantBusinessHour=?,restaurantAddr=?,"
+				+ "restaurantAccount=?,restaurantPassword=? where restaurantNo=?";
 		try(Connection con = getConnection();
-			PreparedStatement ps = con.prepareStatement(UPDATE)){
+			PreparedStatement ps = con.prepareStatement(update)){
 			
 			ps.setString(1,restaurantVO.getrestaurantTel());
 			ps.setString(2,restaurantVO.getrestaurantName());
@@ -63,12 +60,9 @@ public class RestaurantDaoImpl implements RestaurantDao {
 			ps.setString(4,restaurantVO.getrestaurantAccountInfo());
 			ps.setString(5,restaurantVO.getrestaurantBusinessHour());
 			ps.setString(6,restaurantVO.getrestaurantAddr());
-			ps.setBoolean(7,restaurantVO.getrestaurantStatus());
-			ps.setString(8,restaurantVO.getrestaurantAccount());
-			ps.setString(9,restaurantVO.getrestaurantPassword());
-			ps.setInt(10,restaurantVO.getrestaurantCommentQuantity());
-			ps.setInt(11,restaurantVO.getTotalCommentRating());
-			ps.setInt(12,restaurantVO.getrestaurantNo());
+			ps.setString(7,restaurantVO.getrestaurantAccount());
+			ps.setString(8,restaurantVO.getrestaurantPassword());
+			ps.setInt(9,restaurantVO.getrestaurantNo());
 			
 			ps.executeUpdate();
 			
@@ -80,8 +74,9 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
 	@Override
 	public void delete(Integer restaurantNo) {
+		String delete = "delete from restaurant where restaurantNo = ?";
 		try(Connection con = getConnection();
-			PreparedStatement ps = con.prepareStatement(DELETE)){
+			PreparedStatement ps = con.prepareStatement(delete)){
 			
 			ps.setInt(1,restaurantNo);
 			ps.executeUpdate();
@@ -94,9 +89,11 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
 	@Override
 	public RestaurantVO findByPrimaryKey(Integer restaurantNo) {
+		String findByPrimaryKey = "select * from restaurant where restaurantNo = ?";
+		
 		RestaurantVO vo = null;
 		try(Connection con = getConnection();
-			PreparedStatement ps = con.prepareStatement(GET_ONE);
+			PreparedStatement ps = con.prepareStatement(findByPrimaryKey);
 			ResultSet rs = ps.executeQuery()){
 			
 			ps.setInt(1,restaurantNo);
@@ -124,9 +121,13 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
 	@Override
 	public List<RestaurantVO> getAll() {
+		String getAll = "select * from restaurant";
+		
 		List<RestaurantVO> list = new ArrayList<>();
-		try (Connection con = getConnection();
-				PreparedStatement ps = con.prepareStatement(GET_ALL);
+		try (
+//				Connection con = getConnection();
+				Connection con = DriverManager.getConnection(url, username, password);
+				PreparedStatement ps = con.prepareStatement(getAll);
 				ResultSet rs = ps.executeQuery()){
 			while (rs.next()) {
 				RestaurantVO vo = new RestaurantVO();
@@ -150,5 +151,25 @@ public class RestaurantDaoImpl implements RestaurantDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public static void main(String[] args) {
+		RestaurantDaoImpl test = new RestaurantDaoImpl();
+		List<RestaurantVO> list =  test.getAll();
+		for (RestaurantVO vo : list) {
+			System.out.print(vo.getrestaurantNo() + " , ");
+			System.out.print(vo.getrestaurantTel() + " , ");
+			System.out.print(vo.getrestaurantName() + " , ");
+			System.out.print(vo.getrestaurantTaxIDNo() + " , ");
+			System.out.print(vo.getrestaurantAccountInfo() + " , ");
+			System.out.print(vo.getrestaurantBusinessHour() + " , ");
+			System.out.print(vo.getrestaurantAddr() + " , ");
+			System.out.print(vo.getrestaurantStatus() + " , ");
+			System.out.print(vo.getrestaurantAccount() + " , ");
+			System.out.print(vo.getrestaurantPassword() + " , ");
+			System.out.print(vo.getrestaurantCommentQuantity() + " , ");
+			System.out.println(vo.getTotalCommentRating());
+		}
+		
 	}
 }
