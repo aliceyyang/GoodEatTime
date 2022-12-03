@@ -45,6 +45,8 @@
 	</c:if>
 	
 	<ul>
+	
+		<li><a href='listAllCoupon.jsp'>List</a></li>
 		<li>
 			<form method="post" action="ConponController">
 				<input type="hidden" name="action" value="getAll">
@@ -104,6 +106,12 @@
 	    	</form>
 	    </li>
 	</ul>
+	
+	<h3>優惠券管理</h3>
+	
+		<ul>
+			<li><a href='addCoupon.jsp'>新增優惠券</a></li>
+		</ul>
 	    	
 </body>
 </html>
