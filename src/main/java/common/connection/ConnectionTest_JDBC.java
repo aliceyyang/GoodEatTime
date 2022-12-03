@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import restaurant.vo.RestaurantVO;
 
 public class ConnectionTest_JDBC {
-	private static String URL = "jdbc:mysql://localhost:3306/goodeattime?serverTimezone=Asia/Taipei";
+	private static String URL = "jdbc:mysql://localhost:3306/Goodeattime?serverTimezone=Asia/Taipei";
 	private static String USER = "root";
 	private static String PASSWORD = "password";
 	

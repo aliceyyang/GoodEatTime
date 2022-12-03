@@ -21,7 +21,7 @@ public class CouponJDBCDAO implements CouponDao{
 		private static final String DELETE = 
 				"delete from coupon where couponNo = ?";
 		private static final String UPDATE = 
-				"updatte coupon set restaurantNo=?,adminNo=?,couponApplyDate=?,couponName=?,"
+				"update coupon set restaurantNo=?,adminNo=?,couponApplyDate=?,couponName=?,"
 			  + "couponStartTime=?,couponEndTime=?,verified=?,couponContent=?,usageLimitation=?,"
 			  + "amountOrFold=?,couponType=?,maxIssueQty=?,issuedQty=?,verificationDetail=?";
 		@Override
@@ -60,10 +60,17 @@ public class CouponJDBCDAO implements CouponDao{
 			} finally {
 				if(ps != null)
 					try {
-						con.close();
+						ps.close();
 					} catch(Exception e) {
 						e.printStackTrace(System.err);
 					}
+				 if(con != null) {
+					 try {
+						con.close();
+					} catch (Exception e) {
+						e.printStackTrace(System.err);
+					}
+				 }
 			}
 		}
 

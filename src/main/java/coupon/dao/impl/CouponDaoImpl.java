@@ -30,7 +30,7 @@ public class CouponDaoImpl implements CouponDao {
 	private static final String DELETE = 
 			"delete from coupon where couponNo = ?";
 	private static final String UPDATE = 
-			"updatte coupon set restaurantNo=?,adminNo=?,couponApplyDate=?,couponName=?,"
+			"update coupon set restaurantNo=?,adminNo=?,couponApplyDate=?,couponName=?,"
 		  + "couponStartTime=?,couponEndTime=?,verified=?,couponContent=?,usageLimitation=?,"
 		  + "amountOrFold=?,couponType=?,maxIssueQty=?,issuedQty=?,verificationDetail=?";
 
