@@ -15,7 +15,7 @@ import org.hibernate.Transaction;
 import common.connection.HibernateUtil;
 import product.vo.ProdPicVO;
 
-public class TestProdPicDao {
+public class ProdPicDaoTests {
 
 	public static void main(String[] args) {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();

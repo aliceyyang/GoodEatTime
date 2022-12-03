@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import product.helper.CheckProdInfo;
 import product.service.ProdInfoService;
 import product.vo.ProdInfoVO;
 
@@ -48,6 +49,7 @@ public class ProdInfoController extends HttpServlet {
     	String action = req.getParameter("action");
     	ProdInfoService prodSvc = new ProdInfoService();
     	HttpSession session = req.getSession();
+    	CheckProdInfo helper = new CheckProdInfo();
     	
     	if ("getAll".equals(action)) {
     		List<ProdInfoVO> list = prodSvc.getAll();
@@ -57,7 +59,7 @@ public class ProdInfoController extends HttpServlet {
     	}
     	
     	if ("getOne_For_Display".equals(action)) {
-    		Object[] result = getOne_For_Display(req.getParameter("prodNo"));
+    		Object[] result = helper.checkProdNo(req.getParameter("prodNo"));
     		if (result[0] != null) {
     			req.setAttribute("errorMsgs", (List<String>)result[0]);
     			requestDispatch(req, res, failureView);
@@ -105,6 +107,8 @@ public class ProdInfoController extends HttpServlet {
     	if ("delete".equals(action)) {
     		Integer prodNo = Integer.valueOf(req.getParameter("prodNO"));
     		prodSvc.deleteProdInfo(prodNo);
+    		List<ProdInfoVO> list = prodSvc.getAll();
+    		session.setAttribute("list", list);
     		requestDispatch(req, res, listAllView);
     		return;
     	}
@@ -133,43 +137,43 @@ public class ProdInfoController extends HttpServlet {
     	destination.forward(req, res);
     }
     
-    Object[] getOne_For_Display(String prodNoStr) {
-    	Object[] result = new Object[2];
-    	// result[0] = 錯誤訊息
-    	// result[1] = 查詢結果
-    	
-    	List<String> errorMsgs = new LinkedList<String>();
-    	
-    	/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
-		
-		if (prodNoStr == null || (prodNoStr.trim()).length() == 0) {
-			errorMsgs.add("請輸入產品編號");
-			result[0] = errorMsgs;
-			return result;//程式中斷
-		}
-		
-		Integer prodNo = null;
-		try {
-			prodNo = Integer.valueOf(prodNoStr.trim());
-		} catch (Exception e) {
-			errorMsgs.add("產品編號格式不正確");
-			result[0] = errorMsgs;
-			return result;//程式中斷
-		}
-		
-		/***************************2.開始查詢資料*****************************************/
-		ProdInfoService prodSvc = new ProdInfoService();
-    	ProdInfoVO prodInfoVO = prodSvc.getOneProduct(prodNo);
-		if (prodInfoVO == null) {
-			errorMsgs.add("查無資料");
-			result[0] = errorMsgs;
-			return result;//程式中斷
-		}
-    	
-		/***************************3.查詢完成,回傳資料*************************************/
-		result[1] = prodInfoVO;
-		return result;
-    }
+//    Object[] getOne_For_Display(String prodNoStr) {
+//    	Object[] result = new Object[2];
+//    	// result[0] = 錯誤訊息
+//    	// result[1] = 查詢結果
+//    	
+//    	List<String> errorMsgs = new LinkedList<String>();
+//    	
+//    	/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
+//		
+//		if (prodNoStr == null || (prodNoStr.trim()).length() == 0) {
+//			errorMsgs.add("請輸入產品編號");
+//			result[0] = errorMsgs;
+//			return result;//程式中斷
+//		}
+//		
+//		Integer prodNo = null;
+//		try {
+//			prodNo = Integer.valueOf(prodNoStr.trim());
+//		} catch (Exception e) {
+//			errorMsgs.add("產品編號格式不正確");
+//			result[0] = errorMsgs;
+//			return result;//程式中斷
+//		}
+//		
+//		/***************************2.開始查詢資料*****************************************/
+//		ProdInfoService prodSvc = new ProdInfoService();
+//    	ProdInfoVO prodInfoVO = prodSvc.getOneProduct(prodNo);
+//		if (prodInfoVO == null) {
+//			errorMsgs.add("查無資料");
+//			result[0] = errorMsgs;
+//			return result;//程式中斷
+//		}
+//    	
+//		/***************************3.查詢完成,回傳資料*************************************/
+//		result[1] = prodInfoVO;
+//		return result;
+//    }
     
     Object[] update_prod(String prodNoStr, String restaurantNoStr, String prodCategoryNoStr,
     		String prodName, String prodPriceStr, String prodStockStr, String prodDescription,
@@ -179,6 +183,7 @@ public class ProdInfoController extends HttpServlet {
     	// result[1] = 使用這輸入的錯誤資料 / 修改結果
     	
     	List<String> errorMsgs = new LinkedList<String>();
+    	CheckProdInfo helper = new CheckProdInfo();
     	
     	/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 		
@@ -191,54 +196,41 @@ public class ProdInfoController extends HttpServlet {
     	Integer prodCategoryNo = Integer.valueOf(prodCategoryNoStr);
     	
     	// 確認產品名稱
-		if (prodName == null || (prodName.trim()).length() == 0) {
-			errorMsgs.add("請輸入產品名稱");
-		}
-		
+    	LinkedList<String> msgProdName = helper.checkProdName(prodName);
+    	if ("error".equals(msgProdName.pop())) {
+    		errorMsgs.addAll(msgProdName);
+    	}
+    	
 		// 確認產品價格
-		if (prodPriceStr == null || (prodPriceStr.trim()).length() == 0) {
-			errorMsgs.add("請輸入產品價格");
-		}
-		
-		Integer prodPrice = null;
-		try {
-			prodPrice = Integer.valueOf(prodPriceStr.trim());
-		} catch (Exception e) {
-			prodPrice = 1;
-			errorMsgs.add("產品價格格式不正確");
-		}
-		
-		if(prodPrice <= 0) {
-			prodPrice = 1;
-			errorMsgs.add("產品價格不能小於或等於0");
-		}
-		
+    	Integer prodPrice = null;
+    	LinkedList<String> msgProdPrice = helper.checkProdPrice(prodPriceStr);
+    	if ("error".equals(msgProdPrice.pop())) {
+    		errorMsgs.addAll(msgProdPrice);
+    		prodPrice = 1;
+    	} else {
+    		prodPrice = Integer.valueOf(prodPriceStr.trim());
+    	}
+    	
 		// 確認產品庫存
-		if (prodStockStr == null || (prodStockStr.trim()).length() == 0) {
-			errorMsgs.add("請輸入產品庫存");
-		}
-		
-		Integer prodStock = null;
-		try {
-			prodStock = Integer.valueOf(prodStockStr.trim());
-		} catch (Exception e) {
-			prodStock = 0;
-			errorMsgs.add("產品庫存格式不正確");
-		}
-		
-		if(prodStock < 0) {
-			prodStock = 0;
-			errorMsgs.add("產品庫存不能小於0");
-		}
-		
+    	Integer prodStock = null;
+    	LinkedList<String> msgProdStock = helper.checkProdStock(prodStockStr);
+    	if ("error".equals(msgProdStock.pop())) {
+    		errorMsgs.addAll(msgProdStock);
+    		prodStock = 0;
+    	} else {
+    		prodStock = Integer.valueOf(prodStockStr.trim());
+    	}
+    	
 		//確認產品說明
-		if (prodDescription == null || (prodDescription.trim()).length() == 0) {
-			errorMsgs.add("請輸入產品說明");
+		LinkedList<String> msgProdDescription = helper.checkProdDescription(prodDescription);
+		if ("error".equals(msgProdDescription.pop())) {
+			errorMsgs.addAll(msgProdDescription);
 		}
 		
 		//確認產品規格
-		if (prodContent == null || (prodContent.trim()).length() == 0) {
-			errorMsgs.add("請輸入產品規格");
+		LinkedList<String> msgProdContent = helper.checkProdContent(prodContent);
+		if ("error".equals(msgProdContent.pop())) {
+			errorMsgs.addAll(msgProdContent);
 		}
 		
 		if (!errorMsgs.isEmpty()) {
@@ -277,78 +269,51 @@ public class ProdInfoController extends HttpServlet {
     	// result[1] = 使用這輸入的錯誤資料 / 修改結果
     	
     	List<String> errorMsgs = new LinkedList<String>();
-    	
+    	CheckProdInfo helper = new CheckProdInfo();
     	/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 		
-    	// 確認餐廳編號
-    	if (restaurantNoStr == null || (restaurantNoStr.trim()).length() == 0) {
-			errorMsgs.add("請輸入餐廳編號");
-		}
-    	
-    	Integer restaurantNo = null;
-    	try {
-    		restaurantNo = Integer.valueOf(restaurantNoStr);
-		} catch (Exception e) {
-			restaurantNo = 1;
-			errorMsgs.add("餐廳編號格式不正確");
-		}
-    	if (restaurantNo < 0) {
-    		restaurantNo = 1;
-			errorMsgs.add("餐廳編號不能小於或等於0");
-    	}
+    	// 餐廳編號不讓使用者輸入，故不需驗證
+    	Integer restaurantNo = Integer.valueOf(restaurantNoStr);
     	
     	// prodCategoryNo讓使用者選擇，故也不需驗證
     	Integer prodCategoryNo = Integer.valueOf(prodCategoryNoStr);
     	
     	// 確認產品名稱
-		if (prodName == null || (prodName.trim()).length() == 0) {
-			errorMsgs.add("請輸入產品名稱");
-		}
+    	LinkedList<String> msgProdName = helper.checkProdName(prodName);
+    	if ("error".equals(msgProdName.pop())) {
+    		errorMsgs.addAll(msgProdName);
+    	}
 		
 		// 確認產品價格
-		if (prodPriceStr == null || (prodPriceStr.trim()).length() == 0) {
-			errorMsgs.add("請輸入產品價格");
-		}
-		
-		Integer prodPrice = null;
-		try {
-			prodPrice = Integer.valueOf(prodPriceStr.trim());
-		} catch (Exception e) {
-			prodPrice = 1;
-			errorMsgs.add("產品價格格式不正確");
-		}
-		
-		if(prodPrice <= 0) {
-			prodPrice = 1;
-			errorMsgs.add("產品價格不能小於或等於0");
-		}
+    	Integer prodPrice = null;
+    	LinkedList<String> msgProdPrice = helper.checkProdPrice(prodPriceStr);
+    	if ("error".equals(msgProdPrice.pop())) {
+    		errorMsgs.addAll(msgProdPrice);
+    		prodPrice = 1;
+    	} else {
+    		prodPrice = Integer.valueOf(prodPriceStr.trim());
+    	}
 		
 		// 確認產品庫存
-		if (prodStockStr == null || (prodStockStr.trim()).length() == 0) {
-			errorMsgs.add("請輸入產品庫存");
-		}
-		
 		Integer prodStock = null;
-		try {
-			prodStock = Integer.valueOf(prodStockStr.trim());
-		} catch (Exception e) {
-			prodStock = 0;
-			errorMsgs.add("產品庫存格式不正確");
-		}
-		
-		if(prodStock < 0) {
-			prodStock = 0;
-			errorMsgs.add("產品庫存不能小於0");
-		}
+    	LinkedList<String> msgProdStock = helper.checkProdStock(prodStockStr);
+    	if ("error".equals(msgProdStock.pop())) {
+    		errorMsgs.addAll(msgProdStock);
+    		prodStock = 0;
+    	} else {
+    		prodStock = Integer.valueOf(prodStockStr.trim());
+    	}
 		
 		//確認產品說明
-		if (prodDescription == null || (prodDescription.trim()).length() == 0) {
-			errorMsgs.add("請輸入產品說明");
+    	LinkedList<String> msgProdDescription = helper.checkProdDescription(prodDescription);
+		if ("error".equals(msgProdDescription.pop())) {
+			errorMsgs.addAll(msgProdDescription);
 		}
 		
 		//確認產品規格
-		if (prodContent == null || (prodContent.trim()).length() == 0) {
-			errorMsgs.add("請輸入產品規格");
+		LinkedList<String> msgProdContent = helper.checkProdContent(prodContent);
+		if ("error".equals(msgProdContent.pop())) {
+			errorMsgs.addAll(msgProdContent);
 		}
 		
 		if (!errorMsgs.isEmpty()) {
@@ -365,7 +330,7 @@ public class ProdInfoController extends HttpServlet {
 			return result;//程式中斷
 		}
 		
-		/***************************2.開始修改資料*****************************************/
+		/***************************2.開始新增資料*****************************************/
 		ProdInfoService prodSvc = new ProdInfoService();
     	ProdInfoVO prodInfoVO = prodSvc.addProdInfo(restaurantNo, prodCategoryNo,
     			prodName, prodPrice, prodStock, prodDescription,
