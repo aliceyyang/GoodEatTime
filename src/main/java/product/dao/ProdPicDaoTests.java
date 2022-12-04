@@ -44,7 +44,7 @@ public class ProdPicDaoTests {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-//		dao.insert(insert);
+//		System.out.println(dao.insert(insert));
 		
 		// update 修改
 //		ProdPicVO update = dao.findByPrimaryKey(8);
@@ -62,10 +62,10 @@ public class ProdPicDaoTests {
 //		dao.delete(9);
 		
 		// 產品編號搜尋
-		List<ProdPicVO> list = dao.findByProdNo(3);
-		for(ProdPicVO p : list) {
-			System.out.println(p);
-		}
+//		List<ProdPicVO> list = dao.findByProdNo(3);
+//		for(ProdPicVO p : list) {
+//			System.out.println(p);
+//		}
 		
 		transaction.commit();
 		session.close();
