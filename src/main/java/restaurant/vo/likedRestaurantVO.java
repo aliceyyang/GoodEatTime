@@ -2,14 +2,14 @@ package restaurant.vo;
 
 import java.io.Serializable;
 
-public class likedRestaurantVO implements Serializable{
+public class LikedRestaurantVO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer memberNo;
 	private Integer restaurantNo;
 	
 	
-	public likedRestaurantVO() {
+	public LikedRestaurantVO() {
 		
 	}
 	

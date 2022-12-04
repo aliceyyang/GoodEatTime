@@ -9,12 +9,12 @@ public interface RestaurantPicService {
 	
 	RestaurantPicVO addRestaurantPic(Integer restaurantNO,byte[] restaurantPic,String restaurantPicRemark);
 	
-	RestaurantPicVO updateRestaurant(byte[] restaurantPic,String restaurantPicRemark,Integer restaurantPicNo);
+	RestaurantPicVO updateRestaurantPic(byte[] restaurantPic,String restaurantPicRemark,Integer restaurantPicNo);
 
-	void deleteRestaurant(StringBuffer errorMsg,Integer restaurantPicNo);
+	void deleteRestaurantPic(Integer restaurantPicNo);
 	
 	List<RestaurantPicVO> getRestaurantPic(Integer restaurantNo);
 	
-	RestaurantPicVO getOneRestaurantPic(StringBuffer errorMsg, Integer restaurantPicNo);
+	RestaurantPicVO getOneRestaurantPic(Integer restaurantPicNo);
 
 }

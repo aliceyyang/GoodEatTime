@@ -26,17 +26,17 @@ public class ConnectionTest_JDBC {
 			while(rs.next()){
 				vo = new RestaurantVO();
 				
-				vo.setrestaurantNo(rs.getInt(1));
-				vo.setrestaurantTel(rs.getString(2));
-				vo.setrestaurantName(rs.getString(3));
-				vo.setrestaurantTaxIDNo(rs.getString(4));
-				vo.setrestaurantAccountInfo(rs.getString(5));
-				vo.setrestaurantBusinessHour(rs.getString(6));
-				vo.setrestaurantAddr(rs.getString(7));
-				vo.setrestaurantStatus(rs.getBoolean(8));
-				vo.setrestaurantAccount(rs.getString(9));
-				vo.setrestaurantPassword(rs.getString(10));
-				vo.setrestaurantCommentQuantity(rs.getInt(11));
+				vo.setRestaurantNo(rs.getInt(1));
+				vo.setRestaurantTel(rs.getString(2));
+				vo.setRestaurantName(rs.getString(3));
+				vo.setRestaurantTaxIDNo(rs.getString(4));
+				vo.setRestaurantAccountInfo(rs.getString(5));
+				vo.setRestaurantBusinessHour(rs.getString(6));
+				vo.setRestaurantAddr(rs.getString(7));
+				vo.setRestaurantStatus(rs.getBoolean(8));
+				vo.setRestaurantAccount(rs.getString(9));
+				vo.setRestaurantPassword(rs.getString(10));
+				vo.setRestaurantCommentQuantity(rs.getInt(11));
 				vo.setTotalCommentRating(rs.getInt(12));
 			}
 			

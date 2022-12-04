@@ -22,9 +22,9 @@ public class RestaurantPicDaoImpl implements RestaurantPicDAO{
 		try(Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement(insert)){
 			
-			ps.setInt(1,restaurantPicVO.getrestaurantNo());
-			ps.setBytes(2, restaurantPicVO.getrestaurantPic());
-			ps.setString(3,restaurantPicVO.getrestaurantPicRemark());
+			ps.setInt(1,restaurantPicVO.getRestaurantNo());
+			ps.setBytes(2, restaurantPicVO.getRestaurantPic());
+			ps.setString(3,restaurantPicVO.getRestaurantPicRemark());
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,9 +41,9 @@ public class RestaurantPicDaoImpl implements RestaurantPicDAO{
 		try(Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(update)){
 				
-				ps.setBytes(1,restaurantPicVO.getrestaurantPic());
-				ps.setString(2,restaurantPicVO.getrestaurantPicRemark());
-				ps.setInt(3,restaurantPicVO.getrestaurantPicNo());
+				ps.setBytes(1,restaurantPicVO.getRestaurantPic());
+				ps.setString(2,restaurantPicVO.getRestaurantPicRemark());
+				ps.setInt(3,restaurantPicVO.getRestaurantPicNo());
 				
 				ps.executeUpdate();
 				
@@ -81,10 +81,10 @@ public class RestaurantPicDaoImpl implements RestaurantPicDAO{
 			while(rs.next()) {
 				vo = new RestaurantPicVO();
 				
-				vo.setrestaurantPicNo(rs.getInt(1));
-				vo.setrestaurantNo(rs.getInt(2));
-				vo.setrestaurantPic(rs.getBytes(3));
-				vo.setrestaurantPicRemark(rs.getString(4));
+				vo.setRestaurantPicNo(rs.getInt(1));
+				vo.setRestaurantNo(rs.getInt(2));
+				vo.setRestaurantPic(rs.getBytes(3));
+				vo.setRestaurantPicRemark(rs.getString(4));
 			}
 			
 		}catch (Exception e) {
@@ -108,10 +108,10 @@ public class RestaurantPicDaoImpl implements RestaurantPicDAO{
 			while (rs.next()) {
 				RestaurantPicVO vo = new RestaurantPicVO();
 				
-				vo.setrestaurantPicNo(rs.getInt(1));
-				vo.setrestaurantNo(rs.getInt(2));
-				vo.setrestaurantPic(rs.getBytes(3));
-				vo.setrestaurantPicRemark(rs.getString(4));
+				vo.setRestaurantPicNo(rs.getInt(1));
+				vo.setRestaurantNo(rs.getInt(2));
+				vo.setRestaurantPic(rs.getBytes(3));
+				vo.setRestaurantPicRemark(rs.getString(4));
 				
 				list.add(vo);
 			}

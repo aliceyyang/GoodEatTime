@@ -13,9 +13,9 @@ public interface RestaurantService {
 	RestaurantVO updateRestaurant(String restaurantTel,String restaurantName,String restaurantTaxIDNo,String restaurantAccountInfo,String restaurantBusinessHour,String restaurantAddr,
 			String restaurantAccount,String restaurantPassword,Integer restaurantNO);
 
-	void deleteRestaurant(StringBuffer errorMsg,Integer restaurantNo);
+	void setStatus(Integer restaurantNo,Boolean restaurantStatus);
 	
 	List<RestaurantVO> getAll();
 	
-	RestaurantVO getOneRestaurant(StringBuffer errorMsg, Integer restaurantNo);
+	RestaurantVO getOneRestaurant(Integer restaurantNo);
 }

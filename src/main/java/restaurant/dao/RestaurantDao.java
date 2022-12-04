@@ -10,7 +10,7 @@ public interface RestaurantDao {
 
 	public void update(RestaurantVO restaurantVO);
 
-	public void delete(Integer restaurantNo);
+	public void setStatus(Integer restaurantNo,Boolean restaurantStatus);
 
 	public RestaurantVO findByPrimaryKey(Integer restaurantNo);
 

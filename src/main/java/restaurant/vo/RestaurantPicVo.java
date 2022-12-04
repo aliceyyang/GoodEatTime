@@ -23,35 +23,35 @@ public class RestaurantPicVO implements Serializable{
 	}
 	
 
-	public Integer getrestaurantPicNo() {
+	public Integer getRestaurantPicNo() {
 		return restaurantPicNo;
 	}
 
-	public void setrestaurantPicNo(Integer restaurantPicNo) {
+	public void setRestaurantPicNo(Integer restaurantPicNo) {
 		this.restaurantPicNo = restaurantPicNo;
 	}
 
-	public Integer getrestaurantNo() {
+	public Integer getRestaurantNo() {
 		return restaurantNo;
 	}
 
-	public void setrestaurantNo(Integer restaurantNo) {
+	public void setRestaurantNo(Integer restaurantNo) {
 		this.restaurantNo = restaurantNo;
 	}
 
-	public byte[] getrestaurantPic() {
+	public byte[] getRestaurantPic() {
 		return restaurantPic;
 	}
 
-	public void setrestaurantPic(byte[] restaurantPic) {
+	public void setRestaurantPic(byte[] restaurantPic) {
 		this.restaurantPic = restaurantPic;
 	}
 
-	public String getrestaurantPicRemark() {
+	public String getRestaurantPicRemark() {
 		return restaurantPicRemark;
 	}
 
-	public void setrestaurantPicRemark(String restaurantPicRemark) {
+	public void setRestaurantPicRemark(String restaurantPicRemark) {
 		this.restaurantPicRemark = restaurantPicRemark;
 	}
 

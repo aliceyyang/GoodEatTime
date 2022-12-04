@@ -16,16 +16,18 @@ import restaurant.vo.RestaurantVO;
 @WebServlet("/restaurant/getOne")
 public class GetOneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+		doPost(req, res);
+
+	}
 	
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		RestaurantService service = null;
-		
-
-		service = new RestaurantServiceImpl();
-
-			
+		RestaurantService service = new RestaurantServiceImpl();
 		StringBuffer errorMsg = new StringBuffer();
 		String str = req.getParameter("restaurantNo");
 		RestaurantVO restaurantVO = null;
@@ -44,7 +46,7 @@ public class GetOneServlet extends HttpServlet {
 			req.setAttribute("vo", restaurantVO);
 		}
 			
-			req.getRequestDispatcher("../RestaurantGetOne.jsp").forward(req, res);
+			req.getRequestDispatcher("../restaurant/SelectPage.jsp").forward(req, res);
 			
 	
 		
