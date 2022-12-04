@@ -28,12 +28,7 @@ public class RestaurantServlet extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
-		
-//		
-//		HttpSession session = req.getSession();
-//		session.setAttribute("list", list); // 資料庫取出的list物件,存入session
-//		
+	
 		
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
