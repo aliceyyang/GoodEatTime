@@ -63,7 +63,7 @@
 	<tr>
 		<th>產品編號</th>
 		<th>餐廳編號</th>
-		<th>產品類別編號</th>
+		<th>產品類別</th>
 		<th>產品名稱</th>
 		<th>產品價格</th>
 		<th>產品庫存</th>
@@ -75,12 +75,13 @@
 		<th>刪除</th>
 	</tr>
 	<%@ include file="page1.file" %> 
+	<jsp:useBean id="prodCategoryService" scope="page" class="product.service.ProdCategoryService" />
 	<c:forEach var="prodVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
 		
 		<tr>
 			<td>${prodVO.prodNo}</td>
 			<td>${prodVO.restaurantNo}</td>
-			<td>${prodVO.prodCategoryNo}</td>
+			<td>${prodCategoryService.getOneProdCategory(prodVO.prodCategoryNo).prodCategory}</td>
 			<td>${prodVO.prodName}</td>
 			<td>${prodVO.prodPrice}</td>
 			<td>${prodVO.prodStock}</td> 

@@ -1,5 +1,7 @@
 package product.vo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,15 +11,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "prodPic")
-public class ProdPicVO {
+public class ProdPicVO implements Serializable{
+	private static final long serialVersionUID = -3072905813299511170L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "prodPicNo", insertable = false)
 	private Integer prodPicNo;
 	@Column(name = "prodNo", nullable = false)
 	private Integer prodNo;
-	@Column(name = "prodPic", nullable = false, columnDefinition = "blob")
-	private Byte[] prodPic;
+	@Column(name = "prodPic", nullable = false, columnDefinition = "longblob")
+	private byte[] prodPic;
 	@Column(name = "prodPicRemark")
 	private String prodPicRemark;
 	public Integer getProdPicNo() {
@@ -32,11 +35,11 @@ public class ProdPicVO {
 	public void setProdNo(Integer prodNo) {
 		this.prodNo = prodNo;
 	}
-	public Byte[] getProdPic() {
+	public byte[] getProdPic() {
 		return prodPic;
 	}
-	public void setProdPic(Byte[] prodPic) {
-		this.prodPic = prodPic;
+	public void setProdPic(byte[] bytes) {
+		this.prodPic = bytes;
 	}
 	public String getProdPicRemark() {
 		return prodPicRemark;

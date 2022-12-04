@@ -16,6 +16,7 @@
 
 		<mapping class="reservation.vo.ReservationVO" />
 		<mapping class="product.vo.ProdPicVO" />
+		<mapping class="product.vo.ShoppingCartVO" />
 
 
 	</session-factory>

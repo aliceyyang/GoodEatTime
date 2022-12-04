@@ -4,7 +4,7 @@ import java.util.List;
 
 import product.vo.ProdInfoVO;
 
-public class TestProdInfoDAO {
+public class ProdInfoDAOTests {
 
 	public static void main(String[] args) {
 		

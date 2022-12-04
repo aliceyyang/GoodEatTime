@@ -95,12 +95,14 @@
 	  </li>
 	</ul>
 	
-	<!-- 
+	
+	
 	<h3>產品管理</h3>
 	
 	<ul>
-	  <li><a href='addEmp.jsp'>Add</a> a new Product</li>
+	  <li><a href='addProduct.jsp'>Add</a> a new Product</li>
 	</ul>
-	 -->
+	
+	 
 </body>
 </html>
