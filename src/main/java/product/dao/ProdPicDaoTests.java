@@ -61,6 +61,7 @@ public class ProdPicDaoTests {
 		// delete 刪除
 //		dao.delete(9);
 		
+		// 產品編號搜尋
 		List<ProdPicVO> list = dao.findByProdNo(3);
 		for(ProdPicVO p : list) {
 			System.out.println(p);

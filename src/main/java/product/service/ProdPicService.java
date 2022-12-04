@@ -23,8 +23,9 @@ public class ProdPicService {
 		return dao.insert(prodPicVO);
 	}
 	
-	public ProdPicVO updateProdPic(Integer prodNo, byte[] pic, String prodPicRemark) {
+	public ProdPicVO updateProdPic(Integer prodPicNo, Integer prodNo, byte[] pic, String prodPicRemark) {
 		ProdPicVO prodPicVO = new ProdPicVO();
+		prodPicVO.setProdPicNo(prodPicNo);
 		prodPicVO.setProdNo(prodNo);
 		prodPicVO.setProdPic(pic);
 		prodPicVO.setProdPicRemark(prodPicRemark);

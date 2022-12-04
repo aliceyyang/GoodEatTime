@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import product.vo.ProdCategoryVO;
 
 @WebServlet("/TestProdCategoryService")
-public class TestProdCategoryService extends HttpServlet {
+public class ProdCategoryServiceTests extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public TestProdCategoryService() {
+    public ProdCategoryServiceTests() {
         super();
     }
 

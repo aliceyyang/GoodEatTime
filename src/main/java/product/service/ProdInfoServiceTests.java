@@ -4,7 +4,7 @@ import java.util.List;
 
 import product.vo.ProdInfoVO;
 
-public class TestProdInfoService {
+public class ProdInfoServiceTests {
 
 	public static void main(String[] args) {
 		ProdInfoService service = new ProdInfoService();
