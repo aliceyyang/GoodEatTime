@@ -12,9 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import common.connection.HibernateUtil;
 import product.helper.CheckProdInfo;
 import product.service.ProdInfoService;
+import product.service.ProdPicService;
 import product.vo.ProdInfoVO;
+import product.vo.ProdPicVO;
 
 @WebServlet("/product/ProdInfoController")
 public class ProdInfoController extends HttpServlet {
@@ -22,6 +28,18 @@ public class ProdInfoController extends HttpServlet {
        
     public ProdInfoController() {
         super();
+    }
+    
+    @Override
+    public void init() throws ServletException {
+    	HibernateUtil.getSessionFactory();
+    	super.init();
+    }
+    
+    @Override
+    public void destroy() {
+    	HibernateUtil.closeSessionFactory();
+    	super.destroy();
     }
     
     @Override
@@ -65,6 +83,13 @@ public class ProdInfoController extends HttpServlet {
     			requestDispatch(req, res, failureView);
     			return;
     		}
+    		Session sqlsession = HibernateUtil.getSessionFactory().getCurrentSession();
+    		Transaction transaction = sqlsession.beginTransaction();
+    		ProdPicService prodPicService = new ProdPicService();
+    		List<ProdPicVO> list = prodPicService.findByProdNo(((ProdInfoVO)result[1]).getProdNo());
+    		transaction.commit();
+    		sqlsession.close();
+    		req.setAttribute("prodPiclist", list);
     		req.setAttribute("prodInfoVO", (ProdInfoVO)result[1]);
     		requestDispatch(req, res, listOneView);
 			return;

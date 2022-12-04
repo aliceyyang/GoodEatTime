@@ -69,7 +69,6 @@ public class ProdPicDAO_Hibernate implements ProdPicDAO {
 
 	@Override
 	public List<ProdPicVO> findByProdNo(Integer prodNo) {
-		// TODO Auto-generated method stub
 		CriteriaBuilder criteriaBuilder = this.getSession().getCriteriaBuilder();
 		CriteriaQuery<ProdPicVO> criteriaQuery = criteriaBuilder.createQuery(ProdPicVO.class);
 		
