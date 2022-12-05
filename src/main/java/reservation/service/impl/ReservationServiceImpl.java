@@ -1,10 +1,9 @@
 package reservation.service.impl;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
-import member.vo.Member;
+import member.vo.MemberVO;
 import reservation.dao.impl.ReservationDaoImpl;
 import reservation.service.ReservationService;
 import reservation.vo.ReservationVO;
@@ -16,7 +15,7 @@ public class ReservationServiceImpl implements ReservationService{
 	@Override
 	public ReservationVO BookTable(ReservationVO reservationVO) {
 		ReservationVO result = null;
-		if (new RestaurantVO().getrestaurantNo() != null && new Member().getMemberNo() != null) {
+		if (new RestaurantVO().getRestaurantNo() != null && new MemberVO().getMemberNo() != null) {
 			result = dao.insert(reservationVO);
 		}
 		return result;
