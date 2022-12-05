@@ -15,7 +15,7 @@
 
 
 		<mapping class="reservation.vo.ReservationVO" />
-		<mapping class="reservation.vo.ResereTimeVO" />
+		<mapping class="reservation.vo.ReserveTimeVO" />
 		<mapping class="product.vo.ProdPicVO" />
 		<mapping class="product.vo.ShoppingCartVO" />
 		<mapping class="member.vo.MemberVO" />
