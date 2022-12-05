@@ -4,6 +4,7 @@ import javax.naming.NamingException;
 
 import member.dao.AdminDAO;
 import member.dao.impl.AdminDAOImpl;
+import member.vo.AdminVO;
 
 public class AdminServiceImpl implements member.service.AdminService {
 
@@ -16,7 +17,7 @@ public class AdminServiceImpl implements member.service.AdminService {
 
 
 	@Override
-	public member.vo.AdminVO login(member.vo.AdminVO adminVO) {
+	public AdminVO login(AdminVO adminVO) {
 		final String adminAccount = adminVO.getAdminAccount();
 		final String adminPassword = adminVO.getAdminPassword();
 

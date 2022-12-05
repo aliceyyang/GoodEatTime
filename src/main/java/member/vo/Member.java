@@ -4,7 +4,7 @@ import java.util.Date;
 public class Member {
 
  private Integer memberNo;
- private String memberLev;
+ private String memberLevel;
  private String name;
  private Date birthday;
  private String mail;
@@ -19,11 +19,11 @@ public class Member {
  public void setMemberNo(Integer memberNo) {
   this.memberNo = memberNo;
  }
- public String getMemberLev() {
-  return memberLev;
+ public String getMemberLevel() {
+  return memberLevel;
  }
- public void setMemberLev(String memberLev) {
-  this.memberLev = memberLev;
+ public void setMemberLevel(String memberLevel) {
+  this.memberLevel = memberLevel;
  }
  public String getName() {
   return name;
