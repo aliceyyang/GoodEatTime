@@ -80,6 +80,12 @@ button#btn_cancel {
   color: orange;
 }
 
+#reviews{
+  margin-left: 15px;
+}
+
+
+
 
 /*---------------------
     reservation start-member part
@@ -94,6 +100,7 @@ button#btn_cancel {
   border: 1px solid #ddd;
   margin-bottom: 12px;
   flex: 1 1 auto;
+  cursor: pointer;
 }
 
 #reserver_detail {

@@ -1,4 +1,4 @@
-<%@page import="reservation.service.ReserveTimeServiceImpl"%>
+<%@page import="reservation.service.impl.ReserveTimeServiceImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -16,7 +16,7 @@
 
 <html>
 <head>
-<title>所有訂位時段資料 - listAllEmp.jsp</title>
+<title>所有訂位時段資料</title>
 
 <style>
   table#table-1 {
@@ -57,7 +57,7 @@
 <h4>此頁練習採用 EL 的寫法取值:</h4>
 <table id="table-1">
 	<tr><td>
-		 <h3>所有訂位時段資料 - listAllEmp.jsp</h3>
+		 <h3>所有訂位時段資料</h3>
 		 <h4><a href="select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a></h4>
 	</td></tr>
 </table>
