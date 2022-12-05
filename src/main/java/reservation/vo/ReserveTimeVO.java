@@ -2,24 +2,34 @@ package reservation.vo;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="reserveTime")
 public class ReserveTimeVO implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "reserveTimeNo")
 	private Integer reserveTimeNo;
+	
+	@Column(name="restaurantNo")
 	private Integer restaurantNo;
+	
+	@Column(name="reserveTime")
 	private String reserveTime;
+	
+	@Column(name="weekDay")
 	private Integer weekDay;
+	
+	@Column(name="allowReserveNum")
 	private Integer allowReserveNum;
-
-	public ReserveTimeVO(Integer reserveTimeNo, Integer restaurantNo, String reserveTime, Integer weekDay,
-			Integer allowReserveNum) {
-		super();
-		this.reserveTimeNo = reserveTimeNo;
-		this.restaurantNo = restaurantNo;
-		this.reserveTime = reserveTime;
-		this.weekDay = weekDay;
-		this.allowReserveNum = allowReserveNum;
-	}
 
 	public ReserveTimeVO() {
 

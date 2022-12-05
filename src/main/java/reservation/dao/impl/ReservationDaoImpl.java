@@ -121,11 +121,11 @@ public class ReservationDaoImpl implements ReservationDao {
 //		return this.getSession().createQuery("from ReservationVO", ReservationVO.class).list();
 		
 		CriteriaBuilder criteriaBuilder =  this.getSession().getCriteriaBuilder();
-		CriteriaQuery<ReservationVO> crteriaQuery = criteriaBuilder.createQuery(ReservationVO.class);
+		CriteriaQuery<ReservationVO> criteriaQuery = criteriaBuilder.createQuery(ReservationVO.class);
 		
-		Root<ReservationVO> root = crteriaQuery.from(ReservationVO.class);		
+		Root<ReservationVO> root = criteriaQuery.from(ReservationVO.class);		
 		
-		TypedQuery<ReservationVO> typedQuery = this.getSession().createQuery(crteriaQuery);
+		TypedQuery<ReservationVO> typedQuery = this.getSession().createQuery(criteriaQuery);
 		List<ReservationVO> result = typedQuery.getResultList();
 		if(result!=null && !result.isEmpty()) {
 			return result;

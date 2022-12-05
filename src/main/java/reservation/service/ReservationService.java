@@ -1,16 +1,16 @@
-package reservation.service.impl;
+package reservation.service;
 
 import java.util.List;
 
 import reservation.vo.ReservationVO;
 
-public interface reservationService {
+public interface ReservationService {
 		
-	ReservationVO BookTable(Integer reserveNum, Integer memberNo, java.sql.Date reserveDate, String reserveTime, String remark);
+	ReservationVO BookTable(ReservationVO reservationVO);
 	
 	boolean CommentRestaurant(Integer reserveNo, Integer memberNo, Integer commentRating, String commentContent, byte[] commentPic, java.sql.Timestamp restaurantCommentTime);
 	
-	boolean RestaurantReply(Integer reserveNo, String restaurantRe, java.sql.Timestamp restaurantReTime);
+	boolean RestaurantReply(Integer reserveNo, Integer commentRating, String restaurantRe, java.sql.Timestamp restaurantReTime);
 	
 	ReservationVO findByDate(Integer reserveDate);
 	
