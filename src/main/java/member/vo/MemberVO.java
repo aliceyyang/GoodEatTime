@@ -1,7 +1,7 @@
 package member.vo;
 import java.util.Date;
 
-public class Member {
+public class MemberVO {
 
  private Integer memberNo;
  private String memberLevel;
