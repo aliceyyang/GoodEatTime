@@ -1,6 +1,6 @@
 package member.dao;
 
-import member.vo.Member;
+import member.vo.MemberVO;
 
 public interface MemberDAO {
 	
@@ -10,10 +10,10 @@ public interface MemberDAO {
 //	
 //	int updateByMemberId(Member member);
 	
-	public abstract Member select(Integer memberNo);
+	public abstract MemberVO select(Integer memberNo);
 	
-	public abstract Member insert(Member member);
+	public abstract MemberVO insert(MemberVO member);
 	
-	public abstract Member update(String name, String memberPassword, String tel, byte[] memberPic);
+	public abstract MemberVO update(MemberVO member);
 	
 }
