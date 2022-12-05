@@ -4,10 +4,9 @@ import javax.naming.NamingException;
 
 import com.google.gson.Gson;
 
+import common.connection.HibernateUtil;
 import reservation.dao.ReserveTimeDao;
 import reservation.dao.impl.ReserveTimeDaoImpl;
-import reservation.service.ReserveTimeService;
-import reservation.service.ReserveTimeServiceImpl;
 import reservation.vo.ReserveTimeVO;
 
 public class TestJsonArray {
@@ -20,7 +19,7 @@ public class TestJsonArray {
 				+ "{'reserveTime':'19:00', 'allowReserveNum': 3}"
 				+ "]";
 		
-		ReserveTimeDao dao = new ReserveTimeDaoImpl();
+		ReserveTimeDao dao = new ReserveTimeDaoImpl(HibernateUtil.getSessionFactory());
 		Gson gson = new Gson();
 		ReserveTimeVO[] target = gson.fromJson(input, ReserveTimeVO[].class);
 		for(ReserveTimeVO r : target) {

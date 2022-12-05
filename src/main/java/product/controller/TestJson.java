@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import common.connection.HibernateUtil;
 import product.service.ProdCategoryService;
 import product.vo.ProdCategoryVO;
 import reservation.dao.ReserveTimeDao;
@@ -48,19 +49,14 @@ public class TestJson extends HttpServlet {
 				+ "{'reserveTime':'18:00', 'allowReserveNum': 3},"
 				+ "{'reserveTime':'19:00', 'allowReserveNum': 3}"
 				+ "]";
-		try {
-			ReserveTimeDao dao = new ReserveTimeDaoImpl();
-			Gson gson = new Gson();
-			ReserveTimeVO[] target = gson.fromJson(input, ReserveTimeVO[].class);
-			for(ReserveTimeVO r : target) {
-				r.setRestaurantNo(1);
-				r.setWeekDay(0);
-				dao.insert(r);
-				System.out.println(r);
-			}
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		ReserveTimeDao dao = new ReserveTimeDaoImpl(HibernateUtil.getSessionFactory());
+		Gson gson = new Gson();
+		ReserveTimeVO[] target = gson.fromJson(input, ReserveTimeVO[].class);
+		for(ReserveTimeVO r : target) {
+			r.setRestaurantNo(1);
+			r.setWeekDay(0);
+			dao.insert(r);
+			System.out.println(r);
 		}
 		
 		

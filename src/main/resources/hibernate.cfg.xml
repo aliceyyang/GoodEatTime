@@ -15,9 +15,10 @@
 
 
 		<mapping class="reservation.vo.ReservationVO" />
+		<mapping class="reservation.vo.ResereTimeVO" />
 		<mapping class="product.vo.ProdPicVO" />
 		<mapping class="product.vo.ShoppingCartVO" />
-
+		<mapping class="member.vo.MemberVO" />
 
 	</session-factory>
 </hibernate-configuration>
