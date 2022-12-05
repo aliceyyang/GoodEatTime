@@ -884,9 +884,9 @@ ol {
 }
 
 /*---------------------
- news
+ testimonial__slider
 -----------------------*/
-.news {
+.testimonial__slider {
 
   padding-top: 90px;
   padding-bottom: 70px;
@@ -913,7 +913,7 @@ ol {
   margin-right: 0;
 }
 
-.news__item {
+.testimonial__item {
   background: #ffffff;
   position: relative;
   
