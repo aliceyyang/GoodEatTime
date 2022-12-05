@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.*;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import coupon.dao.CouponDao;
@@ -13,7 +12,7 @@ import coupon.dao.impl.CouponDaoImpl;
 import coupon.service.CouponService;
 import coupon.service.CouponServiceImpl;
 import coupon.vo.CouponVO;
-@WebServlet("/CouponController")
+
 public class CouponController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
