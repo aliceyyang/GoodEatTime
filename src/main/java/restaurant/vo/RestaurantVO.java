@@ -50,91 +50,91 @@ public class RestaurantVO implements Serializable {
 				+ restaurantCommentQuantity + ", totalCommentRating=" + totalCommentRating + "]";
 	}
 
-	public Integer getrestaurantNo() {
+	public Integer getRestaurantNo() {
 		return restaurantNo;
 	}
 
-	public void setrestaurantNo(Integer restaurantNo) {
+	public void setRestaurantNo(Integer restaurantNo) {
 		this.restaurantNo = restaurantNo;
 	}
 
-	public String getrestaurantTel() {
+	public String getRestaurantTel() {
 		return restaurantTel;
 	}
 
-	public void setrestaurantTel(String restaurantTel) {
+	public void setRestaurantTel(String restaurantTel) {
 		this.restaurantTel = restaurantTel;
 	}
 
-	public String getrestaurantName() {
+	public String getRestaurantName() {
 		return restaurantName;
 	}
 
-	public void setrestaurantName(String restaurantName) {
+	public void setRestaurantName(String restaurantName) {
 		this.restaurantName = restaurantName;
 	}
 
-	public String getrestaurantTaxIDNo() {
+	public String getRestaurantTaxIDNo() {
 		return restaurantTaxIDNo;
 	}
 
-	public void setrestaurantTaxIDNo(String restaurantTaxIDNo) {
+	public void setRestaurantTaxIDNo(String restaurantTaxIDNo) {
 		this.restaurantTaxIDNo = restaurantTaxIDNo;
 	}
 
-	public String getrestaurantAccountInfo() {
+	public String getRestaurantAccountInfo() {
 		return restaurantAccountInfo;
 	}
 
-	public void setrestaurantAccountInfo(String restaurantAccountInfo) {
+	public void setRestaurantAccountInfo(String restaurantAccountInfo) {
 		this.restaurantAccountInfo = restaurantAccountInfo;
 	}
 
-	public String getrestaurantBusinessHour() {
+	public String getRestaurantBusinessHour() {
 		return restaurantBusinessHour;
 	}
 
-	public void setrestaurantBusinessHour(String restaurantBusinessHour) {
+	public void setRestaurantBusinessHour(String restaurantBusinessHour) {
 		this.restaurantBusinessHour = restaurantBusinessHour;
 	}
 
-	public String getrestaurantAddr() {
+	public String getRestaurantAddr() {
 		return restaurantAddr;
 	}
 
-	public void setrestaurantAddr(String restaurantAddr) {
+	public void setRestaurantAddr(String restaurantAddr) {
 		this.restaurantAddr = restaurantAddr;
 	}
 
-	public Boolean getrestaurantStatus() {
+	public Boolean getRestaurantStatus() {
 		return restaurantStatus;
 	}
 
-	public void setrestaurantStatus(Boolean restaurantStatus) {
+	public void setRestaurantStatus(Boolean restaurantStatus) {
 		this.restaurantStatus = restaurantStatus;
 	}
 
-	public String getrestaurantAccount() {
+	public String getRestaurantAccount() {
 		return restaurantAccount;
 	}
 
-	public void setrestaurantAccount(String restaurantAccount) {
+	public void setRestaurantAccount(String restaurantAccount) {
 		this.restaurantAccount = restaurantAccount;
 	}
 
-	public String getrestaurantPassword() {
+	public String getRestaurantPassword() {
 		return restaurantPassword;
 	}
 
-	public void setrestaurantPassword(String restaurantPassword) {
+	public void setRestaurantPassword(String restaurantPassword) {
 		this.restaurantPassword = restaurantPassword;
 	}
 
-	public Integer getrestaurantCommentQuantity() {
+	public Integer getRestaurantCommentQuantity() {
 		return restaurantCommentQuantity;
 	}
 
-	public void setrestaurantCommentQuantity(Integer restaurantCommentQuantity) {
+	public void setRestaurantCommentQuantity(Integer restaurantCommentQuantity) {
 		this.restaurantCommentQuantity = restaurantCommentQuantity;
 	}
 

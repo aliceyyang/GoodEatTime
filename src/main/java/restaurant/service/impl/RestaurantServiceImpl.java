@@ -1,4 +1,4 @@
-package restaurant.service;
+package restaurant.service.impl;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import javax.naming.NamingException;
 
 import restaurant.dao.RestaurantDao;
 import restaurant.dao.impl.RestaurantDaoImpl;
+import restaurant.service.RestaurantService;
 import restaurant.vo.RestaurantVO;
 
 public class RestaurantServiceImpl implements RestaurantService {
@@ -27,16 +28,16 @@ public class RestaurantServiceImpl implements RestaurantService {
 			Integer restaurantCommentQuantity, Integer totalCommentRating) {
 		
 		RestaurantVO vo = new RestaurantVO();
-		vo.setrestaurantTel(restaurantTel);
-		vo.setrestaurantName(restaurantName);
-		vo.setrestaurantTaxIDNo(restaurantTaxIDNo);
-		vo.setrestaurantAccountInfo(restaurantAccountInfo);
-		vo.setrestaurantBusinessHour(restaurantBusinessHour);
-		vo.setrestaurantAddr(restaurantAddr);
-		vo.setrestaurantStatus(restaurantStatus);
-		vo.setrestaurantAccount(restaurantAccount);
-		vo.setrestaurantPassword(restaurantPassword);
-		vo.setrestaurantCommentQuantity(restaurantCommentQuantity);
+		vo.setRestaurantTel(restaurantTel);
+		vo.setRestaurantName(restaurantName);
+		vo.setRestaurantTaxIDNo(restaurantTaxIDNo);
+		vo.setRestaurantAccountInfo(restaurantAccountInfo);
+		vo.setRestaurantBusinessHour(restaurantBusinessHour);
+		vo.setRestaurantAddr(restaurantAddr);
+		vo.setRestaurantStatus(restaurantStatus);
+		vo.setRestaurantAccount(restaurantAccount);
+		vo.setRestaurantPassword(restaurantPassword);
+		vo.setRestaurantCommentQuantity(restaurantCommentQuantity);
 		vo.setTotalCommentRating(totalCommentRating);
 		
 		dao.insert(vo);
@@ -51,15 +52,15 @@ public class RestaurantServiceImpl implements RestaurantService {
 		
 		RestaurantVO vo = new RestaurantVO();
 		
-		vo.setrestaurantTel(restaurantTel);
-		vo.setrestaurantName(restaurantName);
-		vo.setrestaurantTaxIDNo(restaurantTaxIDNo);
-		vo.setrestaurantAccountInfo(restaurantAccountInfo);
-		vo.setrestaurantBusinessHour(restaurantBusinessHour);
-		vo.setrestaurantAddr(restaurantAddr);
-		vo.setrestaurantAccount(restaurantAccount);
-		vo.setrestaurantPassword(restaurantPassword);
-		vo.setrestaurantNo(restaurantNO);
+		vo.setRestaurantTel(restaurantTel);
+		vo.setRestaurantName(restaurantName);
+		vo.setRestaurantTaxIDNo(restaurantTaxIDNo);
+		vo.setRestaurantAccountInfo(restaurantAccountInfo);
+		vo.setRestaurantBusinessHour(restaurantBusinessHour);
+		vo.setRestaurantAddr(restaurantAddr);
+		vo.setRestaurantAccount(restaurantAccount);
+		vo.setRestaurantPassword(restaurantPassword);
+		vo.setRestaurantNo(restaurantNO);
 		
 		dao.update(vo);
 		
@@ -67,25 +68,17 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
-	public void deleteRestaurant(StringBuffer errorMsg,Integer restaurantNo) {
-		if(restaurantNo == null) {
-			errorMsg.append("請輸入餐廳編號");
-		}
-		else {
-			dao.delete(restaurantNo);
-		}
+	public void setStatus(Integer restaurantNo,Boolean restaurantStatus){
+			dao.setStatus(restaurantNo, restaurantStatus);
 	}
 
+
 	@Override
-	public RestaurantVO getOneRestaurant(StringBuffer errorMsg, Integer restaurantNo) {
-		if(restaurantNo == null) {
-			errorMsg.append("請輸入餐廳編號");
-			return null;
-		}
-		
-		
+	public RestaurantVO getOneRestaurant(Integer restaurantNo) {
 		return dao.findByPrimaryKey(restaurantNo);
 	}
+
+
 
 
 }

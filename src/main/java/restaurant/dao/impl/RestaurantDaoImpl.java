@@ -27,16 +27,16 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		try(Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement(insert)) {
 			
-			ps.setString(1,restaurantVO.getrestaurantTel());
-			ps.setString(2,restaurantVO.getrestaurantName());
-			ps.setString(3,restaurantVO.getrestaurantTaxIDNo());
-			ps.setString(4,restaurantVO.getrestaurantAccountInfo());
-			ps.setString(5,restaurantVO.getrestaurantBusinessHour());
-			ps.setString(6,restaurantVO.getrestaurantAddr());
-			ps.setBoolean(7,restaurantVO.getrestaurantStatus());
-			ps.setString(8,restaurantVO.getrestaurantAccount());
-			ps.setString(9,restaurantVO.getrestaurantPassword());
-			ps.setInt(10,restaurantVO.getrestaurantCommentQuantity());
+			ps.setString(1,restaurantVO.getRestaurantTel());
+			ps.setString(2,restaurantVO.getRestaurantName());
+			ps.setString(3,restaurantVO.getRestaurantTaxIDNo());
+			ps.setString(4,restaurantVO.getRestaurantAccountInfo());
+			ps.setString(5,restaurantVO.getRestaurantBusinessHour());
+			ps.setString(6,restaurantVO.getRestaurantAddr());
+			ps.setBoolean(7,restaurantVO.getRestaurantStatus());
+			ps.setString(8,restaurantVO.getRestaurantAccount());
+			ps.setString(9,restaurantVO.getRestaurantPassword());
+			ps.setInt(10,restaurantVO.getRestaurantCommentQuantity());
 			ps.setInt(11,restaurantVO.getTotalCommentRating());
 			
 			
@@ -54,15 +54,15 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		try(Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement(update)){
 			
-			ps.setString(1,restaurantVO.getrestaurantTel());
-			ps.setString(2,restaurantVO.getrestaurantName());
-			ps.setString(3,restaurantVO.getrestaurantTaxIDNo());
-			ps.setString(4,restaurantVO.getrestaurantAccountInfo());
-			ps.setString(5,restaurantVO.getrestaurantBusinessHour());
-			ps.setString(6,restaurantVO.getrestaurantAddr());
-			ps.setString(7,restaurantVO.getrestaurantAccount());
-			ps.setString(8,restaurantVO.getrestaurantPassword());
-			ps.setInt(9,restaurantVO.getrestaurantNo());
+			ps.setString(1,restaurantVO.getRestaurantTel());
+			ps.setString(2,restaurantVO.getRestaurantName());
+			ps.setString(3,restaurantVO.getRestaurantTaxIDNo());
+			ps.setString(4,restaurantVO.getRestaurantAccountInfo());
+			ps.setString(5,restaurantVO.getRestaurantBusinessHour());
+			ps.setString(6,restaurantVO.getRestaurantAddr());
+			ps.setString(7,restaurantVO.getRestaurantAccount());
+			ps.setString(8,restaurantVO.getRestaurantPassword());
+			ps.setInt(9,restaurantVO.getRestaurantNo());
 			
 			ps.executeUpdate();
 			
@@ -73,12 +73,15 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	}
 
 	@Override
-	public void delete(Integer restaurantNo) {
-		String delete = "delete from restaurant where restaurantNo = ?";
+	public void setStatus(Integer restaurantNo,Boolean restaurantStatus) {
+		String setStatus = "update restaurant"
+				+ "set restaurantStatus = ?"
+				+ "where restaurantNo = ?;";
 		try(Connection con = getConnection();
-			PreparedStatement ps = con.prepareStatement(delete)){
+			PreparedStatement ps = con.prepareStatement(setStatus)){
 			
-			ps.setInt(1,restaurantNo);
+			ps.setBoolean(1,restaurantStatus);
+			ps.setInt(2,restaurantNo);
 			ps.executeUpdate();
 			
 		} catch (Exception e) {
@@ -92,25 +95,28 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		String findByPrimaryKey = "select * from restaurant where restaurantNo = ?";
 		
 		RestaurantVO vo = null;
-		try(Connection con = getConnection();
+		try(
+			Connection con = getConnection();
+//			Connection con = DriverManager.getConnection(url, username, password);
 			PreparedStatement ps = con.prepareStatement(findByPrimaryKey);
-			ResultSet rs = ps.executeQuery()){
+			){
 			
 			ps.setInt(1,restaurantNo);
+			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				vo = new RestaurantVO();
 				
-				vo.setrestaurantNo(rs.getInt(1));
-				vo.setrestaurantTel(rs.getString(2));
-				vo.setrestaurantName(rs.getString(3));
-				vo.setrestaurantTaxIDNo(rs.getString(4));
-				vo.setrestaurantAccountInfo(rs.getString(5));
-				vo.setrestaurantBusinessHour(rs.getString(6));
-				vo.setrestaurantAddr(rs.getString(7));
-				vo.setrestaurantStatus(rs.getBoolean(8));
-				vo.setrestaurantAccount(rs.getString(9));
-				vo.setrestaurantPassword(rs.getString(10));
-				vo.setrestaurantCommentQuantity(rs.getInt(11));
+				vo.setRestaurantNo(rs.getInt(1));
+				vo.setRestaurantTel(rs.getString(2));
+				vo.setRestaurantName(rs.getString(3));
+				vo.setRestaurantTaxIDNo(rs.getString(4));
+				vo.setRestaurantAccountInfo(rs.getString(5));
+				vo.setRestaurantBusinessHour(rs.getString(6));
+				vo.setRestaurantAddr(rs.getString(7));
+				vo.setRestaurantStatus(rs.getBoolean(8));
+				vo.setRestaurantAccount(rs.getString(9));
+				vo.setRestaurantPassword(rs.getString(10));
+				vo.setRestaurantCommentQuantity(rs.getInt(11));
 				vo.setTotalCommentRating(rs.getInt(12));
 			}
 		} catch (Exception e) {
@@ -125,23 +131,23 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		
 		List<RestaurantVO> list = new ArrayList<>();
 		try (
-//				Connection con = getConnection();
-				Connection con = DriverManager.getConnection(url, username, password);
+				Connection con = getConnection();
+//				Connection con = DriverManager.getConnection(url, username, password);
 				PreparedStatement ps = con.prepareStatement(getAll);
 				ResultSet rs = ps.executeQuery()){
 			while (rs.next()) {
 				RestaurantVO vo = new RestaurantVO();
-				vo.setrestaurantNo(rs.getInt(1));
-				vo.setrestaurantTel(rs.getString(2));
-				vo.setrestaurantName(rs.getString(3));
-				vo.setrestaurantTaxIDNo(rs.getString(4));
-				vo.setrestaurantAccountInfo(rs.getString(5));
-				vo.setrestaurantBusinessHour(rs.getString(6));
-				vo.setrestaurantAddr(rs.getString(7));
-				vo.setrestaurantStatus(rs.getBoolean(8));
-				vo.setrestaurantAccount(rs.getString(9));
-				vo.setrestaurantPassword(rs.getString(10));
-				vo.setrestaurantCommentQuantity(rs.getInt(11));
+				vo.setRestaurantNo(rs.getInt(1));
+				vo.setRestaurantTel(rs.getString(2));
+				vo.setRestaurantName(rs.getString(3));
+				vo.setRestaurantTaxIDNo(rs.getString(4));
+				vo.setRestaurantAccountInfo(rs.getString(5));
+				vo.setRestaurantBusinessHour(rs.getString(6));
+				vo.setRestaurantAddr(rs.getString(7));
+				vo.setRestaurantStatus(rs.getBoolean(8));
+				vo.setRestaurantAccount(rs.getString(9));
+				vo.setRestaurantPassword(rs.getString(10));
+				vo.setRestaurantCommentQuantity(rs.getInt(11));
 				vo.setTotalCommentRating(rs.getInt(12));
 				
 				list.add(vo);
@@ -155,21 +161,13 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	
 	public static void main(String[] args) {
 		RestaurantDaoImpl test = new RestaurantDaoImpl();
-		List<RestaurantVO> list =  test.getAll();
-		for (RestaurantVO vo : list) {
-			System.out.print(vo.getrestaurantNo() + " , ");
-			System.out.print(vo.getrestaurantTel() + " , ");
-			System.out.print(vo.getrestaurantName() + " , ");
-			System.out.print(vo.getrestaurantTaxIDNo() + " , ");
-			System.out.print(vo.getrestaurantAccountInfo() + " , ");
-			System.out.print(vo.getrestaurantBusinessHour() + " , ");
-			System.out.print(vo.getrestaurantAddr() + " , ");
-			System.out.print(vo.getrestaurantStatus() + " , ");
-			System.out.print(vo.getrestaurantAccount() + " , ");
-			System.out.print(vo.getrestaurantPassword() + " , ");
-			System.out.print(vo.getrestaurantCommentQuantity() + " , ");
-			System.out.println(vo.getTotalCommentRating());
-		}
+//		List<RestaurantVO> list =  test.getAll();
+//		for (RestaurantVO vo : list) {
+//			System.out.println(vo.toString());
+//		}
+		RestaurantVO vo = new RestaurantVO();
+		vo = test.findByPrimaryKey(1);
+		System.out.println(vo.toString());
 		
 	}
 }

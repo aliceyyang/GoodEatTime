@@ -8,14 +8,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import restaurant.dao.likedRestaurantDAO;
-import restaurant.vo.likedRestaurantVO;
+import restaurant.dao.LikedRestaurantDAO;
+import restaurant.vo.LikedRestaurantVO;
 
-public class likedRestaurantDAOImpl implements likedRestaurantDAO{
+public class LikedRestaurantDAOImpl implements LikedRestaurantDAO{
 	
 
 	@Override
-	public void insert(likedRestaurantVO likedRestaurantVO) {
+	public void insert(LikedRestaurantVO likedRestaurantVO) {
 		String insert = "insert into likedRestaurant"
 				+ "values(?,?)";
 		
@@ -33,15 +33,15 @@ public class likedRestaurantDAOImpl implements likedRestaurantDAO{
 
 	
 	@Override
-	public void delete(Integer restaurantNo,Integer memberNo) {
+	public void delete(Integer memberNo,Integer restaurantNo) {
 		String delete = "delete from likedRestaurant"
 				+ "where memberNo = ? and restaurantNo = ?";
 		
 		try(Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(delete)){
 			
-			ps.setInt(1,restaurantNo);
-			ps.setInt(2,memberNo);
+			ps.setInt(1,memberNo);
+			ps.setInt(2,restaurantNo);
 			ps.executeUpdate();
 			
 		}catch(Exception e) {
@@ -51,17 +51,17 @@ public class likedRestaurantDAOImpl implements likedRestaurantDAO{
 	}
 
 	@Override
-	public List<likedRestaurantVO> findByMemberNo(Integer memberNo) {
+	public List<LikedRestaurantVO> findByMemberNo(Integer memberNo) {
 		String findByMemberNo = "select * from likedRestaurant"
 				+ "where memberNo = ?;";
 		
-		List<likedRestaurantVO> list = new ArrayList<>();
+		List<LikedRestaurantVO> list = new ArrayList<>();
 		
 		try (Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(findByMemberNo);
 				ResultSet rs = ps.executeQuery()){
 			while (rs.next()) {
-				likedRestaurantVO vo = new likedRestaurantVO();
+				LikedRestaurantVO vo = new LikedRestaurantVO();
 				vo.setMemberNo(rs.getInt(1));
 				vo.setRestaurantNo(rs.getInt(2));
 				

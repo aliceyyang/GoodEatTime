@@ -1,9 +1,10 @@
-package restaurant.service;
+package restaurant.service.impl;
 
 import java.util.List;
 
 import restaurant.dao.RestaurantPicDAO;
 import restaurant.dao.impl.RestaurantPicDaoImpl;
+import restaurant.service.RestaurantPicService;
 import restaurant.vo.RestaurantPicVO;
 
 public class RestaurantPicServiceImpl implements RestaurantPicService {
@@ -17,9 +18,9 @@ public class RestaurantPicServiceImpl implements RestaurantPicService {
 	public RestaurantPicVO addRestaurantPic(Integer restaurantNO,byte[] restaurantPic,String restaurantPicRemark) {
 		
 		RestaurantPicVO vo = new RestaurantPicVO();
-		vo.setrestaurantNo(restaurantNO);
-		vo.setrestaurantPic(restaurantPic);
-		vo.setrestaurantPicRemark(restaurantPicRemark);
+		vo.setRestaurantNo(restaurantNO);
+		vo.setRestaurantPic(restaurantPic);
+		vo.setRestaurantPicRemark(restaurantPicRemark);
 		
 		dao.insert(vo);
 		
@@ -27,11 +28,11 @@ public class RestaurantPicServiceImpl implements RestaurantPicService {
 	}
 
 	@Override
-	public RestaurantPicVO updateRestaurant(byte[] restaurantPic,String restaurantPicRemark,Integer restaurantPicNo) {
+	public RestaurantPicVO updateRestaurantPic(byte[] restaurantPic,String restaurantPicRemark,Integer restaurantPicNo) {
 		RestaurantPicVO vo = new RestaurantPicVO();
-		vo.setrestaurantPic(restaurantPic);
-		vo.setrestaurantPicRemark(restaurantPicRemark);
-		vo.setrestaurantPicNo(restaurantPicNo);
+		vo.setRestaurantPic(restaurantPic);
+		vo.setRestaurantPicRemark(restaurantPicRemark);
+		vo.setRestaurantPicNo(restaurantPicNo);
 
 		dao.update(vo);
 		
@@ -39,14 +40,8 @@ public class RestaurantPicServiceImpl implements RestaurantPicService {
 	}
 
 	@Override
-	public void deleteRestaurant(StringBuffer errorMsg, Integer restaurantPicNo) {
-		if(restaurantPicNo == null) {
-			errorMsg.append("請輸入餐廳編號");
-		}
-		else {
+	public void deleteRestaurantPic(Integer restaurantPicNo) {
 			dao.delete(restaurantPicNo);
-		}
-		
 	}
 
 	@Override
@@ -56,12 +51,7 @@ public class RestaurantPicServiceImpl implements RestaurantPicService {
 	}
 
 	@Override
-	public RestaurantPicVO getOneRestaurantPic(StringBuffer errorMsg, Integer restaurantPicNo) {
-		if(restaurantPicNo == null) {
-			errorMsg.append("請輸入餐廳編號");
-			return null;
-		}
-		
+	public RestaurantPicVO getOneRestaurantPic(Integer restaurantPicNo) {
 		return dao.findByPrimaryKey(restaurantPicNo);
 	}
 	

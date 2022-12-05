@@ -2,14 +2,14 @@ package restaurant.dao;
 
 import java.util.List;
 
-import restaurant.vo.likedRestaurantVO;
+import restaurant.vo.LikedRestaurantVO;
 
-public interface likedRestaurantDAO {
+public interface LikedRestaurantDAO {
 	
-	public void insert(likedRestaurantVO likedRestaurantVO);
+	public void insert(LikedRestaurantVO likedRestaurantVO);
 
-	public void delete(Integer restaurantNo,Integer memberNo);
+	public void delete(Integer memberNo,Integer restaurantNo);
 
-	public List<likedRestaurantVO> findByMemberNo(Integer memberNo);
+	public List<LikedRestaurantVO> findByMemberNo(Integer memberNo);
 
 }
