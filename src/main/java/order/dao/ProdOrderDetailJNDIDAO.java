@@ -26,19 +26,20 @@ public class ProdOrderDetailJNDIDAO implements ProdOrderDetailDAO_interface{
 	
 	public void insert(ProdOrderDetailVO prodOrderDetailVO) {
 		
-		String sql_insert = "insert into prodOrderDetail (prodNo, prodQty, prodPrice, prodCommentRating, prodCommentContent, prodCommentPic, prodCommentTime, restaurantReplyTime) "
+		String sql_insert = "insert into prodOrderDetail (prodOrderNo, prodNo, prodQty, prodPrice, prodCommentRating, prodCommentContent, prodCommentPic, prodCommentTime, restaurantReplyTime) "
 				+ "values (?,?,?,?,?,?,?,?) ";
 		try (Connection connection = ds.getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql_insert)){
-			
-			ps.setInt(1, prodOrderDetailVO.getProdNo());
-			ps.setInt(2, prodOrderDetailVO.getProdQty());
-			ps.setInt(3, prodOrderDetailVO.getProdPrice());
-			ps.setInt(4, prodOrderDetailVO.getProdCommentRating());
-			ps.setString(5, prodOrderDetailVO.getProdCommentContent());
-			ps.setBytes(6, prodOrderDetailVO.getProdCommentPic());
-			ps.setTimestamp(7, prodOrderDetailVO.getProdCommentTime());
-			ps.setTimestamp(8, prodOrderDetailVO.getRestaurantReplyTime());			
+
+			ps.setInt(1, prodOrderDetailVO.getProdOrderNo());
+			ps.setInt(2, prodOrderDetailVO.getProdNo());
+			ps.setInt(3, prodOrderDetailVO.getProdQty());
+			ps.setInt(4, prodOrderDetailVO.getProdPrice());
+			ps.setInt(5, prodOrderDetailVO.getProdCommentRating());
+			ps.setString(6, prodOrderDetailVO.getProdCommentContent());
+			ps.setBytes(7, prodOrderDetailVO.getProdCommentPic());
+			ps.setTimestamp(8, prodOrderDetailVO.getProdCommentTime());
+			ps.setTimestamp(9, prodOrderDetailVO.getRestaurantReplyTime());			
 			System.out.println("成功筆數為：" + ps.executeUpdate());
 					
 		} catch (Exception e) {
