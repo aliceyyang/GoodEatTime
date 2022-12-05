@@ -183,6 +183,8 @@ public class ProdOrderJDBCDAO implements ProdOrderDAO_interface{
 				+ "where "
 				+ "	prodOrderNo = ? ";
 		
+		
+		
 		try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement ps = connection.prepareStatement(sql_update)){
 			
@@ -236,6 +238,13 @@ public class ProdOrderJDBCDAO implements ProdOrderDAO_interface{
 				+ "where prodOrderNo = ? ";
 		
 		ProdOrderVO prodOrderVO_select = new ProdOrderVO();
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		
 		try (Connection connection= DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement ps = connection.prepareStatement(sql_select)){
 			
@@ -292,7 +301,14 @@ public class ProdOrderJDBCDAO implements ProdOrderDAO_interface{
 				+ "from prodOrder "
 				+ "order by prodOrderNo ";
 		
-		List <ProdOrderVO> prodOrderVO_list = new ArrayList<>();	
+		List <ProdOrderVO> prodOrderVO_list = new ArrayList<>();
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		
 		try (Connection connection= DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement ps = connection.prepareStatement(sql_getAll)){
 			
