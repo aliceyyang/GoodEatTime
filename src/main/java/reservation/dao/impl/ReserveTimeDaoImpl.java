@@ -1,118 +1,161 @@
 package reservation.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import common.connection.HibernateUtil;
 import reservation.dao.ReserveTimeDao;
 import reservation.vo.ReserveTimeVO;
 
 public class ReserveTimeDaoImpl implements ReserveTimeDao {
-	private DataSource dataSource;
-	
-	public ReserveTimeDaoImpl() throws NamingException {
-		 dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/GoodEatTime");
-	}
-	
-	@Override
-	public int insert(ReserveTimeVO reserveTimeVo) {
-		String sql = "insert into reserveTime (restaurantNo, reserveTime, weekDay, allowReserveNum) "
-				+ "values(?, ?, ?, ?)";
-		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setInt(1, reserveTimeVo.getRestaurantNo());
-			ps.setString(2, reserveTimeVo.getReserveTime());
-			ps.setInt(3, reserveTimeVo.getWeekDay());
-			ps.setInt(4, reserveTimeVo.getAllowReserveNum());
+	private SessionFactory sessionFactory;
 
-			return ps.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
+	public ReserveTimeDaoImpl(SessionFactory sessionFactory) {
+		super();
+		this.sessionFactory = sessionFactory;
+	}
+
+	public Session getSession() {
+		return this.sessionFactory.getCurrentSession();
+	}
+
+	public static void main(String[] args) {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+
+		ReserveTimeDao dao = new ReserveTimeDaoImpl(sessionFactory);
+
+		// select
+//		List<ReserveTimeVO> vo = dao.getAll();
+//		System.out.println("bean="+ vo);
+
+		// select findbyrestaurantNo
+//		List<ReserveTimeVO> vo =  dao.findbyrestaurantNo(1);
+//		System.out.println("bean=" + vo);
+
+		// select findbyrestaurantNo
+//			List<ReserveTimeVO> vo =  dao.findbyrestaurantNOandWeekDay(1, 0);
+//			System.out.println("bean=" + vo);
+		
+		// insert
+//		ReservationVO insert = new ReservationVO();
+//		insert.setReserveNum(22);
+//		insert.setReserveTime("17:00");
+//		insert.setReserveDate(new java.sql.Date(new GregorianCalendar(2022, 12, 22).getTimeInMillis()));
+//		insert.setMemberNo(5);
+//		insert.setReserveStatus("訂位成功");
+//		insert.setRestaurantNo(2);
+//		insert.setRemark(null);
+//		insert.setCommentContent(null);
+//		insert.setCommentRating(null);
+//		insert.setCommentPic(null);
+//		insert.setRestaurantRe(null);
+//		
+//		ReservationVO result1 = dao.insert(insert);
+//		System.out.println(result1);
+
+		// update
+//		boolean update = dao.update(2, "報告成功", 5, "餐很好吃",null,  new java.sql.Timestamp(new GregorianCalendar(2022, 12, 21).getTimeInMillis()), null, null);
+//		System.out.println("update="+update);
+
+		transaction.commit();
+		session.close();
+		HibernateUtil.closeSessionFactory();
+	}
+
+	@Override
+	public ReserveTimeVO insert(ReserveTimeVO reserveTimeVo) {
+		if (reserveTimeVo != null && reserveTimeVo.getReserveTimeNo() == null) {
+			this.getSession().save(reserveTimeVo);
+			return reserveTimeVo;
 		}
-		return -1;
+		return null;
 	}
 
 	@Override
-	public void updateAllowReserveNum(ReserveTimeVO reserveTimeVo) {
-		String sql = "update reserveTime " + "set allowReserveNum = ? " + "where restaurantNO =? and reserveTime = ? and weekDay =?;";
-		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setInt(1, reserveTimeVo.getAllowReserveNum());
-			ps.setInt(2, reserveTimeVo.getRestaurantNo());
-			ps.setString(3, reserveTimeVo.getReserveTime());
-			ps.setInt(4, reserveTimeVo.getWeekDay());
+	public boolean updateAllowReserveNum(Integer reserveTimeNO, String reserveTime, Integer allowReserveNum) {
+		if (reserveTimeNO != null) {
+			ReserveTimeVO temp = this.getSession().get(ReserveTimeVO.class, reserveTimeNO);
+			if (temp != null) {
+				temp.setAllowReserveNum(allowReserveNum);
+				temp.setReserveTime(reserveTime);
 
-			ps.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void updateWeekDay(ReserveTimeVO reserveTimeVO) {
-		String sql = "update reserveTime " + "set weekDay = ? " + "where restaurantNO = ?;";
-		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setInt(1, reserveTimeVO.getWeekDay());
-			ps.setInt(2, reserveTimeVO.getRestaurantNo());
-
-			ps.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public ReserveTimeVO findbyrestaurantNOandWeekDay(Integer restaurantNO, Integer weekDay) {
-		String sql = "select * from reserveTime where restaurantNO = ? and weekDay = ?;";
-		ReserveTimeVO reserveTimeVO = new ReserveTimeVO();
-		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setInt(1, restaurantNO);
-			ps.setInt(2, weekDay);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				reserveTimeVO = new ReserveTimeVO();
-				
-				reserveTimeVO.setReserveTimeNo(rs.getInt("reserveTimeNo"));
-				reserveTimeVO.setRestaurantNo(rs.getInt("restaurantNo"));
-				reserveTimeVO.setReserveTime(rs.getString("reserveTime"));
-				reserveTimeVO.setWeekDay(rs.getInt("weekDay"));
-				reserveTimeVO.setAllowReserveNum(rs.getInt("allowReserveNum"));
-//				return reserveTimeVO;
+				return true;
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
+		return false;
+	}
+
+	@Override
+	public boolean updateWeekDay(Integer reserveTimeNO, String reserveTime, Integer weekDay, Integer allowReserveNum) {
+		if (reserveTimeNO != null) {
+			ReserveTimeVO temp = this.getSession().get(ReserveTimeVO.class, reserveTimeNO);
+			if (temp != null) {
+				temp.setReserveTime(reserveTime);
+				temp.setWeekDay(weekDay);
+				temp.setAllowReserveNum(allowReserveNum);
+
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public ReserveTimeVO update(ReserveTimeVO reserveTimeVO) {
+		if (reserveTimeVO != null && reserveTimeVO.getReserveTimeNo() != null) {
+			ReserveTimeVO temp = this.getSession().get(ReserveTimeVO.class, reserveTimeVO.getReserveTimeNo());
+			if (temp != null) {
+				return (ReserveTimeVO) this.getSession().merge(reserveTimeVO);
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public List<ReserveTimeVO> findbyrestaurantNOandWeekDay(Integer restaurantNo, Integer weekDay) {
+		Query<ReserveTimeVO> query = getSession().createQuery("from ReserveTimeVO where restaurantNo = :restaurantNo and weekDay = :weekDay", ReserveTimeVO.class);
+		query.setParameter("restaurantNo", restaurantNo);
+		query.setParameter("weekDay", weekDay);
+		List<ReserveTimeVO> reserveTimeVO = query.list();
 		return reserveTimeVO;
 	}
 
 	@Override
+	public List<ReserveTimeVO> findbyrestaurantNo(Integer restaurantNo) {
+			Query<ReserveTimeVO> query = getSession().createQuery("from ReserveTimeVO where restaurantNo = :restaurantNo", ReserveTimeVO.class);
+			query.setParameter("restaurantNo", restaurantNo);
+			List<ReserveTimeVO> reserveTimeVO = query.list();
+			return reserveTimeVO;
+	}
+
+	@Override
 	public List<ReserveTimeVO> getAll() {
-		String sql = "SELECT *  FROM reserveTime";
-		ReserveTimeVO reserveTimeVO = new ReserveTimeVO();
-		List<ReserveTimeVO> list = new ArrayList<ReserveTimeVO>();
-		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				reserveTimeVO = new ReserveTimeVO();
+//		return this.getSession().createQuery("from ReserveTimeVO", ReserveTimeVO.class).list();
 
-				reserveTimeVO.setReserveTimeNo(rs.getInt("reserveTimeNo"));
-				reserveTimeVO.setRestaurantNo(rs.getInt("restaurantNo"));
-				reserveTimeVO.setReserveTime(rs.getString("reserveTime"));
-				reserveTimeVO.setWeekDay(rs.getInt("weekDay"));
-				reserveTimeVO.setAllowReserveNum(rs.getInt("allowReserveNum"));
+		CriteriaBuilder criteriaBuilder = this.getSession().getCriteriaBuilder();
+		CriteriaQuery<ReserveTimeVO> criteriaQuery = criteriaBuilder.createQuery(ReserveTimeVO.class);
 
-				list.add(reserveTimeVO);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		Root<ReserveTimeVO> root = criteriaQuery.from(ReserveTimeVO.class);
+
+		TypedQuery<ReserveTimeVO> typedQuery = this.getSession().createQuery(criteriaQuery);
+		List<ReserveTimeVO> result = typedQuery.getResultList();
+		if (result != null && !result.isEmpty()) {
+			return result;
+		} else {
+			return null;
 		}
-		return list;
+
 	}
 
 }

@@ -166,8 +166,9 @@
         <div class="row">
           <div class="reserve_status col-lg-6 col-md-6 col-sm-6">
             <h3>訂位狀況</h3>
+            <input type="date" id="reserve_search" placeholder="輸入欲查詢的餐廳" onkeyup="searchFunction()">
             <div class="table-responsive">
-              <table style=" width: 100%">
+              <table style=" width: 100%" id="reservation_status">
                 <thead>
                   <tr class="header">
                     <th>日期</th>
@@ -178,7 +179,16 @@
                 </thead>
                 <tbody>
                   <tr>
-
+                    <th>2022/12/01</th>
+                    <th>12:00</th>
+                    <th>20</th>
+                    <th>5</th>
+                  </tr>
+                  <tr>
+                    <th>2022/12/23</th>
+                    <th>12:00</th>
+                    <th>15</th>
+                    <th>10</th>
                   </tr>
                 </tbody>
               </table>
@@ -186,6 +196,20 @@
           </div>
           <div class="reserve_set col-lg-6 col-md-6 col-sm-6">
             <h3>訂位人數設定</h3>
+            <div>
+              <!-- <label>選擇營業日 (星期)：</label> -->
+              <select id="weekDay">
+                <option>選擇營業日 (星期)：</option>
+                <option value="0">星期日</option>
+                <option value="1">星期一</option>
+                <option value="2">星期二</option>
+                <option value="3">星期三</option>
+                <option value="4">星期四</option>
+                <option value="5">星期五</option>
+                <option value="6">星期六</option>
+              </select>
+              <span>Close</span>
+            </div>
             <div class="table-responsive">
               <table style=" width: 100%">
                 <thead>

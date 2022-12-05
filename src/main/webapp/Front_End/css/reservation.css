@@ -80,6 +80,12 @@ button#btn_cancel {
   color: orange;
 }
 
+#reviews{
+  margin-left: 15px;
+}
+
+
+
 
 /*---------------------
     reservation start-member part
@@ -94,6 +100,7 @@ button#btn_cancel {
   border: 1px solid #ddd;
   margin-bottom: 12px;
   flex: 1 1 auto;
+  cursor: pointer;
 }
 
 #reserver_detail {
@@ -137,13 +144,7 @@ button#btn_cancel {
     reservation start-restaurant part
   -------------------------------------*/
 /* 訂位人數設定 */
-  .restaurant_reserveinf h2 {
-  text-align: center;
-  padding: 12px;
-  color: black;
-}
-
-.restaurant_reserveinf h3 {
+.restaurant_reserveinf h2, h3 {
   text-align: center;
   padding: 12px;
   color: black;
@@ -203,4 +204,8 @@ button#btn_cancel {
 .reserve_status tr:hover {
   background-color: #fdf8f0;
   text-align: center;
+}
+
+.reserve_status th{
+  font-weight: normal;
 }

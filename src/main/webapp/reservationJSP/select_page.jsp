@@ -61,7 +61,7 @@
     </FORM>
   </li>
 
-  <jsp:useBean id="reservationSvc" scope="page" class="reservation.service.ReserveTimeServiceImpl"></jsp:useBean>
+  <jsp:useBean id="reservationSvc" scope="page" class="reservation.service.impl.ReserveTimeServiceImpl"></jsp:useBean>
    
   <li>
      <FORM METHOD="post" ACTION="/restaurant/setReservation" >
@@ -82,7 +82,7 @@
 <h3>員工管理</h3>
 
 <ul>
-  <li><a href='addEmp.jsp'>Add</a> a new Emp.</li>
+  <li><a href='addReservation.jsp'>Add</a> a new Emp.</li>
 </ul>
 
 </body>
