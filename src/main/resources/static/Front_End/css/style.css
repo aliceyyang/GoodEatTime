@@ -19,7 +19,7 @@
 4.  Hero Section
 5.  Banner Section
 6.  Product Section
-7.  Intagram Section
+7.  main Section
 8.  Latest Section
 9.  Contact
 10.  Footer Style
@@ -102,24 +102,12 @@ ol {
   padding: 0;
   margin: 0;
 }
-/*---------------------
-  會員專區左側欄
------------------------*/
-#left {
-  background: #f08632;
-}
-#aaa ul li:hover a {
-  background: #f2a566;
-  list-style: none;
-  display: inline-block;
-  position: relative;
-  margin-right: -5px;
-}
+
 /*---------------------
   Helper CSS
 -----------------------*/
 .section-title {
-  margin-bottom: 35px;
+  margin-bottom: 10px;
 }
 .section-title span {
   color: #f08632;
@@ -146,7 +134,8 @@ ol {
 }
 
 .spad {
-  padding-top: 100px;
+  background-color: #ffefde;
+  padding-top: 50px;
   padding-bottom: 100px;
 }
 
@@ -317,6 +306,24 @@ ol {
   justify-content: center;
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+.col {
+  min-height: 50vh;
+  background-color: rgb(255, 255, 255);
+  flex-grow: 1;
+  margin: 15px;
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex-grow:0;
+    flex-basis: calc(-30px + 100% *#{$i}* 1/12);
+  }
+}
 /*---------------------
   Header
 -----------------------*/
@@ -337,8 +344,7 @@ ol {
 
 .header__top__inner {
   height: 102px;
-  /* @家銘更新 */
-  padding-top: 30px;
+  padding-top: 38px;
 }
 
 .header__top__left {
@@ -414,27 +420,22 @@ ol {
 
 .goodeattime_logo{
   position: relative;
-  /* margin-right: 20px; */
+  margin-right: 20px;
   width: auto; 
   height: 72px;
 }
 .header__logo {
   position:absolute;
   right: 80%;
-  top: 15px;
+  top: 25px;
   margin-right: 60px;
 }
 .header__logo a {
   display: inline-block;
-  /* @家銘更新 */
-  width: 144.32px; 
-  height: 72px;
 }
 
 .header__top__right {
   float: right;
-  /* @家銘更新 */
-  padding-top: 8px;
 }
 
 .header__top__right__links {
@@ -488,6 +489,9 @@ ol {
 .header__top__right__cart .cart__price span {
   color: #111111;
 }
+
+
+
 
 .header__menu {
   text-align: center;
@@ -880,10 +884,10 @@ ol {
 }
 
 /*---------------------
-  Testimonial
+ testimonial__slider
 -----------------------*/
-.testimonial {
-  background: #fdf3ea;
+.testimonial__slider {
+
   padding-top: 90px;
   padding-bottom: 70px;
 }
@@ -911,8 +915,8 @@ ol {
 
 .testimonial__item {
   background: #ffffff;
-  padding: 40px 45px 35px 50px;
   position: relative;
+  
 }
 .testimonial__item .rating {
   position: absolute;
@@ -962,13 +966,48 @@ ol {
 }
 
 /*---------------------
-  Instagram
+  main
 -----------------------*/
+.main .btn {
+  position: absolute;
+  left: 92%;
+  padding: 0;
+  border: none;
+  background: none;
+}
+.main .nodes {
+  position: absolute;
+  left: 86%;
+  padding: 0;
+  border: none;
+  background: none;
+  width: 15px;
+  height: 15px;
+}
+.main .news span {
+  border: 1mm ridge #F08632;
+  color: #000000;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.main .main_serch {
+  border: none;
+  border-radius: 2px;
+  margin-right: 5px;
+  width: 400px;
+}
+
 .instagram__text {
   padding-top: 90px;
 }
-.instagram__text .section-title {
-  margin-bottom: 55px;
+.main .section-title {
+  border: 1mm ridge #F08632;
+  margin-bottom: 10px;
 }
 .instagram__text h5 {
   font-size: 20px;
@@ -1000,9 +1039,7 @@ ol {
   padding-top: 30px;
   margin-bottom: 0;
 }
-.instagram__pic img {
-  min-width: 100%;
-}
+
 
 /*---------------------
   Map
@@ -1156,24 +1193,30 @@ ol {
 /*---------------------
   Footer
 -----------------------*/
+
+
 .footer {
   position: relative;
 }
 .mask{
-  /* 可凡新增的css，顏色@家銘有再調整 */
-  padding: 70px;
-  background-color: rgba(0, 0, 0, 0.674);
+padding: 70px;
+background-color: rgba(0, 0, 0, 0.608);
 }
 
 .footer__widget {
   position: relative;
-  left: 40%;
-  /* @家銘更新 */
-  width: 280px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgba(22, 22, 22, 0.5);
+  min-height: 15vh;
+  transition: 0.5s all ease;
 }
 .footer__widget:after {
   position: absolute;
-  left: -35px;
+  right:110%;
   top: 0;
   width: 1px;
   height: 200px;
@@ -1194,13 +1237,20 @@ ol {
   line-height: 36px;
 }
 .footer__member{
-  position: absolute;
-  left: 0;
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgba(22, 22, 22, 0.5);
+  min-height: 15vh;
+  transition: 0.5s all ease;
 
 }
 .footer__member:after {
   position: absolute;
-  right:200px;
+  right:110%;
   top: 0;
   width: 1px;
   height: 200px;
@@ -1215,8 +1265,7 @@ ol {
  .footer__member .footer__social a {
   display: inline-block;
   color: #ffffff;
-  /* @家銘取消背景色 */
-  /* background: rgba(225, 225, 225, 0.1); */
+  background: rgba(225, 225, 225, 0.1);
   /*height: 45px;
   width: 45px;*/
   border-radius: 50%;
@@ -1229,13 +1278,20 @@ ol {
   margin-right: 0;
 }
 .footer__restaurant{
-  position: absolute;
-  left:67%;
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgba(22, 22, 22, 0.5);
+  min-height: 15vh;
+  transition: 0.5s all ease;
  
 }
 .footer__restaurant:after {
   position: absolute;
-  right:90px;
+  right:110%;
   top: 0;
   width: 1px;
   height: 200px;
@@ -1250,8 +1306,7 @@ ol {
  .footer__restaurant .footer__social a {
   display: inline-block;
   color: #ffffff;
-  /* @家銘取消背景色 */
-  /* background: rgba(225, 225, 225, 0.1); */
+  background: rgba(225, 225, 225, 0.1);
   /*height: 45px;
   width: 45px;*/
   border-radius: 50%;
@@ -1265,13 +1320,20 @@ ol {
 }
 
 .footer__shopping{
-  position: absolute;
-  left:7%;
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgba(22, 22, 22, 0.5);
+  min-height: 15vh;
+  transition: 0.5s all ease;
  
 }
 .footer__shopping:after {
   position: absolute;
-  right:100px;
+  right:110%;
   top: 0;
   width: 1px;
   height: 200px;
@@ -1286,8 +1348,7 @@ ol {
  .footer__shopping .footer__social a {
   display: inline-block;
   color: #ffffff;
-  /* @家銘取消背景色 */
-  /* background: rgba(225, 225, 225, 0.1); */
+  background: rgba(225, 225, 225, 0.1);
   /*height: 45px;
   width: 45px;*/
   border-radius: 50%;
@@ -1298,13 +1359,20 @@ ol {
 }
 
 .footer__aboutus{
-  position: absolute;
-  left:-50%;
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgba(22, 22, 22, 0.5);
+  min-height: 15vh;
+  transition: 0.5s all ease;
  
 }
 .footer__aboutus:after {
   position: absolute;
-  right:100px;
+  right: 110%;
   top: 0;
   width: 1px;
   height: 200px;
@@ -1319,8 +1387,7 @@ ol {
  .footer__aboutus .footer__social a {
   display: inline-block;
   color: #ffffff;
-  /* @家銘取消背景色 */
-  /* background: rgba(225, 225, 225, 0.1); */
+  background: rgba(225, 225, 225, 0.1);
   /*height: 45px;
   width: 45px;*/
   border-radius: 50%;
@@ -1399,7 +1466,7 @@ ol {
 .copyright__text i {
   color: #f08632;
 }
-.copyright__text a {
+.a {
   color: #f08632;
 }
 
@@ -3338,10 +3405,6 @@ ol {
 }
 /* Tablet Device = 768px */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  /* @家銘新增 */
-  .header__logo {
-    margin-right: 20px
-  }
   .header__menu ul li a {
     padding: 20px 28px 18px;
   }
@@ -4171,4 +4234,10 @@ ol {
   .checkout__order__products span {
     display: none;
   }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
