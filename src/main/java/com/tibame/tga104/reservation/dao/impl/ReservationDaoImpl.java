@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -12,60 +13,23 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import com.tibame.tga104.common.connection.HibernateUtil;
 import com.tibame.tga104.reservation.dao.ReservationDao;
 import com.tibame.tga104.reservation.vo.ReservationVO;
 
+@Repository
 public class ReservationDaoImpl implements ReservationDao {
-	private SessionFactory sessionFactory;
-
-	public ReservationDaoImpl(SessionFactory sessionFactory) {
-		super();
-		this.sessionFactory = sessionFactory;
-	}
+	
+	@PersistenceContext
+	private Session session;
 
 	public Session getSession() {
-		return this.sessionFactory.getCurrentSession();
+		return this.session;
 	}
 
-	public static void main(String[] args) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
-
-		ReservationDao dao = new ReservationDaoImpl(sessionFactory);
-
-		//	select
-//		List<ReservationVO> vo = dao.getAll();
-//		System.out.println("bean="+ vo);
-		
-		// insert
-		ReservationVO insert = new ReservationVO();
-		insert.setReserveNum(22);
-		insert.setReserveTime("17:00");
-		insert.setReserveDate(new java.sql.Date(new GregorianCalendar(2022, 12, 22).getTimeInMillis()));
-		insert.setMemberNo(5);
-		insert.setReserveStatus("訂位成功");
-		insert.setRestaurantNo(2);
-		insert.setRemark(null);
-		insert.setCommentContent(null);
-		insert.setCommentRating(null);
-		insert.setCommentPic(null);
-		insert.setRestaurantRe(null);
-		
-		ReservationVO result1 = dao.insert(insert);
-		System.out.println(result1);
-		
-		// update
-//		boolean update = dao.update(2, "報告成功", 5, "餐很好吃",null,  new java.sql.Timestamp(new GregorianCalendar(2022, 12, 21).getTimeInMillis()), null, null);
-//		System.out.println("update="+update);
-		
-		transaction.commit();
-		session.close();
-		HibernateUtil.closeSessionFactory();
-	}
-
+	
 	@Override
 	public ReservationVO insert(ReservationVO reservationVO) {
 		if (reservationVO != null && reservationVO.getReserveNo() == null) {
