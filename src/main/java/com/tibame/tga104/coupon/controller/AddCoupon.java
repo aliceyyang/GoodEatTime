@@ -14,9 +14,10 @@ import javax.servlet.http.HttpSession;
 
 import com.tibame.tga104.coupon.dao.CouponJDBCDAO;
 import com.tibame.tga104.coupon.dao.impl.CouponDaoImpl;
+import com.tibame.tga104.coupon.service.CouponServiceImpl;
 import com.tibame.tga104.coupon.vo.CouponVO;
 
-@WebServlet("/coupon/CouponContr")
+@WebServlet("/coupon/AddCoupon")
 public class AddCoupon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,8 +28,12 @@ public class AddCoupon extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
-		
+		CouponServiceImpl couSvc = new CouponServiceImpl();
+		CouponVO couVO = new CouponVO();
+		req.setAttribute("couVO", couVO);
+		String url = "/coupon/listOneCoupon.jsp";
+		RequestDispatcher successView = req.getRequestDispatcher(url);
+		successView.forward(req, res);
 		
 	}
 }
