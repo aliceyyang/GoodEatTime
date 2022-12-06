@@ -1,7 +1,6 @@
 package com.tibame.tga104.reservation.dao.impl;
 
 import java.sql.Timestamp;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.PersistenceContext;
@@ -11,11 +10,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
-import com.tibame.tga104.common.connection.HibernateUtil;
 import com.tibame.tga104.reservation.dao.ReservationDao;
 import com.tibame.tga104.reservation.vo.ReservationVO;
 
@@ -33,7 +29,7 @@ public class ReservationDaoImpl implements ReservationDao {
 	@Override
 	public ReservationVO insert(ReservationVO reservationVO) {
 		if (reservationVO != null && reservationVO.getReserveNo() == null) {
-				this.getSession().save(reservationVO);
+				this.getSession().persist(reservationVO);
 				return reservationVO;
 			
 		}

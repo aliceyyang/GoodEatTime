@@ -1,9 +1,12 @@
 /*---------------------
   reservation start-restaurant part
 -----------------------*/
+#book_table{
+  padding-bottom: 50px;
+}
+
 #reserve_form {
-  height: 410px;
-  ;
+  height: auto;
   margin-bottom: 50px;
 }
 
@@ -209,3 +212,4 @@ button#btn_cancel {
 .reserve_status th{
   font-weight: normal;
 }
+

@@ -29,7 +29,7 @@ public class ReserveTimeDaoImpl implements ReserveTimeDao {
 	@Override
 	public ReserveTimeVO insert(ReserveTimeVO reserveTimeVo) {
 		if (reserveTimeVo != null && reserveTimeVo.getReserveTimeNo() == null) {
-			this.getSession().save(reserveTimeVo);
+			this.getSession().persist(reserveTimeVo);
 			return reserveTimeVo;
 		}
 		return null;
