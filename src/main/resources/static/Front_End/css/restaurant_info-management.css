@@ -1,0 +1,121 @@
+div.restaurant_info{
+    width: 400px;
+    height: 700px;
+    position: relative;
+  bottom: 10px;
+  right:250px;
+    margin-right: 50px;
+}
+
+div.pic_set{
+    width: 400px;
+    height: 700px;
+    position: relative;
+  bottom: 710px;
+  left:600px;
+    margin-right: 50px;
+
+}
+
+.btns{
+  font-size: 14px;
+  color: #ffffff;
+  background: #111111;
+  font-weight: 600;
+  border: none;
+  text-transform: uppercase;
+  display: inline-block;
+  letter-spacing: 2px;
+  padding: 14px 30px;
+  text-align:center;
+}
+
+/* ==========輪播圖設定=========== */
+
+      #drop_zone {
+        border: 1px dashed #ccc;
+        height: 100px;
+        position: relative;
+      }
+      #drop_zone span.text {
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: lightgray;
+      }
+      #drop_zone.-on {
+        border: 1px dashed lightblue;
+        box-shadow: 3px 3px 5px lightblue inset, -3px -3px 5px lightblue inset;
+      }
+
+      input[disabled] {
+        background-color: #eee;
+        cursor: not-allowed;
+      }
+
+      #preview {
+        border: 1px solid lightgray;
+        display: inline-block;
+        width: 100px;
+        min-height: 150px;
+        position: relative;
+      }
+      #preview span.text {
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        /* z-index: -1; */
+        color: lightgray;
+      }
+      #preview img.preview_img {
+        width: 100%;
+      }
+
+      /* ==========菜單圖設定=========== */
+
+      #drop_zone2 {
+        border: 1px dashed #ccc;
+        height: 100px;
+        position: relative;
+      }
+      #drop_zone2 span.text {
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: lightgray;
+      }
+      #drop_zone2.-on {
+        border: 1px dashed lightblue;
+        box-shadow: 3px 3px 5px lightblue inset, -3px -3px 5px lightblue inset;
+      }
+
+      input[disabled] {
+        background-color: #eee;
+        cursor: not-allowed;
+      }
+
+      #preview2 {
+        border: 1px solid lightgray;
+        display: inline-block;
+        width: 100px;
+        min-height: 150px;
+        position: relative;
+      }
+      #preview2 span.text {
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        /* z-index: -1; */
+        color: lightgray;
+      }
+      #preview img.preview_img2 {
+        width: 100%;
+      }
