@@ -1,0 +1,12 @@
+.spad {
+    background-color: white;
+}
+
+h6.checkout__title {
+    border-bottom: 2px solid #111111;
+}
+
+#checkout__others {
+    border-top: 1px solid #d7d7d7;
+    margin-bottom: 20px;
+}
