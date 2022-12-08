@@ -8,11 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Component;
+
+import com.tibame.tga104.product.vo.ProdCategoryVO;
+
+/*此為舊環境的測試檔案，切換成spring boot環境後，尚未配合環境調整*/
+@Component
 @WebServlet("/TestProdCategoryDAO")
-public class ProdCategoryDAOTests extends HttpServlet {
+public class ProdCategoryDAOTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ProdCategoryDAOTests() {
+    public ProdCategoryDAOTest() {
         super();
     }
 
@@ -22,7 +28,7 @@ public class ProdCategoryDAOTests extends HttpServlet {
 		ProdCategoryDAO_JNDI dao = new ProdCategoryDAO_JNDI();
 		
 		// findByPrimaryKey 主鍵查詢
-		System.out.println(dao.findByPrimaryKey(1).toString());
+//		System.out.println(dao.findByPrimaryKey(1).toString());
 		
 		// getAll
 //		List<ProdCategoryVO> list =  dao.getAll();
@@ -31,10 +37,9 @@ public class ProdCategoryDAOTests extends HttpServlet {
 //		}
 		
 		// insert 新增
-//		ProdCategoryVO myProductCategory = new ProdCategoryVO();
-//		myProductCategory.setProdCategory("~~測試新增~~");
-//		dao.insert(myProductCategory);
-//		System.out.println(myProductCategory.toString());
+		ProdCategoryVO myProductCategory = new ProdCategoryVO();
+		myProductCategory.setProdCategory("~~測試新增~~");
+		System.out.println(dao.insert(myProductCategory));
 		
 		// update 修改
 //		ProdCategoryVO myProductCategory = new ProdCategoryVO();

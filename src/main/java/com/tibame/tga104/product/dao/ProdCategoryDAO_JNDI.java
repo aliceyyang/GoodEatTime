@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,27 +21,34 @@ public class ProdCategoryDAO_JNDI implements ProdCategoryDAO {
 	}
 
 	@Override
-	public void insert(ProdCategoryVO prodCategory) {
+	public ProdCategoryVO insert(ProdCategoryVO prodCategory) {
 		String insertSQL = "insert into prodCategory (prodCategory) value(?);";
 		try (Connection connection = dataSource.getConnection();
-				PreparedStatement ps = connection.prepareStatement(insertSQL)) {
+				PreparedStatement ps = connection.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS)) {
 			ps.setString(1, prodCategory.getProdCategory());
 			ps.executeUpdate();
+			ResultSet rs = ps.getGeneratedKeys();
+			while (rs.next()) {
+				return findByPrimaryKey(rs.getInt(1));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	@Override
-	public void update(ProdCategoryVO prodCategory) {
+	public boolean update(ProdCategoryVO prodCategory) {
 		String updateSQL = "update prodCategory set prodCategory = ? where prodCategoryNo = ?;";
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement ps = connection.prepareStatement(updateSQL)) {
 			ps.setString(1, prodCategory.getProdCategory());
 			ps.setInt(2, prodCategory.getProdCategoryNo());
 			ps.executeUpdate();
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 	
 	}

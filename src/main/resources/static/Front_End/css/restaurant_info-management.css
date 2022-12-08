@@ -1,0 +1,232 @@
+div.restaurant_info{
+    width: 400px;
+    height: 700px;
+}
+
+div.pic_set{
+    width: 400px;
+    height: 700px;
+}
+
+.btns{
+  font-size: 14px;
+  color: #ffffff;
+  background: #111111;
+  font-weight: 600;
+  border: none;
+  text-transform: uppercase;
+  display: inline-block;
+  letter-spacing: 2px;
+  padding: 14px 30px;
+  text-align:center;
+}
+
+/* ==========輪播圖設定=========== */
+
+      #drop_zone {
+        border: 1px dashed #ccc;
+        height: 100px;
+        position: relative;
+      }
+      #drop_zone span.text {
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: lightgray;
+      }
+      #drop_zone.-on {
+        border: 1px dashed lightblue;
+        box-shadow: 3px 3px 5px lightblue inset, -3px -3px 5px lightblue inset;
+      }
+
+      input[disabled] {
+        background-color: #eee;
+        cursor: not-allowed;
+      }
+
+      #preview {
+        border: 1px solid lightgray;
+        display: inline-block;
+        width: 100px;
+        min-height: 150px;
+        position: relative;
+      }
+      #preview span.text {
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        /* z-index: -1; */
+        color: lightgray;
+      }
+      #preview img.preview_img {
+        width: 100%;
+      }
+
+      /* ==========菜單圖設定=========== */
+
+      #drop_zone2 {
+        border: 1px dashed #ccc;
+        height: 100px;
+        position: relative;
+      }
+      #drop_zone2 span.text {
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: lightgray;
+      }
+      #drop_zone2.-on {
+        border: 1px dashed lightblue;
+        box-shadow: 3px 3px 5px lightblue inset, -3px -3px 5px lightblue inset;
+      }
+
+      input[disabled] {
+        background-color: #eee;
+        cursor: not-allowed;
+      }
+
+      #preview2 {
+        border: 1px solid lightgray;
+        display: inline-block;
+        width: 100px;
+        min-height: 150px;
+        position: relative;
+      }
+      #preview2 span.text {
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        /* z-index: -1; */
+        color: lightgray;
+      }
+      #preview img.preview_img2 {
+        width: 100%;
+      }
+
+      #pic_remark{
+        width:300px;
+        height:100px;
+        resize: none;
+      }
+
+      /* ==========文案圖設定=========== */
+
+      #drop_zone3 {
+        border: 1px dashed #ccc;
+        height: 100px;
+        position: relative;
+      }
+      #drop_zone3 span.text {
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: lightgray;
+      }
+      #drop_zone3.-on {
+        border: 1px dashed lightblue;
+        box-shadow: 3px 3px 5px lightblue inset, -3px -3px 5px lightblue inset;
+      }
+
+      input[disabled] {
+        background-color: #eee;
+        cursor: not-allowed;
+      }
+
+      #preview3 {
+        border: 1px solid lightgray;
+        display: inline-block;
+        width: 100px;
+        min-height: 150px;
+        position: relative;
+      }
+      #preview3 span.text {
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        /* z-index: -1; */
+        color: lightgray;
+      }
+      #preview3 img.preview_img {
+        width: 100%;
+      }
+
+      #news_btn{
+        position:absolute;
+        bottom:200px;
+        right:30%;
+      }
+
+      #news_btn > button{
+        width:240px
+      }
+
+      /* =============頁籤切換============ */
+
+      .tab_demo {
+        padding: 20px;
+      }
+      
+      .tab_title {
+        display: flex;
+      }
+      
+      .tab_title li {
+        padding: 10px;
+      }
+      
+      .tab_title li a {
+        display: block;
+        padding: 15px 30px;
+        color: #111111;
+        background-color: #fee192;
+        border: #111111;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      
+      .tab_title li.active a {
+        color: #fff;
+        background-color: #F08632;
+        font-weight: bold;
+      }
+      
+
+/* ========================================= */
+
+
+      .tab_inner {
+        padding: 10px;
+        height: 900px;
+        width: 1000px;
+        border: 1px solid #ccc;
+      }
+
+      .tab_inner > h3{
+        font-weight: bold;
+        background-color: #FFEFDE;
+        margin-bottom: 20px;
+      }
+      
+      ul{
+        list-style: none;
+      }
+
+     
+     
+
+      
+
+      
+    
