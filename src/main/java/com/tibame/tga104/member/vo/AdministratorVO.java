@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
+//@Data
 @Entity
 @Table(name = "administrator")
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class AdministratorVO implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
