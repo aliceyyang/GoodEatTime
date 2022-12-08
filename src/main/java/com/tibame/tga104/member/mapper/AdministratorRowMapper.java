@@ -1,6 +1,6 @@
-package com.example.demo.tibame.mapper;
+package com.tibame.tga104.member.mapper;
 
-import com.example.demo.tibame.vo.AdministratorVO;
+import com.tibame.tga104.member.vo.AdministratorVO;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

@@ -1,6 +1,6 @@
-package com.example.demo.tibame.service;
+package com.tibame.tga104.member.service;
 
-import com.example.demo.tibame.vo.AdministratorVO;
+import com.tibame.tga104.member.vo.AdministratorVO;
 
 public interface AdministratorService {
     Integer insert(AdministratorVO administratorVO);

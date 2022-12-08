@@ -1,7 +1,8 @@
-package com.example.demo.tibame.service;
+package com.tibame.tga104.member.service.impl;
 
-import com.example.demo.tibame.dao.AdministratorDAO;
-import com.example.demo.tibame.vo.AdministratorVO;
+import com.tibame.tga104.member.dao.AdministratorDAO;
+import com.tibame.tga104.member.service.AdministratorService;
+import com.tibame.tga104.member.vo.AdministratorVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

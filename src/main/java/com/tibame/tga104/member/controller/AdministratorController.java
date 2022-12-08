@@ -1,7 +1,7 @@
-package com.example.demo.tibame.controller;
+package com.tibame.tga104.member.controller;
 
-import com.example.demo.tibame.service.AdministratorService;
-import com.example.demo.tibame.vo.AdministratorVO;
+import com.tibame.tga104.member.service.AdministratorService;
+import com.tibame.tga104.member.vo.AdministratorVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

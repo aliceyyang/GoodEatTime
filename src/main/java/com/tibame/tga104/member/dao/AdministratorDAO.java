@@ -1,6 +1,6 @@
-package com.example.demo.tibame.dao;
+package com.tibame.tga104.member.dao;
 
-import com.example.demo.tibame.vo.AdministratorVO;
+import com.tibame.tga104.member.vo.AdministratorVO;
 
 public interface AdministratorDAO {
     Integer insert(AdministratorVO administratorVO);

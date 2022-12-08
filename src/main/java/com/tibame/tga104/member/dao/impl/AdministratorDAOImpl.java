@@ -1,13 +1,15 @@
-package com.example.demo.tibame.dao;
+package com.tibame.tga104.member.dao.impl;
 
-import com.example.demo.tibame.mapper.AdministratorRowMapper;
-import com.example.demo.tibame.vo.AdministratorVO;
+import com.tibame.tga104.member.dao.AdministratorDAO;
+import com.tibame.tga104.member.mapper.AdministratorRowMapper;
+import com.tibame.tga104.member.vo.AdministratorVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
