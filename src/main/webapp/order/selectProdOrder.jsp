@@ -60,7 +60,7 @@
     </FORM>
   </li>
 
-  <jsp:useBean id="prodOrderService" scope="page" class="order.service.ProdOrderService" />
+  <jsp:useBean id="prodOrderService" scope="page" class="com.tibame.tga104.order.service.ProdOrderService" />
    
   <li>
      <FORM METHOD="post" ACTION="ProdOrderServlet" >

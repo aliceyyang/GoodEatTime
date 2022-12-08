@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="order.service.*"%>
-<%@ page import="order.vo.*"%>
+<%@ page import="com.tibame.tga104.order.service.*"%>
+<%@ page import="com.tibame.tga104.order.vo.*"%>
 <%-- 此頁暫練習採用 Script 的寫法取值 --%>
 
 <%
