@@ -1,7 +1,7 @@
 /*---------------------
   reservation start-restaurant part
 -----------------------*/
-#book_table{
+#book_table {
   padding-bottom: 50px;
 }
 
@@ -30,7 +30,7 @@
 
 section#reserve_check {
   text-align: center;
-  background-clip: #F08632;
+  background-clip: #f08632;
   padding: 65px 70px 65px;
   position: relative;
   height: auto;
@@ -38,7 +38,7 @@ section#reserve_check {
 
 #reserve_innercheck {
   background-color: white;
-  border: 1.5px dashed #F08632;
+  border: 1.5px dashed #f08632;
   height: auto;
   padding-top: 15px;
 }
@@ -73,7 +73,7 @@ button#btn_cancel {
 }
 
 #reserveConfirm_inf span {
-  color: #F08632;
+  color: #f08632;
   font-size: larger;
   font-weight: bold;
 }
@@ -83,18 +83,15 @@ button#btn_cancel {
   color: orange;
 }
 
-#reviews{
+#reviews {
   margin-left: 15px;
 }
-
-
-
 
 /*---------------------
     reservation start-member part
   -----------------------*/
 #reserve_search {
-  background-image: url('/img/icon/search.png');
+  background-image: url("/img/icon/search.png");
   background-position: 10px 10px;
   background-repeat: no-repeat;
   width: 100%;
@@ -147,22 +144,25 @@ button#btn_cancel {
     reservation start-restaurant part
   -------------------------------------*/
 /* 訂位人數設定 */
-.restaurant_reserveinf h2, h3 {
+.restaurant_reserveinf h2,
+h3 {
   text-align: center;
   padding: 12px;
   color: black;
 }
 
-.reserve_set table, td, th{
+.reserve_set table,
+td,
+th {
   text-align: center;
   padding: 12px;
   border-collapse: collapse;
   border: 1px solid #9a9a75;
   font-size: 18px;
-  table-layout:fixed
+  table-layout: fixed;
 }
 
-.reserve_set tr{
+.reserve_set tr {
   text-align: center;
 }
 
@@ -183,12 +183,19 @@ button#btn_cancel {
   width: 60%;
 }
 
-#set_store{
+#set_store {
   margin-top: 20px;
 }
 
-/* 訂位狀況 */ 
-.reserve_status table, td, th{
+#table-responsive {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* 訂位狀況 */
+.reserve_status table,
+td,
+th {
   text-align: center;
   padding: 12px;
   border-collapse: collapse;
@@ -196,7 +203,7 @@ button#btn_cancel {
   font-size: 18px;
 }
 
-.reserve_status tr{
+.reserve_status tr {
   text-align: center;
 }
 
@@ -209,7 +216,6 @@ button#btn_cancel {
   text-align: center;
 }
 
-.reserve_status th{
+.reserve_status th {
   font-weight: normal;
 }
-

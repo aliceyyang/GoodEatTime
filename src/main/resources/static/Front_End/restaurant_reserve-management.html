@@ -116,8 +116,8 @@
         <div class="col-lg-12">
           <nav class="header__menu mobile-menu">
             <ul>
-              <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-              <li><a href="./about.html">會員專區</a></li>
+              <li><a href="./GoodEatTime.html">首頁</a></li>
+              <li class="active"><a href="./about.html">會員專區</a></li>
               <li><a href="./shop.html">餐廳</a></li>
               <li><a href="./blog.html">線上商城</a></li>
               <li>
@@ -150,9 +150,9 @@
           <ul>
             <li><a href="">餐廳會員首頁</a></li>
             <li><a href="">餐廳資訊</a></li>
-            <li><a href="">餐點資料設定</a></li>
+            <li><a href="">商品管理</a></li>
             <li><a href="">訂單管理</a></li>
-            <li><a href="">訂位管理</a></li>
+            <li class="active"><a href="">訂位管理</a></li>
             <li><a href="">評論管理</a></li>
             <li><a href="">優惠券設定</a></li>
             <li><a href="">廣告購買</a></li>
@@ -166,9 +166,9 @@
         <div class="row">
           <div class="reserve_status col-lg-6 col-md-6 col-sm-6">
             <h3>訂位狀況</h3>
-            <input type="date" id="reserve_search" placeholder="輸入欲查詢的餐廳" onkeyup="searchFunction()">
-            <div class="table-responsive">
-              <table style=" width: 100%" id="reservation_status">
+            <input type="date" id="reserve_search" onkeyup="searchFunction()">
+            <div class="table-responsive" id="table-responsive">
+              <table style=" width: 100%">
                 <thead>
                   <tr class="header">
                     <th>日期</th>
@@ -208,7 +208,7 @@
                 <option value="6">星期六</option>
               </select>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive" id="table-responsive">
               <table style=" width: 100%">
                 <thead>
                   <tr class="header">

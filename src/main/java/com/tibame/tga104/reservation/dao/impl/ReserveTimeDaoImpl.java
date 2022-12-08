@@ -11,6 +11,7 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tibame.tga104.reservation.dao.ReserveTimeDao;
 import com.tibame.tga104.reservation.vo.ReserveTimeVO;
@@ -101,7 +102,9 @@ public class ReserveTimeDaoImpl implements ReserveTimeDao {
 
 		Root<ReserveTimeVO> root = criteriaQuery.from(ReserveTimeVO.class);
 
-		TypedQuery<ReserveTimeVO> typedQuery = this.getSession().createQuery(criteriaQuery);
+		TypedQuery<ReserveTimeVO> typedQuery = this.getSession().createQuery(criteriaQuery)
+				.setFirstResult(0)
+				.setMaxResults(10);
 		List<ReserveTimeVO> result = typedQuery.getResultList();
 		if (result != null && !result.isEmpty()) {
 			return result;

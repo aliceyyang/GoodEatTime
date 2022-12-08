@@ -14,6 +14,8 @@ public interface ReservationDao {
 	
 	public ReservationVO findByPrimaryKey(Integer reserveNo);
 	
+	public List<ReservationVO> findByReserveDate(java.sql.Date reserveDate);
+	
 	public List<ReservationVO> getAll();
 
 }

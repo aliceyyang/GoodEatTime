@@ -21,7 +21,7 @@ public class ReservationServiceImpl implements ReservationService{
 	private ReservationDaoImpl dao;
 	
 	@Override
-	public ReservationVO BookTable(ReservationVO reservationVO) {
+	public ReservationVO bookTable(ReservationVO reservationVO) {
 		ReservationVO result = null;
 		if (new RestaurantVO().getRestaurantNo() != null && new MemberVO().getMemberNo() != null) {
 			result = dao.insert(reservationVO);
@@ -29,22 +29,10 @@ public class ReservationServiceImpl implements ReservationService{
 		return result;
 	}
 
-	@Override
-	public boolean CommentRestaurant(Integer reserveNo, Integer memberNo, Integer commentRating, String commentContent,
-			byte[] commentPic, Timestamp restaurantCommentTime) {
-		
-		return false;
-	}
 
 	@Override
-	public boolean RestaurantReply(Integer reserveNo, Integer commentRating, String restaurantRe,
-			Timestamp restaurantReTime) {
-		return false;
-	}
-
-	@Override
-	public ReservationVO findByDate(Integer reserveDate) {
-		return dao.findByPrimaryKey(reserveDate);
+	public List<ReservationVO> findByDate(java.sql.Date reserveDate) {
+		return dao.findByReserveDate(reserveDate);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.tibame.tga104.reservation.dao.impl;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -10,10 +11,12 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.tibame.tga104.reservation.dao.ReservationDao;
 import com.tibame.tga104.reservation.vo.ReservationVO;
+import com.tibame.tga104.reservation.vo.ReserveTimeVO;
 
 @Repository
 public class ReservationDaoImpl implements ReservationDao {
@@ -93,6 +96,15 @@ public class ReservationDaoImpl implements ReservationDao {
 			return null;
 		}
 		
+	}
+
+
+	@Override
+	public List<ReservationVO> findByReserveDate(Date reserveDate) {
+		Query<ReservationVO> query = getSession().createQuery("from ReserveTimeVO where reserveDate = :reserveDate", ReservationVO.class);
+		query.setParameter("reserveDate", reserveDate);
+		List<ReservationVO> reservationVO = query.list();
+		return reservationVO;
 	}
 
 

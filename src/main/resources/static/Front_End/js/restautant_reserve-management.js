@@ -1,6 +1,6 @@
 $("#set_store").on("click", function () {
     $.ajax({
-        url: "http://localhost:8080/restaurant/setReservation",
+        url: "http://localhost:8080/reservation/restaurant",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify([

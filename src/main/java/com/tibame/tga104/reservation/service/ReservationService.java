@@ -6,13 +6,9 @@ import com.tibame.tga104.reservation.vo.ReservationVO;
 
 public interface ReservationService {
 		
-	ReservationVO BookTable(ReservationVO reservationVO);
+	ReservationVO bookTable(ReservationVO reservationVO);
 	
-	boolean CommentRestaurant(Integer reserveNo, Integer memberNo, Integer commentRating, String commentContent, byte[] commentPic, java.sql.Timestamp restaurantCommentTime);
-	
-	boolean RestaurantReply(Integer reserveNo, Integer commentRating, String restaurantRe, java.sql.Timestamp restaurantReTime);
-	
-	ReservationVO findByDate(Integer reserveDate);
+	List<ReservationVO> findByDate(java.sql.Date reserveDate);
 	
 	List<ReservationVO> getAll();
 
