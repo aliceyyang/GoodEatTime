@@ -8,7 +8,7 @@ import java.util.Date;
 
 //@Data
 @Entity
-@Table(name = "adorder")
+@Table(name = "adOrder")
 public class AdOrderVO implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
