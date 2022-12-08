@@ -3,10 +3,10 @@ package com.tibame.tga104.product.dao;
 import java.util.List;
 
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tibame.tga104.product.vo.ProdCategoryVO;
 
@@ -20,7 +20,6 @@ public class ProdCategoryDAO_Hibernate implements ProdCategoryDAO {
 	}
 	
 	@Override
-	@Transactional
 	public ProdCategoryVO insert(ProdCategoryVO prodCategory) {
 		if (prodCategory != null) {
 			this.getSession().persist(prodCategory);
@@ -30,7 +29,6 @@ public class ProdCategoryDAO_Hibernate implements ProdCategoryDAO {
 	}
 
 	@Override
-	@Transactional
 	public boolean update(ProdCategoryVO prodCategory) {
 		if (prodCategory != null && prodCategory.getProdCategoryNo() != null) {
 			ProdCategoryVO temp = this.getSession().get(ProdCategoryVO.class, prodCategory.getProdCategoryNo());
@@ -43,7 +41,6 @@ public class ProdCategoryDAO_Hibernate implements ProdCategoryDAO {
 	}
 
 	@Override
-	@Transactional
 	public boolean delete(Integer prodCategoryNo) {
 		if (prodCategoryNo != null) {
 			ProdCategoryVO temp = this.getSession().get(ProdCategoryVO.class, prodCategoryNo);

@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/*此為舊環境的測試檔案，切換成spring boot環境後，尚未配合環境調整*/
 @WebServlet("/TestProdCategoryService")
-public class ProdCategoryServiceTests extends HttpServlet {
+public class ProdCategoryServiceTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ProdCategoryServiceTests() {
+    public ProdCategoryServiceTest() {
         super();
     }
 
