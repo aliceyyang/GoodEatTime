@@ -2,24 +2,35 @@ package com.tibame.tga104.coupon.vo;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "memberCoupon")
 public class MemberCouponVO implements Serializable{
 
-	private  Integer memberNo;
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name = "memberNo", nullable = false)
+	private Integer memberNo;
+	@Id
+	@Column(name = "couponNo", nullable = false)
 	private Integer couponNo;
-	private Boolean usageStatus;
-
-	public MemberCouponVO() {
-		super();
-	}
 	
-	public MemberCouponVO(Integer memberNo, Integer couponNo, Boolean usageStatus) {
-		
-		super();
-		this.memberNo = memberNo;
-		this.couponNo = couponNo;
-		this.usageStatus = usageStatus;
-	}
+	@Column(name = "usageStatus")
+	private Boolean usageStatus;
+	
+	
+	public MemberCouponVO() {
 
+	}
+		
 	@Override
 	public String toString() {
 		return "MemberCouponVO [memberNo=" + memberNo + ", couponNo=" + couponNo + ", usageStatus=" + usageStatus + "]";

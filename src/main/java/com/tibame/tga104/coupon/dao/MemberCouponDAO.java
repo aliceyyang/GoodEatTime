@@ -6,13 +6,13 @@ import com.tibame.tga104.coupon.vo.MemberCouponVO;
 
 public interface MemberCouponDAO {
 
-	public void insert(MemberCouponVO memberCouponVO);
+	public MemberCouponVO insert(MemberCouponVO memberCouponVO);
 	
-	public void update(MemberCouponVO memberCouponVO);
+	public MemberCouponVO update(MemberCouponVO memberCouponVO);
 	
-	public void delete(Integer memberNo);
+	public Boolean usageStatus(Boolean usageStatus);
 	
-	public MemberCouponVO findByPrimaryKey(Integer memberCouponVO);
+	public MemberCouponVO findByPrimaryKey(Integer memberNo);
 	
 	public List<MemberCouponVO> getAll();
 
