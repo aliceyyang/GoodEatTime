@@ -1,8 +1,9 @@
+// ==========輪播圖設定===========
+ 
       var drop_el = document.getElementById("drop_zone");
       var preview_el = document.getElementById("preview");
       var carousel_file_el = document.getElementById("carousel_file");
-      
-// ==========輪播圖設定===========
+
       carousel.addEventListener("reset", function () {
        
         preview_el.innerHTML = '<span class = "text">預覽圖</span>';
@@ -94,6 +95,72 @@
         preview_img2(e.dataTransfer.files[0]);
         menu_file_el.value = "";
       });
+
+      
+    // ===================餐廳資料頁籤=================
+
+
+    $(document).ready(function () {
+      tabCutover();
+    });
+
+    function tabCutover() {
+
+      $(".tab_title li.active").each(function () {
+         var tablink = $(this).find("a").data("tablink");
+     
+         $('#'+tablink).show().siblings(".tab_inner").hide();
+       });
+     
+      $(".tab_title li").click(function () {
+         $('#'+$(this).find("a").data("tablink")).show().siblings(".tab_inner").hide();
+         $(this).addClass("active").siblings(".active").removeClass("active");
+       });
+     }
+
+
+// ===================輪播圖片上傳=================
+
+
+
+      
+      let base64arr;
+      let pic_remark = document.querySelector('pic_remark');
+      
+      function readFiles(files){
+        for(let file of files){
+          const read =  new FileReader();
+          read.addEventListener('load',function(){
+            base64arr.push(btoa(e.target.result));
+            if(files.length === base64arr.length){
+              fetch('files',{
+                method:'post',
+                headers:{
+                  'Content-Type':'application/json'
+                },
+                body:JSON.stringify([
+                  {
+                    restaurantPicStr:btoa($('#carousel_file')[0].files[0]) ,
+                    restaurantPicRemark: $('#pic_remark').val()
+                  },
+                  {
+                    restaurantPicStr: btoa($('#carousel_file')[0].files[1]),
+                    restaurantPicRemark: 'bbb'
+                  }
+                ])  
+              })
+            }
+          })
+          read.readAsBinaryString(files);
+        }
+      }
+
+      $("form#carousel").on('submit',function(e){
+        e.preventDefault();
+        base64arr = [];
+        readFiles($("file#carousel_file").files);
+      })
+      
 
       
       

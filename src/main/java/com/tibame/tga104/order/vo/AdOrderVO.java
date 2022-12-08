@@ -1,16 +1,17 @@
 package com.tibame.tga104.order.vo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.Date;
-import java.sql.Timestamp;
+import lombok.Data;
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
+
+//@Data
 @Entity
-@Table(name = "adOrder")
-public class AdOrderVO {
+@Table(name = "adorder")
+public class AdOrderVO implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "adOrderNo")
     private Integer adOrderNo;
     @Column(name = "restaurantNo")
@@ -18,7 +19,7 @@ public class AdOrderVO {
     @Column(name = "adminNo")
     private Integer adminNo;
     @Column(name = "adOrderTime", insertable = false, updatable = false)
-    private Timestamp adOrderTime;
+    private Date adOrderTime;
     @Column(name = "adStartTime")
     private Date adStartTime;
     @Column(name = "adEndTime")
@@ -29,7 +30,7 @@ public class AdOrderVO {
     private String verificationDetail;
     @Column(name = "adOrderPrice")
     private Integer adOrderPrice;
-    @Column(name = "slideshowPic")
+    @Column(name = "slideshowPic", columnDefinition = "longblob")
     private byte[] slideshowPic;
     //type unsure
 
@@ -77,11 +78,11 @@ public class AdOrderVO {
         this.adminNo = adminNo;
     }
 
-    public Timestamp getAdOrderTime() {
+    public Date getAdOrderTime() {
         return adOrderTime;
     }
 
-    public void setAdOrderTime(Timestamp adOrderTime) {
+    public void setAdOrderTime(Date adOrderTime) {
         this.adOrderTime = adOrderTime;
     }
 

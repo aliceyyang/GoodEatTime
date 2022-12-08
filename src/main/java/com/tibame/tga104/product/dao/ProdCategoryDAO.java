@@ -6,8 +6,8 @@ import com.tibame.tga104.product.vo.ProdCategoryVO;
 
 public interface ProdCategoryDAO {
 	
-	public void insert(ProdCategoryVO prodCategory);
-	public void update(ProdCategoryVO prodCategory);
+	public ProdCategoryVO insert(ProdCategoryVO prodCategory);
+	public boolean update(ProdCategoryVO prodCategory);
 	public boolean delete(Integer prodCategoryNo);
 	public ProdCategoryVO findByPrimaryKey(Integer prodCategoryNo);
 	public List<ProdCategoryVO> getAll();
