@@ -1,5 +1,7 @@
 package com.tibame.tga104.product.dao;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +12,11 @@ import com.tibame.tga104.product.vo.ProdCategoryVO;
 public class ProdCategoryDAOTests {
 	@Autowired
 	ProdCategoryDAO dao;	
+	
+	/* 測試已測完，基礎測試接ok
+	 * 移除DAO的@Transactional annotation至Service
+	 * 後續若要再測試的話需補上此annotation
+	 * */
 	
 	@Test
 	void testFindByPrimaryKey() {
@@ -29,6 +36,7 @@ public class ProdCategoryDAOTests {
 		myProductCategory.setProdCategory("~~測試修改~~");
 		dao.update(myProductCategory);
 		System.out.println(myProductCategory);
+		assertTrue(myProductCategory.equals(dao.findByPrimaryKey(13)));
 	}
 	
 	@Test
