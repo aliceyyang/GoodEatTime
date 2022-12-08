@@ -180,45 +180,30 @@
             </ul>
             
             <div class="tab_inner_wrap">
-              <div id="set_info" class="tab_inner">
-                <h3>資料設定</h3>
-              <form style="width : 50vw; margin-left : 25vw ">
-                  <label for="name">餐廳名稱 </label>
-                  <input type="text" id="name">
-                  <br />
-                  <label for="tel">餐廳電話 </label>
-                  <input type="text" id="tel">
-                  <br />
-                  <label for="addr">餐廳地址 </label>
-                  <input type="text" id="addr">
-                  <br />
-                  <label for="bizhours">營業時間 </label>
-                  <input type="text" id="bizhours">
-                  <br />
-                  <label for="taxID">統一編號 </label>
-                  <input type="text" id="taxID">
-                  <br />
-                  <label for="accountInfo">帳戶資訊 </label>
-                  <input type="text" id="accountInfo">
-                  <br />
-                  <label for="account">帳號 </label>
-                  <input type="text" id="account">
-                  <br />
-                  <label for="password">密碼 </label>
-                  <input type="password" id="password">
-                  <br />
-                  <label for="cpassword">確認密碼 </label>
-                  <input type="password" id="cpassword">
-                  <br />
-                  <button class="btns" style="width:70% ; margin-top: 50px;">儲存設定</button>
-                  
-              </form>
+              <div id="set_info" class="tab_inner" style="text-align:center">
+              <h3>資料設定</h3>
+              <div class="class__sidebar" style="width:70% ; margin: 0px auto">
+                <form action="#">
+                    <input type="text" id="restaurantName" placeholder="餐廳名稱">
+                    <input type="text" id="restaurantTel" placeholder="電話">
+                    <input type="text" id="restaurantAddr" placeholder="地址">
+                    <input type="textarea" id="restaurantBusinessHour" placeholder="營業時間說明">
+                    <input type="text" id="restaurantTaxIDNo" placeholder="統一編號">
+                    <input type="text" id="restaurantAccountInfo" placeholder="帳戶資訊">
+                    <input type="email" id="restaurantAccount" placeholder="餐廳帳號">
+                    <input type="password" id="restaurantPassword" placeholder="餐廳密碼">
+                    <input type="password" id="restaurantPasswordCheck" placeholder="請再次輸入密碼">
+                    <button type="submit" class="site-btn">儲存設定</button> 
+                </form>
+            </div>
               </div>
               <div id="set_pic" class="tab_inner">
                 <h3>圖片設定</h3>
                 <form id="carousel" style="width:450px ; float:left">
                   <h4 style="text-align:center">輪播圖片</h4>
-                  <input type="file" id="carousel_file" accept="image/*" multiple="multiple"/>
+                  <label>
+                  <input type="file" id="carousel_file"  accept="image/*" multiple="multiple"/>
+                </label>
                   <br>
                   <a>上限為6張圖片</a>
                   <br />

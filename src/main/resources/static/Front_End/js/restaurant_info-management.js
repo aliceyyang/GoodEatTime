@@ -73,7 +73,7 @@
       };
 
       menu_file_el.addEventListener("change", function (e) {
-        if (this.files.length > 6) {
+        if (this.files.length > 0) {
           preview_img2(this.files[0]);
         } else {
           preview_el2.innerHTML = '<span class = "text">預覽圖</span>';
@@ -119,7 +119,7 @@
      }
 
 
-
+// ===================輪播圖片上傳=================
 
 
 

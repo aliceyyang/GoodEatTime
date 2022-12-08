@@ -164,7 +164,7 @@ div.pic_set{
 
       #news_btn{
         position:absolute;
-        bottom:70px;
+        bottom:200px;
         right:30%;
       }
 
@@ -202,9 +202,13 @@ div.pic_set{
         font-weight: bold;
       }
       
+
+/* ========================================= */
+
+
       .tab_inner {
         padding: 10px;
-        height: 800px;
+        height: 900px;
         width: 1000px;
         border: 1px solid #ccc;
       }
@@ -218,6 +222,9 @@ div.pic_set{
       ul{
         list-style: none;
       }
+
+     
+     
 
       
 
