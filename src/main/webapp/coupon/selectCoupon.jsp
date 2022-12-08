@@ -63,7 +63,7 @@
 	    	</form>
 	    </li>
 	    
-	    <jsp:useBean id="couponService" scope="page" class="coupon.service.CouponServiceImpl"/>
+	    <jsp:useBean id="couponService" scope="page" class="com.tibame.tga104.coupon.service.CouponServiceImpl"/>
 	    
 	    <li>
 	    	<form method="post" action="Coupontroller">
@@ -79,7 +79,7 @@
 	    </li>
 	    
 	    
-	    <jsp:useBean id="memberCouponService" scope="page" class="coupon.service.MemberCouponServiceImpl" />
+	    <jsp:useBean id="memberCouponService" scope="page" class="com.tibame.tga104.coupon.service.MemberCouponServiceImpl" />
 	    
 	    <li>
 	    	<form method="post" action="CouponController">

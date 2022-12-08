@@ -983,16 +983,21 @@ ol {
 /*---------------------
   main
 -----------------------*/
+.main .search {
+  width: 100%;
+}
+
+
 .main .btn {
   position: absolute;
-  left: 92%;
+  left: 90%;
   padding: 0;
   border: none;
   background: none;
 }
 .main .nodes {
   position: absolute;
-  left: 86%;
+  left: 84%;
   padding: 0;
   border: none;
   background: none;
@@ -1013,8 +1018,8 @@ ol {
 .main .main_serch {
   border: none;
   border-radius: 2px;
-  margin-right: 5px;
-  width: 400px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .instagram__text {

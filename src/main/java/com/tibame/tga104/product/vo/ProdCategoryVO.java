@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 @Table(name = "prodCategory")
 public class ProdCategoryVO implements Serializable {
@@ -20,6 +23,18 @@ public class ProdCategoryVO implements Serializable {
 	Integer prodCategoryNo;
 	@Column(name = "prodCategory")
 	String prodCategory;
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+		ProdCategoryVO vo = (ProdCategoryVO) obj;
+		return (prodCategoryNo.equals(vo.prodCategoryNo) && prodCategory.equals(vo.prodCategory));
+	}
 
 	public Integer getProdCategoryNo() {
 		return prodCategoryNo;
