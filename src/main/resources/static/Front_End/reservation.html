@@ -28,6 +28,9 @@
   <link rel="stylesheet" href="css/style.css" type="text/css" />
   <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
   <link rel="stylesheet" href="css/reservation.css" type="text/css">
+  <link rel="stylesheet" href="datetimepicker/jquery-ui.css" type="text/css">
+  <link rel="stylesheet" href="datetimepicker/jquery-ui.structure.css" type="text/css">
+  <link rel="stylesheet" href="datetimepicker/jquery-ui.theme.css" type="text/css">
 </head>
 
 <body>
@@ -179,12 +182,12 @@
           <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
               <label>訂位人數</label>
-              <input id="reserveNum" type="number" min="1" placeholder="訂位人數" required />
+              <input id="reserveNum" type="number" min="1" placeholder="請輸入訂位人數" />
               <label>訂位時間</label>
-              <input id="reserveDate" type="date" placeholder="訂位時間" required />
+              <input id="reserveDate" type="text" placeholder="請輸入訂位時間" />
               <label>訂位時段</label>
               <select id="reserveTime">
-                <option value="" style="display: none">訂位時段</option>
+                <option value="" style="display: none">請選擇訂位時段</option>
                 <option value="12:00">12:00</option>
                 <option value="13:00">13:00</option>
                 <option value="18:00">18:00</option>
@@ -359,6 +362,20 @@
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/reservation.js"></script>
+  <script src="datetimepicker/jquery-ui.js"></script>
+  <script src="datetimepicker/datepicker-zh-TW.js"></script>
 </body>
+<!-- <script>
+
+  const weekdays = []
+  weekdays.includes()
+  datepicker({ 
+    beforeShowDay: function (dt) {
+      //  return [dt.getDay() == 0 || dt.getDay() == 6, ""]; } 
+      return weekdays.includes(dt.getDays());
+      }) 
+    });
+
+</script> -->
 
 </html>

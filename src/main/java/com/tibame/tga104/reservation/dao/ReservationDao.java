@@ -2,6 +2,7 @@ package com.tibame.tga104.reservation.dao;
 
 import java.util.List;
 
+import com.tibame.tga104.reservation.vo.MemberReserveInfVO;
 import com.tibame.tga104.reservation.vo.ReservationVO;
 
 
@@ -18,4 +19,5 @@ public interface ReservationDao {
 	
 	public List<ReservationVO> getAll();
 
+	public List<MemberReserveInfVO> findByMemeberNo(Integer memberNo);
 }

@@ -19,10 +19,10 @@ $("#set_store").on("click", function () {
 
 // 搜尋功能
 function searchFunction() {
-    var input, filter, table, tr, td, i, txtValue;
+    let input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("reserve_search");
     filter = input.value.toUpperCase();
-    table = document.getElementById("reservation_status");
+    table = document.querySelector("#reserve_status");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[0];

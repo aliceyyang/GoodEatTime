@@ -1,13 +1,38 @@
 /*-------------------
     訂位功能
     --------------------- */
+// dateTimePicker
+$(function () {
+  const weekdays = [0, 1, 2, 3, 6] // 想要營業的時間放這邊
+  $("#reserveDate").datepicker({ 
+    dateFormat: 'yy/mm/dd',
+    beforeShowDay: function (dt){
+    return [(weekdays.includes(dt.getDay())), ''];
+  } }).val();
+
+});
+
+
+
 // submit訂位資訊
 $("#btn_reserve").on("click", function (e) {
     e.preventDefault();
     var send_data = {};
-    send_data.name = $("#name").val();
-    send_data.tel = $("#tel").val();
-    send_data.people = $("#reserveNum").val();
+    let people = $("#reserveNum").val();
+    let date = $("#reserveDate").val();
+    let time = $("#reserveTime").val();
+
+    if(people > 0){
+      send_data.people = people;  
+    }else{
+      alert("請輸入人數")
+    };
+
+    
+
+    
+
+    
     send_data.date = $("#reserveDate").val();
     send_data.time = $("#reserveTime").val();
     if ($('#remark').val() != "") {
@@ -21,15 +46,12 @@ $("#btn_reserve").on("click", function (e) {
   // Session資料 
   var reserve_data = function () {
     if (sessionStorage.getItem("reservation_inf") != null) {
-      var reservation_inf = JSON.parse(sessionStorage.getItem("reservation_inf"));
+      const reservation_inf = JSON.parse(sessionStorage.getItem("reservation_inf"));
       console.log(reservation_inf);
-      reservation_inf.name = $("#name").val();
-      reservation_inf.tel = $("#tel").val();
       reservation_inf.people = $("#reserveNum").val();
       reservation_inf.date = $("#reserveDate").val();
       reservation_inf.time = $("#reserveTime").val();
       reservation_inf.remark = $("#remark").val();
-  
     }
   }
   reserve_data();

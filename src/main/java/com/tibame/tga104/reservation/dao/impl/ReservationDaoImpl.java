@@ -13,11 +13,13 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tibame.tga104.reservation.dao.ReservationDao;
+import com.tibame.tga104.reservation.vo.MemberReserveInfVO;
 import com.tibame.tga104.reservation.vo.ReservationVO;
-import com.tibame.tga104.reservation.vo.ReserveTimeVO;
 
+@Transactional
 @Repository
 public class ReservationDaoImpl implements ReservationDao {
 	
@@ -105,6 +107,15 @@ public class ReservationDaoImpl implements ReservationDao {
 		query.setParameter("reserveDate", reserveDate);
 		List<ReservationVO> reservationVO = query.list();
 		return reservationVO;
+	}
+
+
+	@Override
+	public List<MemberReserveInfVO> findByMemeberNo(Integer memberNo) {
+		Query<MemberReserveInfVO> query = getSession().createQuery("from MemberReserveInfVO where memberNo =: memberNo", MemberReserveInfVO.class);
+		query.setParameter("memberNo", memberNo);
+		List<MemberReserveInfVO> memberReserveInfVO = query.setFirstResult(0).setMaxResults(10).list();
+		return memberReserveInfVO;
 	}
 
 

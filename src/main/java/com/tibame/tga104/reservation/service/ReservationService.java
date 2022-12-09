@@ -2,6 +2,7 @@ package com.tibame.tga104.reservation.service;
 
 import java.util.List;
 
+import com.tibame.tga104.reservation.vo.MemberReserveInfVO;
 import com.tibame.tga104.reservation.vo.ReservationVO;
 
 public interface ReservationService {
@@ -11,5 +12,7 @@ public interface ReservationService {
 	List<ReservationVO> findByDate(java.sql.Date reserveDate);
 	
 	List<ReservationVO> getAll();
+	
+	List<MemberReserveInfVO> findByMemberNO(Integer memberNo);
 
 }
