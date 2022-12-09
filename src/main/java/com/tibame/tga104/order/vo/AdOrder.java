@@ -1,33 +1,38 @@
 package com.tibame.tga104.order.vo;
 
-import lombok.Data;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
 //@Data
 @Entity
 @Table(name = "adOrder")
-public class AdOrderVO implements Serializable {
+public class AdOrder implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "adOrderNo")
+    @NotNull
     private Integer adOrderNo;
+    @NotNull
     @Column(name = "restaurantNo")
     private Integer restaurantNo;
     @Column(name = "adminNo")
     private Integer adminNo;
+    @NotNull
     @Column(name = "adOrderTime", insertable = false, updatable = false)
     private Date adOrderTime;
+    @NotNull
     @Column(name = "adStartTime")
     private Date adStartTime;
+    @NotNull
     @Column(name = "adEndTime")
     private Date adEndTime;
     @Column(name = "verified")
     private Boolean verified;
     @Column(name = "verificationDetail")
     private String verificationDetail;
+    @NotNull
     @Column(name = "adOrderPrice")
     private Integer adOrderPrice;
     @Column(name = "slideshowPic", columnDefinition = "longblob")
@@ -35,7 +40,7 @@ public class AdOrderVO implements Serializable {
     //type unsure
 
 
-    public AdOrderVO() {
+    public AdOrder() {
     }
 
     @Override
