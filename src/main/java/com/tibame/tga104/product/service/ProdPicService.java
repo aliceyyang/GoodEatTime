@@ -2,18 +2,19 @@ package com.tibame.tga104.product.service;
 
 import java.util.List;
 
-import com.tibame.tga104.common.connection.HibernateUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.tibame.tga104.product.dao.ProdPicDAO;
-import com.tibame.tga104.product.dao.ProdPicDAO_Hibernate;
 import com.tibame.tga104.product.vo.ProdPicVO;
 
+@Service
 public class ProdPicService {
+	@Autowired
 	private ProdPicDAO dao;
 	
-	public ProdPicService() {
-		dao = new ProdPicDAO_Hibernate(HibernateUtil.getSessionFactory());
-	}
-	
+	@Transactional
 	public ProdPicVO addProdPic(Integer prodNo, byte[] pic, String prodPicRemark) {
 		ProdPicVO prodPicVO = new ProdPicVO();
 		prodPicVO.setProdNo(prodNo);
@@ -23,6 +24,7 @@ public class ProdPicService {
 		return dao.insert(prodPicVO);
 	}
 	
+	@Transactional
 	public ProdPicVO updateProdPic(Integer prodPicNo, Integer prodNo, byte[] pic, String prodPicRemark) {
 		ProdPicVO prodPicVO = new ProdPicVO();
 		prodPicVO.setProdPicNo(prodPicNo);
@@ -33,6 +35,7 @@ public class ProdPicService {
 		return dao.update(prodPicVO);
 	}
 	
+	@Transactional
 	public boolean deleteProdPic(Integer prodPicNo) {
 		return dao.delete(prodPicNo);
 	}
