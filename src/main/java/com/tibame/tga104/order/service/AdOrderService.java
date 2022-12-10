@@ -3,6 +3,8 @@ package com.tibame.tga104.order.service;
 
 import com.tibame.tga104.order.vo.AdOrder;
 
+import java.util.List;
+
 public interface AdOrderService {
     Integer createAdOrder(AdOrder adOrder);
 
@@ -13,4 +15,6 @@ public interface AdOrderService {
     AdOrder getByAdOrderNo(Integer adOrderNo);
 
     AdOrder getByRestaurantNo(Integer restaurantNo);
+
+    List<AdOrder> getByAll();;
 }

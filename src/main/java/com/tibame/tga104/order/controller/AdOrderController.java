@@ -8,12 +8,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class AdOrderController {
     @Autowired
     private AdOrderService adOrderService;
 
+    @GetMapping("/adOrder-read")
+    private ResponseEntity<List<AdOrder>> getByAll() {
+        List<AdOrder> getAdOrderVOList = adOrderService.getByAll();
+        return ResponseEntity.status(HttpStatus.OK).body(getAdOrderVOList);
+    }
     @GetMapping("/adOrder/{adOrderNo}")
     private ResponseEntity<AdOrder> getByAdOrderNo(@PathVariable Integer adOrderNo) {
         AdOrder adOrder = adOrderService.getByAdOrderNo(adOrderNo);

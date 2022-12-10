@@ -101,5 +101,17 @@ public class AdOrderDAOImpl implements AdOrderDAO {
         }
     }
 
+    @Override
+    public List<AdOrder> getByAll() {
+        String sql = "select * from adOrder";
+        Map<String, Object> map = new HashMap<>();
+        List<AdOrder> adOrderList = namedParameterJdbcTemplate.query(sql, map, new AdOrderRowMapper());
+        if (adOrderList.size() > 0) {
+            return adOrderList;
+        } else {
+            return null;
+        }
+    }
+
 
 }

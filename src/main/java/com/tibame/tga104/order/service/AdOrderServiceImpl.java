@@ -5,6 +5,8 @@ import com.tibame.tga104.order.vo.AdOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class AdOrderServiceImpl implements AdOrderService {
     @Autowired
@@ -33,5 +35,10 @@ public class AdOrderServiceImpl implements AdOrderService {
     @Override
     public AdOrder getByRestaurantNo(Integer restaurantNo) {
         return adOrderDAO.getByRestaurantNo(restaurantNo);
+    }
+
+    @Override
+    public List<AdOrder> getByAll() {
+        return adOrderDAO.getByAll();
     }
 }
