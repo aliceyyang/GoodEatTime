@@ -2,9 +2,11 @@ package com.tibame.tga104.member.service.impl;
 
 import com.tibame.tga104.member.dao.AdministratorDAO;
 import com.tibame.tga104.member.service.AdministratorService;
-import com.tibame.tga104.member.vo.AdministratorVO;
+import com.tibame.tga104.member.vo.Administrator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class AdministratorServiceImpl implements AdministratorService {
@@ -13,13 +15,13 @@ public class AdministratorServiceImpl implements AdministratorService {
     private AdministratorDAO administratorDAO;
 
     @Override
-    public Integer insert(AdministratorVO administratorVO) {
-        return administratorDAO.insert(administratorVO);
+    public Integer insert(Administrator administrator) {
+        return administratorDAO.insert(administrator);
     }
 
     @Override
-    public void update(AdministratorVO administratorVO) {
-        administratorDAO.update(administratorVO);
+    public void update(Administrator administrator) {
+        administratorDAO.update(administrator);
 
     }
 
@@ -30,12 +32,17 @@ public class AdministratorServiceImpl implements AdministratorService {
     }
 
     @Override
-    public AdministratorVO getByAdminNo(Integer adminNo) {
+    public Administrator getByAdminNo(Integer adminNo) {
         return administratorDAO.getByAdminNo(adminNo);
     }
 
     @Override
-    public AdministratorVO getByAdminAccount(String adminAccount) {
+    public Administrator getByAdminAccount(String adminAccount) {
         return administratorDAO.getByAdminAccount(adminAccount);
+    }
+
+    @Override
+    public List<Administrator> getByAll(){
+        return administratorDAO.getByAll();
     }
 }

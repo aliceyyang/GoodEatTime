@@ -1,24 +1,24 @@
 package com.tibame.tga104.member.mapper;
 
-import com.tibame.tga104.member.vo.AdministratorVO;
+import com.tibame.tga104.member.vo.Administrator;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AdministratorRowMapper implements RowMapper<AdministratorVO> {
+public class AdministratorRowMapper implements RowMapper<Administrator> {
     @Override
-    public AdministratorVO mapRow(ResultSet rs, int rowNum) throws SQLException {
-        AdministratorVO administratorVO = new AdministratorVO();
-        administratorVO.setAdminNo(rs.getInt("adminNo"));
-        administratorVO.setAdminAccount(rs.getString("adminAccount"));
-        administratorVO.setAdminPassword(rs.getString("adminPassword"));
-        administratorVO.setAdminName(rs.getString("adminName"));
-        administratorVO.setModifyAdminData(rs.getBoolean("modifyAdminData"));
-        administratorVO.setModifyMemberData(rs.getBoolean("modifyMemberData"));
-        administratorVO.setVerifyRestaurant(rs.getBoolean("verifyRestaurant"));
-        administratorVO.setVerifyAdCoupon(rs.getBoolean("verifyAdCoupon"));
+    public Administrator mapRow(ResultSet rs, int rowNum) throws SQLException {
+        Administrator administrator = new Administrator();
+        administrator.setAdminNo(rs.getInt("adminNo"));
+        administrator.setAdminAccount(rs.getString("adminAccount"));
+        administrator.setAdminPassword(rs.getString("adminPassword"));
+        administrator.setAdminName(rs.getString("adminName"));
+        administrator.setModifyAdminData(rs.getBoolean("modifyAdminData"));
+        administrator.setModifyMemberData(rs.getBoolean("modifyMemberData"));
+        administrator.setVerifyRestaurant(rs.getBoolean("verifyRestaurant"));
+        administrator.setVerifyAdCoupon(rs.getBoolean("verifyAdCoupon"));
 
-        return administratorVO;
+        return administrator;
     }
 }
