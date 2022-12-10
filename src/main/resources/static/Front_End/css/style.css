@@ -1226,8 +1226,9 @@ ol {
   position: relative;
 }
 .mask{
-padding: 70px;
-background-color: rgba(0, 0, 0, 0.608);
+  /*@家銘調整*/
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.608);
 }
 
 .footer__widget {
@@ -1292,7 +1293,8 @@ background-color: rgba(0, 0, 0, 0.608);
  .footer__member .footer__social a {
   display: inline-block;
   color: #ffffff;
-  background: rgba(225, 225, 225, 0.1);
+  /* @家銘取消背景色 */
+  /* background: rgba(225, 225, 225, 0.1); */
   /*height: 45px;
   width: 45px;*/
   border-radius: 50%;
@@ -1333,7 +1335,8 @@ background-color: rgba(0, 0, 0, 0.608);
  .footer__restaurant .footer__social a {
   display: inline-block;
   color: #ffffff;
-  background: rgba(225, 225, 225, 0.1);
+  /* @家銘取消背景色 */
+  /* background: rgba(225, 225, 225, 0.1); */
   /*height: 45px;
   width: 45px;*/
   border-radius: 50%;
@@ -1375,7 +1378,8 @@ background-color: rgba(0, 0, 0, 0.608);
  .footer__shopping .footer__social a {
   display: inline-block;
   color: #ffffff;
-  background: rgba(225, 225, 225, 0.1);
+  /* @家銘取消背景色 */
+  /* background: rgba(225, 225, 225, 0.1); */
   /*height: 45px;
   width: 45px;*/
   border-radius: 50%;
@@ -1414,7 +1418,8 @@ background-color: rgba(0, 0, 0, 0.608);
  .footer__aboutus .footer__social a {
   display: inline-block;
   color: #ffffff;
-  background: rgba(225, 225, 225, 0.1);
+  /* @家銘取消背景色 */
+  /* background: rgba(225, 225, 225, 0.1); */
   /*height: 45px;
   width: 45px;*/
   border-radius: 50%;
@@ -4113,6 +4118,10 @@ background-color: rgba(0, 0, 0, 0.608);
 
   .search-model-form input {
     width: 100%;
+  }
+  footer div.mask {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 @media only screen and (max-width: 575px) {
