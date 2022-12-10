@@ -359,7 +359,8 @@ ol {
 
 .header__top__inner {
   height: 102px;
-  padding-top: 38px;
+  /* @家銘更新 */
+  padding-top: 30px;
 }
 
 .header__top__left {
@@ -447,10 +448,16 @@ ol {
 }
 .header__logo a {
   display: inline-block;
+  /* @家銘更新 */
+  width: 144.32px; 
+  height: 72px;
+  margin-top: -10px;
 }
 
 .header__top__right {
   float: right;
+  /* @家銘更新 */
+  padding-top: 8px;
 }
 
 .header__top__right__links {
@@ -3425,6 +3432,10 @@ background-color: rgba(0, 0, 0, 0.608);
 }
 /* Tablet Device = 768px */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* @家銘新增 */
+  .header__logo {
+    margin-right: 20px
+  }
   .header__menu ul li a {
     padding: 20px 28px 18px;
   }
