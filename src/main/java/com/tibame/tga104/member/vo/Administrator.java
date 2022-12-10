@@ -1,9 +1,5 @@
 package com.tibame.tga104.member.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -12,7 +8,7 @@ import java.io.Serializable;
 @Table(name = "administrator")
 //@NoArgsConstructor
 //@AllArgsConstructor
-public class AdministratorVO implements Serializable {
+public class Administrator implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "adminNo")
@@ -32,10 +28,10 @@ public class AdministratorVO implements Serializable {
     @Column(name = "verifyAdCoupon")
     private Boolean verifyAdCoupon;
 
-    public AdministratorVO() {
+    public Administrator() {
     }
 
-    public AdministratorVO(Integer adminNo, String adminAccount, String adminPassword, String adminName, Boolean modifyAdminData, Boolean modifyMemberData, Boolean verifyRestaurant, Boolean verifyAdCoupon) {
+    public Administrator(Integer adminNo, String adminAccount, String adminPassword, String adminName, Boolean modifyAdminData, Boolean modifyMemberData, Boolean verifyRestaurant, Boolean verifyAdCoupon) {
         this.adminNo = adminNo;
         this.adminAccount = adminAccount;
         this.adminPassword = adminPassword;
