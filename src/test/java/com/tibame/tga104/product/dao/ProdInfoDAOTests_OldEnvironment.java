@@ -1,8 +1,9 @@
 package com.tibame.tga104.product.dao;
 
-public class ProdInfoDAOTests {
+/*此為舊環境的測試檔案，切換成spring boot環境後，尚未配合環境調整*/
+public class ProdInfoDAOTests_OldEnvironment {
 
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
 		
 		// findByPrimaryKey 主鍵查詢
 //		ProdInfoDAO_JDBC dao = new ProdInfoDAO_JDBC();
@@ -55,6 +56,6 @@ public class ProdInfoDAOTests {
 //		ProdInfoDAO_JDBC dao = new ProdInfoDAO_JDBC();
 //		System.out.println(dao.delete(10));
 
-	}
+//	}
 
 }

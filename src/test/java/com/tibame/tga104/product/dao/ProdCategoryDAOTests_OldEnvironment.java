@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 import com.tibame.tga104.product.vo.ProdCategoryVO;
 
 /*此為舊環境的測試檔案，切換成spring boot環境後，尚未配合環境調整*/
-@Component
-@WebServlet("/TestProdCategoryDAO")
+//@Component
+//@WebServlet("/TestProdCategoryDAO")
 public class ProdCategoryDAOTests_OldEnvironment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
