@@ -1,41 +1,62 @@
 package com.tibame.tga104.order.controller;
 
 import com.tibame.tga104.order.service.AdOrderService;
-import com.tibame.tga104.order.vo.AdOrderVO;
+import com.tibame.tga104.order.vo.AdOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 public class AdOrderController {
     @Autowired
     private AdOrderService adOrderService;
 
-    @GetMapping("/adOrder-read/{adOrderNo}")
-    private ResponseEntity<AdOrderVO> read(@PathVariable Integer adOrderNo){
-        AdOrderVO adOrderVO = adOrderService.getByAdOrderNo(adOrderNo);
-        return ResponseEntity.status(HttpStatus.OK).body(adOrderVO);
+    @GetMapping("/adOrder/{adOrderNo}")
+    private ResponseEntity<AdOrder> getByAdOrderNo(@PathVariable Integer adOrderNo) {
+        AdOrder adOrder = adOrderService.getByAdOrderNo(adOrderNo);
+        if (adOrder != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(adOrder);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
-    @PostMapping("/adOrder-create")
-    private ResponseEntity<AdOrderVO> create(@RequestBody AdOrderVO adOrderVO){
-        Integer adOrderNo = adOrderService.insert(adOrderVO);
-        AdOrderVO newAdOrder = adOrderService.getByAdOrderNo(adOrderNo);
+    @GetMapping("/adOrder/{restaurantNo}")
+    public ResponseEntity<AdOrder> getByRestaurantNo(@PathVariable Integer restaurantNo) {
+        AdOrder adOrder = adOrderService.getByRestaurantNo(restaurantNo);
+        if (adOrder != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(adOrder);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @PostMapping("/adOrder")
+    private ResponseEntity<AdOrder> createAdOrder(@RequestBody @Valid AdOrder adOrder) {
+        Integer newAdOrderNo = adOrderService.createAdOrder(adOrder);
+        AdOrder newAdOrder = adOrderService.getByAdOrderNo(newAdOrderNo);
         return ResponseEntity.status(HttpStatus.CREATED).body(newAdOrder);
-
-    }
-    @PutMapping("/adOrder-update/{adOrderNo}")
-    public ResponseEntity<AdOrderVO> update(@PathVariable Integer adOrderNo,
-                       @RequestBody AdOrderVO adOrderVO){
-        adOrderVO.setAdOrderNo(adOrderNo);
-        adOrderService.update(adOrderVO);
-
-        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @DeleteMapping("/adOrder-delete/{adOrderNo}")
-    public ResponseEntity<AdOrderVO> delete(@PathVariable Integer adOrderNo){
+    @PutMapping("/adOrder/{adOrderNo}")
+    public ResponseEntity<AdOrder> updateAdOrder(@PathVariable Integer adOrderNo,
+                                                 @RequestBody @Valid AdOrder adOrder) {
+        AdOrder byAdOrderNo = adOrderService.getByAdOrderNo(adOrderNo);
+        if (byAdOrderNo != null) {
+            adOrderService.updateAdOrder(adOrderNo, adOrder);
+            AdOrder updateAdOrder = adOrderService.getByAdOrderNo(adOrderNo);
+            return ResponseEntity.status(HttpStatus.OK).body(updateAdOrder);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+    }
+
+    @DeleteMapping("/adOrder/{adOrderNo}")
+    public ResponseEntity<AdOrder> deleteByAdOrderNo(@PathVariable Integer adOrderNo) {
         adOrderService.deleteByAdOrderNo(adOrderNo);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

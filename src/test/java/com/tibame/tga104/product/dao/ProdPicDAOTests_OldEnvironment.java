@@ -6,14 +6,15 @@ import org.hibernate.Transaction;
 
 import com.tibame.tga104.common.connection.HibernateUtil;
 
-public class ProdPicDaoTests {
+/*此為舊環境的測試檔案，切換成spring boot環境後，尚未配合環境調整*/
+public class ProdPicDAOTests_OldEnvironment {
 
-	public static void main(String[] args) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
-		
-		ProdPicDAO dao = new ProdPicDAO_Hibernate(HibernateUtil.getSessionFactory());
+//	public static void main(String[] args) {
+//		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+//		Session session = sessionFactory.getCurrentSession();
+//		Transaction transaction = session.beginTransaction();
+//		
+//		ProdPicDAO dao = new ProdPicDAO_Hibernate();
 		
 		// findByPrimaryKey 主鍵查詢
 //		System.out.println(dao.findByPrimaryKey(3));
@@ -58,9 +59,9 @@ public class ProdPicDaoTests {
 //			System.out.println(p);
 //		}
 		
-		transaction.commit();
-		session.close();
-		HibernateUtil.closeSessionFactory();
-	}
+//		transaction.commit();
+//		session.close();
+//		HibernateUtil.closeSessionFactory();
+//	}
 
 }

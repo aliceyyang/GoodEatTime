@@ -6,13 +6,14 @@ import org.hibernate.Transaction;
 
 import com.tibame.tga104.common.connection.HibernateUtil;
 
-public class ProdPicServiceTests {
+/*此為舊環境的測試檔案，切換成spring boot環境後，尚未配合環境調整*/
+public class ProdPicServiceTests_OldEnvironment {
 	private static ProdPicService prodPicService = new ProdPicService();
 	
-	public static void main(String[] args) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+//	public static void main(String[] args) {
+//		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+//		Session session = sessionFactory.getCurrentSession();
+//		Transaction transaction = session.beginTransaction();
 		
 		// 測試新增
 //		try (InputStream in = Files.newInputStream(Path.of("C:\\GoodEatTime\\Workspace\\GoodEatTime\\src\\main\\webapp\\Front_End\\img\\shop\\product-7.jpg"))){
@@ -44,9 +45,9 @@ public class ProdPicServiceTests {
 		// 測試透過商品編號查找
 //		System.out.println(prodPicService.findByProdNo(3));
 		
-		transaction.commit();
-		session.close();
-		HibernateUtil.closeSessionFactory();
-	}
+//		transaction.commit();
+//		session.close();
+//		HibernateUtil.closeSessionFactory();
+//	}
 
 }

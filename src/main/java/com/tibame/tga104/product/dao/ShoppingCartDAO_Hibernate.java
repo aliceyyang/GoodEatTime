@@ -2,20 +2,20 @@ package com.tibame.tga104.product.dao;
 
 import java.util.List;
 
+import javax.persistence.PersistenceContext;
+
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import com.tibame.tga104.product.vo.ShoppingCartPK;
 import com.tibame.tga104.product.vo.ShoppingCartVO;
 
+@Repository
 public class ShoppingCartDAO_Hibernate implements ShoppingCartDAO {
-	private SessionFactory sessionFactory;
-	public ShoppingCartDAO_Hibernate(SessionFactory sessionFactory) {
-		super();
-		this.sessionFactory = sessionFactory;
-	}
+	@PersistenceContext
+	private Session session;
 	public Session getSession() {
-		return sessionFactory.getCurrentSession();
+		return session;
 	}
 	@Override
 	public ShoppingCartVO insert(ShoppingCartVO shoppingCartVO) {

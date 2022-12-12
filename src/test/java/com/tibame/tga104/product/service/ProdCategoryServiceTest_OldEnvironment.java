@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /*此為舊環境的測試檔案，切換成spring boot環境後，尚未配合環境調整*/
 @WebServlet("/TestProdCategoryService")
-public class ProdCategoryServiceTest extends HttpServlet {
+public class ProdCategoryServiceTest_OldEnvironment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ProdCategoryServiceTest() {
+    public ProdCategoryServiceTest_OldEnvironment() {
         super();
     }
 

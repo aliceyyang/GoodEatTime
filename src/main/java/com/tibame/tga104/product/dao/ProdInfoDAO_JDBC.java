@@ -52,7 +52,7 @@ public class ProdInfoDAO_JDBC implements ProdInfoDAO{
 	}
 
 	@Override
-	public void update(ProdInfoVO productVO) {
+	public ProdInfoVO update(ProdInfoVO productVO) {
 		String updateSQL = "update prodInfo set restaurantNo = ?, prodCategoryNo = ?,"
 				+ " prodName = ?, prodPrice = ?, prodStock = ?, prodDescription = ?,"
 				+ " prodContent = ?, prodCommentQty = ?, totalCommentRating = ? where prodNo = ?;";
@@ -75,8 +75,11 @@ public class ProdInfoDAO_JDBC implements ProdInfoDAO{
 			ps.setInt(10, productVO.getProdNo());
 			
 			ps.executeUpdate();
+			
+			return findByPrimaryKey(productVO.getProdNo());
 		}catch(SQLException e) {
 			e.printStackTrace();
+			return null;
 		}
 	}
 

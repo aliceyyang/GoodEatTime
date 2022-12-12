@@ -1,17 +1,38 @@
 package com.tibame.tga104.product.vo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="prodInfo")
 public class ProdInfoVO implements java.io.Serializable{
 	
 	private static final long serialVersionUID = -8107177340605184651L;
+	@Id
+	@Column(name="prodNo")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer prodNo;
+	@Column(name="restaurantNo", nullable = false)
 	private Integer restaurantNo;
+	@Column(name="prodCategoryNo", nullable = false)
 	private Integer prodCategoryNo;
+	@Column(name="prodName", nullable = false)
 	private String prodName;
+	@Column(name="prodPrice", nullable = false)
 	private Integer prodPrice;
+	@Column(name="prodStock", nullable = false)
 	private Integer prodStock;
+	@Column(name="prodDescription")
 	private String prodDescription;
+	@Column(name="prodContent")
 	private String prodContent;
+	@Column(name="prodCommentQty", nullable = false)
 	private Integer prodCommentQty;
+	@Column(name="totalCommentRating", nullable = false)
 	private Integer totalCommentRating;
 	
 	public Integer getProdNo() {
