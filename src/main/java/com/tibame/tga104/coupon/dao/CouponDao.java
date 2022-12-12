@@ -15,5 +15,5 @@ public interface CouponDao {
 	public CouponVO findByPrimaryKey(Integer CouponVO);
 	
 	public List<CouponVO> getAll();
-
+	
 }

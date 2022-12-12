@@ -1,5 +1,6 @@
 package com.tibame.tga104.coupon.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.tibame.tga104.coupon.dao.CouponDao;
@@ -15,8 +16,8 @@ public class CouponServiceImpl implements CouponService {
 	}
 
 	@Override
-	public CouponVO addCoupon(Integer restaurantNo, Integer adminNo, String couponApplyDate, String couponName,
-			String couponStartTime, String couponEndTime, Boolean verified, String couponContent,
+	public CouponVO addCoupon(Integer restaurantNo, Integer adminNo, Timestamp couponApplyDate, String couponName,
+			Timestamp couponStartTime, Timestamp couponEndTime, Boolean verified, String couponContent,
 			Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
 			String verificationDetail) {
 
@@ -40,54 +41,39 @@ public class CouponServiceImpl implements CouponService {
 		return couponVO;
 	}
 
+//	public CouponVO updateCoupon(Integer restaurantNo, Integer adminNo, Timestamp couponApplyDate, String couponName,
+//			Timestamp couponStartTime, Timestamp couponEndTime, Boolean verified, String couponContent,
+//			Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
+//			String verificationDetail) {
 	@Override
-	public CouponVO updateCoupon(Integer restaurantNo, Integer adminNo, String couponApplyDate, String couponName,
-			String couponStartTime, String couponEndTime, Boolean verified, String couponContent,
-			Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
-			String verificationDetail) {
-
-		CouponVO couponVO = new CouponVO();
-		couponVO.setRestaurantNo(restaurantNo);
-		couponVO.setAdminNo(adminNo);
-		couponVO.setCouponApplyDate(couponApplyDate);
-		couponVO.setCouponName(couponName);
-		couponVO.setCouponStartTime(couponStartTime);
-		couponVO.setCouponEndTime(couponEndTime);
-		couponVO.setVerified(verified);
-		couponVO.setCouponContent(couponContent);
-		couponVO.setUsageLimitation(usageLimitation);
-		couponVO.setAmountOrFold(amountOrFole);
-		couponVO.setMaxIssueQty(maxIssueQty);
-		couponVO.setIssuedQty(issuedQty);
-		couponVO.setVerificationDetail(verificationDetail);
+	public CouponVO updateCoupon(CouponVO couponVO) {	
 		dao.update(couponVO);
-
 		return couponVO;
-
 	}
 
 	@Override
-	public void deleteCoupon(StringBuffer errormsg, Integer couponNo) {
-		if (couponNo == null) {
-			errormsg.append("請輸入優惠券號碼");
-		} else {
+	public void deleteCoupon(Integer couponNo) {
 			dao.delete(couponNo);
 		}
 
-	}
 
 	@Override
-	public CouponVO getOneCoupon(StringBuffer errormsg, Integer couponNo) {
-		if (couponNo == null) {
-			errormsg.append("請輸入優惠券號碼");
-			return null;
-		} else {
+	public CouponVO getOneCoupon(Integer couponNo) {
 			return dao.findByPrimaryKey(couponNo);
 		}
-	}
 
 	@Override
 	public List<CouponVO> getAll() {
 		return dao.getAll();
 	}
+
+	@Override
+	public CouponVO updateCoupon(Integer restaurantNo, Integer adminNo, Timestamp couponApplyDate, String couponName,
+			Timestamp couponStartTime, Timestamp couponEndTime, Boolean verified, String couponContent,
+			Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
+			String verificationDetail) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
