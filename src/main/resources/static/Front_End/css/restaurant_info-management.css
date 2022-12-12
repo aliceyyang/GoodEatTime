@@ -25,20 +25,23 @@ div.pic_set{
 
       #drop_zone {
         border: 1px dashed #ccc;
-        height: 100px;
+        width: 120px;
+        min-height: 150px;
         position: relative;
       }
+      
       #drop_zone span.text {
         position: absolute;
         display: inline-block;
-        left: 50%;
+        left: 55%;
         top: 50%;
         transform: translate(-50%, -50%);
         color: lightgray;
+        width: 100px;
       }
       #drop_zone.-on {
-        border: 1px dashed lightblue;
-        box-shadow: 3px 3px 5px lightblue inset, -3px -3px 5px lightblue inset;
+        border: 1px dashed rgb(200, 194, 194);
+        box-shadow: 0 0 15px rgb(200, 194, 194)
       }
 
       input[disabled] {
@@ -46,70 +49,30 @@ div.pic_set{
         cursor: not-allowed;
       }
 
-      #preview {
-        border: 1px solid lightgray;
-        display: inline-block;
-        width: 100px;
-        min-height: 150px;
-        position: relative;
-      }
-      #preview span.text {
-        position: absolute;
-        display: inline-block;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        /* z-index: -1; */
-        color: lightgray;
-      }
-      #preview img.preview_img {
-        width: 100%;
-      }
-
+    
       /* ==========菜單圖設定=========== */
 
       #drop_zone2 {
         border: 1px dashed #ccc;
-        height: 100px;
-        position: relative;
-      }
-      #drop_zone2 span.text {
-        position: absolute;
-        display: inline-block;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        color: lightgray;
-      }
-      #drop_zone2.-on {
-        border: 1px dashed lightblue;
-        box-shadow: 3px 3px 5px lightblue inset, -3px -3px 5px lightblue inset;
-      }
-
-      input[disabled] {
-        background-color: #eee;
-        cursor: not-allowed;
-      }
-
-      #preview2 {
-        border: 1px solid lightgray;
-        display: inline-block;
-        width: 100px;
+        width: 120px;
         min-height: 150px;
         position: relative;
       }
-      #preview2 span.text {
+      
+      #drop_zone2 span.text {
         position: absolute;
         display: inline-block;
-        left: 50%;
+        left: 65%;
         top: 50%;
         transform: translate(-50%, -50%);
-        /* z-index: -1; */
         color: lightgray;
+        width: 100px;
       }
-      #preview img.preview_img2 {
-        width: 100%;
+      #drop_zone2.-on {
+        border: 1px dashed rgb(200, 194, 194);
+        box-shadow: 0 0 15px rgb(200, 194, 194)
       }
+
 
       #pic_remark{
         width:300px;
@@ -121,45 +84,23 @@ div.pic_set{
 
       #drop_zone3 {
         border: 1px dashed #ccc;
-        height: 100px;
-        position: relative;
-      }
-      #drop_zone3 span.text {
-        position: absolute;
-        display: inline-block;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        color: lightgray;
-      }
-      #drop_zone3.-on {
-        border: 1px dashed lightblue;
-        box-shadow: 3px 3px 5px lightblue inset, -3px -3px 5px lightblue inset;
-      }
-
-      input[disabled] {
-        background-color: #eee;
-        cursor: not-allowed;
-      }
-
-      #preview3 {
-        border: 1px solid lightgray;
-        display: inline-block;
-        width: 100px;
+        width: 120px;
         min-height: 150px;
         position: relative;
       }
-      #preview3 span.text {
+      
+      #drop_zone3 span.text {
         position: absolute;
         display: inline-block;
-        left: 50%;
+        left: 65%;
         top: 50%;
         transform: translate(-50%, -50%);
-        /* z-index: -1; */
         color: lightgray;
+        width: 100px;
       }
-      #preview3 img.preview_img {
-        width: 100%;
+      #drop_zone3.-on {
+        border: 1px dashed rgb(200, 194, 194);
+        box-shadow: 0 0 15px rgb(200, 194, 194)
       }
 
       #news_btn{
