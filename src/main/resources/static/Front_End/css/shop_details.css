@@ -1,0 +1,87 @@
+.spad {
+    background-color: white;
+}
+
+/* details星等相關css */
+.product__details__rating {
+    position: absolute;
+    left: 0;
+    /* top: -22px; */
+    text-align: center;
+    width: 83.3px;
+    unicode-bidi: bidi-override;
+    color: #ccc;
+    font-size: 20px;
+    position: relative;
+    margin-right: 5px;
+    padding: 0;
+    display: inline-block;
+    
+}
+.fill-ratings {
+    padding: 0;
+    position: relative;
+    z-index: 0;
+    display: block;
+    top: 0;
+    left: 0; 
+    overflow: hidden;
+}
+
+.fill-ratings span {
+    /* Allows us to grab the width of the span elements*/
+    display: inline-block;
+    color: #f08632 !important;
+} 
+.empty-ratings {
+    margin-top: -28px;
+    padding: 0;
+    display: block;
+    z-index: 1;
+}
+.empty-ratings span {
+    color:#ccc !important;
+}
+.product__details__rating span {
+    /* background: #ffffff;
+    padding: 6px 10px 4px;
+    box-shadow: 0 0 10px rgb(223 223 224 / 70%); */
+    cursor: default;
+}
+
+/* related product星等相關css */
+.product__item__pic .product__rating {
+    position: absolute;
+    left: 0;
+    /* top: -22px; */
+    text-align: center;
+    width: 83.3px;
+    float: right;
+    unicode-bidi: bidi-override;
+    color: #ccc;
+    font-size: 20px;
+    position: relative;
+    margin-right: 5px;
+    padding: 0;
+}
+
+.product__item__pic .empty-ratings {
+    margin-top: -30.2px;
+    padding: 0;
+    display: block;
+    z-index: 1;
+}
+
+/*尚未分類*/
+div.product__details__text p {
+    height: 84px;
+}
+
+div.product__details__option .quantity {
+    float: left;
+    margin-left: 50px;
+}
+div.product__details__option a.primary-btn {
+    float: right;
+    margin-right: 50px;
+}
