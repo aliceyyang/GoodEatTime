@@ -20,7 +20,8 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	
 	@Override
 	
-	public void insert(RestaurantVO restaurantVO) {
+	public boolean insert(RestaurantVO restaurantVO) {
+		int rowCount = 0;
 		String insert = "insert into restaurant(restaurantTel,restaurantName,restaurantTaxIDNo,restaurantAccountInfo,restaurantBusinessHour,restaurantAddr,restaurantStatus,restaurantAccount,restaurantPassword,restaurantCommentQuantity,totalCommentRating)"
 				+ "values(?,?,?,?,?,?,?,?,?,?,?);";
 		
@@ -39,16 +40,17 @@ public class RestaurantDaoImpl implements RestaurantDao {
 			ps.setInt(10,restaurantVO.getRestaurantCommentQuantity());
 			ps.setInt(11,restaurantVO.getTotalCommentRating());
 			
-			
+			rowCount = ps.executeUpdate();
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
-		
+		return rowCount != 0;
 	}
 
 	@Override
-	public void update(RestaurantVO restaurantVO) {
+	public boolean update(RestaurantVO restaurantVO) {
+		int rowCount = 0;
 		String update = "update restaurant set restaurantTel=?,restaurantName=?,restaurantTaxIDNo=?,restaurantAccountInfo=?,restaurantBusinessHour=?,restaurantAddr=?,"
 				+ "restaurantAccount=?,restaurantPassword=? where restaurantNo=?";
 		try(Connection con = getConnection();
@@ -64,12 +66,12 @@ public class RestaurantDaoImpl implements RestaurantDao {
 			ps.setString(8,restaurantVO.getRestaurantPassword());
 			ps.setInt(9,restaurantVO.getRestaurantNo());
 			
-			ps.executeUpdate();
+			rowCount = ps.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		return rowCount != 0;
 	}
 
 	@Override
@@ -87,6 +89,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 
