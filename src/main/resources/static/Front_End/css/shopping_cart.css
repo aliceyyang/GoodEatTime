@@ -12,6 +12,9 @@ th.prod__cart__head3 {
 } */
 
 /* ================================= shopping cart table begin ================================= */
+.spad {
+    background-color: white;
+}
 thead > tr > th {
     color: white !important;
     background-color: black;

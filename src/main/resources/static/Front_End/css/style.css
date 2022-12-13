@@ -359,7 +359,8 @@ ol {
 
 .header__top__inner {
   height: 102px;
-  padding-top: 38px;
+  /* @家銘更新 */
+  padding-top: 30px;
 }
 
 .header__top__left {
@@ -447,10 +448,16 @@ ol {
 }
 .header__logo a {
   display: inline-block;
+  /* @家銘更新 */
+  width: 144.32px; 
+  height: 72px;
+  margin-top: -10px;
 }
 
 .header__top__right {
   float: right;
+  /* @家銘更新 */
+  padding-top: 8px;
 }
 
 .header__top__right__links {
@@ -1219,8 +1226,9 @@ ol {
   position: relative;
 }
 .mask{
-padding: 70px;
-background-color: rgba(0, 0, 0, 0.608);
+  /*@家銘調整*/
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.608);
 }
 
 .footer__widget {
@@ -1285,7 +1293,8 @@ background-color: rgba(0, 0, 0, 0.608);
  .footer__member .footer__social a {
   display: inline-block;
   color: #ffffff;
-  background: rgba(225, 225, 225, 0.1);
+  /* @家銘取消背景色 */
+  /* background: rgba(225, 225, 225, 0.1); */
   /*height: 45px;
   width: 45px;*/
   border-radius: 50%;
@@ -1326,7 +1335,8 @@ background-color: rgba(0, 0, 0, 0.608);
  .footer__restaurant .footer__social a {
   display: inline-block;
   color: #ffffff;
-  background: rgba(225, 225, 225, 0.1);
+  /* @家銘取消背景色 */
+  /* background: rgba(225, 225, 225, 0.1); */
   /*height: 45px;
   width: 45px;*/
   border-radius: 50%;
@@ -1368,7 +1378,8 @@ background-color: rgba(0, 0, 0, 0.608);
  .footer__shopping .footer__social a {
   display: inline-block;
   color: #ffffff;
-  background: rgba(225, 225, 225, 0.1);
+  /* @家銘取消背景色 */
+  /* background: rgba(225, 225, 225, 0.1); */
   /*height: 45px;
   width: 45px;*/
   border-radius: 50%;
@@ -1407,7 +1418,8 @@ background-color: rgba(0, 0, 0, 0.608);
  .footer__aboutus .footer__social a {
   display: inline-block;
   color: #ffffff;
-  background: rgba(225, 225, 225, 0.1);
+  /* @家銘取消背景色 */
+  /* background: rgba(225, 225, 225, 0.1); */
   /*height: 45px;
   width: 45px;*/
   border-radius: 50%;
@@ -3425,6 +3437,10 @@ background-color: rgba(0, 0, 0, 0.608);
 }
 /* Tablet Device = 768px */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* @家銘新增 */
+  .header__logo {
+    margin-right: 20px
+  }
   .header__menu ul li a {
     padding: 20px 28px 18px;
   }
@@ -4102,6 +4118,10 @@ background-color: rgba(0, 0, 0, 0.608);
 
   .search-model-form input {
     width: 100%;
+  }
+  footer div.mask {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 @media only screen and (max-width: 575px) {

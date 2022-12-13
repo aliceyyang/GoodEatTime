@@ -2,26 +2,26 @@ package com.tibame.tga104.product.dao;
 
 import java.util.List;
 
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tibame.tga104.product.vo.ProdPicVO;
 
+@Repository
 public class ProdPicDAO_Hibernate implements ProdPicDAO {
-	private SessionFactory sessionFactory;
-	public ProdPicDAO_Hibernate(SessionFactory sessionFactory) {
-		super();
-		this.sessionFactory = sessionFactory;
-	}
+	@PersistenceContext
+	private Session session;
+	
 	public Session getSession() {
-		return sessionFactory.getCurrentSession();
+		return session;
 	}
 	
 	@Override

@@ -1,16 +1,20 @@
 package com.tibame.tga104.order.service;
 
 
-import com.tibame.tga104.order.vo.AdOrderVO;
+import com.tibame.tga104.order.vo.AdOrder;
+
+import java.util.List;
 
 public interface AdOrderService {
-    Integer insert(AdOrderVO adOrderVO);
+    Integer createAdOrder(AdOrder adOrder);
 
-    void update(AdOrderVO adOrderVO);
+    void updateAdOrder(Integer adOrderVO, AdOrder adOrder);
 
     void deleteByAdOrderNo(Integer adOrderNo);
 
-    AdOrderVO getByAdOrderNo(Integer adOrderNo);
+    AdOrder getByAdOrderNo(Integer adOrderNo);
 
-    AdOrderVO getByRestaurantNo(Integer restaurantNo);
+    AdOrder getByRestaurantNo(Integer restaurantNo);
+
+    List<AdOrder> getByAll();;
 }

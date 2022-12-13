@@ -1,16 +1,19 @@
 package com.tibame.tga104.member.dao;
 
-import com.tibame.tga104.member.vo.AdministratorVO;
+import com.tibame.tga104.member.vo.Administrator;
+
+import java.util.List;
 
 public interface AdministratorDAO {
-    Integer insert(AdministratorVO administratorVO);
+    Integer insert(Administrator administrator);
 
-    void update(AdministratorVO administratorVO);
+    void update(Administrator administrator);
 
     void deleteByAdminNo(Integer adminNo);
 
-    AdministratorVO getByAdminNo(Integer adminNo);
+    Administrator getByAdminNo(Integer adminNo);
 
-    AdministratorVO getByAdminAccount(String adminAccount);
+    Administrator getByAdminAccount(String adminAccount);
 
+    List<Administrator> getByAll();
 }
