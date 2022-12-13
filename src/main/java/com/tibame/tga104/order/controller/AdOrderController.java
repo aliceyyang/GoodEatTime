@@ -11,16 +11,17 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class AdOrderController {
     @Autowired
     private AdOrderService adOrderService;
 
-    @GetMapping("/adOrder-read")
+    @GetMapping("/adOrder")
     private ResponseEntity<List<AdOrder>> getByAll() {
         List<AdOrder> getAdOrderVOList = adOrderService.getByAll();
         return ResponseEntity.status(HttpStatus.OK).body(getAdOrderVOList);
     }
-    @GetMapping("/adOrder/{adOrderNo}")
+    @GetMapping("/adOrder/adOrderNo/{adOrderNo}")
     private ResponseEntity<AdOrder> getByAdOrderNo(@PathVariable Integer adOrderNo) {
         AdOrder adOrder = adOrderService.getByAdOrderNo(adOrderNo);
         if (adOrder != null) {
@@ -30,7 +31,7 @@ public class AdOrderController {
         }
     }
 
-    @GetMapping("/adOrder/{restaurantNo}")
+    @GetMapping("/adOrder/restaurantNo/{restaurantNo}")
     public ResponseEntity<AdOrder> getByRestaurantNo(@PathVariable Integer restaurantNo) {
         AdOrder adOrder = adOrderService.getByRestaurantNo(restaurantNo);
         if (adOrder != null) {

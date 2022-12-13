@@ -24,9 +24,9 @@ function searchFunction() {
 // 日期排序
 function init() {
   const reserve = document.querySelector("#reserve");
-
+  const url = '../reservation/member/inf';
   // fetch
-  fetch("/js/test.json")
+  fetch(url)
     // body to json
     .then((res) => res.json())
     // get data
@@ -35,13 +35,16 @@ function init() {
         if (a.reserveDate > b.reserveDate) return 1
         if (a.reserveDate < b.reserveDate) return -1
         return 0
-
       })
+
       reserve.innerHTML =
         data.map((e) => Template(e.reserveNo, e.restaurantName, e.memberNo, e.reserveDate, e.reserveTime, e.reserveNum, e.remark)).join('')
 
     });
 }
+
+
+
 window.onload = init;
 
 function Template(reserveNo, restaurantName, memberNo, reserveDate, reserveTime, reserveNum, remark) {
@@ -51,6 +54,6 @@ function Template(reserveNo, restaurantName, memberNo, reserveDate, reserveTime,
   <td>${reserveDate}</td>
   <td>${reserveTime}</td>
   <td>${reserveNum}</td>
-  <td>${remark}</td>
+  <td>${remark ?? '-'}</td>
   </tr> `
 }

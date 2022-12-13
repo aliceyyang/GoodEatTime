@@ -1,3 +1,52 @@
 .spad {
     background-color: white;
 }
+/* .product__item__pic {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+.product__item__pic .product__rating {
+    position: absolute;
+    left: 0;
+    /* top: -22px; */
+    text-align: center;
+    width: 83.3px;
+    float: right;
+    unicode-bidi: bidi-override;
+    color: #ccc;
+    font-size: 20px;
+    position: relative;
+    margin-right: 5px;
+    padding: 0;
+
+    
+}
+.fill-ratings {
+    color: #f08632;
+    padding: 0;
+    position: relative;
+    z-index: 0;
+    display: block;
+    top: 0;
+    left: 0; 
+    overflow: hidden;
+}
+
+/* Allows us to grab the width of the span elements*/
+.fill-ratings span {
+    display: inline-block;
+} 
+.empty-ratings {
+    margin-top: -30.2px;
+    padding: 0;
+    display: block;
+    z-index: 1;
+}
+.product__item__pic span {
+    /* background: #ffffff;
+    padding: 6px 10px 4px;
+    box-shadow: 0 0 10px rgb(223 223 224 / 70%); */
+    cursor: default;
+}

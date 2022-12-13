@@ -3,7 +3,9 @@ package com.tibame.tga104.restaurant.service;
 import java.util.List;
 
 import com.tibame.tga104.restaurant.vo.RestaurantVO;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface RestaurantService {
 	
 	
@@ -18,4 +20,6 @@ public interface RestaurantService {
 	List<RestaurantVO> getAll();
 	
 	RestaurantVO getOneRestaurant(Integer restaurantNo);
+
+	List<RestaurantVO> getAccountByAll(); // written by Alice
 }

@@ -9,9 +9,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.tibame.tga104.core.vo.Message;
 @Entity
 @Table(name = "member") // 資料庫名稱
-public class MemberVO implements Serializable{
+
+//public class MemberVO implements Serializable{
+
+public class MemberVO extends Message{
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "memberNo")

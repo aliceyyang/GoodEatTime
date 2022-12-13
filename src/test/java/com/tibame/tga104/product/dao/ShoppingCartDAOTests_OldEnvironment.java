@@ -6,14 +6,15 @@ import org.hibernate.Transaction;
 
 import com.tibame.tga104.common.connection.HibernateUtil;
 
-public class ShoppingCartDAOTests {
+/*此為舊環境的測試檔案，切換成spring boot環境後，尚未配合環境調整*/
+public class ShoppingCartDAOTests_OldEnvironment {
 
-	public static void main(String[] args) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
-		
-		ShoppingCartDAO dao = new ShoppingCartDAO_Hibernate(HibernateUtil.getSessionFactory());
+//	public static void main(String[] args) {
+//		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+//		Session session = sessionFactory.getCurrentSession();
+//		Transaction transaction = session.beginTransaction();
+//		
+//		ShoppingCartDAO dao = new ShoppingCartDAO_Hibernate(HibernateUtil.getSessionFactory());
 		
 		// 測試新增
 //		ShoppingCartVO insert = new ShoppingCartVO();
@@ -39,11 +40,11 @@ public class ShoppingCartDAOTests {
 //		System.out.println(dao.getAll());
 		
 		// 測試透過會員編號查找
-		System.out.println(dao.findByMemberNo(2));
-		
-		transaction.commit();
-		session.close();
-		HibernateUtil.closeSessionFactory();
-	}
+//		System.out.println(dao.findByMemberNo(2));
+//		
+//		transaction.commit();
+//		session.close();
+//		HibernateUtil.closeSessionFactory();
+//	}
 
 }

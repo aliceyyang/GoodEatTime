@@ -116,8 +116,8 @@
         <div class="col-lg-12">
           <nav class="header__menu mobile-menu">
             <ul>
-              <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-              <li><a href="./about.html">會員專區</a></li>
+              <li><a href="./GoodEatTime.html">首頁</a></li>
+              <li class="active"><a href="./about.html">會員專區</a></li>
               <li><a href="./shop.html">餐廳</a></li>
               <li><a href="./blog.html">線上商城</a></li>
               <li>
@@ -151,7 +151,7 @@
             <li>
               <a href="http://127.0.0.1:5500/cake-main/j_forgetpassword.html#">帳號管理</a>
             </li>
-            <li><a href="">訂位資訊</a></li>
+            <li class="active"><a href="">訂位資訊</a></li>
             <li><a href="">商城訂單</a></li>
             <li><a href="">我的評論</a></li>
             <li><a href="">我的最愛</a></li>
@@ -165,7 +165,6 @@
           <input type="text" id="reserve_search" placeholder="輸入欲查詢的餐廳" onkeyup="searchFunction()">
           <h2>訂位資訊</h2>
           <table class="table" id="reserver_detail" width="100%" cellspacing="0">
-
             <thead>
               <tr class="header">
                 <th>訂位編號</th>
@@ -177,97 +176,6 @@
               </tr>
             </thead>
             <tbody id="reserve">
-              
-              <!-- <tr>
-                <td>32</td>
-                <td>豐舍</td>
-                <td>Alice</td>
-                <td>2022/11/22</td>
-                <td>12:00</td>
-                <td>2</td>
-                <td>需要兒童椅</td>
-              </tr>
-              <tr>
-                <td>22</td>
-                <td>饗食天堂</td>
-                <td>Jane</td>
-                <td>2022/11/25</td>
-                <td>12:00</td>
-                <td>4</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>43</td>
-                <td>Woosa</td>
-                <td>Mandy</td>
-                <td>2022/11/29</td>
-                <td>19:00</td>
-                <td>3</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>77</td>
-                <td>Taïrroir態芮</td>
-                <td>Joy</td>
-                <td>2022/12/22</td>
-                <td>12:00</td>
-                <td>6</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>56</td>
-                <td>游壽司</td>
-                <td>Henry</td>
-                <td>2022/12/02</td>
-                <td>13:00</td>
-                <td>3</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>62</td>
-                <td>螺絲瑪莉義麵坊</td>
-                <td>Ally</td>
-                <td>2022/11/30</td>
-                <td>12:00</td>
-                <td>4</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>89</td>
-                <td>長鼻子泰國餐廳</td>
-                <td>Cindy</td>
-                <td>2022/12/12</td>
-                <td>13:00</td>
-                <td>5</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>10</td>
-                <td>麵屋一燈ITTO</td>
-                <td>Lily</td>
-                <td>2022/12/11</td>
-                <td>12:00</td>
-                <td>2</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>18</td>
-                <td>LeTAO小樽洋菓子</td>
-                <td>Derek</td>
-                <td>2022/11/27</td>
-                <td>19:00</td>
-                <td>2</td>
-                <td>不吃辣</td>
-              </tr>
-              <tr>
-                <td>28</td>
-                <td>柒串燒屋</td>
-                <td>Rita</td>
-                <td>2022/11/14</td>
-                <td>18:00</td>
-                <td>6</td>
-                <td></td>
-              </tr> -->
             </tbody>
           </table>
         </div>
@@ -284,55 +192,59 @@
     <div class="mask">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="footer__member">
               <h6>會員專區</h6>
               <div class="footer__social">
                 <a href="#">登入會員<i></i></a>
-                <a href="#">定位管理<i></i></a>
-                <br />
+                <a href="#">訂位管理<i></i></a>
+                <br>
                 <a href="#">加入會員<i></i></a>
                 <a href="#">定位管理<i></i></a>
-                <br />
+                <br>
                 <a href="#">優惠券<i></i></a>
                 <a href="#">我的評論<i></i></a>
               </div>
             </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
             <div class="footer__restaurant">
               <h6>餐廳</h6>
               <div class="footer__social">
                 <a href="#">訂位<i></i></a>
-                <br />
+                <br>
                 <a href="#">購物車<i></i></a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="col-lg-2 col-md-3 col-sm-3">
             <div class="footer__shopping">
               <h6>線上商城</h6>
               <div class="footer__social">
                 <a href="#">商品搜尋<i></i></a>
-                <br />
+                <br>
                 <a href="#">購物車<i></i></a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="col-lg-2 col-md-3 col-sm-3">
             <div class="footer__aboutus">
               <h6>關於我們</h6>
               <div class="footer__social">
                 <a href="#">網站介紹<i></i></a>
-                <br />
+                <br>
                 <a href="#">履歷<i></i></a>
               </div>
             </div>
+          </div>
+          <div class="col-lg-3 col-md-9 col-sm-12">
             <div class="footer__widget">
               <h6>好食光</h6>
               <ul>
                 <li>指導老師：</li>
                 <li>吳永志老師 吳冠宏老師 郭惠民老師 陳怡榕老師</li>
                 <li>組員 :</li>
-                <li>陳宜瀅 張家銘 楊婕妤</li>
+                <li>陳宜瀅 張家銘 楊婕妤 </li>
                 <li>游育碩 黃郁婕 李佳欣 余可凡</li>
               </ul>
             </div>
@@ -347,12 +259,9 @@
             <p class="copyright__text text-white">
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
               Copyright &copy;
-              <script>
-                document.write(new Date().getFullYear());
-              </script>
-              All rights reserved | This template is made with
-              <i class="fa fa-heart" aria-hidden="true"></i> by
-              <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
+              with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                target="_blank">Colorlib</a>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>

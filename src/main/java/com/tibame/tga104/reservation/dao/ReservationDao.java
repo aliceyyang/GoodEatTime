@@ -2,6 +2,8 @@ package com.tibame.tga104.reservation.dao;
 
 import java.util.List;
 
+import com.tibame.tga104.reservation.vo.MemberReserveInfVO;
+import com.tibame.tga104.reservation.vo.ReservationDetailVO;
 import com.tibame.tga104.reservation.vo.ReservationVO;
 
 
@@ -14,6 +16,11 @@ public interface ReservationDao {
 	
 	public ReservationVO findByPrimaryKey(Integer reserveNo);
 	
+	public List<ReservationVO> findByReserveDate(java.sql.Date reserveDate);
+	
 	public List<ReservationVO> getAll();
 
+	public List<MemberReserveInfVO> findByMemeberNo(Integer memberNo);
+	
+	public List<ReservationDetailVO> findByRestaurantNo(Integer restaurantNo);
 }

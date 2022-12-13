@@ -2,21 +2,27 @@ package com.tibame.tga104.reservation.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.tibame.tga104.reservation.dao.ReserveTimeDao;
 import com.tibame.tga104.reservation.service.ReserveTimeService;
 import com.tibame.tga104.reservation.vo.ReserveTimeVO;
 
+@Service
+@Transactional
 public class ReserveTimeServiceImpl implements ReserveTimeService {
-
+	
+	@Autowired
 	private ReserveTimeDao dao;
 
 	@Override
-	public ReserveTimeVO setReserveTime(ReserveTimeVO reserveTimeVO) {
-		ReserveTimeVO result = null;
-		if (reserveTimeVO != null && reserveTimeVO.getRestaurantNo() != null) {
-				result = dao.insert(reserveTimeVO);
-			}
-		return result;
+	public boolean setReserveTime(List<ReserveTimeVO> list) {
+		for (ReserveTimeVO vo :list) {
+			dao.insert(vo);
+		}
+		return true;
 	}
 
 	@Override

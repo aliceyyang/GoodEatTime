@@ -21,7 +21,7 @@ public class ProdCategoryVO implements Serializable {
 	@Column(name = "prodCategoryNo")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer prodCategoryNo;
-	@Column(name = "prodCategory")
+	@Column(name = "prodCategory", nullable = false)
 	String prodCategory;
 
 	@Override

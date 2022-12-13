@@ -1,7 +1,7 @@
 package com.tibame.tga104.reservation.dao.impl;
 
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.PersistenceContext;
@@ -11,12 +11,12 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
-import com.tibame.tga104.common.connection.HibernateUtil;
 import com.tibame.tga104.reservation.dao.ReservationDao;
+import com.tibame.tga104.reservation.vo.MemberReserveInfVO;
+import com.tibame.tga104.reservation.vo.ReservationDetailVO;
 import com.tibame.tga104.reservation.vo.ReservationVO;
 
 @Repository
@@ -33,7 +33,7 @@ public class ReservationDaoImpl implements ReservationDao {
 	@Override
 	public ReservationVO insert(ReservationVO reservationVO) {
 		if (reservationVO != null && reservationVO.getReserveNo() == null) {
-				this.getSession().save(reservationVO);
+				this.getSession().persist(reservationVO);
 				return reservationVO;
 			
 		}
@@ -97,6 +97,33 @@ public class ReservationDaoImpl implements ReservationDao {
 			return null;
 		}
 		
+	}
+
+
+	@Override
+	public List<ReservationVO> findByReserveDate(Date reserveDate) {
+		Query<ReservationVO> query = getSession().createQuery("from ReserveTimeVO where reserveDate = :reserveDate", ReservationVO.class);
+		query.setParameter("reserveDate", reserveDate);
+		List<ReservationVO> reservationVO = query.list();
+		return reservationVO;
+	}
+
+
+	@Override
+	public List<MemberReserveInfVO> findByMemeberNo(Integer memberNo) {
+		Query<MemberReserveInfVO> query = getSession().createQuery("from MemberReserveInfVO where memberNo =: memberNo", MemberReserveInfVO.class);
+		query.setParameter("memberNo", memberNo);
+		List<MemberReserveInfVO> memberReserveInfVO = query.setFirstResult(0).setMaxResults(10).list();
+		return memberReserveInfVO;
+	}
+
+
+	@Override
+	public List<ReservationDetailVO> findByRestaurantNo(Integer restaurantNo) {
+		Query<ReservationDetailVO> query = getSession().createQuery("from ReservationDetailVO where restaurantNo =: restaurantNo",ReservationDetailVO.class);
+		query.setParameter("restaurantNo", restaurantNo);
+		List<ReservationDetailVO> reservationDetailVO = query.list();
+		return reservationDetailVO;
 	}
 
 

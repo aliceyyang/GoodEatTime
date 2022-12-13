@@ -4,23 +4,27 @@ index
 drop table: line 32
 
 create table & insert fake date
-prodCategory: line 53
-memberLevel: line 71
-restaurant: line 87
-administrator: line 114
-prodInfo: line 135
-member: line 167
-coupon: line 197
-reserveTime: line 235
-restaurantPic: line 293
-adOrder: line 313
-prodPic: line 343
-shoppingCart: line 364
-prodOrder: line 385
-likedRestauranr: line 421
-memberCoupon: line 452
-reservation: line 469
-prodOrderDetail: line 502
+prodCategory: line 59
+memberLevel: line 77
+restaurant: line 93
+administrator: line 120
+prodInfo: line 141
+member: line 173
+coupon: line 203
+reserveTime: line 241
+restaurantPic: line 299
+adOrder: line 319
+prodPic: line 349
+shoppingCart: line 370
+prodOrder: line 391
+likedRestauranr: line 427
+memberCoupon: line 458
+reservation: line 475
+prodOrderDetail: line 508
+V_memeber_reservation: line 536
+V_reservation: line 553
+V_showProdInMall: line 578
+V_userAccount: line 592
 
 =======================================*/
 
@@ -29,6 +33,10 @@ use goodeattime;
 set AUTOCOMMIT = 0;
 
 /*沒有被參照的表格先刪*/
+drop view if exists V_memeber_reservation;
+drop view if exists V_reservation;
+drop view if exists V_showProdInMall;
+drop view if exists V_userAccount;
 drop table if exists prodOrderDetail;
 drop table if exists prodPic;
 drop table if exists shoppingCart;
@@ -46,8 +54,6 @@ drop table if exists prodCategory;
 drop table if exists memberLevel;
 drop table if exists restaurant;
 drop table if exists administrator;
-
-
 
 /*有被參照的表格先建*/
 --  prodCategory
@@ -525,6 +531,82 @@ values (1, 1, 1, 199, null, null, null, null, null, null ),
     (4, 4, 7, 300, 1, '李嚴的食品..，有毒...。', null, '2022-11-22 19:20:00', '謝謝您的支持，我們的商品安全無毒是居家旅行的必備食品，請安心食用。', '2022-11-23 12:00:00' ),
     (5, 5, 9, 30, 5, '價格實惠又好吃，買了真的會開口笑 :)', null, '2022-11-22 19:50:00', '謝謝您的支持，我們致力於提供您更好的消費體驗。', '2022-11-23 12:05:00' );
     
+commit;
+
+--   V_memeber_reservation
+/*==========================================================================================*/
+CREATE VIEW V_memeber_reservation AS
+    SELECT 
+        memberNo,
+        reserveNo,
+        r.restaurantName,
+        reserveNum,
+        reserveDate,
+        reserveTime,
+        remark
+    FROM
+        reservation rs
+            JOIN
+        restaurant r ON rs.restaurantNo = r.restaurantNo;
+commit;
+
+--   V_reservation
+/*==========================================================================================*/
+CREATE VIEW V_reservation AS
+    SELECT 
+        rt.restaurantNo,
+        r.reserveDate,
+        rt.reserveTime,
+        rt.allowReserveNum,
+        r.totalReserveNum,
+        (rt.allowReserveNum - r.totalReserveNum) AS availableSeats
+    FROM
+        reserveTime rt
+            JOIN
+        (SELECT 
+            restaurantNo,
+                reserveTime,
+                reserveDate,
+                SUM(reserveNum) AS totalReserveNum
+        FROM
+            reservation
+        GROUP BY reserveTime , reserveDate , restaurantNo) AS r ON rt.restaurantNo = r.restaurantNo
+            AND rt.weekDay = DAYOFWEEK(r.reserveDate)
+            AND rt.reserveTime = r.reserveTime;
+commit;
+
+--   V_showProdInMall
+/*==========================================================================================*/
+CREATE VIEW V_showProdInMall AS
+select
+	p.prodNo, p.prodName, r.restaurantName, pc.prodCategory,  p.prodPrice,
+    p.totalCommentRating, p.prodCommentQty
+from
+	prodInfo p
+    join
+    restaurant r on p.restaurantNo = r.restaurantNo
+    join
+    prodCategory pc on p.prodCategoryNo = pc.prodCategoryNo;
+commit;
+
+--   V_userAccount
+/*==========================================================================================*/
+create view V_userAccount as
+    select 
+        mail as user_account,
+        name as member_name,
+        memberLevel as member_level,
+        verificationAccount as verified
+    from
+        member m
+    union
+    select 
+        restaurantAccount as user_account,
+        restaurantName as member_name,
+        null as member_level,
+        restaurantStatus as verified
+    FROM
+        restaurant r ;
 commit;
 
 set AUTOCOMMIT = 1;

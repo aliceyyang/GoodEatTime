@@ -116,8 +116,8 @@
         <div class="col-lg-12">
           <nav class="header__menu mobile-menu">
             <ul>
-              <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-              <li><a href="./about.html">會員專區</a></li>
+              <li><a href="./GoodEatTime.html">首頁</a></li>
+              <li class="active"><a href="./about.html">會員專區</a></li>
               <li><a href="./shop.html">餐廳</a></li>
               <li><a href="./blog.html">線上商城</a></li>
               <li>
@@ -150,9 +150,9 @@
           <ul>
             <li><a href="">餐廳會員首頁</a></li>
             <li><a href="">餐廳資訊</a></li>
-            <li><a href="">餐點資料設定</a></li>
+            <li><a href="">商品管理</a></li>
             <li><a href="">訂單管理</a></li>
-            <li><a href="">訂位管理</a></li>
+            <li class="active"><a href="">訂位管理</a></li>
             <li><a href="">評論管理</a></li>
             <li><a href="">優惠券設定</a></li>
             <li><a href="">廣告購買</a></li>
@@ -166,9 +166,9 @@
         <div class="row">
           <div class="reserve_status col-lg-6 col-md-6 col-sm-6">
             <h3>訂位狀況</h3>
-            <input type="date" id="reserve_search" placeholder="輸入欲查詢的餐廳" onkeyup="searchFunction()">
-            <div class="table-responsive">
-              <table style=" width: 100%" id="reservation_status">
+            <input type="date" id="reserve_search" onkeyup="searchFunction()">
+            <div class="table-responsive" id="table-responsive">
+              <table class="table" id="reserve_status" style=" width: 100%">
                 <thead>
                   <tr class="header">
                     <th>日期</th>
@@ -179,16 +179,16 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <th>2022/12/01</th>
-                    <th>12:00</th>
-                    <th>20</th>
-                    <th>5</th>
+                    <td>2022/12/01</td>
+                    <td>12:00</td>
+                    <td>20</td>
+                    <td>5</td>
                   </tr>
                   <tr>
-                    <th>2022/12/23</th>
-                    <th>12:00</th>
-                    <th>15</th>
-                    <th>10</th>
+                    <td>2022/12/23</td>
+                    <td>12:00</td>
+                    <td>15</td>
+                    <td>10</td>
                   </tr>
                 </tbody>
               </table>
@@ -197,7 +197,6 @@
           <div class="reserve_set col-lg-6 col-md-6 col-sm-6">
             <h3>訂位人數設定</h3>
             <div>
-              <!-- <label>選擇營業日 (星期)：</label> -->
               <select id="weekDay">
                 <option>選擇營業日 (星期)：</option>
                 <option value="0">星期日</option>
@@ -208,9 +207,8 @@
                 <option value="5">星期五</option>
                 <option value="6">星期六</option>
               </select>
-              <span>Close</span>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive" id="table-responsive">
               <table style=" width: 100%">
                 <thead>
                   <tr class="header">
@@ -266,55 +264,59 @@
     <div class="mask">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="footer__member">
               <h6>會員專區</h6>
               <div class="footer__social">
                 <a href="#">登入會員<i></i></a>
-                <a href="#">定位管理<i></i></a>
-                <br />
+                <a href="#">訂位管理<i></i></a>
+                <br>
                 <a href="#">加入會員<i></i></a>
                 <a href="#">定位管理<i></i></a>
-                <br />
+                <br>
                 <a href="#">優惠券<i></i></a>
                 <a href="#">我的評論<i></i></a>
               </div>
             </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
             <div class="footer__restaurant">
               <h6>餐廳</h6>
               <div class="footer__social">
                 <a href="#">訂位<i></i></a>
-                <br />
+                <br>
                 <a href="#">購物車<i></i></a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="col-lg-2 col-md-3 col-sm-3">
             <div class="footer__shopping">
               <h6>線上商城</h6>
               <div class="footer__social">
                 <a href="#">商品搜尋<i></i></a>
-                <br />
+                <br>
                 <a href="#">購物車<i></i></a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="col-lg-2 col-md-3 col-sm-3">
             <div class="footer__aboutus">
               <h6>關於我們</h6>
               <div class="footer__social">
                 <a href="#">網站介紹<i></i></a>
-                <br />
+                <br>
                 <a href="#">履歷<i></i></a>
               </div>
             </div>
+          </div>
+          <div class="col-lg-3 col-md-9 col-sm-12">
             <div class="footer__widget">
               <h6>好食光</h6>
               <ul>
                 <li>指導老師：</li>
                 <li>吳永志老師 吳冠宏老師 郭惠民老師 陳怡榕老師</li>
                 <li>組員 :</li>
-                <li>陳宜瀅 張家銘 楊婕妤</li>
+                <li>陳宜瀅 張家銘 楊婕妤 </li>
                 <li>游育碩 黃郁婕 李佳欣 余可凡</li>
               </ul>
             </div>
@@ -329,12 +331,9 @@
             <p class="copyright__text text-white">
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
               Copyright &copy;
-              <script>
-                document.write(new Date().getFullYear());
-              </script>
-              All rights reserved | This template is made with
-              <i class="fa fa-heart" aria-hidden="true"></i> by
-              <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
+              with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                target="_blank">Colorlib</a>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>
