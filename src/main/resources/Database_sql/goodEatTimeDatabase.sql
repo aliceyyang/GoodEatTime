@@ -46,8 +46,8 @@ drop table if exists prodCategory;
 drop table if exists memberLevel;
 drop table if exists restaurant;
 drop table if exists administrator;
-
-
+drop view if exists V_memeber_reservation;
+drop view if exists V_reservation;
 
 /*有被參照的表格先建*/
 --  prodCategory
@@ -525,6 +525,48 @@ values (1, 1, 1, 199, null, null, null, null, null, null ),
     (4, 4, 7, 300, 1, '李嚴的食品..，有毒...。', null, '2022-11-22 19:20:00', '謝謝您的支持，我們的商品安全無毒是居家旅行的必備食品，請安心食用。', '2022-11-23 12:00:00' ),
     (5, 5, 9, 30, 5, '價格實惠又好吃，買了真的會開口笑 :)', null, '2022-11-22 19:50:00', '謝謝您的支持，我們致力於提供您更好的消費體驗。', '2022-11-23 12:05:00' );
     
+commit;
+
+--   V_memeber_reservation
+/*==========================================================================================*/
+CREATE VIEW V_memeber_reservation AS
+    SELECT 
+        memberNo,
+        reserveNo,
+        r.restaurantName,
+        reserveNum,
+        reserveDate,
+        reserveTime,
+        remark
+    FROM
+        reservation rs
+            JOIN
+        restaurant r ON rs.restaurantNo = r.restaurantNo;
+commit;
+
+--   V_reservation
+/*==========================================================================================*/
+CREATE VIEW V_reservation AS
+    SELECT 
+        rt.restaurantNo,
+        r.reserveDate,
+        rt.reserveTime,
+        rt.allowReserveNum,
+        r.totalReserveNum,
+        (rt.allowReserveNum - r.totalReserveNum) AS availableSeats
+    FROM
+        reserveTime rt
+            JOIN
+        (SELECT 
+            restaurantNo,
+                reserveTime,
+                reserveDate,
+                SUM(reserveNum) AS totalReserveNum
+        FROM
+            reservation
+        GROUP BY reserveTime , reserveDate , restaurantNo) AS r ON rt.restaurantNo = r.restaurantNo
+            AND rt.weekDay = DAYOFWEEK(r.reserveDate)
+            AND rt.reserveTime = r.reserveTime;
 commit;
 
 set AUTOCOMMIT = 1;
