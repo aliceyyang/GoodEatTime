@@ -3,11 +3,19 @@ package com.tibame.tga104.restaurant.service.impl;
 import java.util.List;
 
 import com.tibame.tga104.restaurant.dao.RestaurantDao;
+import com.tibame.tga104.restaurant.dao.RestaurantSpringDAO;
 import com.tibame.tga104.restaurant.dao.impl.RestaurantDaoImpl;
 import com.tibame.tga104.restaurant.service.RestaurantService;
 import com.tibame.tga104.restaurant.vo.RestaurantVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.persistence.Column;
+
+@Component
 public class RestaurantServiceImpl implements RestaurantService {
+	@Autowired
+	private RestaurantSpringDAO restaurantSpringDAO;
 	private RestaurantDao dao;
 	
 	public RestaurantServiceImpl(){
@@ -77,6 +85,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 
+
+	// added by Alice
+	@Override
+	public List<RestaurantVO> getAccountByAll() {
+		return restaurantSpringDAO.getAccountByAll();
+	}
 
 
 }
