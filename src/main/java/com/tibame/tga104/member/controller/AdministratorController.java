@@ -1,7 +1,7 @@
 package com.tibame.tga104.member.controller;
 
 import com.tibame.tga104.member.service.AdministratorService;
-import com.tibame.tga104.member.service.MemberService;
+import com.tibame.tga104.member.service.MemberSpringService;
 import com.tibame.tga104.member.vo.Administrator;
 import com.tibame.tga104.member.vo.MemberVO;
 import com.tibame.tga104.restaurant.service.RestaurantService;
@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -25,12 +24,12 @@ public class AdministratorController {
     private RestaurantService restaurantService;
 
     @Autowired
-    private MemberService memberService;
+    private MemberSpringService memberSpringService;
 
 
     @GetMapping("/administrator/user-accounts")
     public ResponseEntity<List<?>> getUserAccountsByAll() {
-        List<MemberVO> memberList = memberService.getAccountByAll();
+        List<MemberVO> memberList = memberSpringService.getAccountByAll();
         List<RestaurantVO> restaurantList = restaurantService.getAccountByAll();
         List list = new ArrayList();
         Iterator memberIterator = memberList.iterator();
