@@ -22,10 +22,10 @@ public class ReservationDetailVO {
 	@Column(name="allowReserveNum")
 	private Integer allowReserveNum;
 	
-	@Column(name="totalReserveNum")
+	@Column(name="totalReserveNum", columnDefinition = "decimal")
 	private Integer totalReserveNum;
 	
-	@Column(name="availableSeats")
+	@Column(name="availableSeats", columnDefinition = "decimal")
 	private Integer availableSeats;
 
 	public Integer getRestaurantNo() {
