@@ -87,13 +87,13 @@ drop_zone2.addEventListener("drop", function (e) {
   menu_file_el.value = "";
 });
 
-// ==========文案圖設定===========
+// ==========貼文圖設定===========
 
 var drop_zone3 = document.getElementById("drop_zone3");
 var news_file_el = document.getElementById("news_file");
 
 news.addEventListener("reset", function () {
-  drop_zone3.innerHTML = '<span class = "text">文案圖片</span>';
+  drop_zone3.innerHTML = '<span class = "text">貼文圖片</span>';
   sessionStorage.clear();
 });
 
@@ -180,11 +180,9 @@ function readFiles(files) {
             restaurantPicRemark: $("#pic_remark").val(),
           }),
         })
-          .then(function (res) {
-            return res.json();
-          })
-          .then(function (body) {
-            alert(body.successful);
+          .then((r) => r.json())
+          .then((data) => {
+            console.log(data);
           });
       }
     };
