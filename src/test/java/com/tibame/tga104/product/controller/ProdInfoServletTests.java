@@ -1,7 +1,8 @@
 package com.tibame.tga104.product.controller;
 
-public class ProdInfoControllerTests {
-//	ProdInfoController controller = new ProdInfoController();
+/*此為舊環境的測試檔案，切換成spring boot環境後，尚未配合環境調整*/
+public class ProdInfoServletTests {
+//	ProdInfoServlet controller = new ProdInfoServlet();
 //	ProdInfoService service = new ProdInfoService();
 //	
 //	@ParameterizedTest

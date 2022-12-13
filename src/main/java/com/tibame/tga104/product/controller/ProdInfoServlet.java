@@ -22,11 +22,11 @@ import com.tibame.tga104.product.service.ProdPicService;
 import com.tibame.tga104.product.vo.ProdInfoVO;
 import com.tibame.tga104.product.vo.ProdPicVO;
 
-@WebServlet("/product/ProdInfoController")
-public class ProdInfoController extends HttpServlet {
+//@WebServlet("/product/ProdInfoController")
+public class ProdInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ProdInfoController() {
+    public ProdInfoServlet() {
         super();
     }
     
