@@ -30,6 +30,8 @@ public class ProdInfoVO implements java.io.Serializable{
 	private String prodDescription;
 	@Column(name="prodContent")
 	private String prodContent;
+	@Column(name="prodMainPic", columnDefinition = "longblob")
+	private byte[] prodMainPic;
 	@Column(name="prodCommentQty", nullable = false)
 	private Integer prodCommentQty;
 	@Column(name="totalCommentRating", nullable = false)
@@ -43,6 +45,12 @@ public class ProdInfoVO implements java.io.Serializable{
 	}
 	public Integer getRestaurantNo() {
 		return restaurantNo;
+	}
+	public byte[] getProdMainPic() {
+		return prodMainPic;
+	}
+	public void setProdMainPic(byte[] prodMainPic) {
+		this.prodMainPic = prodMainPic;
 	}
 	public void setRestaurantNo(Integer restaurantNo) {
 		this.restaurantNo = restaurantNo;

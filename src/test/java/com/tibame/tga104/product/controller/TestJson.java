@@ -15,7 +15,7 @@ import com.tibame.tga104.reservation.dao.impl.ReserveTimeDaoImpl;
 import com.tibame.tga104.reservation.vo.ReserveTimeVO;
 
 
-@WebServlet("/TestJson")
+//@WebServlet("/TestJson")
 public class TestJson extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

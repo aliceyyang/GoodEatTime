@@ -28,7 +28,7 @@ public class ProdInfoDAO_Hibernate implements ProdInfoDAO {
 		}
 		return null;
 	}
-
+	
 	@Override
 	public ProdInfoVO update(ProdInfoVO prodInfoVO) {
 		if (prodInfoVO!=null && prodInfoVO.getProdNo()!=null) {
