@@ -13,13 +13,12 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.tibame.tga104.reservation.dao.ReservationDao;
 import com.tibame.tga104.reservation.vo.MemberReserveInfVO;
+import com.tibame.tga104.reservation.vo.ReservationDetailVO;
 import com.tibame.tga104.reservation.vo.ReservationVO;
 
-@Transactional
 @Repository
 public class ReservationDaoImpl implements ReservationDao {
 	
@@ -116,6 +115,15 @@ public class ReservationDaoImpl implements ReservationDao {
 		query.setParameter("memberNo", memberNo);
 		List<MemberReserveInfVO> memberReserveInfVO = query.setFirstResult(0).setMaxResults(10).list();
 		return memberReserveInfVO;
+	}
+
+
+	@Override
+	public List<ReservationDetailVO> findByRestaurantNo(Integer restaurantNo) {
+		Query<ReservationDetailVO> query = getSession().createQuery("from ReservationDetailVO where restaurantNo =: restaurantNo",ReservationDetailVO.class);
+		query.setParameter("restaurantNo", restaurantNo);
+		List<ReservationDetailVO> reservationDetailVO = query.list();
+		return reservationDetailVO;
 	}
 
 

@@ -20,7 +20,7 @@ import com.tibame.tga104.reservation.service.ReserveTimeService;
 import com.tibame.tga104.reservation.vo.ReserveTimeVO;
 
 @WebServlet("/restaurant/setReservation")
-public class setReservationServlet extends HttpServlet {
+public class SetReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ReserveTimeService service;
 
