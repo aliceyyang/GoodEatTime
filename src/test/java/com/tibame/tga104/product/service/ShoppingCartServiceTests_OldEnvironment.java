@@ -6,14 +6,15 @@ import org.hibernate.Transaction;
 
 import com.tibame.tga104.common.connection.HibernateUtil;
 
-public class ShoppingCartServiceTests {
+/*此為舊環境的測試檔案，切換成spring boot環境後，尚未配合環境調整*/
+public class ShoppingCartServiceTests_OldEnvironment {
 
-	public static void main(String[] args) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
-		
-		ShoppingCartService svc = new ShoppingCartService();
+//	public static void main(String[] args) {
+//		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+//		Session session = sessionFactory.getCurrentSession();
+//		Transaction transaction = session.beginTransaction();
+//		
+//		ShoppingCartService svc = new ShoppingCartService();
 		
 		// 測試新增
 //		ShoppingCartVO insert = new ShoppingCartVO();
@@ -39,11 +40,11 @@ public class ShoppingCartServiceTests {
 //		System.out.println(svc.getAll());
 		
 		// 測試透過會員編號查找
-		System.out.println(svc.findByMemberNo(2));
-		
-		transaction.commit();
-		session.close();
-		HibernateUtil.closeSessionFactory();
-	}
+//		System.out.println(svc.findByMemberNo(2));
+//		
+//		transaction.commit();
+//		session.close();
+//		HibernateUtil.closeSessionFactory();
+//	}
 
 }

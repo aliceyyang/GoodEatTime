@@ -1,3 +1,110 @@
+/**
+ * 提供memberNo資料
+ * 進入資料庫抓shoppingCart的資料，轉換成下方的格式
+ * 
+ * 進入資料庫抓memberCoupon的資料，轉換成下方的格式
+ * 
+ * 修改資料庫中購物車的內容
+ * 
+ * 結帳->儲存prodOrderDetail資料至session storage->跳轉至checkout頁面
+ * 
+ */
+/*購物車需要的資料格式
+[
+    {
+       "restaurantName":"餐廳名稱",
+       "cart":[
+          {
+             "prodNo":"商品編號",
+             "prodName":"商品名稱",
+             "prodQty":"商品數量",
+             "prodPrice":"商品價格"
+          },
+          {
+             "prodNo":"商品編號",
+             "prodName":"商品名稱",
+             "prodQty":"商品數量",
+             "prodPrice":"商品價格"
+          },
+          {
+             "prodNo":"商品編號",
+             "prodName":"商品名稱",
+             "prodQty":"商品數量",
+             "prodPrice":"商品價格"
+          }
+       ]
+    },
+    {
+       "restaurantName":"餐廳名稱",
+       "cart":[
+          {
+             "prodNo":"商品編號",
+             "prodName":"商品名稱",
+             "prodQty":"商品數量",
+             "prodPrice":"商品價格"
+          },
+          {
+             "prodNo":"商品編號",
+             "prodName":"商品名稱",
+             "prodQty":"商品數量",
+             "prodPrice":"商品價格"
+          },
+          {
+             "prodNo":"商品編號",
+             "prodName":"商品名稱",
+             "prodQty":"商品數量",
+             "prodPrice":"商品價格"
+          }
+       ]
+    }
+ ]
+*/
+/* 折價券需要使用的資料
+最簡單應該List<CouponVO>直接傳也可以，但會多傳很多不必要的資訊
+[
+   {
+      "rsetaurantName":"餐廳名稱",
+      "coupons":[
+         {
+            "couponNo":"折價券編號",
+            "couponName":"折價券名稱",
+            "couponContent":"折價券內容",
+            "amountOrFold":"金額或折價",
+            "couponType":"折價類型"
+         },
+         {
+            "couponNo":"折價券編號",
+            "couponName":"折價券名稱",
+            "couponContent":"折價券內容",
+            "amountOrFold":"金額或折價",
+            "couponType":"折價類型"
+         }
+      ]
+   },
+   {
+      "rsetaurantName":"餐廳名稱",
+      "coupons":[
+         {
+            "couponNo":"折價券編號",
+            "couponName":"折價券名稱",
+            "couponContent":"折價券內容",
+            "amountOrFold":"金額或折價",
+            "couponType":"折價類型"
+         },
+         {
+            "couponNo":"折價券編號",
+            "couponName":"折價券名稱",
+            "couponContent":"折價券內容",
+            "amountOrFold":"金額或折價",
+            "couponType":"折價類型"
+         }
+      ]
+   }
+]
+
+*/
+
+
 $(function(){
 
     function calculateCart() {

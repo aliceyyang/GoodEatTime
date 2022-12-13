@@ -1,9 +1,10 @@
 package com.tibame.tga104.product.service;
 
-public class ProdInfoServiceTests {
+/*此為舊環境的測試檔案，切換成spring boot環境後，尚未配合環境調整*/
+public class ProdInfoServiceTests_OldEnvironment {
 
-	public static void main(String[] args) {
-		ProdInfoService service = new ProdInfoService();
+//	public static void main(String[] args) {
+//		ProdInfoService service = new ProdInfoService();
 		
 		// Test getOneProduct() 
 //		System.out.println(service.getOneProduct(1).toString());
@@ -31,6 +32,6 @@ public class ProdInfoServiceTests {
 		// Test deleteProdInfo()
 //		System.out.println(service.deleteProdInfo(9));
 
-	}
+//	}
 
 }

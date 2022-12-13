@@ -2,17 +2,19 @@ package com.tibame.tga104.product.service;
 
 import java.util.List;
 
-import com.tibame.tga104.common.connection.HibernateUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.tibame.tga104.product.dao.ShoppingCartDAO;
-import com.tibame.tga104.product.dao.ShoppingCartDAO_Hibernate;
 import com.tibame.tga104.product.vo.ShoppingCartVO;
 
+@Service
 public class ShoppingCartService {
+	@Autowired
 	private ShoppingCartDAO dao;
-	public ShoppingCartService() {
-		dao = new ShoppingCartDAO_Hibernate(HibernateUtil.getSessionFactory());
-	}
 	
+	@Transactional
 	public ShoppingCartVO insert(ShoppingCartVO shoppingCartVO) {
 		if (shoppingCartVO != null && shoppingCartVO.getMemberNo() != null
 				&& shoppingCartVO.getProdNo() != null && shoppingCartVO.getProdQty() != null) {
@@ -24,6 +26,7 @@ public class ShoppingCartService {
 		return null;
 	}
 	
+	@Transactional
 	public ShoppingCartVO update(ShoppingCartVO shoppingCartVO) {
 		if (shoppingCartVO != null && shoppingCartVO.getMemberNo() != null
 				&& shoppingCartVO.getProdNo() != null && shoppingCartVO.getProdQty() != null) {
@@ -35,6 +38,7 @@ public class ShoppingCartService {
 		return null;
 	}
 	
+	@Transactional
 	public boolean delete(Integer memberNo, Integer prodNo) {
 		if (memberNo != null && prodNo != null) {
 			ShoppingCartVO temp = dao.findByPrimaryKey(memberNo, prodNo);

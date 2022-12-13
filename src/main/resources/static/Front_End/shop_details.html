@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zxx">
   <head>
     <meta charset="UTF-8" />
-    <meta name="keywords" content="美食, 找餐廳, 訂位, 訂餐, html" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Cake Template" />
+    <meta name="keywords" content="Cake, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>好食光 | 線上商城</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>好時光 | 商品詳細</title>
 
     <!-- Google Font -->
     <link
@@ -28,8 +29,9 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link rel="stylesheet" href="css/shopping_mall.css" type="text/css" />
+    <link rel="stylesheet" href="css/shop_details.css" type="text/css" />
   </head>
+
   <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -160,13 +162,15 @@
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="breadcrumb__text">
-              <h2>線上商城</h2>
+              <h2>商品詳細</h2>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="breadcrumb__links">
               <a href="./index.html">首頁</a>
-              <span>線上商城</span>
+              <a href="./shop.html">商城</a>
+              <a href="./restaurant.html">餐廳頁面</a>
+              <span>商品詳細</span>
             </div>
           </div>
         </div>
@@ -174,297 +178,305 @@
     </div>
     <!-- Breadcrumb End -->
 
-    <!-- Shop Section Begin -->
-    <section class="shop spad">
+    <!-- Shop Details Section Begin -->
+    <section class="product-details spad">
       <div class="container">
-        <div class="shop__option">
-          <div class="row">
-            <div class="col-lg-7 col-md-7">
-              <div class="shop__option__search">
-                <form action="#">
-                  <select>
-                    <option value="">商品類別</option>
-                    <option value="">Red Velvet</option>
-                    <option value="">Cup Cake</option>
-                    <option value="">Biscuit</option>
-                  </select>
-                  <input type="text" placeholder="搜尋" />
-                  <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-              </div>
-            </div>
-            <div class="col-lg-5 col-md-5">
-              <div class="shop__option__right">
-                <select>
-                  <option value="">預設排序</option>
-                  <option value="">價格低至高</option>
-                  <option value="">價格高至低</option>
-                  <option value="">可使用優惠券優先</option>
-                </select>
-                <a href="#"><i class="fa fa-list"></i></a>
-                <a href="#"><i class="fa fa-reorder"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/shop/product-1.jpg"
-              >
-              <div class="product__rating">
-                <div class="fill-ratings">
-                  <span>★★★★★</span>
-                </div>
-                <div class="empty-ratings">
-                  <span>★★★★★</span>
-                </div>
+          <div class="col-lg-6">
+            <div class="product__details__img">
+              <div class="product__details__big__img">
+                <img
+                  class="big_img"
+                  src="img/shop/details/product-big-1.jpg"
+                  alt=""
+                />
               </div>
-                <div class="product__label">
-                  <span>餐廳名稱</span>
+              <div class="product__details__thumb">
+                <div class="pt__item active">
+                  <img
+                    data-imgbigurl="img/shop/details/product-big-2.jpg"
+                    src="img/shop/details/product-big-2.jpg"
+                    alt=""
+                  />
                 </div>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">產品名稱產品名稱產品名稱產品名稱</a></h6>
-                <div class="product__item__price">NTD &nbsp; 32</div>
-                <div class="cart_add">
-                  <a href="#">加入購物車</a>
+                <div class="pt__item">
+                  <img
+                    data-imgbigurl="img/shop/details/product-big-1.jpg"
+                    src="img/shop/details/product-big-1.jpg"
+                    alt=""
+                  />
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/shop/product-2.jpg"
-              >
-                <div class="product__label">
-                  <span>餐廳名稱</span>
+                <div class="pt__item">
+                  <img
+                    data-imgbigurl="img/shop/details/product-big-4.jpg"
+                    src="img/shop/details/product-big-4.jpg"
+                    alt=""
+                  />
                 </div>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">Cookies and Cream</a></h6>
-                <div class="product__item__price">$30.00</div>
-                <div class="cart_add">
-                  <a href="#">加入購物車</a>
+                <div class="pt__item">
+                  <img
+                    data-imgbigurl="img/shop/details/product-big-3.jpg"
+                    src="img/shop/details/product-big-3.jpg"
+                    alt=""
+                  />
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/shop/product-3.jpg"
-              >
-                <div class="product__label">
-                  <span>餐廳名稱</span>
-                </div>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">Gluten Free Mini Dozen</a></h6>
-                <div class="product__item__price">$31.00</div>
-                <div class="cart_add">
-                  <a href="#">加入購物車</a>
+                <div class="pt__item">
+                  <img
+                    data-imgbigurl="img/shop/details/product-big-5.jpg"
+                    src="img/shop/details/product-big-5.jpg"
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/shop/product-4.jpg"
-              >
-                <div class="product__label">
-                  <span>餐廳名稱</span>
+          <div class="col-lg-6">
+            <div class="product__details__text">
+              <div class="product__label">餐廳名稱</div>
+              <h4>覆盆子塔</h4>
+              <h5>NTD 260</h5>
+              <p>
+                商品簡單描述
+              </p>
+              <ul>
+                <li>產品類別 : <span>Biscuit cake</span></li>
+                <li>庫存數量 : <span>17</span></li>
+                <li>商品星等 : 
+                  <div class="product__details__rating">
+                    <div class="fill-ratings">
+                      <span>★★★★★</span>
+                    </div>
+                    <div class="empty-ratings">
+                      <span>★★★★★</span>
+                    </div>
+                  </div></li>
+              </ul>
+              <div class="product__details__option">
+                <div class="quantity">
+                  <div class="pro-qty">
+                    <input type="text" value="2" />
+                  </div>
                 </div>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">Cookie Dough</a></h6>
-                <div class="product__item__price">$25.00</div>
-                <div class="cart_add">
-                  <a href="#">加入購物車</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/shop/product-5.jpg"
-              >
-                <div class="product__label">
-                  <span>餐廳名稱</span>
-                </div>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">Vanilla Salted Caramel</a></h6>
-                <div class="product__item__price">$05.00</div>
-                <div class="cart_add">
-                  <a href="#">加入購物車</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/shop/product-6.jpg"
-              >
-                <div class="product__label">
-                  <span>餐廳名稱</span>
-                </div>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">German Chocolate</a></h6>
-                <div class="product__item__price">$14.00</div>
-                <div class="cart_add">
-                  <a href="#">加入購物車</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/shop/product-7.jpg"
-              >
-                <div class="product__label">
-                  <span>餐廳名稱</span>
-                </div>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">Dulce De Leche</a></h6>
-                <div class="product__item__price">$32.00</div>
-                <div class="cart_add">
-                  <a href="#">加入購物車</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/shop/product-8.jpg"
-              >
-                <div class="product__label">
-                  <span>餐廳名稱</span>
-                </div>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">Mississippi Mud</a></h6>
-                <div class="product__item__price">$08.00</div>
-                <div class="cart_add">
-                  <a href="#">加入購物車</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/shop/product-9.jpg"
-              >
-                <div class="product__label">
-                  <span>餐廳名稱</span>
-                </div>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">VEGAN/GLUTEN FREE</a></h6>
-                <div class="product__item__price">$98.85</div>
-                <div class="cart_add">
-                  <a href="#">加入購物車</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/shop/product-10.jpg"
-              >
-                <div class="product__label">
-                  <span>餐廳名稱</span>
-                </div>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">SWEET CELTICS</a></h6>
-                <div class="product__item__price">$5.77</div>
-                <div class="cart_add">
-                  <a href="#">加入購物車</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/shop/product-11.jpg"
-              >
-                <div class="product__label">
-                  <span>餐廳名稱</span>
-                </div>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">SWEET AUTUMN LEAVES</a></h6>
-                <div class="product__item__price">$26.41</div>
-                <div class="cart_add">
-                  <a href="#">加入購物車</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/shop/product-12.jpg"
-              >
-                <div class="product__label">
-                  <span>餐廳名稱</span>
-                </div>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">PALE YELLOW SWEET</a></h6>
-                <div class="product__item__price">$22.47</div>
-                <div class="cart_add">
-                  <a href="#">加入購物車</a>
-                </div>
+                <a href="#" class="primary-btn">加入購物車</a>
+                <!-- <a href="#" class="heart__btn"
+                  ><span class="icon_heart_alt"></span
+                ></a> -->
               </div>
             </div>
           </div>
         </div>
-        <div class="shop__last__option">
-          <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="shop__pagination">
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#"><span class="arrow_carrot-right"></span></a>
+        <div class="product__details__tab">
+          <div class="col-lg-12">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  data-toggle="tab"
+                  href="#tabs-1"
+                  role="tab"
+                  >商品詳細介紹</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
+                  >商品內容成分</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
+                  >商品評論</a
+                >
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                <div class="row d-flex justify-content-center">
+                  <div class="col-lg-8">
+                    <p>
+                      This delectable Strawberry Pie is an extraordinary treat
+                      filled with sweet and tasty chunks of delicious
+                      strawberries. Made with the freshest ingredients, one bite
+                      will send you to summertime. Each gift arrives in an
+                      elegant gift box and arrives with a greeting card of your
+                      choice that you can personalize online!
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="shop__last__text">
-                <p>查詢結果共 35 筆</p>
+              <div class="tab-pane" id="tabs-2" role="tabpanel">
+                <div class="row d-flex justify-content-center">
+                  <div class="col-lg-8">
+                    <p>
+                      This delectable Strawberry Pie is an extraordinary treat
+                      filled with sweet and tasty chunks of delicious
+                      strawberries. Made with the freshest ingredients, one bite
+                      will send you to summertime. Each gift arrives in an
+                      elegant gift box and arrives with a greeting card of your
+                      choice that you can personalize online!2
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tabs-3" role="tabpanel">
+                <div class="row d-flex justify-content-center">
+                  <div class="col-lg-8">
+                    <p>
+                      This delectable Strawberry Pie is an extraordinary treat
+                      filled with sweet and tasty chunks of delicious
+                      strawberries. Made with the freshest ingredients, one bite
+                      will send you to summertime. Each gift arrives in an
+                      elegant gift box and arrives with a greeting card of your
+                      choice that you can personalize online!3
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Shop Section End -->
+    <!-- Shop Details Section End -->
+
+    <!-- Related Products Section Begin -->
+    <section class="related-products spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <div class="section-title">
+              <h2>類似商品</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="related__products__slider owl-carousel">
+            <div class="col-lg-3">
+              <div class="product__item">
+                <div
+                  class="product__item__pic set-bg"
+                  data-setbg="img/shop/product-1.jpg"
+                >
+                  <div class="product__rating">
+                    <div class="fill-ratings">
+                      <span>★★★★★</span>
+                    </div>
+                    <div class="empty-ratings">
+                      <span>★★★★★</span>
+                    </div>
+                  </div>
+                  <div class="product__label">
+                    <span>餐廳名稱</span>
+                  </div>
+                </div>
+                <div class="product__item__text">
+                  <h6><a href="#">Dozen Cupcakes</a></h6>
+                  <div class="product__item__price">NTD 320</div>
+                  <div class="cart_add">
+                    <a href="#">加入購物車</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="product__item">
+                <div
+                  class="product__item__pic set-bg"
+                  data-setbg="img/shop/product-2.jpg"
+                >
+                  <div class="product__label">
+                    <span>餐廳名稱</span>
+                  </div>
+                </div>
+                <div class="product__item__text">
+                  <h6><a href="#">Cookies and Cream</a></h6>
+                  <div class="product__item__price">NTD 300</div>
+                  <div class="cart_add">
+                    <a href="#">加入購物車</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="product__item">
+                <div
+                  class="product__item__pic set-bg"
+                  data-setbg="img/shop/product-3.jpg"
+                >
+                  <div class="product__label">
+                    <span>餐廳名稱</span>
+                  </div>
+                </div>
+                <div class="product__item__text">
+                  <h6><a href="#">Gluten Free Mini Dozen</a></h6>
+                  <div class="product__item__price">NTD 220</div>
+                  <div class="cart_add">
+                    <a href="#">加入購物車</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="product__item">
+                <div
+                  class="product__item__pic set-bg"
+                  data-setbg="img/shop/product-4.jpg"
+                >
+                  <div class="product__label">
+                    <span>餐廳名稱</span>
+                  </div>
+                </div>
+                <div class="product__item__text">
+                  <h6><a href="#">Cookie Dough</a></h6>
+                  <div class="product__item__price">NTD 250</div>
+                  <div class="cart_add">
+                    <a href="#">加入購物車</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="product__item">
+                <div
+                  class="product__item__pic set-bg"
+                  data-setbg="img/shop/product-5.jpg"
+                >
+                  <div class="product__label">
+                    <span>餐廳名稱</span>
+                  </div>
+                </div>
+                <div class="product__item__text">
+                  <h6><a href="#">Vanilla Salted Caramel</a></h6>
+                  <div class="product__item__price">NTD 180</div>
+                  <div class="cart_add">
+                    <a href="#">加入購物車</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="product__item">
+                <div
+                  class="product__item__pic set-bg"
+                  data-setbg="img/shop/product-6.jpg"
+                >
+                  <div class="product__label">
+                    <span>餐廳名稱</span>
+                  </div>
+                </div>
+                <div class="product__item__text">
+                  <h6><a href="#">German Chocolate</a></h6>
+                  <div class="product__item__price"> NTD 150</div>
+                  <div class="cart_add">
+                    <a href="#">加入購物車</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Related Products Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
@@ -525,7 +537,7 @@
                   <li>張互賓老師 &nbsp; | &nbsp; 馬全德老師</li>
                   <li>郭惠民老師 &nbsp; | &nbsp; 陳怡榕老師</li>
                   <li>組員 :</li>
-                  <li>陳宜瀅 &nbsp; | &nbsp; 張家銘 &nbsp; | &nbsp; 楊婕妤 </li>
+                  <li>陳宜瀅 &nbsp; | &nbsp; 張家銘 &nbsp; | &nbsp; 楊婕妤</li>
                   <li>游育碩 &nbsp; | &nbsp; 黃郁婕</li>
                   <li>李佳欣 &nbsp; | &nbsp; 余可凡</li>
                 </ul>
@@ -575,6 +587,7 @@
       </div>
     </div>
     <!-- Search End -->
+
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -585,6 +598,6 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/shopping_mall.js"></script>
+    <script src="js/shop_deatils.js"></script>
   </body>
 </html>

@@ -359,7 +359,7 @@ public class ProdInfoController extends HttpServlet {
 		ProdInfoService prodSvc = new ProdInfoService();
     	ProdInfoVO prodInfoVO = prodSvc.addProdInfo(restaurantNo, prodCategoryNo,
     			prodName, prodPrice, prodStock, prodDescription,
-        		prodContent);
+        		prodContent, 0, 0);
 		
 		/***************************3.修改完成,回傳資料*************************************/
 		result[1] = prodInfoVO;

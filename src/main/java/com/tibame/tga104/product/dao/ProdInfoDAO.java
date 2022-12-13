@@ -5,8 +5,8 @@ import java.util.List;
 import com.tibame.tga104.product.vo.ProdInfoVO;
 
 public interface ProdInfoDAO {
-	public ProdInfoVO insert(ProdInfoVO productVO);
-	public void update(ProdInfoVO productVO);
+	public ProdInfoVO insert(ProdInfoVO prodInfoVO);
+	public ProdInfoVO update(ProdInfoVO prodInfoVO);
 	public boolean delete(Integer prodNo);
 	public ProdInfoVO findByPrimaryKey(Integer prodNo);
 	public List<ProdInfoVO> getAll();
