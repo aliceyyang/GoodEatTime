@@ -1,5 +1,8 @@
 package com.tibame.tga104.order.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -12,20 +15,18 @@ public class AdOrder implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "adOrderNo")
-    @NotNull
     private Integer adOrderNo;
-    @NotNull
     @Column(name = "restaurantNo")
     private Integer restaurantNo;
     @Column(name = "adminNo")
     private Integer adminNo;
-    @NotNull
+
     @Column(name = "adOrderTime", insertable = false, updatable = false)
     private Date adOrderTime;
-    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "adStartTime")
     private Date adStartTime;
-    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "adEndTime")
     private Date adEndTime;
     @Column(name = "verified")
