@@ -40,10 +40,10 @@ public class CouponJDBCDAO implements CouponDao{
 				
 				ps.setInt(1, couponVO.getRestaurantNo());
 				ps.setInt(2, couponVO.getAdminNo());
-				ps.setString(3, couponVO.getCouponApplyDate());
+				ps.setTimestamp(3, couponVO.getCouponApplyDate());
 				ps.setString(4, couponVO.getCouponName());
-				ps.setString(5, couponVO.getCouponStartTime());
-				ps.setString(6, couponVO.getCouponEndTime());
+				ps.setTimestamp(5, couponVO.getCouponStartTime());
+				ps.setTimestamp(6, couponVO.getCouponEndTime());
 				ps.setBoolean(7, couponVO.getVerified());
 				ps.setString(8, couponVO.getCouponContent());
 				ps.setInt(9, couponVO.getUsageLimitation());
@@ -91,10 +91,10 @@ public class CouponJDBCDAO implements CouponDao{
 				
 				ps.setInt(1, couponVO.getRestaurantNo());
 				ps.setInt(2, couponVO.getAdminNo());
-				ps.setString(3, couponVO.getCouponApplyDate());
+				ps.setTimestamp(3, couponVO.getCouponApplyDate());
 				ps.setString(4, couponVO.getCouponName());
-				ps.setString(5, couponVO.getCouponStartTime());
-				ps.setString(6, couponVO.getCouponEndTime());
+				ps.setTimestamp(5, couponVO.getCouponStartTime());
+				ps.setTimestamp(6, couponVO.getCouponEndTime());
 				ps.setBoolean(7, couponVO.getVerified());
 				ps.setString(8, couponVO.getCouponContent());
 				ps.setInt(9, couponVO.getUsageLimitation());
@@ -188,10 +188,10 @@ public class CouponJDBCDAO implements CouponDao{
 					couponVO.setCouponNo(rs.getInt("couponNo"));
 					couponVO.setRestaurantNo(rs.getInt("restaurantNo"));
 					couponVO.setAdminNo(rs.getInt("adminNo"));
-					couponVO.setCouponApplyDate(rs.getString("couponApplyDate"));
+					couponVO.setCouponApplyDate(rs.getTimestamp("couponApplyDate"));
 					couponVO.setCouponName(rs.getString("couponName"));
-					couponVO.setCouponStartTime(rs.getString("couponStartTime"));
-					couponVO.setCouponEndTime(rs.getString("couponEndTime"));
+					couponVO.setCouponStartTime(rs.getTimestamp("couponStartTime"));
+					couponVO.setCouponEndTime(rs.getTimestamp("couponEndTime"));
 					couponVO.setVerified(rs.getBoolean("verified"));
 					couponVO.setCouponContent(rs.getString("couponContent"));
 					couponVO.setUsageLimitation(rs.getInt("usageLimitation"));
@@ -255,10 +255,10 @@ public class CouponJDBCDAO implements CouponDao{
 					couponVO.setCouponNo(rs.getInt("couponNo"));
 					couponVO.setRestaurantNo(rs.getInt("restaurantNo"));
 					couponVO.setAdminNo(rs.getInt("adminNo"));
-					couponVO.setCouponApplyDate(rs.getString("couponApplyDate"));
+					couponVO.setCouponApplyDate(rs.getTimestamp("couponApplyDate"));
 					couponVO.setCouponName(rs.getString("couponName"));
-					couponVO.setCouponStartTime(rs.getString("couponStartTime"));
-					couponVO.setCouponEndTime(rs.getString("couponEndTime"));
+					couponVO.setCouponStartTime(rs.getTimestamp("couponStartTime"));
+					couponVO.setCouponEndTime(rs.getTimestamp("couponEndTime"));
 					couponVO.setVerified(rs.getBoolean("verified"));
 					couponVO.setCouponContent(rs.getString("couponContent"));
 					couponVO.setUsageLimitation(rs.getInt("usageLimitation"));
@@ -300,4 +300,5 @@ public class CouponJDBCDAO implements CouponDao{
 			}
 			return list;
 		}
+
 }

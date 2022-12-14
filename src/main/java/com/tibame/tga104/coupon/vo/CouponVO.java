@@ -1,16 +1,17 @@
 package com.tibame.tga104.coupon.vo;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class CouponVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer couponNo;
 	private Integer restaurantNo;
 	private Integer adminNo;
-	private String couponApplyDate;
+	private java.sql.Timestamp couponApplyDate;
 	private String couponName;
-	private String couponStartTime;
-	private String couponEndTime;
+	private java.sql.Timestamp couponStartTime;
+	private java.sql.Timestamp couponEndTime;
 	private Boolean verified;
 	private String couponContent;
 	private Integer usageLimitation;
@@ -26,8 +27,8 @@ public class CouponVO implements Serializable {
 	}
 
 
-	public CouponVO(Integer couponNo, Integer restaurantNo, Integer adminNo, String couponApplyDate,
-			String couponName, String couponStartTime, String couponEndTime, Boolean verified, String couponContent,
+	public CouponVO(Integer couponNo, Integer restaurantNo, Integer adminNo, Timestamp couponApplyDate,
+			String couponName, Timestamp couponStartTime, Timestamp couponEndTime, Boolean verified, String couponContent,
 			Integer usageLimitation, Double amountOrFold, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
 			String verificationDetail) {
 		super();
@@ -82,12 +83,12 @@ public class CouponVO implements Serializable {
 		this.adminNo = adminNo;
 	}
 
-	public String getCouponApplyDate() {
+	public Timestamp getCouponApplyDate() {
 		return couponApplyDate;
 	}
 
-	public void setCouponApplyDate(String couponApplyDate) {
-		this.couponApplyDate = couponApplyDate;
+	public void setCouponApplyDate(Timestamp couponApplyDate2) {
+		this.couponApplyDate = couponApplyDate2;
 	}
 
 	public String getCouponName() {
@@ -98,19 +99,19 @@ public class CouponVO implements Serializable {
 		this.couponName = couponName;
 	}
 
-	public String getCouponStartTime() {
+	public Timestamp getCouponStartTime() {
 		return couponStartTime;
 	}
 
-	public void setCouponStartTime(String couponStartTime) {
+	public void setCouponStartTime(Timestamp couponStartTime) {
 		this.couponStartTime = couponStartTime;
 	}
 
-	public String getCouponEndTime() {
+	public Timestamp getCouponEndTime() {
 		return couponEndTime;
 	}
 
-	public void setCouponEndTime(String couponEndTime) {
+	public void setCouponEndTime(Timestamp couponEndTime) {
 		this.couponEndTime = couponEndTime;
 	}
 

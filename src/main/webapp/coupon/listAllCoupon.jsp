@@ -98,10 +98,10 @@
 			<td>${couponVO.issuedQty}</td>
 			<td>${couponVO.verificationDetail}</td>
 			<td>
-			<form method="post" action="<%=request.getContextPath()%>/coupon/CouponController" style="margin-bottom: 0px;">
+			<form method="post" action="<%=request.getContextPath()%>/coupon/AddCoupon" style="margin-bottom: 0px;">
 			<input type="submit" value="修改">
 			<input type="hidden" name="couponNo" value="${couponVO.couponNo}">
-			<input type="hidden" name="action" value="updateCoupon"></form>
+			<input type="hidden" name="action" value="getOne"></form>
 		</td>
 		<td>
 			<form method="post" action="<%=request.getContextPath()%>/coupon/CouponController" style="margin-bottom: 0px;">
