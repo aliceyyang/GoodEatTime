@@ -22,3 +22,11 @@ $("div.product__details__rating .fill-ratings").attr("style", "width: 70%")
  * 商品詳細改用longtext???
  * 
  */
+
+const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+let value = params.prodNo;
+// console.log(value);
+
+

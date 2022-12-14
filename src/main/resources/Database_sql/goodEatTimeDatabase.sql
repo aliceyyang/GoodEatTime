@@ -4,30 +4,31 @@ index
 drop table: line 32
 
 create table & insert fake date
-prodCategory: line 65
-memberLevel: line 86
-restaurant: line 102
-administrator: line 129
-prodInfo: line 150
-member: line 199
-coupon: line 229
-reserveTime: line 267
-restaurantPic: line 325
-adOrder: line 345
-prodPic: line 375
-shoppingCart: line 396
-prodOrder: line 417
-likedRestauranr: line 453
-memberCoupon: line 484
-reservation: line 501
-prodOrderDetail: line 534
-V_memeber_reservation: line 562
-V_reservation: line 579
-V_showProdInMall: line 604
-V_userAccount: line 618
-restaurantCarouselPic: 638
-menu: 654
-restaurantPost: 671
+prodCategory: line 67
+memberLevel: line 88
+restaurant: line 104
+administrator: line 131
+prodInfo: line 152
+member: line 201
+coupon: line 231
+reserveTime: line 269
+restaurantPic: line 327
+adOrder: line 347
+prodPic: line 377
+shoppingCart: line 398
+prodOrder: line 419
+likedRestauranr: line 455
+memberCoupon: line 486
+reservation: line 503
+prodOrderDetail: line 536
+V_memeber_reservation: line 564
+V_reservation: line 581
+V_showProdInMall: line 606
+V_userAccount: line 620
+restaurantCarouselPic: 640
+menu: 656
+restaurantPost: 673
+V_showProdDetail: 692
 
 =======================================*/
 
@@ -36,6 +37,7 @@ use goodeattime;
 set AUTOCOMMIT = 0;
 
 /*沒有被參照的表格先刪*/
+drop view if exists V_showProdDetail;
 drop table if exists restaurantCarouselPic;
 drop table if exists menu;
 drop table if exists restaurantPost;
@@ -685,6 +687,22 @@ values(1,'熱門活動',null,'餐廳編號一的貼文標題','即時獲取薄�
 (2,'消息公告',null,'餐廳編號二的貼文標題','欣葉台菜創始店榮獲台北米其林指南2022,2021,2020,2019,2018入選餐廳'),
 (3,'優惠券',null,'餐廳編號三的貼文標題','Bonus Star將於完成購買後之24小時內生效，顧客可自行登入星巴克網站或APP查詢'),
 (3,'紅利點數',null,'餐廳編號三的貼文標題2','本活動之贈星回饋記錄均以本公司系統紀錄為準。會員若於活動後銷退重結，將無法再贈星');
+commit;
+
+--  V_showProdDetail
+/*==========================================================================================*/
+create view V_showProdDetail as
+	select 
+		p.prodNo, p.prodName, r.restaurantName, pc.prodCategory,  p.prodPrice, p.prodStock,
+		p.restaurantNo, p.prodCategoryNo , p.prodDescription, p.prodContent,
+		p.totalCommentRating, p.prodCommentQty
+	from
+		prodInfo p
+		join
+		restaurant r on p.restaurantNo = r.restaurantNo
+		join
+		prodCategory pc on p.prodCategoryNo = pc.prodCategoryNo;
+
 commit;
 
 set AUTOCOMMIT = 1;
