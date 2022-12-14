@@ -69,4 +69,9 @@ public class ProdPicDAOTests {
 	void testFindByProdNo() {
 		System.out.println(dao.findByProdNo(4));
 	}
+	
+	@Test
+	void testGetPicNoByProdNo() {
+		System.out.println("testGetPicNoByProdNo()="+dao.getPicNoByProdNo(3));
+	}
 }

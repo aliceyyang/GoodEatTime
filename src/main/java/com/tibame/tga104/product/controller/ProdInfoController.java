@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tibame.tga104.product.service.ProdPicService;
 import com.tibame.tga104.product.service.ShowProdDetailService;
 import com.tibame.tga104.product.service.ShowProdInMallService;
 import com.tibame.tga104.product.vo.ShowProdDetailVO;
@@ -24,6 +25,8 @@ public class ProdInfoController {
 	
 	@Autowired
 	private ShowProdDetailService showProdDetailService;
+	@Autowired
+	private ProdPicService prodPicService;
 	
 	@GetMapping("all")
 	public List<ShowProdInMallVO> showAll() {
@@ -32,7 +35,9 @@ public class ProdInfoController {
 	
 	@GetMapping("detail")
 	public ShowProdDetailVO showOneDetail(@RequestParam Integer prodNo) {
-		return showProdDetailService.select(prodNo);
+		ShowProdDetailVO vo = showProdDetailService.select(prodNo);
+		vo.setProdPicList(prodPicService.getPicNoByProdNo(prodNo));
+		return vo;
 	}
 
 }

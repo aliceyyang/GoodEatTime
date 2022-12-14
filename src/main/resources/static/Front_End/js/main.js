@@ -190,7 +190,7 @@
     /*------------------
 		Single Product
 	--------------------*/
-    $('.product__details__thumb img').on('click', function () {
+    $('.product__details__thumb').on('click','img', function () {
         $('.product__details__thumb .pt__item').removeClass('active');
         $(this).addClass('active');
         var imgurl = $(this).data('imgbigurl');

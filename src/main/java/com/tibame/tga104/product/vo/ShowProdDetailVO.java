@@ -1,11 +1,13 @@
 package com.tibame.tga104.product.vo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="v_showproddetail")
@@ -37,8 +39,16 @@ public class ShowProdDetailVO implements Serializable{
 	private Integer totalCommentRating;
 	@Column(name = "prodCommentQty")
 	private Integer prodCommentQty;
+	@Transient
+	private List<Integer> prodPicList;
 	public Integer getProdNo() {
 		return prodNo;
+	}
+	public List<Integer> getProdPicList() {
+		return prodPicList;
+	}
+	public void setProdPicList(List<Integer> prodPicList) {
+		this.prodPicList = prodPicList;
 	}
 	public void setProdNo(Integer prodNo) {
 		this.prodNo = prodNo;
