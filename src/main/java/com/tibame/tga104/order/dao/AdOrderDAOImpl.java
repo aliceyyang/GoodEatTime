@@ -1,5 +1,6 @@
 package com.tibame.tga104.order.dao;
 
+import com.tibame.tga104.order.dto.AdOrderRequest;
 import com.tibame.tga104.order.mapper.AdOrderRowMapper;
 import com.tibame.tga104.order.vo.AdOrder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,23 +21,35 @@ public class AdOrderDAOImpl implements AdOrderDAO {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Override
-    public Integer createAdOrder(AdOrder adOrder) {
+    public List<AdOrder> getByAll() {
+        String sql = "select * from adOrder";
+        Map<String, Object> map = new HashMap<>();
+        List<AdOrder> adOrderList = namedParameterJdbcTemplate.query(sql, map, new AdOrderRowMapper());
+        if (adOrderList.size() > 0) {
+            return adOrderList;
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public Integer createAdOrder(AdOrderRequest adOrderRequest) {
         String sql = "insert into adOrder(restaurantNo, adminNo, adOrderTime, adStartTime, adEndTime, verified, " +
                 "verificationDetail, adOrderPrice, slideshowPic) values(:restaurantNo, :adminNo, :adOrderTime, " +
                 ":adStartTime, :adEndTime, :verified, :verificationDetail, :adOrderPrice, :slideshowPic)";
         Map<String, Object> map = new HashMap();
-        map.put("restaurantNo", adOrder.getRestaurantNo());
-        map.put("adminNo", adOrder.getAdminNo());
+        map.put("restaurantNo", adOrderRequest.getRestaurantNo());
+        map.put("adminNo", adOrderRequest.getAdminNo());
         map.put("adOrderTime", new Date());
-        map.put("adStartTime", adOrder.getAdStartTime());
-        map.put("adEndTime", adOrder.getAdEndTime());
-        map.put("verified", adOrder.getVerified());
-        map.put("verificationDetail", adOrder.getVerificationDetail());
-        map.put("adOrderPrice", adOrder.getAdOrderPrice());
-        map.put("slideshowPic", adOrder.getSlideshowPic());
+        map.put("adStartTime", adOrderRequest.getAdStartTime());
+        map.put("adEndTime", adOrderRequest.getAdEndTime());
+        map.put("verified", adOrderRequest.getVerified());
+        map.put("verificationDetail", adOrderRequest.getVerificationDetail());
+        map.put("adOrderPrice", adOrderRequest.getAdOrderPrice());
+        map.put("slideshowPic", adOrderRequest.getSlideshowPic());
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(map));
+        namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(map), keyHolder);
 
         int adOrderNo = keyHolder.getKey().intValue();
         System.out.println("mysql 自動生成的 adOrderNo 為" + adOrderNo);
@@ -45,22 +58,24 @@ public class AdOrderDAOImpl implements AdOrderDAO {
     }
 
     @Override
-    public void updateAdOrder(Integer adOrderNo, AdOrder adOrder) {
+    public void updateAdOrder(Integer adOrderNo, AdOrderRequest adOrderRequest) {
         String sql = "update adOrder set restaurantNo = :restaurantNo, adminNo = :adminNo, " +
                 "adStartTime = :adStartTime, adEndTime = :adEndTime, verified = :verified, " +
                 "verificationDetail = :verificationDetail, adOrderPrice = :adOrderPrice, slideshowPic = :slideshowPic " +
                 "where adOrderNo = :adOrderNo";
-        Map<String, Object> map = new HashMap<>();
-        map.put("adOrderNo", adOrder.getAdOrderNo());
 
-        map.put("restaurantNo", adOrder.getRestaurantNo());
-        map.put("adminNo", adOrder.getAdminNo());
-        map.put("adStartTime", adOrder.getAdStartTime());
-        map.put("adEndTime", adOrder.getAdEndTime());
-        map.put("verified", adOrder.getVerified());
-        map.put("verificationDetail", adOrder.getVerificationDetail());
-        map.put("adOrderPrice", adOrder.getAdOrderPrice());
-        map.put("slideshowPic", adOrder.getSlideshowPic());
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("adOrderNo", adOrderNo);
+
+        map.put("restaurantNo", adOrderRequest.getRestaurantNo());
+        map.put("adminNo", adOrderRequest.getAdminNo());
+        map.put("adStartTime", adOrderRequest.getAdStartTime());
+        map.put("adEndTime", adOrderRequest.getAdEndTime());
+        map.put("verified", adOrderRequest.getVerified());
+        map.put("verificationDetail", adOrderRequest.getVerificationDetail());
+        map.put("adOrderPrice", adOrderRequest.getAdOrderPrice());
+        map.put("slideshowPic", adOrderRequest.getSlideshowPic());
 
         namedParameterJdbcTemplate.update(sql, map);
     }
@@ -88,23 +103,11 @@ public class AdOrderDAOImpl implements AdOrderDAO {
     }
 
     @Override
-    public AdOrder getByRestaurantNo(Integer restaurantNo) {
+    public List<AdOrder> getByRestaurantNo(Integer restaurantNo) {
         String sql = "select adOrderNo, restaurantNo, adminNo, adOrderTime, adStartTime, adEndTime, verified, " +
                 "verificationDetail, adOrderPrice, slideshowPic from adOrder where restaurantNo = :restaurantNo";
         Map<String, Object> map = new HashMap<>();
         map.put("restaurantNo", restaurantNo);
-        List<AdOrder> adOrderList = namedParameterJdbcTemplate.query(sql, map, new AdOrderRowMapper());
-        if (adOrderList.size() > 0) {
-            return adOrderList.get(0);
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    public List<AdOrder> getByAll() {
-        String sql = "select * from adOrder";
-        Map<String, Object> map = new HashMap<>();
         List<AdOrder> adOrderList = namedParameterJdbcTemplate.query(sql, map, new AdOrderRowMapper());
         if (adOrderList.size() > 0) {
             return adOrderList;
@@ -112,6 +115,7 @@ public class AdOrderDAOImpl implements AdOrderDAO {
             return null;
         }
     }
+
 
 
 }

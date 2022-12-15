@@ -20,8 +20,8 @@ public class AdministratorServiceImpl implements AdministratorService {
     }
 
     @Override
-    public void update(Administrator administrator) {
-        administratorDAO.update(administrator);
+    public void update(Integer adminNo, Administrator administrator) {
+        administratorDAO.update(adminNo, administrator);
 
     }
 

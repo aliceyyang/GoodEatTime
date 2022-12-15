@@ -1,6 +1,7 @@
 package com.tibame.tga104.order.service;
 
 import com.tibame.tga104.order.dao.AdOrderDAO;
+import com.tibame.tga104.order.dto.AdOrderRequest;
 import com.tibame.tga104.order.vo.AdOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,13 +14,13 @@ public class AdOrderServiceImpl implements AdOrderService {
     private AdOrderDAO adOrderDAO;
 
     @Override
-    public Integer createAdOrder(AdOrder adOrder) {
-        return adOrderDAO.createAdOrder(adOrder);
+    public Integer createAdOrder(AdOrderRequest adOrderRequest) {
+        return adOrderDAO.createAdOrder(adOrderRequest);
     }
 
     @Override
-    public void updateAdOrder(Integer adOrderNo, AdOrder adOrder) {
-        adOrderDAO.updateAdOrder(adOrderNo, adOrder);
+    public void updateAdOrder(Integer adOrderNo, AdOrderRequest adOrderRequest) {
+        adOrderDAO.updateAdOrder(adOrderNo, adOrderRequest);
     }
 
     @Override
@@ -33,7 +34,7 @@ public class AdOrderServiceImpl implements AdOrderService {
     }
 
     @Override
-    public AdOrder getByRestaurantNo(Integer restaurantNo) {
+    public List<AdOrder> getByRestaurantNo(Integer restaurantNo) {
         return adOrderDAO.getByRestaurantNo(restaurantNo);
     }
 
