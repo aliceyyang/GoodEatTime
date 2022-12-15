@@ -6,9 +6,9 @@ import com.tibame.tga104.restaurant.vo.RestaurantVO;
 
 public interface RestaurantDao {
 
-	public void insert(RestaurantVO restaurantVO);
+	public boolean insert(RestaurantVO restaurantVO);
 
-	public void update(RestaurantVO restaurantVO);
+	public boolean update(RestaurantVO restaurantVO);
 
 	public void setStatus(Integer restaurantNo,Boolean restaurantStatus);
 

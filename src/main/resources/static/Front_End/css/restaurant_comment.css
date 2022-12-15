@@ -1,0 +1,56 @@
+.col-lg-6.comment{
+    border: 1px solid gray;
+    padding:50px;
+    margin: 50px auto 50px auto;
+}
+
+.testimonial__item .rating {
+    position: absolute;
+    left: 200px;
+    top: 0px;
+  }
+
+  .testimonial__item .rating span{
+    font-size: 30px;
+  }
+
+  span.icon_star.-off{
+    color:gray;
+  }
+
+  .comment_pic{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 40px;
+    top: -20px;
+    
+  }
+
+    .comment_pic > a > img{
+    width: 100%;
+    height: 100%;
+    border: 1px dashed gray;
+    padding: 2px;
+  }
+
+  a > img:hover{
+    opacity:0.5;
+  }
+
+  .restaurant_resp > h5{
+    font-weight: bold;
+    color: black;
+    margin-bottom: 3px;
+  }
+
+  .restaurantReTime{
+    color: #444444;
+    font-size: 14px;
+  }
+
+  .restaurant_resp > p{
+    margin-top: 10px;
+  }
+
+  

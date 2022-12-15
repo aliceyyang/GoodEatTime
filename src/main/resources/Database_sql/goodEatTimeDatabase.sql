@@ -4,27 +4,30 @@ index
 drop table: line 32
 
 create table & insert fake date
-prodCategory: line 59
-memberLevel: line 80
-restaurant: line 96
-administrator: line 123
-prodInfo: line 144
-member: line 193
-coupon: line 223
-reserveTime: line 261
-restaurantPic: line 319
-adOrder: line 339
-prodPic: line 369
-shoppingCart: line 390
-prodOrder: line 411
-likedRestauranr: line 447
-memberCoupon: line 478
-reservation: line 495
-prodOrderDetail: line 528
-V_memeber_reservation: line 556
-V_reservation: line 573
-V_showProdInMall: line 598
-V_userAccount: line 612
+prodCategory: line 65
+memberLevel: line 86
+restaurant: line 102
+administrator: line 129
+prodInfo: line 150
+member: line 199
+coupon: line 229
+reserveTime: line 267
+restaurantPic: line 325
+adOrder: line 345
+prodPic: line 375
+shoppingCart: line 396
+prodOrder: line 417
+likedRestauranr: line 453
+memberCoupon: line 484
+reservation: line 501
+prodOrderDetail: line 534
+V_memeber_reservation: line 562
+V_reservation: line 579
+V_showProdInMall: line 604
+V_userAccount: line 618
+restaurantCarouselPic: 638
+menu: 654
+restaurantPost: 671
 
 =======================================*/
 
@@ -33,6 +36,9 @@ use goodeattime;
 set AUTOCOMMIT = 0;
 
 /*沒有被參照的表格先刪*/
+drop table if exists restaurantCarouselPic;
+drop table if exists menu;
+drop table if exists restaurantPost;
 drop view if exists V_memeber_reservation;
 drop view if exists V_reservation;
 drop view if exists V_showProdInMall;
@@ -104,7 +110,7 @@ restaurantAccountInfo varchar(50) comment '帳戶資訊',
 restaurantBusinessHour varchar(200) not null comment '營業時間',
 restaurantAddr varchar(50) not null comment '地址',
 restaurantStatus bit(1) comment '餐廳狀態',
-restaurantAccount varchar(20) not null comment '餐廳帳號',
+restaurantAccount varchar(50) not null comment '餐廳帳號',
 restaurantPassword varchar(50) not null comment '餐廳密碼',
 restaurantCommentQuantity int not null default(0) comment '總評論數量',
 totalCommentRating int not null default(0) comment '總評論星等',
@@ -112,11 +118,11 @@ constraint restaurantNo_PK primary key(restaurantNo));
 
 
 insert into restaurant(restaurantTel, restaurantName, restaurantTaxIDNo, restaurantAccountInfo, restaurantBusinessHour, restaurantAddr, restaurantAccount, restaurantPassword)
-values('0229540410','薄多義','53914855',null,'11:00-20:30','台北市中正區忠孝東路一段150號','restaurant1001','1001restaurant'),
-('0225963255','欣葉台菜','12107610',null,'11:00-21:00','台北市中正區林森南路1號','restaurant1002','1002restaurant'),
-('0229341343','星巴克 (時代寓所門市)','53234955',null,'11:00-20:30','台北市中正區林森南路7-1號','restaurant1003','1003restaurant'),
-('0221243563','麥當勞-林森二餐廳','34256575',null,'11:00-20:30','台北市中正區林森南路1號','restaurant1004','1004restaurant'),
-('0221345678','摩斯漢堡 善導寺店','12124455',null,'11:00-20:30','台北市中正區忠孝東路一段178號','restaurant1005','1005restaurant');
+values('0229540410','薄多義','53914855',null,'11:00-20:30','台北市中正區忠孝東路一段150號','restaurant1001@gmail.com','1001restaurant'),
+('0225963255','欣葉台菜','12107610',null,'11:00-21:00','台北市中正區林森南路1號','restaurant1002','1002restaurant@gmail.com'),
+('0229341343','星巴克 (時代寓所門市)','53234955',null,'11:00-20:30','台北市中正區林森南路7-1號','restaurant1003@gmail.com','1003restaurant'),
+('0221243563','麥當勞-林森二餐廳','34256575',null,'11:00-20:30','台北市中正區林森南路1號','restaurant1004@gmail.com','1004restaurant'),
+('0221345678','摩斯漢堡 善導寺店','12124455',null,'11:00-20:30','台北市中正區忠孝東路一段178號','restaurant1005@gmail.com','1005restaurant');
 commit;
 
 
@@ -627,6 +633,58 @@ create view V_userAccount as
         restaurantStatus as verified
     FROM
         restaurant r ;
+commit;
+
+--  restaurantCarouselPic
+/*==========================================================================================*/
+create table restaurantCarouselPic(
+carouselPicNo int auto_increment not null primary key comment '輪播圖片編號',
+restaurantNo int unsigned not null comment '餐廳編號',
+carouselPic longblob comment '輪播圖片',
+constraint FK_restaurantCarouselPic_restaurantNo foreign key(restaurantNo) references restaurant(restaurantNo));
+
+insert into restaurantCarouselPic(restaurantNo,carouselPic)
+values(1,null),
+(2,null),
+(2,null),
+(3,null),
+(4,null);
+commit;
+
+--  menu
+/*==========================================================================================*/
+create table menu(
+menuNo int auto_increment not null primary key comment '菜單編號',
+restaurantNo int unsigned not null comment '餐廳編號',
+menuPic longblob comment '菜單圖片',
+menuPicRemark varchar(200) comment '菜單圖片說明',
+constraint FK_menu_restaurantNo foreign key(restaurantNo) references restaurant(restaurantNo));
+
+insert into menu(restaurantNo,menuPic,menuPicRemark)
+values(1,null,'餐廳編號一的第一個菜單圖片說明'),
+(1,null,'餐廳編號一的第二個菜單圖片說明'),
+(2,null,'餐廳編號二的第一個菜單圖片說明'),
+(4,null,'餐廳編號四的第一個菜單圖片說明'),
+(5,null,'餐廳編號五的第一個菜單圖片說明');
+commit;
+
+--  restaurantPost
+/*==========================================================================================*/
+
+create table restaurantPost(
+restaurantPostNo int auto_increment not null primary key comment '貼文編號',
+restaurantNo int unsigned not null comment '餐廳編號',
+postType varchar(10) comment '貼文類型',
+postPic longblob comment '貼文圖片',
+postTitle varchar(50) not null comment '貼文標題',
+postContent varchar(800) not null comment '貼文內容',
+constraint FK_restaurantPost_restaurantNo foreign key(restaurantNo) references restaurant(restaurantNo));
+
+insert into restaurantPost(restaurantNo,postType,postPic,postTitle,postContent)
+values(1,'熱門活動',null,'餐廳編號一的貼文標題','即時獲取薄多義的第一手資訊，別錯過我們的最新優惠以及各式體驗活動，活動可能因地區與分店而有所不同'),
+(2,'消息公告',null,'餐廳編號二的貼文標題','欣葉台菜創始店榮獲台北米其林指南2022,2021,2020,2019,2018入選餐廳'),
+(3,'優惠券',null,'餐廳編號三的貼文標題','Bonus Star將於完成購買後之24小時內生效，顧客可自行登入星巴克網站或APP查詢'),
+(3,'紅利點數',null,'餐廳編號三的貼文標題2','本活動之贈星回饋記錄均以本公司系統紀錄為準。會員若於活動後銷退重結，將無法再贈星');
 commit;
 
 set AUTOCOMMIT = 1;
