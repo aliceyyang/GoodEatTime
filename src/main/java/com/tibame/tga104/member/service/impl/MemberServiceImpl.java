@@ -18,7 +18,35 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO dao;
 
-
+	
+//會員登入
+	@Override
+	public MemberVO memberLogin(MemberVO memberVO) {
+		
+		if(memberVO.getMail() == null || memberVO.getMail().isEmpty()) {
+			memberVO.setMessage("帳號必須輸入");
+		}
+		if(memberVO.getMemberPassword() == null || memberVO.getMemberPassword().isEmpty()) {
+			memberVO.setMessage("密碼必須輸入");
+		}
+		if (memberVO.getMessage()!= null) {
+			return memberVO;
+		}
+		memberVO = dao.selectForLogin(memberVO.getMail(), memberVO.getMemberPassword());
+		if (memberVO != null) {
+			memberVO.setSuccessful(true);
+			memberVO.setMessage("登入成功"); 
+		} else {
+			memberVO = new MemberVO();
+			memberVO.setSuccessful(false);
+			memberVO.setMessage("登入失敗"); 
+		}
+		
+		return memberVO;
+	}
+	
+	
+//會員註冊
 	@Override
 	public MemberVO register(MemberVO memberVO) {
 		if (memberVO.getName() == null || memberVO.getName().isEmpty()) {
@@ -54,6 +82,8 @@ public class MemberServiceImpl implements MemberService {
 		dao.insert(memberVO);
 		return memberVO;
 	}
+
+
 
 
 
