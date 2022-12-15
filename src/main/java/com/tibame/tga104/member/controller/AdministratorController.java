@@ -26,22 +26,19 @@ public class AdministratorController {
     @Autowired
     private MemberSpringService memberSpringService;
 
-
-    @GetMapping("/administrator/user-accounts")
-    public ResponseEntity<List<?>> getUserAccountsByAll() {
+    
+    @GetMapping("/administrator/member-accounts")
+    public ResponseEntity<List<MemberVO>> getMemberAccountsByAll() {
         List<MemberVO> memberList = memberSpringService.getAccountByAll();
-        List<RestaurantVO> restaurantList = restaurantService.getAccountByAll();
-        List list = new ArrayList();
-        Iterator memberIterator = memberList.iterator();
-        while (memberIterator.hasNext()) {
-            list.add(memberIterator.next());
-        }
-        Iterator restaurantIterator = restaurantList.iterator();
-        while (restaurantIterator.hasNext()) {
-            list.add(restaurantIterator.next());
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(list);
+        return ResponseEntity.status(HttpStatus.OK).body(memberList);
     }
+
+    @GetMapping("/administrator/restaurant-accounts")
+    public ResponseEntity<List<RestaurantVO>> getRestaurantAccountsByAll() {
+        List<RestaurantVO> restaurantList = restaurantService.getAccountByAll();
+        return ResponseEntity.status(HttpStatus.OK).body(restaurantList);
+    }
+
 
     @GetMapping("/administrator")
     public ResponseEntity<List<Administrator>> getByAll() {
@@ -74,10 +71,15 @@ public class AdministratorController {
     @PutMapping("/administrator-update/{adminNo}")
     public ResponseEntity<Administrator> update(@PathVariable Integer adminNo,
                                                 @RequestBody Administrator administrator) {
-        administrator.setAdminNo(adminNo);
-        administratorService.update(administrator);
-        System.out.println("更新帳號資訊");
-        return ResponseEntity.status(HttpStatus.OK).build();
+        Administrator byAdministrator = administratorService.getByAdminNo(adminNo);
+        if(byAdministrator!=null){
+            administratorService.update(adminNo, administrator);
+            Administrator updateAdmin = administratorService.getByAdminNo(adminNo);
+            System.out.println("更新帳號資訊");
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @DeleteMapping("/administrator-delete/{adminNo}")

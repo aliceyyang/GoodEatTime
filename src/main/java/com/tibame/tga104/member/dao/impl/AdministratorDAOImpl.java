@@ -34,7 +34,7 @@ public class AdministratorDAOImpl implements AdministratorDAO {
         map.put("verifyAdCoupon", administrator.getVerifyAdCoupon());
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(map));
+        namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(map), keyHolder);
 
         int adminNo = keyHolder.getKey().intValue();
         System.out.println("mysql 自動生成的 adminNo 為" + adminNo);
@@ -42,10 +42,10 @@ public class AdministratorDAOImpl implements AdministratorDAO {
     }
 
     @Override
-    public void update(Administrator administrator) {
+    public void update(Integer adminNo, Administrator administrator) {
         String sql = "update administrator set adminAccount = :adminAccount, adminPassword = :adminPassword, adminName = :adminName, modifyAdminData = :modifyAdminData, modifyMemberData = :modifyMemberData, verifyRestaurant = :verifyRestaurant, verifyAdCoupon = :verifyAdCoupon where adminNo = :adminNo";
         Map<String, Object> map = new HashMap<>();
-        map.put("adminNo", administrator.getAdminNo());
+        map.put("adminNo", adminNo);
         map.put("adminAccount", administrator.getAdminAccount());
         map.put("adminPassword", administrator.getAdminPassword());
         map.put("adminName", administrator.getAdminName());

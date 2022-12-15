@@ -7,7 +7,7 @@ import java.util.List;
 public interface AdministratorService {
     Integer insert(Administrator administrator);
 
-    void update(Administrator administrator);
+    void update(Integer adminNo, Administrator administrator);
 
     void deleteByAdminNo(Integer adminNo);
 
