@@ -1,3 +1,82 @@
+// ==========餐廳資料變更審核===========
+
+$(function () {
+  $("#restaurant_info").validate({
+    /* 常用檢測屬性
+ required:必填
+ noSpace:空白
+ minlength:最小長度
+ maxlength:最大長度
+ email:信箱格式
+ number:數字格式
+ url:網址格式https://www.minwt.com
+ */
+    onkeyup: function (element, event) {
+      //去除左側空白
+      var value = this.elementValue(element).replace(/^\s+/g, "");
+      $(element).val(value);
+    },
+    rules: {
+      restaurantName: {
+        required: true,
+        noSpace: true,
+      },
+      restaurantTel: {
+        required: true,
+        minlength: 8,
+        maxlength: 10,
+        number: true,
+      },
+      restaurantAddr: {
+        required: true,
+      },
+      restaurantBusinessHour: {
+        required: true,
+      },
+      restaurantAccount: {
+        required: true,
+        email: true,
+      },
+      restaurantPassword: {
+        required: true,
+      },
+      restaurantPasswordCheck: {
+        required: true,
+      },
+    },
+    messages: {
+      restaurantName: {
+        required: "必填",
+      },
+      restaurantTel: {
+        required: "必填",
+        minlength: "電話格式不正確",
+        maxlength: "電話格式不正確",
+        number: "電話號碼需為數字",
+      },
+      restaurantAddr: {
+        required: "必填",
+      },
+      restaurantBusinessHour: {
+        required: "必填",
+      },
+      restaurantAccount: {
+        required: "必填",
+        email: "Email格式不正確",
+      },
+      restaurantPassword: {
+        required: "必填",
+      },
+      restaurantPasswordCheck: {
+        required: "必填",
+      },
+    },
+    submitHandler: function (form) {
+      form.submit();
+    },
+  });
+});
+
 // ==========輪播圖設定===========
 
 var drop_zone = document.getElementById("drop_zone");
@@ -170,20 +249,18 @@ function readFiles(files) {
     read.onloadend = function (e) {
       base64arr.push(e.target.result.slice(23));
       if (files.length === base64arr.length) {
-        fetch("uploadPic", {
-          method: "post",
+        const data = JSON.stringify(base64arr);
+        fetch("http://localhost:8080/restaurant-uploadMultiplePics", {
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            restaurantPicStr: base64arr[0],
-            restaurantPicRemark: $("#pic_remark").val(),
-          }),
-        })
-          .then((r) => r.json())
-          .then((data) => {
-            console.log(data);
-          });
+          body: data,
+        });
+        // .then((r) => r.json())
+        // .then((data) => {
+        //   console.log(data);
+        // });
       }
     };
   }

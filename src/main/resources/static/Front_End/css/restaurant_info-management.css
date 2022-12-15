@@ -164,6 +164,29 @@ div.pic_set{
         list-style: none;
       }
 
+      form label {
+        display: inline-block;
+        width: 100px;
+      }
+      
+      
+      form div {
+        margin-bottom: 10px;
+      }
+      
+      
+      .error {
+        color: red;
+        font-weight: bold;
+      }
+      
+      
+      
+      label.error {
+        display: inline;
+      }
+      
+      
      
      
 

@@ -183,17 +183,17 @@
               <div id="set_info" class="tab_inner" style="text-align:center">
               <h3>資料設定</h3>
               <div class="class__sidebar" style="width:70% ; margin: 0px auto">
-                <form action="#">
-                    <input type="text" id="restaurantName" placeholder="餐廳名稱">
-                    <input type="text" id="restaurantTel" placeholder="電話">
-                    <input type="text" id="restaurantAddr" placeholder="地址">
-                    <input type="textarea" id="restaurantBusinessHour" placeholder="營業時間說明">
-                    <input type="text" id="restaurantTaxIDNo" placeholder="統一編號">
-                    <input type="text" id="restaurantAccountInfo" placeholder="帳戶資訊">
-                    <input type="email" id="restaurantAccount" placeholder="餐廳帳號">
-                    <input type="password" id="restaurantPassword" placeholder="餐廳密碼">
-                    <input type="password" id="restaurantPasswordCheck" placeholder="請再次輸入密碼">
-                    <button type="submit" class="site-btn">儲存設定</button> 
+                <form action="#" id="restaurant_info">
+                    <input type="text" id="restaurantName" name="restaurantName" placeholder="餐廳名稱">
+                    <input type="text" id="restaurantTel" name="restaurantTel" placeholder="電話">
+                    <input type="text" id="restaurantAddr" name="restaurantAddr"  placeholder="地址">
+                    <input type="textarea" id="restaurantBusinessHour" name="restaurantBusinessHour" placeholder="營業時間說明">
+                    <input type="text" id="restaurantTaxIDNo" name="restaurantTaxIDNo" placeholder="統一編號">
+                    <input type="text" id="restaurantAccountInfo" name="restaurantAccountInfo" placeholder="帳戶資訊">
+                    <input type="email" id="restaurantAccount" name="restaurantAccount" placeholder="餐廳帳號">
+                    <input type="password" id="restaurantPassword" name="restaurantPassword" placeholder="餐廳密碼">
+                    <input type="password" id="restaurantPasswordCheck" name="restaurantPasswordCheck" placeholder="請再次輸入密碼">
+                    <button id="setting" class="site-btn">儲存設定</button> 
                 </form>
             </div>
               </div>
@@ -397,6 +397,8 @@
   <script src="js/main.js"></script>
   <script src="js/restautant_reserve-management.js"></script>
   <script src="js/restaurant_info-management.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
 </body>
 
 </html>
