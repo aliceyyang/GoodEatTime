@@ -31,11 +31,11 @@ let prodNo = params.prodNo;
 var prodData;
 
 if (prodNo != null && prodNo > 0) {
-  fetch(`http://localhost:8080/product/detail?prodNo=${prodNo}`)
+  fetch(`../product/detail?prodNo=${prodNo}`)
     .then((r) => r.json())
     .then((data) => {
       // console.log(data);
-      let mainPicURL = `http://localhost:8080/product/mainPic?prodNo=${prodNo}`;
+      let mainPicURL = `../product/mainPic?prodNo=${prodNo}`;
       $("div.product__details__big__img > img").attr("src", mainPicURL);
       let mainPic = `<div class="pt__item active">
         <img
@@ -48,7 +48,7 @@ if (prodNo != null && prodNo > 0) {
       $("div.product__details__thumb").append(mainPic);
       $.each(data.prodPicList, (index, item) => {
         // console.log("索引值：" + index + "; 值：" + item);
-        let smallPicURL = `http://localhost:8080/product/ProdPic?prodPicNo=${item}`;
+        let smallPicURL = `../product/ProdPic?prodPicNo=${item}`;
         let smallPic = `<div class="pt__item">
           <img
             data-imgbigurl="${smallPicURL}"
@@ -58,10 +58,10 @@ if (prodNo != null && prodNo > 0) {
         </div>`;
         $("div.product__details__thumb").append(smallPic);
       });
-      $("div.product__label").text(data.restaurantName);
+      $("div.product__details__text > div.product__label").text(data.restaurantName);
       $("div.product__details__text > h4").text(data.prodName);
       $("div.product__details__text > h5").text(`NTD ${data.prodPrice}`);
-      $("div.product__details__text > p").text(data.prodDescription);
+      $("div.product__details__text > p").html(data.prodDescription);
       $("div.product__details__text span.product_category").text(
         data.prodCategory
       );
@@ -74,7 +74,7 @@ if (prodNo != null && prodNo > 0) {
         "style",
         `width: ${averageRating}%`
       );
-      $("#tabs-2 p").text(data.prodContent);
+      $("#tabs-2 p").html(data.prodContent);
       prodData = data;
     });
 }
