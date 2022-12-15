@@ -8,5 +8,7 @@ import com.tibame.tga104.member.vo.MemberVO;
 public interface MemberService {
 
 	MemberVO register(MemberVO memberVO);
+	
+	MemberVO memberLogin(MemberVO memberVO);
 		
 }
