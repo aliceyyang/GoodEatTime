@@ -5,6 +5,7 @@ import java.util.List;
 import com.tibame.tga104.restaurant.dao.RestaurantDao;
 import com.tibame.tga104.restaurant.dao.RestaurantSpringDAO;
 import com.tibame.tga104.restaurant.dao.impl.RestaurantDaoImpl;
+import com.tibame.tga104.restaurant.dto.RestaurantRequest;
 import com.tibame.tga104.restaurant.service.RestaurantService;
 import com.tibame.tga104.restaurant.vo.RestaurantVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,10 +87,20 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 
 
-	// added by Alice
-	@Override
-	public List<RestaurantVO> getAccountByAll() {
-		return restaurantSpringDAO.getAccountByAll();
+
+	@Override // written by Alice
+	public List<RestaurantVO> getRestaurantByAll() {
+		return restaurantSpringDAO.getRestaurantByAll();
+	}
+
+	@Override // written by Alice
+	public RestaurantVO getRestaurantByNo(Integer restaurantNo) {
+		return restaurantSpringDAO.getRestaurantByNo(restaurantNo);
+	}
+
+	@Override // written by Alice
+	public void updateRestaurantByNo(Integer restaurantNo, RestaurantRequest restaurantRequest) {
+		restaurantSpringDAO.updateRestaurantByNo(restaurantNo, restaurantRequest);
 	}
 
 
