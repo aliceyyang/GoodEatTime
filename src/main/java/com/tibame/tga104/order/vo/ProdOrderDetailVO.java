@@ -1,17 +1,53 @@
 package com.tibame.tga104.order.vo;
 
-public class ProdOrderDetailVO implements java.io.Serializable{
-	private static final long serialVersionUID = 1L;
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+
+@Entity
+@Table(name="prodOrderDetail")
+@IdClass(ProdOrderDetailPK.class)
+public class ProdOrderDetailVO implements Serializable{
+	private static final long serialVersionUID = -8609218714494802116L;
 	
+		@Id
+		@Column(name="prodOrderNo")
+		@NotNull
 		private Integer prodOrderNo;
+		@Id
+		@Column(name="prodNo")
+		@NotNull
 		private Integer prodNo;
+		@Column(name="prodQty")
+		@NotNull
 		private Integer prodQty;
+		@Column(name="prodPrice")
+		@NotNull
 		private Integer prodPrice;	
+		@Column(name="prodCommentRating")
 		private Integer prodCommentRating;
+		@Column(name="prodCommentContent")
 		private String prodCommentContent;	
+		@Column(name="prodCommentPic", columnDefinition = "longblob")
 		private byte[] prodCommentPic;
+		@Column(name="prodCommentTime")
 		private java.sql.Timestamp prodCommentTime;
+		@Column(name="restaurantReplyTime")
 		private java.sql.Timestamp restaurantReplyTime;
+		
+		public ProdOrderDetailPK getId() {
+			return new ProdOrderDetailPK(prodOrderNo, prodNo);
+		}
+		public void setId(ProdOrderDetailPK id) {
+			this.prodOrderNo = id.getProdOrderNo();
+			this.prodNo = id.getProdNo();
+		}
 		
 		public Integer getProdOrderNo() {
 			return prodOrderNo;

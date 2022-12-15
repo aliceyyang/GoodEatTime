@@ -2,17 +2,17 @@ package com.tibame.tga104.order.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.tibame.tga104.order.dao.ProdOrderDAO_interface;
-import com.tibame.tga104.order.dao.ProdOrderJDBCDAO;
 import com.tibame.tga104.order.vo.ProdOrderVO;
 
+@Service
 public class ProdOrderService {
 	
+	@Autowired
 	private ProdOrderDAO_interface dao;
-
-	public ProdOrderService() {
-		dao = new ProdOrderJDBCDAO();
-	}
 	
 	public ProdOrderVO insertProdOrder(Integer memberNo, Integer restaurantNo, Integer couponNo, String orderStatus, 
 			java.sql.Timestamp prodOrderDate, java.sql.Timestamp prodOrderReveiveTime, java.sql.Timestamp prodOderDeliverTime, 
@@ -43,9 +43,11 @@ public class ProdOrderService {
 		return insertProdOrder;		
 		
 	}
+
 	public void deleteProdOrder(Integer prodOrderNo) {
 		dao.delete(prodOrderNo);
 	}
+
 	public ProdOrderVO updateProdOrder(Integer prodOrderNo, Integer	memberNo, Integer restaurantNo, Integer couponNo, String orderStatus, 
 			java.sql.Timestamp prodOrderDate, java.sql.Timestamp prodOrderReveiveTime, java.sql.Timestamp prodOderDeliverTime, 
 			Integer deliverFee, Integer amountBeforeCoupon, Integer amountAfterCoupon, Integer prodOrderPoint, 
@@ -76,9 +78,11 @@ public class ProdOrderService {
 		return updateProdOrder;		
 		
 	}
+
 	public ProdOrderVO select(Integer prodOrderNo) {
 		return dao.select(prodOrderNo);
 	}
+
 	public List<ProdOrderVO> getAll(){
 		return dao.getAll();
 	}
