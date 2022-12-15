@@ -14,7 +14,8 @@ import com.tibame.tga104.restaurant.vo.RestaurantPicVO;
 public class RestaurantPicDaoImpl implements RestaurantPicDAO{
 
 	@Override
-	public void insert(RestaurantPicVO restaurantPicVO) {
+	public boolean insert(RestaurantPicVO restaurantPicVO) {
+		int rowCount = 0;
 		String insert = "insert into restaurantPic(restaurantNo,restaurantPic,restaurantPicRemark)"
 				+ "values(?,?,?)";
 		
@@ -25,14 +26,17 @@ public class RestaurantPicDaoImpl implements RestaurantPicDAO{
 			ps.setBytes(2, restaurantPicVO.getRestaurantPic());
 			ps.setString(3,restaurantPicVO.getRestaurantPicRemark());
 			
+			rowCount = ps.executeUpdate();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		return rowCount != 0;
 	}
 
 	@Override
-	public void update(RestaurantPicVO restaurantPicVO) {
+	public boolean update(RestaurantPicVO restaurantPicVO) {
+		int rowCount = 0;
 		String update = "update restaurantPic"
 				+ "set restaurantPic = ? ,restaurantPicRemark = ?"
 				+ "where restaurantPicNo = ?;";
@@ -44,15 +48,17 @@ public class RestaurantPicDaoImpl implements RestaurantPicDAO{
 				ps.setString(2,restaurantPicVO.getRestaurantPicRemark());
 				ps.setInt(3,restaurantPicVO.getRestaurantPicNo());
 				
-				ps.executeUpdate();
+				rowCount = ps.executeUpdate();
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		return rowCount != 0;
 	}
 
 	@Override
-	public void delete(Integer restaurantPicNo) {
+	public boolean delete(Integer restaurantPicNo) {
+		int rowCount = 0;
 		String delete = "delete from restaurantPic"
 				+ "where restaurantPicNo = ?";
 		
@@ -60,12 +66,12 @@ public class RestaurantPicDaoImpl implements RestaurantPicDAO{
 			PreparedStatement ps = con.prepareStatement(delete)){
 				
 				ps.setInt(1,restaurantPicNo);
-				ps.executeUpdate();
+				rowCount = ps.executeUpdate();
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		
+		return rowCount != 0;
 	}
 
 	@Override

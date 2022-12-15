@@ -6,7 +6,7 @@
     <meta name="keywords" content="Cake, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>好食光 | 餐廳</title>
+    <title>好食光 | 餐廳評價</title>
 
     <!-- Google Font -->
     <link
@@ -16,6 +16,10 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"
     />
 
     <!-- Css Styles -->
@@ -30,15 +34,7 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="css/backtop.css" type="text/css" />
-    <link rel="stylesheet" href="css/restaurant.css" type="text/css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
-    />
+    <link rel="stylesheet" href="css/restaurant_comment.css" type="text/css" />
   </head>
 
   <body>
@@ -143,19 +139,17 @@
       </div>
     </header>
     <!-- Header結束 -->
-
     <!-- Breadcrumb Begin -->
-    <div class="breadcrumb-option" style="padding-top: 40px">
+    <div class="breadcrumb-option">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="breadcrumb__text">
-              <h2>STARBUCKS</h2>
+              <a href="./restaurant.html" data-id="1"><h2>STARBUCKS</h2></a>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="breadcrumb__links">
-              <a href="javascript:void(0)" data-id="1">MENU</a>
               <a href="./index.html" data-id="2">訂位</a>
               <a href="./index.html" data-id="3">購物</a>
             </div>
@@ -164,235 +158,209 @@
       </div>
     </div>
     <!-- Breadcrumb End -->
-    <br />
-    <br />
-    <br />
-    <!-- 輪播廣告 Begin-->
-    <div class="owl-carousel owl-theme">
-      <div class="item">
-        <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
-      </div>
-      <div class="item">
-        <img src="./img/restaurant/starbucks/starbucks-2.jpg" />
-      </div>
-      <div class="item">
-        <img src="./img/restaurant/starbucks/starbucks-3.jpg" />
-      </div>
-      <div class="item">
-        <img src="./img/restaurant/starbucks/starbucks-4.jpg" />
-      </div>
-      <div class="item">
-        <img src="./img/restaurant/starbucks/starbucks-5.jpg" />
-      </div>
-      <div class="item">
-        <img src="./img/restaurant/starbucks/starbucks-6.jpg" />
-      </div>
-    </div>
 
-    <!-- 輪播廣告 End -->
-
-    <!-- Blog Section Begin -->
+    <!-- About Section Begin -->
     <section
-      class="blog spad"
-      style="background-color: white; padding-top: 10px; padding-bottom: 10px"
+      class="about spad"
+      style="background-color: white; padding-bottom: 50px"
     >
       <div class="container">
         <div class="row">
-          <div class="col-lg-8">
-            <div class="blog__item">
+          <div class="col-lg-12"></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <div class="about__text">
               <div class="section-title">
-                <h2>POST</h2>
+                <span>Good Eat Time</span>
+                <br />
+                <h2 class="">餐廳訂位評論</h2>
+                <h2>4.5</h2>
               </div>
-
-              <div
-                class="blog__item__pic set-bg"
-                data-setbg="./img/restaurant/starbucks/starbucks-news1.jpg"
-              >
-                <div class="blog__pic__inner" style="bottom: -60px">
-                  <div class="label">貼文類型</div>
-                  <ul>
-                    <li>13 Nov 2020</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="blog__item__text" style="padding-top: 70px">
-                <h2>週末好星情Bonus Star</h2>
-                <p>
-                  活動期間每週六及週日，會員單筆結帳滿350元，可額外獲贈5顆星
-                  (可累計)
-                </p>
-                <div class="inner_block">
-                  1.
-                  此活動需全額以星禮程帳號中任一隨行卡或APP行動支付方可享有此回饋，活動期間不限購買次數。星星可累計。<br />
-                  2. Bonus
-                  Star將於完成購買後之24小時內生效，顧客可自行登入星巴克網站或APP查詢。<br />
-                  3.
-                  本活動之贈星回饋記錄均以本公司系統紀錄為準。會員若於活動後銷退重結，將無法再贈星。
-                </div>
-                <a class="readmore" type="button">READ MORE</a>
-              </div>
-            </div>
-            <div class="blog__item">
-              <div
-                class="blog__item__pic set-bg"
-                data-setbg="./img/restaurant/starbucks/starbucks-news2.jpg"
-              >
-                <div class="blog__pic__inner" style="bottom: -60px">
-                  <div class="label">貼文類型</div>
-                  <ul>
-                    <li>13 Nov 2020</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="blog__item__text" style="padding-top: 70px">
-                <h2>行動預點專屬 週一週二星禮遇</h2>
-                <p>
-                  活動期間每週一&週二，會員使用APP行動預點服務購買大杯(含)以上飲料的結帳金額，可獲贈三倍星星！
-                </p>
-                <div class="inner_block">
-                  1.
-                  商品依APP行動預點選單顯示為準，各店庫存不同，售完為止；本活動不適用於門市內星禮程活動、外送外賣、電話預訂服務。<br />
-                  2. 行動預點使用注意事項，請至星巴克網站瀏覽。<br />
-                  3. 本活動之贈星回饋記錄均以本公司系統紀錄為準。
-                </div>
-                <a class="readmore" type="button">READ MORE</a>
-              </div>
-            </div>
-            <div class="blog__item">
-              <div
-                class="blog__item__pic set-bg"
-                data-setbg="img/blog/blog-3.jpg"
-              >
-                <div class="blog__pic__inner" style="bottom: -60px">
-                  <div class="label">貼文類型</div>
-                  <ul>
-                    <li>13 Nov 2020</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="blog__item__text" style="padding-top: 70px">
-                <h2>餐廳貼文標題餐廳貼文標題</h2>
-                <p>貼文第一行貼文第一行貼文第一行貼文第一行貼文第一行</p>
-                <div class="inner_block">
-                  1.
-                  商品依APP行動預點選單顯示為準，各店庫存不同，售完為止；本活動不適用於門市內星禮程活動、外送外賣、電話預訂服務。<br />
-                  2. 行動預點使用注意事項，請至星巴克網站瀏覽。<br />
-                  3. 本活動之贈星回饋記錄均以本公司系統紀錄為準。
-                </div>
-                <a class="readmore" type="button">READ MORE</a>
-              </div>
+              <h3>共6則評論</h3>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="blog__sidebar">
-              <div class="blog__sidebar__item">
-                <h5><i class="fa fa-clock"></i> 9:30-22:30</h5>
-                <h5><i class="fa-solid fa-phone"></i> 2321-4348</h5>
-                <h5>
-                  <i class="fa-solid fa-location-dot"></i>
-                  台北市中正區林森南路7-1號
-                </h5>
-              </div>
-              <div class="blog__sidebar__social">
-                <div class="rwd-map">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.7116318706817!2d121.51966501461976!3d25.04385850030052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a968cd618e8b%3A0x108d4f0c924eda6a!2z5pif5be05YWLICjmmYLku6Plr5PmiYDploDluIIp!5e0!3m2!1szh-TW!2stw!4v1669297216670!5m2!1szh-TW!2stw"
-                    width="600"
-                    height="450"
-                    style="border: 0"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                  ></iframe>
+          <div class="col-lg-6 col-md-6">
+            <div class="about__bar">
+              <div class="about__bar__item">
+                <p>
+                  5 <i class="fa-solid fa-star" color="orange"></i>
+                  <i class="fa-solid fa-star" color="orange"></i>
+                  <i class="fa-solid fa-star" color="orange"></i>
+                  <i class="fa-solid fa-star" color="orange"></i>
+                  <i class="fa-solid fa-star" color="orange"></i>
+                </p>
+                <div id="bar1" class="barfiller">
+                  <div class="tipWrap"><span class="tip"></span></div>
+                  <span class="fill" data-percentage="95"></span>
                 </div>
               </div>
-            </div>
-            <div class="blog__sidebar__item">
-              <br />
-              <br />
-              <h5><i class="fa-solid fa-star"></i> 評價</h5>
-
-              <div class="blog__sidebar__recent">
-                <div id="comment">
-                  <br />
-                  <h3 style="color: black">星巴克時代寓所門市</h3>
-                  <h2>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star-half-stroke" color="orange"></i>
-                  </h2>
-                  <span><h2>4.5</h2></span>
-                  <span
-                    ><h5 style="color: gray" href="#" type="button">
-                      共6則評論
-                    </h5></span
-                  >
-                  <span><h3 style="color: black">最近一則評論</h3></span>
-                  <div id="latest_comment">
-                    <span><h4>會員姓名</h4></span>
-                    <span><h2 style="font-style: italic">5</h2></span>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <span
-                      ><h6>
-                        評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容
-                      </h6></span
-                    >
-                  </div>
+              <div class="about__bar__item">
+                <p>
+                  4 <i class="fa-solid fa-star" color="orange"></i>
+                  <i class="fa-solid fa-star" color="orange"></i>
+                  <i class="fa-solid fa-star" color="orange"></i>
+                  <i class="fa-solid fa-star" color="orange"></i>
+                </p>
+                <div id="bar2" class="barfiller">
+                  <div class="tipWrap"><span class="tip"></span></div>
+                  <span class="fill" data-percentage="80"></span>
                 </div>
               </div>
-            </div>
-            <div class="blog__sidebar__item">
-              <h5><i class="fa-solid fa-ticket"></i> 商城優惠券</h5>
-              <p>登入好食光會員，即可每日限量領取優惠券!</p>
-              <div class="blog__sidebar__item__categories">
-                <div class="coupon" type="button" href="#">
-                  <h4>滿1000元打9折券</h4>
-                </div>
-                <div class="coupon" type="button" href="#">
-                  <h4>滿200元折50元折價券</h4>
-                </div>
-                <div class="coupon" type="button" href="#">
-                  <h4>甜點商品9折券</h4>
-                </div>
-                <div class="coupon" type="button" href="#">
-                  <h4>咖啡豆商品8折券</h4>
+              <div class="about__bar__item">
+                <p>
+                  3 <i class="fa-solid fa-star" color="orange"></i>
+                  <i class="fa-solid fa-star" color="orange"></i>
+                  <i class="fa-solid fa-star" color="orange"></i>
+                </p>
+                <div id="bar3" class="barfiller">
+                  <div class="tipWrap"><span class="tip"></span></div>
+                  <span class="fill" data-percentage="50"></span>
                 </div>
               </div>
-            </div>
-            <div class="blog__sidebar__item">
-              <h5><i class="fa-solid fa-heart"></i> 收藏餐廳</h5>
-              <p>
-                感謝您支持好食光，點選收藏餐廳，即可在會員中心迅速找到本餐廳，更快獲得最新消息!
-              </p>
-              <form action="#">
-                <button type="submit" class="site-btn">收藏餐廳</button>
-              </form>
+              <div class="about__bar__item">
+                <p>
+                  2 <i class="fa-solid fa-star" color="orange"></i>
+                  <i class="fa-solid fa-star" color="orange"></i>
+                </p>
+                <div id="bar4" class="barfiller">
+                  <div class="tipWrap"><span class="tip"></span></div>
+                  <span class="fill" data-percentage="20"></span>
+                </div>
+              </div>
+              <div class="about__bar__item">
+                <p>1 <i class="fa-solid fa-star" color="orange"></i></p>
+                <div id="bar5" class="barfiller">
+                  <div class="tipWrap"><span class="tip"></span></div>
+                  <span class="fill" data-percentage="30"></span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Blog Section End -->
-
-    <div class="container menu">
-      <div class="breadcrumb__text">
-        <h2 id="area1">MENU</h2>
-        <br />
-        <img src="./img/restaurant/starbucks/starbucks-menu.jpg" />
-        <br />
-        <br />
-        <h4>
-          菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明菜單圖片說明
-        </h4>
+    <!-- About Section End -->
+    <hr />
+    <!-- Testimonial Section Begin -->
+    <div class="col-lg-6 comment">
+      <div class="testimonial__item">
+        <div class="testimonial__author">
+          <div class="testimonial__author__pic">
+            <img src="img/testimonial/ta-1.jpg" alt="" />
+          </div>
+          <div class="testimonial__author__text">
+            <h5>會員名稱</h5>
+            <span class="restaurantCommentTime">2022-12-25</span>
+          </div>
+        </div>
+        <div class="rating">
+          <h3 class="commentRating">4</h3>
+          <span class="icon_star"></span>
+          <span class="icon_star"></span>
+          <span class="icon_star"></span>
+          <span class="icon_star"></span>
+          <span class="icon_star -off"></span>
+        </div>
+        <div class="comment_pic">
+          <a data-fancybox="gallery" href="img/restaurant/starbucks/comment.jpg"
+            ><img src="img/restaurant/starbucks/comment.jpg"
+          /></a>
+        </div>
+        <p>
+          餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容
+        </p>
+        <hr />
+        <div class="restaurant_resp">
+          <h5>業主回應</h5>
+          <span class="restaurantReTime">2022-12-26</span>
+          <p>
+            業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容
+          </p>
+        </div>
       </div>
     </div>
 
+    <div class="col-lg-6 comment">
+      <div class="testimonial__item">
+        <div class="testimonial__author">
+          <div class="testimonial__author__pic">
+            <img src="img/testimonial/ta-1.jpg" alt="" />
+          </div>
+          <div class="testimonial__author__text">
+            <h5>會員名稱</h5>
+            <span class="restaurantCommentTime">2022-12-25</span>
+          </div>
+        </div>
+        <div class="rating">
+          <h3 class="commentRating">4</h3>
+          <span class="icon_star"></span>
+          <span class="icon_star"></span>
+          <span class="icon_star"></span>
+          <span class="icon_star"></span>
+          <span class="icon_star -off"></span>
+        </div>
+        <div class="comment_pic">
+          <a
+            data-fancybox="gallery"
+            href="img/restaurant/starbucks/starbucks-4.jpg"
+            ><img src="img/restaurant/starbucks/starbucks-4.jpg"
+          /></a>
+        </div>
+        <p>
+          餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容
+        </p>
+        <hr />
+        <div class="restaurant_resp">
+          <h5>業主回應</h5>
+          <span class="restaurantReTime">2022-12-26</span>
+          <p>
+            業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 comment">
+      <div class="testimonial__item">
+        <div class="testimonial__author">
+          <div class="testimonial__author__pic">
+            <img src="img/testimonial/ta-1.jpg" alt="" />
+          </div>
+          <div class="testimonial__author__text">
+            <h5>會員名稱</h5>
+            <span class="restaurantCommentTime">2022-12-25</span>
+          </div>
+        </div>
+        <div class="rating">
+          <h3 class="commentRating">4</h3>
+          <span class="icon_star"></span>
+          <span class="icon_star"></span>
+          <span class="icon_star"></span>
+          <span class="icon_star"></span>
+          <span class="icon_star -off"></span>
+        </div>
+        <div class="comment_pic">
+          <a
+            data-fancybox="gallery"
+            href="img/restaurant/starbucks/starbucks-2.jpg"
+            ><img src="img/restaurant/starbucks/starbucks-2.jpg"
+          /></a>
+        </div>
+        <p>
+          餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容
+        </p>
+        <hr />
+      </div>
+    </div>
+
+    <!-- Testimonial Section End -->
+
+    <div class="shop__pagination" style="margin: 5% 8% 10%">
+      <a href="#">1</a>
+      <a href="#">2</a>
+      <a href="#"><span class="arrow_carrot-right"></span></a>
+    </div>
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
       <button type="button" id="BackTop"></button>
@@ -514,27 +482,8 @@
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/backtop.js"></script>
+    <script src="js/restaurant_comment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"></script>
-    <script src="js/restaurant.js"></script>
-    <script>
-      $(".owl-carousel").owlCarousel({
-        autoplay: true,
-        loop: true,
-        margin: 5,
-        nav: true,
-
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 2,
-          },
-          1000: {
-            items: 3,
-          },
-        },
-      });
-    </script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
   </body>
 </html>

@@ -28,6 +28,10 @@
     display:inline-block;
   }
 
+  .readmore.-on{
+    margin-top: 20px;
+  }
+
   div#comment{
     width:360px;
     height:450px;
@@ -58,3 +62,6 @@
     color: black;
   }
 
+  .container.menu{
+    padding-bottom: 10%;
+  }

@@ -10,6 +10,7 @@ public class RestaurantPicVO implements Serializable{
 	private Integer restaurantNo;
 	private byte[] restaurantPic;
 	private String restaurantPicRemark;
+	private String restaurantPicStr;
 	
 	public RestaurantPicVO() {
 		
@@ -55,5 +56,11 @@ public class RestaurantPicVO implements Serializable{
 		this.restaurantPicRemark = restaurantPicRemark;
 	}
 
-	
+	public String getRestaurantPicStr() {
+		return restaurantPicStr;
+	}
+
+	public void setRestaurantPicStr(String restaurantPicStr) {
+		this.restaurantPicStr = restaurantPicStr;
+	}
 }

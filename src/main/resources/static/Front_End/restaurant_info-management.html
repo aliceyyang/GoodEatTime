@@ -183,17 +183,17 @@
               <div id="set_info" class="tab_inner" style="text-align:center">
               <h3>資料設定</h3>
               <div class="class__sidebar" style="width:70% ; margin: 0px auto">
-                <form action="#">
-                    <input type="text" id="restaurantName" placeholder="餐廳名稱">
-                    <input type="text" id="restaurantTel" placeholder="電話">
-                    <input type="text" id="restaurantAddr" placeholder="地址">
-                    <input type="textarea" id="restaurantBusinessHour" placeholder="營業時間說明">
-                    <input type="text" id="restaurantTaxIDNo" placeholder="統一編號">
-                    <input type="text" id="restaurantAccountInfo" placeholder="帳戶資訊">
-                    <input type="email" id="restaurantAccount" placeholder="餐廳帳號">
-                    <input type="password" id="restaurantPassword" placeholder="餐廳密碼">
-                    <input type="password" id="restaurantPasswordCheck" placeholder="請再次輸入密碼">
-                    <button type="submit" class="site-btn">儲存設定</button> 
+                <form action="#" id="restaurant_info">
+                    <input type="text" id="restaurantName" name="restaurantName" placeholder="餐廳名稱">
+                    <input type="text" id="restaurantTel" name="restaurantTel" placeholder="電話">
+                    <input type="text" id="restaurantAddr" name="restaurantAddr"  placeholder="地址">
+                    <input type="textarea" id="restaurantBusinessHour" name="restaurantBusinessHour" placeholder="營業時間說明">
+                    <input type="text" id="restaurantTaxIDNo" name="restaurantTaxIDNo" placeholder="統一編號">
+                    <input type="text" id="restaurantAccountInfo" name="restaurantAccountInfo" placeholder="帳戶資訊">
+                    <input type="email" id="restaurantAccount" name="restaurantAccount" placeholder="餐廳帳號">
+                    <input type="password" id="restaurantPassword" name="restaurantPassword" placeholder="餐廳密碼">
+                    <input type="password" id="restaurantPasswordCheck" name="restaurantPasswordCheck" placeholder="請再次輸入密碼">
+                    <button id="setting" class="site-btn">儲存設定</button> 
                 </form>
             </div>
               </div>
@@ -204,13 +204,7 @@
                   <label>
                   <input type="file" id="carousel_file"  accept="image/*" multiple="multiple"/>
                 </label>
-                  <br>
-                  <a>上限為6張圖片</a>
-                  <br />
-                  <br />
-                  <div id="drop_zone"><span class="text">圖片拖曳至此處</span></div>
-                  <br />
-                  <div id="preview"><span class="text">預覽圖</span></div>
+                  <div id="drop_zone"><span class="text">輪播圖片6張</span></div>
                   <br />
                   <br />
                   <button type="reset" class="btns" style="width:49%">清空資料</button>
@@ -218,14 +212,10 @@
                 </form>
                 <form id="menu" style="width:450px ; float:right">
                   <h4 style="text-align:center">菜單圖片</h4>
-                  <input type="file" id="menu_file" accept="image/*" multiple="multiple"/>
+                  <input type="file" id="menu_file" accept="image/*"/>
                   <br />
                   <br />
-                  <div id="drop_zone2"><span class="text">圖片拖曳至此處</span></div>
-                    <br />
-                  <div id="preview2"><span class="text">預覽圖</span></div>
-                  <br />
-                  <br />
+                  <div id="drop_zone2"><span class="text">菜單圖片</span></div>
                   <label for="remark">圖片說明 </label>
                   <br />
                   <textarea id="pic_remark"></textarea>
@@ -236,7 +226,7 @@
                 </form>
               </div>
               <div id="set_news" class="tab_inner">
-                <h3>文案撰寫</h3>
+                <h3>貼文撰寫</h3>
                 <form id="news" style="float : center">
                   <div style="float:left ; margin-left:70px">
                     <h4 style="text-align:center">選擇圖片</h4>
@@ -244,12 +234,10 @@
                     <input type="file" id="news_file" accept="image/*"/>
                     <br />
                     <br />
-                    <div id="drop_zone3"><span class="text">圖片拖曳至此處</span></div>
-                      <br />
-                    <div id="preview3"><span class="text">預覽圖</span></div>
+                    <div id="drop_zone3"><span class="text">貼文圖片</span></div>
                 </div>
                 <div style="float:right">
-                  <label for="article">文案類型</label>
+                  <label for="article">貼文類型</label>
                   <br />
                   <select name="article_type" style="margin-bottom:20px">
                     <option value="activity">熱門活動</option>
@@ -259,12 +247,12 @@
                   </select>
                   <br />
                   <br />
-                  <label for="title">文案標題</label>
+                  <label for="title">貼文標題</label>
                   <br />
                   <input type="text" id="title" />
                   <br />
                   <br />
-                  <label for="article">文案內容</label>
+                  <label for="article">貼文內容</label>
                   <br />
                   <textarea id="pic_remark" style="width:450px ; height:300px"></textarea>
                 </div>
@@ -409,6 +397,8 @@
   <script src="js/main.js"></script>
   <script src="js/restautant_reserve-management.js"></script>
   <script src="js/restaurant_info-management.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
 </body>
 
 </html>

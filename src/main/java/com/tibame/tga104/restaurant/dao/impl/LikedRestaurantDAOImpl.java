@@ -15,7 +15,8 @@ public class LikedRestaurantDAOImpl implements LikedRestaurantDAO{
 	
 
 	@Override
-	public void insert(LikedRestaurantVO likedRestaurantVO) {
+	public boolean insert(LikedRestaurantVO likedRestaurantVO) {
+		int rowCount = 0;
 		String insert = "insert into likedRestaurant"
 				+ "values(?,?)";
 		
@@ -25,15 +26,18 @@ public class LikedRestaurantDAOImpl implements LikedRestaurantDAO{
 			ps.setInt(1,likedRestaurantVO.getMemberNo());
 			ps.setInt(2,likedRestaurantVO.getRestaurantNo());
 			
+			rowCount = ps.executeUpdate();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		return rowCount != 0;
 	}
 
 	
 	@Override
-	public void delete(Integer memberNo,Integer restaurantNo) {
+	public boolean delete(Integer memberNo,Integer restaurantNo) {
+		int rowCount = 0;
 		String delete = "delete from likedRestaurant"
 				+ "where memberNo = ? and restaurantNo = ?";
 		
@@ -42,12 +46,12 @@ public class LikedRestaurantDAOImpl implements LikedRestaurantDAO{
 			
 			ps.setInt(1,memberNo);
 			ps.setInt(2,restaurantNo);
-			ps.executeUpdate();
+			rowCount = ps.executeUpdate();
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		return rowCount != 0;
 	}
 
 	@Override

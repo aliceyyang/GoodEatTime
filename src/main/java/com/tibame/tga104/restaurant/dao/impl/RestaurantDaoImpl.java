@@ -3,6 +3,7 @@ package com.tibame.tga104.restaurant.dao.impl;
 import static com.tibame.tga104.common.util.JdbcUtil.*;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -19,12 +20,14 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	String password = "password";
 	
 	@Override
-	
-	public void insert(RestaurantVO restaurantVO) {
+	public boolean insert(RestaurantVO restaurantVO) {
+		int rowCount = 0;
 		String insert = "insert into restaurant(restaurantTel,restaurantName,restaurantTaxIDNo,restaurantAccountInfo,restaurantBusinessHour,restaurantAddr,restaurantStatus,restaurantAccount,restaurantPassword,restaurantCommentQuantity,totalCommentRating)"
 				+ "values(?,?,?,?,?,?,?,?,?,?,?);";
 		
-		try(Connection con = getConnection();
+		try(
+			Connection con = getConnection();
+//			Connection con = DriverManager.getConnection(url, username, password);
 			PreparedStatement ps = con.prepareStatement(insert)) {
 			
 			ps.setString(1,restaurantVO.getRestaurantTel());
@@ -39,16 +42,17 @@ public class RestaurantDaoImpl implements RestaurantDao {
 			ps.setInt(10,restaurantVO.getRestaurantCommentQuantity());
 			ps.setInt(11,restaurantVO.getTotalCommentRating());
 			
-			
+			rowCount = ps.executeUpdate();
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
-		
+		return rowCount != 0;
 	}
 
 	@Override
-	public void update(RestaurantVO restaurantVO) {
+	public boolean update(RestaurantVO restaurantVO) {
+		int rowCount = 0;
 		String update = "update restaurant set restaurantTel=?,restaurantName=?,restaurantTaxIDNo=?,restaurantAccountInfo=?,restaurantBusinessHour=?,restaurantAddr=?,"
 				+ "restaurantAccount=?,restaurantPassword=? where restaurantNo=?";
 		try(Connection con = getConnection();
@@ -64,12 +68,12 @@ public class RestaurantDaoImpl implements RestaurantDao {
 			ps.setString(8,restaurantVO.getRestaurantPassword());
 			ps.setInt(9,restaurantVO.getRestaurantNo());
 			
-			ps.executeUpdate();
+			rowCount = ps.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		return rowCount != 0;
 	}
 
 	@Override
@@ -87,6 +91,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 
@@ -159,15 +164,29 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		return list;
 	}
 	
-	public static void main(String[] args) {
-		RestaurantDaoImpl test = new RestaurantDaoImpl();
+//	public static void main(String[] args) {
+//		RestaurantDaoImpl test = new RestaurantDaoImpl();
+//		
 //		List<RestaurantVO> list =  test.getAll();
 //		for (RestaurantVO vo : list) {
 //			System.out.println(vo.toString());
 //		}
-		RestaurantVO vo = new RestaurantVO();
-		vo = test.findByPrimaryKey(1);
-		System.out.println(vo.toString());
-		
-	}
+//		
+//		RestaurantVO vo = new RestaurantVO();
+//		vo.setRestaurantTel("02222552");
+//		vo.setRestaurantName("三鍋臭媽媽");
+//		vo.setRestaurantTaxIDNo("88888");
+//		vo.setRestaurantAccountInfo("666666");
+//		vo.setRestaurantBusinessHour("24H");
+//		vo.setRestaurantAddr("測試地址");
+//		vo.setRestaurantStatus(true);
+//		vo.setRestaurantAccount("rest1006@gmail.com");
+//		vo.setRestaurantPassword("1006restaurant");
+//		vo.setRestaurantCommentQuantity(5);
+//		vo.setTotalCommentRating(5);
+//		
+//		test.insert(vo);
+//		System.out.println(vo.toString());
+//		
+//	}
 }

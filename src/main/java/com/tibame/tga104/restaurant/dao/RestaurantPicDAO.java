@@ -6,11 +6,11 @@ import com.tibame.tga104.restaurant.vo.RestaurantPicVO;
 
 public interface RestaurantPicDAO {
 	
-	public void insert(RestaurantPicVO restaurantPicVO);
+	public boolean insert(RestaurantPicVO restaurantPicVO);
 
-	public void update(RestaurantPicVO restaurantPicVO);
+	public boolean update(RestaurantPicVO restaurantPicVO);
 
-	public void delete(Integer restaurantPicNo);
+	public boolean delete(Integer restaurantPicNo);
 
 	public RestaurantPicVO findByPrimaryKey(Integer restaurantPicNo);
 
