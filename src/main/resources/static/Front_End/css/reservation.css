@@ -91,7 +91,7 @@ button#btn_cancel {
     reservation start-member part
   -----------------------*/
 #reserve_search {
-  background-image: url("/img/icon/search.png");
+  background-image: url("../img/icon/search.png");
   background-position: 10px 10px;
   background-repeat: no-repeat;
   width: 100%;
@@ -218,4 +218,93 @@ th {
 
 .reserve_status th {
   font-weight: normal;
+}
+
+/*餐廳訂位明細*/
+#reserveinf tr {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+#reserveinf tr.header {
+  background-color: #fee192;
+}
+
+#reserveinf tr:hover {
+  background-color: #fdf8f0;
+}
+
+/*開關鈕*/
+.onoffswitch {
+  position: relative;
+  width: 105px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #a69b98;
+  border-radius: 20px;
+  margin-bottom: 0px;
+  position: relative;
+}
+.onoffswitch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 14px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+  content: "報到成功";
+  padding-right: 20px;
+  background-color: #f6e04f;
+  color: #94959a;
+}
+.onoffswitch-inner:after {
+  content: "未報到";
+  padding-right: 10px;
+  background-color: #94959a;
+  color: #ffffff;
+  text-align: right;
+}
+.onoffswitch-switch {
+  display: block;
+  width: 28px;
+  margin: 1px;
+  background: #ffffff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 71px;
+  border: 2px solid #a69b98;
+  border-radius: 20px;
+  transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px;
 }
