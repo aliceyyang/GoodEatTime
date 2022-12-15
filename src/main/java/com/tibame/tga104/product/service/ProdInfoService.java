@@ -53,6 +53,11 @@ public class ProdInfoService {
 		
 		return prodInfo;
 	}
+	
+	@Transactional
+	public ProdInfoVO update(ProdInfoVO prodInfoVO) {
+		return dao.update(prodInfoVO);
+	}
 
 	@Transactional
 	public boolean deleteProdInfo(Integer prodNo) {

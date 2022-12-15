@@ -10,7 +10,7 @@ import com.tibame.tga104.reservation.vo.ReserveTimeVO;
 
 public class TestJsonArray {
 
-	public static void main(String[] args) throws NamingException {
+//	public static void main(String[] args) throws NamingException {
 //		String input = "["
 //				+ "{'reserveTime':'12:00', 'allowReserveNum': 1},"
 //				+ "{'reserveTime':'13:00', 'allowReserveNum': 2},"
@@ -29,4 +29,4 @@ public class TestJsonArray {
 //		}
 	}
 //	'reserveTimeNo': 1, 'restaurantNo' : 1, 'weekDay': 0, 
-}
+//}

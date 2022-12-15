@@ -4,27 +4,30 @@ index
 drop table: line 32
 
 create table & insert fake date
-prodCategory: line 59
-memberLevel: line 77
-restaurant: line 93
-administrator: line 120
-prodInfo: line 141
-member: line 173
-coupon: line 203
-reserveTime: line 241
-restaurantPic: line 299
-adOrder: line 319
-prodPic: line 349
-shoppingCart: line 370
-prodOrder: line 391
-likedRestauranr: line 427
-memberCoupon: line 458
-reservation: line 475
-prodOrderDetail: line 508
-V_memeber_reservation: line 536
-V_reservation: line 553
-V_showProdInMall: line 578
-V_userAccount: line 592
+prodCategory: line 65
+memberLevel: line 86
+restaurant: line 102
+administrator: line 129
+prodInfo: line 150
+member: line 199
+coupon: line 229
+reserveTime: line 267
+restaurantPic: line 325
+adOrder: line 345
+prodPic: line 375
+shoppingCart: line 396
+prodOrder: line 417
+likedRestauranr: line 453
+memberCoupon: line 484
+reservation: line 501
+prodOrderDetail: line 534
+V_memeber_reservation: line 562
+V_reservation: line 579
+V_showProdInMall: line 604
+V_userAccount: line 618
+restaurantCarouselPic: 638
+menu: 654
+restaurantPost: 671
 
 =======================================*/
 
@@ -33,6 +36,9 @@ use goodeattime;
 set AUTOCOMMIT = 0;
 
 /*沒有被參照的表格先刪*/
+drop table if exists restaurantCarouselPic;
+drop table if exists menu;
+drop table if exists restaurantPost;
 drop view if exists V_memeber_reservation;
 drop view if exists V_reservation;
 drop view if exists V_showProdInMall;
@@ -67,10 +73,13 @@ insert into prodCategory(prodCategory)
 values('日式料理'),
 ('義式料理'),
 ('中式料理'),
-('零食餅乾'),
-('甜點'),
-('炸物'),
-('調味料');
+('美式料理'),
+('法式料理'),
+('港式料理'),
+('泰式料理'),
+('台灣料理'),
+('創意料理'),
+('烘焙甜點');
 commit;
 
 
@@ -101,7 +110,7 @@ restaurantAccountInfo varchar(50) comment '帳戶資訊',
 restaurantBusinessHour varchar(200) not null comment '營業時間',
 restaurantAddr varchar(50) not null comment '地址',
 restaurantStatus bit(1) comment '餐廳狀態',
-restaurantAccount varchar(20) not null comment '餐廳帳號',
+restaurantAccount varchar(50) not null comment '餐廳帳號',
 restaurantPassword varchar(50) not null comment '餐廳密碼',
 restaurantCommentQuantity int not null default(0) comment '總評論數量',
 totalCommentRating int not null default(0) comment '總評論星等',
@@ -109,11 +118,11 @@ constraint restaurantNo_PK primary key(restaurantNo));
 
 
 insert into restaurant(restaurantTel, restaurantName, restaurantTaxIDNo, restaurantAccountInfo, restaurantBusinessHour, restaurantAddr, restaurantAccount, restaurantPassword)
-values('0229540410','薄多義','53914855',null,'11:00-20:30','台北市中正區忠孝東路一段150號','restaurant1001','1001restaurant'),
-('0225963255','欣葉台菜','12107610',null,'11:00-21:00','台北市中正區林森南路1號','restaurant1002','1002restaurant'),
-('0229341343','星巴克 (時代寓所門市)','53234955',null,'11:00-20:30','台北市中正區林森南路7-1號','restaurant1003','1003restaurant'),
-('0221243563','麥當勞-林森二餐廳','34256575',null,'11:00-20:30','台北市中正區林森南路1號','restaurant1004','1004restaurant'),
-('0221345678','摩斯漢堡 善導寺店','12124455',null,'11:00-20:30','台北市中正區忠孝東路一段178號','restaurant1005','1005restaurant');
+values('0229540410','薄多義','53914855',null,'11:00-20:30','台北市中正區忠孝東路一段150號','restaurant1001@gmail.com','1001restaurant'),
+('0225963255','欣葉台菜','12107610',null,'11:00-21:00','台北市中正區林森南路1號','restaurant1002','1002restaurant@gmail.com'),
+('0229341343','星巴克 (時代寓所門市)','53234955',null,'11:00-20:30','台北市中正區林森南路7-1號','restaurant1003@gmail.com','1003restaurant'),
+('0221243563','麥當勞-林森二餐廳','34256575',null,'11:00-20:30','台北市中正區林森南路1號','restaurant1004@gmail.com','1004restaurant'),
+('0221345678','摩斯漢堡 善導寺店','12124455',null,'11:00-20:30','台北市中正區忠孝東路一段178號','restaurant1005@gmail.com','1005restaurant');
 commit;
 
 
@@ -149,25 +158,42 @@ create table prodInfo (
     prodStock          integer not null default(0) comment '商品庫存' check(prodStock > -1),
     prodDescription    varchar(200) comment '商品說明, 廣告文案',
     prodContent        varchar(200) comment '商品詳細, 商品規格',
+    prodMainPic        longblob comment '商品主要圖片',
     prodCommentQty     integer not null default(0) comment '評論數量' check(prodCommentQty > -1),
     totalCommentRating integer not null default(0) comment '總評論星等' check(totalCommentRating > -1),
     constraint FK_prodInfo_restaurantNo foreign key(restaurantNo) references restaurant(restaurantNo), 
     constraint FK_prodInfo_prodCategoryNo foreign key(prodCategoryNo) references prodCategory(prodCategoryNo)
 ) Engine = InnoDB;
 
-insert into prodInfo(restaurantNo, prodCategoryNo, prodName, prodPrice, prodStock, prodDescription, prodContent)
-values(1, 1, '日式親子丼調理包', 199, 50, '母雞帶小雞 迸出新滋味', '雞肉、雞蛋、洋蔥、醬油調味'),
-(1, 3, 'Uncle Roger特製炒飯', 80, 10, 'HaiYa~', '隔夜飯、雞蛋、蔥、胡蘿蔔再加上滿滿的MSG'),
-(2, 3, '六位一體魔幻麻婆豆腐', 120, 5, '辣香色燙酥麻 六位一體', '大麻'),
-(2, 6, '李嚴特製炸鳳尾蝦', 300, 99, '將核果搗碎後裹在蝦肉上，油炸成為金黃色', '那...那個醬汁呢?'),
-(3, 5, '黃金開口笑', 30, 99, 'ㄤㄤㄤㄤㄤㄤㄤ', '笑到你心裡發麻'),
-(4, 5, '提拉米蘇', 130, 25, '新鮮乳酪製成慕斯，風味可口清爽，底層採用歐洲進口小麥胚芽餅製作，香味誘人，以進口Barry Callebaut高脂可可粉鋪灑而成，若酌以一杯濃郁咖啡，閒散於午后將是絕配', '馬斯卡彭起司、手指餅乾、蛋黃、蛋白、濃縮咖啡及高純度無糖可可粉'),
-(5, 5, '馬卡龍', 60, 50, '低筋麵粉做的馬卡龍，無添加香草精', '低筋麵粉、糖粉、蛋白、白砂糖、巧克力、鮮奶油'),
-(4, 3, '鱘龍鮮蝦粥', 300, 15, '鱘龍魚有皇帝魚稱號在古代是的珍貴魚種，低脂肪高營養，魚肉中富含膠質、人體所需多種氨基酸、膠原蛋白、軟骨素，DHA、EPA營養價值極高', '鱘龍魚菲力、鱘龍魚輪切塊、大白蝦 、白飯 、蒜瓣、鹽、白胡椒粉、油'),
-(1, 3, '剝皮辣椒雞湯', 200, 60, '主廚喝了都上癮，老菜脯與年輕剝皮辣椒交織，突破你味蕾的極限', '剝皮辣椒、剝皮辣椒醬汁、白蘿蔔、雞腿、青蒜、香菇'),
-(1, 2, '奶油鮭魚牛肝菌炊飯', 180, 35, '鮭魚先用糖鹽醃過，好吃又不會乾柴！牛肝菌本身味道就超級濃郁了，即使沒有炒過，開鍋的時候還是非常的香～', '鮭魚、鹽、糖、米、牛肝菌、洋蔥丁、醬油、奶油'),
-(2, 3, '蒜炒奶油白菜', 120, 80, '奶油白菜是秋天這個季節的蔬菜，外型像故宮的翠玉白菜，只有普通大白菜的十分之一左右大小，葉片呈深綠色，葉梗肥厚呈奶白色，且圓潤細嫩無雜色，真就像奶油一樣潔白，故稱之為奶油白菜。', '奶油白菜、蒜頭、玉米筍、鹽巴、油'),
-(3, 5, '草莓千層雙重奏', 150, 60, '用當季的草莓來做蛋糕和果醬，把草莓迷人的果香融合在這個千層蛋糕中，讓白色聖誕充滿著甜甜的幸福滋味!', '低筋麵粉、糖粉、雞蛋、鮮奶、白砂糖、草莓果醬、草莓、無鹽奶油');
+insert into prodInfo(restaurantNo, prodCategoryNo, prodName, prodPrice, prodStock, prodDescription, prodContent, prodCommentQty, totalCommentRating)
+values
+(3, 10, '伯爵紅茶戚風蛋糕', 200, 80, '伯爵紅茶帶有佛手柑的特殊香氣，拿來製作戚風蛋糕更是清爽不膩口，\n相當受到眾人的喜愛，搭配上自己喜歡的飲品，立刻就能來場高貴優雅的下午茶！','蛋黃、得科特級橄欖油、馬爾頓天然海鹽、伯爵茶液、蛋白、低筋麵粉、蘭姆酒', 11, 47),
+(3, 10, '巧克力黑森林冰淇淋蛋糕', 250, 90, '黑森林蛋糕是德國著名的鮮奶蛋糕又稱黑森林櫻桃蛋糕
+將櫻桃酒黑櫻桃改成橙酒漬葡萄乾！
+吃起來有濃濃的巧克力混合著果酒的風味！', '蛋黃、巧克力豆、牛奶、低筋麵粉、無糖可可粉、植物油、橙酒漬葡萄乾、蛋白',8 ,38),
+(3, 10, '海鹽奶油草莓蛋糕', 180, 70, '淡淡海鹽風味搭配鮮奶油與草莓微酸果香味', '草莓、無鹽奶油、雞蛋、牛奶、海鹽、動物性鮮奶油、市售蛋糕粉',3 ,14),
+(3, 10, '夢幻彩虹乳酪蛋糕', 280, 45, '公主風的淡淡馬卡龍繽紛色系，如同彩虹般賞心悅目，
+嚐起來的口感滑嫩細緻，是一道夢幻的療癒系甜點', '消化餅乾、無鹽奶油、細砂糖、動物性鮮奶油、鮮奶、原味優格、奶油乳酪、食用色素、動物性鮮奶油', 6 ,26),
+(3, 10, '清新果香水果塔', 300, 35, '「水果塔」充滿著繽紛又豐盛的新鮮水果們，\n每一口除了有濃郁鮮奶油外還有果香味', '無鹽奶油、蛋液、低筋麵粉、糖粉、草莓、葡萄、打發鮮奶油',15, 73),
+(3, 10, '耶誕藍莓小塔', 280, 80, '由微微鹹味全麥派皮、堅果香氣杏仁奶油、酸酸甜甜藍莓醬組成迷你藍莓塔，最後再擠上微甜的鮮奶油霜並以新鮮藍莓點綴，一口咬下就有各種層次的口感跟味道，小小一顆卻有大大滿足！最後的裝飾造型很自由，多疊幾層藍莓再灑上一點糖粉，就像一顆小聖誕樹，很有過節氣氛～','全麥塔皮麵團、手工藍莓醬、新鮮藍莓、奶油、蛋黃、杏仁粉、奶油乳酪、糖粉',3,14),
+(3, 10, '愛心奶霜杯子蛋糕', 150, 70, '不死甜的蛋糕主體，配上上層奶油及造型糖霜，\n視覺與味覺的雙重享受','鬆餅粉、植物油、牛奶、全蛋、糖、香草精、鮮奶油',8,39),
+(3, 10, '莓果杯子蛋糕', 130, 60, '酸中帶甜的莓果，配上綿密的鮮奶油，層次豐富的味覺饗宴正等著你', '覆盆莓、砂糖、蔓越莓乾、泡打粉‭、低筋麵粉',7 ,30),
+(3, 10, '抹茶橘香磅蛋糕', 180, 35, '帶有抹茶及柑橘香氣的磅蛋糕，讓磅蛋糕的奶油感降低，\n適合微涼的秋季品嘗。', '無鹽奶油、細砂糖、全蛋、抹茶粉、泡打粉、低筋麵粉、糖漬橘皮丁、鮮奶',6,23),
+(3, 10, '濃情巧克力蛋糕',180, 55, '用棉花蛋糕、巧克力鮮奶油、甘納許淋醬來做一顆超濃郁的巧克力蛋糕!\n漂亮的巧克力層次，三種不同的巧克力風味，一起融化在口中，超美味!', '雞蛋、鮮奶、低筋麵粉、砂糖、鮮奶油、黑巧克力、糖粉、無糖可可粉',9,37),
+(3, 10, '巧克力酒釀櫻桃蛋糕', 230, 99, '口感類似巧克力布朗尼\n手製蛋糕更讓人感到甜蜜在心頭', '法國調溫63%黑巧克力、藍可絲無鹽奶油、低筋麵粉、去籽櫻桃、蛋白、動物鮮奶油、櫻桃去籽、糖粉、蛋黃、琴酒',5,23),
+(3, 10, '鮮果奶油幕斯蛋糕', 180, 88, '鮮奶油水果蛋糕，口感不膩，\n酸酸甜甜，好看又好吃', '蛋白、蛋黃、低筋麵粉、鮮奶油、水果切丁、糖、君度橙酒',8,37),
+(1, 1, '日式親子丼調理包', 199, 50, '母雞帶小雞 迸出新滋味', '雞肉、雞蛋、洋蔥、醬油調味',3,10),
+(1, 3, 'Uncle Roger特製炒飯', 80, 10, 'HaiYa~', '隔夜飯、雞蛋、蔥、胡蘿蔔再加上滿滿的MSG',2,3),
+(2, 3, '六位一體魔幻麻婆豆腐', 120, 5, '辣香色燙酥麻 六位一體', '大麻',4,16),
+(2, 6, '李嚴特製炸鳳尾蝦', 300, 99, '將核果搗碎後裹在蝦肉上，油炸成為金黃色', '那...那個醬汁呢?',4,18),
+(2, 5, '黃金開口笑', 30, 99, 'ㄤㄤㄤㄤㄤㄤㄤ', '笑到你心裡發麻',3,13),
+(4, 5, '提拉米蘇', 130, 25, '新鮮乳酪製成慕斯，風味可口清爽，底層採用歐洲進口小麥胚芽餅製作，香味誘人，以進口Barry Callebaut高脂可可粉鋪灑而成，若酌以一杯濃郁咖啡，閒散於午后將是絕配', '馬斯卡彭起司、手指餅乾、蛋黃、蛋白、濃縮咖啡及高純度無糖可可粉',5,23),
+(5, 5, '馬卡龍', 60, 50, '低筋麵粉做的馬卡龍，無添加香草精', '低筋麵粉、糖粉、蛋白、白砂糖、巧克力、鮮奶油',7,33),
+(4, 3, '鱘龍鮮蝦粥', 300, 15, '鱘龍魚有皇帝魚稱號在古代是的珍貴魚種，低脂肪高營養，魚肉中富含膠質、人體所需多種氨基酸、膠原蛋白、軟骨素，DHA、EPA營養價值極高', '鱘龍魚菲力、鱘龍魚輪切塊、大白蝦 、白飯 、蒜瓣、鹽、白胡椒粉、油',6,27),
+(1, 3, '剝皮辣椒雞湯', 200, 60, '主廚喝了都上癮，老菜脯與年輕剝皮辣椒交織，突破你味蕾的極限', '剝皮辣椒、剝皮辣椒醬汁、白蘿蔔、雞腿、青蒜、香菇',8,30),
+(1, 2, '奶油鮭魚牛肝菌炊飯', 180, 35, '鮭魚先用糖鹽醃過，好吃又不會乾柴！牛肝菌本身味道就超級濃郁了，即使沒有炒過，開鍋的時候還是非常的香～', '鮭魚、鹽、糖、米、牛肝菌、洋蔥丁、醬油、奶油',5,19),
+(2, 3, '蒜炒奶油白菜', 120, 80, '奶油白菜是秋天這個季節的蔬菜，外型像故宮的翠玉白菜，只有普通大白菜的十分之一左右大小，葉片呈深綠色，葉梗肥厚呈奶白色，且圓潤細嫩無雜色，真就像奶油一樣潔白，故稱之為奶油白菜。', '奶油白菜、蒜頭、玉米筍、鹽巴、油',5,24),
+(3, 5, '草莓千層雙重奏', 150, 60, '用當季的草莓來做蛋糕和果醬，把草莓迷人的果香融合在這個千層蛋糕中，讓白色聖誕充滿著甜甜的幸福滋味!', '低筋麵粉、糖粉、雞蛋、鮮奶、白砂糖、草莓果醬、草莓、無鹽奶油',4,18);
 commit;
 
 --  member
@@ -607,6 +633,58 @@ create view V_userAccount as
         restaurantStatus as verified
     FROM
         restaurant r ;
+commit;
+
+--  restaurantCarouselPic
+/*==========================================================================================*/
+create table restaurantCarouselPic(
+carouselPicNo int auto_increment not null primary key comment '輪播圖片編號',
+restaurantNo int unsigned not null comment '餐廳編號',
+carouselPic longblob comment '輪播圖片',
+constraint FK_restaurantCarouselPic_restaurantNo foreign key(restaurantNo) references restaurant(restaurantNo));
+
+insert into restaurantCarouselPic(restaurantNo,carouselPic)
+values(1,null),
+(2,null),
+(2,null),
+(3,null),
+(4,null);
+commit;
+
+--  menu
+/*==========================================================================================*/
+create table menu(
+menuNo int auto_increment not null primary key comment '菜單編號',
+restaurantNo int unsigned not null comment '餐廳編號',
+menuPic longblob comment '菜單圖片',
+menuPicRemark varchar(200) comment '菜單圖片說明',
+constraint FK_menu_restaurantNo foreign key(restaurantNo) references restaurant(restaurantNo));
+
+insert into menu(restaurantNo,menuPic,menuPicRemark)
+values(1,null,'餐廳編號一的第一個菜單圖片說明'),
+(1,null,'餐廳編號一的第二個菜單圖片說明'),
+(2,null,'餐廳編號二的第一個菜單圖片說明'),
+(4,null,'餐廳編號四的第一個菜單圖片說明'),
+(5,null,'餐廳編號五的第一個菜單圖片說明');
+commit;
+
+--  restaurantPost
+/*==========================================================================================*/
+
+create table restaurantPost(
+restaurantPostNo int auto_increment not null primary key comment '貼文編號',
+restaurantNo int unsigned not null comment '餐廳編號',
+postType varchar(10) comment '貼文類型',
+postPic longblob comment '貼文圖片',
+postTitle varchar(50) not null comment '貼文標題',
+postContent varchar(800) not null comment '貼文內容',
+constraint FK_restaurantPost_restaurantNo foreign key(restaurantNo) references restaurant(restaurantNo));
+
+insert into restaurantPost(restaurantNo,postType,postPic,postTitle,postContent)
+values(1,'熱門活動',null,'餐廳編號一的貼文標題','即時獲取薄多義的第一手資訊，別錯過我們的最新優惠以及各式體驗活動，活動可能因地區與分店而有所不同'),
+(2,'消息公告',null,'餐廳編號二的貼文標題','欣葉台菜創始店榮獲台北米其林指南2022,2021,2020,2019,2018入選餐廳'),
+(3,'優惠券',null,'餐廳編號三的貼文標題','Bonus Star將於完成購買後之24小時內生效，顧客可自行登入星巴克網站或APP查詢'),
+(3,'紅利點數',null,'餐廳編號三的貼文標題2','本活動之贈星回饋記錄均以本公司系統紀錄為準。會員若於活動後銷退重結，將無法再贈星');
 commit;
 
 set AUTOCOMMIT = 1;
