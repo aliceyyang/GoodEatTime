@@ -1,4 +1,4 @@
-package com.tibame.tga104.coupon.dao;
+package com.tibame.tga104.coupon.dao.impl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tibame.tga104.coupon.dao.CouponDao;
 import com.tibame.tga104.coupon.vo.CouponVO;
 
 public class CouponJDBCDAO implements CouponDao{

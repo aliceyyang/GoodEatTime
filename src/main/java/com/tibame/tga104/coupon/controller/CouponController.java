@@ -19,10 +19,10 @@ import com.tibame.tga104.coupon.service.CouponServiceImpl;
 import com.tibame.tga104.coupon.vo.CouponVO;
 
 @WebServlet("/coupon/AddCoupon")
-public class AddCoupon extends HttpServlet {
+public class CouponController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public AddCoupon() {
+	public CouponController() {
 		super();
 	}
 
