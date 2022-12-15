@@ -17,31 +17,31 @@ $(function () {
 });
 
 // google map
-// var restaurantAddr = addr;
-// function initMap() {
-//   geocoder = new google.maps.Geocoder();
-//   const myLatLng = { lat: 25.04, lng: 121.512 };
-//   let mapOptions = {
-//     center: myLatLng,
-//     zoom: 16,
-//   };
-//   const map = new google.maps.Map(document.getElementById("map"), mapOptions);
-//   codeAddress(restaurantAddr);
-// }
-// function codeAddress(address) {
-//   geocoder.geocode({ address: address }, function (results, status) {
-//     if (status == google.maps.GeocoderStatus.OK) {
-//       map.setCenter(results[0].geometry.location); //center the map over the result
-//       //place a marker at the location
-//       var marker = new google.maps.Marker({
-//         map: map,
-//         position: results[0].geometry.location,
-//       });
-//     } else {
-//       alert("Geocode was not successful for the following reason: " + status);
-//     }
-//   });
-// }
+var restaurantAddr = "台南火車站";
+function initMap() {
+  geocoder = new google.maps.Geocoder();
+  var myLatLng = new google.maps.LatLng(25.04, 121.512);
+  var mapOptions = {
+    center: myLatLng,
+    zoom: 16,
+  };
+  map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  codeAddress(restaurantAddr);
+}
+function codeAddress(address) {
+  geocoder.geocode({ address: address }, function (results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location); //center the map over the result
+      //place a marker at the location
+      var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location,
+      });
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+  });
+}
 
 // submit訂位資訊
 $("#btn_reserve").on("click", function (e) {
