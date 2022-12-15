@@ -34,7 +34,7 @@ public class AdOrderServiceImpl implements AdOrderService {
     }
 
     @Override
-    public AdOrder getByRestaurantNo(Integer restaurantNo) {
+    public List<AdOrder> getByRestaurantNo(Integer restaurantNo) {
         return adOrderDAO.getByRestaurantNo(restaurantNo);
     }
 

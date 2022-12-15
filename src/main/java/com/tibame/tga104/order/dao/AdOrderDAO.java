@@ -15,7 +15,7 @@ public interface AdOrderDAO {
 
     AdOrder getByAdOrderNo(Integer adOrderNo);
 
-    AdOrder getByRestaurantNo(Integer restaurantNo);
+    List<AdOrder> getByRestaurantNo(Integer restaurantNo);
 
     List<AdOrder> getByAll();
 }

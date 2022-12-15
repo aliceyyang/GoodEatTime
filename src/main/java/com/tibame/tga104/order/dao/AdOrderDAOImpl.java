@@ -103,14 +103,14 @@ public class AdOrderDAOImpl implements AdOrderDAO {
     }
 
     @Override
-    public AdOrder getByRestaurantNo(Integer restaurantNo) {
+    public List<AdOrder> getByRestaurantNo(Integer restaurantNo) {
         String sql = "select adOrderNo, restaurantNo, adminNo, adOrderTime, adStartTime, adEndTime, verified, " +
                 "verificationDetail, adOrderPrice, slideshowPic from adOrder where restaurantNo = :restaurantNo";
         Map<String, Object> map = new HashMap<>();
         map.put("restaurantNo", restaurantNo);
         List<AdOrder> adOrderList = namedParameterJdbcTemplate.query(sql, map, new AdOrderRowMapper());
         if (adOrderList.size() > 0) {
-            return adOrderList.get(0);
+            return adOrderList;
         } else {
             return null;
         }

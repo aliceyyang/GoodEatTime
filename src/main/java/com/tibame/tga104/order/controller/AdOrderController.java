@@ -22,6 +22,7 @@ public class AdOrderController {
         List<AdOrder> getAdOrderVOList = adOrderService.getByAll();
         return ResponseEntity.status(HttpStatus.OK).body(getAdOrderVOList);
     }
+
     @GetMapping("/adOrders/adOrderNo/{adOrderNo}")
     private ResponseEntity<AdOrder> getByAdOrderNo(@PathVariable Integer adOrderNo) {
         AdOrder adOrder = adOrderService.getByAdOrderNo(adOrderNo);
@@ -33,10 +34,10 @@ public class AdOrderController {
     }
 
     @GetMapping("/adOrders/restaurantNo/{restaurantNo}")
-    public ResponseEntity<AdOrder> getByRestaurantNo(@PathVariable Integer restaurantNo) {
-        AdOrder adOrder = adOrderService.getByRestaurantNo(restaurantNo);
-        if (adOrder != null) {
-            return ResponseEntity.status(HttpStatus.OK).body(adOrder);
+    public ResponseEntity<List<AdOrder>> getByRestaurantNo(@PathVariable Integer restaurantNo) {
+        List<AdOrder> adOrderList = adOrderService.getByRestaurantNo(restaurantNo);
+        if (adOrderList != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(adOrderList);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
@@ -62,6 +63,7 @@ public class AdOrderController {
     @DeleteMapping("/adOrders/{adOrderNo}")
     public ResponseEntity<AdOrder> deleteByAdOrderNo(@PathVariable Integer adOrderNo) {
         adOrderService.deleteByAdOrderNo(adOrderNo);
+        System.out.println("已成功刪除訂單編號 " + adOrderNo);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
