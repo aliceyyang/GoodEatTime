@@ -27,17 +27,17 @@ public class AdministratorController {
     private MemberSpringService memberSpringService;
 
     
-    @GetMapping("/administrator/member-accounts")
-    public ResponseEntity<List<MemberVO>> getMemberAccountsByAll() {
-        List<MemberVO> memberList = memberSpringService.getAccountByAll();
-        return ResponseEntity.status(HttpStatus.OK).body(memberList);
-    }
+//    @GetMapping("/administrator/member-accounts")
+//    public ResponseEntity<List<MemberVO>> getMemberAccountsByAll() {
+//        List<MemberVO> memberList = memberSpringService.getAccountByAll();
+//        return ResponseEntity.status(HttpStatus.OK).body(memberList);
+//    }
 
-    @GetMapping("/administrator/restaurant-accounts")
-    public ResponseEntity<List<RestaurantVO>> getRestaurantAccountsByAll() {
-        List<RestaurantVO> restaurantList = restaurantService.getAccountByAll();
-        return ResponseEntity.status(HttpStatus.OK).body(restaurantList);
-    }
+//    @GetMapping("/administrator/restaurant-accounts")
+//    public ResponseEntity<List<RestaurantVO>> getRestaurantAccountsByAll() {
+//        List<RestaurantVO> restaurantList = restaurantService.getAccountByAll();
+//        return ResponseEntity.status(HttpStatus.OK).body(restaurantList);
+//    }
 
 
     @GetMapping("/administrator")
