@@ -114,17 +114,26 @@ function changePage(page, data) {
 
 let prodQty = -1;
 var prodList;
+var prodCategoryList;
 
 // 載入頁面時先去跟後端拿資料
 $.ajax({
-  url: "http://localhost:8080/product/all",
+  url: "../product/all",
   type: "GET",
   data: "",
   dataType: "json",
   success: function (data) {
-    prodQty = data.length;
-    prodList = data;
-    changePage(1, data);
+    prodQty = data.prodList.length;
+    prodList = data.prodList;
+    changePage(1, data.prodList);
+    prodCategoryList = data.prodCategoryList;
+    // console.log(prodCategoryList);
+    $("div.shop__option__search select").children().remove();
+    $("div.shop__option__search select").append('<option value="0">商品類別</option>');
+    $.each(prodCategoryList, (index, item) => {
+      $("div.shop__option__search select").append(`<option value="${item.prodCategoryNo}">${item.prodCategory}</option>`);
+    });
+    $("select").niceSelect();
   },
   error: function (xhr) {
     console.log(xhr);
@@ -137,7 +146,7 @@ $.ajax({
 });
 
 function goToShopDeatil(prodNo) {
-  window.location.href = `http://localhost:8080/Front_End/shop_details.html?prodNo=${prodNo}`;
+  window.location.href = `./shop_details.html?prodNo=${prodNo}`;
 }
 
 $(function () {
