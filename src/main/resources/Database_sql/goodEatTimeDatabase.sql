@@ -608,8 +608,8 @@ commit;
 /*==========================================================================================*/
 CREATE VIEW V_showProdInMall AS
 select
-	p.prodNo, p.prodName, r.restaurantName, pc.prodCategory,  p.prodPrice,
-    p.totalCommentRating, p.prodCommentQty
+	p.prodNo, p.prodName, p.restaurantNo, r.restaurantName, p.prodCategoryNo, pc.prodCategory,
+	p.prodPrice, p.totalCommentRating, p.prodCommentQty
 from
 	prodInfo p
     join
