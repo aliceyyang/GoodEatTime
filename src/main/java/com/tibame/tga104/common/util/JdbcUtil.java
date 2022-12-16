@@ -9,6 +9,10 @@ import javax.sql.DataSource;
 
 public class JdbcUtil {
 	
+	public final static String URL = "jdbc:mysql://localhost:3306/Goodeattime?useUnicode=yes&characterEncoding=utf8&useSSL=true&serverTimezone=Asia/Taipei";
+	public final static String USER = "root";
+	public final static String PASSWORD = "password";
+	
 	private static DataSource dataSource;
 	
 	public static Connection getConnection() throws SQLException, NamingException {
