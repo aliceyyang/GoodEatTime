@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.tibame.tga104.restaurant.vo.RestaurantVO;
 
 
-@WebServlet("/ConnectionTest_JNDI")
+//@WebServlet("/ConnectionTest_JNDI")
 public class ConnectionTest_JNDI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
