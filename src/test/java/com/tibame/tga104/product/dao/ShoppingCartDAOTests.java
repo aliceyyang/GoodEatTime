@@ -36,12 +36,12 @@ public class ShoppingCartDAOTests {
 	
 	@Test
 	void testDelete() {
-		System.out.println("testDelete()"+dao.delete(5, 10));
+		System.out.println("testDelete()="+dao.delete(5, 10));
 	}
 	
 	@Test
 	void testFindByPrimaryKey() {
-		System.out.println("testFindByPrimaryKey()="+dao.findByPrimaryKey(3, 4));
+		System.out.println("testFindByPrimaryKey()="+dao.findByPrimaryKey(5, 10));
 	}
 	
 	@Test

@@ -1,6 +1,7 @@
 package com.tibame.tga104.product.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,7 +61,7 @@ public class ShoppingCartService {
 		return dao.getAll();
 	}
 	
-	public List<ShoppingCartVO> findByMemberNo(Integer memberNo) {
+	public Map<Integer, Integer> findByMemberNo(Integer memberNo) {
 		if (memberNo != null) {
 			return dao.findByMemberNo(memberNo);
 		}
