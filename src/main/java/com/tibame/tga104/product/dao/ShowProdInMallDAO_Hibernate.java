@@ -29,9 +29,14 @@ public class ShowProdInMallDAO_Hibernate implements ShowProdInMallDAO {
 		if (prodCategoryNo == null || prodCategoryNo < 1) {
 			return null;
 		}
-		String hql = "from ShowProdInMallVO where prodCategory = :prodCategory";
+		String hql = "from ShowProdInMallVO where prodCategoryNo = :prodCategoryNo";
 		return this.getSession().createQuery(hql, ShowProdInMallVO.class)
-				.setParameter("prodCategory", pcDAO.findByPrimaryKey(prodCategoryNo).getProdCategory()).list();
+				.setParameter("prodCategoryNo", prodCategoryNo).list();
+	}
+
+	@Override
+	public ShowProdInMallVO select(Integer prodNo) {
+		return this.getSession().get(ShowProdInMallVO.class, prodNo);
 	}
 
 }

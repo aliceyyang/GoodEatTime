@@ -5,6 +5,7 @@ import java.util.List;
 import com.tibame.tga104.product.vo.ShowProdInMallVO;
 
 public interface ShowProdInMallDAO {
+	public ShowProdInMallVO select(Integer prodNo);
 	public List<ShowProdInMallVO> getAll();
 	public List<ShowProdInMallVO> getFromProdCategory(Integer prodCategoryNo);
 }
