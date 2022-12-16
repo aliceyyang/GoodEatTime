@@ -11,7 +11,6 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.tibame.tga104.product.vo.ProdPicVO;
 
@@ -84,6 +83,12 @@ public class ProdPicDAO_Hibernate implements ProdPicDAO {
 		List<ProdPicVO> result = typedQurey.getResultList();
 		
 		return result;
+	}
+	
+	@Override
+	public List<Integer> getPicNoByProdNo(Integer prodNo) {
+		String hql = "select p.prodPicNo from ProdPicVO p where prodNo = :prodNo";
+		return this.getSession().createQuery(hql, Integer.class).setParameter("prodNo", prodNo).list();
 	}
 
 }

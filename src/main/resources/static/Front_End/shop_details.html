@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="css/shop_details.css" type="text/css" />
+    <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
   </head>
 
   <body>
@@ -235,13 +236,12 @@
               <div class="product__label">餐廳名稱</div>
               <h4>覆盆子塔</h4>
               <h5>NTD 260</h5>
-              <p>
-                商品簡單描述
-              </p>
+              <p>商品簡單描述</p>
               <ul>
-                <li>產品類別 : <span>Biscuit cake</span></li>
-                <li>庫存數量 : <span>17</span></li>
-                <li>商品星等 : 
+                <li>產品類別 : <span class="product_category">Biscuit cake</span></li>
+                <li>庫存數量 : <span class="product_stock">17</span></li>
+                <li>
+                  商品星等 :
                   <div class="product__details__rating">
                     <div class="fill-ratings">
                       <span>★★★★★</span>
@@ -249,7 +249,8 @@
                     <div class="empty-ratings">
                       <span>★★★★★</span>
                     </div>
-                  </div></li>
+                  </div>
+                </li>
               </ul>
               <div class="product__details__option">
                 <div class="quantity">
@@ -274,7 +275,7 @@
                   data-toggle="tab"
                   href="#tabs-1"
                   role="tab"
-                  >商品詳細介紹</a
+                  >商品評論</a
                 >
               </li>
               <li class="nav-item">
@@ -282,24 +283,57 @@
                   >商品內容成分</a
                 >
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
                   >商品評論</a
                 >
-              </li>
+              </li> -->
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="tabs-1" role="tabpanel">
                 <div class="row d-flex justify-content-center">
-                  <div class="col-lg-8">
-                    <p>
-                      This delectable Strawberry Pie is an extraordinary treat
-                      filled with sweet and tasty chunks of delicious
-                      strawberries. Made with the freshest ingredients, one bite
-                      will send you to summertime. Each gift arrives in an
-                      elegant gift box and arrives with a greeting card of your
-                      choice that you can personalize online!
-                    </p>
+                  <div class="col-lg-1">
+                    <i class="fa-solid fa-angle-left"></i>
+                  </div>
+                  <div class="col-lg-10 comment">
+                    <div class="testimonial__item">
+                      <div class="testimonial__author">
+                        <div class="testimonial__author__pic">
+                          <img src="img/testimonial/ta-1.jpg" alt="" />
+                        </div>
+                        <div class="testimonial__author__text">
+                          <h5>會員名稱</h5>
+                          <span class="restaurantCommentTime">2022-12-25</span>
+                        </div>
+                      </div>
+                      <div class="rating">
+                        <h3 class="commentRating">4</h3>
+                        <span class="icon_star"></span>
+                        <span class="icon_star"></span>
+                        <span class="icon_star"></span>
+                        <span class="icon_star"></span>
+                        <span class="icon_star -off"></span>
+                      </div>
+                      <div class="comment_pic">
+                        <a data-fancybox="gallery" href="img/restaurant/starbucks/comment.jpg"
+                          ><img src="img/restaurant/starbucks/comment.jpg"
+                        /></a>
+                      </div>
+                      <p>
+                        餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容
+                      </p>
+                      <hr />
+                      <div class="restaurant_resp">
+                        <h5>業主回應</h5>
+                        <span class="restaurantReTime">2022-12-26</span>
+                        <p>
+                          業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-1">
+                    <i class="fa-solid fa-angle-right"></i>
                   </div>
                 </div>
               </div>
@@ -317,7 +351,7 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane" id="tabs-3" role="tabpanel">
+              <!-- <div class="tab-pane" id="tabs-3" role="tabpanel">
                 <div class="row d-flex justify-content-center">
                   <div class="col-lg-8">
                     <p>
@@ -330,7 +364,7 @@
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -465,7 +499,7 @@
                 </div>
                 <div class="product__item__text">
                   <h6><a href="#">German Chocolate</a></h6>
-                  <div class="product__item__price"> NTD 150</div>
+                  <div class="product__item__price">NTD 150</div>
                   <div class="cart_add">
                     <a href="#">加入購物車</a>
                   </div>

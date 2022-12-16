@@ -2,26 +2,69 @@ package com.tibame.tga104.order.vo;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+
+@Entity
+@Table(name="prodOrder")
 public class ProdOrderVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 	
+		@Id
+		@Column(name="prodOrderNo")
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Integer prodOrderNo;
+		@Column(name="memberNo")
+		@NotNull
 		private Integer	memberNo;
+		@Column(name="restaurantNo")
+		@NotNull
 		private Integer	restaurantNo;
+		@Column(name="couponNo")
 		private Integer couponNo;
+		@Column(name="orderStatus")
 		private String orderStatus;
+		@Column(name="prodOrderDate")
+		@NotNull
 		private java.sql.Timestamp prodOrderDate;
+		@Column(name="prodOrderReveiveTime")
 		private java.sql.Timestamp prodOrderReveiveTime;
+		@Column(name="prodOderDeliverTime")
 		private java.sql.Timestamp prodOderDeliverTime;
+		@Column(name="deliverFee")
+		@NotNull
 		private Integer deliverFee;
+		@Column(name="amountBeforeCoupon")
+		@NotNull
 		private Integer amountBeforeCoupon;
+		@Column(name="amountAfterCoupon")
+		@NotNull
 		private Integer amountAfterCoupon;
+		@Column(name="prodOrderPoint")
+		@NotNull
 		private Integer prodOrderPoint;
+		@Column(name="prodOrderReceiverName")
+		@NotNull
 		private String prodOrderReceiverName;
+		@Column(name="prodOrderReceiverTel")
+		@NotNull
 		private String prodOrderReceiverTel;
+		@Column(name="prodOrderReceiverMail")
+		@NotNull
 		private String prodOrderReceiverMail;
+		@Column(name="prodOrderReceiverAddress")
+		@NotNull
 		private String prodOrderReceiverAddress;
+		@Column(name="invoiceNumber")
+		@NotNull
 		private String invoiceNumber;
+		@Column(name="taxIDNumber")
 		private String taxIDNumber;
 		
 //		// 改建構子寫法再開。
@@ -55,6 +98,19 @@ public class ProdOrderVO implements java.io.Serializable{
 //			this.taxIDNumber = taxIDNumber;
 //			
 //		}
+		
+		@Override
+		public String toString() {
+			return "ProdOrderVO [prodOrderNo=" + prodOrderNo + ", memberNo=" + memberNo + ", restaurantNo="
+					+ restaurantNo + ", couponNo=" + couponNo + ", orderStatus=" + orderStatus + ", prodOrderDate="
+					+ prodOrderDate + ", prodOrderReveiveTime=" + prodOrderReveiveTime + ", prodOderDeliverTime="
+					+ prodOderDeliverTime + ", deliverFee=" + deliverFee + ", amountBeforeCoupon=" + amountBeforeCoupon
+					+ ", amountAfterCoupon=" + amountAfterCoupon + ", prodOrderPoint=" + prodOrderPoint
+					+ ", prodOrderReceiverName=" + prodOrderReceiverName + ", prodOrderReceiverTel="
+					+ prodOrderReceiverTel + ", prodOrderReceiverMail=" + prodOrderReceiverMail
+					+ ", prodOrderReceiverAddress=" + prodOrderReceiverAddress + ", invoiceNumber=" + invoiceNumber
+					+ ", taxIDNumber=" + taxIDNumber + "]";
+		}
 		
 		public Integer getProdOrderNo() {
 			return prodOrderNo;

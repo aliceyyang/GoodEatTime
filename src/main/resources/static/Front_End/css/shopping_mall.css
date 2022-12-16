@@ -53,3 +53,7 @@
     box-shadow: 0 0 10px rgb(223 223 224 / 70%); */
     cursor: default;
 }
+
+div.shop__option__search div.nice-select li {
+    text-align: center;
+}

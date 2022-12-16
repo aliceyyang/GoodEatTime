@@ -1,21 +1,26 @@
 package com.tibame.tga104.member.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.tibame.tga104.member.dao.MemberDAO;
 import com.tibame.tga104.member.vo.MemberVO;
+import com.tibame.tga104.reservation.vo.ReserveTimeVO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
 	@PersistenceContext
 	private Session session;
+
 	public Session getSession() {
 		return session;
 	}
-	
+
 	@Override
 	public MemberVO select(Integer memberNo) {
 		if (memberNo != null) {
@@ -23,17 +28,36 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return null;
 	}
-	
-	//會員註冊	
+
+	// 會員註冊
 	@Override
 	public MemberVO insert(MemberVO member) {
-		//確認各必填欄位皆輸入
+		// 確認各必填欄位皆輸入
 		if (member != null && member.getMemberNo() == null) {
 			this.getSession().save(member);
 			return member;
 		}
 		return null;
 	}
+
+	// 會員登入
+	// select * from member where mail = ?and memberPassword = ?";
+	@Override
+	public MemberVO selectForLogin(String mail, String memberPassword) {
+		final String hql ="from MemberVO where mail = :mail and memberPassword = :memberPassword ";
+		return (MemberVO) session.createQuery(hql)
+				.setParameter("mail", mail)
+				.setParameter("memberPassword", memberPassword)
+				.uniqueResult();
+	}
+//		if (mail != null && memberPassword.isEmpty()) {
+//			Query<MemberVO> query = getSession()
+//					.createQuery("from member where mail = :mail and memberPassword = :memberPassword", MemberVO.class);
+//			query.setParameter("mail", mail);
+//			query.setParameter("memberPassword", memberPassword);
+//			List<MemberVO> memberVO = query.list();
+//		}
+	
 
 	@Override
 	public MemberVO update(MemberVO member) {
@@ -49,9 +73,10 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return null;
 	}
-	
-}
 
+	
+
+}
 
 //import org.hibernate.Session;
 //import org.hibernate.SessionFactory;
@@ -141,4 +166,3 @@ public class MemberDAOImpl implements MemberDAO {
 //	}
 //
 //}
-

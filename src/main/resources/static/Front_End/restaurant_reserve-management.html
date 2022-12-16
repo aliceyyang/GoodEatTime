@@ -165,7 +165,7 @@
         <h2>訂位管理</h2>
         <div class="row">
           <div class="reserve_status col-lg-6 col-md-6 col-sm-6">
-            <h3>訂位狀況</h3>
+            <h3>訂位概況</h3>
             <input type="date" id="reserve_search" onkeyup="searchFunction()">
             <div class="table-responsive" id="table-responsive">
               <table class="table" id="reserve_status" style=" width: 100%">
@@ -190,8 +190,22 @@
                     <td>15</td>
                     <td>10</td>
                   </tr>
+                  <tr>
+                    <td>2022/12/23</td>
+                    <td>12:00</td>
+                    <td>15</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>2022/12/23</td>
+                    <td>12:00</td>
+                    <td>15</td>
+                    <td>10</td>
+                  </tr>
                 </tbody>
               </table>
+              <button class="site-btn col-lg-12 col-md-12 col-sm-12"><i
+                  class="fa-solid fa-magnifying-glass fa-xl"></i>&nbsp詳細訂位資訊</button>
             </div>
           </div>
           <div class="reserve_set col-lg-6 col-md-6 col-sm-6">
@@ -199,16 +213,17 @@
             <div>
               <select id="weekDay">
                 <option>選擇營業日 (星期)：</option>
-                <option value="0">星期日</option>
-                <option value="1">星期一</option>
-                <option value="2">星期二</option>
-                <option value="3">星期三</option>
-                <option value="4">星期四</option>
-                <option value="5">星期五</option>
-                <option value="6">星期六</option>
+                <option value="1">星期日</option>
+                <option value="2">星期一</option>
+                <option value="3">星期二</option>
+                <option value="4">星期三</option>
+                <option value="5">星期四</option>
+                <option value="6">星期五</option>
+                <option value="7">星期六</option>
               </select>
             </div>
             <div class="table-responsive" id="table-responsive">
+              <br>
               <table style=" width: 100%">
                 <thead>
                   <tr class="header">
@@ -374,6 +389,7 @@
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/restautant_reserve-management.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

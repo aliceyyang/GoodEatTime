@@ -14,7 +14,7 @@ import com.tibame.tga104.product.service.ProdInfoService;
 import com.tibame.tga104.product.vo.ProdInfoVO;
 
 @WebServlet("/product/mainPic")
-public class ProdMainPicController extends HttpServlet  {
+public class ProdMainPicServlet extends HttpServlet  {
 	private static final long serialVersionUID = 4645305526234573528L;
 	@Autowired
 	private ProdInfoService svc;

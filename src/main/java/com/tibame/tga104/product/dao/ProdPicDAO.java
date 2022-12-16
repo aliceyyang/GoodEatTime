@@ -11,4 +11,5 @@ public interface ProdPicDAO {
 	public ProdPicVO findByPrimaryKey(Integer prodPicNo);
 	public List<ProdPicVO> getAll();
 	public List<ProdPicVO> findByProdNo(Integer ProdPicNo);
+	public List<Integer> getPicNoByProdNo(Integer prodNo);
 }

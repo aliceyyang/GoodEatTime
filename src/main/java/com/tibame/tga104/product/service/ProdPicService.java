@@ -51,4 +51,8 @@ public class ProdPicService {
 	public List<ProdPicVO> findByProdNo(Integer prodNo) {
 		return dao.findByProdNo(prodNo);
 	}
+	
+	public List<Integer> getPicNoByProdNo(Integer prodNo) {
+		return dao.getPicNoByProdNo(prodNo);
+	}
 }
