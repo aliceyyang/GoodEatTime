@@ -9,25 +9,23 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.tibame.tga104.restaurant.dao.RestaurantDao;
 import com.tibame.tga104.restaurant.vo.RestaurantVO;
 
+@Repository
 public class RestaurantDaoImpl implements RestaurantDao {	
 	
-	String driver = "com.mysql.cj.jdbc.Driver";
-	String url = "jdbc:mysql://localhost:3306/GoodEatTime";
-	String username = "root";
-	String password = "password";
-	
+
 	@Override
 	public boolean insert(RestaurantVO restaurantVO) {
 		int rowCount = 0;
-		String insert = "insert into restaurant(restaurantTel,restaurantName,restaurantTaxIDNo,restaurantAccountInfo,restaurantBusinessHour,restaurantAddr,restaurantStatus,restaurantAccount,restaurantPassword,restaurantCommentQuantity,totalCommentRating)"
+		String insert = "insert into restaurant(restaurantTel,restaurantName,restaurantTaxIDNo,restaurantAccountInfo,restaurantBusinessHour,restaurantAddr,restaurantStatus,restaurantAccount,restaurantPassword,restaurantCommentQuantity,totalCommentRating) "
 				+ "values(?,?,?,?,?,?,?,?,?,?,?);";
 		
 		try(
-			Connection con = getConnection();
-//			Connection con = DriverManager.getConnection(url, username, password);
+			Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement ps = con.prepareStatement(insert)) {
 			
 			ps.setString(1,restaurantVO.getRestaurantTel());
@@ -55,7 +53,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		int rowCount = 0;
 		String update = "update restaurant set restaurantTel=?,restaurantName=?,restaurantTaxIDNo=?,restaurantAccountInfo=?,restaurantBusinessHour=?,restaurantAddr=?,"
 				+ "restaurantAccount=?,restaurantPassword=? where restaurantNo=?";
-		try(Connection con = getConnection();
+		try(Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement ps = con.prepareStatement(update)){
 			
 			ps.setString(1,restaurantVO.getRestaurantTel());
@@ -78,10 +76,10 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
 	@Override
 	public void setStatus(Integer restaurantNo,Boolean restaurantStatus) {
-		String setStatus = "update restaurant"
-				+ "set restaurantStatus = ?"
+		String setStatus = "update restaurant "
+				+ "set restaurantStatus = ? "
 				+ "where restaurantNo = ?;";
-		try(Connection con = getConnection();
+		try(Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement ps = con.prepareStatement(setStatus)){
 			
 			ps.setBoolean(1,restaurantStatus);
@@ -101,8 +99,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		
 		RestaurantVO vo = null;
 		try(
-			Connection con = getConnection();
-//			Connection con = DriverManager.getConnection(url, username, password);
+			Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement ps = con.prepareStatement(findByPrimaryKey);
 			){
 			
@@ -136,11 +133,10 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		
 		List<RestaurantVO> list = new ArrayList<>();
 		try (
-				Connection con = getConnection();
-//				Connection con = DriverManager.getConnection(url, username, password);
-				PreparedStatement ps = con.prepareStatement(getAll);
-				ResultSet rs = ps.executeQuery()){
-			while (rs.next()) {
+			 Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
+			 PreparedStatement ps = con.prepareStatement(getAll);
+			 ResultSet rs = ps.executeQuery()){
+			 while (rs.next()) {
 				RestaurantVO vo = new RestaurantVO();
 				vo.setRestaurantNo(rs.getInt(1));
 				vo.setRestaurantTel(rs.getString(2));

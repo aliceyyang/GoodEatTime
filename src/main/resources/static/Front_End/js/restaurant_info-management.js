@@ -79,8 +79,54 @@ $(function () {
 
 // ==========輪播圖設定===========
 
-var drop_zone = document.getElementById("drop_zone");
 var carousel_file_el = document.getElementById("carousel_file");
+
+// 當file變化時
+carousel_file_el.addEventListener("change", function (e) {
+  // 判
+  if (this.files.length <= 6) {
+    preview_img(this.files[0]);
+  } else {
+    alert("最多選擇6張圖片，請重新選擇!");
+    $("#carousel")[0].reset();
+  }
+});
+
+// ===================多張輪播圖片上傳=================
+
+let base64arr = []; //裝多張圖用的base64陣列
+
+function readFiles(files) {
+  //檔案陣列傳進來
+  for (let file of files) {
+    //一個一個檔案處理
+    const read = new FileReader();
+    read.readAsDataURL(file); //讀取檔案轉成base64
+    read.onloadend = function (e) {
+      base64arr.push(e.target.result.slice(23)); //要截掉前面的data:image/png;base64, 才是圖像編碼
+      if (files.length === base64arr.length) {
+        //等陣列裝好所有選的圖檔後進來執行
+        fetch("http://localhost:8080/restaurant-uploadMultiplePics/1", {
+          //最後面是餐廳編號，我先寫死測試QAQ
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(base64arr),
+        });
+      }
+    };
+  }
+}
+
+$("#carousel").on("submit", function (e) {
+  let files = document.querySelectorAll("#carousel_file")[0].files; //抓到要上傳的所有檔案，會是陣列
+  readFiles(files);
+});
+
+// ===================拖曳區+預覽圖處理=================
+
+var drop_zone = document.getElementById("drop_zone");
 
 carousel.addEventListener("reset", function () {
   drop_zone.innerHTML = '<span class = "text">輪播圖片6張</span>';
@@ -95,17 +141,6 @@ var preview_img = function (file) {
     drop_zone.innerHTML = img_str;
   });
 };
-
-// 當file變化時
-carousel_file_el.addEventListener("change", function (e) {
-  // 判
-  if (this.files.length <= 6) {
-    preview_img(this.files[0]);
-  } else {
-    alert("最多選擇6張圖片，請重新選擇!");
-    $("#carousel")[0].reset();
-  }
-});
 
 drop_zone.addEventListener("dragover", function (e) {
   e.preventDefault();
@@ -123,7 +158,35 @@ drop_zone.addEventListener("drop", function (e) {
   carousel_file_el.value = "";
 });
 
-// ==========菜單圖設定===========
+// ==========菜單 單張圖上傳設定===========
+
+//把要存進物件的參數帶進來
+function readFile(pic, pic_remark) {
+  const read = new FileReader();
+  read.readAsDataURL(pic); //讀取檔案轉成base64
+  read.onloadend = function (e) {
+    var base64 = e.target.result.slice(23); //要截掉前面的data:image/png;base64, 才是圖像編碼
+
+    fetch("http://localhost:8080/restaurant-uploadMenu", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        restaurantNo: 3, //餐廳編號我先寫死測試T_T
+        menuPicstr: base64, //VO那邊要先建一個String的屬性來裝base64的編碼，過去controller再轉byte陣列
+        menuPicRemark: pic_remark,
+      }),
+    });
+  };
+}
+
+//表單按下送出時
+$("#menu").on("submit", function (e) {
+  var pic = document.querySelector("#menu_file").files[0]; //抓到input標籤上傳的檔案
+  var pic_remark = document.querySelector("#pic_remark").value; //抓到textarea輸入的文字
+  readFile(pic, pic_remark); //帶進上方的readFile函式
+});
 
 var drop_zone2 = document.getElementById("drop_zone2");
 var menu_file_el = document.getElementById("menu_file");
@@ -233,41 +296,3 @@ function tabCutover() {
     $(this).addClass("active").siblings(".active").removeClass("active");
   });
 }
-
-// ===================輪播圖片上傳=================
-
-// ===================尚未成功 還在研究中T_T=================
-
-let base64arr = [];
-let pic_remark = document.querySelector("pic_remark");
-
-function readFiles(files) {
-  console.log("testtttttt");
-  for (let file of files) {
-    const read = new FileReader();
-    read.readAsDataURL(file);
-    read.onloadend = function (e) {
-      base64arr.push(e.target.result.slice(23));
-      if (files.length === base64arr.length) {
-        const data = JSON.stringify(base64arr);
-        fetch("http://localhost:8080/restaurant-uploadMultiplePics", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: data,
-        });
-        // .then((r) => r.json())
-        // .then((data) => {
-        //   console.log(data);
-        // });
-      }
-    };
-  }
-}
-
-$("#carousel").on("submit", function (e) {
-  e.preventDefault();
-  let files = document.querySelectorAll("#carousel_file")[0].files;
-  readFiles(files);
-});
