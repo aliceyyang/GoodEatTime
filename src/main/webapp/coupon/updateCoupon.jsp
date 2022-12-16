@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<title>優惠券資料 - listOneCoupon.jsp</title>
+<title>更新優惠券資料 - updateOneCoupon.jsp</title>
 
 <style>
 	  table#table-1 {
@@ -71,18 +71,21 @@
 			<th>修改</th>
 			<th>刪除</th>
 		</tr>
-	
+		
 		<tr>
-			<form method="post" action="<%=request.getContextPath()%>/coupon/AddCoupon" style="margin-bottom: 0px;">
-			<input type="submit" value="確認">
-			<input type="hidden" name="couponNo" value="${couponVO.couponNo}">
-			<input type="hidden" name="action" value=""></form>
+		<td>
+			<form method="post" action="" style="margin-bottom: 0px;">
+				<input type="submit" value="確認">
+				<input type="hidden" name="couponNo" value="${couponVO.couponNo}">
+				<input type="hidden" name="action" value="">
+			</form>
 		</td>
 		<td>
-			<form method="post" action="<%=request.getContextPath()%>/coupon/AddCoupon" style="margin-bottom: 0px;">
-			<input type="submit" value="取消">
-			<input type="hidden" name="couponNo" value="${couponVO.couponNo}">
-			<input type="hidden" name="action" value="deleteCoupon"></form>
+			<form method="post" action="" style="margin-bottom: 0px;">
+				<input type="submit" value="取消">
+				<input type="hidden" name="couponNo" value="${couponVO.couponNo}">
+				<input type="hidden" name="action" value="deleteCoupon">
+			</form>
 		</td>
 	</tr>			
 </table>

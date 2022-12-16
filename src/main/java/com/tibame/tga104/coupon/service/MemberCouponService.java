@@ -6,10 +6,9 @@ import com.tibame.tga104.coupon.vo.MemberCouponVO;
 
 public interface MemberCouponService {
 
-		
-	MemberCouponVO updateusageStatus(Boolean usageStatus);
+	MemberCouponVO updateusageStatus(Integer memberNo, Integer coupponNo);
 	
-	MemberCouponVO getOneMemberCoupon(MemberCouponVO memberCouponVO);
+	MemberCouponVO getOneMemberCoupon(Integer memberCouponVO, Integer couponNo);
 	
 	List<MemberCouponVO> getAll();
 }

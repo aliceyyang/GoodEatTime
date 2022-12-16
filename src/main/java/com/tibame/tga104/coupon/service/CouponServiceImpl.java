@@ -1,6 +1,6 @@
 package com.tibame.tga104.coupon.service;
 
-import java.sql.Timestamp;
+import java.util.Base64;
 import java.util.List;
 
 import com.tibame.tga104.coupon.dao.CouponDao;
@@ -15,52 +15,35 @@ public class CouponServiceImpl implements CouponService {
 		dao = new CouponDaoImpl();
 	}
 
-	@Override
-	public CouponVO addCoupon(Integer restaurantNo, Integer adminNo, Timestamp couponApplyDate, String couponName,
-			Timestamp couponStartTime, Timestamp couponEndTime, Boolean verified, String couponContent,
-			Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
-			String verificationDetail) {
-
-		CouponVO couponVO = new CouponVO();
-
-		couponVO.setRestaurantNo(restaurantNo);
-		couponVO.setAdminNo(adminNo);
-		couponVO.setCouponApplyDate(couponApplyDate);
-		couponVO.setCouponName(couponName);
-		couponVO.setCouponStartTime(couponStartTime);
-		couponVO.setCouponEndTime(couponEndTime);
-		couponVO.setVerified(verified);
-		couponVO.setCouponContent(couponContent);
-		couponVO.setUsageLimitation(usageLimitation);
-		couponVO.setAmountOrFold(amountOrFole);
-		couponVO.setMaxIssueQty(maxIssueQty);
-		couponVO.setIssuedQty(issuedQty);
-		couponVO.setVerificationDetail(verificationDetail);
-		dao.insert(couponVO);
-
-		return couponVO;
-	}
-
 //	public CouponVO updateCoupon(Integer restaurantNo, Integer adminNo, Timestamp couponApplyDate, String couponName,
 //			Timestamp couponStartTime, Timestamp couponEndTime, Boolean verified, String couponContent,
 //			Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
 //			String verificationDetail) {
 	@Override
-	public CouponVO updateCoupon(CouponVO couponVO) {	
-		dao.update(couponVO);
+	public CouponVO updateCoupon(CouponVO couponVO) {
+		final String couponPicStr = couponVO.getCouponPicStr();
+		if (couponPicStr != null && !couponPicStr.isEmpty()) {
+			couponVO.setCouponPic(Base64.getDecoder().decode(couponPicStr));
+		}
+		dao.updateByCouponNo(couponVO);
 		return couponVO;
 	}
 
 	@Override
 	public void deleteCoupon(Integer couponNo) {
-			dao.delete(couponNo);
-		}
-
+		dao.delete(couponNo);
+	}
 
 	@Override
 	public CouponVO getOneCoupon(Integer couponNo) {
-			return dao.findByPrimaryKey(couponNo);
+		CouponVO vo = dao.findByPrimaryKey(couponNo);
+		final byte[] couponPic = vo.getCouponPic();
+		if (couponPic != null && couponPic.length != 0) {
+			vo.setCouponPicStr(Base64.getEncoder().encodeToString(vo.getCouponPic()));
+			vo.setCouponPic(null);
 		}
+		return vo;
+	}
 
 	@Override
 	public List<CouponVO> getAll() {
@@ -68,12 +51,8 @@ public class CouponServiceImpl implements CouponService {
 	}
 
 	@Override
-	public CouponVO updateCoupon(Integer restaurantNo, Integer adminNo, Timestamp couponApplyDate, String couponName,
-			Timestamp couponStartTime, Timestamp couponEndTime, Boolean verified, String couponContent,
-			Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
-			String verificationDetail) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CouponVO> findByRestaurantNo(Integer restaurantNo) {
+		return dao.selectByRestaurantNo(restaurantNo);
 	}
 
 }

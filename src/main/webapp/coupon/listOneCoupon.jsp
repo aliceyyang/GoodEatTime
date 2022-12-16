@@ -55,51 +55,23 @@
 		<tr>
 			<th>優惠券編號</th>
 			<th>餐廳編號</th>
-			<th>管理員編號</th>
-			<th>申請日期</th>
 			<th>優惠券名稱</th>
-			<th>開始時間</th>
-			<th>結束時間</th>
 			<th>審核狀態</th>
 			<th>優惠券內容</th>
-			<th>訂單金額滿多少可以使用</th>
-			<th>金額 / 折數</th>
-			<th>種類 : 折價 / 打折</th>
-			<th>發行張數上限</th>
-			<th>已發行張數</th>
-			<th>審核資訊</th>
-			<th>修改</th>
-			<th>刪除</th>
 		</tr>
 	
 		<tr>
-			<td>${couponVO.couponNo}</td>
-			<td>${couponVO.restaurantNo}</td>
-			<td>${couponVO.adminNo}</td>
-			<td>${couponVO.couponApplyDate}</td>
-			<td>${couponVO.couponName}</td>
-			<td>${couponVO.couponStartTime}</td>
-			<td>${couponVO.couponEndTime}</td>
-			<td>${couponVO.verified}</td>
-			<td>${couponVO.couponContent}</td>
-			<td>${couponVO.usageLimitation}</td>
-			<td>${couponVO.amountOrFold}</td>
-			<td>${couponVO.couponType}</td>
-			<td>${couponVO.maxIssueQty}</td>
-			<td>${couponVO.issuedQty}</td>
-			<td>${couponVO.verificationDetail}</td>
-			<td>
-			<form method="post" action="<%=request.getContextPath()%>/coupon/AddCoupon" style="margin-bottom: 0px;">
-			<input type="submit" value="修改">
-			<input type="hidden" name="couponNo" value="${couponVO.couponNo}">
-			<input type="hidden" name="action" value="updateCoupon"></form>
-		</td>
-		<td>
-			<form method="post" action="<%=request.getContextPath()%>/coupon/AddCoupon" style="margin-bottom: 0px;">
-			<input type="submit" value="刪除">
-			<input type="hidden" name="couponNo" value="${couponVO.couponNo}">
-			<input type="hidden" name="action" value="deleteCoupon"></form>
-		</td>
+	<c:forEach var="couponVO" items="${list}">
+			<tr>
+			<form method="post" action="Manage" style="margin-bottom: 0px;">
+				<td>${couponVO.couponNo}</td>
+				<td>${couponVO.restaurantNo}</td>
+				<td>${couponVO.couponName}</td>
+				<td>${couponVO.verified}</td>
+				<td>${couponVO.couponContent}</td>
+			</form>
+			</tr>			
+		</c:forEach>
 	</tr>			
 </table>
 </body>

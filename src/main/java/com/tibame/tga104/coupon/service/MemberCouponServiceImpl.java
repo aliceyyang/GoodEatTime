@@ -1,9 +1,7 @@
 package com.tibame.tga104.coupon.service;
 
 import java.util.List;
-
 import com.tibame.tga104.coupon.dao.MemberCouponDAO;
-import com.tibame.tga104.coupon.dao.impl.MemberCouponDAOHibernate;
 import com.tibame.tga104.coupon.vo.MemberCouponVO;
 
 
@@ -12,28 +10,25 @@ public class MemberCouponServiceImpl implements MemberCouponService{
 
 	private MemberCouponDAO dao;
 	
-	public MemberCouponServiceImpl() {
-		dao = new MemberCouponDAOHibernate();
-	}
 	
+
 	@Override
-	public MemberCouponVO updateusageStatus(Boolean usageStatus) {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberCouponVO updateusageStatus(Integer memberNo, Integer couponNo) {
+		MemberCouponVO vo = new MemberCouponVO();
+		vo.setUsageStatus(vo.getUsageStatus());
+		dao.update(vo);
+		return vo;
 	}
 
 	@Override
-	public MemberCouponVO getOneMemberCoupon(MemberCouponVO memberCouponVO) {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberCouponVO getOneMemberCoupon(Integer memberNo, Integer couponNo) {
+		return dao.select(memberNo);
 	}
 
 	@Override
 	public List<MemberCouponVO> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getAll();
 	}
-	
 	
 }
 
