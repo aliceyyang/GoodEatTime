@@ -5,12 +5,15 @@ import java.util.List;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
-import org.springframework.stereotype.Component;
+import org.hibernate.criterion.Example;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tibame.tga104.order.vo.ProdOrderVO;
 import com.tibame.tga104.product.vo.ProdInfoVO;
 
-@Component
+@Transactional
+@Repository
 public class ProdOrderDAO_Hibernate implements ProdOrderDAO_interface{
 	
 	@PersistenceContext
@@ -59,5 +62,12 @@ public class ProdOrderDAO_Hibernate implements ProdOrderDAO_interface{
 	public List<ProdOrderVO> getAll() {
 		
 		return this.getSession().createQuery("from ProdOrderVO", ProdOrderVO.class).list();
+	}
+
+	@Override
+	public List<ProdOrderVO> selectByConditions(ProdOrderVO prodOrderVO) {
+		return getSession().createCriteria(ProdOrderVO.class)
+			.add(Example.create(prodOrderVO))
+			.list();
 	}
 }

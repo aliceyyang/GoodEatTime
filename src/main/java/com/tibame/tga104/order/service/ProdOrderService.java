@@ -1,9 +1,11 @@
 package com.tibame.tga104.order.service;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tibame.tga104.order.dao.ProdOrderDAO_interface;
 import com.tibame.tga104.order.vo.ProdOrderVO;
@@ -14,6 +16,7 @@ public class ProdOrderService {
 	@Autowired
 	private ProdOrderDAO_interface dao;
 	
+	@Transactional
 	public ProdOrderVO insertProdOrder(Integer memberNo, Integer restaurantNo, Integer couponNo, String orderStatus, 
 			java.sql.Timestamp prodOrderDate, java.sql.Timestamp prodOrderReveiveTime, java.sql.Timestamp prodOderDeliverTime, 
 			Integer deliverFee, Integer amountBeforeCoupon, Integer amountAfterCoupon, Integer prodOrderPoint, 
@@ -44,10 +47,12 @@ public class ProdOrderService {
 		
 	}
 
+	@Transactional
 	public void deleteProdOrder(Integer prodOrderNo) {
 		dao.delete(prodOrderNo);
 	}
 
+	@Transactional
 	public ProdOrderVO updateProdOrder(Integer prodOrderNo, Integer	memberNo, Integer restaurantNo, Integer couponNo, String orderStatus, 
 			java.sql.Timestamp prodOrderDate, java.sql.Timestamp prodOrderReveiveTime, java.sql.Timestamp prodOderDeliverTime, 
 			Integer deliverFee, Integer amountBeforeCoupon, Integer amountAfterCoupon, Integer prodOrderPoint, 
@@ -87,4 +92,16 @@ public class ProdOrderService {
 		return dao.getAll();
 	}
 
+	public List<ProdOrderVO> findByConditions(ProdOrderVO prodOrderVO) {
+		if (prodOrderVO == null) {
+			return dao.getAll();
+		} else {
+			final Integer prodOrderNo = prodOrderVO.getProdOrderNo();
+			if (prodOrderNo != null) {
+				return Arrays.asList(dao.select(prodOrderNo));
+			} else {
+				return dao.selectByConditions(prodOrderVO);
+			}
+		}
+	}
 }
