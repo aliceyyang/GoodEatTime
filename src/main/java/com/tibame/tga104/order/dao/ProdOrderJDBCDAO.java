@@ -372,5 +372,11 @@ public class ProdOrderJDBCDAO implements ProdOrderDAO_interface{
 			System.out.println(e);
 		}
 		return prodOrderVO_list;
+	}
+
+	@Override
+	public List<ProdOrderVO> selectByConditions(ProdOrderVO prodOrderVO) {
+		// TODO Auto-generated method stub
+		return null;
 	};
 }
