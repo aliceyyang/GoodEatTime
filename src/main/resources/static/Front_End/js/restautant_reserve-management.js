@@ -1,3 +1,4 @@
+// 選擇營業星期，顯示時段開放預約人數 (select)
 $("#weekDay").on("change", function () {
   let weekDay = $("#weekDay").val();
   $.ajax({
@@ -14,9 +15,10 @@ $("#weekDay").on("change", function () {
   });
 });
 
+// 設定營業時間及人數
 $("#set_store").on("click", function () {
   $.ajax({
-    url: "http://localhost:8080/reservation/restaurant",
+    url: "../reservation/restaurant",
     type: "POST",
     contentType: "application/json",
     data: JSON.stringify([
@@ -52,30 +54,75 @@ $("#set_store").on("click", function () {
         icon: "success",
         title: "儲存成功",
         showConfirmButton: false,
-        timer: 1500,
+        timer: 1000,
       });
     },
   });
 });
 
-// 搜尋功能;
-// function searchFunction() {
-//   let input, filter, table, tr, td, i, txtValue;
-//   input = document.getElementById("reserve_search");
-//   // filter = input.value.toUpperCase();
-//   filter = input.value;
-//   console.log(filter);
-//   table = document.querySelector("#reserve_status");
-//   tr = table.getElementsByTagName("tr");
-//   for (i = 0; i < tr.length; i++) {
-//     td = tr[i].getElementsByTagName("td")[0];
-//     console.log(td);
-//     if (td == filter) {
-//       // if (indexOf(filter) > -1) {
-//       //   tr[i].style.display = "";
-//       // } else {
-//       //   tr[i].style.display = "none";
-//       // }
-//     }
-//   }
-// }
+// default today
+function getDate() {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; //January is 0!
+  var yyyy = today.getFullYear();
+
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  today = yyyy + "-" + mm + "-" + dd;
+  // console.log(today);
+  $("#reserve_search").val(today);
+}
+getDate();
+
+// 顯示訂位狀況
+function status() {
+  $("#reserve_search").on("change", function () {
+    var reserveDate = $("#reserve_search").val();
+    const tbReserve_status = $("#tbReserve_status");
+    $.ajax({
+      url: "../reservation/restaurant/reserveStatus",
+      type: "GET",
+      dataType: "json",
+      data: { date: reserveDate },
+      success: function (a) {
+        console.log(a);
+        console.log(tbReserve_status);
+        tbReserve_status.html(
+          a
+            .map((e) =>
+              Template(
+                e.reserveDate,
+                e.reserveTime,
+                e.totalReserveNum,
+                e.availableSeats
+              )
+            )
+            .join("")
+        );
+      },
+    });
+  });
+}
+status();
+
+function Template(reserveDate, reserveTime, totalReserveNum, availableSeats) {
+  return `<tr>
+  <td>${reserveDate}</td>
+  <td>${reserveTime}</td>
+  <td>${totalReserveNum}</td>
+  <td>${availableSeats}</td>
+  </tr> `;
+}
+
+document.querySelector("#search_detail").addEventListener("click", function () {
+  // console.log("aa");
+  var reserveDate = $("#reserve_search").val();
+  sessionStorage.setItem("reserveDate", reserveDate);
+  location.href = "./restaurant_reservation.html";
+});

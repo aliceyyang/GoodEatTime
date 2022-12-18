@@ -98,7 +98,7 @@ var reserve_data = function () {
 };
 reserve_data();
 
-// // Session資料
+// Session資料
 // const data = {};
 // data.name = $("#name").val();
 // data.tel = $("#tel").val();

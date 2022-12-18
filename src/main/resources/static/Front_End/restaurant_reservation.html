@@ -7,7 +7,7 @@
   <meta name="keywords" content="Cake, unica, creative, html" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Restaurant | Reservation_Management</title>
+  <title>Member | Reservation</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="css/style.css" type="text/css" />
   <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
   <link rel="stylesheet" href="css/reservation.css" type="text/css" />
+  <link rel="stylesheet" href="dataTables/css/jquery.dataTables.css" type="text/css">
 </head>
 
 <body>
@@ -145,7 +146,7 @@
     <!-- <div class="container"> -->
     <div class="row" id="member">
       <!-- <div class="col-lg-2" id="left"> -->
-      <div class="col-lg-2 col-md-2 col-sm-2" id="left">
+      <div class="col-lg-2" id="left">
         <nav class="header__menu mobile-menu" id="aaa">
           <ul>
             <li><a href="">餐廳會員首頁</a></li>
@@ -160,90 +161,62 @@
           </ul>
         </nav>
       </div>
-      <!-- 餐廳後台訂位資訊 -->
-      <div class="restaurant_reserveinf col-lg-10 col-md-10 col-sm-10">
-        <h2>訂位管理</h2>
-        <div class="row">
-          <div class="reserve_status col-lg-6 col-md-6 col-sm-6">
-            <h3>訂位概況</h3>
-            <input type="date" id="reserve_search">
-            <div class="table-responsive" id="table-responsive">
-              <table class="table" id="reserve_status" style=" width: 100%">
-                <thead>
-                  <tr class="header">
-                    <th>日期</th>
-                    <th>時段</th>
-                    <th>已訂位人數</th>
-                    <th>剩餘訂位人數</th>
-                  </tr>
-                </thead>
-                <tbody id="tbReserve_status">
-                </tbody>
-              </table>
-              <button class="site-btn col-lg-12 col-md-12 col-sm-12" id="search_detail"><i
-                  class="fa-solid fa-magnifying-glass fa-xl"></i>&nbsp詳細訂位資訊</button>
-            </div>
-          </div>
-          <div class="reserve_set col-lg-6 col-md-6 col-sm-6">
-            <h3>訂位人數設定</h3>
-            <div>
-              <select id="weekDay">
-                <option>選擇營業日 (星期)：</option>
-                <option value="1">星期日</option>
-                <option value="2">星期一</option>
-                <option value="3">星期二</option>
-                <option value="4">星期三</option>
-                <option value="5">星期四</option>
-                <option value="6">星期五</option>
-                <option value="7">星期六</option>
-              </select>
-            </div>
-            <div class="table-responsive" id="table-responsive">
-              <br>
-              <table style=" width: 100%">
-                <thead>
-                  <tr class="header">
-                    <th colspan="2">午餐時段</th>
-                    <th colspan="2">晚餐時段</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>12:00</td>
-                    <td>
-                      <input id="allowReserveNum_12" type="number" value="0" min="0">人
-                      </input>
-                    </td>
-                    <td>18:00</td>
-                    <td>
-                      <input id="allowReserveNum_18" type="number" value="0" min="0">人
-                      </input>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>13:00</td>
-                    <td>
-                      <input id="allowReserveNum_13" type="number" value="0" min="0">人
-                      </input>
-                    </td>
-                    <td>19:00</td>
-                    <td>
-                      <input id="allowReserveNum_19" type="number" value="0" min="0">人
-                      </input>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <button class="site-btn col-lg-12 col-md-12 col-sm-12" id="set_store">
-                儲存設定
-              </button>
-            </div>
-
-          </div>
-
-        </div>
-
+      <!-- 訂位資訊 -->
+      <div class="col-lg-10 table-responsive">
+        <h2>訂位資訊</h2>
+        <table id="reserveinf" class="display stripe" style="width:100%">
+          <thead>
+            <tr class="header">
+              <th>訂位編號</th>
+              <th>姓名</th>
+              <th>訂位日期</th>
+              <th>訂位時間</th>
+              <th>人數</th>
+              <th>聯絡電話</th>
+              <th>e-mail</th>
+              <th>備註</th>
+              <th>訂位狀態</th>
+            </tr>
+          </thead>
+          <!-- <tbody id="reserve_restaurant"> -->
+          <!-- <tr>
+              <th>12</th>
+              <th>Jusd</th>
+              <th>2022-12-03</th>
+              <th>12:00</th>
+              <th>3</th>
+              <th>0920300912</th>
+              <th>xxx</th>
+              <th>備註</th>
+              <th>
+                <div class="onoffswitch">
+                  <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
+                    tabindex="0">
+                  <label class="onoffswitch-label" for="myonoffswitch">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                  </label>
+                </div>
+              </th>
+            </tr> -->
+          <!-- <tfoot>
+            <tr>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Office</th>
+              <th>Age</th>
+              <th>Start date</th>
+              <th>Salary</th>
+              <th>Salary</th>
+              <th>Salary</th>
+              <th>Salary</th>
+            </tr>
+          </tfoot> -->
+          <!-- </tbody> -->
+        </table>
       </div>
+
+    </div>
     </div>
     </div>
   </section>
@@ -364,8 +337,10 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/restautant_reserve-management.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/restaurant_reservation.js"></script>
+  <script src="dataTables/js/jquery.dataTables.js"></script>
+
+
 </body>
 
 </html>

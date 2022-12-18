@@ -13,37 +13,54 @@ import com.tibame.tga104.reservation.vo.ReserveTimeVO;
 @Service
 @Transactional
 public class ReserveTimeServiceImpl implements ReserveTimeService {
-	
+
 	@Autowired
 	private ReserveTimeDao dao;
 
 	@Override
-	public boolean setReserveTime(List<ReserveTimeVO> list) {
-		for (ReserveTimeVO vo :list) {
-			dao.insert(vo);
+	public boolean setReserveTime(Integer restaurantNo, List<ReserveTimeVO> list) {
+		for (ReserveTimeVO vo : list) {
+			vo.setRestaurantNo(restaurantNo);
+			List<ReserveTimeVO> reserveList = dao.findbyrestaurantNOandWeekDay(vo.getRestaurantNo(), vo.getWeekDay());
+			if (reserveList == null || reserveList.isEmpty()) {
+				dao.insert(vo);
+			} else {
+				dao.update(vo);
+			}
 		}
 		return true;
 	}
 
+//	@Override
+//	public boolean updatePeople(Integer restaurantNO, List<ReserveTimeVO> list) {
+//		for (ReserveTimeVO vo : list){
+//			if (dao.findbyrestaurantNOandWeekDay(vo.getRestaurantNo(), vo.getWeekDay()) != null)
+//				vo.setRestaurantNo(restaurantNO);
+//				dao.updateAllowReserveNum(vo);
+//		}
+//		return true;
+//	}
+	
 	@Override
-	public boolean updatePeople(Integer reserveTimeNO, Integer restaurantNO, String reserveTime, Integer weekDay,
-			Integer allowReserveNum) {
-		List<ReserveTimeVO> list = dao.findbyrestaurantNOandWeekDay(restaurantNO, weekDay);
-		if (list != null) {
-			return dao.updateAllowReserveNum(reserveTimeNO, reserveTime, allowReserveNum);
+	public boolean updatePeople(Integer restaurantNO, List<ReserveTimeVO> list) {
+		for (ReserveTimeVO vo : list){
+			if(vo != null) {
+				vo.setRestaurantNo(restaurantNO);
+				dao.update(vo);
+			}
 		}
-		return false;
+		return true;
 	}
 
-	@Override
-	public List<ReserveTimeVO> businessDay(Integer reserveTimeNO, Integer restaurantNo, String reserveTime, Integer weekDay,
-			Integer allowReserveNum) {
-		List<ReserveTimeVO> list = dao.findbyrestaurantNOandWeekDay(restaurantNo, weekDay);
-		if (list != null) {
-			dao.updateWeekDay(reserveTimeNO, reserveTime, weekDay, allowReserveNum);
-		}
-		return list;
-	}
+//	@Override
+//	public List<ReserveTimeVO> businessDay(Integer reserveTimeNO, Integer restaurantNo, String reserveTime,
+//			Integer weekDay, Integer allowReserveNum) {
+//		List<ReserveTimeVO> list = dao.findbyrestaurantNOandWeekDay(restaurantNo, weekDay);
+//		if (list != null) {
+//			dao.updateWeekDay(reserveTimeNO, reserveTime, weekDay, allowReserveNum);
+//		}
+//		return list;
+//	}
 
 	@Override
 	public List<ReserveTimeVO> getAll() {
@@ -52,7 +69,10 @@ public class ReserveTimeServiceImpl implements ReserveTimeService {
 
 	@Override
 	public List<ReserveTimeVO> findByWeekDay(Integer restaurantNO, Integer weekDay) {
-		return dao.findbyrestaurantNOandWeekDay(restaurantNO, weekDay);
+		if (restaurantNO != null && weekDay != null) {
+			return dao.findbyrestaurantNOandWeekDay(restaurantNO, weekDay);
+		}
+		return null;
 	}
 
 }
