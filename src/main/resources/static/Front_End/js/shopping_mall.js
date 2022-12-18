@@ -11,7 +11,7 @@
  * 12筆一頁分頁
  * -> 已完成
  * -> lazy loading???
- * 
+ *
  * 跳轉至商品明細頁面，呈現商品明細
  * -> 已完成
  *
@@ -60,8 +60,9 @@ function changePage(page, data) {
       data[i].prodCommentQty == 0
         ? 0
         : (data[i].totalCommentRating / data[i].prodCommentQty) * 20;
-    let product_html = 
-      `<div class="col-lg-3 col-md-6 col-sm-6">
+    let addCart = data[i].prodNo in shoppingCart ? "已在購物車" : "加入購物車";
+    let addCartClass = data[i].prodNo in shoppingCart ? "cart_add added" : "cart_add";
+    let product_html = `<div class="col-lg-3 col-md-6 col-sm-6">
          <div class="product__item">
            <div
              class="product__item__pic set-bg"
@@ -82,8 +83,8 @@ function changePage(page, data) {
            <div class="product__item__text">
              <h6><a href="#" data-prodNo="${data[i].prodNo}">${data[i].prodName}</a></h6>
              <div class="product__item__price">NTD &nbsp; ${data[i].prodPrice}</div>
-             <div class="cart_add" data-prodNo="${data[i].prodNo}">
-               <a href="#">加入購物車</a>
+             <div class="${addCartClass}" data-prodNo="${data[i].prodNo}">
+               <a href="#">${addCart}</a>
              </div>
            </div>
          </div>
@@ -115,6 +116,7 @@ function changePage(page, data) {
 let prodQty = -1;
 var prodList;
 var prodCategoryList;
+var shoppingCart;
 
 // 載入頁面時先去跟後端拿資料
 $.ajax({
@@ -125,13 +127,18 @@ $.ajax({
   success: function (data) {
     prodQty = data.prodList.length;
     prodList = data.prodList;
-    changePage(1, data.prodList);
     prodCategoryList = data.prodCategoryList;
+    shoppingCart = data.shoppingCart;
+    changePage(1, data.prodList);
     // console.log(prodCategoryList);
     $("div.shop__option__search select").children().remove();
-    $("div.shop__option__search select").append('<option value="0">商品類別</option>');
+    $("div.shop__option__search select").append(
+      '<option value="0">商品類別</option>'
+    );
     $.each(prodCategoryList, (index, item) => {
-      $("div.shop__option__search select").append(`<option value="${item.prodCategoryNo}">${item.prodCategory}</option>`);
+      $("div.shop__option__search select").append(
+        `<option value="${item.prodCategoryNo}">${item.prodCategory}</option>`
+      );
     });
     $("select").niceSelect();
   },

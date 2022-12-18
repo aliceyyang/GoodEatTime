@@ -149,3 +149,18 @@ span.icon_star.-off {
     border: 1px dashed gray;
     padding: 2px;
 }
+
+.product__item__text .added a {
+    color: #ffffff;
+    background-color: #111111;
+    border-bottom: 0;
+    padding: 6px 10px 4px;
+}
+
+.product__item__pic {
+    cursor: pointer;
+}
+
+.product__item__pic span {
+    cursor: default;
+}

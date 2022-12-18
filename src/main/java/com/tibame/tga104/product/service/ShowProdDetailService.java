@@ -1,5 +1,7 @@
 package com.tibame.tga104.product.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +15,9 @@ public class ShowProdDetailService {
 
 	public ShowProdDetailVO select(Integer prodNo) {
 		return dao.select(prodNo);
+	}
+	
+	public List<ShowProdDetailVO> select6ByCategory(Integer prodCategoryNo) {
+		return dao.select6ByCategory(prodCategoryNo);
 	}
 }
