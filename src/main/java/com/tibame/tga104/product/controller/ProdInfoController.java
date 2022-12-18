@@ -18,6 +18,8 @@ import com.tibame.tga104.product.service.ProdPicService;
 import com.tibame.tga104.product.service.ShoppingCartService;
 import com.tibame.tga104.product.service.ShowProdDetailService;
 import com.tibame.tga104.product.service.ShowProdInMallService;
+import com.tibame.tga104.product.vo.ProdInfoVO;
+import com.tibame.tga104.product.vo.ProdPicVO;
 import com.tibame.tga104.product.vo.ShowProdDetailVO;
 
 @RestController
@@ -69,17 +71,36 @@ public class ProdInfoController {
 		result.setShowProdDetailVO(showProdDetailService.select(prodNo));
 		result.setProdPicList(prodPicService.getPicNoByProdNo(prodNo));
 		result.setShoppingCart(shoppingCartService.findByMemberNo(5));
-		result.setSimilarProdList(showProdInMallService.select6ByCategory(result.getShowProdDetailVO().getProdCategoryNo()));
+		if (result.getShowProdDetailVO() != null) {
+			result.setSimilarProdList(showProdInMallService.select6ByCategory(
+					result.getShowProdDetailVO().getProdCategoryNo()));
+		}
 		return result;
 	}
 	
+	// 若找不到的話，回傳一個查無此圖片的的圖片?
 	@GetMapping("mainPic")
 	public byte[] showMainPic(@RequestParam Integer prodNo) {
+		if (prodNo == null) {
+			return null;
+		}
+		ProdInfoVO vo = prodInfoService.getOneProduct(prodNo);
+		if (vo == null) {
+			return null;
+		}
 		return prodInfoService.getOneProduct(prodNo).getProdMainPic();
 	}
 	
+	// 若找不到的話，回傳一個查無此圖片的的圖片?
 	@GetMapping("prodPic")
 	public byte[] showProdPics(@RequestParam Integer prodPicNo) {
+		if (prodPicNo == null) {
+			return null;
+		}
+		ProdPicVO vo  = prodPicService.getOneProdPic(prodPicNo);
+		if (vo == null) {
+			return null;
+		}
 		return prodPicService.getOneProdPic(prodPicNo).getProdPic();
 	}
 

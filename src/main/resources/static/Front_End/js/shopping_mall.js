@@ -17,7 +17,11 @@
  *
  * 依商品類別篩選
  *
- * 跳轉至購物車頁面，修改資料庫中購物車的內容
+ * 修改資料庫中購物車的內容
+ * ->已完成
+ * 
+ * 分頁
+ * ->完成一半，重整會回到第一頁
  *
  * 價格排序
  *
@@ -84,7 +88,7 @@ function changePage(page, data) {
              <h6><a href="#" data-prodNo="${data[i].prodNo}">${data[i].prodName}</a></h6>
              <div class="product__item__price">NTD &nbsp; ${data[i].prodPrice}</div>
              <div class="${addCartClass}" data-prodNo="${data[i].prodNo}">
-               <a href="#">${addCart}</a>
+               <a href="#" data-prodNo="${data[i].prodNo}">${addCart}</a>
              </div>
            </div>
          </div>
@@ -187,4 +191,27 @@ $(function () {
       // console.log($(this).attr("data-prodNo"));
     }
   );
+
+  // 加入購物車功能
+  $("#product_area").on("click", "div.cart_add > a", function(e) {
+    e.preventDefault();
+    if ($(this).closest("div").hasClass("added")) {
+      return;
+    }
+    var data = {prodNo: parseInt($(this).attr("data-prodNo"))};
+    // console.log(data.prodNo);
+    // console.log(data);
+    // let form_data = new FormData();
+    // form_data.append("prodNo", parseInt($(this).attr("data-prodNo")));
+    fetch("../cart/insert", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {'content-type': 'application/json'}
+    }).then((r) => r.json())
+    .then((data) => {
+      // console.log(data);
+      $(this).closest("div").addClass("added");
+      $(this).text("已在購物車");
+    });
+  });
 });
