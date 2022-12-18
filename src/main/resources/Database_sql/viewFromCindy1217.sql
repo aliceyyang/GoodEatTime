@@ -34,3 +34,20 @@ CREATE VIEW V_reservation AS
         GROUP BY reserveTime , reserveDate , restaurantNo) AS r ON rt.restaurantNo = r.restaurantNo
             AND rt.weekDay = DAYOFWEEK(r.reserveDate)
             AND rt.reserveTime = r.reserveTime;
+            
+CREATE VIEW v_restaurant_reservation AS
+    SELECT 
+        r.restaurantNo,
+        r.reserveNo,
+        m.name,
+        r.reserveDate,
+        r.reserveTime,
+        r.reserveNum,
+        m.tel,
+        m.mail,
+        r.remark,
+        r.reserveStatus
+    FROM
+        reservation r
+            JOIN
+        member m ON r.memberNo = m.memberNo;

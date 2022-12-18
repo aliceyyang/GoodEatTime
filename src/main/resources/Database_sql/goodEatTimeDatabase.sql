@@ -730,10 +730,12 @@ commit;
 /*==========================================================================================*/
 CREATE VIEW v_restaurant_reservation AS
     SELECT 
+        r.restaurantNo,
         r.reserveNo,
         m.name,
         r.reserveDate,
         r.reserveTime,
+        r.reserveNum,
         m.tel,
         m.mail,
         r.remark,
