@@ -1,4 +1,4 @@
-package com.tibame.tga104.product.pic;
+package com.tibame.tga104.product.injector;
 
 import java.io.IOException;
 import java.io.InputStream;

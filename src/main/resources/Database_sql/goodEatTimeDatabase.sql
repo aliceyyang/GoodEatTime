@@ -1,34 +1,37 @@
 /*=======================================
 index
 
-drop table: line 32
+drop table: line 43
 
 create table & insert fake date
-prodCategory: line 67
-memberLevel: line 88
-restaurant: line 104
-administrator: line 131
-prodInfo: line 152
-member: line 201
-coupon: line 231
-reserveTime: line 269
-restaurantPic: line 327
-adOrder: line 347
-prodPic: line 377
-shoppingCart: line 398
-prodOrder: line 419
-likedRestauranr: line 455
-memberCoupon: line 486
-reservation: line 503
-prodOrderDetail: line 536
-V_memeber_reservation: line 564
-V_reservation: line 581
-V_showProdInMall: line 606
-V_userAccount: line 620
-restaurantCarouselPic: 640
-menu: 656
-restaurantPost: 673
-V_showProdDetail: 692
+prodCategory: line 73
+memberLevel: line 94
+restaurant: line 110
+administrator: line 137
+prodInfo: line 158
+member: line 207
+coupon: line 237
+reserveTime: line 275
+restaurantPic: line 333
+adOrder: line 353
+prodPic: line 383
+shoppingCart: line 404
+prodOrder: line 425
+likedRestauranr: line 461
+memberCoupon: line 492
+reservation: line 509
+prodOrderDetail: line 542
+V_memeber_reservation: line 570
+V_reservation: line 587
+V_showProdInMall: line 612
+V_userAccount: line 626
+restaurantCarouselPic: line 646
+menu: line 662
+restaurantPost: line 679
+V_showProdDetail: line 698
+v_OrderSearch: line 715
+v_restaurant_reservation: line 729
+
 
 =======================================*/
 
@@ -37,6 +40,8 @@ use goodeattime;
 set AUTOCOMMIT = 0;
 
 /*沒有被參照的表格先刪*/
+drop view if exists v_restaurant_reservation;
+drop view if exists v_OrderSearch;
 drop view if exists V_showProdDetail;
 drop table if exists restaurantCarouselPic;
 drop table if exists menu;
@@ -608,8 +613,8 @@ commit;
 /*==========================================================================================*/
 CREATE VIEW V_showProdInMall AS
 select
-	p.prodNo, p.prodName, r.restaurantName, pc.prodCategory,  p.prodPrice,
-    p.totalCommentRating, p.prodCommentQty
+	p.prodNo, p.prodName, p.restaurantNo, r.restaurantName, p.prodCategoryNo, pc.prodCategory,
+	p.prodPrice, p.totalCommentRating, p.prodCommentQty
 from
 	prodInfo p
     join
@@ -704,6 +709,41 @@ create view V_showProdDetail as
 		join
 		prodCategory pc on p.prodCategoryNo = pc.prodCategoryNo;
 
+commit;
+
+
+--  v_OrderSearch
+/*==========================================================================================*/
+create view v_OrderSearch as
+select po.*, pod.prodNo, pi.prodName, pod.prodQty, pod.prodPrice, mb.name, mb.tel
+from
+    prodOrder po
+    join prodOrderDetail pod
+        on po.prodOrderNo = pod.prodOrderNo
+            join prodInfo pi
+                on pi.prodNo = pod.prodNo
+                    join member mb
+                        on po.memberNo = mb.memberNo;
+commit;
+
+--  v_restaurant_reservation
+/*==========================================================================================*/
+CREATE VIEW v_restaurant_reservation AS
+    SELECT 
+        r.restaurantNo,
+        r.reserveNo,
+        m.name,
+        r.reserveDate,
+        r.reserveTime,
+        r.reserveNum,
+        m.tel,
+        m.mail,
+        r.remark,
+        r.reserveStatus
+    FROM
+        reservation r
+            JOIN
+        member m ON r.memberNo = m.memberNo;
 commit;
 
 set AUTOCOMMIT = 1;

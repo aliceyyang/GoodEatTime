@@ -14,4 +14,5 @@ public interface ShoppingCartDAO {
 	//改用redis，此方法改成回傳Map型別資料
 //	public List<ShoppingCartVO> findByMemberNo(Integer memberNo);
 	public Map<Integer, Integer> findByMemberNo(Integer memberNo);
+	public Integer getSumByMemberNo(Integer memberNo);
 }
