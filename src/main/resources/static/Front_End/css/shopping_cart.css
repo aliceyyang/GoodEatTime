@@ -106,6 +106,10 @@ div.cart__discount__alert span.-on {
     visibility: visible;
     color:red;
 }
+li.error_message {
+    visibility: hidden;
+    color:red !important;
+}
 /* ================================= coupon choosing end ================================= */
 
 /* ================================= amount check area begin ================================= */

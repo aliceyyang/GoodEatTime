@@ -1,10 +1,13 @@
 /**
  * 提供memberNo資料
  * 進入資料庫抓shoppingCart的資料，轉換成下方的格式
+ * ->已完成
  *
  * 進入資料庫抓memberCoupon的資料，轉換成下方的格式
- *
+ * ->尚未開始抓折價券資料，須更新價格計算、存入資料...
+ * 
  * 修改資料庫中購物車的內容
+ * ->已完成
  *
  * 結帳->儲存prodOrderDetail資料至session storage->跳轉至checkout頁面
  *
@@ -114,7 +117,7 @@ fetch("../cart/allDetail")
       let table_html = `<table>
         <thead class="prod__cart__heads" data-restaurantNo="${restaurant.restaurantNo}">
           <tr>
-            <th class="prod__cart__head1">
+            <th class="prod__cart__head1" data-restaurantName="${restaurant.restaurantName}">
                 <span class="-plus">+</span><span class="-minus">-</span>
                 ${restaurant.restaurantName}
             </th>
@@ -196,6 +199,7 @@ $(function () {
       });
 
     $("li.cart__final__amount > span").text(`NTD ${totalAmount}`);
+    $("li.cart__final__amount").attr("data-amount", totalAmount);
     $("div.header__top__right__cart div.cart__price span").text(
       `${totalQty}筆`
     );
@@ -210,39 +214,40 @@ $(function () {
   calculateCart();
 
   // +-變更購物車內容數量
-  $("div.shopping__cart__table").on('click', '.qtybtn', function () {
+  $("div.shopping__cart__table").on("click", ".qtybtn", function () {
     var $button = $(this);
-    var oldValue = $button.parent().find('input').val();
-    if ($button.hasClass('inc')) {
-        var newVal = parseFloat(oldValue) + 1;
+    var oldValue = $button.parent().find("input").val();
+    if ($button.hasClass("inc")) {
+      var newVal = parseFloat(oldValue) + 1;
     } else {
-        // Don't allow decrementing below zero
-        if (oldValue > 0) {
-            var newVal = parseFloat(oldValue) - 1;
-        } else {
-            newVal = 0;
-        }
+      // Don't allow decrementing below zero
+      if (oldValue > 0) {
+        var newVal = parseFloat(oldValue) - 1;
+      } else {
+        newVal = 0;
+      }
     }
-    $button.parent().find('input').val(newVal);
+    $button.parent().find("input").val(newVal);
     calculateCart();
     let update = {
       prodNo: parseInt($(this).closest("tr").attr("data-prodNo")),
-      prodQty: parseInt($(this).siblings("input").val())
+      prodQty: parseInt($(this).siblings("input").val()),
     };
     // console.log(update);
     fetch("../cart/update", {
       method: "PATCH",
       body: JSON.stringify(update),
-      headers: {'content-type': 'application/json'}
-    }).then((r) => r.json())
+      headers: { "content-type": "application/json" },
+    })
+      .then((r) => r.json())
       .then((data) => {
-    //   console.log(data);
-    });
+        //   console.log(data);
+      });
   });
 
   // 輸入變更購物車內容數量
-  $("div.shopping__cart__table").on("change", "input", function() {
-    if ($(this).val() < 0 || isNaN($(this).val()) || $(this).val()=="") {
+  $("div.shopping__cart__table").on("change", "input", function () {
+    if ($(this).val() < 0 || isNaN($(this).val()) || $(this).val() == "") {
       $(this).val("0");
     } else {
       $(this).val(parseInt($(this).val()));
@@ -251,18 +256,19 @@ $(function () {
     calculateCart();
     let update = {
       prodNo: parseInt($(this).closest("tr").attr("data-prodNo")),
-      prodQty: parseInt($(this).val())
+      prodQty: parseInt($(this).val()),
     };
     // console.log(update);
     fetch("../cart/update", {
       method: "PATCH",
       body: JSON.stringify(update),
-      headers: {'content-type': 'application/json'}
-    }).then((r) => r.json())
+      headers: { "content-type": "application/json" },
+    })
+      .then((r) => r.json())
       .then((data) => {
-    //   console.log(data);
-    });
-  })
+        //   console.log(data);
+      });
+  });
 
   // 縮合不同餐廳內的購物車內容
   $("div.shopping__cart__table").on(
@@ -304,18 +310,21 @@ $(function () {
   // 刪除購物車內容
   $("div.shopping__cart__table").on("click", "span.icon_close", function () {
     // console.log(this);
-    let delete_item = {prodNo: parseInt($(this).closest("tr").attr("data-prodNo"))};
+    let delete_item = {
+      prodNo: parseInt($(this).closest("tr").attr("data-prodNo")),
+    };
     fetch("../cart/delete", {
       method: "DELETE",
       body: JSON.stringify(delete_item),
-      headers: {'content-type': 'application/json'}
-    }).then((r) => r.json())
-    .then((data) => {
-    //   console.log(data);
-    });
+      headers: { "content-type": "application/json" },
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        //   console.log(data);
+      });
 
     let target = $(this).closest("tr");
-    
+
     if (target.is(":first-child") && target.is(":last-child")) {
       // console.log("aaa");
       target.closest("table").fadeOut(500, function () {
@@ -351,9 +360,13 @@ $(function () {
 
     let coupon__discount = -50;
     let li__coupon__discount = `<li class="coupon__using">
-                折價券優惠 
-                <span>${coupon__discount}</span>
-            </li>`;
+            折價券優惠 
+            <span>${coupon__discount}</span>
+        </li>`;
+    let li__amount__before = `<li class="amount__before ">
+            折扣前金額
+            <span>尚未更新</span>
+        </li>`;
 
     if ($(this).hasClass("coupon__using")) {
       /**
@@ -396,7 +409,7 @@ $(function () {
       $("div.cart__discount__alert span").css({
         visibility: "visible",
       });
-      $("div.cart__discount__alert span").fadeOut(2000, function () {
+      $("div.cart__discount__alert span").fadeOut(3500, function () {
         $(this).css({
           display: "block",
           visibility: "hidden",
@@ -415,10 +428,64 @@ $(function () {
   // var proQty = $(".pro-qty");
   // proQty.prepend('<span class="dec qtybtn">-</span>');
   // proQty.append('<span class="inc qtybtn">+</span>');
-//   proQty.on("click", ".qtybtn", function () {
-//     calculateCart();
-//     console.log(123);
-//   });
+  //   proQty.on("click", ".qtybtn", function () {
+  //     calculateCart();
+  //     console.log(123);
+  //   });
 
-  $("div.shopping__cart__table").find("thead").first().trigger("click");
+  //   $("div.shopping__cart__table").find("thead").first().trigger("click");
+
+  // 繼續購物 -> 用a標籤直接跳轉，沒有另外寫js
+
+  // 前往結帳功能
+  $("a.primary-btn").on("click", function (e) {
+    e.preventDefault();
+    // console.log($("table.-on"));
+    if (!$("table.-on").length) {
+      //   console.log("aa");
+      //   let error_message = '<li class="error_message">請選擇欲結帳之餐廳商品</li>'
+      $("li.error_message").css({
+        visibility: "visible",
+      });
+      $("li.error_message").fadeOut(3500, function () {
+        $(this).css({
+          display: "block",
+          visibility: "hidden",
+        });
+      });
+      return;
+    }
+    let order_list = new Array();
+    $.each($("table.-on tbody tr"), (index, item) => {
+      let prod_qty = parseInt($(item).find("input").val());
+      if (prod_qty) {
+        let order_detail = {
+        prodNo: parseInt($(item).attr("data-prodNo")),
+        prodName: $(item).find("h6").text(),
+        prodQty: prod_qty
+        };
+        order_list[index] = order_detail;
+      }
+    });
+    let data = {
+      prodOrderVO: {
+        restaurantNo: parseInt(
+          $("table.-on > .prod__cart__heads").attr("data-restaurantNo")
+        ),
+        restaurantName: $("table.-on .prod__cart__head1").attr("data-restaurantName"),
+        deliverFee: null,
+        amountBeforeCoupon: parseInt($("li.cart__final__amount").attr("data-amount")),
+        amountAfterCoupon: parseInt($("li.cart__final__amount").attr("data-amount")),
+        prodOrderPoint: parseInt($("li.cart__final__amount").attr("data-amount")),
+        prodOrderReceiverName: null,
+        prodOrderReceiverTel: null,
+        prodOrderReceiverMail: null,
+        prodOrderReceiverAddress: null,
+      },
+      orderDetailList: order_list,
+    };
+    console.log(data);
+    sessionStorage.setItem("tempOrder", JSON.stringify(data));
+    window.location.href = "./checkout.html";
+  });
 });
