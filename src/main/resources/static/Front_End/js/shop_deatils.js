@@ -12,7 +12,8 @@
  * 類似商品->隨機找同類別的產品顯示
  * 資料格式同商城
  *
- * 加入購物車->跳轉至購物車頁面，修改資料庫中購物車的內容
+ * 加入購物車
+ * ->
  *
  * 商品評論
  * 評論部分尚未呈現，可以參考首頁的評論部分
@@ -258,10 +259,13 @@ $(function () {
   // 已在購物車的話，停止操作
   $("div.product__details__option").on("click", function(e){
     if($(this).hasClass("added")) {
-      // console.log("aaa");
+      $(this).find("input").attr("disabled", "true");
+      $('.pro-qty').unbind();
       // console.log(e);
       // 報告: 完全沒有效果...
       e.stopPropagation();
     }
   });
+
+  $("div.product__details__option").trigger("click");
 });

@@ -33,7 +33,7 @@ public class ShoppingCartService {
 				|| shoppingCartVO.getProdQty() == null) {
 			return null;
 		}
-		if (shoppingCartVO.getMemberNo() < 1 || shoppingCartVO.getProdNo() < 1 || shoppingCartVO.getProdQty() < 1) {
+		if (shoppingCartVO.getMemberNo() < 1 || shoppingCartVO.getProdNo() < 1 || shoppingCartVO.getProdQty() < 0) {
 			return null;
 		}
 		ShoppingCartVO temp = dao.findByPrimaryKey(shoppingCartVO.getMemberNo(), shoppingCartVO.getProdNo());
@@ -49,7 +49,7 @@ public class ShoppingCartService {
 				|| shoppingCartVO.getProdQty() == null) {
 			return null;
 		}
-		if (shoppingCartVO.getMemberNo() < 1 || shoppingCartVO.getProdNo() < 1 || shoppingCartVO.getProdQty() < 1) {
+		if (shoppingCartVO.getMemberNo() < 1 || shoppingCartVO.getProdNo() < 1 || shoppingCartVO.getProdQty() < 0) {
 			return null;
 		}
 		ShoppingCartVO temp = dao.findByPrimaryKey(shoppingCartVO.getMemberNo(), shoppingCartVO.getProdNo());

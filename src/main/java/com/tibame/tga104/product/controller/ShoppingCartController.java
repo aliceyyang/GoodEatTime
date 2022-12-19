@@ -7,7 +7,9 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -100,6 +102,58 @@ public class ShoppingCartController {
 			result.put("add", "success");
 		}else {
 			result.put("add", "fail");
+		}
+		
+		return result;
+	}
+	
+	@PatchMapping("update")
+	public Map<String, String> update(@SessionAttribute(name="memberVO", required=false)MemberVO memberVO,
+			@RequestBody Map<String, Integer> prod) {
+		Integer memberNo = null;
+		if (memberVO != null) {
+			memberNo = memberVO.getMemberNo();
+		}
+		System.out.println("memberNo="+memberNo);
+		// 目前memberNo還是先寫死
+		if (prod == null || prod.get("prodNo") == null || prod.get("prodQty") == null) {
+			return null;
+		}
+		ShoppingCartVO vo = new ShoppingCartVO();
+		vo.setMemberNo(5);
+		vo.setProdNo(prod.get("prodNo"));
+		vo.setProdQty(prod.get("prodQty"));
+		
+		Map<String, String> result = new HashMap<>();
+		if (shoppingCartService.update(vo)!= null) {
+			result.put("update", "success");
+		}else {
+			result.put("update", "fail");
+		}
+		
+		return result;
+	}
+	
+	@DeleteMapping("delete")
+	public Map<String, String> delete(@SessionAttribute(name="memberVO", required=false)MemberVO memberVO,
+			@RequestBody Map<String, Integer> prodNo) {
+		Integer memberNo = null;
+		if (memberVO != null) {
+			memberNo = memberVO.getMemberNo();
+		}
+		System.out.println("memberNo="+memberNo);
+		// 目前memberNo還是先寫死
+		if (prodNo == null || prodNo.get("prodNo") == null) {
+			return null;
+		}
+		
+		memberNo = 5;
+		
+		Map<String, String> result = new HashMap<>();
+		if (shoppingCartService.delete(memberNo, prodNo.get("prodNo"))) {
+			result.put("delete", "success");
+		}else {
+			result.put("delete", "fail");
 		}
 		
 		return result;
