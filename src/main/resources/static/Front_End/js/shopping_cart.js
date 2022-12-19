@@ -108,7 +108,7 @@ fetch("../cart/allDetail")
   .then((r) => r.json())
   .then((data) => {
     cartList = data;
-    console.log(data);
+    // console.log(data);
     $("div.shopping__cart__table").children().remove();
     $.each(cartList, (index, restaurant) => {
       let table_html = `<table>
@@ -225,6 +225,19 @@ $(function () {
     }
     $button.parent().find('input').val(newVal);
     calculateCart();
+    let update = {
+      prodNo: parseInt($(this).closest("tr").attr("data-prodNo")),
+      prodQty: parseInt($(this).siblings("input").val())
+    };
+    // console.log(update);
+    fetch("../cart/update", {
+      method: "PATCH",
+      body: JSON.stringify(update),
+      headers: {'content-type': 'application/json'}
+    }).then((r) => r.json())
+      .then((data) => {
+    //   console.log(data);
+    });
   });
 
   // 輸入變更購物車內容數量
@@ -236,6 +249,19 @@ $(function () {
     }
     // console.log($(this).val());
     calculateCart();
+    let update = {
+      prodNo: parseInt($(this).closest("tr").attr("data-prodNo")),
+      prodQty: parseInt($(this).val())
+    };
+    // console.log(update);
+    fetch("../cart/update", {
+      method: "PATCH",
+      body: JSON.stringify(update),
+      headers: {'content-type': 'application/json'}
+    }).then((r) => r.json())
+      .then((data) => {
+    //   console.log(data);
+    });
   })
 
   // 縮合不同餐廳內的購物車內容
@@ -278,8 +304,18 @@ $(function () {
   // 刪除購物車內容
   $("div.shopping__cart__table").on("click", "span.icon_close", function () {
     // console.log(this);
-    let target = $(this).closest("tr");
+    let delete_item = {prodNo: parseInt($(this).closest("tr").attr("data-prodNo"))};
+    fetch("../cart/delete", {
+      method: "DELETE",
+      body: JSON.stringify(delete_item),
+      headers: {'content-type': 'application/json'}
+    }).then((r) => r.json())
+    .then((data) => {
+    //   console.log(data);
+    });
 
+    let target = $(this).closest("tr");
+    
     if (target.is(":first-child") && target.is(":last-child")) {
       // console.log("aaa");
       target.closest("table").fadeOut(500, function () {
