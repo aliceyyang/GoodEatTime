@@ -86,4 +86,18 @@ public class ReservationServiceImpl implements ReservationService {
 		return dao.updateCommnet(reservationVO);
 		
 	}
+=======
+
+	@Override
+	public boolean reservation(ReservationVO reservationVO) {
+		if(reservationVO != null) {
+			dao.insert(reservationVO);
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
+>>>>>>> Cindy
 }

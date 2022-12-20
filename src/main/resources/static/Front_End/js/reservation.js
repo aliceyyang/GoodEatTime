@@ -1,19 +1,27 @@
-/*-------------------
-    訂位功能
-    --------------------- */
 // dateTimePicker
-$(function () {
-  const weekdays = [0, 1, 2, 3, 6]; // 想要營業的時間放這邊
-  $("#reserveDate")
-    .datepicker({
-      dateFormat: "yy/mm/dd",
-      minDate: +1,
-      maxDate: "+1m",
-      beforeShowDay: function (dt) {
-        return [weekdays.includes(dt.getDay()), ""];
-      },
-    })
-    .val();
+$(function weekDay() {
+  $.ajax({
+    url: "../reservation/restaurant/date",
+    type: "GET",
+    dataType: "json",
+    success: function (arr) {
+      console.log(arr);
+      const array1 = arr;
+      const weekdays = array1.map((x) => x - 1);
+      console.log(weekdays);
+
+      $("#reserveDate")
+        .datepicker({
+          dateFormat: "yy-mm-dd",
+          minDate: +1,
+          maxDate: "+1m",
+          beforeShowDay: function (dt) {
+            return [weekdays.includes(dt.getDay()), ""];
+          },
+        })
+        .val();
+    },
+  });
 });
 
 // google map
@@ -48,36 +56,39 @@ $("#btn_reserve").on("click", function (e) {
   e.preventDefault();
   var send_data = {};
   // input格式判斷
-  let people = $("#reserveNum").val();
-  let date = $("#reserveDate").val();
-  let time = $("#reserveTime").val();
+  let reserveNum = $("#reserveNum").val();
+  let reserveDate = $("#reserveDate").val();
+  let reserveTime = $("#reserveTime").val();
 
-  if (date != "") {
-    send_data.date = date;
+  if (reserveDate != "") {
+    send_data.reserveDate = reserveDate;
   } else {
     alert("請輸入想要訂位日期");
     return;
   }
 
-  if (people > 0 && !isNaN(people)) {
-    send_data.people = people;
+  if (reserveNum > 0 && !isNaN(reserveNum)) {
+    send_data.reserveNum = reserveNum;
   } else {
     alert("請輸入人數");
     return;
   }
 
-  if (time != "") {
-    send_data.time = time;
+  if (reserveTime != "") {
+    send_data.reserveTime = reserveTime;
   } else {
     alert("請輸入想要訂位時段");
     return;
   }
 
-  send_data.date = $("#reserveDate").val();
-  send_data.time = $("#reserveTime").val();
+  send_data.reserveDate = $("#reserveDate").val();
+  send_data.reserveTime = $("#reserveTime").val();
   if ($("#remark").val() != "") {
     send_data.remark = $("#remark").val();
   }
+  send_data.memberNo = 2;
+  send_data.tel = "0921399718";
+  send_data.restaurantNo = 2;
   // console.log(send_data);
   sessionStorage.setItem("reservation_inf", JSON.stringify(send_data));
   location.href = "./reservation_confirm.html";
@@ -90,10 +101,13 @@ var reserve_data = function () {
       sessionStorage.getItem("reservation_inf")
     );
     console.log(reservation_inf);
-    reservation_inf.people = $("#reserveNum").val();
-    reservation_inf.date = $("#reserveDate").val();
-    reservation_inf.time = $("#reserveTime").val();
+    reservation_inf.reserveNum = $("#reserveNum").val();
+    reservation_inf.reserveDate = $("#reserveDate").val();
+    reservation_inf.reserveTime = $("#reserveTime").val();
     reservation_inf.remark = $("#remark").val();
+    reservation_inf.tel = "0921399718";
+    reservation_inf.memberNo = 2;
+    reservation_inf.restaurantNo = 2;
   }
 };
 reserve_data();

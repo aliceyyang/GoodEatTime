@@ -29,5 +29,8 @@ public interface ReservationService {
 
 	ReservationVO updateRestaurantComment(ReservationVO reservationVO);
 
+=======
+	boolean reservation(ReservationVO reservationVO);
+>>>>>>> Cindy
 	
 }

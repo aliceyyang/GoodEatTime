@@ -12,8 +12,7 @@ public interface ReserveTimeService {
 	// 更新訂位人數
 	boolean updatePeople(Integer restaurantNO, List<ReserveTimeVO> list);
 
-//	List<ReserveTimeVO> businessDay(Integer reserveTimeNO, Integer restaurantNo, String reserveTime, Integer weekDay,
-//			Integer allowReserveNum);
+	List<Integer> findByRestaurantNo(Integer restaurantNo);
 
 	List<ReserveTimeVO> findByWeekDay(Integer restaurantNO, Integer weekDay);
 
