@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.JsonObject;
 import com.tibame.tga104.restaurant.service.MenuService;
 import com.tibame.tga104.restaurant.service.RestaurantCarouselPicService;
+import com.tibame.tga104.restaurant.service.RestaurantPostService;
 import com.tibame.tga104.restaurant.vo.MenuVO;
 import com.tibame.tga104.restaurant.vo.RestaurantCarouselPicVO;
+import com.tibame.tga104.restaurant.vo.RestaurantPostVO;
 
 @RestController
 public class UploadPicController {
@@ -43,9 +45,20 @@ public class UploadPicController {
 	@PostMapping("/restaurant-uploadMenu")
 	public void uploadMenu(@RequestBody MenuVO menu) {
 		
-		byte[] MenuPic = Base64.getDecoder().decode(menu.getMenuPicstr());
-		menu.setMenuPic(MenuPic);
+		byte[] menuPic = Base64.getDecoder().decode(menu.getMenuPicstr());
+		menu.setMenuPic(menuPic);
 		menuService.addMenu(menu);
+	}
+	
+	@Autowired
+	private RestaurantPostService restaurantPostService;
+	
+	@PostMapping("/restaurant-uploadPost")
+	public void uploadRestaurantPost(@RequestBody RestaurantPostVO post) {
+		
+		byte[] postPic = Base64.getDecoder().decode(post.getPostPicStr());
+		post.setPostPic(postPic);
+		restaurantPostService.addRestaurantPost(post);
 	}
 	
 

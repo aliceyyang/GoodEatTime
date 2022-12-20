@@ -10,27 +10,35 @@ public class RestaurantPostVO implements Serializable{
 	private Integer restaurantNo;
 	private String postType;
 	private byte[] postPic;
+	private String postPicStr;
 	private String postTitle;
 	private String postContent;
 	
+	public RestaurantPostVO() {
+		
+	}
+	
 
 	
+	
 	public RestaurantPostVO(Integer restaurantPostNo, Integer restaurantNo, String postType, byte[] postPic,
-			String postTitle, String postContent) {
+			String postPicStr, String postTitle, String postContent) {
 		super();
 		this.restaurantPostNo = restaurantPostNo;
 		this.restaurantNo = restaurantNo;
 		this.postType = postType;
 		this.postPic = postPic;
+		this.postPicStr = postPicStr;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
 	}
 	@Override
 	public String toString() {
 		return "RestaurantPostVO [restaurantPostNo=" + restaurantPostNo + ", restaurantNo=" + restaurantNo
-				+ ", postType=" + postType + ", postPic=" + Arrays.toString(postPic) + ", postTitle=" + postTitle
-				+ ", postContent=" + postContent + "]";
+				+ ", postType=" + postType + ", postPic=" + Arrays.toString(postPic) + ", postPicStr=" + postPicStr
+				+ ", postTitle=" + postTitle + ", postContent=" + postContent + "]";
 	}
+	
 	public Integer getRestaurantPostNo() {
 		return restaurantPostNo;
 	}
@@ -54,6 +62,12 @@ public class RestaurantPostVO implements Serializable{
 	}
 	public void setPostPic(byte[] postPic) {
 		this.postPic = postPic;
+	}
+	public String getPostPicStr() {
+		return postPicStr;
+	}
+	public void setPostPicStr(String postPicStr) {
+		this.postPicStr = postPicStr;
 	}
 	public String getPostTitle() {
 		return postTitle;
