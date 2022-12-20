@@ -1,6 +1,7 @@
 package com.tibame.tga104.order.vo;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,9 +28,9 @@ public class ProdOrderDetailVO implements Serializable{
 		@Column(name="prodQty")
 		@NotNull
 		private Integer prodQty;
-		@Column(name="prodPrice")
-		@NotNull
-		private Integer prodPrice;	
+//		@Column(name="prodPrice")
+//		@NotNull
+//		private Integer prodPrice;	
 		@Column(name="prodCommentRating")
 		private Integer prodCommentRating;
 		@Column(name="prodCommentContent")
@@ -49,6 +50,13 @@ public class ProdOrderDetailVO implements Serializable{
 			this.prodNo = id.getProdNo();
 		}
 		
+		@Override
+		public String toString() {
+			return "ProdOrderDetailVO [prodOrderNo=" + prodOrderNo + ", prodNo=" + prodNo
+					+ ", prodQty=" + prodQty + ", prodCommentRating=" + prodCommentRating + ", prodCommentContent="
+					+ prodCommentContent + ", prodCommentPic=" + Arrays.toString(prodCommentPic) + ", prodCommentTime="
+					+ prodCommentTime + ", restaurantReplyTime=" + restaurantReplyTime + "]";
+		}
 		public Integer getProdOrderNo() {
 			return prodOrderNo;
 		}
@@ -67,12 +75,12 @@ public class ProdOrderDetailVO implements Serializable{
 		public void setProdQty(Integer prodQty) {
 			this.prodQty = prodQty;
 		}
-		public Integer getProdPrice() {
-			return prodPrice;
-		}
-		public void setProdPrice(Integer prodPrice) {
-			this.prodPrice = prodPrice;
-		}
+//		public Integer getProdPrice() {
+//			return prodPrice;
+//		}
+//		public void setProdPrice(Integer prodPrice) {
+//			this.prodPrice = prodPrice;
+//		}
 		public Integer getProdCommentRating() {
 			return prodCommentRating;
 		}
