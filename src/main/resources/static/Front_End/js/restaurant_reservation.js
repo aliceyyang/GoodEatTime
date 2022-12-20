@@ -1,27 +1,59 @@
 $(document).ready(function () {
   $("#reserveinf").DataTable({
-    initComplete: function () {
-      this.api()
-        .columns()
-        .every(function () {
-          var column = this;
-          var select = $('<select><option value=""></option></select>')
-            .appendTo($(column.footer()).empty())
-            .on("change", function () {
-              var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-              column.search(val ? "^" + val + "$" : "", true, false).draw();
-            });
-
-          column
-            .data()
-            .unique()
-            .sort()
-            .each(function (d, j) {
-              select.append('<option value="' + d + '">' + d + "</option>");
-            });
-        });
-    },
+    ajax: `../reservation/restaurant/reserveInf?date=${sessionStorage.getItem(
+      "reserveDate"
+    )}`,
+    columns: [
+      {
+        data: "reserveNo",
+      },
+      {
+        data: "name",
+      },
+      {
+        data: "reserveDate",
+      },
+      {
+        data: "reserveTime",
+      },
+      {
+        data: "reserveNum",
+      },
+      {
+        data: "tel",
+      },
+      {
+        data: "mail",
+      },
+      {
+        data: "remark",
+      },
+      {
+        data: "reserveStatus",
+        render: function (status, type, row) {
+          // console.log(row.reserveDate);
+          // console.log(type);
+          // console.log(status);
+          console.log(new Date());
+          console.log(new Date(row.reserveDate) != new Date());
+          if (
+            new Date(row.reserveDate) > new Date() ||
+            new Date(row.reserveDate) < new Date()
+          ) {
+            return status;
+          } else {
+            return `
+            <div class="onoffswitch">
+              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" onchange="change(${row.reserveNo})">
+              <label class="onoffswitch-label" for="myonoffswitch">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+              </label>
+            </div>`;
+          }
+        },
+      },
+    ],
     language: {
       processing: "處理中...",
       loadingRecords: "載入中...",
@@ -252,6 +284,15 @@ $(document).ready(function () {
     },
   });
 });
+
+function change(reserveNo) {
+  alert(reserveNo);
+  document
+    .querySelector("#myonoffswitch")
+    .addEventListener("change", function () {
+      console.log("aaa");
+    });
+}
 
 // 開關取值
 // (function() {

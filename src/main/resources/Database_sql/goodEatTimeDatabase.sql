@@ -1,34 +1,37 @@
 /*=======================================
 index
 
-drop table: line 32
+drop table: line 43
 
 create table & insert fake date
-prodCategory: line 67
-memberLevel: line 88
-restaurant: line 104
-administrator: line 131
-prodInfo: line 152
-member: line 201
-coupon: line 231
-reserveTime: line 269
-restaurantPic: line 327
-adOrder: line 347
-prodPic: line 377
-shoppingCart: line 398
-prodOrder: line 419
-likedRestauranr: line 455
-memberCoupon: line 486
-reservation: line 503
-prodOrderDetail: line 536
-V_memeber_reservation: line 564
-V_reservation: line 581
-V_showProdInMall: line 606
-V_userAccount: line 620
-restaurantCarouselPic: 640
-menu: 656
-restaurantPost: 673
-V_showProdDetail: 692
+prodCategory: line 73
+memberLevel: line 94
+restaurant: line 110
+administrator: line 137
+prodInfo: line 158
+member: line 207
+coupon: line 237
+reserveTime: line 275
+restaurantPic: line 333
+adOrder: line 353
+prodPic: line 383
+shoppingCart: line 404
+prodOrder: line 425
+likedRestauranr: line 461
+memberCoupon: line 492
+reservation: line 509
+prodOrderDetail: line 542
+V_memeber_reservation: line 570
+V_reservation: line 587
+V_showProdInMall: line 612
+V_userAccount: line 626
+restaurantCarouselPic: line 646
+menu: line 662
+restaurantPost: line 679
+V_showProdDetail: line 698
+v_OrderSearch: line 715
+v_restaurant_reservation: line 729
+
 
 =======================================*/
 
@@ -37,6 +40,8 @@ use goodeattime;
 set AUTOCOMMIT = 0;
 
 /*沒有被參照的表格先刪*/
+drop view if exists v_restaurant_reservation;
+drop view if exists v_OrderSearch;
 drop view if exists V_showProdDetail;
 drop table if exists restaurantCarouselPic;
 drop table if exists menu;
@@ -541,7 +546,6 @@ create table prodOrderDetail (
 	prodOrderNo					integer not null comment '商城訂單編號 PK + FK' ,
 	prodNo						integer not null comment '商品編號 PK + FK ' ,
 	prodQty						integer not null comment '商品數量' ,
-	prodPrice					integer not null comment '商品價格' ,
 	prodCommentRating			integer comment '評論星等' ,
 	prodCommentContent			varchar(500) comment '評論內容' ,
 	prodCommentPic				longblob comment '評論圖片' ,
@@ -553,12 +557,12 @@ create table prodOrderDetail (
     constraint FK_prodOrderDetail_prodOrderNo foreign key(prodOrderNo) references prodOrder(prodOrderNo)
 );
 
-insert into prodOrderDetail (prodOrderNo, prodNo, prodQty, prodPrice, prodCommentRating, prodCommentContent, prodCommentPic, prodCommentTime, restaurantReply, restaurantReplyTime)
-values (1, 1, 1, 199, null, null, null, null, null, null ),
-	(2, 2, 2, 80, 3, null, null, '2022-11-22 19:00:00', null, null ),
-    (3, 3, 1, 120, null, '我比較愛吃大魔術熊貓麻婆豆腐。', null, '2022-11-22 19:10:00', null, null ),
-    (4, 4, 7, 300, 1, '李嚴的食品..，有毒...。', null, '2022-11-22 19:20:00', '謝謝您的支持，我們的商品安全無毒是居家旅行的必備食品，請安心食用。', '2022-11-23 12:00:00' ),
-    (5, 5, 9, 30, 5, '價格實惠又好吃，買了真的會開口笑 :)', null, '2022-11-22 19:50:00', '謝謝您的支持，我們致力於提供您更好的消費體驗。', '2022-11-23 12:05:00' );
+insert into prodOrderDetail (prodOrderNo, prodNo, prodQty, prodCommentRating, prodCommentContent, prodCommentPic, prodCommentTime, restaurantReply, restaurantReplyTime)
+values (1, 1, 1, null, null, null, null, null, null ),
+	(2, 2, 2, 3, null, null, '2022-11-22 19:00:00', null, null ),
+    (3, 3, 1, null, '我比較愛吃大魔術熊貓麻婆豆腐。', null, '2022-11-22 19:10:00', null, null ),
+    (4, 4, 7, 1, '李嚴的食品..，有毒...。', null, '2022-11-22 19:20:00', '謝謝您的支持，我們的商品安全無毒是居家旅行的必備食品，請安心食用。', '2022-11-23 12:00:00' ),
+    (5, 5, 9, 5, '價格實惠又好吃，買了真的會開口笑 :)', null, '2022-11-22 19:50:00', '謝謝您的支持，我們致力於提供您更好的消費體驗。', '2022-11-23 12:05:00' );
     
 commit;
 
@@ -608,8 +612,8 @@ commit;
 /*==========================================================================================*/
 CREATE VIEW V_showProdInMall AS
 select
-	p.prodNo, p.prodName, r.restaurantName, pc.prodCategory,  p.prodPrice,
-    p.totalCommentRating, p.prodCommentQty
+	p.prodNo, p.prodName, p.restaurantNo, r.restaurantName, p.prodCategoryNo, pc.prodCategory,
+	p.prodPrice, p.totalCommentRating, p.prodCommentQty
 from
 	prodInfo p
     join
@@ -704,6 +708,41 @@ create view V_showProdDetail as
 		join
 		prodCategory pc on p.prodCategoryNo = pc.prodCategoryNo;
 
+commit;
+
+
+--  v_OrderSearch
+/*==========================================================================================*/
+create view v_OrderSearch as
+select po.*, pod.prodNo, pi.prodName, pod.prodQty, pi.prodPrice, mb.name, mb.tel
+from
+    prodOrder po
+    join prodOrderDetail pod
+        on po.prodOrderNo = pod.prodOrderNo
+            join prodInfo pi
+                on pi.prodNo = pod.prodNo
+                    join member mb
+                        on po.memberNo = mb.memberNo;
+commit;
+
+--  v_restaurant_reservation
+/*==========================================================================================*/
+CREATE VIEW v_restaurant_reservation AS
+    SELECT 
+        r.restaurantNo,
+        r.reserveNo,
+        m.name,
+        r.reserveDate,
+        r.reserveTime,
+        r.reserveNum,
+        m.tel,
+        m.mail,
+        r.remark,
+        r.reserveStatus
+    FROM
+        reservation r
+            JOIN
+        member m ON r.memberNo = m.memberNo;
 commit;
 
 set AUTOCOMMIT = 1;

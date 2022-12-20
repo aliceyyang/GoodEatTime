@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.tibame.tga104.product.service.ProdPicService;
 import com.tibame.tga104.product.vo.ProdPicVO;
 
-@WebServlet("/product/ProdPic")
+//@WebServlet("/product/ProdPic")
 public class ProdPicServlet extends HttpServlet {
 	private static final long serialVersionUID = -3689216109803591273L;
 	

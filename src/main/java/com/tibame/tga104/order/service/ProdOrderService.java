@@ -1,6 +1,8 @@
 package com.tibame.tga104.order.service;
 
 import java.util.Arrays;
+import java.util.GregorianCalendar;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +10,77 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tibame.tga104.order.dao.ProdOrderDAO_interface;
+import com.tibame.tga104.order.dao.ProdOrderDetailDAO_interface;
+import com.tibame.tga104.order.vo.ProdOrderDetailVO;
 import com.tibame.tga104.order.vo.ProdOrderVO;
+import com.tibame.tga104.product.helper.OrderInsertWrapper;
 
 @Service
 public class ProdOrderService {
 	
 	@Autowired
 	private ProdOrderDAO_interface dao;
+	@Autowired
+	private ProdOrderDetailDAO_interface prodOrderDetailDAO;
+	
+	@Transactional
+	public OrderInsertWrapper insert(OrderInsertWrapper order) {
+		if (order == null || order.getProdOrderVO() == null || order.getOrderDetailList() == null) {
+			return null;
+		}
+		ProdOrderVO newOrder = order.getProdOrderVO();
+		if (newOrder == null || newOrder.getMemberNo() == null || newOrder.getRestaurantNo() == null
+				|| newOrder.getProdOrderReceiverAddress() == null || newOrder.getAmountAfterCoupon() == null
+				|| newOrder.getAmountBeforeCoupon() == null || newOrder.getProdOrderPoint() == null
+				|| newOrder.getProdOrderReceiverName() == null || newOrder.getProdOrderReceiverTel() == null
+				|| newOrder.getProdOrderReceiverMail() == null || newOrder.getDeliverFee() == null) {
+			return null;
+		}
+		if (newOrder.getMemberNo() < 0 || newOrder.getRestaurantNo() < 0
+				|| newOrder.getProdOrderReceiverAddress().length() == 0
+				|| newOrder.getAmountAfterCoupon() < 0
+				|| newOrder.getAmountBeforeCoupon() < 0
+				|| newOrder.getProdOrderPoint() < 0
+				|| newOrder.getProdOrderReceiverName().length() == 0
+				|| newOrder.getProdOrderReceiverTel().length() == 0
+				|| newOrder.getProdOrderReceiverMail().length() == 0
+				|| newOrder.getDeliverFee() < 0) {
+			return null;
+		}
+		List<ProdOrderDetailVO> newOrderDetail = order.getOrderDetailList();
+		for (ProdOrderDetailVO vo : newOrderDetail) {
+			if (vo.getProdNo() == null || vo.getProdQty() == null
+					|| vo.getProdNo() < 0 || vo.getProdQty() < 0) {
+				return null;
+			}
+		}
+		// 隨機產生發票編號
+		StringBuilder inv = new StringBuilder();
+		inv.append((char)(Math.random()*26 + 65)).append((char)(Math.random()*26 + 65)).append("-");
+		for (int i = 0; i< 8; i++) {
+			inv.append((int)(Math.random()*10));
+		}
+		newOrder.setInvoiceNumber(inv.toString());
+		// 訂單建立時間
+		newOrder.setProdOrderDate(new java.sql.Timestamp(new GregorianCalendar().getTimeInMillis()));
+		
+		dao.insert(newOrder);
+		if (newOrder.getProdOrderNo() == null) {
+			return null;
+		}
+		OrderInsertWrapper result = new OrderInsertWrapper();
+		result.setProdOrderVO(newOrder);
+		List<ProdOrderDetailVO> resultDetail = new LinkedList<>();
+		for (ProdOrderDetailVO vo : newOrderDetail) {
+			vo.setProdOrderNo(newOrder.getProdOrderNo());
+			if (prodOrderDetailDAO.insert(vo) == null) {
+				return null;
+			}
+			resultDetail.add(vo);
+		}
+		result.setOrderDetailList(resultDetail);
+		return result;
+	}
 	
 	@Transactional
 	public ProdOrderVO insertProdOrder(Integer memberNo, Integer restaurantNo, Integer couponNo, String orderStatus, 
@@ -51,7 +117,33 @@ public class ProdOrderService {
 	public void deleteProdOrder(Integer prodOrderNo) {
 		dao.delete(prodOrderNo);
 	}
-
+	
+	@Transactional
+	public ProdOrderVO update(ProdOrderVO updateOrder) {
+		if (updateOrder == null || updateOrder.getMemberNo() == null || updateOrder.getRestaurantNo() == null
+				|| updateOrder.getProdOrderReceiverAddress() == null || updateOrder.getAmountAfterCoupon() == null
+				|| updateOrder.getAmountBeforeCoupon() == null || updateOrder.getProdOrderPoint() == null
+				|| updateOrder.getProdOrderReceiverName() == null || updateOrder.getProdOrderReceiverTel() == null
+				|| updateOrder.getProdOrderReceiverMail() == null || updateOrder.getDeliverFee() == null
+				|| updateOrder.getProdOrderNo() == null) {
+			return null;
+		}
+		if (updateOrder.getMemberNo() < 0 || updateOrder.getRestaurantNo() < 0
+				|| updateOrder.getProdOrderReceiverAddress().length() == 0
+				|| updateOrder.getAmountAfterCoupon() < 0
+				|| updateOrder.getAmountBeforeCoupon() < 0
+				|| updateOrder.getProdOrderPoint() < 0
+				|| updateOrder.getProdOrderReceiverName().length() == 0
+				|| updateOrder.getProdOrderReceiverTel().length() == 0
+				|| updateOrder.getProdOrderReceiverMail().length() == 0
+				|| updateOrder.getDeliverFee() < 0
+				|| updateOrder.getProdOrderNo() < 0) {
+			return null;
+		}
+		dao.update(updateOrder);
+		return updateOrder;
+	}
+	
 	@Transactional
 	public ProdOrderVO updateProdOrder(Integer prodOrderNo, Integer	memberNo, Integer restaurantNo, Integer couponNo, String orderStatus, 
 			java.sql.Timestamp prodOrderDate, java.sql.Timestamp prodOrderReveiveTime, java.sql.Timestamp prodOderDeliverTime, 

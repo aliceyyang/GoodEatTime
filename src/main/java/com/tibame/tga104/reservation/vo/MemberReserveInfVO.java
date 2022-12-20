@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="v_memeber_reservation")
 public class MemberReserveInfVO {
@@ -23,6 +25,7 @@ public class MemberReserveInfVO {
 	private Integer reserveNum;
 	
 	@Column(name="reserveDate")
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone= "GMT+8")
 	private java.sql.Date reserveDate;
 	
 	@Column(name="reserveTime")

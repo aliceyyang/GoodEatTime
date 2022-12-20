@@ -11,13 +11,17 @@
  * 12筆一頁分頁
  * -> 已完成
  * -> lazy loading???
- * 
+ *
  * 跳轉至商品明細頁面，呈現商品明細
  * -> 已完成
  *
  * 依商品類別篩選
  *
- * 跳轉至購物車頁面，修改資料庫中購物車的內容
+ * 修改資料庫中購物車的內容
+ * ->已完成
+ * 
+ * 分頁
+ * ->完成一半，重整會回到第一頁
  *
  * 價格排序
  *
@@ -60,8 +64,9 @@ function changePage(page, data) {
       data[i].prodCommentQty == 0
         ? 0
         : (data[i].totalCommentRating / data[i].prodCommentQty) * 20;
-    let product_html = 
-      `<div class="col-lg-3 col-md-6 col-sm-6">
+    let addCart = data[i].prodNo in shoppingCart ? "已在購物車" : "加入購物車";
+    let addCartClass = data[i].prodNo in shoppingCart ? "cart_add added" : "cart_add";
+    let product_html = `<div class="col-lg-3 col-md-6 col-sm-6">
          <div class="product__item">
            <div
              class="product__item__pic set-bg"
@@ -82,8 +87,8 @@ function changePage(page, data) {
            <div class="product__item__text">
              <h6><a href="#" data-prodNo="${data[i].prodNo}">${data[i].prodName}</a></h6>
              <div class="product__item__price">NTD &nbsp; ${data[i].prodPrice}</div>
-             <div class="cart_add" data-prodNo="${data[i].prodNo}">
-               <a href="#">加入購物車</a>
+             <div class="${addCartClass}" data-prodNo="${data[i].prodNo}">
+               <a href="#" data-prodNo="${data[i].prodNo}">${addCart}</a>
              </div>
            </div>
          </div>
@@ -115,6 +120,7 @@ function changePage(page, data) {
 let prodQty = -1;
 var prodList;
 var prodCategoryList;
+var shoppingCart;
 
 // 載入頁面時先去跟後端拿資料
 $.ajax({
@@ -125,13 +131,18 @@ $.ajax({
   success: function (data) {
     prodQty = data.prodList.length;
     prodList = data.prodList;
-    changePage(1, data.prodList);
     prodCategoryList = data.prodCategoryList;
+    shoppingCart = data.shoppingCart;
+    changePage(1, data.prodList);
     // console.log(prodCategoryList);
     $("div.shop__option__search select").children().remove();
-    $("div.shop__option__search select").append('<option value="0">商品類別</option>');
+    $("div.shop__option__search select").append(
+      '<option value="0">商品類別</option>'
+    );
     $.each(prodCategoryList, (index, item) => {
-      $("div.shop__option__search select").append(`<option value="${item.prodCategoryNo}">${item.prodCategory}</option>`);
+      $("div.shop__option__search select").append(
+        `<option value="${item.prodCategoryNo}">${item.prodCategory}</option>`
+      );
     });
     $("select").niceSelect();
   },
@@ -180,4 +191,27 @@ $(function () {
       // console.log($(this).attr("data-prodNo"));
     }
   );
+
+  // 加入購物車功能
+  $("#product_area").on("click", "div.cart_add > a", function(e) {
+    e.preventDefault();
+    if ($(this).closest("div").hasClass("added")) {
+      return;
+    }
+    var data = {prodNo: parseInt($(this).attr("data-prodNo"))};
+    // console.log(data.prodNo);
+    // console.log(data);
+    // let form_data = new FormData();
+    // form_data.append("prodNo", parseInt($(this).attr("data-prodNo")));
+    fetch("../cart/insert", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {'content-type': 'application/json'}
+    }).then((r) => r.json())
+    .then((data) => {
+      // console.log(data);
+      $(this).closest("div").addClass("added");
+      $(this).text("已在購物車");
+    });
+  });
 });

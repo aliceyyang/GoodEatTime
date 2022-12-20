@@ -39,7 +39,7 @@ public class SetReservationServlet extends HttpServlet {
 		List<ReserveTimeVO> reserveTimeList = gson.fromJson(req.getReader(), type);
 		System.out.println(reserveTimeList);
 		
-		boolean result = service.setReserveTime(reserveTimeList);
+		boolean result = service.setReserveTime(5, reserveTimeList);
 		
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.addProperty("sucessful", result);

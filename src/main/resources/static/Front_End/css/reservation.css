@@ -238,6 +238,7 @@ th {
 .onoffswitch {
   position: relative;
   width: 105px;
+  margin: auto;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -251,7 +252,7 @@ th {
   display: block;
   overflow: hidden;
   cursor: pointer;
-  border: 2px solid #a69b98;
+  /* border: 2px solid #a69b98; */
   border-radius: 20px;
   margin-bottom: 0px;
   position: relative;
@@ -280,7 +281,7 @@ th {
   content: "報到成功";
   padding-right: 20px;
   background-color: #f6e04f;
-  color: #94959a;
+  color: black;
 }
 .onoffswitch-inner:after {
   content: "未報到";
@@ -297,8 +298,8 @@ th {
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 71px;
-  border: 2px solid #a69b98;
+  right: 74px;
+  /* border: 2px solid #a69b98; */
   border-radius: 20px;
   transition: all 0.3s ease-in 0s;
 }

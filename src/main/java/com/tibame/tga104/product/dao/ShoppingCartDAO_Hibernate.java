@@ -12,7 +12,7 @@ import com.tibame.tga104.product.vo.ShoppingCartPK;
 import com.tibame.tga104.product.vo.ShoppingCartVO;
 
 
-public class ShoppingCartDAO_Hibernate implements ShoppingCartDAO {
+public abstract class ShoppingCartDAO_Hibernate implements ShoppingCartDAO {
 	@PersistenceContext
 	private Session session;
 	public Session getSession() {
