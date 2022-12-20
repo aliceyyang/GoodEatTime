@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="v_OrderSearch")
+@Table(name="v_ordersearch")
 public class OrderSearchVO implements java.io.Serializable{
 	private static final long serialVersionUID = 8676063332323320312L;
 	

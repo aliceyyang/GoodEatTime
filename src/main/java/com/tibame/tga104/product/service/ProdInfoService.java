@@ -76,4 +76,14 @@ public class ProdInfoService {
 		return dao.findByProdCategory(prodCategoryNo);
 	}
 	
+	@Transactional
+	public ProdInfoVO insertProd (ProdInfoVO prodInfoVO) {
+		if (prodInfoVO.getProdName() != null) {
+			return dao.insert(prodInfoVO);
+		}
+		else {
+			return null;
+		}
+	}
+	
 }

@@ -1,4 +1,4 @@
-package com.tibame.tga104.order.dao;
+package com.tibame.tga104.order.service;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tibame.tga104.order.dao.OrderSearchDAO_interface;
 import com.tibame.tga104.order.vo.OrderSearchVO;
 
 @Service

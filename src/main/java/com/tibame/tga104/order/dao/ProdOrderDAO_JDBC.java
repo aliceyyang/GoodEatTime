@@ -12,11 +12,11 @@ import java.util.List;
 
 import com.tibame.tga104.order.vo.ProdOrderVO;
 
-public class ProdOrderJDBCDAO implements ProdOrderDAO_interface{
+public class ProdOrderDAO_JDBC implements ProdOrderDAO_interface{
 	
 	public static void main(String[] args) {
 		
-		ProdOrderJDBCDAO dao_prodOrder = new ProdOrderJDBCDAO();
+		ProdOrderDAO_JDBC dao_prodOrder = new ProdOrderDAO_JDBC();
 		
 		// 新增資料。
 		ProdOrderVO prodOrderVO_insert = new ProdOrderVO();

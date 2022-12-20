@@ -8,7 +8,7 @@ public interface OrderSearchDAO_interface {
 	
 	public OrderSearchVO select(Integer prodOrderNo);
 
-	List<OrderSearchVO> selectByConditions(OrderSearchVO prodOrderVO);
+	List<OrderSearchVO> selectByConditions(OrderSearchVO orderSearchVO);
 	
 	public List<OrderSearchVO> getAll();
 
