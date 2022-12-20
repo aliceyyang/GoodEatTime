@@ -48,10 +48,10 @@ public class ReserveTimeServiceImplTests {
 //		
 //	}
 	
-	@Test
-	public void updatePeople() {
-		boolean result = reserveTimeService.updatePeople(1, 2, "12:00", 0, 25);
-		System.out.println("selects="+ result);
-		
-	}
+//	@Test
+//	public void updatePeople() {
+//		boolean result = reserveTimeService.updatePeople(1, 2, "12:00", 0, 25);
+//		System.out.println("selects="+ result);
+//		
+//	}
 }

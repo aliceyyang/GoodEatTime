@@ -83,8 +83,6 @@ public class ReservationDaoImpl implements ReservationDao {
 
 	@Override
 	public List<ReservationVO> getAll() {
-//		return this.getSession().createQuery("from ReservationVO", ReservationVO.class).list();
-		
 		CriteriaBuilder criteriaBuilder =  this.getSession().getCriteriaBuilder();
 		CriteriaQuery<ReservationVO> criteriaQuery = criteriaBuilder.createQuery(ReservationVO.class);
 		
@@ -136,6 +134,15 @@ public class ReservationDaoImpl implements ReservationDao {
 			 .setParameter("reserveDate", reserveDate);
 		List<RestaurantReservationInfVO> list = query.list();
 		return list;
+	}
+
+
+	@Override
+	public boolean updateStatus(Integer reserveNo, String reserveStatus) {
+		Query<?> query = getSession().createQuery("update ReservationVO set reserveStatus = :reserveStatus where reserveNo = :reserveNo and reserveDate = current_date()");
+		return query.setParameter("reserveStatus", reserveStatus)
+			 .setParameter("reserveNo", reserveNo)
+			 .executeUpdate() > 0;
 	}
 
 

@@ -81,35 +81,34 @@ function getDate() {
 getDate();
 
 // 顯示訂位狀況
+$("#reserve_search").on("change", status);
+status();
 function status() {
-  $("#reserve_search").on("change", function () {
-    var reserveDate = $("#reserve_search").val();
-    const tbReserve_status = $("#tbReserve_status");
-    $.ajax({
-      url: "../reservation/restaurant/reserveStatus",
-      type: "GET",
-      dataType: "json",
-      data: { date: reserveDate },
-      success: function (a) {
-        console.log(a);
-        console.log(tbReserve_status);
-        tbReserve_status.html(
-          a
-            .map((e) =>
-              Template(
-                e.reserveDate,
-                e.reserveTime,
-                e.totalReserveNum,
-                e.availableSeats
-              )
+  var reserveDate = $("#reserve_search").val();
+  const tbReserve_status = $("#tbReserve_status");
+  $.ajax({
+    url: "../reservation/restaurant/reserveStatus",
+    type: "GET",
+    dataType: "json",
+    data: { date: reserveDate },
+    success: function (a) {
+      console.log(a);
+      console.log(tbReserve_status);
+      tbReserve_status.html(
+        a
+          .map((e) =>
+            Template(
+              e.reserveDate,
+              e.reserveTime,
+              e.totalReserveNum,
+              e.availableSeats
             )
-            .join("")
-        );
-      },
-    });
+          )
+          .join("")
+      );
+    },
   });
 }
-status();
 
 function Template(reserveDate, reserveTime, totalReserveNum, availableSeats) {
   return `<tr>

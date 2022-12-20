@@ -13,11 +13,8 @@ import com.tibame.tga104.reservation.service.ReservationService;
 import com.tibame.tga104.reservation.vo.MemberReserveInfVO;
 import com.tibame.tga104.reservation.vo.ReservationDetailVO;
 import com.tibame.tga104.reservation.vo.ReservationVO;
-import com.tibame.tga104.reservation.vo.ReserveTimeVO;
 import com.tibame.tga104.reservation.vo.RestaurantReservationInfVO;
-import com.tibame.tga104.restaurant.vo.RestaurantVO;
 
-import net.bytebuddy.asm.Advice.Return;
 
 @Service
 @Transactional
@@ -64,5 +61,13 @@ public class ReservationServiceImpl implements ReservationService {
 			return dao.findbyResveDate(restaurantNo, date);
 		}
 		return null;
+	}
+
+	@Override
+	public boolean changeStatus(ReservationVO vo) {
+		if(vo.getReserveNo() != null) {
+			return dao.updateStatus(vo.getReserveNo(), vo.getReserveStatus());
+		}
+		return false;
 	}
 }

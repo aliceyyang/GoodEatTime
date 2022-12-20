@@ -13,6 +13,8 @@ public interface ReservationDao {
 	
 	public boolean update(Integer reserveNo, String reserveStatus, Integer commentRating, String commentContent, byte[] commentPic, java.sql.Timestamp restaurantCommentTime, String restaurantRe, java.sql.Timestamp restaurantReTime);
 	
+	public boolean updateStatus(Integer reserveNo, String reserveStatus);
+	
 	public ReservationVO update(ReservationVO reservationVO);
 	
 	public ReservationVO findByPrimaryKey(Integer reserveNo);
