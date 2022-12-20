@@ -172,16 +172,18 @@
                 <a href="javascript:;" data-tablink="set_info">餐廳資料</a>
               </li>
               <li>
-                <a href="javascript:;" data-tablink="set_pic">圖片上傳</a>
+                <a href="javascript:;" data-tablink="set_pic">輪播圖片</a>
               </li>
               <li>
-                <a href="javascript:;" data-tablink="set_news">餐廳文案</a>
-              </li>
+                <a href="javascript:;" data-tablink="set_news">餐廳貼文</a>
+                </li>
+                <li>
+                  <a href="javascript:;" data-tablink="set_menu">餐廳菜單</a>
+                  </li>
             </ul>
-            
             <div class="tab_inner_wrap">
               <div id="set_info" class="tab_inner" style="text-align:center">
-              <h3>資料設定</h3>
+              <h3>資料修改</h3>
               <div class="class__sidebar" style="width:70% ; margin: 0px auto">
                 <form action="#" id="restaurant_info">
                     <input type="text" id="restaurantName" name="restaurantName" placeholder="餐廳名稱">
@@ -193,29 +195,79 @@
                     <input type="email" id="restaurantAccount" name="restaurantAccount" placeholder="餐廳帳號">
                     <input type="password" id="restaurantPassword" name="restaurantPassword" placeholder="餐廳密碼">
                     <input type="password" id="restaurantPasswordCheck" name="restaurantPasswordCheck" placeholder="請再次輸入密碼">
-                    <button id="setting" class="site-btn">儲存設定</button> 
+                    <button type ="submit" id="setting" class="site-btn">儲存設定</button> 
                 </form>
             </div>
-              </div>
-              <div id="set_pic" class="tab_inner">
+            </div>
+              <div id="set_pic" class="tab_inner" style="height: 600px">
                 <h3>圖片設定</h3>
                 <form id="carousel" style="width:450px ; float:left">
-                  <h4 style="text-align:center">輪播圖片</h4>
+                  <h4 style="text-align:center">圖片上傳</h4>
+                  <h6 style="text-align:center">輪播圖片最多6張</h6>
                   <label>
                   <input type="file" id="carousel_file"  accept="image/*" multiple="multiple"/>
                 </label>
-                  <div id="drop_zone"><span class="text">輪播圖片6張</span></div>
+                  <div id="drop_zone" style="margin-left: 15%"><span id="carousel_quota" class="text"></span></div>
                   <br />
                   <br />
                   <button type="reset" class="btns" style="width:49%">清空資料</button>
                   <button type="submit" id="btn_submit" class="btns" style="width:49%">送出資料</button>
                 </form>
-                <form id="menu" style="width:450px ; float:right">
-                  <h4 style="text-align:center">菜單圖片</h4>
-                  <input type="file" id="menu_file" accept="image/*"/>
+                <h4 style="text-align:center">已上傳的圖片 </h4>
+                <h6 style="text-align:center">點擊圖片以刪除</h6>
+                <div id="carousel_uploaded">
+                </div>
+              </div>
+              <div id="set_news" class="tab_inner" style="height: 1100px">
+                <h3>貼文設定</h3>
+                <form id="news" style="width:450px ; float:left">
+                    <h4 style="text-align:center">貼文撰寫</h4>
+                    <h6  id="editing" style="text-align:center">正在編輯已上傳貼文</h6>
+                    <input type="hidden" name="restaurantPostNo" value=""/>
+                    <br />
+                    <input type="file" id="news_file" accept="image/*" required/>
+                    <br />
+                    <br />
+                    <div id="drop_zone3" style="margin-left: 15%"><span class="text">貼文圖片</span></div>
+                    <br />
+                    <br />
+                    <label for="article">貼文類型</label>
+                    <br />
+                    <select id="post_type" style="margin-bottom:30px ; margin-left: 15%">
+                      <option value="activity">熱門活動</option>
+                      <option value="news">消息公告</option>
+                      <option value="coupon">優惠券</option>
+                      <option value="bonus">紅利點數</option>
+                    </select>
+                    <br />
+                    <br />
+                    <br />
+                    <label for="title">貼文標題</label>
+                    <br />
+                    <input type="text" id="title" style="margin-left: 15% ; width: 380px;"/>
+                    <br />
+                    <br />
+                    <label for="article">貼文內容</label>
+                    <br />
+                    <textarea id="content" style="margin-left: 15%"></textarea>
+                <div id="news_btn">
+                  <button type="reset" class="btns">清空資料</button>
+                  <button id="btn_submit3" class="btns">送出資料</button>
+                  <!-- <button id="btn_edit3" class="btns">更新貼文</button> -->
+                </div>
+                </form>
+                <h4 style="text-align:center">已上傳的貼文 </h4>
+                <div id="post_uploaded">
+                </div>
+              </div>
+              <div id="set_menu" class="tab_inner">
+                <h3>菜單設定</h3>
+                <form id="menu" style="width:450px ; float:left">
+                  <h4 style="text-align:center">菜單上傳</h4>
+                  <input type="file" id="menu_file" accept="image/*" required/>
                   <br />
                   <br />
-                  <div id="drop_zone2"><span class="text">菜單圖片</span></div>
+                  <div id="drop_zone2" style="margin-left: 15%"><span class="text">菜單圖片</span></div>
                   <label for="remark">圖片說明 </label>
                   <br />
                   <textarea id="pic_remark"></textarea>
@@ -225,54 +277,11 @@
                   <button type="submit" id="btn_submit2" class="btns" style="width:49%">送出資料</button>
                 </form>
               </div>
-              <div id="set_news" class="tab_inner">
-                <h3>貼文撰寫</h3>
-                <form id="news" style="float : center">
-                  <div style="float:left ; margin-left:70px">
-                    <h4 style="text-align:center">選擇圖片</h4>
-                    <br />
-                    <input type="file" id="news_file" accept="image/*"/>
-                    <br />
-                    <br />
-                    <div id="drop_zone3"><span class="text">貼文圖片</span></div>
-                </div>
-                <div style="float:right">
-                  <label for="article">貼文類型</label>
-                  <br />
-                  <select name="article_type" style="margin-bottom:30px">
-                    <option value="activity">熱門活動</option>
-                    <option value="news">消息公告</option>
-                    <option value="coupon">優惠券</option>
-                    <option value="bonus">紅利點數</option>
-                  </select>
-                  <br />
-                  <br />
-                  <br />
-                  <label for="title">貼文標題</label>
-                  <br />
-                  <input type="text" id="title" />
-                  <br />
-                  <br />
-                  <label for="article">貼文內容</label>
-                  <br />
-                  <textarea id="pic_remark" style="width:450px ; height:300px"></textarea>
-                </div>
-                <div id="news_btn">
-                  <button type="reset" class="btns">清空資料</button>
-                  <button type="submit" id="btn_submit3" class="btns">送出資料</button>
-                </div>
-                </form>
-                
-              </div>
             </div>
           </div>
-          
-
         </div>
-
       </div>
-    </div>
-    </div>
+
   </section>
 
   <!-- Class Section End -->

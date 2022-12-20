@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.tibame.tga104.restaurant.dao.RestaurantCarouselPicDAO;
-import com.tibame.tga104.restaurant.dao.impl.RestaurantCarouselPicDAOImpl;
 import com.tibame.tga104.restaurant.service.RestaurantCarouselPicService;
 import com.tibame.tga104.restaurant.vo.RestaurantCarouselPicVO;
 
@@ -19,14 +18,7 @@ public class RestaurantCarouselPicServiceImpl implements RestaurantCarouselPicSe
 
 	@Override
 	public boolean addRestaurantCarouselPic(RestaurantCarouselPicVO restaurantCarouselPicVO) {
-		
 		return dao.insert(restaurantCarouselPicVO);
-	}
-
-
-	@Override
-	public boolean updateRestaurantCarouselPic(RestaurantCarouselPicVO restaurantCarouselPicVO) {
-		return dao.update(restaurantCarouselPicVO);
 	}
 
 
@@ -38,7 +30,13 @@ public class RestaurantCarouselPicServiceImpl implements RestaurantCarouselPicSe
 
 	@Override
 	public List<RestaurantCarouselPicVO> findByRestaurantNo(Integer restaurantNo) {
-		return dao.findByRestaurantNo(restaurantNo);
+		//輪播圖片只取六張圖來使用
+		int count = dao.findByRestaurantNo(restaurantNo).size();
+		if(count <= 6){
+			return dao.findByRestaurantNo(restaurantNo).subList(0, count);
+		}
+		return dao.findByRestaurantNo(restaurantNo).subList(0, 6);
+		
 	}
 
 	
