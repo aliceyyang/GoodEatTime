@@ -1,5 +1,7 @@
 package com.tibame.tga104.member.service.impl;
 
+import java.util.Objects;
+
 import javax.naming.NamingException;
 
 import com.tibame.tga104.member.dao.AdminDAO;
@@ -29,10 +31,20 @@ public class AdminServiceImpl implements AdminService {
 		if (adminPassword.length() < 6 || adminPassword.length() > 12) {
 			return null;
 		}
-
+		
+		
+//		if (adminAccount == null || Objects.equals(adminAccount , "")) {
+//			return "帳號必須輸入";
+//		}
+//		if (adminPassword == null || Objects.equals(adminPassword , "")) {
+//			return "密碼必須輸入";
+//		}
+//		
+		
+		
 		return dao.selectForAdminLogin(adminVO);
 	}
-	}
+}
 
 
 
