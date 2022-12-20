@@ -22,6 +22,7 @@ public interface ReservationService {
 	List<RestaurantReservationInfVO> findByReserveDate(Integer restaurantNo, java.sql.Date date);
 	
 	boolean changeStatus(ReservationVO vo);
-
+	
+	boolean reservation(ReservationVO reservationVO);
 	
 }

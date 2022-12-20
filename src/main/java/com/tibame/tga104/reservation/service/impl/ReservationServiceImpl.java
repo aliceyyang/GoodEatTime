@@ -70,4 +70,16 @@ public class ReservationServiceImpl implements ReservationService {
 		}
 		return false;
 	}
+
+	@Override
+	public boolean reservation(ReservationVO reservationVO) {
+		if(reservationVO != null) {
+			dao.insert(reservationVO);
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
 }
