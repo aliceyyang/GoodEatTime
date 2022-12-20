@@ -86,7 +86,7 @@ public class ReservationServiceImpl implements ReservationService {
 		return dao.updateCommnet(reservationVO);
 		
 	}
-=======
+
 
 	@Override
 	public boolean reservation(ReservationVO reservationVO) {
@@ -97,7 +97,5 @@ public class ReservationServiceImpl implements ReservationService {
 		return false;
 	}
 	
-	
-	
->>>>>>> Cindy
+
 }

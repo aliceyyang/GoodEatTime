@@ -125,10 +125,6 @@ public class ReservationController {
 		return reservationService.updateRestaurantComment(reservationVO);
 	}
 	
-=======
-	//-----------------------------------------
->>>>>>> Cindy
-	
 	@PostMapping("member")
 	public boolean member(@RequestBody ReservationVO vo) {
 		return reservationService.reservation(vo);
