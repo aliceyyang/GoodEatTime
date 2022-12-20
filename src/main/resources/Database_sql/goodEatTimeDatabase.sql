@@ -546,7 +546,6 @@ create table prodOrderDetail (
 	prodOrderNo					integer not null comment '商城訂單編號 PK + FK' ,
 	prodNo						integer not null comment '商品編號 PK + FK ' ,
 	prodQty						integer not null comment '商品數量' ,
-	prodPrice					integer not null comment '商品價格' ,
 	prodCommentRating			integer comment '評論星等' ,
 	prodCommentContent			varchar(500) comment '評論內容' ,
 	prodCommentPic				longblob comment '評論圖片' ,
@@ -558,12 +557,12 @@ create table prodOrderDetail (
     constraint FK_prodOrderDetail_prodOrderNo foreign key(prodOrderNo) references prodOrder(prodOrderNo)
 );
 
-insert into prodOrderDetail (prodOrderNo, prodNo, prodQty, prodPrice, prodCommentRating, prodCommentContent, prodCommentPic, prodCommentTime, restaurantReply, restaurantReplyTime)
-values (1, 1, 1, 199, null, null, null, null, null, null ),
-	(2, 2, 2, 80, 3, null, null, '2022-11-22 19:00:00', null, null ),
-    (3, 3, 1, 120, null, '我比較愛吃大魔術熊貓麻婆豆腐。', null, '2022-11-22 19:10:00', null, null ),
-    (4, 4, 7, 300, 1, '李嚴的食品..，有毒...。', null, '2022-11-22 19:20:00', '謝謝您的支持，我們的商品安全無毒是居家旅行的必備食品，請安心食用。', '2022-11-23 12:00:00' ),
-    (5, 5, 9, 30, 5, '價格實惠又好吃，買了真的會開口笑 :)', null, '2022-11-22 19:50:00', '謝謝您的支持，我們致力於提供您更好的消費體驗。', '2022-11-23 12:05:00' );
+insert into prodOrderDetail (prodOrderNo, prodNo, prodQty, prodCommentRating, prodCommentContent, prodCommentPic, prodCommentTime, restaurantReply, restaurantReplyTime)
+values (1, 1, 1, null, null, null, null, null, null ),
+	(2, 2, 2, 3, null, null, '2022-11-22 19:00:00', null, null ),
+    (3, 3, 1, null, '我比較愛吃大魔術熊貓麻婆豆腐。', null, '2022-11-22 19:10:00', null, null ),
+    (4, 4, 7, 1, '李嚴的食品..，有毒...。', null, '2022-11-22 19:20:00', '謝謝您的支持，我們的商品安全無毒是居家旅行的必備食品，請安心食用。', '2022-11-23 12:00:00' ),
+    (5, 5, 9, 5, '價格實惠又好吃，買了真的會開口笑 :)', null, '2022-11-22 19:50:00', '謝謝您的支持，我們致力於提供您更好的消費體驗。', '2022-11-23 12:05:00' );
     
 commit;
 
@@ -715,7 +714,7 @@ commit;
 --  v_OrderSearch
 /*==========================================================================================*/
 create view v_OrderSearch as
-select po.*, pod.prodNo, pi.prodName, pod.prodQty, pod.prodPrice, mb.name, mb.tel
+select po.*, pod.prodNo, pi.prodName, pod.prodQty, pi.prodPrice, mb.name, mb.tel
 from
     prodOrder po
     join prodOrderDetail pod
