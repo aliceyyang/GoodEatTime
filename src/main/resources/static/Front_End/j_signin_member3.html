@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Cake Template" />
+    <meta name="keywords" content="Cake, unica, creative, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>會員登入</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- checkEye font-awesome-->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
+    <link rel="stylesheet" href="css/barfiller.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+    <!-- 將忘記密碼及加入會員的點點消除 -->
+    <style>
+      .mod > ul > li {
+        list-style: none;
+        /* display: inline-block; */
+      }
+      /* .li_right {
+        margin-right: 250px;
+      } */
+
+      .GoodEatTime {
+        width: 152px;
+        height: 52px;
+      }
+
+      /* GOOD EAT TIME字樣(含)以下的資料 位置往上調 */
+      .spad {
+        padding-top: 50px;
+      }
+
+      /* checkEye位置 */
+      #checkEye {
+        font-size: 20px;
+        position: absolute;
+        top: 220px;
+        right: 40px;
+      }
+
+      /* 因為Form拉掉，用div包，命div class為form */
+      .class__form .form input {
+        height: 50px;
+        width: 100%;
+        padding-left: 20px;
+        font-size: 15px;
+        color: #444444;
+        background: #ffffff;
+        border: none;
+        margin-bottom: 20px;
+      }
+      .class__form .form input::-webkit-input-placeholder {
+        color: #444444;
+      }
+      .class__form .form input::-moz-placeholder {
+        color: #444444;
+      }
+      .class__form .form input:-ms-input-placeholder {
+        color: #444444;
+      }
+      .class__form .form input::-ms-input-placeholder {
+        color: #444444;
+      }
+      .class__form .form input::placeholder {
+        color: #444444;
+      }
+      .class__form .form button {
+        letter-spacing: 2px;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+      <div class="offcanvas__cart">
+        <div class="offcanvas__cart__links">
+          <a href="#" class="search-switch"
+            ><img src="img/icon/search.png" alt=""
+          /></a>
+          <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+        </div>
+        <div class="offcanvas__cart__item">
+          <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
+          <div class="cart__price">Cart: <span>$0.00</span></div>
+        </div>
+      </div>
+      <div class="offcanvas__logo">
+        <a href="./index.html"><img src="img/logo.png" alt="" /></a>
+      </div>
+      <div id="mobile-menu-wrap"></div>
+      <div class="offcanvas__option">
+        <ul>
+          <li>
+            USD <span class="arrow_carrot-down"></span>
+            <ul>
+              <li>EUR</li>
+              <li>USD</li>
+            </ul>
+          </li>
+          <li>
+            ENG <span class="arrow_carrot-down"></span>
+            <ul>
+              <li>Spanish</li>
+              <li>ENG</li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Sign in</a> <span class="arrow_carrot-down"></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header開始 -->
+    <header class="header">
+      <div class="header__top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="header__top__inner">
+                <div class="header__top__left">
+                  <ul>
+                    <li>
+                      <img class="login_icon" src="./img/Login_icon.png" /><a
+                        class="login_text"
+                        href="./j_signin_member.html"
+                        >登入</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="header__logo">
+                  <a href="./GoodEatTime.html"
+                    ><img
+                      class="goodeattime_logo"
+                      src="img/GoodEatTime_logoright.png"
+                      alt=""
+                  /></a>
+                </div>
+                <div class="header__top__right">
+                  <div class="header__top__right__links">
+                    <a href="" class="search-switch"
+                      ><img src="img/icon/search.png" alt=""
+                    /></a>
+                    <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+                  </div>
+                  <div class="header__top__right__cart">
+                    <a href="#"
+                      ><img src="img/icon/cart.png" alt="" /> <span>0</span></a
+                    >
+                    <div class="cart__price">Cart: <span>$0.00</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="canvas__open"><i class="fa fa-bars"></i></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="header__menu mobile-menu">
+              <ul>
+                <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
+                <li><a href="./about.html">會員專區</a></li>
+                <li><a href="./shop.html">餐廳</a></li>
+                <li><a href="./blog.html">線上商城</a></li>
+                <li>
+                  <a href="#">關於我們</a>
+                  <ul class="dropdown">
+                    <li><a href="./shop-details.html">Shop Details</a></li>
+                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                    <li><a href="./checkout.html">Check Out</a></li>
+                    <li><a href="./wisslist.html">Wisslist</a></li>
+                    <li><a href="./Class.html">Class</a></li>
+                    <li><a href="./blog-details.html">Blog Details</a></li>
+                  </ul>
+                </li>
+                <li><a href="./contact.html">地點搜尋</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header結束 -->
+
+    <!-- 會員登入 開始 -->
+    <section class="class spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3">
+            <div class="class__form">
+              <div class="section-title">
+                <span>Good Eat Time</span>
+                <h2>會員登入</h2>
+              </div>
+              <!-- form拉掉，改用div包並命名class為form -->
+              <div class="form">
+                <!-- class="form-control" 意思是點擊後顯示效果-->
+                <input
+                  id="mail"
+                  type="email"
+                  class="form-control"
+                  placeholder="請輸入email"
+                  required="required"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                />
+                <!-- <input type="text" placeholder="請輸入密碼" /> -->
+                <!-- <div class="form-floating"> -->
+                <input
+                  id="memberPassword"
+                  type="password"
+                  class="form-control"
+                  placeholder="請輸入密碼，長度須介於6~12字元"
+                />
+                <!-- 進階邏輯 
+                  placeholder="設定密碼格式:含英數至少六個字元"
+                  pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$"
+                  required="required"
+                  oninput="setCustomValidity('');"
+                  oninvalid="setCustomValidity('請輸入正確的密碼格式:含英數至少六個字元');"
+                -->
+                <label for="memberPassword"
+                  ><i id="checkEye" class="fas fa-eye-slash"></i
+                ></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="請輸入驗證碼"
+                />
+
+                <button class="site-btn">登入</button>
+              </div>
+              <div class="mod clearfix">
+                <!-- <input type="checkbox" value="remember-me" />記住我 -->
+                <ul class="member_m03">
+                  <li class="li_right">
+                    還不是會員?
+                    <a href="./j_registration.html" target="_blank">加入會員</a>
+                  </li>
+                  <li class="li_left">
+                    <a href="./j_forgetpassword.html">忘記密碼</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- </div>
+               <ul class="mod member_m03 clearfix">
+                <li class="li_left"><a href="/member/forgot" target="_blank">忘記帳號密碼</a></li>
+                <li class="li_right">還不是會員? <a href="/member/join_step1?url=https%3A%2F%2Fmyaccount.books.com.tw%2F%2F%3Fid%3D5cda64e47bf9785da8d12d414f7f23c3" target="_blank">加入會員</a></li>
+               </ul>
+             </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 會員登入 結束 -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
+      <div class="mask">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="footer__member">
+                <h6>會員專區</h6>
+                <div class="footer__social">
+                  <a href="#">登入會員<i></i></a>
+                  <a href="#">定位管理<i></i></a>
+                  <br />
+                  <a href="#">加入會員<i></i></a>
+                  <a href="#">定位管理<i></i></a>
+                  <br />
+                  <a href="#">優惠券<i></i></a>
+                  <a href="#">我的評論<i></i></a>
+                </div>
+              </div>
+              <div class="footer__restaurant">
+                <h6>餐廳</h6>
+                <div class="footer__social">
+                  <a href="#">訂位<i></i></a>
+                  <br />
+                  <a href="#">購物車<i></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="footer__shopping">
+                <h6>線上商城</h6>
+                <div class="footer__social">
+                  <a href="#">商品搜尋<i></i></a>
+                  <br />
+                  <a href="#">購物車<i></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="footer__aboutus">
+                <h6>關於我們</h6>
+                <div class="footer__social">
+                  <a href="#">網站介紹<i></i></a>
+                  <br />
+                  <a href="#">履歷<i></i></a>
+                </div>
+              </div>
+              <div class="footer__widget">
+                <h6>好食光</h6>
+                <ul>
+                  <li>指導老師：</li>
+                  <li>吳永志老師 吳冠宏老師 郭惠民老師 陳怡榕老師</li>
+                  <li>組員 :</li>
+                  <li>陳宜瀅 張家銘 楊婕妤</li>
+                  <li>游育碩 黃郁婕 李佳欣 余可凡</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <p class="copyright__text text-white">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                All rights reserved | This template is made with
+                <i class="fa fa-heart" aria-hidden="true"></i> by
+                <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              </p>
+            </div>
+            <div class="col-lg-5">
+              <div class="copyright__widget">
+                <ul>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="#">Site Map</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+      <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form">
+          <input type="text" id="search-input" placeholder="Search here....." />
+        </form>
+      </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.barfiller.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+      // 密碼切換遮蔽顯示
+      $("#checkEye").click(function () {
+        if ($(this).hasClass("fa-eye-slash")) {
+          $("#memberPassword").attr("type", "text");
+        } else {
+          $("#memberPassword").attr("type", "password");
+        }
+        $(this).toggleClass("fa-eye").toggleClass("fa-eye-slash");
+      });
+
+      const mail = document.querySelector("#mail");
+      const memberPassword = document.querySelector("#memberPassword");
+      document.querySelector("button").addEventListener("click", () => {
+        fetch("../member/login", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            mail: mail.value,
+            memberPassword: memberPassword.value,
+          }),
+        })
+          .then((resp) => resp.json())
+          .then((body) => {
+            if (body.successful) {
+              location = "j_welcome_login1.html";
+            } else {
+              alert(body.message);
+            }
+          });
+      });
+    </script>
+  </body>
+</html>

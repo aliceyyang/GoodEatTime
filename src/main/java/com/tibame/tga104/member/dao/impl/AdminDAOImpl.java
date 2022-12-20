@@ -21,13 +21,11 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 
-
-
-
 @Override
 public AdminVO selectForAdminLogin(AdminVO adminVO) {
 	String sql = "Select * from administrator where adminAccount = ? and adminPassword = ?";
-	try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
+	try (Connection conn = dataSource.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);) {
 		pstmt.setString(1, adminVO.getAdminAccount());
 		pstmt.setString(2, adminVO.getAdminPassword());
 		try (ResultSet rs = pstmt.executeQuery()) {
