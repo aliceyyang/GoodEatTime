@@ -21,4 +21,8 @@ public class ShowProdInMallService {
 		return dao.getFromProdCategory(prodCategoryNo);
 	}
 	
+	public List<ShowProdInMallVO> select6ByCategory(Integer prodCategoryNo) {
+		return dao.select6ByCategory(prodCategoryNo);
+	}
+	
 }
