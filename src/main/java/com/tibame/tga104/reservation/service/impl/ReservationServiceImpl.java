@@ -70,4 +70,20 @@ public class ReservationServiceImpl implements ReservationService {
 		}
 		return false;
 	}
+	
+	@Override
+	public List<ReservationVO> selectNotNullComment() {
+		return dao.getNotNullComment();
+	}
+	
+	@Override
+	public List<ReservationVO> selectNullComment(){
+		return dao.getNullComment();
+	}
+	
+	@Override
+	public ReservationVO updateRestaurantComment(ReservationVO reservationVO){
+		return dao.updateCommnet(reservationVO);
+		
+	}
 }

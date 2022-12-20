@@ -110,6 +110,21 @@ public class ReservationController {
 		return reservationService.changeStatus(vo);
 	}
 	
+	@PostMapping("NotNullComment")
+	public List<ReservationVO> NotNullComment(){
+		return reservationService.selectNotNullComment();
+	}
+	
+	@PostMapping("NullComment")
+	public List<ReservationVO> NullComment(){
+		return reservationService.selectNullComment();
+	}
+		
+	@PostMapping("restaurantCommnet")
+	public ReservationVO restaurantCommnet (@RequestBody(required = false) ReservationVO reservationVO) {
+		return reservationService.updateRestaurantComment(reservationVO);
+	}
+	
 	
 	
 	

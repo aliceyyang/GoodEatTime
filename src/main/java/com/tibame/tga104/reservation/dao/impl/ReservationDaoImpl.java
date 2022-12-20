@@ -144,6 +144,61 @@ public class ReservationDaoImpl implements ReservationDao {
 			 .setParameter("reserveNo", reserveNo)
 			 .executeUpdate() > 0;
 	}
+	
+	@Override
+	public List<ReservationVO> getNotNullComment() {
+		
+		CriteriaBuilder criteriaBuilder =  this.getSession().getCriteriaBuilder();
+		CriteriaQuery<ReservationVO> criteriaQuery = criteriaBuilder.createQuery(ReservationVO.class);
+		Root<ReservationVO> root = criteriaQuery.from(ReservationVO.class);
+		criteriaQuery = criteriaQuery.where(criteriaBuilder.isNotNull(root.get("commentRating")));	
+		TypedQuery<ReservationVO> typedQuery = this.getSession().createQuery(criteriaQuery);
+		typedQuery.setFirstResult(0);
+		typedQuery.setMaxResults(4);
+		List<ReservationVO> result = typedQuery.getResultList();		
+		if (result!=null && !result.isEmpty()) {
+			return result;
+		} else {
+			return null;
+		}
+	}
+		
+	@Override
+	public List<ReservationVO> getNullComment() {
+		
+		CriteriaBuilder criteriaBuilder =  this.getSession().getCriteriaBuilder();
+		CriteriaQuery<ReservationVO> criteriaQuery = criteriaBuilder.createQuery(ReservationVO.class);
+		Root<ReservationVO> root = criteriaQuery.from(ReservationVO.class);
+		criteriaQuery = criteriaQuery.where(criteriaBuilder.isNull(root.get("commentRating")));	
+		TypedQuery<ReservationVO> typedQuery = this.getSession().createQuery(criteriaQuery);
+		typedQuery.setFirstResult(0);
+		typedQuery.setMaxResults(4);
+		List<ReservationVO> result = typedQuery.getResultList();		
+		if (result!=null && !result.isEmpty()) {
+			return result;
+		} else {
+			return null;
+		}
+	}
+	
+	@Override
+	public ReservationVO updateCommnet (ReservationVO reservationVO) {
+		if(reservationVO != null && reservationVO.getReserveNo() != null && reservationVO.getMemberNo() != null) {
+			
+			Query<ReservationVO> query = getSession().createQuery("update reservation "
+					+ "	set commentRating = :commentRating, commentContent = :commentContent, commentPic = :commentPic, restaurantCommentTime = CURRENT_TIMESTAMP "
+					+ "		where reserveNo= 2 and memberNo = 3 ", ReservationVO.class);
+					query.setParameter("commentRating", reservationVO.getCommentRating())
+					.setParameter("commentContent", reservationVO.getCommentContent())
+					.setParameter("commentPic", reservationVO.getCommentPic());
+					query.executeUpdate();
+			
+			ReservationVO queryResult = query.uniqueResult();
+			return queryResult;
+			
+		}
+		return null;
+	}
 
 
 }
