@@ -1,7 +1,7 @@
 package com.tibame.tga104.member.vo;
-import java.io.Serializable;
+
+import java.sql.Date;
 import java.util.Arrays;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,13 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tibame.tga104.core.vo.Message;
+
 @Entity
 @Table(name = "member") // 資料庫名稱
 
 //public class MemberVO implements Serializable{
 
-public class MemberVO extends Message{
+public class MemberVO extends Message {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -24,30 +26,31 @@ public class MemberVO extends Message{
 	@Column(name = "memberNo")
 	private Integer memberNo;
 
-	@Column(name = "memberLevel")
+	@Column(name = "memberLevel", insertable = false)
 	private Integer memberLevel;
 
 	@Column(name = "name")
 	private String name;
-	
+
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
 	@Column(name = "birthday")
 	private Date birthday;
-	
+
 	@Column(name = "mail")
 	private String mail;
-	
+
 	@Column(name = "memberPassword")
 	private String memberPassword;
-	
-	@Column(name = "verificationAccount")
+
+	@Column(name = "verificationAccount", insertable = false)
 	private Boolean verificationAccount;
-	
+
 	@Column(name = "tel")
 	private String tel;
-	
+
 	@Column(name = "point")
 	private Integer point;
-	
+
 	@Column(name = "memberPic", columnDefinition = "longblob")
 	private byte[] memberPic;
 

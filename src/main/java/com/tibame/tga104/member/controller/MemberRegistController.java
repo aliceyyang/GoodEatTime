@@ -1,31 +1,38 @@
 package com.tibame.tga104.member.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.tibame.tga104.member.service.MemberService;
 import com.tibame.tga104.member.vo.MemberVO;
 
-@Controller
-public class MemberRegistController{
-	
+@RestController
+public class MemberRegistController {
+
 	@Autowired
 	private MemberService memberService;
-	
-	@PostMapping("Registr")
+
+	@PostMapping("/register")
 	public MemberVO register(@RequestBody MemberVO memberVO) {
-		memberVO = memberService.register(memberVO);
+
+//		System.out.println("member VO: "+ memberVO);
+//		return new MemberVO();
+
+		if (memberVO == null) {
+			memberVO = new MemberVO();
+			memberVO.setSuccessful(false);
+			memberVO.setMessage("註冊失敗");
+			return memberVO;
+		} else {
+			memberVO = memberService.register(memberVO);
+		}
+
 		return memberVO;
-
 	}
-	
-	
-}
 
+}
 
 //import java.io.IOException;
 //

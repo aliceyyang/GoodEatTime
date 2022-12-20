@@ -1,7 +1,6 @@
 package com.tibame.tga104.member.dao.impl;
 
-import java.util.List;
-
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.tibame.tga104.member.dao.MemberDAO;
 import com.tibame.tga104.member.vo.MemberVO;
-import com.tibame.tga104.reservation.vo.ReserveTimeVO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -21,15 +19,10 @@ public class MemberDAOImpl implements MemberDAO {
 		return session;
 	}
 
-	@Override
-	public MemberVO select(Integer memberNo) {
-		if (memberNo != null) {
-			return this.getSession().get(MemberVO.class, memberNo);
-		}
-		return null;
-	}
+	
 
-	// 會員註冊
+//===============會員註冊===============
+	
 	@Override
 	public MemberVO insert(MemberVO member) {
 		// 確認各必填欄位皆輸入
@@ -39,11 +32,26 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return null;
 	}
-
-	// 會員登入
-	// select * from member where mail = ?and memberPassword = ?";
+	//查詢是否有此會員帳號存在
+	@Override
+	public MemberVO selectBymail(String mail) {
+		//Select * from member where mail = ?
+		final String hql = "from MemberVO where mail = :mail";
+		try {
+			return session.createQuery(hql, MemberVO.class)
+					.setParameter("mail", mail)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+	
+	
+//===============會員登入===============
+	
 	@Override
 	public MemberVO selectForLogin(String mail, String memberPassword) {
+		// select * from member where mail = ?and memberPassword = ?";
 		final String hql ="from MemberVO where mail = :mail and memberPassword = :memberPassword ";
 		return (MemberVO) session.createQuery(hql)
 				.setParameter("mail", mail)
@@ -58,21 +66,67 @@ public class MemberDAOImpl implements MemberDAO {
 //			List<MemberVO> memberVO = query.list();
 //		}
 	
-
+	
+	
+	//先select
 	@Override
-	public MemberVO update(MemberVO member) {
-		if (member.getMemberNo() != null) {
-			MemberVO temp = this.getSession().get(MemberVO.class, member.getMemberNo());
-			if (temp != null) {
-				temp.setMemberPassword(member.getMemberPassword());
-				temp.setName(member.getName());
-				temp.setTel(member.getTel());
-				temp.setMemberPic(member.getMemberPic());
-				return temp;
-			}
+	public MemberVO selectByMemberNo(Integer memberNo) {
+		if (memberNo != null) {
+			return this.getSession().get(MemberVO.class, memberNo);
 		}
 		return null;
 	}
+	
+	
+//===============修改會員資料===============
+	
+	@Override
+	public int update(MemberVO memberVO) {
+		//update member set  memberPassword =?, name=?, tel=? where memberNo=? 
+		StringBuilder hql = new StringBuilder().append("update MemberVO set ");
+		//一定要改密碼
+		hql.append("memberPassword = :memberPassword");
+		String name = memberVO.getName();
+		if(name != null && !name.isEmpty()) {
+			hql.append(",name = :name");
+		}
+		String tel = memberVO.getTel();
+		if(tel != null && !tel.isEmpty()) {
+			hql.append(",tel = :tel ");
+		}
+		hql.append("where memberNo = :memberNo");
+		//判段欄位需輸入,但可以只修改其一
+		try {
+			Query<?> query = session.createQuery(hql.toString());
+			query.setParameter("memberPassword", memberVO.getMemberPassword());
+			
+			if(name != null && !name.isEmpty()) {
+				query.setParameter("name", memberVO.getName());
+			}
+			
+			if(tel != null && !tel.isEmpty()) {
+				query.setParameter("tel", memberVO.getTel());
+			}
+			query.setParameter("memberNo", memberVO.getMemberNo());
+			return query.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return -1;
+		
+//		if (member.getMemberNo() != null) {
+//			MemberVO temp = this.getSession().get(MemberVO.class, member.getMemberNo());
+//			if (temp != null) {
+//				temp.setMemberPassword(member.getMemberPassword());
+//				temp.setName(member.getName());
+//				temp.setTel(member.getTel());
+////				temp.setMemberPic(member.getMemberPic());
+//				return temp;
+//			}
+//		}
+	}
+
+
 
 	
 
