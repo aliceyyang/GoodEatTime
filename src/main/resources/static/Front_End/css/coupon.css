@@ -246,8 +246,9 @@ th {
 .setCouponData {
   padding: 10px;
   border: 1px solid #9a9a75;
-  height: 1000px;
+  height: 860px;
   width: 1000px;
+  margin-left: 50px;
 }
 .class__sidebar .updatePic {
 width: 250px;
@@ -300,7 +301,7 @@ label#updatePicdata {
   line-height: normal;
   margin: 0;
   min-height: 20px;
-  min-width: 0;
+  min-width: 60px;
   outline: none;
   padding: 16px 24px;
   text-align: center;
@@ -310,7 +311,7 @@ label#updatePicdata {
   -webkit-user-select: none;
   touch-action: manipulation;
   width: 120px;
-  height: 0;
+  height: 60px;
   will-change: transform;
   float: right;
 }

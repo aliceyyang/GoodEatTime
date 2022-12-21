@@ -67,14 +67,14 @@ function Template({couponNo, couponApplyDate, couponStartTime, couponEndTime, co
         <span>金額 / 折數 :<input type="text" value="${amountOrFold}" placeholder="${amountOrFold}" id="amountOrFold"></span>
         <span>種類: 折價 / 打折 :<input type="text" value="${couponType}" placeholder="${couponType}" disabled="true"></span>
         <label>折價<input type="radio" value="true" name="couponType" id="amount" checked></label>
-        <label>打折<input type="radio" value="false"  id="Fold" name="couponType"></label>
-        <p>發行張數上限 :<input type="text" value="${maxIssueQty}" placeholder="${maxIssueQty}" id="maxIssueQty"></p>
-        <span>已發行張數 :${issuedQty}</span>  
+        <label>打折<input type="radio" value="false"  id="Fold" name="couponType"></label>  
       </form>
     </div>
     <div class="class__sidebar col-lg-6" style="width:50% ; margin: 0px auto; float: right;">
       <form>
-        <span>優惠券說明內容 :<textarea id="couponContent" style="width:450px ; height:300px" placeholder="${couponContent}"></textarea></span>
+        <p>發行張數上限 :<input type="text" value="${maxIssueQty}" placeholder="${maxIssueQty}" id="maxIssueQty"></p>
+        <span>已發行張數 :${issuedQty}</span>
+        <span>優惠券說明內容 :<textarea id="couponContent" style="width:450px ; height:121px" placeholder="${couponContent}"></textarea></span>
         <p>現有圖片 :</p>
         <img class="updatePic" src="${picUrl}">
         <div class="preview">
