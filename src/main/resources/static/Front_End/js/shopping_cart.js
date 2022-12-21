@@ -462,7 +462,8 @@ $(function () {
         let order_detail = {
         prodNo: parseInt($(item).attr("data-prodNo")),
         prodName: $(item).find("h6").text(),
-        prodQty: prod_qty
+        prodQty: prod_qty,
+        prodPrice: parseInt($(item).find("td.cart__price").attr("subtotal"))
         };
         order_list[index] = order_detail;
       }
@@ -474,6 +475,7 @@ $(function () {
         ),
         restaurantName: $("table.-on .prod__cart__head1").attr("data-restaurantName"),
         deliverFee: null,
+        couponNo: null,
         amountBeforeCoupon: parseInt($("li.cart__final__amount").attr("data-amount")),
         amountAfterCoupon: parseInt($("li.cart__final__amount").attr("data-amount")),
         prodOrderPoint: parseInt($("li.cart__final__amount").attr("data-amount")),

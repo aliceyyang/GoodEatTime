@@ -16,3 +16,7 @@ div.checkout__divider {
     height: 25px;
     margin-top: 5px;
 }
+
+ul.checkout__total__products samp {
+    width: 30px;
+}
