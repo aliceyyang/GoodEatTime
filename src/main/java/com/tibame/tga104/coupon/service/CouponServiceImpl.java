@@ -36,11 +36,13 @@ public class CouponServiceImpl implements CouponService {
 
 	@Override
 	public CouponVO getOneCoupon(Integer couponNo) {
-		CouponVO vo = dao.findByPrimaryKey(couponNo);
-		final byte[] couponPic = vo.getCouponPic();
-		if (couponPic != null && couponPic.length != 0) {
-			vo.setCouponPicStr(Base64.getEncoder().encodeToString(vo.getCouponPic()));
-			vo.setCouponPic(null);
+		final CouponVO vo = dao.findByPrimaryKey(couponNo);
+		if (vo != null ) {
+			final byte[] couponPic = vo.getCouponPic();
+			if (couponPic != null && couponPic.length != 0) {
+				vo.setCouponPicStr(Base64.getEncoder().encodeToString(couponPic));
+				vo.setCouponPic(null);
+			}
 		}
 		return vo;
 	}
@@ -52,7 +54,15 @@ public class CouponServiceImpl implements CouponService {
 
 	@Override
 	public List<CouponVO> findByRestaurantNo(Integer restaurantNo) {
-		return dao.selectByRestaurantNo(restaurantNo);
+		List<CouponVO> list = dao.selectByRestaurantNo(restaurantNo);
+		for (CouponVO vo : list) {
+			final byte[] couponPic = vo.getCouponPic();
+			if (couponPic != null && couponPic.length != 0) {
+				vo.setCouponPicStr(Base64.getEncoder().encodeToString(couponPic));
+				vo.setCouponPic(null);
+			}
+		}
+		return list;
 	}
 
 }
