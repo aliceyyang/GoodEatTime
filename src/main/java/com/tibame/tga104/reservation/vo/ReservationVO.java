@@ -23,7 +23,7 @@ public class ReservationVO {
 	@Column(name = "memberNo")
 	private Integer memberNo;
 
-	@Column(name = "reserveStatus")
+	@Column(name = "reserveStatus", insertable = false)
 	private String reserveStatus;
 
 	@Column(name = "restaurantNo")

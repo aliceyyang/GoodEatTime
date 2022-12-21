@@ -13,9 +13,9 @@ public interface ReserveTimeDao {
 
 	public int update(ReserveTimeVO reserveTimeVO);
 
-	public List<ReserveTimeVO> findbyrestaurantNOandWeekDay(Integer restaurantNo, Integer weekDay);
+	public List<ReserveTimeVO> findByRestaurantNOandWeekDay(Integer restaurantNo, Integer weekDay);
 
-	public List<ReserveTimeVO> findbyrestaurantNo(Integer restaurantNo);
+	public List<Integer> findByRestaurantNo(Integer restaurantNo);
 	
 	public List<Integer> getReserveTimeNo(Integer restaurantNo, Integer weekDay);
 
