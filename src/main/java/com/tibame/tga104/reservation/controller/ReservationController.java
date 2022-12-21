@@ -110,5 +110,22 @@ public class ReservationController {
 		return reservationService.changeStatus(vo);
 	}
 	
+	@PostMapping("member")
+	public boolean member(@RequestBody ReservationVO vo) {
+		return reservationService.reservation(vo);
+	}
+
+	//--------------------------
+//	@GetMapping("restaurant/date")
+//	public List<ReserveTimeVO> reserveTime(HttpSession session) {
+//		Integer restaurantNo = (Integer) session.getAttribute("restaurantNo");
+//		return reserveTimeService.findByRestaurantNo(restaurantNo);
+//	}
+	
+	// wrong
+	@GetMapping("restaurant/date")
+	public List<Integer> reserveTime() {
+		return reserveTimeService.findByRestaurantNo(2);
+	}
 	
 }
