@@ -9,8 +9,6 @@ public interface RestaurantCarouselPicService {
 
 	boolean addRestaurantCarouselPic(RestaurantCarouselPicVO restaurantCarouselPicVO);
 	
-	boolean updateRestaurantCarouselPic(RestaurantCarouselPicVO restaurantCarouselPicVO);
-	
 	boolean deleteRestaurantCarouselPic(Integer carouselPicNo);
 	
 	List<RestaurantCarouselPicVO> findByRestaurantNo(Integer restaurantNo);

@@ -6,7 +6,7 @@ import com.tibame.tga104.coupon.vo.MemberCouponVO;
 
 public interface MemberCouponDAO {
 
-	public MemberCouponVO select(Integer memberNo);
+	public MemberCouponVO selectByMemberNo(Integer memberNo);
 
 	public MemberCouponVO insert(MemberCouponVO memberCouponVO);
 	

@@ -33,7 +33,7 @@ public class CouponDaoImpl implements CouponDao {
 		  + "couponStartTime=?,couponEndTime=?,verified=?,couponContent=?,usageLimitation=?,"
 		  + "amountOrFold=?,couponType=?,maxIssueQty=?,issuedQty=?,verificationDetail=?, couponPic = ?"
 		  + "where couponNo = ?";
-	private static final String setVerified = "update coupon set verified = ? whete couponNo = ?";
+	private static final String setVerified = "update coupon set verified = ? where couponNo = ?";
 	
 	private static final String setcouponType = "update coupon set couponType = ? where couponNo = ?";
 	
@@ -72,16 +72,26 @@ public class CouponDaoImpl implements CouponDao {
 	public void updateByCouponNo(CouponVO couponVO) {
 		try(
 			Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
-			PreparedStatement ps = con.prepareStatement("update coupon "
-					+ "set "
-					+ "	couponName = ?,"
-					+ " couponPic = ? "
-					+ "where couponNo = ?")
-		) {
+			PreparedStatement ps = con.prepareStatement("update coupon set "
+					+ "couponName = ?,"
+					+ "couponStartTime = ?,"
+					+ "couponEndTime = ?,"
+					+ "couponContent = ?,"
+					+ "amountOrFold = ?,"
+					+ "couponType = ?,"
+					+ "maxIssueQty = ?,"
+					+ "couponPic = ?"
+					+ "where couponNo = ?")) {
 			
 			ps.setString(1, couponVO.getCouponName());
-			ps.setBytes(2, couponVO.getCouponPic());
-			ps.setInt(3, couponVO.getCouponNo());
+			ps.setDate(2, couponVO.getCouponStartTime());
+			ps.setDate(3, couponVO.getCouponEndTime());
+			ps.setString(4, couponVO.getCouponContent());
+			ps.setDouble(5, couponVO.getAmountOrFold());
+			ps.setBoolean(6, couponVO.getCouponType());
+			ps.setInt(7, couponVO.getMaxIssueQty());
+			ps.setBytes(8, couponVO.getCouponPic());
+			ps.setInt(9, couponVO.getCouponNo());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -242,6 +252,7 @@ public class CouponDaoImpl implements CouponDao {
 						vo.setMaxIssueQty(rs.getInt("maxIssueQty"));
 						vo.setIssuedQty(rs.getInt("IssuedQty"));
 						vo.setVerified(rs.getBoolean("verified"));
+						vo.setCouponPic(rs.getBytes("couponPic"));
 						
 						list.add(vo);
 					}

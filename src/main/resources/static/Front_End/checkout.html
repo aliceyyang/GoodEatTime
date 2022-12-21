@@ -266,7 +266,7 @@
                                 <div class="col-lg-3">
                                     <div class="checkout__input">
                                         <p>安全碼<span>*</span></p>
-                                        <input type="password">
+                                        <input type="password" autocomplete="new-password">
                                     </div>
                                 </div>
                             </div>
@@ -275,16 +275,16 @@
                             <div class="checkout__order">
                                 <h6 class="order__title">您的訂單</h6>
                                 <div class="checkout__order__products">產品 <span>金額</span></div>
-                                <ul class="checkout__total__products">
+                                <ul class="checkout__total__products" id="checkout__total__products">
                                     <li><samp>01.</samp> 幕斯可可杯子蛋糕 <span>260</span></li>
                                     <li><samp>02.</samp> 戚風海綿莓果蛋糕 <span>150</span></li>
                                     <li><samp>03.</samp> 蘭姆酒風味提拉米蘇 <span>200</span></li>
                                     <li><samp>04.</samp> 比司吉 <span>50</span></li>
                                 </ul>
                                 <ul id="checkout__others"></ul>
-                                <ul class="checkout__total__products">
-                                    <li> 折價券優惠 <span>-50</span></li>
-                                    <li> 運費 <span>60</span></li>
+                                <ul class="checkout__total__products" id="other_fee">
+                                    <li id="couponFee" data-fee="-50"> 折價券優惠 <span>-50</span></li>
+                                    <li id="deliverFee" data-fee="60"> 運費 <span>60</span></li>
                                 </ul>
                                 <ul class="checkout__total__all">
                                     <li>結帳金額 <span>NTD 660</span></li>

@@ -63,17 +63,17 @@ public class ReservationController {
 
 	// -----------------------------------------
 
-//	@GetMapping("member/inf")
-//	public List<MemberReserveInfVO> memberReserveInf() {
-//		// TODO 5是暫時寫死的唷!!!
-//		return reservationService.findByMemberNO(5);
-//	}
-
 	@GetMapping("member/inf")
-	public List<MemberReserveInfVO> memberReserveInf(HttpSession session) {
-		Integer member = (Integer) session.getAttribute("memberNo");
-		return reservationService.findByMemberNO(member);
+	public List<MemberReserveInfVO> memberReserveInf() {
+		// TODO 5是暫時寫死的唷!!!
+		return reservationService.findByMemberNO(5);
 	}
+
+//	@GetMapping("member/inf")
+//	public List<MemberReserveInfVO> memberReserveInf(HttpSession session) {
+//		Integer member = (Integer) session.getAttribute("memberNo");
+//		return reservationService.findByMemberNO(member);
+//	}
 // ----------------------------------------------------------------	
 	// 這是對的唷
 //		@GetMapping("restaurant/reserveStatus")
@@ -105,27 +105,27 @@ public class ReservationController {
 	}
 	
 	//----------------------------------
-	@PostMapping("restaurant/statusUpdate")
-	public boolean reseveStatus(@RequestBody ReservationVO vo) {
-		return reservationService.changeStatus(vo);
+	@GetMapping("restaurant/statusUpdate")
+	public boolean reseveStatus(@RequestParam Integer reserveNo , @RequestParam String reserveStatus) {
+		return reservationService.changeStatus(reserveNo, reserveStatus);
 	}
 	
-	@PostMapping("NotNullComment")
-	public List<ReservationVO> NotNullComment(){
-		return reservationService.selectNotNullComment();
+	@PostMapping("member")
+	public boolean member(@RequestBody ReservationVO vo) {
+		return reservationService.reservation(vo);
 	}
+
+	//--------------------------
+//	@GetMapping("restaurant/date")
+//	public List<ReserveTimeVO> reserveTime(HttpSession session) {
+//		Integer restaurantNo = (Integer) session.getAttribute("restaurantNo");
+//		return reserveTimeService.findByRestaurantNo(restaurantNo);
+//	}
 	
-	@PostMapping("NullComment")
-	public List<ReservationVO> NullComment(){
-		return reservationService.selectNullComment();
+	// wrong
+	@GetMapping("restaurant/date")
+	public List<Integer> reserveTime() {
+		return reserveTimeService.findByRestaurantNo(2);
 	}
-		
-	@PostMapping("restaurantCommnet")
-	public ReservationVO restaurantCommnet (@RequestBody(required = false) ReservationVO reservationVO) {
-		return reservationService.updateRestaurantComment(reservationVO);
-	}
-	
-	
-	
 	
 }
