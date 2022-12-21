@@ -27,6 +27,19 @@ fetch("http://localhost:8080/restaurant-read/3") //餐廳編號先寫死測試�
 
 // ========================餐廳資料修改=============================
 
+$("#passwordEye").on("click", function () {
+  console.log("ddd");
+  if ($(this).hasClass("fa-eye-slash")) {
+    $(this).attr("class", "fas fa-eye");
+    $("#restaurantPassword").attr("type", "text");
+    $("#restaurantPasswordCheck").attr("type", "text");
+  } else {
+    $(this).attr("class", "fas fa-eye-slash");
+    $("#restaurantPassword").attr("type", "password");
+    $("#restaurantPasswordCheck").attr("type", "password");
+  }
+});
+
 $("#restaurant_info").on("submit", function () {
   const restaurantName = $("#restaurantName").val();
   const restaurantTel = $("#restaurantTel").val();
@@ -262,6 +275,25 @@ drop_zone.addEventListener("drop", function (e) {
   carousel_file_el.value = "";
 });
 
+// ======================抓出餐廳已上傳的菜單======================
+
+var menu_array = []; //準備裝多個菜單物件的陣列
+fetch("???")
+  .then((res) => res.json)
+  .then((list) => {
+    for (const item of list) {
+      const { menuNo } = item;
+      const { menuPicstr } = item;
+      const { menuPicRemark } = item;
+
+      menu_array.push({
+        menuNo: menuNo,
+        menuPicstr: menuPicstr,
+        menuPicRemark: menuPicRemark,
+      });
+    }
+  });
+
 // =====================菜單 單張圖上傳設定=============================
 
 //把要存進物件的參數帶進來
@@ -458,7 +490,7 @@ $("#btn_submit3").on("click", function (e) {
     readPostFile(pic, post_type, post_title, post_content); //帶進上方的readPostFile函式
   }
 
-  document.querySelector("news").submit();
+  document.querySelector("#news").submit();
 });
 
 // =========================刪除貼文============================
