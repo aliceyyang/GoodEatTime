@@ -23,4 +23,6 @@ public interface ReservationService {
 	
 	boolean changeStatus(ReservationVO vo);
 	
+	boolean reservation(ReservationVO reservationVO);
+	
 }
