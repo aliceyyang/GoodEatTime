@@ -194,6 +194,7 @@
                     <input type="text" id="restaurantAccountInfo" name="restaurantAccountInfo" placeholder="帳戶資訊">
                     <input type="email" id="restaurantAccount" name="restaurantAccount" placeholder="餐廳帳號">
                     <input type="password" id="restaurantPassword" name="restaurantPassword" placeholder="餐廳密碼">
+                    <i id="passwordEye" class="fas fa-eye-slash"></i>
                     <input type="password" id="restaurantPasswordCheck" name="restaurantPasswordCheck" placeholder="請再次輸入密碼">
                     <button type ="submit" id="setting" class="site-btn">儲存設定</button> 
                 </form>
@@ -205,7 +206,7 @@
                   <h4 style="text-align:center">圖片上傳</h4>
                   <h6 style="text-align:center">輪播圖片最多6張</h6>
                   <label>
-                  <input type="file" id="carousel_file"  accept="image/*" multiple="multiple"/>
+                  <input type="file" id="carousel_file"  accept="image/*" multiple="multiple" required/>
                 </label>
                   <div id="drop_zone" style="margin-left: 15%"><span id="carousel_quota" class="text"></span></div>
                   <br />
@@ -218,7 +219,7 @@
                 <div id="carousel_uploaded">
                 </div>
               </div>
-              <div id="set_news" class="tab_inner" style="height: 1100px">
+              <div id="set_news" class="tab_inner" style="height: 1250px">
                 <h3>貼文設定</h3>
                 <form id="news" style="width:450px ; float:left">
                     <h4 style="text-align:center">貼文撰寫</h4>
@@ -262,7 +263,7 @@
               </div>
               <div id="set_menu" class="tab_inner">
                 <h3>菜單設定</h3>
-                <form id="menu" style="width:450px ; float:left">
+                <form id="menu" style="width:450px ; float:left ">
                   <h4 style="text-align:center">菜單上傳</h4>
                   <input type="file" id="menu_file" accept="image/*" required/>
                   <br />
@@ -276,6 +277,42 @@
                   <button type="reset" class="btns" style="width:49%">清空資料</button>
                   <button type="submit" id="btn_submit2" class="btns" style="width:49%">送出資料</button>
                 </form>
+                <h4 style="text-align:center">已上傳的菜單 </h4>
+                <div id="mPic_2" class="uploaded_menu">
+                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
+                  <a class="delete_post">編輯</a>
+                  <a class="edit_post">刪除</a>
+                </div>
+                <div id="mPic_2" class="uploaded_menu">
+                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
+                  <a class="delete_post">編輯</a>
+                  <a class="edit_post">刪除</a>
+                </div>
+                <div id="mPic_2" class="uploaded_menu">
+                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
+                  <a class="delete_post">編輯</a>
+                  <a class="edit_post">刪除</a>
+                </div>
+                <div id="mPic_2" class="uploaded_menu">
+                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
+                  <a class="delete_post">編輯</a>
+                  <a class="edit_post">刪除</a>
+                </div>
+                <div id="mPic_2" class="uploaded_menu">
+                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
+                  <a class="delete_post">編輯</a>
+                  <a class="edit_post">刪除</a>
+                </div>
+                <div id="mPic_2" class="uploaded_menu">
+                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
+                  <a class="delete_post">編輯</a>
+                  <a class="edit_post">刪除</a>
+                </div>
+                <div id="mPic_2" class="uploaded_menu">
+                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
+                  <a class="delete_post">編輯</a>
+                  <a class="edit_post">刪除</a>
+                </div>
               </div>
             </div>
           </div>
@@ -405,7 +442,7 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/restautant_reserve-management.js"></script>
+  <!-- <script src="js/restautant_reserve-management.js"></script> -->
   <script src="js/restaurant_info-management.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 

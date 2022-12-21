@@ -19,7 +19,7 @@ function onConfirmClick() {
   const couponContent = document.querySelector('#couponContent').value;
   const usageLimitation = document.querySelector('#usageLimitation').value;
   const amountOrFold = document.querySelector('#amountOrFold').value;
-  const couponType = document.querySelector('#couponType').value;
+  const couponType = Boolean(document.querySelector('input[name="couponType"]:checked').value);
   const couponName = document.querySelector('#couponName').value;
   const maxIssueQty = document.querySelector('#maxIssueQty').value;
   const news_file = document.querySelector('#news_file');
@@ -56,24 +56,36 @@ function onConfirmClick() {
 function Template({couponNo, couponApplyDate, couponStartTime, couponEndTime, couponContent,usageLimitation, amountOrFold,couponType,couponName,maxIssueQty, issuedQty, couponPicStr}) {
   const picUrl = getPicUrl(couponPicStr);
   return `
-    <tr>
-      <td>${couponNo}</td>
-      <td><input type="text" value="${couponName}" id="couponName"></td>
-      <td>${couponApplyDate}</td>
-      <td><input type="text" value="${couponStartTime}" id="couponStartTime"></td>
-      <td><input type="text" value="${couponEndTime}" id="couponEndTime"></td>
-      <td><input type="textarea" value="${couponContent}" id="couponContent"></td>
-      <td><input type="text" value="${usageLimitation}" id="usageLimitation"></td>
-      <td><input type="text" value="${amountOrFold}" id="amountOrFold"></td>
-      <td><input type="text" value="${couponType}" id="couponType"></td>
-      <td><input type="text" value="${maxIssueQty}" id="maxIssueQty"></td>
-      <td>${issuedQty}</td>
-      <td>
-        <input type="file" id="news_file" accept="image/*"/>
-        <img src="${picUrl}">
-      </td>
-      <td><button type="button" id="confirmbtn" onclick="onConfirmClick()">確認</button></td>  
-    </tr> `
+  <h3>資料設定</h3>
+  <div class="class__sidebar col-lg-6" style="width:50% ; margin: 0px auto ;float: left;">
+    <form>
+        <h4>優惠券編號 : ${couponNo}</h4>
+        <span>優惠券名稱 :<input type="text" value="${couponName}" placeholder="${couponName}" id="couponName"></span>
+        <span>活動開始時間 :<input type="date" value="${couponStartTime}" placeholder="${couponStartTime}" id="couponStartTime"></span>
+        <span>活動結束時間 :<input type="date" value="${couponEndTime}" placeholder="${couponEndTime}" id="couponEndTime"></span>
+        <span>訂單金額滿多少可以使用 :<input type="text" value="${usageLimitation}" placeholder="${usageLimitation}" id="usageLimitation"></span>
+        <span>金額 / 折數 :<input type="text" value="${amountOrFold}" placeholder="${amountOrFold}" id="amountOrFold"></span>
+        <span>種類: 折價 / 打折 :<input type="text" value="${couponType}" placeholder="${couponType}" disabled="true"></span>
+        <label>折價<input type="radio" value="true" name="couponType" id="amount" checked></label>
+        <label>打折<input type="radio" value="false"  id="Fold" name="couponType"></label>
+        <p>發行張數上限 :<input type="text" value="${maxIssueQty}" placeholder="${maxIssueQty}" id="maxIssueQty"></p>
+        <span>已發行張數 :${issuedQty}</span>  
+      </form>
+    </div>
+    <div class="class__sidebar col-lg-6" style="width:50% ; margin: 0px auto; float: right;">
+      <form>
+        <span>優惠券說明內容 :<textarea id="couponContent" style="width:450px ; height:300px" placeholder="${couponContent}"></textarea></span>
+        <p>現有圖片 :</p>
+        <img class="updatePic" src="${picUrl}">
+        <div class="preview">
+          <img id="news_file_preview">
+          <label id="updatePicdata" for="news_file">上傳圖片</label>
+          <input type="file" id="news_file" accept="image/*" onchange="showPreview(event);/>
+        </div>
+      </form>
+      <label id="updata" for="confirmbtn"></label>
+      <button type="button" id="confirmbtn" onclick="onConfirmClick()">確認</button>
+    </div>`
 }
 //==========================顯示圖片=================================
 
@@ -88,3 +100,12 @@ function getPicUrl(base64Str) {
   return URL.createObjectURL(blob);
 }
 
+//==========================顯示上傳圖片=================================
+function showPreview(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("news_file_preview");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}

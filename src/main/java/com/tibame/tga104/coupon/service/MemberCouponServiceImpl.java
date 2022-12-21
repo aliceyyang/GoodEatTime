@@ -22,7 +22,7 @@ public class MemberCouponServiceImpl implements MemberCouponService{
 
 	@Override
 	public MemberCouponVO getOneMemberCoupon(Integer memberNo, Integer couponNo) {
-		return dao.select(memberNo);
+		return dao.selectByMemberNo(memberNo);
 	}
 
 	@Override

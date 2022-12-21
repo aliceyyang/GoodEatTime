@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Cake Template" />
-    <meta name="keywords" content="Cake, unica, creative, html" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>會員登入</title>
+    <title>RestaurantBackEnd | OrderSearch</title>
 
     <!-- Google Font -->
     <link
@@ -15,12 +15,6 @@
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- checkEye font-awesome-->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
       rel="stylesheet"
     />
 
@@ -35,68 +29,27 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
+    <link rel="stylesheet" href="css/reservation.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="css/member_page_overview.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="css/alice_style.css" type="text/css" />
 
-    <!-- 將忘記密碼及加入會員的點點消除 -->
     <style>
-      .mod > ul > li {
-        list-style: none;
-        /* display: inline-block; */
+      .nice-select {
+        width: 80%;
       }
-      /* .li_right {
-        margin-right: 250px;
-      } */
-
-      .GoodEatTime {
-        width: 152px;
-        height: 52px;
-      }
-
-      /* GOOD EAT TIME字樣(含)以下的資料 位置往上調 */
-      .spad {
-        padding-top: 50px;
-      }
-
-      /* checkEye位置 */
-      #checkEye {
-        font-size: 20px;
-        position: absolute;
-        top: 197px;
-        right: 40px;
-      }
-
-      /* 因為Form拉掉，用div包，命div class為form */
-      .class__form .form input {
-        height: 50px;
-        width: 100%;
-        padding-left: 20px;
-        font-size: 15px;
-        color: #444444;
-        background: #ffffff;
-        border: none;
-        margin-bottom: 20px;
-      }
-      .class__form .form input::-webkit-input-placeholder {
-        color: #444444;
-      }
-      .class__form .form input::-moz-placeholder {
-        color: #444444;
-      }
-      .class__form .form input:-ms-input-placeholder {
-        color: #444444;
-      }
-      .class__form .form input::-ms-input-placeholder {
-        color: #444444;
-      }
-      .class__form .form input::placeholder {
-        color: #444444;
-      }
-      .class__form .form button {
-        letter-spacing: 2px;
-        width: 100%;
+      table,
+      tr,
+      th,
+      td {
+        border: 1px solid black;
       }
     </style>
   </head>
-
   <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -119,7 +72,12 @@
         </div>
       </div>
       <div class="offcanvas__logo">
-        <a href="./index.html"><img src="img/logo.png" alt="" /></a>
+        <a href="./GoodEatTime.html"
+          ><img
+            class="GoodEatTimelogo"
+            src="/img/GoodEatTime_smlogo.png"
+            alt=""
+        /></a>
       </div>
       <div id="mobile-menu-wrap"></div>
       <div class="offcanvas__option">
@@ -146,7 +104,7 @@
     </div>
     <!-- Offcanvas Menu End -->
 
-    <!-- Header開始 -->
+    <!-- Header Section Begin -->
     <header class="header">
       <div class="header__top">
         <div class="container">
@@ -158,7 +116,7 @@
                     <li>
                       <img class="login_icon" src="./img/Login_icon.png" /><a
                         class="login_text"
-                        href="./j_signin_member.html"
+                        href="#"
                         >登入</a
                       >
                     </li>
@@ -195,103 +153,122 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <nav class="header__menu mobile-menu">
-              <ul>
-                <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-                <li><a href="./about.html">會員專區</a></li>
-                <li><a href="./shop.html">餐廳</a></li>
-                <li><a href="./blog.html">線上商城</a></li>
-                <li>
-                  <a href="#">關於我們</a>
-                  <ul class="dropdown">
-                    <li><a href="./shop-details.html">Shop Details</a></li>
-                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                    <li><a href="./checkout.html">Check Out</a></li>
-                    <li><a href="./wisslist.html">Wisslist</a></li>
-                    <li><a href="./Class.html">Class</a></li>
-                    <li><a href="./blog-details.html">Blog Details</a></li>
-                  </ul>
-                </li>
-                <li><a href="./contact.html">地點搜尋</a></li>
-              </ul>
-            </nav>
+            <nav class="header__menu mobile-menu"></nav>
           </div>
         </div>
       </div>
     </header>
-    <!-- Header結束 -->
+    <!-- Header Section End -->
 
-    <!-- 會員登入 開始 -->
-    <section class="class spad">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="class__form">
-              <div class="section-title">
-                <span>Good Eat Time</span>
-                <h2>會員登入</h2>
+    <!-- Class Section Begin -->
+    <section class="class">
+      <!-- <div class="container"> -->
+      <div class="row" id="member">
+        <!-- <div class="col-lg-2" id="left"> -->
+        <div class="col-lg-2" id="left">
+          <nav class="header__menu mobile-menu" id="aaa">
+            <ul>
+              <li class=""><a href="http">餐廳會員首頁</a></li>
+              <li class=""><a href="http">餐廳資訊</a></li>
+              <li class=""><a href="http">訂單管理</a></li>
+              <li class=""><a href="http">訂位管理</a></li>
+              <li class=""><a href="http">評論管理</a></li>
+              <li class=""><a href="http">優惠券設定</a></li>
+              <li class=""><a href="http">商品管理</a></li>
+              <li class=""><a href="http">銷售報表</a></li>
+              <li class=""><a href="http">購買廣告</a></li>
+            </ul>
+          </nav>
+        </div>
+        <!-- 中間空白欄位 -->
+        <!-- 上排 -->
+        <div class="col-lg-10">
+          <div
+            class="row-cols-12"
+            style="
+              align-items: center;
+              display: grid;
+              justify-content: center;
+              height: 15%;
+              background-color: #fdf3ea;
+            "
+          >
+            <h2>訂單管理</h2>
+          </div>
+          <div class="row" style="height: 80%">
+            <div
+              class="row-cols-12"
+              style="background-color: #fdf3ea; margin: 15px; padding: 33px"
+            >
+              <!-- 商城訂單查詢 -->
+              <div class="container" style="height: 90%">
+                <div class="row-cols-12" style="height: 90%">
+                  <form action="http" method="post">
+                    <br />
+                    <label for="prodOrderNo">商城訂單編號：</label>
+                    <input type="number" name="prodOrderNo" id="prodOrderNo" />
+                    <label for="orderStatus">訂單狀態：</label>
+                    <select name="orderStatus" id="orderStatus">
+                      <option value="訂單成立">訂單成立</option>
+                      <option value="已寄出">已寄出</option>
+                      <option value="已到貨">已到貨</option>
+                      <option value="已取貨">已取貨</option>
+                    </select>
+                    <br />
+                    <br />
+                    <br />
+                    <label for="prodNo">商品編號：</label>
+                    <input type="number" name="prodNo" id="prodNo" />
+                    <label for="prodOrderDate">訂單時間：</label>
+                    <input
+                      type="date"
+                      name="prodOrderDate"
+                      id="prodOrderDate"
+                    />
+                    <br />
+                    <label for="prodName">商品名稱： </label>
+                    <input type="text" name="prodName" id="prodName" />
+                    <label for="prodOderDeliverTime">出貨時間：</label>
+                    <input
+                      type="date"
+                      name="prodOderDeliverTime"
+                      id="prodOderDeliverTime"
+                    />
+                    <input type="submit" value="訂單查詢" />
+                  </form>
+                  <div>
+                    _______________________________________________________________________________________________________________________
+                  </div>
+                  <table class="orderList">
+                    <tr>
+                      <th>訂單編號</th>
+                      <th>訂單狀態</th>
+                      <th>訂單時間</th>
+                      <th>出貨時間</th>
+                      <th>修改訂單</th>
+                    </tr>
+                    <tr>
+                      <td>from table: prodOrder</td>
+                      <td>from table: prodOrder</td>
+                      <td>from table: prodOrder</td>
+                      <td>from table: prodOrder</td>
+                      <td>
+                        <a
+                          href="http://127.0.0.1:5500/restaurantbackend_orderdetail.html"
+                          >修改</a
+                        >
+                      </td>
+                    </tr>
+                  </table>
+                </div>
               </div>
-              <!-- form拉掉，改用div包並命名class為form -->
-              <div class="form">
-                <!-- class="form-control" 意思是點擊後顯示效果-->
-                <input
-                  id="mail"
-                  type="email"
-                  class="form-control"
-                  placeholder="請輸入email"
-                  required="required"
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                />
-                <!-- <input type="text" placeholder="請輸入密碼" /> -->
-                <!-- <div class="form-floating"> -->
-                <input
-                  id="memberPassword"
-                  type="password"
-                  class="form-control"
-                  placeholder="請輸入密碼，長度須介於6~12字元"
-                />
-                <!-- 進階邏輯 
-                  placeholder="設定密碼格式:含英數至少六個字元"
-                  pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$"
-                  required="required"
-                  oninput="setCustomValidity('');"
-                  oninvalid="setCustomValidity('請輸入正確的密碼格式:含英數至少六個字元');"
-                -->
-                <label for="memberPassword"
-                  ><i id="checkEye" class="fas fa-eye-slash"></i
-                ></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="請輸入驗證碼"
-                />
-
-                <button class="site-btn">登入</button>
-              </div>
-              <div class="mod clearfix">
-                <!-- <input type="checkbox" value="remember-me" />記住我 -->
-                <ul class="member_m03">
-                  <li class="li_right">
-                    還不是會員?
-                    <a href="./j_registration.html" target="_blank">加入會員</a>
-                  </li>
-                  <li class="li_left">
-                    <a href="./j_forgetpassword.html">忘記密碼</a>
-                  </li>
-                </ul>
-              </div>
-              <!-- </div>
-               <ul class="mod member_m03 clearfix">
-                <li class="li_left"><a href="/member/forgot" target="_blank">忘記帳號密碼</a></li>
-                <li class="li_right">還不是會員? <a href="/member/join_step1?url=https%3A%2F%2Fmyaccount.books.com.tw%2F%2F%3Fid%3D5cda64e47bf9785da8d12d414f7f23c3" target="_blank">加入會員</a></li>
-               </ul>
-             </div> -->
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- 會員登入 結束 -->
+
+    <!-- Class Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
@@ -406,40 +383,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-
-    <script>
-      // 密碼切換遮蔽顯示
-      $("#checkEye").click(function () {
-        if ($(this).hasClass("fa-eye-slash")) {
-          $("#memberPassword").attr("type", "text");
-        } else {
-          $("#memberPassword").attr("type", "password");
-        }
-        $(this).toggleClass("fa-eye").toggleClass("fa-eye-slash");
-      });
-
-      const mail = document.querySelector("#mail");
-      const memberPassword = document.querySelector("#memberPassword");
-      document.querySelector("button").addEventListener("click", () => {
-        fetch("../member/login", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            mail: mail.value,
-            memberPassword: memberPassword.value,
-          }),
-        })
-          .then((resp) => resp.json())
-          .then((body) => {
-            if (body.successful) {
-              location = "j_welcome_login1.html";
-            } else {
-              alert(body.message);
-            }
-          });
-      });
-    </script>
+    <script src="js/reservation.js"></script>
+    <script src="js/alice.js"></script>
   </body>
 </html>
