@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Date;
 @Data
 @NoArgsConstructor
@@ -14,13 +15,14 @@ public class AdOrderRequest {
     @NotNull
     private Integer restaurantNo;
     private Integer adminNo;
-    @Future
+//    @NotNull
     private Date adStartTime;
-    @Future
+//    @NotNull
     private Date adEndTime;
     private Boolean verified;
     private String verificationDetail;
     @NotNull
     private Integer adOrderPrice;
     private byte[] slideshowPic;
+    private ArrayList<String> slideshowPicBase64;
 }
