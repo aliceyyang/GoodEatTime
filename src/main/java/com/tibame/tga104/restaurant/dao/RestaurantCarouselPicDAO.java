@@ -8,8 +8,6 @@ public interface RestaurantCarouselPicDAO {
 	
 	public boolean insert(RestaurantCarouselPicVO restaurantCarouselPicVO);
 	
-	public boolean update(RestaurantCarouselPicVO restaurantCarouselPicVO);
-	
 	public boolean delete(Integer carouselPicNo);
 	
 	public List<RestaurantCarouselPicVO> findByRestaurantNo(Integer restaurantNo);

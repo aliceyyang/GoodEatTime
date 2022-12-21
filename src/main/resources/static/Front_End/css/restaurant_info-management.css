@@ -3,10 +3,6 @@ div.restaurant_info{
     height: 700px;
 }
 
-div.pic_set{
-    width: 400px;
-    height: 700px;
-}
 
 .btns{
   font-size: 14px;
@@ -21,11 +17,67 @@ div.pic_set{
   text-align:center;
 }
 
-/* ==========輪播圖設定=========== */
+h4 {
+  color: rgb(42, 39, 39);
+}
+/* 
+div.pic_set{
+    width: 400px;
+    height: 700px;
+} */
+
+
+/* ==========編輯已上傳的圖片=========== */
+
+#carousel_uploaded{
+  margin-right: 6%;
+}
+
+.uploaded_pic{
+  position: relative;
+  border: 1px dashed gray;
+  width: 180px;
+  height: 100px;
+  float:right;
+  margin-right: 14%;
+  margin: 10px;
+}
+
+.uploaded_pic img{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.uploaded_pic:hover{
+  opacity:0.5;
+  cursor: pointer;
+}
+
+.delete_btn {
+  position: absolute;
+  top: 22%;
+  right: 38%;
+  font-size: 2.5em;
+  font-weight: bold;
+  text-shadow: 3px 3px 7px white;
+  text-align:center;
+  opacity: 0;
+}
+
+.uploaded_pic:hover .delete_btn {
+  opacity: 1;
+  background-color: transparent
+}
+
+
+
+
+/* ==========拖曳區+預覽圖處理=========== */
 
       #drop_zone {
         border: 1px dashed #ccc;
-        width: 120px;
+        width: 300px;
         min-height: 150px;
         position: relative;
       }
@@ -33,11 +85,11 @@ div.pic_set{
       #drop_zone span.text {
         position: absolute;
         display: inline-block;
-        left: 55%;
+        left: 52%;
         top: 50%;
         transform: translate(-50%, -50%);
-        color: lightgray;
-        width: 100px;
+        color: rgb(126, 126, 126);
+        width: 160px;
       }
       #drop_zone.-on {
         border: 1px dashed rgb(200, 194, 194);
@@ -54,7 +106,7 @@ div.pic_set{
 
       #drop_zone2 {
         border: 1px dashed #ccc;
-        width: 120px;
+        width: 300px;
         min-height: 150px;
         position: relative;
       }
@@ -62,10 +114,10 @@ div.pic_set{
       #drop_zone2 span.text {
         position: absolute;
         display: inline-block;
-        left: 65%;
+        left: 55%;
         top: 50%;
         transform: translate(-50%, -50%);
-        color: lightgray;
+        color: rgb(126, 126, 126);
         width: 100px;
       }
       #drop_zone2.-on {
@@ -78,13 +130,67 @@ div.pic_set{
         width:300px;
         height:100px;
         resize: none;
+        margin-left: 15%
       }
 
-      /* ==========貼文圖設定=========== */
+
+
+    /* ==========編輯已上傳的貼文=========== */
+
+      #editing{
+        display: none;
+      }
+
+      #editing.-on{
+        display: inline-block;
+      }
+
+      #post_uploaded{
+        float: right;
+        width: 500px;
+      }
+
+      .uploaded_restaurantPost{
+        background-color: #fee192;
+        width: 444.19px;
+        display: inline-block;
+        padding:15px;
+        margin-top: 20px;
+      }
+
+      .uploaded_restaurantPost:hover{
+        background-color: #f5ca53;
+      }
+
+      .uploaded_restaurantPost >span{
+        font-weight: bold;
+        font-size: larger;
+      }
+
+      .uploaded_restaurantPost > a {
+        border: 1px solid gray;
+        float:right;
+        padding: 3px;
+        margin-right: 2px;
+        background-color: white;
+        font-weight: bolder;
+      }
+
+      .uploaded_restaurantPost > a:hover{
+        background-color: #FFEFDE;
+        cursor: pointer;
+      }
+
+     
+
+
+      
+
+    /* ==========拖曳區+預覽圖處理=========== */
 
       #drop_zone3 {
         border: 1px dashed #ccc;
-        width: 120px;
+        width: 300px;
         min-height: 150px;
         position: relative;
       }
@@ -92,10 +198,10 @@ div.pic_set{
       #drop_zone3 span.text {
         position: absolute;
         display: inline-block;
-        left: 65%;
+        left: 55%;
         top: 50%;
         transform: translate(-50%, -50%);
-        color: lightgray;
+        color: rgb(126, 126, 126);
         width: 100px;
       }
       #drop_zone3.-on {
@@ -105,12 +211,18 @@ div.pic_set{
 
       #news_btn{
         position:absolute;
-        bottom:200px;
-        right:30%;
+        bottom:100px;
+        left:7%;
       }
 
       #news_btn > button{
         width:240px
+      }
+
+      #content{
+        resize: none;
+        width:380px ; 
+        height:300px;
       }
 
       /* =============頁籤切換============ */
@@ -170,20 +282,23 @@ div.pic_set{
       }
       
       
-      form div {
+      /* form div {
         margin-bottom: 10px;
       }
-      
+       */
       
       .error {
-        color: red;
-        font-weight: bold;
+        color: rgb(255, 85, 0);
       }
       
       
       
       label.error {
         display: inline;
+        width: auto;
+        position: absolute;
+        right: 30%;
+        padding-top: 13px;
       }
       
       

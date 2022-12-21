@@ -34,22 +34,25 @@ $(document).ready(function () {
           // console.log(row.reserveDate);
           // console.log(type);
           // console.log(status);
-          console.log(new Date());
-          console.log(new Date(row.reserveDate) != new Date());
+          const today = new Date();
+          // console.log(today.toLocaleDateString());
+          const reserveDate = new Date(row.reserveDate);
+          // console.log(reserveDate.toLocaleDateString());
+          // console.log(
+          //   today.toLocaleDateString() > reserveDate.toLocaleDateString() ||
+          //     today.toLocaleDateString() < reserveDate.toLocaleDateString()
+          // );
           if (
-            new Date(row.reserveDate) > new Date() ||
-            new Date(row.reserveDate) < new Date()
+            today.toLocaleDateString() > reserveDate.toLocaleDateString() ||
+            today.toLocaleDateString() < reserveDate.toLocaleDateString()
           ) {
             return status;
           } else {
             return `
-            <div class="onoffswitch">
-              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" onchange="change(${row.reserveNo})">
-              <label class="onoffswitch-label" for="myonoffswitch">
-                <span class="onoffswitch-inner"></span>
-                <span class="onoffswitch-switch"></span>
-              </label>
-            </div>`;
+            <input type="checkbox" id="switch"/>
+            <label for="switch" class="switchLabel">
+                <span class="switch-txt" turnOn="報到成功" turnOff="未報到"></span>
+            </label>`;
           }
         },
       },
@@ -286,12 +289,25 @@ $(document).ready(function () {
 });
 
 function change(reserveNo) {
-  alert(reserveNo);
-  document
-    .querySelector("#myonoffswitch")
-    .addEventListener("change", function () {
-      console.log("aaa");
-    });
+  // console.log(reserveNo);
+  var isChecked = $(`#switch${reserveNo}`).is(":checked");
+  var selectedData;
+  var $switchLabel = $(".switch-label");
+  console.log("isChecked: " + isChecked);
+
+  if (isChecked) {
+    selectedData = $switchLabel.attr("data-on");
+  } else {
+    selectedData = $switchLabel.attr("data-off");
+  }
+  console.log("Selected data: " + selectedData);
+
+  // $.ajax({
+  //   url: "../reservation/restaurant/statusUpdate",
+  //   type: "POST",
+  //   dataType: "json",
+  //   data: { reserveNo: reserveNo, reserveStatus: aa },
+  // });
 }
 
 // 開關取值
