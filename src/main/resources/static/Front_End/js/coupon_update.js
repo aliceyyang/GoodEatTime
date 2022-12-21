@@ -60,21 +60,20 @@ function Template({couponNo, couponApplyDate, couponStartTime, couponEndTime, co
   <div class="class__sidebar col-lg-6" style="width:50% ; margin: 0px auto ;float: left;">
     <form>
         <h4>優惠券編號 : ${couponNo}</h4>
-        <span>優惠券名稱 :<input type="text" value="${couponName}" placeholder="${couponName}" id="couponName"></span>
-        <span>活動開始時間 :<input type="date" value="${couponStartTime}" placeholder="${couponStartTime}" id="couponStartTime"></span>
-        <span>活動結束時間 :<input type="date" value="${couponEndTime}" placeholder="${couponEndTime}" id="couponEndTime"></span>
-        <span>訂單金額滿多少可以使用 :<input type="text" value="${usageLimitation}" placeholder="${usageLimitation}" id="usageLimitation"></span>
-        <span>金額 / 折數 :<input type="text" value="${amountOrFold}" placeholder="${amountOrFold}" id="amountOrFold"></span>
-        <span>種類: 折價 / 打折 :<input type="text" value="${couponType}" placeholder="${couponType}" disabled="true"></span>
-        <label>折價<input type="radio" value="true" name="couponType" id="amount" checked></label>
+        <span>優惠券名稱 :<input type="text" value="${couponName}" placeholder="${couponName}" id="couponName" required></span>
+        <span>活動開始時間 :<input type="date" value="${couponStartTime}" placeholder="${couponStartTime}" id="couponStartTime" required></span>
+        <span>活動結束時間 :<input type="date" value="${couponEndTime}" placeholder="${couponEndTime}" id="couponEndTime" required></span>
+        <span>訂單金額滿多少可以使用 :<input type="text" value="${usageLimitation}" placeholder="${usageLimitation}" id="usageLimitation" required></span>
+        <span>金額 / 折數 :<input type="text" value="${amountOrFold}" placeholder="${amountOrFold}" id="amountOrFold" required></span>
+        <label>折價<input type="radio" value="true" name="couponType" id="amount" checked ></label>
         <label>打折<input type="radio" value="false"  id="Fold" name="couponType"></label>
-        <p>發行張數上限 :<input type="text" value="${maxIssueQty}" placeholder="${maxIssueQty}" id="maxIssueQty"></p>
+        <p>發行張數上限 :<input type="text" value="${maxIssueQty}" placeholder="${maxIssueQty}" id="maxIssueQty" required></p>
         <span>已發行張數 :${issuedQty}</span>  
       </form>
     </div>
     <div class="class__sidebar col-lg-6" style="width:50% ; margin: 0px auto; float: right;">
       <form>
-        <span>優惠券說明內容 :<textarea id="couponContent" style="width:450px ; height:300px" placeholder="${couponContent}"></textarea></span>
+        <span>優惠券說明內容 :<textarea id="couponContent" style="width:450px ; height:300px" placeholder="${couponContent}" required></textarea></span>
         <p>現有圖片 :</p>
         <img class="updatePic" src="${picUrl}">
         <div class="preview">
