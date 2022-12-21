@@ -57,7 +57,7 @@ function Template({couponNo, couponApplyDate, couponStartTime, couponEndTime, co
   const picUrl = getPicUrl(couponPicStr);
   return `
   <h3>資料設定</h3>
-  <div class="class__sidebar col-lg-6" style="width:50% ; margin: 0px auto ;float: left;">
+  <div class="class__sidebar col-lg-6" style="width: 50%; min-height: 755px; margin: 0px auto; float: left">
     <form>
         <h4>優惠券編號 : ${couponNo}</h4>
         <span>優惠券名稱 :<input type="text" value="${couponName}" placeholder="${couponName}" id="couponName"></span>
@@ -70,18 +70,23 @@ function Template({couponNo, couponApplyDate, couponStartTime, couponEndTime, co
         <label>打折<input type="radio" value="false"  id="Fold" name="couponType"></label>  
       </form>
     </div>
-    <div class="class__sidebar col-lg-6" style="width:50% ; margin: 0px auto; float: right;">
+    <div class="class__sidebar col-lg-6" style="width: 50%; min-height: 755px; margin: 0px auto; float: right">
       <form>
         <p>發行張數上限 :<input type="text" value="${maxIssueQty}" placeholder="${maxIssueQty}" id="maxIssueQty"></p>
         <span>已發行張數 :${issuedQty}</span>
-        <span>優惠券說明內容 :<textarea id="couponContent" style="width:450px ; height:121px" placeholder="${couponContent}"></textarea></span>
-        <p>現有圖片 :</p>
-        <img class="updatePic" src="${picUrl}">
-        <div class="preview">
-          <img id="news_file_preview">
-          <label id="updatePicdata" for="news_file">上傳圖片</label>
-          <input type="file" id="news_file" accept="image/*" onchange="showPreview(event);/>
-        </div>
+        <span>優惠券說明內容 :<textarea id="couponContent" style="resize: none; width:450px ; height:121px" placeholder="${couponContent}"></textarea></span>
+        <div class="wrapper">
+          <div id="first">
+              <p>現有圖片 :</p>
+              <img class="updatePic" src="${picUrl}">
+          </div>
+            <div id="second">
+              <p>上傳圖片 :</p>
+              <img id="news_file_preview" style="width: 150px; height: 150px; display:block;">
+              <label id="updatePicdata" for="news_file">上傳圖片</label>
+              <input type="file" id="news_file" accept="image/*" onchange="showPreview(event);">
+            </div>
+          </div>
       </form>
       <label id="updata" for="confirmbtn"></label>
       <button type="button" id="confirmbtn" onclick="onConfirmClick()">確認</button>
