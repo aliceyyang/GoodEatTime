@@ -30,7 +30,7 @@ public class MemberCouponDAOHibernate implements MemberCouponDAO {
 	}
 
 	@Override
-	public MemberCouponVO select(Integer memberNo) {
+	public MemberCouponVO selectByMemberNo(Integer memberNo) {
 		if (memberNo != null) {
 			return this.getSession().get(MemberCouponVO.class, memberNo);
 		}

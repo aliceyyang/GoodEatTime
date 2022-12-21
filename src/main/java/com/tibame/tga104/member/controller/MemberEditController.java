@@ -20,7 +20,7 @@ public class MemberEditController {
 //會員資料
 	@GetMapping("/info")
 	public MemberVO info(@SessionAttribute(required = false) MemberVO memberVO) {
-		// 從seesion看當前會員
+		// 從session看當前會員
 		if (memberVO == null) {
 			memberVO = new MemberVO();
 			memberVO.setMessage("查無會員資訊");

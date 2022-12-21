@@ -237,3 +237,177 @@ newsrst__slider
   color: #444444;
   font-size: 14px;
 }
+
+.categories h2 {
+  margin-top: 10px;
+  font-size: 46px;
+  color: #111111;
+  line-height: 60px;
+  font-weight: 700;
+  font-style: italic;
+  font-family: "Playfair Display", serif;
+  text-align: center;
+}
+
+/*---------------------
+NewRestaurant__slider
+-----------------------*/
+.NewRestaurant__slider {
+
+  padding-top: 90px;
+  padding-bottom: 70px;
+}
+
+.NewRestaurant__slider .col-lg-6 {
+  max-width: 100%;
+}
+.NewRestaurant__slider.owl-carousel .owl-dots {
+  text-align: center;
+  padding-top: 35px;
+}
+.NewRestaurant__slider.owl-carousel .owl-dots button {
+  height: 10px;
+  width: 10px;
+  background: rgba(17, 17, 17, 0.1);
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.NewRestaurant__slider.owl-carousel .owl-dots button.active {
+  background: rgba(17, 17, 17, 0.5);
+}
+.NewRestaurant__slider.owl-carousel .owl-dots button:last-child {
+  margin-right: 0;
+}
+
+.NewRestaurant__item {
+  background: #ffffff;
+  position: relative;
+  
+}
+.NewRestaurant__item .rating {
+  position: absolute;
+  right: 50px;
+  top: 60px;
+}
+.NewRestaurant__item .rating span {
+  font-size: 14px;
+  color: #f0c656;
+  margin-right: -5px;
+  display: inline-block;
+}
+.NewRestaurant__item p {
+  color: #111111;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.NewRestaurant__author {
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.NewRestaurant__author__pic {
+  float: left;
+  margin-right: 26px;
+  height: 30%;
+  width: 30%;
+}
+.NewRestaurant__author__pic img {
+  height: 100px;
+  width: 100px;
+}
+
+.NewRestaurant__author__text {
+  overflow: hidden;
+  padding-top: 12px;
+}
+.NewRestaurant__author__text h5 {
+  color: #111111;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.NewRestaurant__author__text span {
+  color: #444444;
+  font-size: 14px;
+}
+
+/*---------------------
+  Coupon
+-----------------------*/
+.coupon__slider {
+  padding: 0 15px;
+}
+.coupon__slider.owl-carousel .owl-stage-outer {
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(240, 135, 50, 0.5);
+}
+.coupon__slider.owl-carousel .owl-nav button {
+  font-size: 36px;
+  color: #888888;
+  position: absolute;
+  left: -60px;
+  top: 35%;
+}
+.coupon__slider.owl-carousel .owl-nav button.owl-next {
+  left: auto;
+  right: -60px;
+}
+
+.coupon__item {
+  -webkit-transition: all, 0.3s;
+  -o-transition: all, 0.3s;
+  transition: all, 0.3s;
+  height: auto;
+  width: 190px;
+  padding-top: 25px;
+  position: relative;
+}
+.coupon__item:after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: -48px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #f08632;
+  border-color: transparent #f08632 #f08632 transparent;
+  content: "";
+  -webkit-transform: rotate(-135deg);
+      -ms-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+  opacity: 0;
+  -webkit-transition: all, 0.3s;
+  -o-transition: all, 0.3s;
+  transition: all, 0.3s;
+}
+.coupon__item:hover {
+  opacity: 1;
+  transform: scale(0.9);
+}
+.coupon__item:hover:after {
+  opacity: 1;
+}
+.coupon__item:hover span {
+  color: #ffffff;
+}
+.coupon__item:hover h5 {
+  color: #ffffff;
+}
+
+.coupon__item__icon span {
+  color: #f08632;
+  -webkit-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
+}
+.coupon__item__icon h5 {
+  color: #111111;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 4px;
+  -webkit-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
+}
