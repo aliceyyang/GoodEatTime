@@ -73,7 +73,7 @@ public class ReserveTimeDaoImpl implements ReserveTimeDao {
 	}
 
 	@Override
-	public List<ReserveTimeVO> findbyrestaurantNOandWeekDay(Integer restaurantNo, Integer weekDay) {
+	public List<ReserveTimeVO> findByRestaurantNOandWeekDay(Integer restaurantNo, Integer weekDay) {
 		Query<ReserveTimeVO> query = getSession().createQuery("from ReserveTimeVO where restaurantNo = :restaurantNo and weekDay = :weekDay", ReserveTimeVO.class);
 		query.setParameter("restaurantNo", restaurantNo);
 		query.setParameter("weekDay", weekDay);
@@ -82,10 +82,10 @@ public class ReserveTimeDaoImpl implements ReserveTimeDao {
 	}
 
 	@Override
-	public List<ReserveTimeVO> findbyrestaurantNo(Integer restaurantNo) {
-			Query<ReserveTimeVO> query = getSession().createQuery("from ReserveTimeVO where restaurantNo = :restaurantNo", ReserveTimeVO.class);
+	public List<Integer> findByRestaurantNo(Integer restaurantNo) {
+			Query<Integer> query = getSession().createQuery("select distinct weekDay from ReserveTimeVO where restaurantNo = :restaurantNo", Integer.class);
 			query.setParameter("restaurantNo", restaurantNo);
-			List<ReserveTimeVO> reserveTimeVO = query.list();
+			List<Integer> reserveTimeVO = query.list();
 			return reserveTimeVO;
 	}
 

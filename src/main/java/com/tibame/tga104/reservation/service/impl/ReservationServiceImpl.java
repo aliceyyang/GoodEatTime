@@ -64,26 +64,20 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public boolean changeStatus(ReservationVO vo) {
-		if(vo.getReserveNo() != null) {
-			return dao.updateStatus(vo.getReserveNo(), vo.getReserveStatus());
+	public boolean changeStatus(Integer reserveNo,String reserveStatus) {
+		if(reserveNo != null) {
+			return dao.updateStatus(reserveNo, reserveStatus);
 		}
 		return false;
 	}
 	
 	@Override
-	public List<ReservationVO> selectNotNullComment() {
-		return dao.getNotNullComment();
+	public boolean reservation(ReservationVO reservationVO) {
+		if(reservationVO != null) {
+			dao.insert(reservationVO);
+			return true;
+		}
+		return false;
 	}
 	
-	@Override
-	public List<ReservationVO> selectNullComment(){
-		return dao.getNullComment();
-	}
-	
-	@Override
-	public ReservationVO updateRestaurantComment(ReservationVO reservationVO){
-		return dao.updateCommnet(reservationVO);
-		
-	}
 }

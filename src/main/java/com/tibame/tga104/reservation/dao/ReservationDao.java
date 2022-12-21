@@ -29,9 +29,4 @@ public interface ReservationDao {
 	
 	public List<RestaurantReservationInfVO> findbyResveDate(Integer restaurantNo, java.sql.Date reserveDate);
 	
-	List<ReservationVO> getNotNullComment();
-
-	List<ReservationVO> getNullComment();
-
-	ReservationVO updateCommnet(ReservationVO reservationVO);
 }
