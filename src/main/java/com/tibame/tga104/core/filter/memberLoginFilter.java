@@ -27,7 +27,7 @@ public class memberLoginFilter extends HttpFilter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest) request).getSession();
-		MemberVO membervo = (MemberVO)session.getAttribute("membervo");
+		MemberVO membervo = (MemberVO)session.getAttribute("memberVO");
 		
 		//判斷有無會員登入
 		if(membervo != null) {

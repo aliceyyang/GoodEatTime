@@ -32,7 +32,7 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return null;
 	}
-	//查詢是否有此會員帳號存在
+	//查詢是否有此會員帳號存在+忘記密碼
 	@Override
 	public MemberVO selectBymail(String mail) {
 		//Select * from member where mail = ?
@@ -68,6 +68,9 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	
 	
+	
+	
+//===============修改會員資料===============
 	//先select
 	@Override
 	public MemberVO selectByMemberNo(Integer memberNo) {
@@ -76,9 +79,6 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return null;
 	}
-	
-	
-//===============修改會員資料===============
 	
 	@Override
 	public int update(MemberVO memberVO) {

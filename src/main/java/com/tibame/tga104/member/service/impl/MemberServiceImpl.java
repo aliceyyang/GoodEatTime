@@ -129,4 +129,13 @@ public class MemberServiceImpl implements MemberService {
 		return dao.update(memberVO) > 0;
 	}
 
+//===============忘記密碼===============
+	@Override
+	public MemberVO forgotPassWord(MemberVO memberVO) {
+//		String mail = memberVO.getMemberPassword();
+		MemberVO mailRessult = dao.selectBymail(memberVO.getMail());
+		
+		return mailRessult;
+	}
+
 }

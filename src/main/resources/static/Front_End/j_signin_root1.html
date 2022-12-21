@@ -335,7 +335,7 @@
       const checkPassword = document.querySelector("#checkPassword");
       document.querySelector("button").addEventListener("click", () => {
         // fetch(url, {
-        fetch("http://localhost:8080/GoodEatTime/AdminLoginServlet", {
+        fetch("../AdminLoginServlet", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
