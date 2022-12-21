@@ -1,9 +1,14 @@
 package com.tibame.tga104.order.service;
 
 import com.tibame.tga104.order.dao.AdOrderDAO;
+import com.tibame.tga104.order.dto.AdOrderRequest;
 import com.tibame.tga104.order.vo.AdOrder;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -13,13 +18,17 @@ public class AdOrderServiceImpl implements AdOrderService {
     private AdOrderDAO adOrderDAO;
 
     @Override
-    public Integer createAdOrder(AdOrder adOrder) {
-        return adOrderDAO.createAdOrder(adOrder);
+    public Integer createAdOrder(AdOrderRequest adOrderRequest) {
+        if (adOrderRequest.getSlideshowPicBase64() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        } else {
+            return adOrderDAO.createAdOrder(adOrderRequest);
+        }
     }
 
     @Override
-    public void updateAdOrder(Integer adOrderNo, AdOrder adOrder) {
-        adOrderDAO.updateAdOrder(adOrderNo, adOrder);
+    public void updateAdOrder(Integer adOrderNo, AdOrderRequest adOrderRequest) {
+        adOrderDAO.updateAdOrder(adOrderNo, adOrderRequest);
     }
 
     @Override
@@ -33,12 +42,21 @@ public class AdOrderServiceImpl implements AdOrderService {
     }
 
     @Override
-    public AdOrder getByRestaurantNo(Integer restaurantNo) {
+    public List<AdOrder> getByRestaurantNo(Integer restaurantNo) {
         return adOrderDAO.getByRestaurantNo(restaurantNo);
     }
 
     @Override
     public List<AdOrder> getByAll() {
-        return adOrderDAO.getByAll();
+        var data = adOrderDAO.getByAll();
+
+//        for (AdOrder adOrder : data) {
+//            if(adOrder.getSlideshowPic() !=null){
+//                String baseStr = Base64.encodeBase64String(adOrder.getSlideshowPic());
+//                adOrder.setSlideshowPicStr(baseStr);
+//            }
+//        }
+
+        return data;
     }
 }
