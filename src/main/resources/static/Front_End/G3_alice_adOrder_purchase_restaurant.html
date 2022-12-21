@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="member_reservation" />
+  <meta name="keywords" content="Cake, unica, creative, html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Restaurant | AdOrder </title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
+  <link rel="stylesheet" href="css/barfiller.css" type="text/css" />
+  <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/nice-select.css" type="text/css" />
+  <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
+  <link rel="stylesheet" href="css/reservation.css" type="text/css" />
+  <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
+</head>
+<style>
+  /*預覽圖CSS*/
+  .nice-select {
+    width: 100%;
+  }
+
+  #picture__input {
+    display: none;
+  }
+
+  .picture {
+    width: 400px;
+    aspect-ratio: 16/9;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border: 2px dashed currentcolor;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    outline: none;
+    overflow: hidden;
+  }
+
+  .picture:hover {
+    color: #777;
+    background: #ccc;
+  }
+
+  .picture:active {
+    border-color: turquoise;
+    color: turquoise;
+    background: #eee;
+  }
+
+  .picture:focus {
+    color: #777;
+    background: #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .picture__img {
+    max-width: 100%;
+  }
+</style>
+
+<body>
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Offcanvas Menu Begin -->
+  <div class="offcanvas-menu-overlay"></div>
+  <div class="offcanvas-menu-wrapper">
+    <div class="offcanvas__cart">
+      <div class="offcanvas__cart__links">
+        <a href="#" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
+        <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+      </div>
+      <div class="offcanvas__cart__item">
+        <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
+        <div class="cart__price">Cart: <span>$0.00</span></div>
+      </div>
+    </div>
+    <div class="offcanvas__logo">
+      <a href="./GoodEatTime.html"><img class="GoodEatTimelogo" src="/img/GoodEatTime_smlogo.png" alt="" /></a>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+    <div class="offcanvas__option">
+      <ul>
+        <li>
+          USD <span class="arrow_carrot-down"></span>
+          <ul>
+            <li>EUR</li>
+            <li>USD</li>
+          </ul>
+        </li>
+        <li>
+          ENG <span class="arrow_carrot-down"></span>
+          <ul>
+            <li>Spanish</li>
+            <li>ENG</li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Sign in</a> <span class="arrow_carrot-down"></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Offcanvas Menu End -->
+
+  <!-- Header Section Begin -->
+  <header class="header">
+    <div class="header__top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="header__top__inner">
+              <div class="header__top__left">
+                <ul>
+                  <li>
+                    <img class="login_icon" src="./img/Login_icon.png" /><a class="login_text" href="#">登入</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="header__logo">
+                <a href="./GoodEatTime.html"><img class="goodeattime_logo" src="img/GoodEatTime_logoright.png"
+                    alt="" /></a>
+              </div>
+              <div class="header__top__right">
+                <div class="header__top__right__links">
+                  <a href="" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
+                  <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+                </div>
+                <div class="header__top__right__cart">
+                  <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
+                  <div class="cart__price">Cart: <span>$0.00</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="canvas__open"><i class="fa fa-bars"></i></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <nav class="header__menu mobile-menu">
+            <ul>
+              <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
+              <li><a href="./about.html">會員專區</a></li>
+              <li><a href="./shop.html">餐廳</a></li>
+              <li><a href="./blog.html">線上商城</a></li>
+              <li>
+                <a href="#">關於我們</a>
+                <ul class="dropdown">
+                  <li><a href="./shop-details.html">Shop Details</a></li>
+                  <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                  <li><a href="./checkout.html">Check Out</a></li>
+                  <li><a href="./wisslist.html">Wisslist</a></li>
+                  <li><a href="./Class.html">Class</a></li>
+                  <li><a href="./blog-details.html">Blog Details</a></li>
+                </ul>
+              </li>
+              <li><a href="./contact.html">地點搜尋</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Header Section End -->
+
+  <!-- Class Section Begin -->
+  <section class="class">
+    <!-- <div class="container"> -->
+    <div class="row" id="member">
+      <!-- <div class="col-lg-2" id="left"> -->
+      <div class="col-lg-2" id="left">
+        <nav class="header__menu mobile-menu" id="aaa">
+          <ul>
+            <li class=""><a href="#">餐廳會員首頁</a></li>
+            <li class=""><a href="">餐廳資訊</a></li>
+            <li class=""><a href="">訂單管理</a></li>
+            <li class=""><a href="">訂位管理</a></li>
+            <li class=""><a href="">評論管理</a></li>
+            <li class=""><a href="">折價券設定</a></li>
+            <li class=""><a href="">餐點資料設定</a></li>
+            <li class=""><a href="">權限設定</a></li>
+            <li class=""><a href="">銷售報表</a></li>
+            <li class=""><a href="">購買廣告</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-lg-10">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <!-- <p style="background-color:aqua">還沒抓餐廳編號、點選提交綁定POST</p> -->
+            <div class="container">
+              <form action="" method="POST">
+                <div class="row">
+                  <div class="col">
+                    <br>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <label class="profile_details_text">餐廳編號</label>
+                          <input type="" name="account" class="form-control"
+                            value="正常不會知道自己編號，但當初table沒設帳號欄位，可能要join餐廳table把帳號加進來，或乾脆就算了^_^">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px;">
+                        <div class="form-group">
+                          <label class="profile_details_text">廣告投放時長</label>
+                          <!-- <input type="" name="" class="form-control" value="" required> -->
+                          <select required="true" name="ad_purchase_period" id="purchase_period"">
+                            <option>請選擇方案</option>
+                            <option value=" 7">購買一周</option>
+                            <option value="30">購買一個月</option>
+                            <option value="90">購買一季</option>
+                            <option value="365">購買一年</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <label for="ad_start" class="profile_details_text">廣告開始時間</label>
+                          <input class="form-control" type="date" id="ad_start" name="ad-start" value="" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <label for="ad_end" class="profile_details_text">廣告結束時間</label>
+                          <input class="form-control" type="date" id="ad_end" name="ad-end" value="" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <label class="profile_details_text"><span class="total_ad_amount">本次投放價格<span></span></label>
+                          <input type="text" id="total_ad_amount" name="name" class="form-control" value="" disabled>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col"><br>
+                    <div class="row">
+                      <div class="form-group">
+                        <label class="profile_details_text">跑馬燈圖片上傳</label>
+                        <label class="picture" for="picture__input" tabIndex="0">
+                          <span class="picture__image"></span>
+                        </label>
+                        <input type="file" name="picture__input" id="picture__input">
+                      </div>
+                      <!-- <div class="row"> -->
+                      <div class="col-lg-8 submit">
+                        <div class="form-group" style="align-items: center; display: grid;justify-content:right;">
+                          <input type="button" id="submit_btn" class="submit_btn" value="提交"
+                            style="border: 0px; width: 150px; padding:7px; border-radius: 8px; box-shadow: 5px 5px 2px #FFD382; text-align: center;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <tbody id="reserve">
+    </tbody>
+
+  </section>
+
+  <!-- Class Section End -->
+
+  <!-- Footer Section Begin -->
+  <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
+    <!-- <button type="button" id="BackTop"></button> -->
+    <div class="mask">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="footer__member">
+              <h6>會員專區</h6>
+              <div class="footer__social">
+                <a href="#">登入會員<i></i></a>
+                <a href="#">訂位管理<i></i></a>
+                <br />
+                <a href="#">加入會員<i></i></a>
+                <a href="#">定位管理<i></i></a>
+                <br />
+                <a href="#">優惠券<i></i></a>
+                <a href="#">我的評論<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="footer__restaurant">
+              <h6>餐廳</h6>
+              <div class="footer__social">
+                <a href="#">訂位<i></i></a>
+                <br />
+                <a href="#">購物車<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="footer__shopping">
+              <h6>線上商城</h6>
+              <div class="footer__social">
+                <a href="#">商品搜尋<i></i></a>
+                <br />
+                <a href="#">購物車<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="footer__aboutus">
+              <h6>關於我們</h6>
+              <div class="footer__social">
+                <a href="#">網站介紹<i></i></a>
+                <br />
+                <a href="#">履歷<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-9 col-sm-12">
+            <div class="footer__widget">
+              <h6>好食光</h6>
+              <ul>
+                <li>指導老師：</li>
+                <li>吳永志老師 | 吳冠宏老師</li>
+                <li>張互賓老師 | 郭惠民老師</li>
+                <li>陳怡榕老師 | 馬全德老師</li>
+                <li>組員 :</li>
+                <li>陳宜瀅 | 張家銘 | 楊婕妤</li>
+                <li>游育碩 | 黃郁婕 | 李佳欣 | 余可凡</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <p class="copyright__text text-white">
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              All rights reserved | This template is made with
+              <i class="fa fa-heart" aria-hidden="true"></i> by
+              <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+          <div class="col-lg-5">
+            <div class="copyright__widget">
+              <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Site Map</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer Section End -->
+
+  <!-- Search Begin -->
+  <div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+      <div class="search-close-switch">+</div>
+      <form class="search-model-form">
+        <input type="text" id="search-input" placeholder="Search here....." />
+      </form>
+    </div>
+  </div>
+  <!-- Search End -->
+
+  <!-- Js Plugins -->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.nice-select.min.js"></script>
+  <script src="js/jquery.barfiller.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.nicescroll.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/reservation.js"></script>
+  <!-- <script src="js/alice.js"></script> -->
+  <script> // 預覽圖片
+    const inputFile = document.querySelector("#picture__input");
+    const pictureImage = document.querySelector(".picture__image");
+    const pictureImageTxt = "選擇一張廣告跑馬燈圖片";
+    pictureImage.innerHTML = pictureImageTxt;
+
+    inputFile.addEventListener("change", function (e) {
+      const inputTarget = e.target;
+      const file = inputTarget.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        reader.addEventListener("load", function (e) {
+          const readerTarget = e.target;
+
+          const img = document.createElement("img");
+          img.src = readerTarget.result;
+          img.classList.add("picture__img");
+
+          pictureImage.innerHTML = "";
+          pictureImage.appendChild(img);
+        });
+
+        reader.readAsDataURL(file);
+      } else {
+        pictureImage.innerHTML = pictureImageTxt;
+      }
+    });
+
+  </script>
+  <script> // 連動日期至方案
+    // get start date
+    const startDate = document.getElementById("ad_start");
+    // get end date
+    const endDate = document.getElementById("ad_end");
+    // get select item
+    const purchase = document.querySelector("#purchase_period");
+
+
+    // init
+    const adPurchase_init = () => {
+      // loading init -> set default date(today) for startDate
+      startDate.valueAsDate = new Date();
+      // console.log(startDate.valueAsDate.getDate());
+    };
+
+    const changeDate = () => {
+      let year = parseInt(startDate.value.toString().slice(0, 4));
+      let month = parseInt(startDate.value.toString().slice(5, 7));
+      let date = parseInt(startDate.value.toString().slice(8, 10));
+      let total_ad_amount = document.getElementById("total_ad_amount");
+
+      switch (purchase.value) {
+        case " 7":
+          if (month == 12) {
+            if (date > 24) {
+              let year_str = (year + 1).toString();
+              let month_str = (month + 1 - 12).toString();
+              let date_str = (date + 7 - 31).toString();
+              endDate.value = year_str + '-0' + month_str + '-0' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            } else if (date < 3) {
+              let year_str = year.toString();
+              let month_str = month.toString();
+              let date_str = (date + 7).toString();
+              endDate.value = year_str + '-' + month_str + '-0' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            } else {
+              let year_str = year.toString();
+              let month_str = month.toString();
+              let date_str = (date + 7).toString();
+              endDate.value = year_str + '-' + month_str + '-' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            }
+          } else if (month == 11) {
+            if (date > 23) {
+              let year_str = year.toString();
+              let month_str = (month + 1).toString();
+              let date_str = (date + 7 - 30).toString();
+              endDate.value = year_str + '-' + month_str + '-0' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            } else if (date < 3) {
+              let year_str = year.toString();
+              let month_str = month.toString();
+              let date_str = (date + 7).toString();
+              endDate.value = year_str + '-' + month_str + '-0' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            } else {
+              let year_str = year.toString();
+              let month_str = month.toString();
+              let date_str = (date + 7).toString();
+              endDate.value = year_str + '-' + month_str + '-' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            }
+          } else if (month == 10) {
+            if (date > 24) {
+              let year_str = year.toString();
+              let month_str = (month + 1).toString();
+              let date_str = (date + 7 - 31).toString();
+              endDate.value = year_str + '-' + month_str + '-0' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            } else if (date < 3) {
+              let year_str = year.toString();
+              let month_str = month.toString();
+              let date_str = (date + 7).toString();
+              endDate.value = year_str + '-' + month_str + '-0' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            } else {
+              let year_str = year.toString();
+              let month_str = month.toString();
+              let date_str = (date + 7).toString();
+              endDate.value = year_str + '-' + month_str + '-' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            }
+          } else if (month == 9) {
+            if (date > 23) {
+              let year_str = year.toString();
+              let month_str = (month + 1).toString();
+              let date_str = (date + 7 - 31).toString();
+              endDate.value = year_str + '-' + month_str + '-0' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            } else if (date < 3) {
+              let year_str = year.toString();
+              let month_str = month.toString();
+              let date_str = (date + 7).toString();
+              endDate.value = year_str + '-0' + month_str + '-0' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            } else {
+              let year_str = year.toString();
+              let month_str = month.toString();
+              let date_str = (date + 7).toString();
+              endDate.value = year_str + '-0' + month_str + '-' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            }
+          } else if (month == 2) {
+            if (year % 4 == 0) { //閏年
+              if (date > 21) {
+                let year_str = year.toString();
+                let month_str = (month + 1).toString();
+                let date_str = (date + 7 - 28).toString();
+                endDate.value = year_str + '-0' + month_str + '-0' + date_str;
+                total_ad_amount.setAttribute('value', 1000)
+              } else if (date < 3) {
+                let year_str = year.toString();
+                let month_str = month.toString();
+                let date_str = (date + 7).toString();
+                endDate.value = year_str + '-0' + month_str + '-0' + date_str;
+                total_ad_amount.setAttribute('value', 1000)
+              } else {
+                let year_str = year.toString();
+                let month_str = month.toString();
+                let date_str = (date + 7).toString();
+                endDate.value = year_str + '-0' + month_str + '-' + date_str;
+                total_ad_amount.setAttribute('value', 1000)
+              }
+            } else {
+              if (date > 21) {
+                let year_str = year.toString();
+                let month_str = (month + 1).toString();
+                let date_str = (date + 7 - 27).toString();
+                endDate.value = year_str + '-0' + month_str + '-0' + date_str;
+                total_ad_amount.setAttribute('value', 1000)
+              } else if (date < 3) {
+                let year_str = year.toString();
+                let month_str = month.toString();
+                let date_str = (date + 7).toString();
+                endDate.value = year_str + '-0' + month_str + '-0' + date_str;
+                total_ad_amount.setAttribute('value', 1000)
+              } else {
+                let year_str = year.toString();
+                let month_str = month.toString();
+                let date_str = (date + 7).toString();
+                endDate.value = year_str + '-0' + month_str + '-' + date_str;
+                total_ad_amount.setAttribute('value', 1000)
+              }
+            }
+          } else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8) {
+            if (date > 24) {
+              let year_str = year.toString();
+              let month_str = (month + 1).toString();
+              let date_str = (date + 7 - 31).toString();
+              endDate.value = year_str + '-0' + month_str + '-0' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            } else if (date < 3) {
+              let year_str = year.toString();
+              let month_str = month.toString();
+              let date_str = (date + 7).toString();
+              endDate.value = year_str + '-0' + month_str + '-0' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            } else {
+              let year_str = year.toString();
+              let month_str = month.toString();
+              let date_str = (date + 7).toString();
+              endDate.value = year_str + '-0' + month_str + '-' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            }
+          } else {
+            if (date > 23) {
+              let year_str = year.toString();
+              let month_str = (month + 1).toString();
+              let date_str = (date + 7 - 30).toString();
+              endDate.value = year_str + '-0' + month_str + '-0' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            } else if (date < 3) {
+              let year_str = year.toString();
+              let month_str = month.toString();
+              let date_str = (date + 7).toString();
+              endDate.value = year_str + '-0' + month_str + '-0' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            } else {
+              let year_str = year.toString();
+              let month_str = month.toString();
+              let date_str = (date + 7).toString();
+              endDate.value = year_str + '-0' + month_str + '-' + date_str;
+              total_ad_amount.setAttribute('value', 1000)
+            }
+          }
+          break;
+        case "30":
+          if (date < 10) {
+            if (month == 12) {
+              let year2_str = (year + 1).toString();
+              let month2_str = (month + 1 - 12).toString();
+              let date2_str = date.toString();
+              endDate.value = year2_str + '-0' + month2_str + '-0' + date2_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 2000)
+            } else if (month == 1) {
+              let year2_str = year.toString();
+              let month2_str = (month + 1).toString();
+              let date2_str = date.toString();
+              endDate.value = year2_str + '-0' + month2_str + '-0' + date2_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 2000)
+            } else if (month < 9 && month > 1) {
+              let year2_str = year.toString();
+              let month2_str = (month + 1).toString();
+              let date2_str = date.toString();
+              endDate.value = year2_str + '-0' + month2_str + '-0' + date2_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 2000)
+            } else {
+              let year2_str = year.toString();
+              let month2_str = (month + 1).toString();
+              let date2_str = date.toString();
+              endDate.value = year2_str + '-' + month2_str + '-0' + date2_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 2000)
+            }
+          } else {
+            if (month == 12) {
+              let year2_str = (year + 1).toString();
+              let month2_str = (month + 1 - 12).toString();
+              let date2_str = date.toString();
+              endDate.value = year2_str + '-0' + month2_str + '-' + date2_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 2000)
+            } else if (month == 1) {
+              if (year % 4 == 0) {
+                if (date > 28) {
+                  let year2_str = year.toString();
+                  let month2_str = (month + 2).toString();
+                  let date2_str = (date - 28).toString();
+                  endDate.value = year2_str + '-0' + month2_str + '-0' + date2_str;
+                  document.getElementById("total_ad_amount").setAttribute('value', 2000)
+                } else {
+                  let year2_str = year.toString();
+                  let month2_str = (month + 2).toString();
+                  let date2_str = (date).toString();
+                  endDate.value = year2_str + '-0' + month2_str + '-' + date2_str;
+                  document.getElementById("total_ad_amount").setAttribute('value', 2000)
+                }
+              } else {
+                if (date > 27) {
+                  let year2_str = year.toString();
+                  let month2_str = (month + 2).toString();
+                  let date2_str = (date - 27).toString();
+                  endDate.value = year2_str + '-0' + month2_str + '-0' + date2_str;
+                  document.getElementById("total_ad_amount").setAttribute('value', 2000)
+                } else {
+                  let year2_str = year.toString();
+                  let month2_str = (month + 2).toString();
+                  let date2_str = (date).toString();
+                  endDate.value = year2_str + '-0' + month2_str + '-' + date2_str;
+                  document.getElementById("total_ad_amount").setAttribute('value', 2000)
+                }
+              }
+            } else if (month < 9) {
+              let year2_str = year.toString();
+              let month2_str = (month + 1).toString();
+              let date2_str = date.toString();
+              endDate.value = year2_str + '-0' + month2_str + '-' + date2_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 2000)
+            } else {
+              let year2_str = year.toString();
+              let month2_str = (month + 1).toString();
+              let date2_str = date.toString();
+              endDate.value = year2_str + '-' + month2_str + '-' + date2_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 2000)
+            }
+          }
+
+
+
+          break;
+        case "90":
+          if (month == 2 || month == 4 || month == 5 || month == 6 || month == 7) {
+            if (date < 10) {
+              let year3_str = (year).toString();
+              let month3_str = (month + 3).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-0' + month3_str + '-0' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            } else {
+              let year3_str = (year).toString();
+              let month3_str = (month + 3).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-0' + month3_str + '-' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            }
+          } else if (month == 1 || month == 3 || month == 8) {
+            if (date < 10) {
+              let year3_str = (year).toString();
+              let month3_str = (month + 3).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-0' + month3_str + '-0' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            } else if (date < 31) {
+              let year3_str = (year).toString();
+              let month3_str = (month + 3).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-0' + month3_str + '-' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            } else {
+              let year3_str = (year).toString();
+              let month3_str = (month + 3).toString();
+              let date3_str = '30';
+              endDate.value = year3_str + '-0' + month3_str + '-' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            }
+          } else if (month == 9) {
+            if (date < 10) {
+              let year3_str = (year).toString();
+              let month3_str = (month + 3).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-' + month3_str + '-0' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            } else {
+              let year3_str = (year).toString();
+              let month3_str = (month + 3).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-' + month3_str + '-' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            }
+          } else if (month == 11) {
+            if (date < 10) {
+              let year3_str = (year + 1).toString();
+              let month3_str = (month + 3 - 12).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-0' + month3_str + '-0' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            } else if (date < 28) {
+              let year3_str = (year + 1).toString();
+              let month3_str = (month + 3 - 12).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-0' + month3_str + '-' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            } else {
+              if (year % 4 == 0) {
+                let year3_str = (year + 1).toString();
+                let month3_str = (month + 3 - 12).toString();
+                let date3_str = '28';
+                endDate.value = year3_str + '-0' + month3_str + '-' + date3_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 3000)
+              } else {
+                let year3_str = (year + 1).toString();
+                let month3_str = (month + 3 - 12).toString();
+                let date3_str = '27';
+                endDate.value = year3_str + '-0' + month3_str + '-' + date3_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 3000)
+              }
+            }
+          } else if (month == 10 || month == 12) {
+            if (date < 10) {
+              let year3_str = (year + 1).toString();
+              let month3_str = (month + 3 - 12).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-0' + month3_str + '-0' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            } else {
+              let year3_str = (year + 1).toString();
+              let month3_str = (month + 3 - 12).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-0' + month3_str + '-' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            }
+          }
+          break;
+        case "365":
+          // 考慮日期加0
+          // 考慮月份加上0
+          let add_bar_and_zero = '-0';
+          let add_bar = '-';
+          if (year % 4 == 0) {
+            if (month == 2) {
+              if (date < 10) {
+                let year4_str = (year + 1).toString();
+                let month4_str = month.toString();
+                let date4_str = date.toString();
+                endDate.value = year4_str + add_bar_and_zero + month4_str + add_bar_and_zero + date4_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 4000)
+              } else if (month < 28) {
+                let year4_str = (year + 1).toString();
+                let month4_str = month.toString();
+                let date4_str = date.toString();
+                endDate.value = year4_str + add_bar_and_zero + month4_str + add_bar + date4_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 4000)
+              } else {
+                let year4_str = (year + 1).toString();
+                let month4_str = month.toString();
+                let date4_str = '27';
+                endDate.value = year4_str + add_bar_and_zero + month4_str + add_bar + date4_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 4000)
+              }
+            } else if (month == 1 || month == 3 || month == 4 || month == 5 || month == 6 || month == 7 || month == 8 || month == 9) {
+              if (date < 10) {
+                let year4_str = (year + 1).toString();
+                let month4_str = month.toString();
+                let date4_str = date.toString();
+                endDate.value = year4_str + add_bar_and_zero + month4_str + add_bar_and_zero + date4_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 4000)
+              } else {
+                let year4_str = (year + 1).toString();
+                let month4_str = month.toString();
+                let date4_str = date.toString();
+                endDate.value = year4_str + add_bar_and_zero + month4_str + add_bar + date4_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 4000)
+              }
+            } else if (month == 10 || month == 11 || month == 12) {
+              if (date < 10) {
+                let year4_str = (year + 1).toString();
+                let month4_str = month.toString();
+                let date4_str = date.toString();
+                endDate.value = year4_str + add_bar + month4_str + add_bar_and_zero + date4_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 4000)
+              } else {
+                let year4_str = (year + 1).toString();
+                let month4_str = month.toString();
+                let date4_str = date.toString();
+                endDate.value = year4_str + add_bar + month4_str + add_bar + date4_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 4000)
+              }
+            }
+          } else {
+            if (month == 2) {
+              if (date < 10) {
+                let year4_str = (year + 1).toString();
+                let month4_str = month.toString();
+                let date4_str = date.toString();
+                endDate.value = year4_str + add_bar_and_zero + month4_str + add_bar_and_zero + date4_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 4000)
+              } else if (month < 28) {
+                let year4_str = (year + 1).toString();
+                let month4_str = month.toString();
+                let date4_str = date.toString();
+                endDate.value = year4_str + add_bar_and_zero + month4_str + add_bar + date4_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 4000)
+              }
+            } else if (month == 1 || month == 3 || month == 4 || month == 5 || month == 6 || month == 7 || month == 8 || month == 9) {
+              if (date < 10) {
+                let year4_str = (year + 1).toString();
+                let month4_str = month.toString();
+                let date4_str = date.toString();
+                endDate.value = year4_str + add_bar_and_zero + month4_str + add_bar_and_zero + date4_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 4000)
+              } else {
+                let year4_str = (year + 1).toString();
+                let month4_str = month.toString();
+                let date4_str = date.toString();
+                endDate.value = year4_str + add_bar_and_zero + month4_str + add_bar + date4_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 4000)
+              }
+            } else if (month == 10 || month == 11 || month == 12) {
+              if (date < 10) {
+                let year4_str = (year + 1).toString();
+                let month4_str = month.toString();
+                let date4_str = date.toString();
+                endDate.value = year4_str + add_bar + month4_str + add_bar_and_zero + date4_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 4000)
+              } else {
+                let year4_str = (year + 1).toString();
+                let month4_str = month.toString();
+                let date4_str = date.toString();
+                endDate.value = year4_str + add_bar + month4_str + add_bar + date4_str;
+                document.getElementById("total_ad_amount").setAttribute('value', 4000)
+              }
+
+            }
+          }
+          break;
+      }
+    };
+
+    // const AddDate = () => { };
+
+    /**
+     * func
+     */
+
+    // onchange
+    purchase.onchange = changeDate;
+    startDate.onchange = changeDate;
+
+    // onload
+    window.onload = adPurchase_init;
+
+  </script>
+  <script> // POST
+    const URL = 'http://localhost:8080/adOrders';
+    const img = document.querySelector("#picture__input");
+    const submit_btn = document.querySelector("#submit_btn");
+
+    img.onchange = (e) => {
+      let ad_start = (document.querySelector("#ad_start").value + ' 00:00:00');
+      let ad_end = (document.querySelector("#ad_end").value + ' 00:00:00');
+      let total_ad_amount = parseInt(document.querySelector("#total_ad_amount").value);
+
+      let read = new FileReader();
+      read.readAsDataURL(e.target.files[0]); // e.target.files是fileList
+      read.onload = (data) => {
+        submit_btn.onclick = () => {
+          let base64 = data.target.result.slice(23).replace("[", "");
+          fetch(URL, {
+            method: "POST",
+            headers: { 'Content-type': 'application/json', },
+            body: JSON.stringify({
+              restaurantNo: 4,
+              adStartTime: ad_start,
+              adEndTime: ad_end,
+              adOrderPrice: total_ad_amount,
+              slideshowPicBase64: [base64]
+            }),
+          })
+            .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
+            .then((data) => { console.log(data); alert('送交訂單成功'); location.reload(); })
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
