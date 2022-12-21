@@ -9,17 +9,17 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Base64Utils;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class AdOrderDAOImpl implements AdOrderDAO {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    final Base64.Decoder decoder = Base64.getMimeDecoder();
+//    final Base64.Encoder encoder = Base64.getMimeEncoder();
     @Override
     public List<AdOrder> getByAll() {
         String sql = "select * from adOrder";
@@ -46,7 +46,8 @@ public class AdOrderDAOImpl implements AdOrderDAO {
         map.put("verified", adOrderRequest.getVerified());
         map.put("verificationDetail", adOrderRequest.getVerificationDetail());
         map.put("adOrderPrice", adOrderRequest.getAdOrderPrice());
-        map.put("slideshowPic", adOrderRequest.getSlideshowPic());
+        // add "ArrayList<String> slideshowPicBase64" in AdOrderRequest in order to get base64 array from client
+        map.put("slideshowPic", decoder.decode(adOrderRequest.getSlideshowPicBase64().toString()));
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(map), keyHolder);
@@ -75,7 +76,12 @@ public class AdOrderDAOImpl implements AdOrderDAO {
         map.put("verified", adOrderRequest.getVerified());
         map.put("verificationDetail", adOrderRequest.getVerificationDetail());
         map.put("adOrderPrice", adOrderRequest.getAdOrderPrice());
-        map.put("slideshowPic", adOrderRequest.getSlideshowPic());
+//        map.put("slideshowPic", adOrderRequest.getSlideshowPic());
+        if(adOrderRequest.getSlideshowPicBase64()!=null){
+            map.put("slideshowPic", decoder.decode(adOrderRequest.getSlideshowPicBase64().toString()));
+        }else{
+            map.put("slideshowPic", getByAdOrderNo(adOrderNo).getSlideshowPic());
+        }
 
         namedParameterJdbcTemplate.update(sql, map);
     }
@@ -109,7 +115,13 @@ public class AdOrderDAOImpl implements AdOrderDAO {
         Map<String, Object> map = new HashMap<>();
         map.put("restaurantNo", restaurantNo);
         List<AdOrder> adOrderList = namedParameterJdbcTemplate.query(sql, map, new AdOrderRowMapper());
+        adOrderList.forEach(e->{
+//            System.out.println(e.getSlideshowPic());
+        });
         if (adOrderList.size() > 0) {
+//            for (AdOrder adOrder : adOrderList) {
+//                System.out.println(adOrder.getVerified());
+//            }
             return adOrderList;
         } else {
             return null;
