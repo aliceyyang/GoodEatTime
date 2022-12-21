@@ -23,12 +23,4 @@ public interface ReservationService {
 	
 	boolean changeStatus(ReservationVO vo);
 	
-	List<ReservationVO> selectNotNullComment();
-	
-	List<ReservationVO> selectNullComment();
-
-	ReservationVO updateRestaurantComment(ReservationVO reservationVO);
-
-	boolean reservation(ReservationVO reservationVO);
-	
 }

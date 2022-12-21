@@ -71,31 +71,4 @@ public class ReservationServiceImpl implements ReservationService {
 		return false;
 	}
 	
-	@Override
-	public List<ReservationVO> selectNotNullComment() {
-		return dao.getNotNullComment();
-	}
-	
-	@Override
-	public List<ReservationVO> selectNullComment(){
-		return dao.getNullComment();
-	}
-	
-	@Override
-	public ReservationVO updateRestaurantComment(ReservationVO reservationVO){
-		return dao.updateCommnet(reservationVO);
-		
-	}
-
-
-	@Override
-	public boolean reservation(ReservationVO reservationVO) {
-		if(reservationVO != null) {
-			dao.insert(reservationVO);
-			return true;
-		}
-		return false;
-	}
-	
-
 }
