@@ -27,7 +27,7 @@ public class ReserveTimeDaoImplTests {
 //		System.out.println("bean=" + vo);
 
 		// select findbyrestaurantNoandWeekDay
-		List<ReserveTimeVO> vo = dao.findbyrestaurantNOandWeekDay(1, 0);
+		List<ReserveTimeVO> vo = dao.findByRestaurantNOandWeekDay(1, 0);
 		System.out.println("bean=" + vo);
 
 		// insert
