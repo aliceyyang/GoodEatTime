@@ -13,5 +13,7 @@ public interface MemberService {
 	MemberVO edit(MemberVO memberVO);
 	
 	boolean save(MemberVO memberVO);
+	
+	MemberVO forgotPassWord(MemberVO memberVO);
 		
 }

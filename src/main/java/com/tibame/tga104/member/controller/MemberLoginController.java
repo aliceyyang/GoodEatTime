@@ -28,7 +28,7 @@ public class MemberLoginController {
 		memberVO = service.memberLogin(memberVO);
 		if (memberVO != null) {
 			if (req.getSession(false) != null) {
-				req.changeSessionId(); // 產生一個新的id,把當前會員登 入的資料塞到會員中
+				req.changeSessionId(); // 產生一個新的id,把當前會員登入的資料塞到會員中
 			}
 			session = req.getSession();
 			session.setAttribute("memberVO", memberVO);

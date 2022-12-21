@@ -1,23 +1,16 @@
 package com.tibame.tga104.member.service.impl;
 
-import java.util.Objects;
-
-import javax.naming.NamingException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tibame.tga104.member.dao.AdminDAO;
-import com.tibame.tga104.member.dao.impl.AdminDAOImpl;
 import com.tibame.tga104.member.service.AdminService;
 import com.tibame.tga104.member.vo.AdminVO;
 
+@Service
 public class AdminServiceImpl implements AdminService {
-
+	@Autowired
 	private AdminDAO dao;
-
-	public AdminServiceImpl() throws NamingException {
-		dao = new AdminDAOImpl();
-	}
-
-
 
 	@Override
 	public AdminVO login(AdminVO adminVO) {
@@ -31,8 +24,7 @@ public class AdminServiceImpl implements AdminService {
 		if (adminPassword.length() < 6 || adminPassword.length() > 12) {
 			return null;
 		}
-		
-		
+
 //		if (adminAccount == null || Objects.equals(adminAccount , "")) {
 //			return "帳號必須輸入";
 //		}
@@ -40,12 +32,7 @@ public class AdminServiceImpl implements AdminService {
 //			return "密碼必須輸入";
 //		}
 //		
-		
-		
+
 		return dao.selectForAdminLogin(adminVO);
 	}
 }
-
-
-
-
