@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="member_reservation" />
+  <meta name="keywords" content="Cake, unica, creative, html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Restaurant | User Management</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
+  <link rel="stylesheet" href="css/barfiller.css" type="text/css" />
+  <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/nice-select.css" type="text/css" />
+  <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
+  <link rel="stylesheet" href="css/reservation.css" type="text/css" />
+  <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js'
+    integrity='sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=='
+    crossorigin='anonymous'></script>
+</head>
+<style>
+  .nice-select {
+    width: 80%;
+  }
+</style>
+
+<body>
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Offcanvas Menu Begin -->
+  <div class="offcanvas-menu-overlay"></div>
+  <div class="offcanvas-menu-wrapper">
+    <div class="offcanvas__cart">
+      <div class="offcanvas__cart__links">
+        <a href="#" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
+        <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+      </div>
+      <div class="offcanvas__cart__item">
+        <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
+        <div class="cart__price">Cart: <span>$0.00</span></div>
+      </div>
+    </div>
+    <div class="offcanvas__logo">
+      <a href="./GoodEatTime.html"><img class="GoodEatTimelogo" src="/img/GoodEatTime_smlogo.png" alt="" /></a>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+    <div class="offcanvas__option">
+      <ul>
+        <li>
+          USD <span class="arrow_carrot-down"></span>
+          <ul>
+            <li>EUR</li>
+            <li>USD</li>
+          </ul>
+        </li>
+        <li>
+          ENG <span class="arrow_carrot-down"></span>
+          <ul>
+            <li>Spanish</li>
+            <li>ENG</li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Sign in</a> <span class="arrow_carrot-down"></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Offcanvas Menu End -->
+
+  <!-- Header Section Begin -->
+  <header class="header">
+    <div class="header__top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="header__top__inner">
+              <div class="header__top__left">
+                <ul>
+                  <li>
+                    <img class="login_icon" src="./img/Login_icon.png" /><a class="login_text" href="#">登入</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="header__logo">
+                <a href="./GoodEatTime.html"><img class="goodeattime_logo" src="img/GoodEatTime_logoright.png"
+                    alt="" /></a>
+              </div>
+              <div class="header__top__right">
+                <div class="header__top__right__links">
+                  <a href="" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
+                  <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+                </div>
+                <div class="header__top__right__cart">
+                  <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
+                  <div class="cart__price">Cart: <span>$0.00</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="canvas__open"><i class="fa fa-bars"></i></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <nav class="header__menu mobile-menu">
+            <ul>
+              <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
+              <li><a href="./about.html">會員專區</a></li>
+              <li><a href="./shop.html">餐廳</a></li>
+              <li><a href="./blog.html">線上商城</a></li>
+              <li>
+                <a href="#">關於我們</a>
+                <ul class="dropdown">
+                  <li><a href="./shop-details.html">Shop Details</a></li>
+                  <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                  <li><a href="./checkout.html">Check Out</a></li>
+                  <li><a href="./wisslist.html">Wisslist</a></li>
+                  <li><a href="./Class.html">Class</a></li>
+                  <li><a href="./blog-details.html">Blog Details</a></li>
+                </ul>
+              </li>
+              <li><a href="./contact.html">地點搜尋</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Header Section End -->
+
+  <!-- Class Section Begin -->
+  <section class="class">
+    <!-- <div class="container"> -->
+    <div class="row" id="member">
+      <!-- <div class="col-lg-2" id="left"> -->
+      <div class="col-lg-2" id="left"">
+        <nav class=" header__menu mobile-menu" id="aaa">
+        <ul>
+          <li class=""><a href="">總覽</a></li>
+          <li class=""><a href="">使用者管理</a></li>
+          <li class=""><a href="">資料審核</a></li>
+          <li class=""><a href="">廣告方案設定</a></li>
+          <li class=""><a href="">客訴處理</a></li>
+          <li class=""><a href="">點數及優惠券設定</a></li>
+          <li class=""><a href="">會員分級設定</a></li>
+        </ul>
+        </nav>
+      </div>
+      <div class="col-lg-10">
+        <div class="row-col-12"
+          style="align-items:center; display: grid;justify-content:left;height:10%; margin-top: 20px;margin-left: 20px;">
+          <table>
+            <tr>
+              <th style="width:220px">
+                <input type="search" id="membership_search" class="membership_search" data-table="userNo-table"
+                  placeholder="輸入欲查詢之帳號資料"
+                  style="width: 200px; padding:7px; border-radius: 8px; box-shadow: 5px 5px 2px #FFD382;">
+              </th>
+              <!-- <th style="width:180px">
+                <button type="button" class=" btn btn-light" id="choose_customer_btn"
+                  style="width: 150px; padding:7px; border-radius: 8px; box-shadow: 5px 5px 2px #FFD382;">選擇消費者(拿掉?)</button>
+              </th>
+              <th style="width:180px">
+                <button type="button" class="btn btn-light" id="choose_restaurant_btn"
+                  style="width: 150px; padding:7px; border-radius: 8px; box-shadow: 5px 5px 2px #FFD382;">選擇餐廳(拿掉?)</button>
+              </th> -->
+              <th style="width:180px">
+                <button type="button" class="btn btn-light"
+                  style="width: 150px; padding:7px; border-radius: 8px; box-shadow: 5px 5px 2px #F08632;">修改用戶資料</button>
+              </th>
+              <th style="width:180px">
+                <button type="button" class="btn btn-light"
+                  style="width: 150px; padding:7px; border-radius: 8px; box-shadow: 5px 5px 2px #4d3b1b;">停用使用者</button>
+              </th>
+            </tr>
+          </table>
+        </div>
+        <div class="table-responsive">
+          <table id="user_table" class="userNo-table table" width="100%" style="table-layout:fixed;">
+            <caption>1. 僅能編輯審核狀態欄位<br>3. 左側欄滑鼠移動會跑版QQ</caption>
+            <thead align="center">
+              <tr>
+                <th align="center" style="border:3px #FFD382 dashed;" id="" style="width:100px">修改/刪除</th>
+                <th align="center" style="border:3px #FFD382 dashed;" id="member_type">會員種類</th>
+                <th align="center" style="border:3px #FFD382 dashed;" id="rest_no">餐廳編號</th>
+                <th align="center" style="border:3px #FFD382 dashed;" id="user_account">使用者帳號</th>
+                <!-- 餐廳restaurantAccount / 消費者mail -->
+                <th align="center" style="border:3px #FFD382 dashed;" id="member_name">會員名稱</th>
+                <!-- 餐廳restaurantName / 消費者name -->
+                <!-- <th align="center" style="border:3px #FFD382 dashed;" id="member_level">會員等級</th> -->
+                <!-- 餐廳 NULL / 消費者memberLevel -->
+                <th align="center" style="border:3px #FFD382 dashed;" id="verified">審核狀態</th>
+                <!-- 餐廳restaurantStatus / 消費者verificationAccount -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr align="center">
+                <td>
+                  <input type="button" value="修改">
+                  <input type="button" value="刪除">
+                </td>
+                <td>餐廳</td>
+                <td>餐廳編號N</td>
+                <td>restaurant1001</td>
+                <td>薄多義</td>
+                <td>尚未審核</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Class Section End -->
+
+  <!-- Footer Section Begin -->
+  <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
+    <!-- <button type="button" id="BackTop"></button> -->
+    <div class="mask">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="footer__member">
+              <h6>會員專區</h6>
+              <div class="footer__social">
+                <a href="#">登入會員<i></i></a>
+                <a href="#">訂位管理<i></i></a>
+                <br />
+                <a href="#">加入會員<i></i></a>
+                <a href="#">定位管理<i></i></a>
+                <br />
+                <a href="#">優惠券<i></i></a>
+                <a href="#">我的評論<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="footer__restaurant">
+              <h6>餐廳</h6>
+              <div class="footer__social">
+                <a href="#">訂位<i></i></a>
+                <br />
+                <a href="#">購物車<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="footer__shopping">
+              <h6>線上商城</h6>
+              <div class="footer__social">
+                <a href="#">商品搜尋<i></i></a>
+                <br />
+                <a href="#">購物車<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="footer__aboutus">
+              <h6>關於我們</h6>
+              <div class="footer__social">
+                <a href="#">網站介紹<i></i></a>
+                <br />
+                <a href="#">履歷<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-9 col-sm-12">
+            <div class="footer__widget">
+              <h6>好食光</h6>
+              <ul>
+                <li>指導老師：</li>
+                <li>吳永志老師 | 吳冠宏老師</li>
+                <li>張互賓老師 | 郭惠民老師</li>
+                <li>陳怡榕老師 | 馬全德老師</li>
+                <li>組員 :</li>
+                <li>陳宜瀅 | 張家銘 | 楊婕妤</li>
+                <li>游育碩 | 黃郁婕 | 李佳欣 | 余可凡</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <p class="copyright__text text-white">
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              All rights reserved | This template is made with
+              <i class="fa fa-heart" aria-hidden="true"></i> by
+              <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+          <div class="col-lg-5">
+            <div class="copyright__widget">
+              <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Site Map</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer Section End -->
+
+  <!-- Search Begin -->
+  <div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+      <div class="search-close-switch">+</div>
+      <form class="search-model-form">
+        <input type="text" id="search-input" placeholder="Search here....." />
+      </form>
+    </div>
+  </div>
+  <!-- Search End -->
+
+  <!-- Js Plugins -->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.nice-select.min.js"></script>
+  <script src="js/jquery.barfiller.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.nicescroll.min.js"></script>
+  <script src="js/main.js"></script>
+  <!-- <script src="js/reservation.js"></script> -->
+  <!-- <script src="js/alice.js"></script> -->
+  <script src="js/alice_admin2_membership_management_page.js"></script>
+  <script> // GET
+    const user_table = document.querySelector("#user_table");
+    const URL = "http://localhost:8080/admin/restaurant-accounts";
+    fetch(URL)
+      .then((r) => r.json())
+      .then((data) => {
+        user_table.innerHTML = data
+          .map(({ restaurantNo, restaurantAccount, restaurantName, restaurantStatus }) =>
+            template(restaurantNo, restaurantAccount, restaurantName, restaurantStatus)
+          )
+          .join("");
+      });
+
+    const template = (no, account, name, verified) => {
+      if (verified) {
+        return `<tr align="center">
+            <td>
+              <input type="button" value="修改" class="btn btn-light" style="width: 50px; padding:1px; border-radius: 4px; box-shadow: 2px 2px 1px #F08632;">
+              <input type="button" value="刪除" class="btn btn-light" style="width: 50px; padding:1px; border-radius: 4px; box-shadow: 2px 2px 1px #4d3b1b;">
+            <td>餐廳</td>
+            <td>${no}</td>
+            <td>${account}</td>
+            <td>${name}</td>
+            <td>審核通過</td>
+          </tr>`;
+      } else {
+        return `<tr align="center">
+            <td>
+              <input type="button" value="修改" class="btn btn-light" style="width: 50px; padding:1px; border-radius: 4px; box-shadow: 2px 2px 1px #F08632;">
+              <input type="button" value="刪除" class="btn btn-light" style="width: 50px; padding:1px; border-radius: 4px; box-shadow: 2px 2px 1px #4d3b1b;">
+            <td>餐廳</td>
+            <td>${no}</td>
+            <td>${account}</td>
+            <td>${name}</td>
+            <td>尚未審核</td>
+          </tr>`;
+      };
+    }
+  </script>
+  <script> // PUT
+    // const URL2 = "http://localhost:8080/admin/restaurant-accounts";  // {restaurantNo}
+    const updateData = (endpoint, data) => {
+      fetch(`${URL2}/${endpoint}`, {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then((r) => r.json())
+        .then((data) => console.log(data));
+    };
+
+    // 綁定事件後送出put method請求，抓到改動的資料傳入參數 -> (memberNo, request body data)
+    updateData('2', { restaurantStatus: true });
+  </script>
+
+</body>
+
+</html>
