@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>RestaurantBackEnd | OrderDetail</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
+    <link rel="stylesheet" href="css/barfiller.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
+    <link rel="stylesheet" href="css/reservation.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="css/member_page_overview.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="css/alice_style.css" type="text/css" />
+  </head>
+  <style>
+    .nice-select {
+      width: 80%;
+    }
+    table, tr, th, td {
+      border: 1px solid black;
+    }
+    table.orderdetail{
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+
+  <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+      <div class="offcanvas__cart">
+        <div class="offcanvas__cart__links">
+          <a href="#" class="search-switch"
+            ><img src="img/icon/search.png" alt=""
+          /></a>
+          <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+        </div>
+        <div class="offcanvas__cart__item">
+          <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
+          <div class="cart__price">Cart: <span>$0.00</span></div>
+        </div>
+      </div>
+      <div class="offcanvas__logo">
+        <a href="./GoodEatTime.html"
+          ><img
+            class="GoodEatTimelogo"
+            src="/img/GoodEatTime_smlogo.png"
+            alt=""
+        /></a>
+      </div>
+      <div id="mobile-menu-wrap"></div>
+      <div class="offcanvas__option">
+        <ul>
+          <li>
+            USD <span class="arrow_carrot-down"></span>
+            <ul>
+              <li>EUR</li>
+              <li>USD</li>
+            </ul>
+          </li>
+          <li>
+            ENG <span class="arrow_carrot-down"></span>
+            <ul>
+              <li>Spanish</li>
+              <li>ENG</li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Sign in</a> <span class="arrow_carrot-down"></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+      <div class="header__top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="header__top__inner">
+                <div class="header__top__left">
+                  <ul>
+                    <li>
+                      <img class="login_icon" src="./img/Login_icon.png" /><a
+                        class="login_text"
+                        href="#"
+                        >登入</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="header__logo">
+                  <a href="./GoodEatTime.html"
+                    ><img
+                      class="goodeattime_logo"
+                      src="img/GoodEatTime_logoright.png"
+                      alt=""
+                  /></a>
+                </div>
+                <div class="header__top__right">
+                  <div class="header__top__right__links">
+                    <a href="" class="search-switch"
+                      ><img src="img/icon/search.png" alt=""
+                    /></a>
+                    <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+                  </div>
+                  <div class="header__top__right__cart">
+                    <a href="#"
+                      ><img src="img/icon/cart.png" alt="" /> <span>0</span></a
+                    >
+                    <div class="cart__price">Cart: <span>$0.00</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="canvas__open"><i class="fa fa-bars"></i></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="header__menu mobile-menu"></nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Class Section Begin -->
+    <section class="class">
+      <!-- <div class="container"> -->
+      <div class="row" id="member">
+        <!-- <div class="col-lg-2" id="left"> -->
+        <div class="col-lg-2" id="left">
+          <nav class="header__menu mobile-menu" id="aaa">
+            <ul>
+              <li class=""><a href="http">餐廳會員首頁</a></li>
+              <li class=""><a href="http">餐廳資訊</a></li>
+              <li class=""><a href="http">訂單管理</a></li>
+              <li class=""><a href="http">訂位管理</a></li>
+              <li class=""><a href="http">評論管理</a></li>
+              <li class=""><a href="http">優惠券設定</a></li>
+              <li class=""><a href="http">商品管理</a></li>
+              <li class=""><a href="http">銷售報表</a></li>
+              <li class=""><a href="http">購買廣告</a></li>
+            </ul>
+          </nav>
+        </div>
+        <!-- 中間空白欄位 -->
+        <!-- 上排 -->
+        <div class="col-lg-10">
+          <div
+            class="row-cols-12"
+            style="
+              align-items: center;
+              display: grid;
+              justify-content: center;
+              height: 15%;
+              background-color: #fdf3ea;
+            "
+          >
+            <h2>商城訂單資訊</h2>
+          </div>
+          <div class="row" style="height: 80%">
+            <div class="col-sm" style="background-color: #fdf3ea; margin: 15px">
+              <div class="container" style="height: 90%; margin: 2%">
+                <!-- <div class="row" style="height: 90%"> -->
+                  <!-- <table class="orderdetail">
+                    <tr>
+                      <td>商城訂單編號：</td>
+                      <td>訂單狀態：</td>
+                      <td>下單日：</td>
+                      <td>取貨日：</td>
+                    </tr>
+                    <tr>
+                      <td>訂購人：</td>
+                      <td>訂購電話：</td>
+                    </tr>
+                    <tr>
+                      <td>收貨人：</td>
+                      <td>收貨人電話：</td>
+                      <td>收貨人EMAIL：</td>
+                    </tr>
+                    <tr>
+                      <td>收貨人地址：</td>
+                    </tr>
+                  </table> -->
+                  <form action="http" method="post">
+                    <label for="prodOrderNo">商城訂單編號：</label>
+                    <input
+                      style="width: 120px"
+                      type="number"
+                      name="prodOrderNo"
+                      id="prodOrderNo"
+                      disabled
+                      placeholder="顯示商城訂單編號"
+                    />
+                    <label for="orderStatus">訂單狀態：</label>
+                    <input
+                      style="width: 120px"
+                      type="number"
+                      name="orderStatus"
+                      id="orderStatus"
+                      placeholder="狀態(可修改)"
+                    />
+                    <label for="prodOrderDate">訂單時間：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="prodOrderDate"
+                      id="prodOrderDate"
+                      disabled
+                      placeholder="顯示訂單時間"
+                    />
+                    <label for="prodOderDeliverTime">出貨時間：</label>
+                    <input
+                      style="width: 120px"
+                      type="number"
+                      name="prodOderDeliverTime"
+                      id="prodOderDeliverTime"
+                      disabled
+                      placeholder="顯示出貨時間"
+                    />
+                    <br />
+                    <label for="name">訂購人：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="name"
+                      id="name"
+                      disabled
+                      placeholder="from table:member"
+                    />
+                    <label for="tel">訂購人電話：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="tel"
+                      id="tel"
+                      disabled
+                      placeholder="from table:memeber"
+                    />
+                    <br />
+                    <label for="prodOrderReceiverName">收貨人：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="prodOrderReceiverName"
+                      id="prodOrderReceiverName"
+                      disabled
+                      placeholder="顯示收貨人"
+                    />
+                    <label for="prodOrderReceiverTel">收貨人電話：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="prodOrderReceiverTel"
+                      id="prodOrderReceiverTel"
+                      disabled
+                      placeholder="顯示收貨人電話"
+                    />
+                    <label for="prodOrderReceiverMail">收貨人MAIL：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="prodOrderReceiverMail"
+                      id="prodOrderReceiverMail"
+                      disabled
+                      placeholder="顯示收貨人MAIL"
+                    />
+                    <br />
+                    <label for="prodOrderReceiverAddress">收貨人地址：</label>
+                    <input
+                      style="width: 400px"
+                      type="number"
+                      name="prodOrderReceiverAddress"
+                      id="prodOrderReceiverAddress"
+                      disabled
+                      placeholder="顯示收貨人地址"
+                    />
+                    <br />
+                    <label for="amountAfterCoupon">訂單金額：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="amountAfterCoupon"
+                      id="amountAfterCoupon"
+                      disabled
+                      placeholder="顯示訂單折扣後金額"
+                    />
+                    <label for="invoiceNumber">發票號碼：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="invoiceNumber"
+                      id="invoiceNumber"
+                      disabled
+                      placeholder="顯示發票號碼"
+                    />
+                    <label for="taxIDNumber">統一編號：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="taxIDNumber"
+                      id="taxIDNumber"
+                      disabled
+                      placeholder="顯示統一編號"
+                    />
+                  <div>
+                    ____________________________________________________________________________________________________________________
+                  </div>
+                  <div>
+                    <h5>訂單商品資訊：</h5>
+                  </div>
+                  <br>
+                  <table class="orderdateil">
+                    <tr>
+                        <th>商品編號</th>
+                        <th>商品名稱</th>
+                        <th>商品數量</th>
+                        <th>單品金額</th>
+                    </tr>
+                    <tr>
+                        <td>顯示查詢資料from table:prodInfo</td>
+                        <td>顯示查詢資料from table:prodInfo</td>
+                        <td>顯示查詢資料from table:prodOrderDetail</td>
+                        <td>顯示查詢資料from table:prodOrderDetail</td>
+                    </tr>
+                  </table>
+                  <div class="返回訂單查詢"><a href="http">返回訂單查詢</a></div>
+                  <!-- <input type="submit" value="返回訂單查詢" />
+                  <input type="submit" value="修改訂單狀態" /> -->
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Class Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
+      <div class="mask">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="footer__member">
+                <h6>會員專區</h6>
+                <div class="footer__social">
+                  <a href="#">登入會員<i></i></a>
+                  <a href="#">定位管理<i></i></a>
+                  <br />
+                  <a href="#">加入會員<i></i></a>
+                  <a href="#">定位管理<i></i></a>
+                  <br />
+                  <a href="#">優惠券<i></i></a>
+                  <a href="#">我的評論<i></i></a>
+                </div>
+              </div>
+              <div class="footer__restaurant">
+                <h6>餐廳</h6>
+                <div class="footer__social">
+                  <a href="#">訂位<i></i></a>
+                  <br />
+                  <a href="#">購物車<i></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="footer__shopping">
+                <h6>線上商城</h6>
+                <div class="footer__social">
+                  <a href="#">商品搜尋<i></i></a>
+                  <br />
+                  <a href="#">購物車<i></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="footer__aboutus">
+                <h6>關於我們</h6>
+                <div class="footer__social">
+                  <a href="#">網站介紹<i></i></a>
+                  <br />
+                  <a href="#">履歷<i></i></a>
+                </div>
+              </div>
+              <div class="footer__widget">
+                <h6>好食光</h6>
+                <ul>
+                  <li>指導老師：</li>
+                  <li>吳永志老師 吳冠宏老師 郭惠民老師 陳怡榕老師</li>
+                  <li>組員 :</li>
+                  <li>陳宜瀅 張家銘 楊婕妤</li>
+                  <li>游育碩 黃郁婕 李佳欣 余可凡</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <p class="copyright__text text-white">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                All rights reserved | This template is made with
+                <i class="fa fa-heart" aria-hidden="true"></i> by
+                <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              </p>
+            </div>
+            <div class="col-lg-5">
+              <div class="copyright__widget">
+                <ul>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="#">Site Map</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+      <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form">
+          <input type="text" id="search-input" placeholder="Search here....." />
+        </form>
+      </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.barfiller.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/reservation.js"></script>
+    <script src="js/alice.js"></script>
+  </body>
+</html>
