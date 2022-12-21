@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.tibame.tga104.reservation.vo.MemberReserveInfVO;
+import com.tibame.tga104.reservation.vo.ReservationDetailVO;
 import com.tibame.tga104.reservation.vo.ReservationVO;
 
 
@@ -20,8 +22,17 @@ public class ReservationDaoImplTests {
 	public void reservationDaoTest() {
 
 		//	select
-		List<ReservationVO> vo = dao.getAll();
-		System.out.println("bean="+ vo);
+//		List<ReservationVO> vo = dao.getAll();
+//		System.out.println("bean="+ vo);
+		
+		// select from MemberReserveInfVO (view)
+//		List<MemberReserveInfVO> vo = dao.findByMemeberNo(5);
+//		System.out.println("List" + vo);
+		
+		
+		// select from ReservationDetailVO (view)
+//		List<ReservationDetailVO> vo = dao.findByRestaurantNo(1);
+//		System.out.println("List" + vo);
 		
 		// insert
 //		ReservationVO insert = new ReservationVO();

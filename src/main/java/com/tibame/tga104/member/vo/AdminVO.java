@@ -8,6 +8,11 @@ public class AdminVO {
 	private String adminName;
 	
 
+	@Override
+	public String toString() {
+		return "AdminVO [adminNo=" + adminNo + ", adminAccount=" + adminAccount + ", adminPassword=" + adminPassword
+				+ ", adminName=" + adminName + "]";
+	}
 
 	public Integer getAdminNo() {
 		return adminNo;

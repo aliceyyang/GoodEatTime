@@ -1,5 +1,6 @@
 package com.tibame.tga104.reservation.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.PersistenceContext;
@@ -11,7 +12,6 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.tibame.tga104.reservation.dao.ReserveTimeDao;
 import com.tibame.tga104.reservation.vo.ReserveTimeVO;
@@ -37,47 +37,43 @@ public class ReserveTimeDaoImpl implements ReserveTimeDao {
 	}
 
 	@Override
-	public boolean updateAllowReserveNum(Integer reserveTimeNO, String reserveTime, Integer allowReserveNum) {
-		if (reserveTimeNO != null) {
-			ReserveTimeVO temp = this.getSession().get(ReserveTimeVO.class, reserveTimeNO);
+	public ReserveTimeVO updateAllowReserveNum(ReserveTimeVO reserveTimeVo) {
+		if (reserveTimeVo != null && reserveTimeVo.getReserveTimeNo() != null) {
+			ReserveTimeVO temp = this.getSession().get(ReserveTimeVO.class, reserveTimeVo.getReserveTimeNo());
 			if (temp != null) {
-				temp.setAllowReserveNum(allowReserveNum);
-				temp.setReserveTime(reserveTime);
-
-				return true;
-			}
-		}
-		return false;
-	}
-
-	@Override
-	public boolean updateWeekDay(Integer reserveTimeNO, String reserveTime, Integer weekDay, Integer allowReserveNum) {
-		if (reserveTimeNO != null) {
-			ReserveTimeVO temp = this.getSession().get(ReserveTimeVO.class, reserveTimeNO);
-			if (temp != null) {
-				temp.setReserveTime(reserveTime);
-				temp.setWeekDay(weekDay);
-				temp.setAllowReserveNum(allowReserveNum);
-
-				return true;
-			}
-		}
-		return false;
-	}
-
-	@Override
-	public ReserveTimeVO update(ReserveTimeVO reserveTimeVO) {
-		if (reserveTimeVO != null && reserveTimeVO.getReserveTimeNo() != null) {
-			ReserveTimeVO temp = this.getSession().get(ReserveTimeVO.class, reserveTimeVO.getReserveTimeNo());
-			if (temp != null) {
-				return (ReserveTimeVO) this.getSession().merge(reserveTimeVO);
+				return (ReserveTimeVO) this.getSession().merge(reserveTimeVo);
 			}
 		}
 		return null;
 	}
 
 	@Override
-	public List<ReserveTimeVO> findbyrestaurantNOandWeekDay(Integer restaurantNo, Integer weekDay) {
+	public ReserveTimeVO updateWeekDay(ReserveTimeVO reserveTimeVo) {
+		if (reserveTimeVo != null && reserveTimeVo.getReserveTimeNo() != null) {
+			ReserveTimeVO temp = this.getSession().get(ReserveTimeVO.class, reserveTimeVo.getReserveTimeNo());
+			if (temp != null) {
+				return (ReserveTimeVO) this.getSession().merge(reserveTimeVo);
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public int update(ReserveTimeVO reserveTimeVO) {
+		Query<?> query = getSession().createQuery("update ReserveTimeVO "
+				+ "set allowReserveNum = :allowReserveNum "
+				+ "where "
+				+ "restaurantNo = :restaurantNo and reserveTime = :reserveTime and weekDay = :weekDay");
+		query.setParameter("allowReserveNum", reserveTimeVO.getAllowReserveNum())
+			 .setParameter("restaurantNo", reserveTimeVO.getRestaurantNo()) 
+			 .setParameter("reserveTime", reserveTimeVO.getReserveTime())
+			 .setParameter("weekDay", reserveTimeVO.getWeekDay());
+		return query.executeUpdate();
+		
+	}
+
+	@Override
+	public List<ReserveTimeVO> findByRestaurantNOandWeekDay(Integer restaurantNo, Integer weekDay) {
 		Query<ReserveTimeVO> query = getSession().createQuery("from ReserveTimeVO where restaurantNo = :restaurantNo and weekDay = :weekDay", ReserveTimeVO.class);
 		query.setParameter("restaurantNo", restaurantNo);
 		query.setParameter("weekDay", weekDay);
@@ -86,10 +82,10 @@ public class ReserveTimeDaoImpl implements ReserveTimeDao {
 	}
 
 	@Override
-	public List<ReserveTimeVO> findbyrestaurantNo(Integer restaurantNo) {
-			Query<ReserveTimeVO> query = getSession().createQuery("from ReserveTimeVO where restaurantNo = :restaurantNo", ReserveTimeVO.class);
+	public List<Integer> findByRestaurantNo(Integer restaurantNo) {
+			Query<Integer> query = getSession().createQuery("select distinct weekDay from ReserveTimeVO where restaurantNo = :restaurantNo", Integer.class);
 			query.setParameter("restaurantNo", restaurantNo);
-			List<ReserveTimeVO> reserveTimeVO = query.list();
+			List<Integer> reserveTimeVO = query.list();
 			return reserveTimeVO;
 	}
 
@@ -114,4 +110,17 @@ public class ReserveTimeDaoImpl implements ReserveTimeDao {
 
 	}
 
+
+	@Override
+	public List<Integer> getReserveTimeNo(Integer restaurantNo, Integer weekDay) {
+		Query<ReserveTimeVO> query = getSession().createQuery("from ReserveTimeVO where restaurantNo = :restaurantNo and weekDay =:weekDay", ReserveTimeVO.class);
+		query.setParameter("restaurantNo", restaurantNo);
+		query.setParameter("weekDay", weekDay);
+		List<ReserveTimeVO> list = query.list();
+		List<Integer> no = new ArrayList<Integer>();
+		for(ReserveTimeVO vo :list) {
+			no.add(vo.getReserveTimeNo());
+		}
+		return no;
+	}
 }

@@ -14,14 +14,16 @@ public class ShoppingCartDAOTests {
 	/* 測試已測完，基礎測試接ok
 	 * 移除DAO的@Transactional annotation至Service
 	 * 後續若要再測試的話需補上此annotation
+	 * 
+	 * 改用Redis
 	 * */
 	
 	@Test
 	void testInsert() {
 		ShoppingCartVO insert = new ShoppingCartVO();
 		insert.setMemberNo(5);
-		insert.setProdNo(10);
-		insert.setProdQty(15);
+		insert.setProdNo(3);
+		insert.setProdQty(10);
 		System.out.println("testInsert()="+dao.insert(insert));
 	}
 	
@@ -36,12 +38,12 @@ public class ShoppingCartDAOTests {
 	
 	@Test
 	void testDelete() {
-		System.out.println("testDelete()"+dao.delete(5, 10));
+		System.out.println("testDelete()="+dao.delete(5, 10));
 	}
 	
 	@Test
 	void testFindByPrimaryKey() {
-		System.out.println("testFindByPrimaryKey()="+dao.findByPrimaryKey(3, 4));
+		System.out.println("testFindByPrimaryKey()="+dao.findByPrimaryKey(5, 10));
 	}
 	
 	@Test

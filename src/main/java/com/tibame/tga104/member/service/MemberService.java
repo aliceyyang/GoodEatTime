@@ -1,8 +1,5 @@
 package com.tibame.tga104.member.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.tibame.tga104.member.vo.MemberVO;
 
 public interface MemberService {
@@ -10,5 +7,11 @@ public interface MemberService {
 	MemberVO register(MemberVO memberVO);
 	
 	MemberVO memberLogin(MemberVO memberVO);
+	
+	MemberVO findMemberByNo(MemberVO memberVO);
+	
+	MemberVO edit(MemberVO memberVO);
+	
+	boolean save(MemberVO memberVO);
 		
 }

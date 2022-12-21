@@ -1,16 +1,19 @@
 package com.tibame.tga104.coupon.vo;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Arrays;
 
 public class CouponVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer couponNo;
 	private Integer restaurantNo;
 	private Integer adminNo;
-	private String couponApplyDate;
+	private java.sql.Timestamp couponApplyDate;
 	private String couponName;
-	private String couponStartTime;
-	private String couponEndTime;
+	private java.sql.Date couponStartTime;
+	private java.sql.Date couponEndTime;
 	private Boolean verified;
 	private String couponContent;
 	private Integer usageLimitation;
@@ -19,17 +22,16 @@ public class CouponVO implements Serializable {
 	private Integer maxIssueQty;
 	private Integer issuedQty;
 	private String verificationDetail;
-	
+	private byte[] couponPic;
+	private String couponPicStr;
+
 	public CouponVO() {
-		super();
-	
 	}
 
-
-	public CouponVO(Integer couponNo, Integer restaurantNo, Integer adminNo, String couponApplyDate,
-			String couponName, String couponStartTime, String couponEndTime, Boolean verified, String couponContent,
-			Integer usageLimitation, Double amountOrFold, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
-			String verificationDetail) {
+	public CouponVO(Integer couponNo, Integer restaurantNo, Integer adminNo, Timestamp couponApplyDate,
+			String couponName, Date couponStartTime, Date couponEndTime, Boolean verified,
+			String couponContent, Integer usageLimitation, Double amountOrFold, Boolean couponType, Integer maxIssueQty,
+			Integer issuedQty, String verificationDetail,byte[] couponPic) {
 		super();
 		this.couponNo = couponNo;
 		this.restaurantNo = restaurantNo;
@@ -46,16 +48,19 @@ public class CouponVO implements Serializable {
 		this.maxIssueQty = maxIssueQty;
 		this.issuedQty = issuedQty;
 		this.verificationDetail = verificationDetail;
+		this.couponPic = couponPic;
 	}
+
+
 
 	@Override
 	public String toString() {
-		return "couponvo [couponNo=" + couponNo + ", restaurantNo=" + restaurantNo + ", adminNo=" + adminNo
+		return "CouponVO [couponNo=" + couponNo + ", restaurantNo=" + restaurantNo + ", adminNo=" + adminNo
 				+ ", couponApplyDate=" + couponApplyDate + ", couponName=" + couponName + ", couponStartTime="
 				+ couponStartTime + ", couponEndTime=" + couponEndTime + ", verified=" + verified + ", couponContent="
 				+ couponContent + ", usageLimitation=" + usageLimitation + ", amountOrFold=" + amountOrFold
 				+ ", couponType=" + couponType + ", maxIssueQty=" + maxIssueQty + ", issuedQty=" + issuedQty
-				+ ", verificationDetail=" + verificationDetail + "]";
+				+ ", verificationDetail=" + verificationDetail + ", couponPic=" + Arrays.toString(couponPic) + "]";
 	}
 
 	public Integer getCouponNo() {
@@ -82,12 +87,12 @@ public class CouponVO implements Serializable {
 		this.adminNo = adminNo;
 	}
 
-	public String getCouponApplyDate() {
+	public Timestamp getCouponApplyDate() {
 		return couponApplyDate;
 	}
 
-	public void setCouponApplyDate(String couponApplyDate) {
-		this.couponApplyDate = couponApplyDate;
+	public void setCouponApplyDate(Timestamp couponApplyDate2) {
+		this.couponApplyDate = couponApplyDate2;
 	}
 
 	public String getCouponName() {
@@ -98,19 +103,19 @@ public class CouponVO implements Serializable {
 		this.couponName = couponName;
 	}
 
-	public String getCouponStartTime() {
+	public Date getCouponStartTime() {
 		return couponStartTime;
 	}
 
-	public void setCouponStartTime(String couponStartTime) {
+	public void setCouponStartTime(Date couponStartTime) {
 		this.couponStartTime = couponStartTime;
 	}
 
-	public String getCouponEndTime() {
+	public Date getCouponEndTime() {
 		return couponEndTime;
 	}
 
-	public void setCouponEndTime(String couponEndTime) {
+	public void setCouponEndTime(Date couponEndTime) {
 		this.couponEndTime = couponEndTime;
 	}
 
@@ -177,6 +182,21 @@ public class CouponVO implements Serializable {
 	public void setVerificationDetail(String verificationDetail) {
 		this.verificationDetail = verificationDetail;
 	}
-	
+
+	public byte[] getCouponPic() {
+		return couponPic;
+	}
+
+	public void setCouponPic(byte[] couponPic) {
+		this.couponPic = couponPic;
+	}
+
+	public String getCouponPicStr() {
+		return couponPicStr;
+	}
+
+	public void setCouponPicStr(String couponPicStr) {
+		this.couponPicStr = couponPicStr;
+	}
 	
 }

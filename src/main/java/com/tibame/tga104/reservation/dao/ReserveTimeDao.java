@@ -7,15 +7,17 @@ import com.tibame.tga104.reservation.vo.ReserveTimeVO;
 public interface ReserveTimeDao {
 	public ReserveTimeVO insert(ReserveTimeVO reserveTimeVo);
 
-	public boolean updateAllowReserveNum(Integer reserveTimeNO, String reserveTime, Integer allowReserveNum);
+	public ReserveTimeVO updateAllowReserveNum(ReserveTimeVO reserveTimeVo);
 
-	public boolean updateWeekDay(Integer reserveTimeNO, String reserveTime, Integer weekDay, Integer allowReserveNum);
+	public ReserveTimeVO updateWeekDay(ReserveTimeVO reserveTimeVo);
 
-	public ReserveTimeVO update(ReserveTimeVO reserveTimeVO);
+	public int update(ReserveTimeVO reserveTimeVO);
 
-	public List<ReserveTimeVO> findbyrestaurantNOandWeekDay(Integer restaurantNo, Integer weekDay);
+	public List<ReserveTimeVO> findByRestaurantNOandWeekDay(Integer restaurantNo, Integer weekDay);
 
-	public List<ReserveTimeVO> findbyrestaurantNo(Integer restaurantNo);
+	public List<Integer> findByRestaurantNo(Integer restaurantNo);
+	
+	public List<Integer> getReserveTimeNo(Integer restaurantNo, Integer weekDay);
 
 	public List<ReserveTimeVO> getAll();
 

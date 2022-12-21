@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 import com.tibame.tga104.order.vo.ProdOrderDetailVO;
 
-public class ProdOrderDetailJNDIDAO implements ProdOrderDetailDAO_interface{
+public class ProdOrderDetailJNDIDAO{
 	
 	private static DataSource ds = null;
 	static {
@@ -34,7 +34,7 @@ public class ProdOrderDetailJNDIDAO implements ProdOrderDetailDAO_interface{
 			ps.setInt(1, prodOrderDetailVO.getProdOrderNo());
 			ps.setInt(2, prodOrderDetailVO.getProdNo());
 			ps.setInt(3, prodOrderDetailVO.getProdQty());
-			ps.setInt(4, prodOrderDetailVO.getProdPrice());
+//			ps.setInt(4, prodOrderDetailVO.getProdPrice());
 			ps.setInt(5, prodOrderDetailVO.getProdCommentRating());
 			ps.setString(6, prodOrderDetailVO.getProdCommentContent());
 			ps.setBytes(7, prodOrderDetailVO.getProdCommentPic());
@@ -83,7 +83,7 @@ public class ProdOrderDetailJNDIDAO implements ProdOrderDetailDAO_interface{
 			
 			ps.setInt(1, prodOrderDetailVO.getProdNo());
 			ps.setInt(2, prodOrderDetailVO.getProdQty());
-			ps.setInt(3, prodOrderDetailVO.getProdPrice());
+//			ps.setInt(3, prodOrderDetailVO.getProdPrice());
 			ps.setInt(4, prodOrderDetailVO.getProdCommentRating());
 			ps.setString(5, prodOrderDetailVO.getProdCommentContent());
 			ps.setBytes(6, prodOrderDetailVO.getProdCommentPic());
@@ -126,7 +126,7 @@ public class ProdOrderDetailJNDIDAO implements ProdOrderDetailDAO_interface{
 				prodOrderDetailVO_select.setProdOrderNo(rs.getInt("prodOrderNo"));
 				prodOrderDetailVO_select.setProdNo(rs.getInt("prodNo"));
 				prodOrderDetailVO_select.setProdQty(rs.getInt("prodQty"));
-				prodOrderDetailVO_select.setProdPrice(rs.getInt("prodPrice"));
+//				prodOrderDetailVO_select.setProdPrice(rs.getInt("prodPrice"));
 				prodOrderDetailVO_select.setProdCommentRating(rs.getInt("prodCommentRating"));
 				prodOrderDetailVO_select.setProdCommentContent(rs.getString("prodCommentContent"));
 				prodOrderDetailVO_select.setProdCommentPic(rs.getBytes("prodCommentPic"));
@@ -170,7 +170,7 @@ public class ProdOrderDetailJNDIDAO implements ProdOrderDetailDAO_interface{
 				ProdOrderDetailVO_getAll.setProdOrderNo(rs.getInt("prodOrderNo"));
 				ProdOrderDetailVO_getAll.setProdNo(rs.getInt("prodNo"));
 				ProdOrderDetailVO_getAll.setProdQty(rs.getInt("prodQty"));
-				ProdOrderDetailVO_getAll.setProdPrice(rs.getInt("prodPrice"));
+//				ProdOrderDetailVO_getAll.setProdPrice(rs.getInt("prodPrice"));
 				ProdOrderDetailVO_getAll.setProdCommentRating(rs.getInt("prodCommentRating"));
 				ProdOrderDetailVO_getAll.setProdCommentContent(rs.getString("prodCommentContent"));
 				ProdOrderDetailVO_getAll.setProdCommentPic(rs.getBytes("prodCommentPic"));

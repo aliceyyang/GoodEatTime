@@ -16,15 +16,16 @@
     margin-right: 5px;
     padding: 0;
     display: inline-block;
-    
+
 }
+
 .fill-ratings {
     padding: 0;
     position: relative;
     z-index: 0;
     display: block;
     top: 0;
-    left: 0; 
+    left: 0;
     overflow: hidden;
 }
 
@@ -32,16 +33,19 @@
     /* Allows us to grab the width of the span elements*/
     display: inline-block;
     color: #f08632 !important;
-} 
+}
+
 .empty-ratings {
     margin-top: -28px;
     padding: 0;
     display: block;
     z-index: 1;
 }
+
 .empty-ratings span {
-    color:#ccc !important;
+    color: #ccc !important;
 }
+
 .product__details__rating span {
     /* background: #ffffff;
     padding: 6px 10px 4px;
@@ -81,7 +85,86 @@ div.product__details__option .quantity {
     float: left;
     margin-left: 50px;
 }
+
 div.product__details__option a.primary-btn {
     float: right;
     margin-right: 50px;
+}
+
+div.restaurant_resp > p {
+    padding-top: 10px !important;
+}
+
+div.restaurant_resp > h5{
+    color: #111111;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+div.testimonial__item > p {
+    padding-top: 10px !important;
+}
+
+i.fa-solid {
+    width: 100%;
+    height: calc(100% - 300px);
+    vertical-align: middle;
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    font-size: 30px;
+    cursor: pointer;
+}
+/*@宜瀅評論的css*/
+.testimonial__item {
+    padding-top: 20px;
+}
+.testimonial__item .rating {
+    position: absolute;
+    left: 200px;
+    top: 20px;
+}
+
+.testimonial__item .rating span {
+    font-size: 30px;
+}
+
+span.icon_star.-off {
+    color: gray;
+}
+
+.comment_pic {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 40px;
+    top: 10px;
+
+}
+
+.comment_pic>a>img {
+    width: 100%;
+    height: 100%;
+    border: 1px dashed gray;
+    padding: 2px;
+}
+
+.product__item__text .added a {
+    color: #ffffff;
+    background-color: #111111;
+    border-bottom: 0;
+    padding: 6px 10px 4px;
+}
+
+.product__item__pic {
+    cursor: pointer;
+}
+
+.product__item__pic span {
+    cursor: default;
+}
+
+input:disabled {
+    background-color: #ffffff;
 }

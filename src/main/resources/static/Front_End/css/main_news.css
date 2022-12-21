@@ -1,6 +1,9 @@
 /*---------------------
 news__slider
 -----------------------*/
+.news {
+  height: 100%
+}
 
 .spad {
   padding-bottom: 50px;
@@ -16,11 +19,13 @@ news__slider
 .news__slider #news_img{
   display: block;
   min-width: 50%;
-  height: 100px;
+  height: auto;
+  margin-left: 1%;
 }
 
 .news-title {
   margin-bottom: 5px;
+  background-color: #111111;
 }
 
 .news_title .news__item {
@@ -30,8 +35,9 @@ news__slider
   height: 100px;
 }
   
-.news_title .owl-carousel {
-  height: 10%;
+.news .news__item {
+  height: 200px;
+  width: auto;
 }
 
 .news-title span {
@@ -122,7 +128,7 @@ newsrst__slider
 -----------------------*/
 
 .spad {
-  padding-bottom: 50px;
+  padding-bottom: 10px;
 }
 
 .newsrst_row {
@@ -164,7 +170,7 @@ newsrst__slider
 }
 
 .newsrst__slider .col-lg-6 {
-  max-width: 50%;
+  max-width: 100%;
 }
 .newsrst__slider.owl-carousel .owl-dots {
   text-align: center;

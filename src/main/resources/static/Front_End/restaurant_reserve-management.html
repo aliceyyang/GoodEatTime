@@ -166,7 +166,7 @@
         <div class="row">
           <div class="reserve_status col-lg-6 col-md-6 col-sm-6">
             <h3>訂位概況</h3>
-            <input type="date" id="reserve_search" onkeyup="searchFunction()">
+            <input type="date" id="reserve_search">
             <div class="table-responsive" id="table-responsive">
               <table class="table" id="reserve_status" style=" width: 100%">
                 <thead>
@@ -177,34 +177,10 @@
                     <th>剩餘訂位人數</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>2022/12/01</td>
-                    <td>12:00</td>
-                    <td>20</td>
-                    <td>5</td>
-                  </tr>
-                  <tr>
-                    <td>2022/12/23</td>
-                    <td>12:00</td>
-                    <td>15</td>
-                    <td>10</td>
-                  </tr>
-                  <tr>
-                    <td>2022/12/23</td>
-                    <td>12:00</td>
-                    <td>15</td>
-                    <td>10</td>
-                  </tr>
-                  <tr>
-                    <td>2022/12/23</td>
-                    <td>12:00</td>
-                    <td>15</td>
-                    <td>10</td>
-                  </tr>
+                <tbody id="tbReserve_status">
                 </tbody>
               </table>
-              <button class="site-btn col-lg-12 col-md-12 col-sm-12"><i
+              <button class="site-btn col-lg-12 col-md-12 col-sm-12" id="search_detail"><i
                   class="fa-solid fa-magnifying-glass fa-xl"></i>&nbsp詳細訂位資訊</button>
             </div>
           </div>

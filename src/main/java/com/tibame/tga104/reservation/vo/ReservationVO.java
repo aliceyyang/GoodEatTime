@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "reservation")
 public class ReservationVO {
@@ -21,7 +23,7 @@ public class ReservationVO {
 	@Column(name = "memberNo")
 	private Integer memberNo;
 
-	@Column(name = "reserveStatus")
+	@Column(name = "reserveStatus", insertable = false)
 	private String reserveStatus;
 
 	@Column(name = "restaurantNo")
@@ -31,6 +33,7 @@ public class ReservationVO {
 	private Integer reserveNum;
 
 	@Column(name = "reserveDate")
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone= "GMT+8")
 	private java.sql.Date reserveDate;
 
 	@Column(name = "reserveTime")
@@ -49,12 +52,14 @@ public class ReservationVO {
 	private byte[] commentPic;
 
 	@Column(name = "restaurantCommentTime")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone= "GMT+8")
 	private java.sql.Timestamp restaurantCommentTime;
 
 	@Column(name = "restaurantRe")
 	private String restaurantRe;
 
 	@Column(name = "restaurantReTime")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone= "GMT+8")
 	private java.sql.Timestamp restaurantReTime;
 
 	public ReservationVO() {

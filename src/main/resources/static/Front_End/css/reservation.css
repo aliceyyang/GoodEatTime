@@ -238,6 +238,7 @@ th {
 .onoffswitch {
   position: relative;
   width: 105px;
+  margin: auto;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -251,7 +252,7 @@ th {
   display: block;
   overflow: hidden;
   cursor: pointer;
-  border: 2px solid #a69b98;
+  /* border: 2px solid #a69b98; */
   border-radius: 20px;
   margin-bottom: 0px;
   position: relative;
@@ -280,7 +281,7 @@ th {
   content: "報到成功";
   padding-right: 20px;
   background-color: #f6e04f;
-  color: #94959a;
+  color: black;
 }
 .onoffswitch-inner:after {
   content: "未報到";
@@ -297,8 +298,8 @@ th {
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 71px;
-  border: 2px solid #a69b98;
+  right: 74px;
+  /* border: 2px solid #a69b98; */
   border-radius: 20px;
   transition: all 0.3s ease-in 0s;
 }
@@ -307,4 +308,69 @@ th {
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px;
+}
+
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.switchLabel {
+  cursor: pointer;
+  width: 145px;
+  height: 33px;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.switchLabel:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -1px;
+  width: 68px;
+  height: 33px;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+.switch-txt::before,
+.switch-txt::after {
+  display: block;
+  color: #fff;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+.switch-txt::before {
+  margin-left: 10px;
+  position: absolute;
+  content: attr(turnOn);
+  color: #fff;
+}
+.switch-txt::after {
+  margin-left: 70px;
+  content: attr(turnOff);
+  color: #ccc;
+}
+
+input:checked + .switchLabel {
+  background: #6f42c1;
+}
+
+.switchLabel:active:after {
+  width: 130px;
+}
+
+input:checked + .switchLabel:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+.switch-txt {
+  line-height: 33px;
 }

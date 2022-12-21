@@ -34,31 +34,18 @@ public class MemberCouponDAOImpl implements MemberCouponDAO {
 	}
 
 	@Override
-	public MemberCouponVO update(MemberCouponVO memberCouponVO) {
+	public boolean update(MemberCouponVO memberCouponVO) {
 		if (memberCouponVO != null && memberCouponVO.getMemberNo() == null) {
 			MemberCouponVO temp = this.getSession().get(memberCouponVO.getClass(), memberCouponVO.getMemberNo());
 			if (temp != null) {
-				return memberCouponVO;
-			}
-		}
-		return null;
-	}
-
-	@Override
-	public Boolean usageStatus(Boolean usageStatus) {
-		if (usageStatus != null) {
-			MemberCouponVO temp = this.getSession().get(MemberCouponVO.class, usageStatus);
-			if (temp != null) {
-				temp.setUsageStatus(usageStatus);
 				return true;
 			}
-
 		}
-		return null;
+		return false;
 	}
 
 	@Override
-	public MemberCouponVO findByPrimaryKey(Integer memberNo) {
+	public MemberCouponVO select(Integer memberNo) {
 		if (memberNo != null) {
 			return this.getSession().get(MemberCouponVO.class, memberNo);
 		}
@@ -80,5 +67,14 @@ public class MemberCouponDAOImpl implements MemberCouponDAO {
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public boolean delete(Integer memberNo) {
+		if (memberNo != null) {
+			this.getSession().get(MemberCouponVO.class, memberNo);
+			return true;
+		}
+		return false;
 	}
 }

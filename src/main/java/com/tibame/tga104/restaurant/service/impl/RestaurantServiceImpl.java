@@ -15,13 +15,13 @@ import javax.persistence.Column;
 
 @Component
 public class RestaurantServiceImpl implements RestaurantService {
+	
 	@Autowired
 	private RestaurantSpringDAO restaurantSpringDAO;
+	
+	@Autowired
 	private RestaurantDao dao;
 	
-	public RestaurantServiceImpl(){
-		dao = new RestaurantDaoImpl();
-	}
 	
 	@Override
 	public List<RestaurantVO> getAll() {
@@ -29,26 +29,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
-	public RestaurantVO addRestaurant(String restaurantTel, String restaurantName, String restaurantTaxIDNo,
-			String restaurantAccountInfo, String restaurantBusinessHour, String restaurantAddr,
-			Boolean restaurantStatus, String restaurantAccount, String restaurantPassword,
-			Integer restaurantCommentQuantity, Integer totalCommentRating) {
+	public boolean addRestaurant(RestaurantVO restaurantVO) {	
 		
-		RestaurantVO vo = new RestaurantVO();
-		vo.setRestaurantTel(restaurantTel);
-		vo.setRestaurantName(restaurantName);
-		vo.setRestaurantTaxIDNo(restaurantTaxIDNo);
-		vo.setRestaurantAccountInfo(restaurantAccountInfo);
-		vo.setRestaurantBusinessHour(restaurantBusinessHour);
-		vo.setRestaurantAddr(restaurantAddr);
-		vo.setRestaurantStatus(restaurantStatus);
-		vo.setRestaurantAccount(restaurantAccount);
-		vo.setRestaurantPassword(restaurantPassword);
-		vo.setRestaurantCommentQuantity(restaurantCommentQuantity);
-		vo.setTotalCommentRating(totalCommentRating);
-		
-		dao.insert(vo);
-		return vo;
+		return dao.insert(restaurantVO);
 	}
 
 	@Override
