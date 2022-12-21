@@ -49,8 +49,8 @@ $(document).ready(function () {
             return status;
           } else {
             return `
-            <input type="checkbox" id="switch"/>
-            <label for="switch" class="switchLabel">
+            <input type="checkbox" id="switch${row.reserveNo}" class="switchButton" onchange="change(${row.reserveNo})"/>
+            <label for="switch${row.reserveNo}" class="switchLabel">
                 <span class="switch-txt" turnOn="報到成功" turnOff="未報到"></span>
             </label>`;
           }
@@ -289,25 +289,26 @@ $(document).ready(function () {
 });
 
 function change(reserveNo) {
-  // console.log(reserveNo);
+  console.log(reserveNo);
   var isChecked = $(`#switch${reserveNo}`).is(":checked");
-  var selectedData;
-  var $switchLabel = $(".switch-label");
   console.log("isChecked: " + isChecked);
-
+  let reserveStatus;
   if (isChecked) {
-    selectedData = $switchLabel.attr("data-on");
+    reserveStatus = $(".switch-txt").attr("turnOn");
   } else {
-    selectedData = $switchLabel.attr("data-off");
+    reserveStatus = $(".switch-txt").attr("turnOff");
   }
-  console.log("Selected data: " + selectedData);
-
-  // $.ajax({
-  //   url: "../reservation/restaurant/statusUpdate",
-  //   type: "POST",
-  //   dataType: "json",
-  //   data: { reserveNo: reserveNo, reserveStatus: aa },
-  // });
+  console.log("Selected data: " + reserveStatus);
+  $.ajax({
+    url: "../reservation/restaurant/statusUpdate",
+    type: "GET",
+    dataType: "json",
+    contentType: "application/json",
+    data: { reserveNo: reserveNo, reserveStatus: reserveStatus },
+    success: function (a) {
+      console.log(a);
+    },
+  });
 }
 
 // 開關取值

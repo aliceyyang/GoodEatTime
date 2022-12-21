@@ -63,17 +63,17 @@ public class ReservationController {
 
 	// -----------------------------------------
 
-//	@GetMapping("member/inf")
-//	public List<MemberReserveInfVO> memberReserveInf() {
-//		// TODO 5是暫時寫死的唷!!!
-//		return reservationService.findByMemberNO(5);
-//	}
-
 	@GetMapping("member/inf")
-	public List<MemberReserveInfVO> memberReserveInf(HttpSession session) {
-		Integer member = (Integer) session.getAttribute("memberNo");
-		return reservationService.findByMemberNO(member);
+	public List<MemberReserveInfVO> memberReserveInf() {
+		// TODO 5是暫時寫死的唷!!!
+		return reservationService.findByMemberNO(5);
 	}
+
+//	@GetMapping("member/inf")
+//	public List<MemberReserveInfVO> memberReserveInf(HttpSession session) {
+//		Integer member = (Integer) session.getAttribute("memberNo");
+//		return reservationService.findByMemberNO(member);
+//	}
 // ----------------------------------------------------------------	
 	// 這是對的唷
 //		@GetMapping("restaurant/reserveStatus")
@@ -105,9 +105,9 @@ public class ReservationController {
 	}
 	
 	//----------------------------------
-	@PostMapping("restaurant/statusUpdate")
-	public boolean reseveStatus(@RequestBody ReservationVO vo) {
-		return reservationService.changeStatus(vo);
+	@GetMapping("restaurant/statusUpdate")
+	public boolean reseveStatus(@RequestParam Integer reserveNo , @RequestParam String reserveStatus) {
+		return reservationService.changeStatus(reserveNo, reserveStatus);
 	}
 	
 	@PostMapping("member")
