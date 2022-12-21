@@ -64,9 +64,9 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public boolean changeStatus(ReservationVO vo) {
-		if(vo.getReserveNo() != null) {
-			return dao.updateStatus(vo.getReserveNo(), vo.getReserveStatus());
+	public boolean changeStatus(Integer reserveNo,String reserveStatus) {
+		if(reserveNo != null) {
+			return dao.updateStatus(reserveNo, reserveStatus);
 		}
 		return false;
 	}
