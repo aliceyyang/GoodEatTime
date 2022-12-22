@@ -300,6 +300,34 @@
                     required="required"
                   />
                 </div>
+
+
+
+                <div class="checkout__input">
+                  <p>E-mail<span>*</span></p>
+                  <div class="row">
+                    <!-- <div class="col-lg-9"> -->
+                      <input
+                        id="mail"
+                        type="mail"
+                        class="form-control"
+                        required="required"
+                      />
+
+                      <label id="mailPattern" style="float: right;"></label>
+
+                    <!-- </div> -->
+                    
+                    <!-- <div class="col-lg-3">
+                      <button type="submit" class="site-btn">取得驗證碼</button>
+                    </div> -->
+                  </div>
+                </div>
+
+
+
+
+
                 <div class="checkout__input">
                   <p>密碼<span>*</span></p>
                   <div class="row">
@@ -354,33 +382,26 @@
                     </div>
                   </div>
                 </div>
-                <div class="checkout__input">
-                  <p>E-mail<span>*</span></p>
-                  <div class="row">
-                    <div class="col-lg-9">
-                      <input
-                        id="mail"
-                        type="mail"
-                        class="form-control"
-                        required="required"
-                        value="rjw'tepo"
-                      />
-
-                      <label id="mailPattern" style="float: right;"></label>
-
-                    </div>
-                    <div class="col-lg-3">
-                      <button type="submit" class="site-btn">取得驗證碼</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="checkout__input">
+                
+                <!-- <div class="checkout__input">
                   <p>輸入驗證碼<span>*</span></p>
                   <input
                     type="text"
                     class="form-control"
                     placeholder="請輸入收到的驗證碼"
                   />
+                </div> -->
+
+
+                <div class="checkout__input">
+                  <p>會員頭貼<span>*</span></p>
+                  
+                  <!-- <h4 style="text-align:center">圖片上傳</h4> -->
+                  <label>
+                    <input type="file" id="memberPic"  accept="image/*" multiple="multiple" required/>
+                  </label>
+                  <img id="imgMemberPic" style="width: 200px">
+                  <!-- <button  type="submit" class="site-btn">上傳</button> -->
                 </div>
               </di>
             </div>
@@ -528,51 +549,49 @@
       });
 
       //先抓到id
-      const nameTag = document.querySelector("#name");
-      const telTag = document.querySelector("#tel");
-      const birthdayTag = document.querySelector("#birthday");
-      const memberPasswordTag = document.querySelector("#memberPassword");
-      const recheckpwTag = document.querySelector("#recheckpw");
-      const mailTag = document.querySelector("#mail");
-      
+      const name = document.querySelector("#name");
+      const tel = document.querySelector("#tel");
+      const birthday = document.querySelector("#birthday");
+      const memberPassword = document.querySelector("#memberPassword");
+      const recheckpw = document.querySelector("#recheckpw");
+      const mail = document.querySelector("#mail");
+      const memberPic = document.querySelector("#memberPic");
+      const imgMemberPic = document.querySelector('#imgMemberPic');
 
-      const submitBtnTag = document.querySelector("#submitBtn");
+      const submitBtn = document.querySelector("#submitBtn");
 
       // =========================驗證密碼長度=========================
-      memberPasswordTag.addEventListener("blur", () => {
+      memberPassword.addEventListener("blur", () => {
         let memberPasswordPattern = document.getElementById('memberPasswordPattern')
         
-        // 抓密碼的值
-        const memberPassword = memberPasswordTag.value;
-        console.log(memberPassword);
         // 檢查這個值 是否符合6~12個字元
-        if (memberPassword.length >= 6 && memberPassword.length <= 12) {
+        if (memberPassword.value.length >= 6 && memberPassword.value.length <= 12) {
           memberPasswordPattern.innerHTML = ""
-          memberPasswordTag.style.border = "none";
+          memberPassword.style.border = "none";
         }else{
           memberPasswordPattern.innerHTML = "<span>*密碼長度需介於6~12個字元</span>"
-          memberPasswordTag.style.border = "2px solid red";
+          memberPassword.style.border = "2px solid red";
             }
                 return
         })
 
       //===========當離開確認密碼的地方觸發驗證密碼及確認密碼是否相同==================
-      recheckpwTag.addEventListener("blur", () => {
+      recheckpw.addEventListener("blur", () => {
         let recheckpwPattern = document.getElementById('recheckpwPattern')
         //先抓到密碼及確認密碼的值
-        const memberPassword = memberPasswordTag.value;
-        const checkpassword = recheckpwTag.value;
+        const password = memberPassword.value;
+        const checkpassword = recheckpw.value;
         //判斷確認密碼不可為空
         //判斷密碼及確認密碼需相同
-        if (memberPassword.length > 0 && (memberPassword == checkpassword)) {
+        if (password.length > 0 && (password == checkpassword)) {
           recheckpwPattern.innerHTML = ""
-          recheckpwTag.style.border = "none";
+          recheckpw.style.border = "none";
           // if (memberPassword !== checkpassword) {
           //   console.log("密碼及確認密碼需相同");
           // }
         }else{
           recheckpwPattern.innerHTML = "<span>*密碼及確認密碼需相同</span>"
-          recheckpwTag.style.border = "2px solid red"
+          recheckpw.style.border = "2px solid red"
         }
           return
       });
@@ -582,7 +601,7 @@
       
       // telTag.addEventListener("blur", () => {
       //   // 抓手機號碼的值
-      //   let tel = telTag.value;
+        // let tel = telTag.value;
       //   console.log(tel);
       //   // 檢查這個值 是否符合格式
       //   const regex = /^09\d{2}-\d{6}$/;
@@ -600,32 +619,33 @@
       //   }
       // });
 // =========================驗證電話格式=========================
-      telTag.addEventListener("blur",function(){
+      tel.addEventListener("blur",function(){
         let telPattern = document.getElementById('telPattern')
+        // let tel = tel.value;
         let pattern =  /^09\d{2}\d{6}$/;
-            if(pattern.test(telTag.value)){
+            if(pattern.test(tel.value)){
               
               telPattern.innerHTML = ""
-              telTag.style.border = "none";
+              tel.style.border = "none";
             
             }else{
               telPattern.innerHTML = "<span>*手機號碼格式錯誤</span>"
-                console.log(telTag.value);
-                telTag.style.border = "2px solid red";
+                console.log(tel.value);
+                tel.style.border = "2px solid red";
             }
                 return
         })
 
 // =========================驗證信箱格式=========================
-      mailTag.addEventListener("blur", () => {
+      mail.addEventListener("blur", () => {
         let mailPattern = document.getElementById('mailPattern')
         let pattern = /^([\w]+)(.[\w]+)*@([\w]+)(.[\w]{2,3}){1,2}$/;
-        if(pattern.test(mailTag.value)){
+        if(pattern.test(mail.value)){
           mailPattern.innerHTML = ""
-          mailTag.style.border = "none";
+          mail.style.border = "none";
         }else{
           mailPattern.innerHTML = "<span>*信箱格式錯誤</span>"
-          mailTag.style.border = "2px solid red";
+          mail.style.border = "2px solid red";
         }
         return
       })
@@ -649,25 +669,40 @@
         // }
 
         document.querySelector("#submitBtn").addEventListener("click", () => {
-
-        fetch("/register", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            name: name,
-            tel: tel,
-            birthday: birthday,
-            memberPassword: memberPassword,
-            mail: mail,
-          }),
-        })
-          .then((resp) => resp.json())
-          .then((body) => {
-            alert(body.message);            
-          });
+			const file = memberPic.files[0];
+			const fileReader = new FileReader();
+			fileReader.addEventListener('load', event => {
+				const base64Str = btoa(event.target.result);
+				fetch("/register", {
+					method: "POST",
+			        headers: {
+			          "Content-type": "application/json",
+			        },
+			        body: JSON.stringify({
+						name: name.value,
+			            tel: tel.value,
+			            birthday: birthday.value,
+			            memberPassword: memberPassword.value,
+			            mail: mail.value,
+		              	memberPic: base64Str,
+			          }),
+			        })
+			        .then((resp) => resp.json())
+			        .then((body) => {
+						alert(body.message);            
+			        });				
+			});
+			fileReader.readAsBinaryString(file);        	
       });
+        
+        memberPic.addEventListener('change', () => {
+        	const file = memberPic.files[0];
+        	if (file) {
+        		imgMemberPic.src = URL.createObjectURL(file);
+        	} else {
+        		imgMemberPic.src = '';
+        	}
+        });
     
     </script>
   </body>

@@ -16,10 +16,6 @@ public class MemberRegistController {
 
 	@PostMapping("/register")
 	public MemberVO register(@RequestBody MemberVO memberVO) {
-
-//		System.out.println("member VO: "+ memberVO);
-//		return new MemberVO();
-
 		if (memberVO == null) {
 			memberVO = new MemberVO();
 			memberVO.setSuccessful(false);
@@ -28,7 +24,6 @@ public class MemberRegistController {
 		} else {
 			memberVO = memberService.register(memberVO);
 		}
-
 		return memberVO;
 	}
 

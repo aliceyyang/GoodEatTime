@@ -4,10 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.tibame.tga104.member.service.MemberService;
 import com.tibame.tga104.member.vo.MemberVO;
@@ -47,9 +49,14 @@ public class MemberLoginController {
 //			memberVO.setMessage("帳號密碼錯誤");
 //		}
 //		return memberVO;
-
 //		
 
 	}
-
+	
+	
+//會員頭貼
+	@GetMapping("getPic")
+	public byte[] getPic(@SessionAttribute MemberVO memberVO) {
+		return memberVO.getMemberPic();
+	}
 }
