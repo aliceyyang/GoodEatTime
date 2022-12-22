@@ -18,7 +18,7 @@ import com.tibame.tga104.member.vo.MemberVO;
 //需與組員討論除登入頁面外,需要放的網址列為何
 @WebFilter("")
 
-public class memberLoginFilter extends HttpFilter {
+public class MemberLoginFilter extends HttpFilter {
 	private static final long serialVersionUID = 1L;
 	
 	public void init(FilterConfig fConfig) throws ServletException {

@@ -1,6 +1,7 @@
 package com.tibame.tga104.core;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -24,6 +25,8 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.MimeUtility;
 
+import org.springframework.util.ResourceUtils;
+
 
 public class MailService {
 	private final static String HOST = "smtp.gmail.com";
@@ -31,10 +34,10 @@ public class MailService {
 	private final static String PORT = "587";
 	private final static String STARTTLE_ENABLE = "true";
 	private final static String SENDER = "h216222@gmail.com";//這裡是先寫死的唷
-	private final static String PASSWORD = "niyafouzzziaqbzz";
-
+	private final static String PASSWORD = "tdxdzeqefbdcqbih";
+	
 //  設定傳送郵件:至收信人的Email信箱,Email主旨,Email內容
-	public void sendMail(String mail, String mailSubject, String mailBody) {
+	public static void sendMail(String mail, String mailSubject, String mailBody) throws FileNotFoundException {
 //		String recipientCcs = "副本mail";
 		Properties props = new Properties();
 		props.put("mail.smtp.host", HOST);
@@ -74,7 +77,8 @@ public class MailService {
 			multipart.addBodyPart(messageBody);
 
 ////          second part (the image) 可根據自己需要決定是否要加這段 (不需要就註解至85行)
-			File file = new File("picture/20211214151834.jpg");
+			File file = ResourceUtils.getFile("classpath:static/Front_End/img/GoodEatTime_smlogo.png");
+			
 			MimeBodyPart messageImgBody = new MimeBodyPart();
 			DataSource fds = new FileDataSource(file);
 
@@ -107,19 +111,13 @@ public class MailService {
 		}
 	}
 
-	public static void main(String args[]) {
-
-		String to = "tibameaga1013@gmail.com";
-
+	public static void main(String args[]) throws FileNotFoundException {
+		String to = "ithan0117@gmail.com";
 		String subject = "密碼通知";
-
 		String ch_name = "David";
 		String passRandom = "111";
 		String messageText = "Hello! " + ch_name + " 請謹記此密碼: " + passRandom + "\n" + " (已經啟用)";
-
-		MailService mailService = new MailService();
-		mailService.sendMail(to, subject, messageText);
-
+		sendMail(to, subject, messageText);
 	}
 
 }
