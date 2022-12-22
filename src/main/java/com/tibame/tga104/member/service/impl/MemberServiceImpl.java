@@ -1,5 +1,6 @@
 package com.tibame.tga104.member.service.impl;
 
+import java.io.FileNotFoundException;
 import java.util.Date;
 import java.util.Objects;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tibame.tga104.core.MailService;
 import com.tibame.tga104.member.dao.MemberDAO;
 import com.tibame.tga104.member.service.MemberService;
 import com.tibame.tga104.member.vo.MemberVO;
@@ -89,7 +91,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 
 //		final byte[] memberPic = memberVO.getMemberPic();
-//		if(memberPic==null || Objects.equals(memberPic, "")) {
+//		if(memberPic == null || Objects.equals(memberPic, "")) {
 //			return "設定你的頭貼吧";
 //		}
 
@@ -134,7 +136,15 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO forgotPassWord(MemberVO memberVO) {
 //		String mail = memberVO.getMemberPassword();
 		MemberVO mailRessult = dao.selectBymail(memberVO.getMail());
-		
+		if (mailRessult != null) {
+			final String email = mailRessult.getMail();
+			final String password = mailRessult.getMemberPassword();
+			try {
+				MailService.sendMail(email, "GoodEatTime-忘記密碼", password);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
 		return mailRessult;
 	}
 
