@@ -42,6 +42,7 @@ public class UpdateCouponController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		CouponVO vo = gson.fromJson(req.getReader(), CouponVO.class);
+		System.out.println(vo);
 //		CouponVO vo = new CouponVO();
 //		vo.setCouponName(req.getParameter("couponName"));
 //		vo.setCouponStartTime(Date.valueOf(req.getParameter("couponStartTime")));

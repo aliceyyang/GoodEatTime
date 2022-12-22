@@ -1,5 +1,6 @@
 var tbcoupon_detail = document.querySelector("#tbcoupon_detail");
 var tbcoupon_update = document.querySelector("#tbcoupon_update");
+var tboupon_insert = document.querySelector("#tbcoupon_insert");
 $.ajax({
   url: "../coupon/Manage",
   type: "GET",
@@ -13,6 +14,7 @@ $.ajax({
     tbcoupon_detail.innerHTML = arr.map((e) => Template(e.couponNo, e.couponApplyDate, e.couponStartTime, e.couponEndTime, e.couponContent, e.usageLimitation, e.amountOrFold ,e.couponType ,e.couponName, e.maxIssueQty, e.issuedQty, e.couponPicStr)).join('')
   }
 });
+
 
 function Template(couponNo, couponApplyDate, couponStartTime, couponEndTime, couponContent,usageLimitation, amountOrFold,couponType,couponName,maxIssueQty, issuedQty, couponPicStr) {
   return `<tr>
@@ -48,5 +50,10 @@ function getPicUrl(base64Str) {
 function update(couponNo) {
   sessionStorage.setItem("couponNo",couponNo);
   location.href ="coupon_RESupdate.html";
+}
+
+function insert(restaurantNo) {
+  sessionStorage.setItem("reataurantNo",reataurantNo );
+  location.href="coupon_RESinsert.html";
 }
 

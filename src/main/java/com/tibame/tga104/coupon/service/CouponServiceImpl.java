@@ -15,10 +15,7 @@ public class CouponServiceImpl implements CouponService {
 		dao = new CouponDaoImpl();
 	}
 
-//	public CouponVO updateCoupon(Integer restaurantNo, Integer adminNo, Timestamp couponApplyDate, String couponName,
-//			Timestamp couponStartTime, Timestamp couponEndTime, Boolean verified, String couponContent,
-//			Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
-//			String verificationDetail) {
+
 	@Override
 	public CouponVO updateCoupon(CouponVO couponVO) {
 		final String couponPicStr = couponVO.getCouponPicStr();
@@ -63,6 +60,17 @@ public class CouponServiceImpl implements CouponService {
 			}
 		}
 		return list;
+	}
+
+
+	@Override
+	public CouponVO insertCoupon(CouponVO couponVO) {
+		final String couponPicStr = couponVO.getCouponPicStr();
+		if (couponPicStr != null && !couponPicStr.isEmpty()) {
+			couponVO.setCouponPic(Base64.getDecoder().decode(couponPicStr));
+		}
+		dao.insert(couponVO);
+		return couponVO;
 	}
 
 }
