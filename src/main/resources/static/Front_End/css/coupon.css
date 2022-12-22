@@ -246,12 +246,14 @@ th {
 .setCouponData {
   padding: 10px;
   border: 1px solid #9a9a75;
-  height: 1000px;
+  height: 860px;
   width: 1000px;
+  margin-left: 50px;
 }
+
 .class__sidebar .updatePic {
-width: 250px;
-height: 250px;
+width: 150px;
+height: 150px;
 }
 
 #tbcoupon_update h3 {
@@ -259,6 +261,7 @@ height: 250px;
 }
 
 .class__sidebar #news_file{
+  display: none;
   background-color: #fdf3ea;
   padding-top: 20px;
   padding-left: 0px;
@@ -269,6 +272,7 @@ height: 250px;
 }
 
 label#updatePicdata {
+  margin-top: 10px;
   display:block;
   width:45%;
   height:45px;
@@ -300,7 +304,7 @@ label#updatePicdata {
   line-height: normal;
   margin: 0;
   min-height: 20px;
-  min-width: 0;
+  min-width: 60px;
   outline: none;
   padding: 16px 24px;
   text-align: center;
@@ -310,7 +314,7 @@ label#updatePicdata {
   -webkit-user-select: none;
   touch-action: manipulation;
   width: 120px;
-  height: 0;
+  height: 60px;
   will-change: transform;
   float: right;
 }
@@ -327,4 +331,19 @@ label#updatePicdata {
 #confirmbtn:active {
   box-shadow: none;
   transform: translateY(0);
+}
+
+#wrapper {
+  width: 500px;
+  border: 1px solid black;
+  overflow: hidden; /* will contain if #first is longer than #second */
+}
+#first {
+  width: 200px;
+  float:left; /* add this */
+}
+#second {
+  width: 150px;
+  overflow: hidden; /* if you don't want #second to wrap below #first */
+  margin-left: 50px;
 }
