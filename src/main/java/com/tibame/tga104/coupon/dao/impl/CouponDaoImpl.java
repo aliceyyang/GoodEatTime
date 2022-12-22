@@ -33,11 +33,6 @@ public class CouponDaoImpl implements CouponDao {
 		  + "couponStartTime=?,couponEndTime=?,verified=?,couponContent=?,usageLimitation=?,"
 		  + "amountOrFold=?,couponType=?,maxIssueQty=?,issuedQty=?,verificationDetail=?, couponPic = ?"
 		  + "where couponNo = ?";
-	private static final String setVerified = "update coupon set verified = ? where couponNo = ?";
-	
-	private static final String setcouponType = "update coupon set couponType = ? where couponNo = ?";
-	
-	private static final String setmaxIssueQty ="update coupon set maxIssueQty = ? wherer couponNo = ?";
 	@Override
 	public void insert(CouponVO couponVO) {
 		try(Connection con = ds.getConnection();
@@ -58,7 +53,6 @@ public class CouponDaoImpl implements CouponDao {
 			ps.setInt(13, couponVO.getIssuedQty());
 			ps.setString(14, couponVO.getVerificationDetail());
 			ps.setBytes(15, couponVO.getCouponPic());
-			
 			ps.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -80,7 +74,8 @@ public class CouponDaoImpl implements CouponDao {
 					+ "amountOrFold = ?,"
 					+ "couponType = ?,"
 					+ "maxIssueQty = ?,"
-					+ "couponPic = ?"
+					+ "couponPic = ?,"
+					+ "usageLimitation = ? "
 					+ "where couponNo = ?")) {
 			
 			ps.setString(1, couponVO.getCouponName());
@@ -91,7 +86,8 @@ public class CouponDaoImpl implements CouponDao {
 			ps.setBoolean(6, couponVO.getCouponType());
 			ps.setInt(7, couponVO.getMaxIssueQty());
 			ps.setBytes(8, couponVO.getCouponPic());
-			ps.setInt(9, couponVO.getCouponNo());
+			ps.setInt(9, couponVO.getUsageLimitation());
+			ps.setInt(10, couponVO.getCouponNo());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

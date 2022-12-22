@@ -148,22 +148,24 @@
       <div class="col-lg-2" id="left">
         <nav class="header__menu mobile-menu" id="aaa">
           <ul>
-            <li>
-              <a href="http://127.0.0.1:5500/cake-main/j_forgetpassword.html#">帳號管理</a>
-            </li>
-            <li class="active"><a href="">訂位資訊</a></li>
-            <li><a href="">商城訂單</a></li>
-            <li><a href="">我的評論</a></li>
-            <li><a href="">我的最愛</a></li>
-            <li><a href="">我的優惠券</a></li>
-          </ul>
+            <li><a href="">餐廳會員首頁</a></li>
+            <li><a href="">餐廳資訊</a></li>
+            <li><a href="">商品管理</a></li>
+            <li><a href="">訂單管理</a></li>
+            <li><a href="">訂位管理</a></li>
+            <li><a href="">評論管理</a></li>
+            <li class="active"><a href="">優惠券設定</a></li>
+            <li><a href="">廣告購買</a></li>
+            <li><a href="">銷售報表</a></li>
         </nav>
       </div>
-      <!-- 訂位資訊 -->
+      <!-- 優惠券設定 -->
       <div class="col-lg-10">
         <div class="table-responsive">
           <input type="text" id="coupon_search" placeholder="輸入欲查詢的優惠券" onkeyup="searchFunction()">
           <h2>優惠券資訊</h2>
+          <label id="insertCoupon" for="insertbtn">新增優惠券</label>
+          <button type="button" id="insertbtn" onclick="insert(${restaurantNo})">新增優惠券</button>
           <table class="table" id="coupon_detail" cellspacing="0">
             <thead>
               <tr class="header">
