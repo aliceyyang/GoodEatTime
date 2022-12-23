@@ -51,8 +51,6 @@ public class UpdatePicController {
 					if(vo.getPostPic() != null) {
 						String base64 = Base64.getEncoder().encodeToString(vo.getPostPic());
 						vo.setPostPicStr(base64);
-						
-					
 					}
 				}
 				return ResponseEntity.status(HttpStatus.OK).body(postVO);
@@ -77,6 +75,13 @@ public class UpdatePicController {
 		byte[] postPic = Base64.getDecoder().decode(post.getPostPicStr());
 		post.setPostPic(postPic);
 		postService.updateRestaurantPost(post);
+	}
+	
+	@PutMapping("/restaurant-updateMenu")
+	public void updateMenu(@RequestBody MenuVO menu){
+		byte[] menuPic = Base64.getDecoder().decode(menu.getMenuPicstr());
+		menu.setMenuPic(menuPic);
+		menuService.updateMenu(menu);
 	}
 	
 //	透過輪播圖片/貼文/菜單的PK進行刪除

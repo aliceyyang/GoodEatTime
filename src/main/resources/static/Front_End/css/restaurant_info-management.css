@@ -1,3 +1,11 @@
+/* ===餐廳後台消息通知跑馬燈=== */
+#marquee{
+  background-color: #F08632;
+  width: 70%;
+  font-size: 25px;
+}
+/* ===餐廳後台消息通知跑馬燈=== */
+
 div.restaurant_info{
     width: 400px;
     height: 700px;
@@ -24,8 +32,8 @@ h4 {
 #passwordEye{
   display: inline;
   position: absolute;
-  right: 40%;
-  bottom: 24.5%;
+  right: 26%;
+  bottom: 26.8%;
   padding-top: 13px;
   cursor: pointer;
 }
@@ -137,19 +145,45 @@ h4 {
       }
 
     /* ==========編輯已上傳的菜單=========== */
-      
-    
+
+    .delete_menu, .edit_menu {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    #editing_menu{
+      display: none;
+    }
+
+    #editing_menu.-on{
+      display: inline-block;
+    }
+
     .uploaded_menu{
       width: 180px;
       height: 100px;
-      margin: 10px;
+      margin: 20px;
       float:right;
     }
 
     .uploaded_menu img{
-      max-width: 100%;
-      max-height: 100%;
+      max-width: 90px;
+      max-height: 90px;
       object-fit: cover;
+    }
+
+    .uploaded_menu > a {
+      border: 1px solid gray;
+      float:right;
+      padding: 3px;
+      margin-right: 2px;
+      background-color: white;
+      font-weight: bolder;
+      cursor: pointer;
+    }
+
+    .uploaded_menu > a:hover{
+      background-color: #FFEFDE;
     }
 
 
@@ -278,6 +312,7 @@ h4 {
 
 
       .tab_inner {
+        background-color: white;
         padding: 10px;
         height: 900px;
         width: 1000px;
