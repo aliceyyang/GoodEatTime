@@ -1,16 +1,7 @@
-var tbcoupon_update = document.querySelector("#tbcoupon_update");
-var couponNo = parseInt(sessionStorage.getItem("couponNo"));
-
-$.ajax({
-  url: "../coupon/update",
-  type: "GET",
-  data: {"couponNo" : couponNo},
-  dataType: "json",
-  success: function (coupon) {
-    console.log(coupon);
-    tbcoupon_update.innerHTML = Template(coupon);
-  },
-});
+var tbcoupon_insert = document.querySelector("#tbcoupon_insert");
+const restaurantNo = sessionStorage.getItem("restaurantNo");
+const couponNo = sessionStorage.getItem("couponNo");
+tbcoupon_insert.innerHTML = Template({restaurantNo: restaurantNo});
 //==========================返回=================================
 function onbackClick() {
   location.href ="coupon_restaurant.html";
@@ -32,11 +23,12 @@ function onConfirmClick() {
       const couponPicStr = btoa(event.target.result);
 
       $.ajax({
-        url: "../coupon/update",
+        url: "../coupon/insert",
         type: "POST",
         contentType: 'application/json',
+        dataType: "json",
         data:JSON.stringify({
-          "couponNo": couponNo,
+          "restaurantNo": restaurantNo,
           "couponStartTime": couponStartTime,
           "couponEndTime": couponEndTime,
           "couponContent": couponContent,
@@ -47,7 +39,6 @@ function onConfirmClick() {
           "maxIssueQty": maxIssueQty,
           "couponPicStr": couponPicStr
         }),
-        dataType: "json",
         success: function () {
             if (confirm("確定更新優惠券資料嗎?") == true) {
               alert("更新成功");
@@ -60,34 +51,33 @@ function onConfirmClick() {
   fileReader.readAsBinaryString(news_file.files[0]);
 }
 
-function Template({couponNo, couponStartTime, couponEndTime, couponContent, usageLimitation, amountOrFold,couponType,couponName,maxIssueQty, issuedQty, couponPicStr}) {
+function Template({couponStartTime, couponEndTime, couponContent,restaurantNo, usageLimitation, amountOrFold,couponType,couponName,maxIssueQty, issuedQty, couponPicStr}) {
   const picUrl = getPicUrl(couponPicStr);
   return `
-  <h3>優惠券更新</h3>
+  <h3>新增優惠券</h3>
   <div class="class__sidebar col-lg-6" style="width: 50%; height: 755px; margin: 0px auto; float: left">
     <form>
-        <h3 class="couponNo">優惠券編號 : ${couponNo}</h3>
-        <span>優惠券名稱 :<input type="text"  placeholder="${couponName}" id="couponName"></span>
-        <span>活動開始時間 :<input type="date"  placeholder="${couponStartTime}" id="couponStartTime"></span>
-        <span>活動結束時間 :<input type="date"  placeholder="${couponEndTime}" id="couponEndTime"></span>
-        <span>訂單金額滿多少可以使用 :<input type="text"  placeholder="${usageLimitation}" id="usageLimitation"></span>
-        <span>金額 / 折數 :<input type="text"  placeholder="${amountOrFold}" id="amountOrFold"></span>
-        <label>折價<input type="radio" value="true" name="couponType" id="amount" checked></label>
-        <label>打折<input type="radio" value="false"  id="Fold" name="couponType"></label>  
+        <h3 class="restaurantNo">餐廳編號 : ${restaurantNo}</h3>
+        <span>優惠券名稱 :<input type="text"  placeholder="請輸入優惠券名稱" id="couponName"></span>
+        <span>活動開始時間 :<input type="date"  placeholder="請輸入開始時間" id="couponStartTime"></span>
+        <span>活動結束時間 :<input type="date"  placeholder="請輸入結束時間" id="couponEndTime"></span>
+        <span>訂單金額滿多少可以使用 :<input type="text"  placeholder="請輸入金額" id="usageLimitation"></span>
+        <span>金額 / 折數 :<input type="text"  placeholder="請輸入 金額 or 折數" id="amountOrFold"></span>
+        <label>折價<input type="radio" value="true" name="couponType" id="couponType" checked></label>
+        <label>打折<input type="radio" value="false"  id="couponType" name="couponType"></label>  
       </form>
     </div>
     <div class="class__sidebar col-lg-6" style="width: 50%; height: 755px; margin: 0px auto; float: right">
       <form>
-        <span>發行張數上限 :<input type="text"  placeholder="${maxIssueQty}" id="maxIssueQty"></span>
-        <span>已發行張數 :<input type="text" disabled="disabled" placeholder="${issuedQty}"</span>
-        <span>優惠券說明內容 :<textarea id="couponContent" style="resize: none; width:450px ; height:121px" placeholder="${couponContent}"></textarea></span>
+        <span>發行張數上限 :<input type="text"  placeholder="請輸入上限數量" id="maxIssueQty"></span>
+        <span>優惠券說明內容 :<textarea id="couponContent" style="resize: none; width:450px ; height:121px" placeholder="請輸入優惠券內容說明"></textarea></span>
         <div class="wrapper">
           <div id="first">
               <p>現有圖片 :</p>
               <img class="updatePic" src="${picUrl}" onload="nullPic()">
           </div>
             <div id="second">
-              <p>上傳圖片 :</p>
+              <p>上傳優惠券圖片 :</p>
               <img id="news_file_preview" style="width: 150px; height: 150px; border:1px dashed;">
               <label id="updatePicdata" for="news_file">上傳圖片</label>
               <input type="file" id="news_file" accept="image/*" onchange="showPreview(event);">
@@ -129,3 +119,4 @@ function showPreview(event){
     preview.style.display = "block";
   }
 }
+

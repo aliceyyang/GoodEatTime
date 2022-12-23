@@ -15,10 +15,7 @@ public class CouponServiceImpl implements CouponService {
 		dao = new CouponDaoImpl();
 	}
 
-//	public CouponVO updateCoupon(Integer restaurantNo, Integer adminNo, Timestamp couponApplyDate, String couponName,
-//			Timestamp couponStartTime, Timestamp couponEndTime, Boolean verified, String couponContent,
-//			Integer usageLimitation, Double amountOrFole, Boolean couponType, Integer maxIssueQty, Integer issuedQty,
-//			String verificationDetail) {
+
 	@Override
 	public CouponVO updateCoupon(CouponVO couponVO) {
 		final String couponPicStr = couponVO.getCouponPicStr();
@@ -56,6 +53,13 @@ public class CouponServiceImpl implements CouponService {
 	public List<CouponVO> findByRestaurantNo(Integer restaurantNo) {
 		List<CouponVO> list = dao.selectByRestaurantNo(restaurantNo);
 		for (CouponVO vo : list) {
+//			if (vo.getCouponType() != false) {
+//				String amount = "折價";
+//				amount = Boolean.toString(vo.getCouponType());
+//			} else {
+//				String fold = "打折";
+//				fold = Boolean.toString(vo.getCouponType());
+//			}
 			final byte[] couponPic = vo.getCouponPic();
 			if (couponPic != null && couponPic.length != 0) {
 				vo.setCouponPicStr(Base64.getEncoder().encodeToString(couponPic));
@@ -63,6 +67,29 @@ public class CouponServiceImpl implements CouponService {
 			}
 		}
 		return list;
+	}
+
+
+	@Override
+	public CouponVO insertCoupon(CouponVO couponVO) {
+		final String couponPicStr = couponVO.getCouponPicStr();
+		if (couponPicStr != null && !couponPicStr.isEmpty()) {
+			couponVO.setCouponPic(Base64.getDecoder().decode(couponPicStr));
+		}
+		dao.insert(couponVO);
+		return couponVO;
+	}
+
+
+	@Override
+	public CouponVO insertByRestaurantNo(Integer restaurantNo) {
+		CouponVO couponVO = new CouponVO();
+		final String couponPicStr = couponVO.getCouponPicStr();
+		if (couponPicStr != null && !couponPicStr.isEmpty()) {
+			couponVO.setCouponPic(Base64.getDecoder().decode(couponPicStr));
+		}
+		dao.insertByRestaurantNo(restaurantNo);
+		return couponVO;
 	}
 
 }

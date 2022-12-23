@@ -158,6 +158,8 @@ h3 {
   padding: 12px;
   color: black;
   background-color: #FFEFDE;
+  margin-bottom: 10px;
+  border: 2px solid;
 }
 
 .reserve_set table,
@@ -209,7 +211,7 @@ th {
   padding: 12px;
   border-collapse: collapse;
   border: 1px solid #9a9a75;
-  font-size: 18px;
+  font-size: 11px;
 }
 
 .reserve_status tr {
@@ -246,19 +248,28 @@ th {
 .setCouponData {
   padding: 10px;
   border: 1px solid #9a9a75;
-  height: 1000px;
+  height: 860px;
   width: 1000px;
-}
-.class__sidebar .updatePic {
-width: 250px;
-height: 250px;
+  margin-left: 50px;
+  font-style: inherit;
+  font-size: 22px;
 }
 
-#tbcoupon_update h3 {
+.class__sidebar .updatePic {
+width: 150px;
+height: 150px;
+}
+
+.class__sidebar h3#couponNo {
   margin-bottom: 20px;
+  text-align: center;
+  padding: 12px;
+  color: black;
+  background-color: #FFEFDE;
 }
 
 .class__sidebar #news_file{
+  display: none;
   background-color: #fdf3ea;
   padding-top: 20px;
   padding-left: 0px;
@@ -268,7 +279,41 @@ height: 250px;
   display:none;
 }
 
+
+#backbtn {
+  position:absolute; 
+  bottom: 70px;; 
+  right: 20px;
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 20px;
+  min-width: 60px;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 120px;
+  height: 60px;
+  will-change: transform;
+}
+
 label#updatePicdata {
+  margin-top: 10px;
   display:block;
   width:45%;
   height:45px;
@@ -285,7 +330,10 @@ label#updatePicdata {
   cursor:pointer;
 }
 
-#confirmbtn {
+#backpagebtn{
+  position:absolute; 
+  bottom: 20px;; 
+  right: 150px;
   appearance: none;
   background-color: #000000;
   border: 2px solid #1A1A1A;
@@ -300,7 +348,7 @@ label#updatePicdata {
   line-height: normal;
   margin: 0;
   min-height: 20px;
-  min-width: 0;
+  min-width: 60px;
   outline: none;
   padding: 16px 24px;
   text-align: center;
@@ -310,12 +358,84 @@ label#updatePicdata {
   -webkit-user-select: none;
   touch-action: manipulation;
   width: 120px;
-  height: 0;
+  height: 60px;
   will-change: transform;
-  float: right;
 }
 
+#confirmbtn {
+  position:absolute; 
+  bottom: 20px;; 
+  right: 20px;
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 20px;
+  min-width: 60px;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 120px;
+  height: 60px;
+  will-change: transform;
+  }
+
+  #insertbtn{
+  position:relative; 
+  bottom: 3px;; 
+  right: 89px;
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 20px;
+  min-width: 60px;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 154px;
+  height: 58px;
+  will-change: transform;
+  }
+
 #confirmbtn:disabled {
+  pointer-events: none;
+}
+
+
+#backpagebtn:disabled {
+  pointer-events: none;
+}
+
+#insertCoupon:disabled {
   pointer-events: none;
 }
 
@@ -327,4 +447,39 @@ label#updatePicdata {
 #confirmbtn:active {
   box-shadow: none;
   transform: translateY(0);
+}
+
+#insertbtn:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+#insertbtn:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+#backpagebtn:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+#backpagebtn:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+#wrapper {
+  width: 500px;
+  border: 1px solid black;
+  overflow: hidden; /* will contain if #first is longer than #second */
+}
+#first {
+  width: 200px;
+  float:left; /* add this */
+}
+#second {
+  width: 150px;
+  overflow: hidden; /* if you don't want #second to wrap below #first */
+  margin-left: 50px;
 }

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="prodInfo")
@@ -36,6 +37,8 @@ public class ProdInfoVO implements java.io.Serializable{
 	private Integer prodCommentQty;
 	@Column(name="totalCommentRating", nullable = false)
 	private Integer totalCommentRating;
+	@Transient
+	private String prodPicMainStr;
 	
 	public Integer getProdNo() {
 		return prodNo;
@@ -102,6 +105,13 @@ public class ProdInfoVO implements java.io.Serializable{
 	}
 	public void setTotalCommentRating(Integer prodCommentRating) {
 		this.totalCommentRating = prodCommentRating;
+	}
+	
+	public String getProdPicMainStr() {
+		return prodPicMainStr;
+	}
+	public void setProdPicMainStr(String prodPicMainStr) {
+		this.prodPicMainStr = prodPicMainStr;
 	}
 	@Override
 	public String toString() {
