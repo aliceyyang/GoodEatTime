@@ -2,6 +2,7 @@ package com.tibame.tga104.coupon.controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,8 +33,12 @@ public class InsertCouponController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Integer couponNo = Integer.parseInt(req.getParameter("couponNo"));
-		CouponVO vo = svc.getOneCoupon(couponNo);
+		HttpSession session = req.getSession();
+		Integer restaurantNo = (Integer) session.getAttribute("restaurantNo");
+		CouponVO vo = svc.insertByRestaurantNo(1);
+		
+//		CouponVO vo = gson.fromJson(req.getReader(), CouponVO.class);
+
 		resp.setContentType("application/json; charset=UTF-8");
 		resp.getWriter().write(gson.toJson(vo));
 	}
@@ -41,6 +46,7 @@ public class InsertCouponController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
+//		session.getAttribute("restaurantVO");
 		CouponVO vo = gson.fromJson(req.getReader(), CouponVO.class);
 //		CouponVO vo = new CouponVO();
 //		vo.setCouponName(req.getParameter("couponName"));
@@ -55,8 +61,9 @@ public class InsertCouponController extends HttpServlet {
 //		byte[] couponPic = (byte[])req.getParameter("couponPic");
 //		byte[] couponPic = 
 //		vo.setCouponPic(Byte.valueOf(req.getParameter("couponPic")));
+//		System.out.println(vo);
+		vo.setRestaurantNo(1);
 		svc.insertCoupon(vo);
-
 		resp.setContentType("application/json; charset=UTF-8");
 		resp.getWriter().write(gson.toJson(vo));
 //		req.setAttribute("list", list);
