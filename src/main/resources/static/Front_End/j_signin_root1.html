@@ -18,6 +18,9 @@
       rel="stylesheet"
     />
 
+    <!-- /sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
@@ -48,6 +51,13 @@
       /* GOOD EAT TIME字樣(含)以下的資料 位置往上調 */
       .spad {
         padding-top: 50px;
+      }
+
+      /* sweetalert */
+      body {
+        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
+          Arial, sans-serif;
       }
     </style>
   </head>
@@ -347,7 +357,12 @@
         })
           .then((resp) => resp.json())
           .then((body) => {
-            alert(body.successful);
+            if (body.successful) {
+              // Swal.fire(body.message);
+              Swal.fire("登入成功");
+            } else {
+              Swal.fire("登入失敗", "請洽系統管理員");
+            }
             //alert登入成功
           });
       });

@@ -6,7 +6,7 @@
     <meta name="keywords" content="Cake, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>登入成功</title>
+    <title>註冊成功</title>
 
     <!-- Google Font -->
     <link
@@ -36,7 +36,7 @@
         height: 52px;
       }
 
-      /* 登入成功畫面的底色要死白，透明度調整 */
+      /* 註冊成功畫面的底色不死白，透明度調整 */
       .blog__hero__text {
         background: #ffffffac;
       }
@@ -167,25 +167,34 @@
     </header>
     <!-- Header結束 -->
 
-    <!-- NONO畫面 開始 -->
+    <!-- 註冊成功畫面 開始 -->
     <div class="blog-hero set-bg" data-setbg="img/blog/details/blog-hero.jpg">
       <div class="container">
         <div class="row d-flex justify-content-center">
           <div class="col-lg-7">
             <div class="blog__hero__text">
-              <!-- <div class="label">name</div> -->
-              <h2>Oops!</h2>
-              <h2>未登入請先登入</h2>
-              <!-- <h2>請洽系統管理員</h2> -->
+              <!-- <div class="label">Recipes</div> -->
+              <h2>註冊成功</h2>
+              <!-- button加上onclick，點擊後跳轉會員登入畫面 -->
+              <button
+                type="submit"
+                class="site-btn"
+                onclick="location.href='j_signin_member1.html'"
+              >
+                會員登入
+              </button>
+              <!-- http://127.0.0.1:5500/cake-main/j_welcome_regis.html -->
               <ul>
-                <li><a href="">管理員登入</a></li>
+                <li>By <span>James Myers</span></li>
+                <li>13 Nov 2020</li>
+                <li>112 Views</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- NONO畫面 結束 -->
+    <!-- 註冊成功畫面 結束 -->
 
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
