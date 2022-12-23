@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tibame.tga104.order.dao.RestaurantCommentDAO_Hibernate;
-import com.tibame.tga104.reservation.dao.impl.ReservationDaoImpl;
+import com.tibame.tga104.order.vo.ProdOrderDetailVO;
 import com.tibame.tga104.reservation.vo.ReservationVO;
 
 @Service
@@ -27,6 +27,8 @@ public class RestaurantCommmentService {
 	
 	public ReservationVO updateRestaurantComment(ReservationVO reservationVO){
 		return dao.updateCommnet(reservationVO);
-		
+	}
+	public ReservationVO replyRestaurantComment(ReservationVO reservationVO) {
+		return dao.replyComment(reservationVO);
 	}
 }

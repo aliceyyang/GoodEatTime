@@ -42,11 +42,45 @@
       .nice-select {
         width: 80%;
       }
-      table,
-      tr,
-      th,
-      td {
-        border: 1px solid black;
+      #prodMainPic {
+    display: none;
+      }
+
+      .prodPic {
+        width: 250px;
+        aspect-ratio: 16/9;
+        background: #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #aaa;
+        border: 2px dashed currentcolor;
+        cursor: pointer;
+        font-family: sans-serif;
+        transition: color 300ms ease-in-out, background 300ms ease-in-out;
+        outline: none;
+        overflow: hidden;
+      }
+
+      .prodPic:hover {
+        color: #777;
+        background: #ccc;
+      }
+
+      .prodPic:active {
+        border-color: turquoise;
+        color: turquoise;
+        background: #eee;
+      }
+
+      .prodPic:focus {
+        color: #777;
+        background: #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .prodMainPic_image {
+        max-width: 100%;
       }
     </style>
   </head>
@@ -153,7 +187,26 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <nav class="header__menu mobile-menu"></nav>
+            <nav class="header__menu mobile-menu">
+              <ul>
+                <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
+                <li><a href="./about.html">會員專區</a></li>
+                <li><a href="./shop.html">餐廳</a></li>
+                <li><a href="./blog.html">線上商城</a></li>
+                <li>
+                  <a href="#">關於我們</a>
+                  <ul class="dropdown">
+                    <li><a href="./shop-details.html">Shop Details</a></li>
+                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                    <li><a href="./checkout.html">Check Out</a></li>
+                    <li><a href="./wisslist.html">Wisslist</a></li>
+                    <li><a href="./Class.html">Class</a></li>
+                    <li><a href="./blog-details.html">Blog Details</a></li>
+                  </ul>
+                </li>
+                <li><a href="./contact.html">地點搜尋</a></li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
@@ -183,142 +236,94 @@
         <!-- 中間空白欄位 -->
         <!-- 上排 -->
         <div class="col-lg-10">
-          <div
-            class="row-cols-12"
-            style="
-              align-items: center;
-              display: grid;
-              justify-content: center;
-              height: 15%;
-              background-color: #fdf3ea;
-            "
-          >
-            <h2>商品管理</h2>
-          </div>
-          <div class="row" style="height: 80%">
-            <div
-              class="row-cols-12"
-              style="background-color: #fdf3ea; margin: 15px; padding: 20px"
-            >
-              <div class="container" style="height: 90%">
-                <div class="row" style="height: 70%">
-                  <div class="col-1"></div>
-                  <!-- 1在這裡 -->
-                  <div class="col-5">
-                    <!-- 5在這裡 -->
-                    <div class="row row-cols-auto">
-                      <div class="col-4" style="align-items: center; display: flex;justify-content:left;"><label for="prodName">商品名稱：</label></div>
-                      <div class="col-8">
-                        <div class="form-group">
-                          <input
-                          type="text"
-                          name="prodName"
-                          id="prodName"
-                          placeholder="此為必填欄位"
-                        />
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+              <div class="container">
+                <form action method="POST">
+                  <div class="row">
+                    <div class="col">
+                      <br>
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="form-group">
+                            <label for="prodName">商品名稱：</label>
+                            <input type="text" name="prodName" id="prodName" placeholder="此為必填欄位">
+                          </div>
                         </div>
                       </div>
-                      <div class="col-4" style="align-items: center; display: flex;justify-content:left;"><label for="prodCategoryNo">商品類別：</label></div>
-                      <div class="col-8">
-                        <div class="form-group">
-                          <input
-                          type="number"
-                          name="prodCategoryNo"
-                          id="prodCategoryNo"
-                          placeholder="此為必填欄位"
-                        />
+                      <br>
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="form-group">
+                            <label for="prodCategoryNo">商品類別：</label>
+                            <input type="text" name="prodCategoryNo" id="prodCategoryNo" placeholder="此為必填欄位">
+                          </div>
                         </div>
                       </div>
-                      <div class="col-4" style="align-items: center; display: flex;justify-content:left;"><label for="prodStock">商品庫存：</label></div>
-                      <div class="col-8">
-                        <div class="form-group">
-                          <input
-                          type="number"
-                          name="prodStock"
-                          id="prodStock"
-                          placeholder="此為必填欄位"
-                        />
+                      <br>
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="form-group">
+                            <label for="prodStock">商品庫存：</label>
+                            <input type="text" name="prodStock" id="prodStock" placeholder="此為必填欄位">
+                          </div>
                         </div>
                       </div>
-                      <div class="col-4" style="align-items: center; display: flex;justify-content:left;"><label for="prodPrice">商品價格：</label></div>
-                      <div class="col-8">
-                        <div class="form-group">
-                          <input
-                          type="number"
-                          name="prodPrice"
-                          id="prodPrice"
-                          placeholder="此為必填欄位"
-                        />
-                        </div>
-                      </div>
-                      <div class="col-4" style="align-items: center; display: flex;justify-content:left;"><label for="isSale">商品上下架：</label></div>
-                      <div class="col-8">
-                        <div class="form-group">
-                          <select name="isSale" id="isSale">
-                            <option value="商品上架">商品上架</option>
-                            <option value="商品下架">商品下架</option>
-                          </select>
+                      <br>
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="form-group">
+                            <label for="prodPrice">商品價格：</label>
+                            <input type="text" name="prodPrice" id="prodPrice" placeholder="此為必填欄位">
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="row"><br></div>
-                  </div>
-                  <div class="col-6">
-                    <div class="col-4" style="align-items: center; display: flex;justify-content:left;"><label for="prodDescription">商品說明：</label></div>
-                    <div class="col-8">
-                      <div class="form-group">
-                        <textarea
-                          name="prodDescription"
-                          id="prodDescription"
-                          cols="40"
-                          rows="2"
-                        ></textarea>
+                    <div class="col">
+                      <br>
+                      <div class="row">
+                        <div class="">
+                          <div class="form-group">
+                            <label for="prodDescription">商品說明：</label>
+                            <textarea name="prodDescription" id="prodDescription" cols="25" rows="5"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="">
+                          <div class="form-group">
+                            <label for="prodContent">商品規格：</label>
+                            <textarea name="prodContent" id="prodContent" cols="25" rows="5"></textarea>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="col-4" style="align-items: center; display: flex;justify-content:left;"><label for="prodContent">商品規格：</label></div>
-                    <div class="col-8">
-                      <div class="form-group">
-                        <textarea
-                          name="prodContent"
-                          id="prodContent"
-                          cols="40"
-                          rows="2"
-                        ></textarea>
-                      </div>
-                    </div>
-                    <div class="col-4"></div>
-                    <div class="col-8">
-                      <div class="form-group" style="align-items: center; display: flex;justify-content:right;">
-                        <input type="submit" value="資料上傳" />
+                    <div class="col">
+                      <br>
+                      <div class="row">
+                        <div class="form-group">
+                          <label class="prodMainPic_text">商品圖片：</label>
+                          <label class="prodPic" for="prodMainPic" tabIndex="0">
+                            <span class="prodMainPic_image"></span>
+                          </label>
+                          <input type="file" name="prodMainPic" id="prodMainPic">
+                        </div>
+                        <div class="col-lg-8 submit">
+                          <div class="form-group" style="align-items: center; display: grid;justify-content:right;">
+                            <input type="button" id="submit_btn" class="submit_btn" value="商品資料上傳">
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <!-- 6在這裡 -->
-                        </div>
-                        <div>________________________________________________________________________________________________________________</div>
-                        <br>
-                        <table class="prodInfoList">
-                          <tr>
-                              <th>商品編號</th>
-                              <th>商品名稱</th>
-                              <th>商品庫存</th>
-                              <th>商品上下架</th>
-                              <th>總評論星等</th>
-                              <th>觀看頁面</th>
-                          </tr>
-                          <tr>
-                              <td>from table:prodInfo</td>
-                              <td>from table:prodInfo</td>
-                              <td>from table:prodInfo</td>
-                              <td>from table:prodInfo</td>
-                              <td>from table:prodInfo</td>
-                              <td><a href="http://127.0.0.1:5500/shop-details.html">觀看頁面</a></td>
-                          </tr>
-                        </table>
-                </div>
+                </form>
               </div>
             </div>
+            <div class="col-1"></div>
           </div>
+        </div>
         </div>
       </div>
     </section>
@@ -440,5 +445,62 @@
     <script src="js/main.js"></script>
     <script src="js/reservation.js"></script>
     <script src="js/alice.js"></script>
+
+    <script> // 預覽圖片
+      const inputFile = document.querySelector("#prodMainPic");
+      const pictureImage = document.querySelector(".prodMainPic_image");
+      const pictureImageTxt = "可以選擇一張圖片";
+      pictureImage.innerHTML = pictureImageTxt;
+  
+      inputFile.addEventListener("change", function (e) {
+        const inputTarget = e.target;
+        const file = inputTarget.files[0];
+  
+        if (file) {
+          const reader = new FileReader();
+  
+          reader.addEventListener("load", function (e) {
+            const readerTarget = e.target;
+  
+            const img = document.createElement("img");
+            img.src = readerTarget.result;
+            img.classList.add("prodMainPic_image");
+  
+            pictureImage.innerHTML = "";
+            pictureImage.appendChild(img);
+          });
+  
+          reader.readAsDataURL(file);
+        } else {
+          pictureImage.innerHTML = pictureImageTxt;
+        }
+      }); 
+    </script>
+    <script> // POST
+      const URL = 'http://localhost:8080/adOrders';
+      const img = document.querySelector("#prodMainPic");
+      const submit_btn = document.querySelector("#submit_btn");
+    
+      img.onchange = (e) => {
+
+        let read = new FileReader();
+        read.readAsDataURL(e.target.files[0]); // e.target.files是fileList
+        read.onload = (data) => {
+          submit_btn.onclick = () => {
+            let base64 = data.target.result.slice(23).replace("[", "");
+            fetch(URL, {
+              method: "POST",
+              headers: { 'Content-type': 'application/json', },
+              body: JSON.stringify({
+                prodNo: 25,
+                prodMainPic: [base64]
+              }),
+            })
+              .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
+              .then((data) => { console.log(data); alert('送交訂單成功'); location.reload(); })
+          }
+        }
+      }
+    </script>
   </body>
 </html>
