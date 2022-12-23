@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<button id="btnLogout">Logout</button>
+</body>
+<script>
+	document.querySelector('#btnLogout').addEventListener('click', () => {
+		fetch('../member/logout')
+		.then(resp => resp.json())
+		.then(body => {
+			alert(body.message);
+			if (body.successful) {
+				location = 'GoodEatTime.html';
+			}
+		});
+	});
+</script>
+</html>

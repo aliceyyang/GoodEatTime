@@ -6,7 +6,7 @@
     <meta name="keywords" content="Cake, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>管理員登入</title>
+    <title>註冊成功</title>
 
     <!-- Google Font -->
     <link
@@ -17,9 +17,6 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-
-    <!-- /sweetalert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
@@ -33,31 +30,15 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-    <!-- 將忘記密碼及加入會員的點點消除 -->
     <style>
-      .mod > ul > li {
-        list-style: none;
-        /* display: inline-block; */
-      }
-      /* .li_right {
-        margin-right: 250px;
-      } */
-
       .GoodEatTime {
         width: 152px;
         height: 52px;
       }
 
-      /* GOOD EAT TIME字樣(含)以下的資料 位置往上調 */
-      .spad {
-        padding-top: 50px;
-      }
-
-      /* sweetalert */
-      body {
-        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
-          Arial, sans-serif;
+      /* 註冊成功畫面的底色不死白，透明度調整 */
+      .blog__hero__text {
+        background: #ffffffac;
       }
     </style>
   </head>
@@ -186,56 +167,46 @@
     </header>
     <!-- Header結束 -->
 
-    <!-- 管理員登入 開始 -->
-    <section class="class spad">
+    <!-- 註冊成功畫面 開始 -->
+    <div class="blog-hero set-bg" data-setbg="img/blog/details/blog-hero.jpg">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6 offset-lg-3">
-            <div class="class__form">
-              <div class="section-title">
-                <span>Good Eat Time</span>
-                <h2>管理員登入</h2>
-              </div>
-              <!-- <form action="AdminLoginServlet"> -->
-
-              <input
-                type="text"
-                id="adminAccount"
-                placeholder="請輸入帳號，長度須介於5~50字元"
-              />
-
-              <br />
-
-              <input
-                type="text"
-                id="adminPassword"
-                placeholder="請輸入密碼，長度須介於6~12字元"
-              />
-              <br />
-              <input type="text" placeholder="確認密碼" id="checkPassword" />
-              <br />
-              <!-- <button type="submit" class="site-btn">登入</button> -->
-              <button class="site-btn">登入</button>
-
-              <!-- </form> -->
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-7">
+            <div class="blog__hero__text">
+              <!-- <div class="label">Recipes</div> -->
+              <h2>註冊成功</h2>
+              <!-- button加上onclick，點擊後跳轉會員登入畫面 -->
+              <button
+                type="submit"
+                class="site-btn"
+                onclick="location.href='j_signin_member1.html'"
+              >
+                會員登入
+              </button>
+              <!-- http://127.0.0.1:5500/cake-main/j_welcome_regis.html -->
+              <ul>
+                <li>By <span>James Myers</span></li>
+                <li>13 Nov 2020</li>
+                <li>112 Views</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <!-- 管理員登入 結束 -->
+    </div>
+    <!-- 註冊成功畫面 結束 -->
 
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
       <div class="mask">
         <div class="container">
           <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="footer__member">
                 <h6>會員專區</h6>
                 <div class="footer__social">
                   <a href="#">登入會員<i></i></a>
-                  <a href="#">定位管理<i></i></a>
+                  <a href="#">訂位管理<i></i></a>
                   <br />
                   <a href="#">加入會員<i></i></a>
                   <a href="#">定位管理<i></i></a>
@@ -244,6 +215,8 @@
                   <a href="#">我的評論<i></i></a>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__restaurant">
                 <h6>餐廳</h6>
                 <div class="footer__social">
@@ -253,7 +226,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__shopping">
                 <h6>線上商城</h6>
                 <div class="footer__social">
@@ -263,7 +236,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__aboutus">
                 <h6>關於我們</h6>
                 <div class="footer__social">
@@ -272,6 +245,8 @@
                   <a href="#">履歷<i></i></a>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-3 col-md-9 col-sm-12">
               <div class="footer__widget">
                 <h6>好食光</h6>
                 <ul>
@@ -338,34 +313,5 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-
-    <script>
-      const adminAccount = document.querySelector("#adminAccount");
-      const adminPassword = document.querySelector("#adminPassword");
-      const checkPassword = document.querySelector("#checkPassword");
-      document.querySelector("button").addEventListener("click", () => {
-        // fetch(url, {
-        fetch("../AdminLoginServlet", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            adminAccount: adminAccount.value,
-            adminPassword: adminPassword.value,
-          }),
-        })
-          .then((resp) => resp.json())
-          .then((body) => {
-            if (body.successful) {
-              // Swal.fire(body.message);
-              Swal.fire("登入成功");
-            } else {
-              Swal.fire("登入失敗", "請洽系統管理員");
-            }
-            //alert登入成功
-          });
-      });
-    </script>
   </body>
 </html>

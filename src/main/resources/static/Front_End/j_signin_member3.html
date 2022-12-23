@@ -6,6 +6,13 @@
     <meta name="keywords" content="Cake, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+      integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+      crossorigin="anonymous"
+    />
     <title>會員登入</title>
 
     <!-- Google Font -->
@@ -24,6 +31,21 @@
       rel="stylesheet"
     />
 
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+      integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"
+      integrity="sha512-FJ2OYvUIXUqCcPf1stu+oTBlhn54W0UisZB/TNrZaVMHHhYvLBV9jMbvJYtvDe5x/WVaoXZ6KB+Uqe5hT2vlyA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- /sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
@@ -38,6 +60,17 @@
 
     <!-- 將忘記密碼及加入會員的點點消除 -->
     <style>
+      #mycanvas {
+        cursor: pointer;
+        text-align: center;
+      }
+      #myform {
+        margin: 0px auto;
+        width: 300px;
+        height: 200px;
+        border: 5px #ffac55 solid;
+      }
+
       .mod > ul > li {
         list-style: none;
         /* display: inline-block; */
@@ -93,6 +126,13 @@
       .class__form .form button {
         letter-spacing: 2px;
         width: 100%;
+      }
+
+      /* sweetalert */
+      body {
+        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
+          Arial, sans-serif;
       }
     </style>
   </head>
@@ -260,13 +300,39 @@
                 <label for="memberPassword"
                   ><i id="checkEye" class="fas fa-eye-slash"></i
                 ></label>
-                <input
+
+                <!-- <input
                   type="text"
                   class="form-control"
                   placeholder="請輸入驗證碼"
-                />
+                /> -->
 
-                <button class="site-btn">登入</button>
+                <div class="input_block">
+                  <input
+                    id="validText"
+                    type="text"
+                    placeholder="請輸入驗證碼"
+                  />
+                  <p id="verify_code">驗證碼<span>*</span></p>
+                  <canvas id="auth-code"></canvas>
+                  <button
+                    id="reBtn"
+                    style="
+                      left: 15px;
+                      bottom: 6px;
+                      border-style: none;
+                      border: none;
+                      outline: none;
+                      font-size: 20px;
+                      cursor: pointer;
+                    "
+                  >
+                    更換驗證碼
+                  </button>
+                  <span id="result" style="color: #f6d0c0"></span>
+                </div>
+
+                <button id="send" class="site-btn">登入</button>
               </div>
               <div class="mod clearfix">
                 <!-- <input type="checkbox" value="remember-me" />記住我 -->
@@ -418,9 +484,125 @@
         $(this).toggleClass("fa-eye").toggleClass("fa-eye-slash");
       });
 
+      $(function () {
+        let options = {
+          canvasId: "auth-code" /**canvas的id*/,
+          txt: randomNum(100000, 999999).toString() /**傳入驗證碼內容*/,
+          height: 50 /**驗證碼高度 */,
+          width: 200 /**驗證碼寬度 */,
+          fontColor1: 0 /**隨機生成字型顏色*/,
+          fontColor2: 50 /**隨機生成字型顏色*/,
+          bgColor1: 180 /**這個範圍的顏色作背景看起來清晰一些*/,
+          bgColor2: 255 /**這個範圍的顏色作背景看起來清晰一些*/,
+          fontStyle: "24px SimHei",
+        };
+
+        // 點擊按鈕換圖
+        var $btn = document.getElementById("reBtn");
+        $btn.addEventListener("click", () => {
+          options.txt = randomNum(100000, 999999).toString();
+          helper = new writeAuthCode(options);
+          document.getElementById("result").innerHTML = "";
+          document.getElementById("validText").value = "";
+        });
+
+        // 輸入驗證文字
+        var $text = document.getElementById("validText");
+        var isValid = false;
+        $text.addEventListener("keyup", function () {
+          if (helper.validate($text.value)) {
+            document.getElementById("verify_code").innerHTML =
+              // "請輸入驗證碼<span>*</span>";
+              "";
+            $("#verify_code").css("color", "#393939");
+            isValid = true;
+            console.log("驗證碼輸入正確");
+          } else {
+            document.getElementById("verify_code").innerHTML = "驗證碼錯誤";
+            $("#verify_code").css("color", "#f66767");
+            isValid = false;
+          }
+        });
+
+        // --------------------------------------------------
+        /**驗證碼建構函式**/
+        function writeAuthCode(options) {
+          this.options = options;
+          let canvas = document.getElementById(options.canvasId);
+          canvas.width = options.width || 300;
+          canvas.height = options.height || 150;
+          let ctx = canvas.getContext("2d"); /**建立一個canvas物件*/
+          ctx.textBaseline = "middle";
+          ctx.fillStyle = randomColor(options.bgColor1, options.bgColor2);
+          ctx.fillRect(0, 0, options.width, options.height);
+          for (let i = 0; i < options.txt.length; i++) {
+            let txt = options.txt.charAt(i); /**讓每個字不一樣*/
+            ctx.font = options.fontStyle;
+            ctx.fillStyle = randomColor(options.fontColor1, options.fontColor2);
+            ctx.shadowOffsetY = randomNum(-3, 3);
+            ctx.shadowBlur = randomNum(-3, 3);
+            ctx.shadowColor = "rgba(0, 0, 0, 0.3)";
+            let x = (options.width / (options.txt.length + 1)) * (i + 1);
+            let y = options.height / 2;
+            let deg = randomNum(-30, 30);
+            /**設定旋轉角度和座標原點*/
+            ctx.translate(x, y);
+            ctx.rotate((deg * Math.PI) / 180);
+            ctx.fillText(txt, 0, 0);
+            /**恢復旋轉角度和座標原點*/
+            ctx.rotate((-deg * Math.PI) / 180);
+            ctx.translate(-x, -y);
+          }
+          /**1~4條隨機干擾線隨機出現*/
+          for (let i = 0; i < randomNum(1, 4); i++) {
+            ctx.strokeStyle = randomColor(40, 180);
+            ctx.beginPath();
+            ctx.moveTo(
+              randomNum(0, options.width),
+              randomNum(0, options.height)
+            );
+            ctx.lineTo(
+              randomNum(0, options.width),
+              randomNum(0, options.height)
+            );
+            ctx.stroke();
+          }
+          /**繪製干擾點*/
+          for (let i = 0; i < options.width / 6; i++) {
+            ctx.fillStyle = randomColor(0, 255);
+            ctx.beginPath();
+            ctx.arc(
+              randomNum(0, options.width),
+              randomNum(0, options.height),
+              1,
+              0,
+              2 * Math.PI
+            );
+            ctx.fill();
+          }
+          this.validate = function (code) {
+            return this.options.txt == code;
+          };
+        }
+        /**隨機數字**/
+        function randomNum(min, max) {
+          return Math.floor(Math.random() * (max - min) + min);
+        }
+        /**隨機顏色**/
+        function randomColor(min, max) {
+          let r = randomNum(min, max);
+          let g = randomNum(min, max);
+          let b = randomNum(min, max);
+          return "rgb(" + r + "," + g + "," + b + ")";
+        }
+
+        var helper = new writeAuthCode(options);
+      });
+
       const mail = document.querySelector("#mail");
       const memberPassword = document.querySelector("#memberPassword");
-      document.querySelector("button").addEventListener("click", () => {
+
+      document.querySelector("#send").addEventListener("click", () => {
         fetch("../member/login", {
           method: "POST",
           headers: {
@@ -436,7 +618,8 @@
             if (body.successful) {
               location = "j_welcome_login1.html";
             } else {
-              alert(body.message);
+              Swal.fire(body.message);
+              // alert(body.message);
             }
           });
       });
