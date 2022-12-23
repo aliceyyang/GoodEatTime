@@ -1,5 +1,6 @@
 package com.tibame.tga104.coupon.dao.impl;
 
+import java.io.Console;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
+
+import org.hibernate.query.criteria.internal.expression.function.AggregationFunction.COUNT;
 
 import com.tibame.tga104.coupon.dao.CouponDao;
 import com.tibame.tga104.coupon.vo.CouponVO;
@@ -24,8 +27,10 @@ public class CouponDaoImpl implements CouponDao {
 			"select * from coupon";
 	private static final String GET_ONE = 
 			"select * from coupon where couponNo = ?";
-	private static final String INSERT = 
-			"insert into coupon values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	private static final String INSERT = "insert into coupon " 
+					+ "(couponName,couponStartTime,couponEndTime, usageLimitation, "
+					+ "amountOrFold, couponType, maxIssueQty, couponContent, couponPic, restaurantNo) "
+					+ "values(?,?,?,?,?,?,?,?,?,?)";
 	private static final String DELETE = 
 			"delete from coupon where couponNo = ?";
 	private static final String UPDATE = 
@@ -34,32 +39,29 @@ public class CouponDaoImpl implements CouponDao {
 		  + "amountOrFold=?,couponType=?,maxIssueQty=?,issuedQty=?,verificationDetail=?, couponPic = ?"
 		  + "where couponNo = ?";
 	@Override
-	public void insert(CouponVO couponVO) {
-		try(Connection con = ds.getConnection();
+	public CouponVO insert(CouponVO couponVO) {
+		System.out.println(couponVO);
+		try(Connection con = DriverManager.getConnection(URL,USER,PASSWORD);
 			PreparedStatement ps = con.prepareStatement(INSERT)){
 			
-			ps.setInt(1, couponVO.getRestaurantNo());
-			ps.setInt(2, couponVO.getAdminNo());
-			ps.setTimestamp(3, couponVO.getCouponApplyDate());
-			ps.setString(4, couponVO.getCouponName());
-			ps.setDate(5, couponVO.getCouponStartTime());
-			ps.setDate(6, couponVO.getCouponEndTime());
-			ps.setBoolean(7, couponVO.getVerified());
+			ps.setString(1, couponVO.getCouponName());
+			ps.setDate(2, couponVO.getCouponStartTime());
+			ps.setDate(3, couponVO.getCouponEndTime());
+			ps.setInt(4, couponVO.getUsageLimitation());
+			ps.setDouble(5, couponVO.getAmountOrFold());
+			ps.setBoolean(6, couponVO.getCouponType());
+			ps.setInt(7, couponVO.getMaxIssueQty());
 			ps.setString(8, couponVO.getCouponContent());
-			ps.setInt(9, couponVO.getUsageLimitation());
-			ps.setDouble(10, couponVO.getAmountOrFold());
-			ps.setBoolean(11, couponVO.getCouponType());
-			ps.setInt(12, couponVO.getMaxIssueQty());
-			ps.setInt(13, couponVO.getIssuedQty());
-			ps.setString(14, couponVO.getVerificationDetail());
-			ps.setBytes(15, couponVO.getCouponPic());
+			ps.setBytes(9, couponVO.getCouponPic());
+			ps.setInt(10, couponVO.getRestaurantNo());
+
 			ps.executeUpdate();
 			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}
-
+		return couponVO;
 	}
 
 	@Override
@@ -236,7 +238,9 @@ public class CouponDaoImpl implements CouponDao {
 					List<CouponVO> list = new ArrayList<CouponVO>();
 					while (rs.next()) {
 						CouponVO vo = new CouponVO();
+						
 						vo.setCouponNo(rs.getInt("couponNo"));
+						vo.setRestaurantNo(rs.getInt("restaurantNo"));
 						vo.setCouponApplyDate(rs.getTimestamp("couponApplyDate"));
 						vo.setCouponStartTime(rs.getDate("couponStartTime"));
 						vo.setCouponEndTime(rs.getDate("couponEndTime"));
@@ -258,5 +262,29 @@ public class CouponDaoImpl implements CouponDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public CouponVO insertByRestaurantNo(Integer restaurantNo) {
+		CouponVO vo = new CouponVO();
+		
+		try(Connection con = DriverManager.getConnection(URL,USER,PASSWORD);
+				PreparedStatement ps = con.prepareStatement(INSERT)){
+			
+				ps.setString(1, vo.getCouponName());
+				ps.setDate(2, vo.getCouponStartTime());
+				ps.setDate(3, vo.getCouponEndTime());
+				ps.setDouble(5, vo.getAmountOrFold());
+				ps.setInt(6, vo.getMaxIssueQty());
+				ps.setString(7, vo.getCouponContent());
+				ps.setBytes(8, vo.getCouponPic());
+
+				ps.executeUpdate();
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			return vo;
 	}
 }

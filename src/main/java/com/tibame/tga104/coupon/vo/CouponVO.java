@@ -24,6 +24,7 @@ public class CouponVO implements Serializable {
 	private String verificationDetail;
 	private byte[] couponPic;
 	private String couponPicStr;
+	private String couponTypeStr;
 
 	public CouponVO() {
 	}
@@ -197,6 +198,14 @@ public class CouponVO implements Serializable {
 
 	public void setCouponPicStr(String couponPicStr) {
 		this.couponPicStr = couponPicStr;
+	}
+
+	public String getCouponTypeStr() {
+		return couponTypeStr;
+	}
+
+	public void setCouponTypeStr(String couponTypeStr) {
+		this.couponTypeStr = couponTypeStr;
 	}
 	
 }

@@ -17,7 +17,10 @@ public class CouponJDBCDAO implements CouponDao {
 	String userid = "root";
 	String passwd = "password";
 
-	private static final String INSERT = "insert into coupon values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	private static final String INSERT = "insert into coupon" 
+			+ "(adminNo,restaurantNo,couponName,couponStartTime,couponEndTime, usageLimitation,"
+			+ "amountOrFold, couponType, maxIssueQty, couponContent)"
+			+ "values(?,?,?,?,?,?,?,?,?,?)";
 	private static final String GET_ALL = "select * from coupon";
 	private static final String GET_ONE = "select * from coupon where couponNo = ?";
 	private static final String DELETE = "delete from coupon where couponNo = ?";
@@ -30,7 +33,7 @@ public class CouponJDBCDAO implements CouponDao {
 	private static final String SetmaxIssueQty = "update coupon set maxIssueQty = ? where couponNo = ?";
 
 	@Override
-	public void insert(CouponVO couponVO) {
+	public CouponVO insert(CouponVO couponVO) {
 		Connection con = null;
 		PreparedStatement ps = null;
 
@@ -39,23 +42,18 @@ public class CouponJDBCDAO implements CouponDao {
 			con = DriverManager.getConnection(url, userid, passwd);
 			ps = con.prepareStatement(INSERT);
 
-			ps.setInt(1, couponVO.getRestaurantNo());
-			ps.setInt(2, couponVO.getAdminNo());
-			ps.setTimestamp(3, couponVO.getCouponApplyDate());
-			ps.setString(4, couponVO.getCouponName());
-			ps.setDate(5, couponVO.getCouponStartTime());
-			ps.setDate(6, couponVO.getCouponEndTime());
-			ps.setBoolean(7, couponVO.getVerified());
-			ps.setString(8, couponVO.getCouponContent());
-			ps.setInt(9, couponVO.getUsageLimitation());
-			ps.setDouble(10, couponVO.getAmountOrFold());
-			ps.setBoolean(11, couponVO.getCouponType());
-			ps.setInt(12, couponVO.getMaxIssueQty());
-			ps.setInt(13, couponVO.getIssuedQty());
-			ps.setString(14, couponVO.getVerificationDetail());
-			ps.setBytes(15, couponVO.getCouponPic());
+			ps.setInt(1, couponVO.getAdminNo());
+			ps.setInt(2, couponVO.getRestaurantNo());
+			ps.setString(3, couponVO.getCouponName());
+			ps.setDate(4, couponVO.getCouponStartTime());
+			ps.setDate(5, couponVO.getCouponEndTime());
+			ps.setInt(6, couponVO.getUsageLimitation());
+			ps.setDouble(7, couponVO.getAmountOrFold());
+			ps.setInt(8, couponVO.getMaxIssueQty());
+			ps.setString(9, couponVO.getCouponContent());
+			ps.setBytes(10, couponVO.getCouponPic());
 
-			ps.executeUpdate();
+			 ps.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException("Couldn't load database driver. " + e.getMessage());
@@ -76,6 +74,7 @@ public class CouponJDBCDAO implements CouponDao {
 				}
 			}
 		}
+		return couponVO;
 	}
 
 	@Override
@@ -248,14 +247,95 @@ public class CouponJDBCDAO implements CouponDao {
 	}
 
 	@Override
+	public void updateByCouponNo(CouponVO couponVO) {
+		try(
+				Connection con = DriverManager.getConnection(url,userid,passwd);
+				PreparedStatement ps = con.prepareStatement("update coupon set "
+						+ "couponName = ?,"
+						+ "couponStartTime = ?,"
+						+ "couponEndTime = ?,"
+						+ "couponContent = ?,"
+						+ "amountOrFold = ?,"
+						+ "couponType = ?,"
+						+ "maxIssueQty = ?,"
+						+ "couponPic = ?,"
+						+ "usageLimitation = ? "
+						+ "where couponNo = ?")) {
+				
+				ps.setString(1, couponVO.getCouponName());
+				ps.setDate(2, couponVO.getCouponStartTime());
+				ps.setDate(3, couponVO.getCouponEndTime());
+				ps.setString(4, couponVO.getCouponContent());
+				ps.setDouble(5, couponVO.getAmountOrFold());
+				ps.setBoolean(6, couponVO.getCouponType());
+				ps.setInt(7, couponVO.getMaxIssueQty());
+				ps.setBytes(8, couponVO.getCouponPic());
+				ps.setInt(9, couponVO.getUsageLimitation());
+				ps.setInt(10, couponVO.getCouponNo());
+				ps.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	}
+
+	@Override
 	public List<CouponVO> selectByRestaurantNo(Integer restaurantNo) {
-		// TODO Auto-generated method stub
+		try (Connection con = DriverManager.getConnection(url,userid,passwd);
+				PreparedStatement ps = con.prepareStatement("SELECT * FROM GoodEatTime.coupon where restaurantNo = ?")){
+				ps.setInt(1, restaurantNo);
+				
+				try (ResultSet rs = ps.executeQuery()) {
+					List<CouponVO> list = new ArrayList<CouponVO>();
+					while (rs.next()) {
+						CouponVO vo = new CouponVO();
+						
+						vo.setCouponNo(rs.getInt("couponNo"));
+						vo.setRestaurantNo(rs.getInt("restaurantNo"));
+						vo.setCouponApplyDate(rs.getTimestamp("couponApplyDate"));
+						vo.setCouponStartTime(rs.getDate("couponStartTime"));
+						vo.setCouponEndTime(rs.getDate("couponEndTime"));
+						vo.setCouponContent(rs.getString("couponContent"));
+						vo.setUsageLimitation(rs.getInt("usageLimitation"));
+						vo.setAmountOrFold(rs.getDouble("amountOrFold"));
+						vo.setCouponType(rs.getBoolean("couponType"));
+						vo.setCouponName(rs.getString("couponName"));
+						vo.setMaxIssueQty(rs.getInt("maxIssueQty"));
+						vo.setIssuedQty(rs.getInt("IssuedQty"));
+						vo.setVerified(rs.getBoolean("verified"));
+						vo.setCouponPic(rs.getBytes("couponPic"));
+						
+						list.add(vo);
+					}
+					return list;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
-	public void updateByCouponNo(CouponVO couponVO) {
-		// TODO Auto-generated method stub
+	public CouponVO insertByRestaurantNo(Integer restaurantNo) {
+		CouponVO vo = new CouponVO();
+		
+		try(Connection con = DriverManager.getConnection(url,userid,passwd);
+				PreparedStatement ps = con.prepareStatement(INSERT)){
+			
+				ps.setString(1, vo.getCouponName());
+				ps.setDate(2, vo.getCouponStartTime());
+				ps.setDate(3, vo.getCouponEndTime());
+				ps.setInt(4, vo.getUsageLimitation());
+				ps.setDouble(5, vo.getAmountOrFold());
+				ps.setInt(6, vo.getMaxIssueQty());
+				ps.setString(7, vo.getCouponContent());
+				ps.setBytes(8, vo.getCouponPic());
 
+				ps.executeUpdate();
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			return vo;
 	}
 }

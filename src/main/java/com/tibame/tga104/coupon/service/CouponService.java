@@ -18,4 +18,6 @@ public interface CouponService {
 	
 	List<CouponVO> findByRestaurantNo(Integer restaurantNo);
 	
+	CouponVO insertByRestaurantNo(Integer restaurantNo);
+	
 }
