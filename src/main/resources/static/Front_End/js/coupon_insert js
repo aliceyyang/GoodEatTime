@@ -1,14 +1,13 @@
-var tbcoupon_update = document.querySelector("#tbcoupon_update");
+var tbcoupon_insert = document.querySelector("#tbcoupon_insert");
 var couponNo = parseInt(sessionStorage.getItem("couponNo"));
 
 $.ajax({
-  url: "../coupon/update",
-  type: "GET",
-  data: {"couponNo" : couponNo},
+  url: "../coupon/insert",
+  type: "post",
   dataType: "json",
   success: function (coupon) {
     console.log(coupon);
-    tbcoupon_update.innerHTML = Template(coupon);
+    tbcoupon_insert.innerHTML = Template(coupon);
   },
 });
 //==========================返回=================================
@@ -16,7 +15,7 @@ function onbackClick() {
   location.href ="coupon_restaurant.html";
 }
 //==========================上傳資料=================================
-function onConfirmClick() {
+function onInsertClick() {
   const couponStartTime = document.querySelector('#couponStartTime').value;
   const couponEndTime = document.querySelector('#couponEndTime').value;
   const couponContent = document.querySelector('#couponContent').value;
@@ -66,7 +65,6 @@ function Template({couponNo, couponStartTime, couponEndTime, couponContent, usag
   <h3>優惠券更新</h3>
   <div class="class__sidebar col-lg-6" style="width: 50%; height: 755px; margin: 0px auto; float: left">
     <form>
-        <h3 class="couponNo">優惠券編號 : ${couponNo}</h3>
         <span>優惠券名稱 :<input type="text"  placeholder="${couponName}" id="couponName"></span>
         <span>活動開始時間 :<input type="date"  placeholder="${couponStartTime}" id="couponStartTime"></span>
         <span>活動結束時間 :<input type="date"  placeholder="${couponEndTime}" id="couponEndTime"></span>

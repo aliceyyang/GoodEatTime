@@ -11,9 +11,13 @@ public interface CouponService {
 	CouponVO getOneCoupon(Integer couponNo);
 
 	List<CouponVO> getAll();
+	
+	CouponVO insertCoupon(CouponVO couponVO);
 
 	CouponVO updateCoupon(CouponVO couponVO);
 	
 	List<CouponVO> findByRestaurantNo(Integer restaurantNo);
+	
+	CouponVO insertByRestaurantNo(Integer restaurantNo);
 	
 }

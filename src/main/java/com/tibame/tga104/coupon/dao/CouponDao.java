@@ -8,7 +8,7 @@ public interface CouponDao {
 	
 	public CouponVO findByPrimaryKey(Integer CouponVO);
 	
-	public void insert(CouponVO couponVO);
+	public CouponVO insert(CouponVO couponVO);
 	
 	public void updateByCouponNo(CouponVO couponVO);
 
@@ -17,4 +17,9 @@ public interface CouponDao {
 	public List<CouponVO> getAll();
 	
 	public List<CouponVO> selectByRestaurantNo(Integer restaurantNo);
+	
+	public CouponVO insertByRestaurantNo(Integer restaurantNo);
+	
+	public CouponVO searchByRestaurantNo(Integer restaurantNo);
+	
 }

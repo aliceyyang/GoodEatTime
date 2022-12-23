@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.tibame.tga104.coupon.service.CouponService;
 import com.tibame.tga104.coupon.service.CouponServiceImpl;
 import com.tibame.tga104.coupon.vo.CouponVO;
@@ -24,7 +25,9 @@ public class CouponManageController extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		svc = new CouponServiceImpl();
-		gson = new Gson();
+		gson = new GsonBuilder()
+				.setDateFormat("yyyy/MM/dd")
+				.create();
 	}
 
 	@Override

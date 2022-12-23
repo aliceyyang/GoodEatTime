@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,18 @@ public class OrderController {
 	private ProdOrderService prodOrderService;
 	@Autowired
 	private ProdOrderDetailService prodOrderDetailService;
+	
+	@GetMapping("receiver")
+	public MemberVO receiver (@SessionAttribute(name="memberVO", required=false)MemberVO memberVO) {
+		MemberVO vo = new MemberVO();
+		if (memberVO != null) {
+			vo.setMemberNo(memberVO.getMemberNo());
+			vo.setMail(memberVO.getMail());
+			vo.setTel(memberVO.getTel());
+			vo.setName(memberVO.getName());
+		}
+		return vo;
+	}
 	
 	@PostMapping("insert")
 	public Map<String, String> insert(@SessionAttribute(name="memberVO", required=false)MemberVO memberVO, 
