@@ -19,6 +19,12 @@
  * 串接綠界api
  *
  */
+var memberVO;
+fetch("../order/receiver").then((r) => r.json())
+  .then((data) => {
+    memberVO = data;
+    console.log(memberVO);
+  });
 
 $(function () {
   var tempOrder = JSON.parse(sessionStorage.getItem("tempOrder"));
@@ -50,6 +56,30 @@ $(function () {
   $("ul.checkout__total__all span").text(`NTD ${tempOrder.prodOrderVO.amountAfterCoupon}`);
   //   $("#price_confirm").click();
   
+  // 加入會員資料
+  $("#member").on("click", function(e){
+    e.stopPropagation();
+    
+    if ($(this).hasClass("memeber_confirm")) {
+      $(this).find("input").removeAttr("disabled");
+      $(this).find("input").trigger("click");
+      $(this).find("input").attr("disabled", "disabled");
+      $(this).removeClass("memeber_confirm");
+      console.log("a")
+    } else {
+      console.log("b");
+      $(this).find("input").removeAttr("disabled");
+      $(this).find("input").trigger("click");
+      $(this).find("input").attr("disabled", "disabled");
+      $("#receiver_name").val(memberVO.name);
+      $("#receiver_mail").val(memberVO.mail);
+      if(memberVO.tel) {
+        $("#receiver_tel").val(memberVO.tel);
+      }
+      $(this).addClass("memeber_confirm");
+    }
+  });
+
   // 收件人姓名不可為空白
   $("#receiver_name").on("blur", function(){
     $(this).siblings().children(".error_message").remove();
@@ -162,6 +192,21 @@ $(function () {
     // console.log($(this).val().replace(/ +/g, ""));
   });
 
+  // 信用卡卡號格式確認
+  $("#credit_card").on("blur", function() {
+    $(this).siblings().children(".error_message").remove();
+    let pattern =  /^\d{16}$/;
+    if(!pattern.test($(this).val().replace(/ +/g, ""))){
+      // console.log($(this).val().replace(/ +/g, ""));
+      // console.log(!pattern.test($(this).val().replace(/ +/g, "")))
+      $(this).removeClass("check_ok");
+      let error_message = "<span class='error_message'>&emsp;信用卡卡號格式錯誤</span>";
+      $(this).siblings().append(error_message);
+      return;
+    }
+    $(this).addClass("check_ok");
+  });
+
   // cc_formatter用上面的cc_formatter去改的
   function expire_date_format(value) {
     var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
@@ -191,7 +236,20 @@ $(function () {
   $("#expire_date").on("keyup", function(){
     $(this).val(expire_date_format($(this).val()));
     // console.log($(this).val());
-    // console.log($(this).val().replace(/ +/g, ""));
+    // console.log($(this).val().split(" / ").join(""));
+  });
+
+  // 確認有效期限格式
+  $("#expire_date").on("blur", function() {
+    $(this).siblings().children(".error_message").remove();
+    let pattern =  /^0|^11|^12/;
+    if(!pattern.test($(this).val().split(" / ").join(""))){
+      $(this).removeClass("check_ok");
+      let error_message = "<span class='error_message'>&emsp;格式錯誤</span>";
+      $(this).siblings().append(error_message);
+      return;
+    }
+    $(this).addClass("check_ok");
   });
 
   // 不讓使用者輸入數字以外的東西
@@ -204,8 +262,21 @@ $(function () {
   });
 
 
-  $("#security_code").on("keyup", function(){
-    console.log($(this).val());
+  // $("#security_code").on("keyup", function(){
+  //   console.log($(this).val());
+  // });
+
+  // 確認安全碼格式
+  $("#security_code").on("blur", function() {
+    $(this).siblings().children(".error_message").remove();
+    let pattern =  /^\d{3}$/;
+    if(!pattern.test($(this).val())){
+      $(this).removeClass("check_ok");
+      let error_message = "<span class='error_message'>&emsp;格式錯誤</span>";
+      $(this).siblings().append(error_message);
+      return;
+    }
+    $(this).addClass("check_ok");
   });
 
   //確認金額
@@ -264,7 +335,32 @@ $(function () {
     // console.log($(this).hasClass("-on"));
   });
 
-  
+  // 信用卡資訊確認
+  $("#payment_check").on("click", function(e){
+    e.stopPropagation();
+    // console.log("aaa");
+    if ($(this).hasClass("payment_confirm")) {
+      $(".payment_check").removeAttr("disabled");
+      $(this).find("input").removeAttr("disabled");
+      $(this).find("input").trigger("click");
+      $(this).find("input").attr("disabled", "disabled");
+      $(this).removeClass("payment_confirm");
+      return;
+    }
+
+    if ($("#credit_card").hasClass("check_ok") &&
+      $("#expire_date").hasClass("check_ok") &&
+      $("#security_code").hasClass("check_ok")) {
+        $(this).find("input").removeAttr("disabled");
+        $(this).find("input").trigger("click");
+        $(this).find("input").attr("disabled", "disabled");
+        $(".payment_check").attr("disabled", "disabled");
+        $(this).addClass("payment_confirm")
+        return;
+    }
+    $(".payment_check").trigger("blur");
+
+  });
 
 
   console.log(tempOrder);
