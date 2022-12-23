@@ -26,8 +26,8 @@ public class ProdOrderDetailJNDIDAO{
 	
 	public void insert(ProdOrderDetailVO prodOrderDetailVO) {
 		
-		String sql_insert = "insert into prodOrderDetail (prodOrderNo, prodNo, prodQty, prodPrice, prodCommentRating, prodCommentContent, prodCommentPic, prodCommentTime, restaurantReplyTime) "
-				+ "values (?,?,?,?,?,?,?,?) ";
+		String sql_insert = "insert into prodOrderDetail (prodOrderNo, prodNo, prodQty, prodPrice, prodCommentRating, prodCommentContent, prodCommentPic, prodCommentTime, restaurantReply, restaurantReplyTime) "
+				+ "values (?,?,?,?,?,?,?,?,?) ";
 		try (Connection connection = ds.getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql_insert)){
 
@@ -39,7 +39,8 @@ public class ProdOrderDetailJNDIDAO{
 			ps.setString(6, prodOrderDetailVO.getProdCommentContent());
 			ps.setBytes(7, prodOrderDetailVO.getProdCommentPic());
 			ps.setTimestamp(8, prodOrderDetailVO.getProdCommentTime());
-			ps.setTimestamp(9, prodOrderDetailVO.getRestaurantReplyTime());			
+			ps.setString(9, prodOrderDetailVO.getRestaurantReply());	
+			ps.setTimestamp(10, prodOrderDetailVO.getRestaurantReplyTime());			
 			System.out.println("成功筆數為：" + ps.executeUpdate());
 					
 		} catch (Exception e) {
@@ -74,6 +75,7 @@ public class ProdOrderDetailJNDIDAO{
 				+ "	prodCommentContent = ?,"
 				+ "	prodCommentPic = ?,"
 				+ "	prodCommentTime = ?,"
+				+ "	restaurantReply = ?,"
 				+ "	restaurantReplyTime = ?,"
 				+ "where "
 				+ "	prodOrderNo = ? ";
@@ -88,8 +90,9 @@ public class ProdOrderDetailJNDIDAO{
 			ps.setString(5, prodOrderDetailVO.getProdCommentContent());
 			ps.setBytes(6, prodOrderDetailVO.getProdCommentPic());
 			ps.setTimestamp(7, prodOrderDetailVO.getProdCommentTime());
-			ps.setTimestamp(8, prodOrderDetailVO.getRestaurantReplyTime());	
-			ps.setInt(9, prodOrderDetailVO.getProdOrderNo());
+			ps.setString(8, prodOrderDetailVO.getRestaurantReply());	
+			ps.setTimestamp(9, prodOrderDetailVO.getRestaurantReplyTime());	
+			ps.setInt(10, prodOrderDetailVO.getProdOrderNo());
 			System.out.println("成功筆數為：" + ps.executeUpdate());
 						
 		} catch (Exception e) {
@@ -108,6 +111,7 @@ public class ProdOrderDetailJNDIDAO{
 				+ "	prodCommentContent, "
 				+ "	prodCommentPic, "
 				+ "	prodCommentTime, "
+				+ "	restaurantReply, "
 				+ "	restaurantReplyTime, "
 				+ "from "
 				+ "	prodOrderDetail "
@@ -131,6 +135,7 @@ public class ProdOrderDetailJNDIDAO{
 				prodOrderDetailVO_select.setProdCommentContent(rs.getString("prodCommentContent"));
 				prodOrderDetailVO_select.setProdCommentPic(rs.getBytes("prodCommentPic"));
 				prodOrderDetailVO_select.setProdCommentTime(rs.getTimestamp("prodCommentTime"));
+				prodOrderDetailVO_select.setRestaurantReply(rs.getString("restaurantReply"));	
 				prodOrderDetailVO_select.setRestaurantReplyTime(rs.getTimestamp("restaurantReplyTime"));				
 			}	
 			
@@ -153,6 +158,7 @@ public class ProdOrderDetailJNDIDAO{
 				+ "	prodCommentContent, "
 				+ "	prodCommentPic, "
 				+ "	prodCommentTime, "
+				+ "	restaurantReply, "
 				+ "	restaurantReplyTime, "
 				+ "from "
 				+ "	prodOrderDetail "
@@ -175,6 +181,7 @@ public class ProdOrderDetailJNDIDAO{
 				ProdOrderDetailVO_getAll.setProdCommentContent(rs.getString("prodCommentContent"));
 				ProdOrderDetailVO_getAll.setProdCommentPic(rs.getBytes("prodCommentPic"));
 				ProdOrderDetailVO_getAll.setProdCommentTime(rs.getTimestamp("prodCommentTime"));
+				ProdOrderDetailVO_getAll.setRestaurantReply(rs.getString("restaurantReply"));
 				ProdOrderDetailVO_getAll.setRestaurantReplyTime(rs.getTimestamp("restaurantReplyTime"));
 				ProdOrderDetailVO_list.add(ProdOrderDetailVO_getAll);
 			}

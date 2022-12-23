@@ -39,6 +39,8 @@ public class ProdOrderDetailVO implements Serializable{
 		private byte[] prodCommentPic;
 		@Column(name="prodCommentTime")
 		private java.sql.Timestamp prodCommentTime;
+		@Column(name="restaurantReply")
+		private String restaurantReply;
 		@Column(name="restaurantReplyTime")
 		private java.sql.Timestamp restaurantReplyTime;
 		
@@ -55,7 +57,7 @@ public class ProdOrderDetailVO implements Serializable{
 			return "ProdOrderDetailVO [prodOrderNo=" + prodOrderNo + ", prodNo=" + prodNo
 					+ ", prodQty=" + prodQty + ", prodCommentRating=" + prodCommentRating + ", prodCommentContent="
 					+ prodCommentContent + ", prodCommentPic=" + Arrays.toString(prodCommentPic) + ", prodCommentTime="
-					+ prodCommentTime + ", restaurantReplyTime=" + restaurantReplyTime + "]";
+					+ prodCommentTime + ", restaurantReply=" + restaurantReply + ", restaurantReplyTime=" + restaurantReplyTime + "]";
 		}
 		public Integer getProdOrderNo() {
 			return prodOrderNo;
@@ -104,6 +106,12 @@ public class ProdOrderDetailVO implements Serializable{
 		}
 		public void setProdCommentTime(java.sql.Timestamp prodCommentTime) {
 			this.prodCommentTime = prodCommentTime;
+		}
+		public String getRestaurantReply() {
+			return restaurantReply;
+		}
+		public void setRestaurantReply(String restaurantReply) {
+			this.restaurantReply = restaurantReply;
 		}
 		public java.sql.Timestamp getRestaurantReplyTime() {
 			return restaurantReplyTime;

@@ -20,3 +20,11 @@ div.checkout__divider {
 ul.checkout__total__products samp {
     width: 30px;
 }
+
+.checkout__input input {
+    color: black ;
+}
+
+::placeholder {
+    color: #e1e1e1 !important;
+}

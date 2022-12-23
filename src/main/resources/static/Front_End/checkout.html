@@ -166,10 +166,10 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="checkout__input__checkbox">
+                                    <div class="checkout__input__checkbox" id="member">
                                         <label for="acc">
                                             會員本人即是收貨人
-                                            <input type="checkbox" id="acc">
+                                            <input type="checkbox" id="acc" disabled>
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -254,19 +254,19 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>信用卡卡號<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" id="credit_card" class="payment_check">
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="checkout__input">
                                         <p>到期月/年<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" id="expire_date" class="payment_check">
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="checkout__input">
                                         <p>安全碼<span>*</span></p>
-                                        <input type="password" autocomplete="new-password">
+                                        <input type="password" id="security_code" class="payment_check" maxlength="3">
                                     </div>
                                 </div>
                             </div>
@@ -315,7 +315,7 @@
                                 <div class="checkout__input__checkbox">
                                     <label for="payment_confirm">
                                         確認付款資訊
-                                        <input type="checkbox" id="payment_confirm">
+                                        <input type="checkbox" id="payment_confirm" disabled>
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
