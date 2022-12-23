@@ -3,7 +3,7 @@ index
 
 drop table: line 43
 
-create table & insert fake date
+create table & insert fake data
 prodCategory: line 73
 memberLevel: line 94
 restaurant: line 110
@@ -114,7 +114,7 @@ restaurantTel varchar(20) not null comment '電話',
 restaurantName varchar(50) not null comment '餐廳名稱',
 restaurantTaxIDNo varchar(20) comment '統一編號',
 restaurantAccountInfo varchar(50) comment '帳戶資訊',
-restaurantBusinessHour varchar(200) not null comment '營業時間',
+restaurantBusinessHour varchar(200) comment '營業時間',
 restaurantAddr varchar(50) not null comment '地址',
 restaurantStatus bit(1) comment '餐廳狀態',
 restaurantAccount varchar(50) not null comment '餐廳帳號',
@@ -238,7 +238,7 @@ commit;
 create table coupon(
 couponNo int not null auto_increment primary key comment'優惠券編號',
 restaurantNo integer unsigned not null comment'餐廳編號',
-adminNo integer not null comment'系統管理員編號',
+adminNo integer comment'系統管理員編號',
 couponApplyDate timestamp default current_timestamp comment'申請日期',
 couponName varchar(50) not null comment'優惠券名稱',
 couponStartTime date not null comment'開始時間',
