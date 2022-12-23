@@ -55,10 +55,6 @@ $(function () {
   tempOrder.prodOrderVO.amountBeforeCoupon+=tempOrder.prodOrderVO.deliverFee;
   $("ul.checkout__total__all span").text(`NTD ${tempOrder.prodOrderVO.amountAfterCoupon}`);
   
-<<<<<<< HEAD
-  
-//   $("#price_confirm").click();
-=======
   // 加入會員資料
   $("#member").on("click", function(e){
     e.stopPropagation();
@@ -367,5 +363,4 @@ $(function () {
 
 
   console.log(tempOrder);
->>>>>>> Ming
 });
