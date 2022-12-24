@@ -6,7 +6,8 @@ $.ajax({
   type: "GET",
   dataType: "json",
   success: function (arr) {
-    console.log(arr);
+    const couponarr = arr;
+    console.log(couponarr);
     // 如果餐廳沒有優惠券的話會抓不到餐廳編號
     sessionStorage.setItem("restaurantNo", arr[0].restaurantNo)
     tbcoupon_detail.innerHTML = arr.map((e) => Template(e.couponNo, e.couponApplyDate, e.couponStartTime, e.couponEndTime, e.couponContent, e.usageLimitation, e.amountOrFold ,e.couponType ,e.couponName, e.maxIssueQty, e.issuedQty, e.couponPicStr)).join('')
@@ -57,4 +58,44 @@ function update(couponNo) {
 function insert() {
   location.href="coupon_RESinsert.html";
 }
+//===========================搜尋功能================================
+function searchFunction() {
+  var filter, result;
+  filter = [couponarr.couponNo, couponarr.couponName,coupon.couponContent];
+  result = couponarr.filter((couponarr)=>{
+    for (input in filter) {
+      if (couponarr.couponName === input || couponarr.couponName === input ||couponarr === input) {
+        return true;
+      }
+      return false;
+    }
+  });
+  console.log(result);
 
+  // var input, filter, table, tr, td, i, txtValue;
+  // input = document.getElementById("coupon_search");
+  // filter = input.value.toUpperCase();
+  // table = document.getElementById("coupon_detail");
+  // tr = table.getElementsByTagName("tr");
+  // for (i = 0; i < tr.length; i++) {
+  //   td = tr[i].getElementsByTagName("td")[0];
+  //   if (td) {
+  //     txtValue = td.textContent || td.innerText;
+  //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+  //       tr[i].style.display = "";
+  //     } else {
+  //       tr[i].style.display = "none";
+  //     }
+  //   }       
+
+
+    // get search value: 1 => value
+    // datas => [] from backend
+    // coupon no, coupon name, coupon content
+    const result = array.filter((data)=> {
+      data.couponNo == value || data.couponName || data.couponContent
+    })
+  }
+
+
+ 

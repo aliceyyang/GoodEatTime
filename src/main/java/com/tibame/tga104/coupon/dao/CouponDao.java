@@ -20,6 +20,4 @@ public interface CouponDao {
 	
 	public CouponVO insertByRestaurantNo(Integer restaurantNo);
 	
-	public CouponVO searchByRestaurantNo(Integer restaurantNo);
-	
 }
