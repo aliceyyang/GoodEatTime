@@ -1,5 +1,6 @@
 package com.tibame.tga104.product.service;
 
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,23 +16,26 @@ public class ProdPicService {
 	private ProdPicDAO dao;
 	
 	@Transactional
-	public ProdPicVO addProdPic(Integer prodNo, byte[] pic, String prodPicRemark) {
-		ProdPicVO prodPicVO = new ProdPicVO();
-		prodPicVO.setProdNo(prodNo);
-		prodPicVO.setProdPic(pic);
-		prodPicVO.setProdPicRemark(prodPicRemark);
-		
+	public ProdPicVO insert(ProdPicVO prodPicVO) {
+		if (prodPicVO == null || prodPicVO.getProdNo() == null ||
+				(prodPicVO.getProdPic() == null && prodPicVO.getProdPicStr() == null)) {
+			return null;
+		}
+		if (prodPicVO.getProdPic() == null && prodPicVO.getProdPicStr() != null) {
+			prodPicVO.setProdPic(Base64.getDecoder().decode(prodPicVO.getProdPicStr()));
+		}
 		return dao.insert(prodPicVO);
 	}
 	
 	@Transactional
-	public ProdPicVO updateProdPic(Integer prodPicNo, Integer prodNo, byte[] pic, String prodPicRemark) {
-		ProdPicVO prodPicVO = new ProdPicVO();
-		prodPicVO.setProdPicNo(prodPicNo);
-		prodPicVO.setProdNo(prodNo);
-		prodPicVO.setProdPic(pic);
-		prodPicVO.setProdPicRemark(prodPicRemark);
-		
+	public ProdPicVO update(ProdPicVO prodPicVO) {
+		if (prodPicVO == null || prodPicVO.getProdNo() == null || prodPicVO.getProdPicNo() == null ||
+				(prodPicVO.getProdPic() == null && prodPicVO.getProdPicStr() == null)) {
+			return null;
+		}
+		if (prodPicVO.getProdPicStr() != null) {
+			prodPicVO.setProdPic(Base64.getDecoder().decode(prodPicVO.getProdPicStr()));
+		}
 		return dao.update(prodPicVO);
 	}
 	
@@ -54,5 +58,25 @@ public class ProdPicService {
 	
 	public List<Integer> getPicNoByProdNo(Integer prodNo) {
 		return dao.getPicNoByProdNo(prodNo);
+	}
+	@Transactional
+	public ProdPicVO addProdPic(Integer prodNo, byte[] pic, String prodPicRemark) {
+		ProdPicVO prodPicVO = new ProdPicVO();
+		prodPicVO.setProdNo(prodNo);
+		prodPicVO.setProdPic(pic);
+		prodPicVO.setProdPicRemark(prodPicRemark);
+		
+		return dao.insert(prodPicVO);
+	}
+	
+	@Transactional
+	public ProdPicVO updateProdPic(Integer prodPicNo, Integer prodNo, byte[] pic, String prodPicRemark) {
+		ProdPicVO prodPicVO = new ProdPicVO();
+		prodPicVO.setProdPicNo(prodPicNo);
+		prodPicVO.setProdNo(prodNo);
+		prodPicVO.setProdPic(pic);
+		prodPicVO.setProdPicRemark(prodPicRemark);
+		
+		return dao.update(prodPicVO);
 	}
 }

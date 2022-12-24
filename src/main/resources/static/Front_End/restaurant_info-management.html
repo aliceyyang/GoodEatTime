@@ -27,7 +27,6 @@
   <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
   <link rel="stylesheet" href="css/style.css" type="text/css" />
   <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
-  <link rel="stylesheet" href="css/reservation.css" type="text/css" />
   <link rel="stylesheet" href="css/restaurant_info-management.css" type="text/css" />
 </head>
 
@@ -117,22 +116,13 @@
         <div class="col-lg-12">
           <nav class="header__menu mobile-menu">
             <ul>
-              <li><a href="./GoodEatTime.html">首頁</a></li>
-              <li class="active"><a href="./about.html">會員專區</a></li>
-              <li><a href="./shop.html">餐廳</a></li>
-              <li><a href="./blog.html">線上商城</a></li>
-              <li>
-                <a href="#">關於我們</a>
-                <ul class="dropdown">
-                  <li><a href="./shop-details.html">Shop Details</a></li>
-                  <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                  <li><a href="./checkout.html">Check Out</a></li>
-                  <li><a href="./wisslist.html">Wisslist</a></li>
-                  <li><a href="./Class.html">Class</a></li>
-                  <li><a href="./blog-details.html">Blog Details</a></li>
-                </ul>
-              </li>
-              <li><a href="./contact.html">地點搜尋</a></li>
+               <!-- ===餐廳後台消息通知跑馬燈=== -->
+              <div class=" marquee text-white">
+                <marquee id="marquee" scrollamount="8" direction="left">
+                  [好食光重要通知]防詐騙提醒!近來有不肖業者偽冒好食光客服，蓄意詐騙錢財、竊取資料，請餐飲業者們先聯繫好食光平台查證哦!     
+                   </marquee>
+              </div>
+               <!-- ===餐廳後台消息通知跑馬燈=== -->
             </ul>
           </nav>
         </div>
@@ -164,8 +154,8 @@
       <!-- 餐廳資訊 -->
       <div class="restaurant_reserveinf col-lg-10 col-md-10 col-sm-10">
         
-        <h2>餐廳資訊</h2>
-        <div class="row">
+        <h2 style="text-align:center ; margin: 15px auto 15px; color: rgb(53, 51, 51);">餐廳資訊</h2>
+        <div class="row" >
           <div class="info_tab">
             <ul class="tab_title">
               <li class="active">
@@ -201,7 +191,7 @@
             </div>
             </div>
               <div id="set_pic" class="tab_inner" style="height: 600px">
-                <h3>圖片設定</h3>
+                <h3 style="text-align:center">圖片設定</h3>
                 <form id="carousel" style="width:450px ; float:left">
                   <h4 style="text-align:center">圖片上傳</h4>
                   <h6 style="text-align:center">輪播圖片最多6張</h6>
@@ -220,7 +210,7 @@
                 </div>
               </div>
               <div id="set_news" class="tab_inner" style="height: 1250px">
-                <h3>貼文設定</h3>
+                <h3 style="text-align:center">貼文設定</h3>
                 <form id="news" style="width:450px ; float:left">
                     <h4 style="text-align:center">貼文撰寫</h4>
                     <h6  id="editing" style="text-align:center">正在編輯已上傳貼文</h6>
@@ -253,8 +243,7 @@
                     <textarea id="content" style="margin-left: 15%"></textarea>
                 <div id="news_btn">
                   <button type="reset" class="btns">清空資料</button>
-                  <button id="btn_submit3" class="btns">送出資料</button>
-                  <!-- <button id="btn_edit3" class="btns">更新貼文</button> -->
+                  <button type="submit" id="btn_submit3" class="btns">送出資料</button>
                 </div>
                 </form>
                 <h4 style="text-align:center">已上傳的貼文 </h4>
@@ -262,9 +251,11 @@
                 </div>
               </div>
               <div id="set_menu" class="tab_inner">
-                <h3>菜單設定</h3>
+                <h3 style="text-align:center">菜單設定</h3>
                 <form id="menu" style="width:450px ; float:left ">
                   <h4 style="text-align:center">菜單上傳</h4>
+                  <h6  id="editing_menu" style="text-align:center">正在編輯已上傳菜單</h6>
+                    <input type="hidden" name="menuNo" value=""/>
                   <input type="file" id="menu_file" accept="image/*" required/>
                   <br />
                   <br />
@@ -278,40 +269,7 @@
                   <button type="submit" id="btn_submit2" class="btns" style="width:49%">送出資料</button>
                 </form>
                 <h4 style="text-align:center">已上傳的菜單 </h4>
-                <div id="mPic_2" class="uploaded_menu">
-                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
-                  <a class="delete_post">編輯</a>
-                  <a class="edit_post">刪除</a>
-                </div>
-                <div id="mPic_2" class="uploaded_menu">
-                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
-                  <a class="delete_post">編輯</a>
-                  <a class="edit_post">刪除</a>
-                </div>
-                <div id="mPic_2" class="uploaded_menu">
-                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
-                  <a class="delete_post">編輯</a>
-                  <a class="edit_post">刪除</a>
-                </div>
-                <div id="mPic_2" class="uploaded_menu">
-                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
-                  <a class="delete_post">編輯</a>
-                  <a class="edit_post">刪除</a>
-                </div>
-                <div id="mPic_2" class="uploaded_menu">
-                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
-                  <a class="delete_post">編輯</a>
-                  <a class="edit_post">刪除</a>
-                </div>
-                <div id="mPic_2" class="uploaded_menu">
-                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
-                  <a class="delete_post">編輯</a>
-                  <a class="edit_post">刪除</a>
-                </div>
-                <div id="mPic_2" class="uploaded_menu">
-                  <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
-                  <a class="delete_post">編輯</a>
-                  <a class="edit_post">刪除</a>
+                <div id="menu_uploaded">
                 </div>
               </div>
             </div>

@@ -162,14 +162,14 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>收貨人姓名<span>*</span></p>
-                                        <input type="text" id="receiver_name" placeholder="汪大東">
+                                        <input type="text" id="receiver_name" placeholder="汪大東" class="receiver_check">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="checkout__input__checkbox">
+                                    <div class="checkout__input__checkbox" id="member">
                                         <label for="acc">
                                             會員本人即是收貨人
-                                            <input type="checkbox" id="acc">
+                                            <input type="checkbox" id="acc" disabled>
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -181,7 +181,7 @@
                             </div> -->
                             <div class="checkout__input">
                                 <p>收貨地址<span>*</span></p>
-                                <input type="text"  id="receiver_address"
+                                <input type="text"  id="receiver_address" class="receiver_check"
                                 placeholder="100台北市中正區濟南路一段321號" class="checkout__input__add">
                             </div>
                             <!-- <div class="checkout__input">
@@ -200,13 +200,13 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>連絡電話<span>*</span></p>
-                                        <input type="text" id="receiver_tel" placeholder="0912345678">
+                                        <input type="text" id="receiver_tel" class="receiver_check" placeholder="0912345678">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email Address<span>*</span></p>
-                                        <input type="text" id="receiver_mail" placeholder="GooodEatTime@gmail.com">
+                                        <input type="text" id="receiver_mail" class="receiver_check" placeholder="GooodEatTime@gmail.com">
                                     </div>
                                 </div>
                             </div>
@@ -214,7 +214,8 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>統一編號</p>
-                                        <input type="text" id="receiver_taxId" placeholder="88888888">
+                                        <input type="text" id="receiver_taxId" class="receiver_check check_ok" 
+                                        placeholder="88888888" class="check_ok" maxlength="8">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -255,19 +256,19 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>信用卡卡號<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" id="credit_card" class="payment_check">
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="checkout__input">
                                         <p>到期月/年<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" id="expire_date" class="payment_check">
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="checkout__input">
                                         <p>安全碼<span>*</span></p>
-                                        <input type="password" autocomplete="new-password">
+                                        <input type="password" id="security_code" class="payment_check" maxlength="3">
                                     </div>
                                 </div>
                             </div>
@@ -302,21 +303,21 @@
                                 <div class="checkout__input__checkbox" id="price_check">
                                     <label for="price_confirm">
                                         確認訂單金額
-                                        <input type="checkbox" id="price_confirm">
+                                        <input type="checkbox" id="price_confirm" disabled>
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
                                 <div class="checkout__input__checkbox" id="receiver_check">
                                     <label for="receiver_confirm">
                                         確認收貨人資訊
-                                        <input type="checkbox" id="receiver_confirm">
+                                        <input type="checkbox" id="receiver_confirm" disabled>
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
                                 <div class="checkout__input__checkbox" id="payment_check">
                                     <label for="payment_confirm">
                                         確認付款資訊
-                                        <input type="checkbox" id="payment_confirm">
+                                        <input type="checkbox" id="payment_confirm" disabled>
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
@@ -327,7 +328,7 @@
                                         <span class="checkmark"></span>
                                     </label>
                                 </div> -->
-                                <button type="submit" class="site-btn">前往付款</button>
+                                <button type="button" class="site-btn">前往付款</button>
                             </div>
                         </div>
                     </div>
@@ -454,6 +455,7 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/checkout.js"></script>

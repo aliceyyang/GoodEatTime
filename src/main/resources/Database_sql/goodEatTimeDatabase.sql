@@ -3,7 +3,7 @@ index
 
 drop table: line 43
 
-create table & insert fake date
+create table & insert fake data
 prodCategory: line 73
 memberLevel: line 94
 restaurant: line 110
@@ -114,7 +114,7 @@ restaurantTel varchar(20) not null comment '電話',
 restaurantName varchar(50) not null comment '餐廳名稱',
 restaurantTaxIDNo varchar(20) comment '統一編號',
 restaurantAccountInfo varchar(50) comment '帳戶資訊',
-restaurantBusinessHour varchar(200) not null comment '營業時間',
+restaurantBusinessHour varchar(200) comment '營業時間',
 restaurantAddr varchar(50) not null comment '地址',
 restaurantStatus bit(1) comment '餐廳狀態',
 restaurantAccount varchar(50) not null comment '餐廳帳號',
@@ -126,10 +126,10 @@ constraint restaurantNo_PK primary key(restaurantNo));
 
 insert into restaurant(restaurantTel, restaurantName, restaurantTaxIDNo, restaurantAccountInfo, restaurantBusinessHour, restaurantAddr, restaurantAccount, restaurantPassword)
 values('0229540410','薄多義','53914855',null,'11:00-20:30','台北市中正區忠孝東路一段150號','restaurant1001@gmail.com','1001restaurant'),
-('0225963255','欣葉台菜','12107610',null,'11:00-21:00','台北市中正區林森南路1號','restaurant1002@gmail.com','1002restaurant'),
-('0229341343','星巴克','53234955',null,'11:00-20:30','台北市中正區林森南路7-1號','restaurant1003@gmail.com','1003restaurant'),
-('0221243563','麥當勞','34256575',null,'11:00-20:30','台北市中正區林森南路1號','restaurant1004@gmail.com','1004restaurant'),
-('0221345678','摩斯漢堡','12124455',null,'11:00-20:30','台北市中正區忠孝東路一段178號','restaurant1005@gmail.com','1005restaurant');
+('0225963255','欣葉台菜','12107610',null,'11:00-21:00','台北市中正區林森南路1號','restaurant1002','1002restaurant@gmail.com'),
+('0229341343','星巴克 (時代寓所門市)','53234955',null,'11:00-20:30','台北市中正區林森南路7-1號','restaurant1003@gmail.com','1003restaurant'),
+('0221243563','麥當勞-林森二餐廳','34256575',null,'11:00-20:30','台北市中正區林森南路1號','restaurant1004@gmail.com','1004restaurant'),
+('0221345678','摩斯漢堡 善導寺店','12124455',null,'11:00-20:30','台北市中正區忠孝東路一段178號','restaurant1005@gmail.com','1005restaurant');
 commit;
 
 
@@ -238,7 +238,7 @@ commit;
 create table coupon(
 couponNo int not null auto_increment primary key comment'優惠券編號',
 restaurantNo integer unsigned not null comment'餐廳編號',
-adminNo integer not null comment'系統管理員編號',
+adminNo integer comment'系統管理員編號',
 couponApplyDate timestamp default current_timestamp comment'申請日期',
 couponName varchar(50) not null comment'優惠券名稱',
 couponStartTime date not null comment'開始時間',
@@ -307,22 +307,22 @@ values(5, '12:00', 20, 2), (5, '13:00', 20, 2), (5, '18:00', 25, 2), (5, '19:00'
 (5, '12:00', 20, 5), (5, '13:00', 20, 5), (5, '18:00', 25, 5), (5, '19:00', 25, 5),
 (5, '12:00', 20, 6), (5, '13:00', 20, 6), (5, '18:00', 25, 6), (5, '19:00', 25, 6),
 (3, '12:00', 15, 1), (3, '13:00', 15, 1), (3, '18:00', 15, 1), (3, '19:00', 15, 1),
-(3, '12:00', 15, 7), (3, '13:00', 15, 7), (3, '18:00', 15, 7), (3, '19:00', 15, 7),
+(3, '12:00', 15, 0), (3, '13:00', 15, 0), (3, '18:00', 15, 0), (3, '19:00', 15, 0),
 (3, '12:00', 15, 3), (3, '13:00', 15, 3), (3, '18:00', 15, 3), (3, '19:00', 15, 3),
 (3, '12:00', 15, 4), (3, '13:00', 15, 4), (3, '18:00', 15, 4), (3, '19:00', 15, 4),
 (3, '12:00', 15, 5), (3, '13:00', 15, 5), (3, '18:00', 15, 5), (3, '19:00', 15, 5),
 (3, '12:00', 15, 6), (3, '13:00', 15, 6), (3, '18:00', 15, 6), (3, '19:00', 15, 6),
-(2, '12:00', 20, 7), (2, '13:00', 20, 7), (2, '18:00', 20, 7), (2, '19:00', 20, 7),
+(2, '12:00', 20, 0), (2, '13:00', 20, 0), (2, '18:00', 20, 0), (2, '19:00', 20, 0),
 (2, '12:00', 20, 3), (2, '13:00', 20, 3), (2, '18:00', 20, 3), (2, '19:00', 20, 3),
 (2, '12:00', 20, 4), (2, '13:00', 20, 4), (2, '18:00', 20, 4), (2, '19:00', 20, 4),
 (2, '12:00', 20, 5), (2, '13:00', 20, 5), (2, '18:00', 20, 5), (2, '19:00', 20, 5),
 (2, '12:00', 20, 6), (2, '13:00', 20, 6), (2, '18:00', 20, 6), (2, '19:00', 20, 6),
-(1, '12:00', 15, 7), (1, '13:00', 15, 7), (1, '18:00', 20, 7), (1, '19:00', 20, 7),
+(1, '12:00', 15, 0), (1, '13:00', 15, 0), (1, '18:00', 20, 0), (1, '19:00', 20, 0),
 (1, '12:00', 15, 2), (1, '13:00', 15, 2), (1, '18:00', 20, 2), (1, '19:00', 20, 2),
 (1, '12:00', 15, 4), (1, '13:00', 15, 4), (1, '18:00', 20, 4), (1, '19:00', 20, 4),
 (1, '12:00', 15, 5), (1, '13:00', 15, 5), (1, '18:00', 20, 5), (1, '19:00', 20, 5),
 (1, '12:00', 15, 6), (1, '13:00', 15, 6), (1, '18:00', 20, 6), (1, '19:00', 20, 6),
-(4, '12:00', 10, 7), (4, '13:00', 10, 7), (4, '18:00', 15, 7), (4, '19:00', 15, 7),
+(4, '12:00', 10, 0), (4, '13:00', 10, 0), (4, '18:00', 15, 0), (4, '19:00', 15, 0),
 (4, '12:00', 10, 1), (4, '13:00', 10, 1), (4, '18:00', 15, 1), (4, '19:00', 15, 1),
 (4, '12:00', 10, 2), (4, '13:00', 10, 2), (4, '18:00', 15, 2), (4, '19:00', 15, 2),
 (4, '12:00', 10, 3), (4, '13:00', 10, 3), (4, '18:00', 15, 3), (4, '19:00', 15, 3),
@@ -512,7 +512,7 @@ commit;
 CREATE TABLE `reservation` (
   `reserveNo` INT NOT NULL AUTO_INCREMENT COMMENT '訂位編號',
   `memberNo` INT NOT NULL COMMENT '會員編號',
-  `reserveStatus` VARCHAR(20) NOT NULL default'訂位成功' COMMENT '訂位狀態',
+  `reserveStatus` VARCHAR(20) NOT NULL COMMENT '訂位狀態',
   `restaurantNo` INT unsigned NOT NULL COMMENT '餐廳編號',
   `reserveNum` INT NOT NULL COMMENT '訂位人數',
   `reserveDate` DATE NOT NULL COMMENT '訂位日期',
@@ -583,30 +583,31 @@ CREATE VIEW V_memeber_reservation AS
         restaurant r ON rs.restaurantNo = r.restaurantNo;
 commit;
 
+
 --   V_reservation
 /*==========================================================================================*/
 CREATE VIEW V_reservation AS
     SELECT 
-        rt.restaurantNo,
-        r.reserveDate,
-        rt.reserveTime,
-        rt.allowReserveNum,
-        r.totalReserveNum,
-        (rt.allowReserveNum - r.totalReserveNum) AS availableSeats
+        t.*, (allowReserveNum - totalReserveNum) AS availableSeats
     FROM
-        reserveTime rt
-            JOIN
         (SELECT 
-            restaurantNo,
-                reserveTime,
-                reserveDate,
-                SUM(reserveNum) AS totalReserveNum
+            rt.restaurantNo,
+                rt.weekDay,
+                rt.reserveTime,
+                rt.allowReserveNum,
+                rv.reserveDate,
+                SUM(IFNULL(rv.reserveNum, 0)) AS totalReserveNum
         FROM
-            reservation
-        GROUP BY reserveTime , reserveDate , restaurantNo) AS r ON rt.restaurantNo = r.restaurantNo
-            AND rt.weekDay = DAYOFWEEK(r.reserveDate)
-            AND rt.reserveTime = r.reserveTime;
+            reserveTime rt
+        LEFT JOIN reservation rv ON rt.restaurantNo = rv.restaurantNo
+            AND rt.reserveTime = rv.reserveTime
+            AND rt.weekDay = DAYOFWEEK(rv.reserveDate)
+        GROUP BY rt.restaurantNo , rt.reserveTime , rt.weekDay , rt.allowReserveNum, rv.reserveDate
+        ORDER BY rt.restaurantNo , rt.weekDay , rt.reserveTime) t;
+        
 commit;
+
+
 
 --   V_showProdInMall
 /*==========================================================================================*/

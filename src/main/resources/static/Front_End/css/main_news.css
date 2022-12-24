@@ -411,3 +411,12 @@ NewRestaurant__slider
   -o-transition: all, 0.2s;
   transition: all, 0.2s;
 }
+/*=======================================*/
+
+.header__top__right__links .main_serch {
+  border: none;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  width: 100%;
+  
+}

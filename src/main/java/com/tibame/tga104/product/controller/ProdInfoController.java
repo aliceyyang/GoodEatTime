@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -110,5 +111,11 @@ public class ProdInfoController {
 	public ProdInfoVO addNewProd(@RequestBody(required = false) ProdInfoVO prodInfoVO) {
 		return prodInfoService.insertProd(prodInfoVO);
 	}	
-
+	
+	@PutMapping("updateProdInfo")
+	public ProdInfoVO updateProd(@RequestBody(required = false) ProdInfoVO prodInfoVO) {
+		ProdInfoVO target = prodInfoService.getOneProduct(prodInfoVO.getProdNo());
+		target.setProdMainPicStr(prodInfoVO.getProdMainPicStr());
+		return prodInfoService.update(target);
+	}
 }
