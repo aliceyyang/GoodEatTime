@@ -28,3 +28,7 @@ ul.checkout__total__products samp {
 ::placeholder {
     color: #e1e1e1 !important;
 }
+
+span.error_message {
+    color: #f08632;
+}

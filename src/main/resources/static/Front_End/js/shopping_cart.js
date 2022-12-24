@@ -316,7 +316,7 @@ $(function () {
     fetch("../cart/delete", {
       method: "DELETE",
       body: JSON.stringify(delete_item),
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json" }
     })
       .then((r) => r.json())
       .then((data) => {
@@ -474,8 +474,8 @@ $(function () {
           $("table.-on > .prod__cart__heads").attr("data-restaurantNo")
         ),
         restaurantName: $("table.-on .prod__cart__head1").attr("data-restaurantName"),
-        deliverFee: null,
         couponNo: null,
+        deliverFee: null,
         amountBeforeCoupon: parseInt($("li.cart__final__amount").attr("data-amount")),
         amountAfterCoupon: parseInt($("li.cart__final__amount").attr("data-amount")),
         prodOrderPoint: parseInt($("li.cart__final__amount").attr("data-amount")),
@@ -483,6 +483,7 @@ $(function () {
         prodOrderReceiverTel: null,
         prodOrderReceiverMail: null,
         prodOrderReceiverAddress: null,
+        taxIDNumber: null
       },
       orderDetailList: order_list,
     };
