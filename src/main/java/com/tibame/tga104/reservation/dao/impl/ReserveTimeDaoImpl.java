@@ -1,5 +1,6 @@
 package com.tibame.tga104.reservation.dao.impl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.tibame.tga104.reservation.dao.ReserveTimeDao;
+import com.tibame.tga104.reservation.vo.ReservationDetailVO;
 import com.tibame.tga104.reservation.vo.ReserveTimeVO;
 
 @Repository
@@ -123,4 +125,38 @@ public class ReserveTimeDaoImpl implements ReserveTimeDao {
 		}
 		return no;
 	}
+
+
+	@Override
+	public Integer getSeats(Integer restaurantNo, Date reserveDate, String reserveTime) {
+		Query<Integer> query = getSession().createQuery("SELECT availableSeats FROM ReservationDetailVO "
+				+ "where reserveDate = :reserveDate and reserveTime = :reserveTime and restaurantNo = :restaurantNo", Integer.class);
+		return query.setParameter("reserveDate", reserveDate)
+					.setParameter("reserveTime", reserveTime)
+					.setParameter("restaurantNo", restaurantNo)
+					.uniqueResult() ;
+	}
+
+
+	@Override
+	public Integer getSeats(Integer restaurantNo, String reserveTime, Integer weekDay) {
+		Query<Integer> query = getSession().createQuery("SELECT availableSeats FROM ReservationDetailVO "
+				+ "where weekDay = :weekDay and reserveTime = :reserveTime and restaurantNo = :restaurantNo", Integer.class);
+		return query.setParameter("weekDay", weekDay)
+					.setParameter("reserveTime", reserveTime)
+					.setParameter("restaurantNo", restaurantNo)
+					.uniqueResult() ;
+	}
+
+
+	@Override
+	public List<java.util.Date> getDate(Integer restaurantNo, String reserveTime) {
+		Query<java.util.Date> query = getSession().createQuery("SELECT reserveDate FROM ReservationDetailVO "
+				+ "where reserveTime = :reserveTime and restaurantNo = :restaurantNo", java.util.Date.class);
+		return query.setParameter("reserveTime", reserveTime)
+					.setParameter("restaurantNo", restaurantNo)
+					.list() ;
+	}
+	
+	
 }
