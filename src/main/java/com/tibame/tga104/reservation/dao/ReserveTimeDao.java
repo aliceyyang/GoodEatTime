@@ -1,7 +1,9 @@
 package com.tibame.tga104.reservation.dao;
 
+import java.sql.Date;
 import java.util.List;
 
+import com.tibame.tga104.reservation.vo.ReservationDetailVO;
 import com.tibame.tga104.reservation.vo.ReserveTimeVO;
 
 public interface ReserveTimeDao {
@@ -21,4 +23,9 @@ public interface ReserveTimeDao {
 
 	public List<ReserveTimeVO> getAll();
 
+	public Integer getSeats(Integer restaurantNo, java.sql.Date reserveDate, String reserveTime);
+
+	public Integer getSeats(Integer restaurantNo, String reserveTime, Integer weekDay);
+	
+	public List<java.util.Date> getDate(Integer restaurantNo, String reserveTime);
 }

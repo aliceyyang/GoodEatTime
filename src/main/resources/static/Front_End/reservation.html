@@ -194,9 +194,11 @@
         <form enctype="multipart/form-data">
           <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
-              <label>訂位時間</label>
+              <label style="padding-right: 340px;">訂位時間</label>
+              <span class="date_error"></span>
               <input id="reserveDate" type="text" placeholder="請輸入訂位時間" />
-              <label>訂位時段</label>
+              <label style="padding-right: 340px;">訂位時段</label>
+              <span class="time_error"></span>
               <select id="reserveTime">
                 <option value="" style="display: none">請選擇訂位時段</option>
                 <option value="12:00">12:00</option>
@@ -204,8 +206,9 @@
                 <option value="18:00">18:00</option>
                 <option value="19:00">19:00</option>
               </select>
-              <label>訂位人數</label>
-              <input id="reserveNum" type="number" min="1" placeholder="請輸入訂位人數" />
+              <label style="padding-right: 300px">訂位人數</label>
+              <span class="num_error"></span>
+              <input id="reserveNum" type="number" min="1" placeholder="請輸入訂位人數 (可訂位人數：)" />
               <label>備註</label>
               <input id="remark" type="text" placeholder="備註" />
               <!-- <textarea></textarea> -->

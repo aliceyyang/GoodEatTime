@@ -1,3 +1,5 @@
+let send_data = {};
+
 // dateTimePicker
 $(function weekDay() {
   $.ajax({
@@ -17,6 +19,20 @@ $(function weekDay() {
           maxDate: "+1m",
           beforeShowDay: function (dt) {
             return [weekdays.includes(dt.getDay()), ""];
+          },
+          onClose: function (date, datepicker) {
+            if (date != "") {
+              let reserveDate = $("#reserveDate").val();
+              send_data.reserveDate = reserveDate;
+              console.log(send_data.reserveDate);
+              document.querySelector(".date_error").innerHTML = "";
+              document.querySelector("#reserveDate").style.border = "none";
+            } else {
+              document.querySelector(".date_error").innerHTML =
+                "請輸入想要訂位日期";
+              document.querySelector("#reserveDate").style.border =
+                "2px solid #F6D0C0";
+            }
           },
         })
         .val();
@@ -51,83 +67,143 @@ function codeAddress(address) {
   });
 }
 
-// submit訂位資訊
-$("#btn_reserve").on("click", function (e) {
-  e.preventDefault();
-  var send_data = {};
-  // input格式判斷
-  let reserveNum = $("#reserveNum").val();
-  let reserveDate = $("#reserveDate").val();
+$("#reserveTime").on("change", () => {
   let reserveTime = $("#reserveTime").val();
-
-  if (reserveDate != "") {
-    send_data.reserveDate = reserveDate;
-  } else {
-    alert("請輸入想要訂位日期");
-    return;
-  }
-
-  if (reserveNum > 0 && !isNaN(reserveNum)) {
-    send_data.reserveNum = reserveNum;
-  } else {
-    alert("請輸入人數");
-    return;
-  }
-
   if (reserveTime != "") {
     send_data.reserveTime = reserveTime;
-  } else {
-    alert("請輸入想要訂位時段");
-    return;
-  }
+    console.log(send_data.reserveTime);
 
-  send_data.reserveDate = $("#reserveDate").val();
-  send_data.reserveTime = $("#reserveTime").val();
-  if ($("#remark").val() != "") {
-    send_data.remark = $("#remark").val();
+    document.querySelector(".time_error").innerHTML = "";
+    document.querySelector("#reserveTime").style.border = "none";
+  } else {
+    // alert("請輸入想要訂位時段");
+    document.querySelector(".time_error").innerHTML = "請輸入想要訂位時段";
+    document.querySelector("#reserveTime").style.border = "2px solid #F6D0C0";
   }
-  send_data.memberNo = 2;
-  send_data.tel = "0921399718";
-  send_data.restaurantNo = 2;
-  // console.log(send_data);
-  sessionStorage.setItem("reservation_inf", JSON.stringify(send_data));
-  location.href = "./reservation_confirm.html";
 });
 
-// Session資料
-var reserve_data = function () {
-  if (sessionStorage.getItem("reservation_inf") != null) {
-    const reservation_inf = JSON.parse(
-      sessionStorage.getItem("reservation_inf")
-    );
-    console.log(reservation_inf);
-    reservation_inf.reserveNum = $("#reserveNum").val();
-    reservation_inf.reserveDate = $("#reserveDate").val();
-    reservation_inf.reserveTime = $("#reserveTime").val();
-    reservation_inf.remark = $("#remark").val();
-    reservation_inf.tel = "0921399718";
-    reservation_inf.memberNo = 2;
-    reservation_inf.restaurantNo = 2;
+let availableNum;
+document.querySelector("#reserveNum").addEventListener("click", () => {
+  let date = $("#reserveDate").val();
+  let time = $("#reserveTime").val();
+  if (!date || !time) {
+    if (!date && !time) {
+      console.log("1");
+      document.querySelector(".date_error").innerHTML = "請輸入想要訂位日期";
+      document.querySelector("#reserveDate").style.border = "2px solid #F6D0C0";
+      document.querySelector(".time_error").innerHTML = "請輸入想要訂位時段";
+      document.querySelector("#reserveTime").style.border = "2px solid #F6D0C0";
+    } else if (!time) {
+      console.log("2");
+      document.querySelector(".time_error").innerHTML = "請輸入想要訂位時段";
+      document.querySelector("#reserveTime").style.border = "2px solid #F6D0C0";
+    } else {
+      console.log("4");
+      document.querySelector(".date_error").innerHTML = "請輸入想要訂位日期";
+      document.querySelector("#reserveDate").style.border = "2px solid #F6D0C0";
+    }
+  } else {
+    console.log("3");
+    // $("#reserveNum").on("blur", () => {
+    $.ajax({
+      url: "../reservation/restaurant/seat",
+      type: "POST",
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify({
+        reserveDate: send_data.reserveDate,
+        reserveTime: send_data.reserveTime,
+      }),
+      success: function (a) {
+        availableNum = a;
+        console.log(a);
+        $("#reserveNum").attr(
+          "placeholder",
+          "請輸入訂位人數 (可訂位人數：" + a + ")"
+        );
+        checkReserveNum(a);
+      },
+    });
+    // });
   }
-};
-reserve_data();
+});
 
-// Session資料
-// const data = {};
-// data.name = $("#name").val();
-// data.tel = $("#tel").val();
-// data.people = $("#reserveNum").val();
-// data.date = $("#reserveDate").val();
-// data.time = $("#reserveTime").val();
-// data.remark = $("#remark").val();
-// sessionStorage.setItem("reservation_inf", JSON.stringify(data));
-// const sendButton = document.querySelector("#btn_reserve");
-// sendButton.addEventListener('click', () => history.replaceState(data, null, "reservation_confirm.html"));
+function checkReserveNum(num) {
+  document.querySelector("#reserveNum").addEventListener("focusout", () => {
+    console.log(availableNum);
+    let reserveNum = $("#reserveNum").val();
+    console.log("reserveNum=" + reserveNum);
+    if (!reserveNum) {
+      document.querySelector(".num_error").innerHTML = "請輸入想要訂位人數";
+      document.querySelector("#reserveNum").style.border = "2px solid #F6D0C0";
+      document.querySelector("#reserveNum").style.paddingLeft = "40px";
+    } else if (reserveNum > num) {
+      document.querySelector(".num_error").innerHTML =
+        "超出可訂位人數，請重新填寫";
+      document.querySelector("#reserveNum").style.border = "2px solid #F6D0C0";
+    } else {
+      send_data.reserveNum = reserveNum;
+      document.querySelector(".num_error").innerHTML = "";
+      document.querySelector("#reserveNum").style.border = "none";
+    }
+  });
+}
 
-// let pass = false;
-// if(data.name.length === 0) {
-//     alert()
+// // submit訂位資訊
+// $("#btn_reserve").on("click", function (e) {
+//   e.preventDefault();
 
-// } else
+//   if (!send_data.reserveTime) {
+//     document.querySelector(".time_error").innerHTML = "請輸入想要訂位時段";
+//     document.querySelector("#reserveTime").style.border = "2px solid #F6D0C0";
+//     return;
+//   }
 
-// submit -> preventDefault(); window.location.href="xxx";
+//   if (!send_data.reserveNum) {
+//     document.querySelector(".num_error").innerHTML = "請輸入想要訂位人數";
+//     document.querySelector("#reserveNum").style.border = "2px solid #F6D0C0";
+//     return;
+//   } else if (send_data.reserveNum) {
+//   }
+
+//   let reserveNum = $("#reserveNum").val();
+//   // console.log(reserveTime);
+//   if (reserveNum > 0 && !isNaN(reserveNum)) {
+//     send_data.reserveNum = reserveNum;
+//     console.log(send_data.reserveNum);
+//     document.querySelector(".num_error").innerHTML = "";
+//     document.querySelector("#reserveNum").style.border = "none";
+//   } else {
+//     // alert("請輸入想要訂位人數");
+//     document.querySelector(".num_error").innerHTML = "請輸入想要訂位人數";
+//     document.querySelector("#reserveNum").style.border = "2px solid #F6D0C0";
+//     return;
+//   }
+//   if ($("#remark").val() != "") {
+//     send_data.remark = $("#remark").val();
+//   }
+//   send_data.memberNo = 2; // 暫時寫死
+//   send_data.tel = "0921399718"; // 暫時寫死
+//   send_data.restaurantNo = 2; // 暫時寫死
+//   // console.log(send_data);
+//   sessionStorage.setItem("reservation_inf", JSON.stringify(send_data));
+//   location.href = "./reservation_confirm.html";
+// });
+
+// // Session資料
+// var reserve_data = function () {
+//   if (sessionStorage.getItem("reservation_inf") != null) {
+//     const reservation_inf = JSON.parse(
+//       sessionStorage.getItem("reservation_inf")
+//     );
+//     console.log(reservation_inf);
+//     reservation_inf.reserveNum = $("#reserveNum").val();
+//     reservation_inf.reserveDate = $("#reserveDate").val();
+//     reservation_inf.reserveTime = $("#reserveTime").val();
+//     reservation_inf.remark = $("#remark").val();
+//     reservation_inf.tel = "0921399718"; // 暫時寫死
+//     reservation_inf.memberNo = 2; // 暫時寫死
+//     reservation_inf.restaurantNo = 2; // 暫時寫死
+//   }
+// };
+// reserve_data();

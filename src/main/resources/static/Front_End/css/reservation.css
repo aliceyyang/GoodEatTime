@@ -87,6 +87,21 @@ button#btn_cancel {
   margin-left: 15px;
 }
 
+#availbe_num {
+  color: #c8878b;
+  font-weight: bolder;
+}
+
+.date_error,
+.time_error,
+.num_error {
+  color: #f66767;
+  font-weight: bolder;
+  font-size: small;
+  margin-bottom: 0px;
+  text-align: right;
+}
+
 /*---------------------
     reservation start-member part
   -----------------------*/
@@ -235,35 +250,35 @@ th {
 }
 
 /*開關鈕*/
-.onoffswitch {
+/* .onoffswitch {
   position: relative;
   width: 105px;
   margin: auto;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-}
-.onoffswitch-checkbox {
+} */
+/* .onoffswitch-checkbox {
   position: absolute;
   opacity: 0;
   pointer-events: none;
-}
-.onoffswitch-label {
+} */
+/* .onoffswitch-label {
   display: block;
   overflow: hidden;
   cursor: pointer;
-  /* border: 2px solid #a69b98; */
+  border: 2px solid #a69b98;
   border-radius: 20px;
   margin-bottom: 0px;
   position: relative;
-}
-.onoffswitch-inner {
+} */
+/* .onoffswitch-inner {
   display: block;
   width: 200%;
   margin-left: -100%;
   transition: margin 0.3s ease-in 0s;
-}
-.onoffswitch-inner:before,
+} */
+/* .onoffswitch-inner:before,
 .onoffswitch-inner:after {
   display: block;
   float: left;
@@ -299,7 +314,7 @@ th {
   top: 0;
   bottom: 0;
   right: 74px;
-  /* border: 2px solid #a69b98; */
+  border: 2px solid #a69b98;
   border-radius: 20px;
   transition: all 0.3s ease-in 0s;
 }
@@ -308,7 +323,7 @@ th {
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px;
-}
+} */
 
 input[type="checkbox"] {
   height: 0;
@@ -360,7 +375,7 @@ input[type="checkbox"] {
 }
 
 input:checked + .switchLabel {
-  background: #6f42c1;
+  background: #f6e04f;
 }
 
 .switchLabel:active:after {
