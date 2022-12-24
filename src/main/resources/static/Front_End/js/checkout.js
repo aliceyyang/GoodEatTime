@@ -421,7 +421,28 @@ $(function () {
       headers: { "content-type": "application/json" }
     }).then((r) => r.json())
     .then((data) => {
-      console.log(data);
+      if(data.message == "Insert Success") {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "訂單新增成功",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(()=>{
+          window.location.href = "./shopping_mall.html";
+        });
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "訂單新增失敗",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(()=>{
+          window.location.href = "./shopping_cart.html";
+        });
+      }
+      
     });
 
   });
