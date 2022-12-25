@@ -15,6 +15,9 @@ public class ReservationDetailVO {
 	@Column(name = "restaurantNo")
 	private Integer restaurantNo;
 	
+	@Column(name="weekDay")
+	private Integer weekDay;
+	
 	@Column(name="reserveDate")
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone= "GMT+8")
 	private java.sql.Date reserveDate;
@@ -33,6 +36,14 @@ public class ReservationDetailVO {
 
 	public Integer getRestaurantNo() {
 		return restaurantNo;
+	}
+
+	public Integer getWeekDay() {
+		return weekDay;
+	}
+
+	public void setWeekDay(Integer weekDay) {
+		this.weekDay = weekDay;
 	}
 
 	public void setRestaurantNo(Integer restaurantNo) {

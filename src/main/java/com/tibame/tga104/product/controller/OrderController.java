@@ -1,9 +1,5 @@
 package com.tibame.tga104.product.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,10 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.tibame.tga104.member.vo.MemberVO;
-import com.tibame.tga104.order.service.ProdOrderDetailService;
 import com.tibame.tga104.order.service.ProdOrderService;
-import com.tibame.tga104.order.vo.ProdOrderDetailVO;
-import com.tibame.tga104.order.vo.ProdOrderVO;
 import com.tibame.tga104.product.helper.OrderInsertWrapper;
 
 @RestController
@@ -24,8 +17,6 @@ import com.tibame.tga104.product.helper.OrderInsertWrapper;
 public class OrderController {
 	@Autowired
 	private ProdOrderService prodOrderService;
-	@Autowired
-	private ProdOrderDetailService prodOrderDetailService;
 	
 	@GetMapping("receiver")
 	public MemberVO receiver (@SessionAttribute(name="memberVO", required=false)MemberVO memberVO) {
@@ -40,7 +31,7 @@ public class OrderController {
 	}
 	
 	@PostMapping("insert")
-	public Map<String, String> insert(@SessionAttribute(name="memberVO", required=false)MemberVO memberVO, 
+	public OrderInsertWrapper insert(@SessionAttribute(name="memberVO", required=false)MemberVO memberVO, 
 			@RequestBody OrderInsertWrapper order) {
 		Integer memberNo = null;
 		if (memberVO != null) {
@@ -48,14 +39,22 @@ public class OrderController {
 		}
 		System.out.println("memberNo="+memberNo);
 		// 目前memberNo還是先寫死
-		memberNo = 5;
+//		memberNo = 5;
 		order.getProdOrderVO().setMemberNo(memberNo);
-		Map<String, String> result = new HashMap<>();
-		if (prodOrderService.insert(order) == null) {
-			result.put("insert", "fail");
+		OrderInsertWrapper result = prodOrderService.insert(order);
+		if (result == null) {
+			result = new OrderInsertWrapper();
+			result.setMessage("Insert Fail");
 		} else {
-			result.put("insert", "success");
+			result.setMessage("Insert Success");
 		}
+		
+//		Map<String, String> result = new HashMap<>();
+//		if (prodOrderService.insert(order) == null) {
+//			result.put("insert", "fail");
+//		} else {
+//			result.put("insert", "success");
+//		}
 //		ProdOrderVO prodOrderVO = order.getProdOrderVO();
 //		List<ProdOrderDetailVO> orderDetailList =order.getOrderDetailList();
 //		

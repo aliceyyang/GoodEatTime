@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,8 @@ public class ProdPicVO implements Serializable{
 	private byte[] prodPic;
 	@Column(name = "prodPicRemark")
 	private String prodPicRemark;
+	@Transient
+	private String prodPicStr;
 	public Integer getProdPicNo() {
 		return prodPicNo;
 	}
@@ -49,6 +52,13 @@ public class ProdPicVO implements Serializable{
 	}
 	public void setProdPicRemark(String prodPicRemark) {
 		this.prodPicRemark = prodPicRemark;
+	}
+	
+	public String getProdPicStr() {
+		return prodPicStr;
+	}
+	public void setProdPicStr(String prodPicStr) {
+		this.prodPicStr = prodPicStr;
 	}
 	@Override
 	public String toString() {

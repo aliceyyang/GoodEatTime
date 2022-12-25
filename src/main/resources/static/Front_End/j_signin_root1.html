@@ -18,6 +18,9 @@
       rel="stylesheet"
     />
 
+    <!-- /sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
@@ -30,8 +33,30 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-    <!-- 將忘記密碼及加入會員的點點消除 -->
     <style>
+      #memberPassword {
+        margin-bottom: -10px;
+      }
+
+      .btn {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        padding: 14px 30px;
+      }
+
+      #mycanvas {
+        cursor: pointer;
+        text-align: center;
+      }
+      #myform {
+        margin: 0px auto;
+        width: 300px;
+        height: 200px;
+        border: 5px #ffac55 solid;
+      }
+
+      /* 將忘記密碼及加入會員的點點消除 */
       .mod > ul > li {
         list-style: none;
         /* display: inline-block; */
@@ -48,6 +73,52 @@
       /* GOOD EAT TIME字樣(含)以下的資料 位置往上調 */
       .spad {
         padding-top: 50px;
+      }
+
+      /* checkEye位置 */
+      #checkEye {
+        font-size: 20px;
+        position: absolute;
+        top: 197px;
+        right: 40px;
+      }
+
+      /* 因為Form拉掉，用div包，命div class為form */
+      .class__form .form input {
+        height: 50px;
+        width: 100%;
+        padding-left: 20px;
+        font-size: 15px;
+        color: #444444;
+        background: #ffffff;
+        border: none;
+        margin-bottom: 20px;
+      }
+      .class__form .form input::-webkit-input-placeholder {
+        color: #444444;
+      }
+      .class__form .form input::-moz-placeholder {
+        color: #444444;
+      }
+      .class__form .form input:-ms-input-placeholder {
+        color: #444444;
+      }
+      .class__form .form input::-ms-input-placeholder {
+        color: #444444;
+      }
+      .class__form .form input::placeholder {
+        color: #444444;
+      }
+      .class__form .form button {
+        letter-spacing: 2px;
+        width: 100%;
+      }
+
+      /* sweetalert */
+      body {
+        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
+          Arial, sans-serif;
       }
     </style>
   </head>
@@ -180,33 +251,31 @@
     <section class="class spad">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 offset-lg-3">
+          <div class="col-lg-6">
             <div class="class__form">
               <div class="section-title">
                 <span>Good Eat Time</span>
                 <h2>管理員登入</h2>
               </div>
               <!-- <form action="AdminLoginServlet"> -->
+              <div class="form">
+                <input
+                  type="text"
+                  id="adminAccount"
+                  placeholder="請輸入帳號，長度須介於5~50字元"
+                />
 
-              <input
-                type="text"
-                id="adminAccount"
-                placeholder="請輸入帳號，長度須介於5~50字元"
-              />
+                <input
+                  type="text"
+                  id="adminPassword"
+                  placeholder="請輸入密碼，長度須介於6~12字元"
+                />
 
-              <br />
+                <input type="text" placeholder="確認密碼" id="checkPassword" />
 
-              <input
-                type="text"
-                id="adminPassword"
-                placeholder="請輸入密碼，長度須介於6~12字元"
-              />
-              <br />
-              <input type="text" placeholder="確認密碼" id="checkPassword" />
-              <br />
-              <!-- <button type="submit" class="site-btn">登入</button> -->
-              <button class="site-btn">登入</button>
-
+                <!-- <button type="submit" class="site-btn">登入</button> -->
+                <button class="site-btn">登入</button>
+              </div>
               <!-- </form> -->
             </div>
           </div>
@@ -347,7 +416,12 @@
         })
           .then((resp) => resp.json())
           .then((body) => {
-            alert(body.successful);
+            if (body.successful) {
+              // Swal.fire(body.message);
+              Swal.fire("登入成功");
+            } else {
+              Swal.fire("登入失敗", "請洽系統管理員");
+            }
             //alert登入成功
           });
       });
