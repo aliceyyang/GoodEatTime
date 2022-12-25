@@ -1,7 +1,9 @@
 package com.tibame.tga104.coupon.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,9 +38,13 @@ public class CouponManageController extends HttpServlet {
 		Integer restaurantNo = (Integer) session.getAttribute("restaurantNo");
 		
 		// TODO 暫時寫死!!!
+//		System.out.println("AAA");
 		List<CouponVO> list = svc.findByRestaurantNo(1);
+		Map<String, List> map = new HashMap<String, List>();
+		map.put("data", list);
+		System.out.println(list);
 		resp.setContentType("application/json; charset=UTF-8");
-		resp.getWriter().write(gson.toJson(list));
+		resp.getWriter().write(gson.toJson(map));
 //		req.setAttribute("list", list);
 //		req.getRequestDispatcher("coupon_restaurant.html").forward(req, resp);
 	}

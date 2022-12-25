@@ -42,6 +42,7 @@ function onConfirmClick() {
         success: function () {
             if (confirm("確定更新優惠券資料嗎?") == true) {
               alert("更新成功");
+              location.href ="coupon_restaurant.html";
             } else {
               alert("取消更新");
             }
