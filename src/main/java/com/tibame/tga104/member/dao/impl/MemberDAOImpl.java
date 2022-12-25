@@ -36,7 +36,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public MemberVO selectBymail(String mail) {
 		//Select * from member where mail = ?
-		final String hql = "from MemberVO where mail = :mail";
+		final String hql = "from MemberVO where mail = :mail ";
 		try {
 			return session.createQuery(hql, MemberVO.class)
 					.setParameter("mail", mail)

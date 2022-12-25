@@ -583,30 +583,31 @@ CREATE VIEW V_memeber_reservation AS
         restaurant r ON rs.restaurantNo = r.restaurantNo;
 commit;
 
+
 --   V_reservation
 /*==========================================================================================*/
 CREATE VIEW V_reservation AS
     SELECT 
-        rt.restaurantNo,
-        r.reserveDate,
-        rt.reserveTime,
-        rt.allowReserveNum,
-        r.totalReserveNum,
-        (rt.allowReserveNum - r.totalReserveNum) AS availableSeats
+        t.*, (allowReserveNum - totalReserveNum) AS availableSeats
     FROM
-        reserveTime rt
-            JOIN
         (SELECT 
-            restaurantNo,
-                reserveTime,
-                reserveDate,
-                SUM(reserveNum) AS totalReserveNum
+            rt.restaurantNo,
+                rt.weekDay,
+                rt.reserveTime,
+                rt.allowReserveNum,
+                rv.reserveDate,
+                SUM(IFNULL(rv.reserveNum, 0)) AS totalReserveNum
         FROM
-            reservation
-        GROUP BY reserveTime , reserveDate , restaurantNo) AS r ON rt.restaurantNo = r.restaurantNo
-            AND rt.weekDay = DAYOFWEEK(r.reserveDate)
-            AND rt.reserveTime = r.reserveTime;
+            reserveTime rt
+        LEFT JOIN reservation rv ON rt.restaurantNo = rv.restaurantNo
+            AND rt.reserveTime = rv.reserveTime
+            AND rt.weekDay = DAYOFWEEK(rv.reserveDate)
+        GROUP BY rt.restaurantNo , rt.reserveTime , rt.weekDay , rt.allowReserveNum, rv.reserveDate
+        ORDER BY rt.restaurantNo , rt.weekDay , rt.reserveTime) t;
+        
 commit;
+
+
 
 --   V_showProdInMall
 /*==========================================================================================*/

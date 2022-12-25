@@ -1,5 +1,7 @@
 package com.tibame.tga104.reservation.service.impl;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,16 +32,6 @@ public class ReserveTimeServiceImpl implements ReserveTimeService {
 		}
 		return true;
 	}
-
-//	@Override
-//	public boolean updatePeople(Integer restaurantNO, List<ReserveTimeVO> list) {
-//		for (ReserveTimeVO vo : list){
-//			if (dao.findbyrestaurantNOandWeekDay(vo.getRestaurantNo(), vo.getWeekDay()) != null)
-//				vo.setRestaurantNo(restaurantNO);
-//				dao.updateAllowReserveNum(vo);
-//		}
-//		return true;
-//	}
 	
 	@Override
 	public boolean updatePeople(Integer restaurantNO, List<ReserveTimeVO> list) {
@@ -66,6 +58,22 @@ public class ReserveTimeServiceImpl implements ReserveTimeService {
 	public List<ReserveTimeVO> findByWeekDay(Integer restaurantNO, Integer weekDay) {
 		if (restaurantNO != null && weekDay != null) {
 			return dao.findByRestaurantNOandWeekDay(restaurantNO, weekDay);
+		}
+		return null;
+	}
+
+	@Override
+	public Integer getAvailableSeats(Integer restaurantNo, Date reserveDate, String reserveTime) {
+		if(reserveDate != null && reserveTime != null) {
+			List<java.util.Date> list = dao.getDate(restaurantNo, reserveTime);
+			if(list.contains(reserveDate)) {
+				return dao.getSeats(restaurantNo, reserveDate, reserveTime);
+			}else {
+				Calendar cal = Calendar.getInstance();
+			    cal.setTime(reserveDate);
+			    int weekday = cal.get(Calendar.DAY_OF_WEEK);
+			    return dao.getSeats(restaurantNo, reserveTime, weekday);
+			}
 		}
 		return null;
 	}

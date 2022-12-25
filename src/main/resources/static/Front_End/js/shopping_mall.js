@@ -144,7 +144,7 @@ $.ajax({
         `<option value="${item.prodCategoryNo}">${item.prodCategory}</option>`
       );
     });
-    $("select").niceSelect();
+    $("select").niceSelect('update');
   },
   error: function (xhr) {
     console.log(xhr);

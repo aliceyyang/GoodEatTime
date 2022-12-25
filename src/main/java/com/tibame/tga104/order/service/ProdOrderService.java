@@ -13,7 +13,9 @@ import com.tibame.tga104.order.dao.ProdOrderDAO_interface;
 import com.tibame.tga104.order.dao.ProdOrderDetailDAO_interface;
 import com.tibame.tga104.order.vo.ProdOrderDetailVO;
 import com.tibame.tga104.order.vo.ProdOrderVO;
+import com.tibame.tga104.product.dao.ProdInfoDAO;
 import com.tibame.tga104.product.helper.OrderInsertWrapper;
+import com.tibame.tga104.product.vo.ProdInfoVO;
 
 @Service
 public class ProdOrderService {
@@ -22,6 +24,8 @@ public class ProdOrderService {
 	private ProdOrderDAO_interface dao;
 	@Autowired
 	private ProdOrderDetailDAO_interface prodOrderDetailDAO;
+	@Autowired
+	private ProdInfoDAO prodInfoDAO;
 	
 	@Transactional
 	public OrderInsertWrapper insert(OrderInsertWrapper order) {
@@ -69,6 +73,7 @@ public class ProdOrderService {
 			return null;
 		}
 		OrderInsertWrapper result = new OrderInsertWrapper();
+		newOrder.setOrderStatus("訂單成立");
 		result.setProdOrderVO(newOrder);
 		List<ProdOrderDetailVO> resultDetail = new LinkedList<>();
 		for (ProdOrderDetailVO vo : newOrderDetail) {
@@ -76,6 +81,10 @@ public class ProdOrderService {
 			if (prodOrderDetailDAO.insert(vo) == null) {
 				return null;
 			}
+			// 確認新增後去修改庫存數量
+			ProdInfoVO prodInfoVO = prodInfoDAO.findByPrimaryKey(vo.getProdNo());
+			prodInfoVO.setProdStock(prodInfoVO.getProdStock()-vo.getProdQty());
+			prodInfoDAO.update(prodInfoVO);
 			resultDetail.add(vo);
 		}
 		result.setOrderDetailList(resultDetail);

@@ -49,7 +49,7 @@ $(function () {
   tempOrder.prodOrderVO.deliverFee = parseInt(
     $("#deliverFee").attr("data-fee")
   );
-  console.log(tempOrder);
+  // console.log(tempOrder);
   // 金額加上運費
   tempOrder.prodOrderVO.amountAfterCoupon+=tempOrder.prodOrderVO.deliverFee;
   tempOrder.prodOrderVO.amountBeforeCoupon+=tempOrder.prodOrderVO.deliverFee;
@@ -64,19 +64,23 @@ $(function () {
       $(this).find("input").trigger("click");
       $(this).find("input").attr("disabled", "disabled");
       $(this).removeClass("memeber_confirm");
-      console.log("a")
+      // console.log("a")
     } else {
-      console.log("b");
+      // console.log("b");
       $(this).find("input").removeAttr("disabled");
       $(this).find("input").trigger("click");
       $(this).find("input").attr("disabled", "disabled");
       $("#receiver_name").val(memberVO.name);
+      $("#receiver_name").trigger("blur");
       $("#receiver_mail").val(memberVO.mail);
+      $("#receiver_mail").trigger("blur");
       if(memberVO.tel) {
         $("#receiver_tel").val(memberVO.tel);
+        $("#receiver_tel").trigger("blur");
       }
       $(this).addClass("memeber_confirm");
     }
+
   });
 
   // 收件人姓名不可為空白
@@ -88,6 +92,7 @@ $(function () {
       $(this).siblings().append(error_message);
       return;
     }
+    tempOrder.prodOrderVO.prodOrderReceiverName = $(this).val().trim();
     $(this).addClass("check_ok");
   });
 
@@ -100,6 +105,7 @@ $(function () {
       $(this).siblings().append(error_message);
       return;
     }
+    tempOrder.prodOrderVO.prodOrderReceiverAddress = $(this).val().trim();
     $(this).addClass("check_ok");
   });
 
@@ -119,6 +125,7 @@ $(function () {
       $(this).siblings().append(error_message);
       return;
     }
+    tempOrder.prodOrderVO.prodOrderReceiverTel = $(this).val();
     $(this).addClass("check_ok");
   });
 
@@ -138,6 +145,7 @@ $(function () {
       $(this).siblings().append(error_message);
       return;
     }
+    tempOrder.prodOrderVO.prodOrderReceiverMail = $(this).val();
     $(this).addClass("check_ok");
   });
 
@@ -156,6 +164,7 @@ $(function () {
       $(this).siblings().append(error_message);
       return;
     }
+    tempOrder.prodOrderVO.taxIDNumber = $(this).val();
     $(this).addClass("check_ok");
   });
 
@@ -194,6 +203,12 @@ $(function () {
   // 信用卡卡號格式確認
   $("#credit_card").on("blur", function() {
     $(this).siblings().children(".error_message").remove();
+    if ($(this).val().trim()=="") {
+      $(this).removeClass("check_ok");
+      let error_message = "<span class='error_message'>&emsp;不可空白</span>";
+      $(this).siblings().append(error_message);
+      return;
+    }
     let pattern =  /^\d{16}$/;
     if(!pattern.test($(this).val().replace(/ +/g, ""))){
       // console.log($(this).val().replace(/ +/g, ""));
@@ -241,6 +256,12 @@ $(function () {
   // 確認有效期限格式
   $("#expire_date").on("blur", function() {
     $(this).siblings().children(".error_message").remove();
+    if ($(this).val().trim()=="") {
+      $(this).removeClass("check_ok");
+      let error_message = "<span class='error_message'>&emsp;不可空白</span>";
+      $(this).siblings().append(error_message);
+      return;
+    }
     let pattern =  /^0|^11|^12/;
     if(!pattern.test($(this).val().split(" / ").join(""))){
       $(this).removeClass("check_ok");
@@ -268,6 +289,12 @@ $(function () {
   // 確認安全碼格式
   $("#security_code").on("blur", function() {
     $(this).siblings().children(".error_message").remove();
+    if ($(this).val().trim()=="") {
+      $(this).removeClass("check_ok");
+      let error_message = "<span class='error_message'>&emsp;不可空白</span>";
+      $(this).siblings().append(error_message);
+      return;
+    }
     let pattern =  /^\d{3}$/;
     if(!pattern.test($(this).val())){
       $(this).removeClass("check_ok");
@@ -291,6 +318,7 @@ $(function () {
       $(this).find("input").trigger("click");
       $(this).find("input").attr("disabled", "disabled");
       $(this).addClass("price_confirm");
+      $(this).find("span.error_message").remove();
     }
     // $(this).toggleClass("price_confirm");
     // console.log($(this).hasClass("price_confirm"));
@@ -319,7 +347,8 @@ $(function () {
       $(this).find("input").trigger("click");
       $(this).find("input").attr("disabled", "disabled");
       $(".receiver_check").attr("disabled", "disabled");
-      $(this).addClass("receiver_confirm")
+      $(this).addClass("receiver_confirm");
+      $(this).find("span.error_message").remove();
       // $("#receiver_name").attr("disabled", "disabled");
       // $("#receiver_address").attr("disabled", "disabled");
       // $("#receiver_tel").attr("disabled", "disabled");
@@ -354,13 +383,68 @@ $(function () {
         $(this).find("input").trigger("click");
         $(this).find("input").attr("disabled", "disabled");
         $(".payment_check").attr("disabled", "disabled");
-        $(this).addClass("payment_confirm")
+        $(this).addClass("payment_confirm");
+        $(this).find("span.error_message").remove();
         return;
     }
     $(".payment_check").trigger("blur");
 
   });
 
+  // 確認送出訂單
+  $(".site-btn").on("click", function(){
+    $("#price_check span.error_message").remove();
+    $("#receiver_check span.error_message").remove();
+    $("#payment_check span.error_message").remove();
+    if (!$("#price_check").hasClass("price_confirm")) {
+      let error_message = "<span class='error_message'>&emsp;請確認價格資訊</span>";
+      $("#price_check label").append(error_message);
+      return;
+    }
+    if (!$("#receiver_check").hasClass("receiver_confirm")) {
+      let error_message = "<span class='error_message'>&emsp;請確認收貨人資訊</span>";
+      $("#receiver_check label").append(error_message);
+      return;
+    }
+    if (!$("#payment_check").hasClass("payment_confirm")) {
+      let error_message = "<span class='error_message'>&emsp;請確認信用卡資訊</span>";
+      $("#payment_check label").append(error_message);
+      return;
+    }
+    
+    // console.log("資訊驗證ok");
+    console.log(tempOrder);
 
-  console.log(tempOrder);
+    fetch("../order/insert", {
+      method: "POST",
+      body: JSON.stringify(tempOrder),
+      headers: { "content-type": "application/json" }
+    }).then((r) => r.json())
+    .then((data) => {
+      if(data.message == "Insert Success") {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "訂單新增成功",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(()=>{
+          window.location.href = "./shopping_mall.html";
+        });
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "訂單新增失敗",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(()=>{
+          window.location.href = "./shopping_cart.html";
+        });
+      }
+      
+    });
+
+  });
+
 });

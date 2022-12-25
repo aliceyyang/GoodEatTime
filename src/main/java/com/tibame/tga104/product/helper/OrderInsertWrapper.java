@@ -8,6 +8,7 @@ import com.tibame.tga104.order.vo.ProdOrderVO;
 public class OrderInsertWrapper {
 	private ProdOrderVO prodOrderVO;
 	private List<ProdOrderDetailVO> orderDetailList;
+	private String message;
 	
 	public ProdOrderVO getProdOrderVO() {
 		return prodOrderVO;
@@ -21,4 +22,11 @@ public class OrderInsertWrapper {
 	public void setOrderDetailList(List<ProdOrderDetailVO> orderDetailList) {
 		this.orderDetailList = orderDetailList;
 	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
 }
