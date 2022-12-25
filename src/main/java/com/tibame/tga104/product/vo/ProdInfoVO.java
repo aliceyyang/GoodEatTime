@@ -1,5 +1,7 @@
 package com.tibame.tga104.product.vo;
 
+import java.util.Arrays;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,7 +40,7 @@ public class ProdInfoVO implements java.io.Serializable{
 	@Column(name="totalCommentRating", nullable = false)
 	private Integer totalCommentRating;
 	@Transient
-	private String prodPicMainStr;
+	private String prodMainPicStr;
 	
 	public Integer getProdNo() {
 		return prodNo;
@@ -107,17 +109,19 @@ public class ProdInfoVO implements java.io.Serializable{
 		this.totalCommentRating = prodCommentRating;
 	}
 	
-	public String getProdPicMainStr() {
-		return prodPicMainStr;
+	public String getProdMainPicStr() {
+		return prodMainPicStr;
 	}
-	public void setProdPicMainStr(String prodPicMainStr) {
-		this.prodPicMainStr = prodPicMainStr;
+	public void setProdMainPicStr(String prodPicMainPicStr) {
+		this.prodMainPicStr = prodPicMainPicStr;
 	}
 	@Override
 	public String toString() {
-		return "ProductVO [prodNo=" + prodNo + ", restaurantNo=" + restaurantNo + ", prodCategoryNo=" + prodCategoryNo
+		return "ProdInfoVO [prodNo=" + prodNo + ", restaurantNo=" + restaurantNo + ", prodCategoryNo=" + prodCategoryNo
 				+ ", prodName=" + prodName + ", prodPrice=" + prodPrice + ", prodStock=" + prodStock
-				+ ", prodDescription=" + prodDescription + ", prodContent=" + prodContent + ", prodCommentQty="
-				+ prodCommentQty + ", prodCommentRating=" + totalCommentRating + "]";
+				+ ", prodDescription=" + prodDescription + ", prodContent=" + prodContent + ", prodMainPic="
+				+ Arrays.toString(prodMainPic) + ", prodCommentQty=" + prodCommentQty + ", totalCommentRating="
+				+ totalCommentRating + ", prodMainPicStr=" + prodMainPicStr + "]";
 	}
+	
 }

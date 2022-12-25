@@ -31,5 +31,14 @@ document.querySelector("#btn_confirm").addEventListener("click", () => {
     success: function (a) {
       console.log(a);
     },
+    complete: () => {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "儲存成功",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+    },
   });
 });
