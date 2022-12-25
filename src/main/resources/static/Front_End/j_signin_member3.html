@@ -58,8 +58,18 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-    <!-- 將忘記密碼及加入會員的點點消除 -->
     <style>
+      #memberPassword {
+        margin-bottom: -10px;
+      }
+
+      .btn {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        padding: 14px 30px;
+      }
+
       #mycanvas {
         cursor: pointer;
         text-align: center;
@@ -71,6 +81,7 @@
         border: 5px #ffac55 solid;
       }
 
+      /* 將忘記密碼及加入會員的點點消除 */
       .mod > ul > li {
         list-style: none;
         /* display: inline-block; */
@@ -301,23 +312,32 @@
                   ><i id="checkEye" class="fas fa-eye-slash"></i
                 ></label>
 
-                <!-- <input
-                  type="text"
-                  class="form-control"
-                  placeholder="請輸入驗證碼"
-                /> -->
-
-                <div class="input_block">
-                  <input
-                    id="validText"
-                    type="text"
-                    placeholder="請輸入驗證碼"
-                  />
+                <div class="checkout__input">
                   <p id="verify_code">驗證碼<span>*</span></p>
-                  <canvas id="auth-code"></canvas>
-                  <button
-                    id="reBtn"
-                    style="
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <input
+                        id="validText"
+                        type="text"
+                        class="form-control"
+                        placeholder="請輸入驗證碼"
+                      />
+                    </div>
+                    <div class="col-sm-4">
+                      <canvas id="auth-code"></canvas>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <button
+                        id="reBtn"
+                        type="button"
+                        class="btn btn-outline-dark"
+                      >
+                        重新產生
+                      </button>
+                    </div>
+                  </div>
+                  <!-- style="
                       left: 15px;
                       bottom: 6px;
                       border-style: none;
@@ -325,10 +345,7 @@
                       outline: none;
                       font-size: 20px;
                       cursor: pointer;
-                    "
-                  >
-                    更換驗證碼
-                  </button>
+                    " -->
                   <span id="result" style="color: #f6d0c0"></span>
                 </div>
 
@@ -489,7 +506,7 @@
           canvasId: "auth-code" /**canvas的id*/,
           txt: randomNum(100000, 999999).toString() /**傳入驗證碼內容*/,
           height: 50 /**驗證碼高度 */,
-          width: 200 /**驗證碼寬度 */,
+          width: 160 /**驗證碼寬度 */,
           fontColor1: 0 /**隨機生成字型顏色*/,
           fontColor2: 50 /**隨機生成字型顏色*/,
           bgColor1: 180 /**這個範圍的顏色作背景看起來清晰一些*/,
