@@ -28,7 +28,6 @@ fetch("http://localhost:8080/restaurant-read/3") //餐廳編號先寫死測試�
 // ========================看見密碼用的把啾=============================
 
 $("#passwordEye").on("click", function () {
-  console.log("ddd");
   if ($(this).hasClass("fa-eye-slash")) {
     $(this).attr("class", "fas fa-eye");
     $("#restaurantPassword").attr("type", "text");
@@ -316,7 +315,8 @@ $(document).on("click", ".edit_menu", function () {
 
   //將要編輯的菜單資料塞回表單中
   document.querySelector('input[name="menuNo"]').value = id; //將菜單PK先存在隱藏標籤中
-  document.getElementById("pic_remark").value = toBeEdited.menuPicRemark;
+  document.getElementById("pic_remark").value =
+    toBeEdited.menuPicRemark.replace(/<br>/g, "\n");
   drop_zone2.innerHTML = `<img src="data:image/*;base64,${toBeEdited.menuPicstr}" id="uploaded_menuPic" class="preview_img2"> `;
 });
 
@@ -369,7 +369,9 @@ $("#menu").on("submit", function (e) {
     .querySelector("#uploaded_menuPic")
     .getAttribute("src")
     .split(",")[1]; //如果是編輯菜單，可能沒重選圖片，故從原圖的預覽圖拿出base64編碼
-  var pic_remark = document.querySelector("#pic_remark").value; //抓到textarea輸入的文字
+  var pic_remark = document
+    .querySelector("#pic_remark")
+    .value.replace(/\n/g, "<br>"); //抓到textarea輸入的文字
 
   //判斷是不是在編輯狀態，決定走哪個函式
   if ($("#editing_menu").hasClass("-on")) {
@@ -498,7 +500,10 @@ $(document).on("click", ".edit_post", function () {
 
   document.querySelector('input[name="restaurantPostNo"]').value = id; //將貼文PK先存在隱藏標籤中
   document.getElementById("title").value = toBeEdited.postTitle;
-  document.getElementById("content").value = toBeEdited.postContent;
+  document.getElementById("content").value = toBeEdited.postContent.replace(
+    /<br>/g,
+    "\n"
+  );
   drop_zone3.innerHTML = `<img src="data:image/*;base64,${toBeEdited.postPicStr}" id="uploaded_pic" class="preview_img3"> `;
 });
 
@@ -559,7 +564,9 @@ $("#news").on("submit", function (e) {
   var select = document.getElementById("post_type");
   var post_type = select.options[select.selectedIndex].text; //抓到下拉選單被選的選項內容
   var post_title = document.querySelector("#title").value;
-  var post_content = document.querySelector("#content").value;
+  var post_content = document
+    .querySelector("#content")
+    .value.replace(/\n/g, "<br>");
   //判斷是不是在編輯狀態，決定走哪個函式
   if ($("#editing").hasClass("-on")) {
     editPost(picStr, post_type, post_title, post_content); //帶進上方的editPost函式
