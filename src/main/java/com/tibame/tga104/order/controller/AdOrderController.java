@@ -53,11 +53,10 @@ public class AdOrderController {
     @PutMapping("/adOrders/{adOrderNo}")
     public ResponseEntity<AdOrder> updateAdOrder(@PathVariable Integer adOrderNo,
                                                  @RequestBody @Valid AdOrderRequest adOrderRequest) {
-
         adOrderService.updateAdOrder(adOrderNo, adOrderRequest);
         AdOrder adOrder = adOrderService.getByAdOrderNo(adOrderNo);
+        System.out.println("已成功修改訂單編號 " + adOrderNo);
         return ResponseEntity.status(HttpStatus.OK).body(adOrder);
-
     }
 
     @DeleteMapping("/adOrders/{adOrderNo}")

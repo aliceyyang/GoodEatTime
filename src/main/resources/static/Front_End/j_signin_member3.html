@@ -632,6 +632,9 @@
         })
           .then((resp) => resp.json())
           .then((body) => {
+            // console.log(body);
+            let memberVO = JSON.stringify(body);
+            sessionStorage.setItem("memberVO", memberVO);
             if (body.successful) {
               location = "j_welcome_login1.html";
             } else {

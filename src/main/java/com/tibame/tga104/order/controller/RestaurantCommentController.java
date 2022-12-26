@@ -32,4 +32,8 @@ public class RestaurantCommentController {
 	public ReservationVO restaurantCommnet (@RequestBody(required = false) ReservationVO reservationVO) {
 		return restaurantCommmentService.updateRestaurantComment(reservationVO);
 	}
+	@PostMapping("CommnetReply")
+	public ReservationVO restaurantCommnetReply (@RequestBody(required = false) ReservationVO reservationVO) {
+		return restaurantCommmentService.replyRestaurantComment(reservationVO);
+	}
 }
