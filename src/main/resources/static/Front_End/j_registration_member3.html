@@ -317,7 +317,7 @@
                       maxlength="11"
                       pattern="09\d{2}-\d{6}"
                       oninput="setCustomValidity('');"
-                      oninvalid="setCustomValidity('請輸入正確的手機號瑪格式:09xx-xxxxxx');" -->
+                      oninvalid="setCustomValidity('請輸入正確的手機號瑪格式，09xx-xxxxxx');" -->
                 </div>
                 <div class="checkout__input">
                   <p>生日<span>*</span></p>
@@ -730,7 +730,7 @@ return;
 			            birthday: birthday.value,
 			            memberPassword: memberPassword.value,
 			            mail: mail.value,
-		              	memberPic: base64Str,
+		              memberPic: base64Str,
 			          }),
 			        })
 			        .then((resp) => resp.json())
