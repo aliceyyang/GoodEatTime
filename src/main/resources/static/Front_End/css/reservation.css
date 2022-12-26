@@ -38,9 +38,9 @@ section#reserve_check {
 
 #reserve_innercheck {
   background-color: white;
-  border: 1.5px dashed #f08632;
-  height: auto;
-  padding-top: 15px;
+  border: 0.1rem dashed #f08632;
+  height: 28.5rem;
+  padding-top: 1rem;
 }
 
 #reserve_checkText {
@@ -51,6 +51,7 @@ section#reserve_check {
 
 #reserve_checkText p {
   font-size: 24px;
+  padding-bottom: 12px;
 }
 
 #r_name {
@@ -100,6 +101,11 @@ button#btn_cancel {
   font-size: small;
   margin-bottom: 0px;
   text-align: right;
+}
+
+#remark {
+  text-align: left;
+  font-size: medium;
 }
 
 /*---------------------

@@ -6,7 +6,7 @@
     <meta name="keywords" content="Cake, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>忘記密碼</title>
+    <title>請先登入會員</title>
 
     <!-- Google Font -->
     <link
@@ -15,12 +15,6 @@
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- checkEye font-awesome-->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
       rel="stylesheet"
     />
 
@@ -36,71 +30,15 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-    <!-- 將忘記密碼及加入會員的點點消除 -->
     <style>
-      .mod > ul > li {
-        list-style: none;
-        /* display: inline-block; */
-      }
-      /* .li_right {
-        margin-right: 250px;
-      } */
-
       .GoodEatTime {
         width: 152px;
         height: 52px;
       }
 
-      /* GOOD EAT TIME字樣(含)以下的資料 位置往上調 */
-      .spad {
-        padding-top: 50px;
-      }
-
-      /* checkEye位置 */
-      #checkEye {
-        font-size: 20px;
-        position: absolute;
-        bottom: 310px;
-        right: 30px;
-      }
-
-      /* recheckEye位置 */
-      #recheckEye {
-        font-size: 20px;
-        position: absolute;
-        bottom: 215px;
-        right: 30px;
-      }
-
-      /* 因為Form拉掉，用div包，命div class為form */
-      .class__form .form input {
-        height: 50px;
-        width: 100%;
-        padding-left: 20px;
-        font-size: 15px;
-        color: #444444;
-        background: #ffffff;
-        border: none;
-        margin-bottom: 20px;
-      }
-      .class__form .form input::-webkit-input-placeholder {
-        color: #444444;
-      }
-      .class__form .form input::-moz-placeholder {
-        color: #444444;
-      }
-      .class__form .form input:-ms-input-placeholder {
-        color: #444444;
-      }
-      .class__form .form input::-ms-input-placeholder {
-        color: #444444;
-      }
-      .class__form .form input::placeholder {
-        color: #444444;
-      }
-      .class__form .form button {
-        letter-spacing: 2px;
-        width: 100%;
+      /* 登入成功畫面的底色要死白，透明度調整 */
+      .blog__hero__text {
+        background: #ffffffac;
       }
     </style>
   </head>
@@ -166,7 +104,7 @@
                     <li>
                       <img class="login_icon" src="./img/Login_icon.png" /><a
                         class="login_text"
-                        href="./j_signin_member.html"
+                        href="#"
                         >登入</a
                       >
                     </li>
@@ -229,82 +167,40 @@
     </header>
     <!-- Header結束 -->
 
-    <!-- 忘記密碼 開始 -->
-    <section class="class spad">
+    <!-- NONO畫面 開始 -->
+    <div class="blog-hero set-bg" data-setbg="img/blog/blog-4.jpg">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="class__form">
-              <div class="section-title">
-                <span>Good Eat Time</span>
-                <h2>忘記密碼</h2>
-              </div>
-              <!-- form拉掉，改用div包並命名class為form -->
-              <div class="form">
-                <!-- <form action="#"> -->
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="請輸入email"
-                  id="mail"
-                />
-                <!--
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="請輸入收到的驗證碼"
-                />
-                <input
-                  type="password"
-                  class="form-control"
-                  id="checkpw"
-                  placeholder="請輸入新密碼，長度須介於6~12字元"
-                />
-                <label for="checkpw"
-                  ><i id="checkEye" class="fas fa-eye-slash"></i
-                ></label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="recheckpw"
-                  placeholder="確認新密碼"
-                  required="required"
-                  oninput="setCustomValidity('');"
-                  onchange="if(document.getElementById('checkpw').value != document.getElementById('recheckpw').value){setCustomValidity('密碼不吻合');}"
-                />
-                <label for="recheckpw"
-                  ><i id="recheckEye" class="fas fa-eye-slash"></i
-                ></label>-->
-                <button class="site-btn">確認發送密碼至信箱</button>
-                <!-- </form> -->
-              </div>
-              <div class="mod clearfix">
-                <ul class="member_m03"></ul>
-              </div>
-              <!-- </div>
-            <ul class="mod member_m03 clearfix">
-                <li class="li_left"><a href="/member/forgot" target="_blank">忘記帳號密碼</a></li>
-                <li class="li_right">還不是會員? <a href="/member/join_step1?url=https%3A%2F%2Fmyaccount.books.com.tw%2F%2F%3Fid%3D5cda64e47bf9785da8d12d414f7f23c3" target="_blank">加入會員</a></li>
-            </ul>
-        </div> -->
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-7">
+            <div class="blog__hero__text">
+              <!-- <div class="label">name</div> -->
+              <h2>Oops!</h2>
+              <h2>請先登入會員</h2>
+              <ul>
+                <!-- <li><span>會員中心</span></li> -->
+                <li><a href="">首頁</a></li>
+                <li><a href="">會員登入</a></li>
+                <li><a href="">加入會員</a></li>
+                <!-- <li><a href="">商城</a></li> -->
+              </ul>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <!-- 忘記密碼 結束 -->
+    </div>
+    <!-- NONO畫面 結束 -->
 
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
       <div class="mask">
         <div class="container">
           <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="footer__member">
                 <h6>會員專區</h6>
                 <div class="footer__social">
                   <a href="#">登入會員<i></i></a>
-                  <a href="#">定位管理<i></i></a>
+                  <a href="#">訂位管理<i></i></a>
                   <br />
                   <a href="#">加入會員<i></i></a>
                   <a href="#">定位管理<i></i></a>
@@ -313,6 +209,8 @@
                   <a href="#">我的評論<i></i></a>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__restaurant">
                 <h6>餐廳</h6>
                 <div class="footer__social">
@@ -322,7 +220,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__shopping">
                 <h6>線上商城</h6>
                 <div class="footer__social">
@@ -332,7 +230,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__aboutus">
                 <h6>關於我們</h6>
                 <div class="footer__social">
@@ -341,6 +239,8 @@
                   <a href="#">履歷<i></i></a>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-3 col-md-9 col-sm-12">
               <div class="footer__widget">
                 <h6>好食光</h6>
                 <ul>
@@ -407,48 +307,5 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-    <script>
-      // checkEye密碼切換遮蔽顯示
-      $("#checkEye").click(function () {
-        if ($(this).hasClass("fa-eye-slash")) {
-          $("#checkpw").attr("type", "text");
-        } else {
-          $("#checkpw").attr("type", "password");
-        }
-        $(this).toggleClass("fa-eye").toggleClass("fa-eye-slash");
-      });
-
-      // recheckEye密碼切換遮蔽顯示
-      $("#recheckEye").click(function () {
-        if ($(this).hasClass("fa-eye-slash")) {
-          $("#recheckpw").attr("type", "text");
-        } else {
-          $("#recheckpw").attr("type", "password");
-        }
-        $(this).toggleClass("fa-eye").toggleClass("fa-eye-slash");
-      });
-
-      //抓值
-      const mail = document.querySelector("#mail");
-      document.querySelector("button").addEventListener("click", () => {
-        fetch("/member/forgotpassword", {
-          method: "post",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            mail: mail.value,
-          }),
-        })
-          .then((resp) => resp.json())
-          .then((body) => {
-            if (body.successful) {
-              location = "j_signin_member3.html";
-            } else {
-              alert(body.message);
-            }
-          });
-      });
-    </script>
   </body>
 </html>

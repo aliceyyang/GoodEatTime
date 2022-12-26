@@ -107,9 +107,25 @@
 
 */
 var cartList;
-fetch("../cart/allDetail")
-  .then((r) => r.json())
-  .then((data) => {
+fetch("../cart/allDetail", {redirect: "follow"})
+  .then((r) => {
+    if(r.redirected) {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "請先登入",
+        showConfirmButton: false,
+        timer: 1000,
+      }).then(()=>{
+        sessionStorage.setItem("URL_before_login", window.location.href);
+        window.location.href = r.url;
+      });
+    } else {
+      return r.json();
+    }
+  })
+  // .then((r) => r.json())
+  ?.then((data) => {
     cartList = data;
     // console.log(data);
     $("div.shopping__cart__table").children().remove();

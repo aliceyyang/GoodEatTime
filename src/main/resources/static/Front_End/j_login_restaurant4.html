@@ -6,7 +6,7 @@
     <meta name="keywords" content="Cake, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>會員登入</title>
+    <title>餐廳會員登入</title>
 
     <!-- Google Font -->
     <link
@@ -23,6 +23,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
       rel="stylesheet"
     />
+    <!-- /sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
@@ -36,8 +38,30 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-    <!-- 將忘記密碼及加入會員的點點消除 -->
     <style>
+      #restaurantPassword {
+        margin-bottom: -10px;
+      }
+
+      .btn {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        padding: 14px 30px;
+      }
+
+      #mycanvas {
+        cursor: pointer;
+        text-align: center;
+      }
+      #myform {
+        margin: 0px auto;
+        width: 300px;
+        height: 200px;
+        border: 5px #ffac55 solid;
+      }
+
+      /* 將忘記密碼及加入會員的點點消除 */
       .mod > ul > li {
         list-style: none;
         /* display: inline-block; */
@@ -93,6 +117,13 @@
       .class__form .form button {
         letter-spacing: 2px;
         width: 100%;
+      }
+
+      /* sweetalert */
+      body {
+        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
+          Arial, sans-serif;
       }
     </style>
   </head>
@@ -248,7 +279,7 @@
                   id="restaurantPassword"
                   type="password"
                   class="form-control"
-                  placeholder="請輸入密碼，長度須介於6~12字元"
+                  placeholder="請輸入密碼，長度須介於6~25字元"
                 />
                 <!-- 進階邏輯 
                   placeholder="設定密碼格式:含英數至少六個字元"
@@ -260,11 +291,42 @@
                 <label for="restaurantPassword "
                   ><i id="checkEye" class="fas fa-eye-slash"></i
                 ></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="請輸入驗證碼"
-                />
+                <div class="checkout__input">
+                  <p id="verify_code">驗證碼<span>*</span></p>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <input
+                        id="validText"
+                        type="text"
+                        class="form-control"
+                        placeholder="請輸入驗證碼"
+                      />
+                    </div>
+                    <div class="col-sm-4">
+                      <canvas id="auth-code"></canvas>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <button
+                        id="reBtn"
+                        type="button"
+                        class="btn btn-outline-dark"
+                      >
+                        重新產生
+                      </button>
+                    </div>
+                  </div>
+                  <!-- style="
+                      left: 15px;
+                      bottom: 6px;
+                      border-style: none;
+                      border: none;
+                      outline: none;
+                      font-size: 20px;
+                      cursor: pointer;
+                    " -->
+                  <span id="result" style="color: #f6d0c0"></span>
+                </div>
 
                 <button class="site-btn">登入</button>
               </div>
@@ -418,6 +480,121 @@
           $("#restaurantPassword ").attr("type", "password");
         }
         $(this).toggleClass("fa-eye").toggleClass("fa-eye-slash");
+      });
+
+      $(function () {
+        let options = {
+          canvasId: "auth-code" /**canvas的id*/,
+          txt: randomNum(100000, 999999).toString() /**傳入驗證碼內容*/,
+          height: 50 /**驗證碼高度 */,
+          width: 160 /**驗證碼寬度 */,
+          fontColor1: 0 /**隨機生成字型顏色*/,
+          fontColor2: 50 /**隨機生成字型顏色*/,
+          bgColor1: 180 /**這個範圍的顏色作背景看起來清晰一些*/,
+          bgColor2: 255 /**這個範圍的顏色作背景看起來清晰一些*/,
+          fontStyle: "24px SimHei",
+        };
+
+        // 點擊按鈕換圖
+        var $btn = document.getElementById("reBtn");
+        $btn.addEventListener("click", () => {
+          options.txt = randomNum(100000, 999999).toString();
+          helper = new writeAuthCode(options);
+          document.getElementById("result").innerHTML = "";
+          document.getElementById("validText").value = "";
+        });
+
+        // 輸入驗證文字
+        var $text = document.getElementById("validText");
+        var isValid = false;
+        $text.addEventListener("keyup", function () {
+          if (helper.validate($text.value)) {
+            document.getElementById("verify_code").innerHTML =
+              // "請輸入驗證碼<span>*</span>";
+              "";
+            $("#verify_code").css("color", "#393939");
+            isValid = true;
+            console.log("驗證碼輸入正確");
+          } else {
+            document.getElementById("verify_code").innerHTML = "驗證碼錯誤";
+            $("#verify_code").css("color", "#f66767");
+            isValid = false;
+          }
+        });
+
+        // --------------------------------------------------
+        /**驗證碼建構函式**/
+        function writeAuthCode(options) {
+          this.options = options;
+          let canvas = document.getElementById(options.canvasId);
+          canvas.width = options.width || 300;
+          canvas.height = options.height || 150;
+          let ctx = canvas.getContext("2d"); /**建立一個canvas物件*/
+          ctx.textBaseline = "middle";
+          ctx.fillStyle = randomColor(options.bgColor1, options.bgColor2);
+          ctx.fillRect(0, 0, options.width, options.height);
+          for (let i = 0; i < options.txt.length; i++) {
+            let txt = options.txt.charAt(i); /**讓每個字不一樣*/
+            ctx.font = options.fontStyle;
+            ctx.fillStyle = randomColor(options.fontColor1, options.fontColor2);
+            ctx.shadowOffsetY = randomNum(-3, 3);
+            ctx.shadowBlur = randomNum(-3, 3);
+            ctx.shadowColor = "rgba(0, 0, 0, 0.3)";
+            let x = (options.width / (options.txt.length + 1)) * (i + 1);
+            let y = options.height / 2;
+            let deg = randomNum(-30, 30);
+            /**設定旋轉角度和座標原點*/
+            ctx.translate(x, y);
+            ctx.rotate((deg * Math.PI) / 180);
+            ctx.fillText(txt, 0, 0);
+            /**恢復旋轉角度和座標原點*/
+            ctx.rotate((-deg * Math.PI) / 180);
+            ctx.translate(-x, -y);
+          }
+          /**1~4條隨機干擾線隨機出現*/
+          for (let i = 0; i < randomNum(1, 4); i++) {
+            ctx.strokeStyle = randomColor(40, 180);
+            ctx.beginPath();
+            ctx.moveTo(
+              randomNum(0, options.width),
+              randomNum(0, options.height)
+            );
+            ctx.lineTo(
+              randomNum(0, options.width),
+              randomNum(0, options.height)
+            );
+            ctx.stroke();
+          }
+          /**繪製干擾點*/
+          for (let i = 0; i < options.width / 6; i++) {
+            ctx.fillStyle = randomColor(0, 255);
+            ctx.beginPath();
+            ctx.arc(
+              randomNum(0, options.width),
+              randomNum(0, options.height),
+              1,
+              0,
+              2 * Math.PI
+            );
+            ctx.fill();
+          }
+          this.validate = function (code) {
+            return this.options.txt == code;
+          };
+        }
+        /**隨機數字**/
+        function randomNum(min, max) {
+          return Math.floor(Math.random() * (max - min) + min);
+        }
+        /**隨機顏色**/
+        function randomColor(min, max) {
+          let r = randomNum(min, max);
+          let g = randomNum(min, max);
+          let b = randomNum(min, max);
+          return "rgb(" + r + "," + g + "," + b + ")";
+        }
+
+        var helper = new writeAuthCode(options);
       });
 
       const restaurantAccount = document.querySelector("#restaurantAccount");

@@ -23,6 +23,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
       rel="stylesheet"
     />
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
@@ -115,6 +117,12 @@
         letter-spacing: 2px;
         width: 100%;
       }
+      /* sweetalert */
+      body {
+        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
+          Arial, sans-serif;
+      }
     </style>
   </head>
 
@@ -177,12 +185,12 @@
                 <div class="header__top__left">
                   <ul>
                     <li>
-                    <!-- 將會員頭貼呈現在此 -->
+                      <!-- 將會員頭貼呈現在此 -->
                       <img class="login_icon" src="../member/getPic" /><a
                         class="login_text"
                         href="./j_signin_member.html"
-                        >登入</a
-                      >
+                        id="nameTag"
+                      ></a>
                     </li>
                   </ul>
                 </div>
@@ -278,7 +286,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                   <div class="breadcrumb__links">
                     <a href="./index.html">Home</a>
-                    <span>Checkout</span>
+                    <a id="btnLogout">登出</a>
                   </div>
                 </div>
               </div>
@@ -294,23 +302,28 @@
                   <div class="row">
                     <div class="col-lg-8 col-md-6">
                       <h6 class="checkout__title">會員基本資料</h6>
-                          <div class="checkout__input">
-                            <p>姓名<span>*</span></p>
-                            <input
-                              type="text"
-                              class="form-control"
-                              required="required"
-                              id="name"
-                            />
-                          </div>
                       <div class="checkout__input">
-                        <p>手機<span>*</span></p>
+                        <p>姓名<span>*</span></p>
                         <input
                           type="text"
                           class="form-control"
                           required="required"
-                          id="tel"
+                          id="name"
                         />
+                      </div>
+                      <div class="checkout__input">
+                        <p>手機<span>*</span></p>
+                        <input
+                          id="tel"
+                          type="text"
+                          class="form-control"
+                          required="required"
+                          maxlength="10"
+                        />
+                        <label
+                          id="telPattern"
+                          style="float: right; color: #f66767"
+                        ></label>
                         <!-- 連絡電話格式
                           maxlength="11"
                           pattern="09\d{2}-\d{6}"
@@ -325,12 +338,19 @@
                               type="password"
                               class="form-control"
                               id="memberPassword"
-                              placeholder="設定密碼格式:含英數至少六個字元"
+                              placeholder="請輸入密碼，長度須介於6~12字元"
                               pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$"
                               required="required"
                               oninput="setCustomValidity('');"
-                              oninvalid="setCustomValidity('請輸入正確的密碼格式:含英數至少六個字元');"
+                              oninvalid="setCustomValidity('密碼長度須介於6~12字元');"
+                              minlength="6"
+                              maxlength="12"
                             />
+
+                            <label
+                              id="memberPasswordPattern"
+                              style="float: right; color: #f66767"
+                            ></label>
                           </div>
                           <div class="col-lg-1">
                             <label for="checkpw"
@@ -362,6 +382,11 @@
                               oninput="setCustomValidity('');"
                               onchange="if(document.getElementById('checkpw').value != document.getElementById('recheckpw').value){setCustomValidity('密碼不吻合');}"
                             />
+
+                            <label
+                              id="recheckpwPattern"
+                              style="float: right; color: #f66767"
+                            ></label>
                           </div>
                           <div class="col-lg-1">
                             <label for="recheckpw"
@@ -377,11 +402,11 @@
                 </div>
               </div>
             </div>
-           </section>
-          </div>
-         </div>
-        </section>
-        <!-- 會員基本資料 結束 -->
+          </section>
+        </div>
+      </div>
+    </section>
+    <!-- 會員基本資料 結束 -->
 
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
@@ -497,7 +522,7 @@
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
 
-      <script>
+    <script>
       // checkEye密碼切換遮蔽顯示
       $("#checkEye").click(function () {
         if ($(this).hasClass("fa-eye-slash")) {
@@ -518,47 +543,129 @@
         $(this).toggleClass("fa-eye").toggleClass("fa-eye-slash");
       });
 
-
-
       //====================
       const name = document.querySelector("#name");
       const tel = document.querySelector("#tel");
       const memberPassword = document.querySelector("#memberPassword");
-      const recheckpw = document.querySelector("#recheckpw")
-      
+      const recheckpw = document.querySelector("#recheckpw");
+
+      // =========================驗證密碼長度=========================
+      memberPassword.addEventListener("blur", () => {
+        let memberPasswordPattern = document.getElementById(
+          "memberPasswordPattern"
+        );
+
+        // 檢查這個值 是否符合6~12個字元
+        if (
+          memberPassword.value.length >= 6 &&
+          memberPassword.value.length <= 12
+        ) {
+          memberPasswordPattern.innerHTML = "";
+          memberPassword.style.border = "none";
+        } else {
+          memberPasswordPattern.innerHTML =
+            "<span>*密碼長度需介於6~12個字元</span>";
+          memberPassword.style.border = "2px solid #F6D0C0";
+          success = false;
+        }
+        return;
+      });
+      //===========當離開確認密碼的地方觸發驗證密碼及確認密碼是否相同==================
+      recheckpw.addEventListener("blur", () => {
+        let recheckpwPattern = document.getElementById("recheckpwPattern");
+        //先抓到密碼及確認密碼的值
+        const password = memberPassword.value;
+        const checkpassword = recheckpw.value;
+        //判斷確認密碼不可為空
+        //判斷密碼及確認密碼需相同
+        if (password.length > 0 && password == checkpassword) {
+          recheckpwPattern.innerHTML = "";
+          recheckpw.style.border = "none";
+          // if (memberPassword !== checkpassword) {
+          //   console.log("密碼及確認密碼需相同");
+          // }
+        } else {
+          recheckpwPattern.innerHTML = "<span>*密碼及確認密碼需相同</span>";
+          recheckpw.style.border = "2px solid #F6D0C0";
+          success = false;
+        }
+        return;
+      });
+      // =========================驗證電話格式=========================
+      tel.addEventListener("blur", function () {
+        let telPattern = document.getElementById("telPattern");
+        // let tel = tel.value;
+        let pattern = /^09\d{2}\d{6}$/;
+        if (pattern.test(tel.value)) {
+          telPattern.innerHTML = "";
+          tel.style.border = "none";
+        } else {
+          telPattern.innerHTML = "<span>*手機號碼格式錯誤</span>";
+          console.log(tel.value);
+          // telPattern.style = "fload : right;color:#f66767";
+          tel.style.border = "2px solid #F6D0C0";
+          success = false;
+        }
+        return;
+      });
+
       fetch("/member/info")
-        .then((resp)=>resp.json())
-        .then((memberVO) =>{
+        .then((resp) => resp.json())
+        .then((memberVO) => {
           name.value = memberVO.name;
           tel.value = memberVO.tel;
           memberPassword.value = memberVO.memberPassword;
         });
-      document.querySelector("button").addEventListener("click",() =>{
-        if(memberPassword.value.length < 6 || memberPassword.value.length >12){
-          alert("長度需介於6~12個字元");          
+      // nameTag.innerHTML = name;
+
+      document.querySelector("button").addEventListener("click", () => {
+        //========================按下click事件後逐項進行判斷=========================
+        let success = true;
+
+        if (
+          memberPassword.value.length < 6 ||
+          memberPassword.value.length > 12
+        ) {
+          Swal.fire("長度需介於6~12個字元");
+          success = false;
         }
-        if(recheckpw.value != memberPassword.value){
-          alert("密碼確認密碼需相同");
+        if (recheckpw.value != memberPassword.value) {
+          Swal.fire("密碼確認密碼需相同");
+          success = false;
         }
-        fetch("/member/edit",{
-          method: "post",
-          headers:{
-            "Content-type":"application/json",
-          },
-          body: JSON.stringify({
-            memberPassword:memberPassword.value,
-            name:name.value,
-            tel:tel.value,
-          }),
-        })
-        .then((resp)=>resp.json())
-        .then((memberVO)=>{
-        	if (memberVO.successful) {
-            	alert('存檔成功!');
-            } else {
-                alert(memberVO.message);
+
+        if (success) {
+          fetch("/member/edit", {
+            method: "post",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              memberPassword: memberPassword.value,
+              name: name.value,
+              tel: tel.value,
+            }),
+          })
+            .then((resp) => resp.json())
+            .then((memberVO) => {
+              if (memberVO.successful) {
+                Swal.fire("存檔成功!");
+              } else {
+                Swal.fire(memberVO.message);
+              }
+            });
+        }
+      });
+      //登出
+      document.querySelector("#btnLogout").addEventListener("click", () => {
+        fetch("../member/logout")
+          .then((resp) => resp.json())
+          .then((body) => {
+            Swal.fire(body.message);
+            if (body.successful) {
+              location = "GoodEatTime.html";
             }
-        });
+          });
       });
     </script>
   </body>
