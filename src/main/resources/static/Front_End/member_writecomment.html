@@ -487,22 +487,20 @@
       const URL = 'http://localhost:8080/prodcomment/Comment';      
       const submit_btn = document.getElementById("submit_btn");
       submit_btn.addEventListener("click", function () {
-        // let updateProdCommentTime = ;
-        // let updateMemberNo = parseInt(document.querySelector("#memberNo").value);
-        // let updateProdNo = parseInt(document.querySelector("#prdNo").value);
+
         let updateProdCommentRating = parseInt(document.querySelector("#prodCommentRating").value);
         let updateProdCommentContent = document.querySelector("#prodCommentContent").value;
-        // let updateCommentPic = document.querySelector("#prodCommentPic")
+        // let updateProdCommentPic = document.querySelector("#prodCommentPic")
 
           fetch(URL, {
             method: "POST",
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify({
-              // name: updateName,
               prodOrderNo:3,    //未抓資料先寫死。
               prodNo: 3,        //未抓資料先寫死。
               prodCommentRating: updateProdCommentRating,
               prodCommentContent: updateProdCommentContent
+              // prodCommentPic: updateCommentPic
             })
           })
             .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
