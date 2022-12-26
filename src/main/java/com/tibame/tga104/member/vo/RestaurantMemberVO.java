@@ -18,6 +18,8 @@ public class RestaurantMemberVO extends Message {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "restaurantNo")
+	private Integer restaurantNo;
 	@Column(name = "restaurantAccount")
 	private String restaurantAccount;
 	
@@ -26,8 +28,16 @@ public class RestaurantMemberVO extends Message {
 
 	@Override
 	public String toString() {
-		return "RestaurantMemberVO [restaurantAccount=" + restaurantAccount + ", restaurantPassword="
-				+ restaurantPassword + "]";
+		return "RestaurantMemberVO [restaurantNo=" + restaurantNo + ", restaurantAccount=" + restaurantAccount
+				+ ", restaurantPassword=" + restaurantPassword + "]";
+	}
+
+	public Integer getRestaurantNo() {
+		return restaurantNo;
+	}
+
+	public void setRestaurantNo(Integer restaurantNo) {
+		this.restaurantNo = restaurantNo;
 	}
 
 	public String getRestaurantAccount() {
@@ -45,6 +55,8 @@ public class RestaurantMemberVO extends Message {
 	public void setRestaurantPassword(String restaurantPassword) {
 		this.restaurantPassword = restaurantPassword;
 	}
+
+	
 	
 	
 	

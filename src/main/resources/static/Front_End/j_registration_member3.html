@@ -39,6 +39,10 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <style>
+      .checkout__input_eye input {
+        margin-bottom: 0px;
+      }
+  
       .GoodEatTime {
         width: 152px;
         height: 52px;
@@ -58,57 +62,74 @@
       #checkEye {
         font-size: 20px;
         position: absolute;
-        /* bottom: 420px;
-        right: 30px; */
+        bottom: 37px;
+        right: 20px;
       }
 
       /* recheckEye位置 */
       #recheckEye {
         font-size: 20px;
         position: absolute;
-        /* bottom: 285px;
-        right: 30px; */
+        bottom: 37px;
+        right: 20px;
       }
 
       /* 因為Form拉掉，用div包，命div class為form */
-      .class__form .form input {
-        height: 50px;
-        width: 100%;
-        padding-left: 20px;
-        font-size: 15px;
-        color: #444444;
-        background: #ffffff;
-        border: none;
-        margin-bottom: 20px;
-      }
-      .class__form .form input::-webkit-input-placeholder {
-        color: #444444;
-      }
-      .class__form .form input::-moz-placeholder {
-        color: #444444;
-      }
-      .class__form .form input:-ms-input-placeholder {
-        color: #444444;
-      }
-      .class__form .form input::-ms-input-placeholder {
-        color: #444444;
-      }
-      .class__form .form input::placeholder {
-        color: #444444;
-      }
-      .class__form .form button {
-        letter-spacing: 2px;
-        width: 100%;
-      }
+  .checkout__input_eye {
+    margin-bottom: 6px;
+  }
+  .checkout__input_eye p {
+    color: #444444;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .checkout__input_eye p span {
+    color: #f08632;
+  }
+  .checkout__input_eye input {
+    height: 50px;
+    width: 100%;
+    border: 1px solid #e1e1e1;
+    font-size: 14px;
+    color: #666666;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  .checkout__input_eye input::-webkit-input-placeholder {
+    color: #666666;
+  }
+  .checkout__input_eye input::-moz-placeholder {
+    color: #666666;
+  }
+  .checkout__input_eye input:-ms-input-placeholder {
+    color: #666666;
+  }
+  .checkout__input_eye input::-ms-input-placeholder {
+    color: #666666;
+  }
+  .checkout__input_eye input::placeholder {
+    color: #666666;
+  }
+
+  .checkout__input_eye label {
+    font-size: 14px;
+    color: #444444;
+    position: relative;
+    padding-left: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 16px;
+    display: block;
+  }
 
       /* input:invalid{
       border:2px solid red;
       } */
 
  /* sweetalert */
-      /* body {
+      body {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
-} */
+} 
 
     </style>
   </head>
@@ -314,7 +335,7 @@
 
                 <div class="checkout__input">
                   <p>E-mail<span>*</span></p>
-                  <div class="row">
+                  <!-- <div class="row"> -->
                     <!-- <div class="col-lg-9"> -->
                       <input
                         id="mail"
@@ -330,17 +351,13 @@
                     <!-- <div class="col-lg-3">
                       <button type="submit" class="site-btn">取得驗證碼</button>
                     </div> -->
-                  </div>
+                  <!-- </div> -->
                 </div>
 
-
-
-
-
-                <div class="checkout__input">
+                <div class="checkout__input_eye">
                   <p>密碼<span>*</span></p>
-                  <div class="row">
-                    <div class="col-lg-11">
+                  <!-- <div class="row"> -->
+                    <!-- <div class="col-lg-11"> -->
                       <input
                         id="memberPassword"
                         type="password"
@@ -361,18 +378,18 @@
                           oninput="setCustomValidity('');"
                           oninvalid="setCustomValidity('請輸入正確的密碼格式:含英數至少六個字元');"
                         -->
-                    </div>
-                    <div class="col-lg-1">
+                    <!-- </div> -->
+                    <!-- <div class="col-lg-1"> -->
                       <label for="memberPassword">
                         <i id="checkEye" class="fas fa-eye-slash"></i>
                       </label>
-                    </div>
-                  </div>
+                    <!-- </div> -->
+                  <!-- </div> -->
                 </div>
-                <div class="checkout__input">
+                <div class="checkout__input_eye">
                   <p>確認密碼<span>*</span></p>
-                  <div class="row">
-                    <div class="col-lg-11">
+                  <!-- <div class="row"> -->
+                    <!-- <div class="col-lg-11"> -->
                       <input
                         type="password"
                         class="form-control"
@@ -383,13 +400,13 @@
 
                       <label id="recheckpwPattern" style="float: right;color: #f66767;"></label>
 
-                    </div>
-                    <div class="col-lg-1">
+                    <!-- </div> -->
+                    <!-- <div class="col-lg-1"> -->
                       <label for="recheckpw"
                         ><i id="recheckEye" class="fas fa-eye-slash"></i
                       ></label>
-                    </div>
-                  </div>
+                    <!-- </div> -->
+                  <!-- </div> -->
                 </div>
                 
                 <!-- <div class="checkout__input">
@@ -413,8 +430,8 @@
                   <!-- <button  type="submit" class="site-btn">上傳</button> -->
                 </div>
               </di>
+              <button id="submitBtn" class="site-btn">送出</button>
             </div>
-            <button id="submitBtn" class="site-btn">送出</button>
             <!-- </div> -->
           </div>
         </div>
@@ -580,7 +597,8 @@
         }else{
           memberPasswordPattern.innerHTML = "<span>*密碼長度需介於6~12個字元</span>"
           memberPassword.style.border = "2px solid #F6D0C0";
-            }
+          success = false;    
+        }
                 return
         })
 
@@ -601,6 +619,7 @@
         }else{
           recheckpwPattern.innerHTML = "<span>*密碼及確認密碼需相同</span>"
           recheckpw.style.border = "2px solid #F6D0C0"
+          success = false;
         }
           return
       });
@@ -642,6 +661,7 @@
                 console.log(tel.value);
                 // telPattern.style = "fload : right;color:#f66767";
                 tel.style.border = "2px solid #F6D0C0";
+                success = false;
             }
                 return
         })
@@ -657,6 +677,7 @@
           mailPattern.innerHTML = "<span>*信箱格式錯誤</span>"
           // mailPattern.style = "#f66767";
           mail.style.border = "2px solid #F6D0C0";
+          success = false;
         }
         return
       })
@@ -680,11 +701,25 @@
         // }
 
         document.querySelector("#submitBtn").addEventListener("click", () => {
+//========================按下click事件後逐項進行判斷=========================
+let success = true;
+// 驗證姓名不可為空
+if(!name){
+
+Swal.fire('姓名需輸入');
+success = false;
+return;
+}
+
+// if(success){}
+
+
 			const file = memberPic.files[0];
 			const fileReader = new FileReader();
 			fileReader.addEventListener('load', event => {
 				const base64Str = btoa(event.target.result);
-				fetch("/register", {
+				if(success){
+        fetch("/register", {
 					method: "POST",
 			        headers: {
 			          "Content-type": "application/json",
@@ -706,7 +741,8 @@
                 Swal.fire(body.message,);
                 }
 						// alert(body.message);            
-			        });				
+			        });
+            }			
 			});
 			fileReader.readAsBinaryString(file);        	
       });
