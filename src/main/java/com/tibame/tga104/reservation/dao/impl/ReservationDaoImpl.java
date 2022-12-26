@@ -128,7 +128,7 @@ public class ReservationDaoImpl implements ReservationDao {
 
 
 	@Override
-	public List<RestaurantReservationInfVO> findbyResveDate(Integer restaurantNo, Date reserveDate) {
+	public List<RestaurantReservationInfVO> findByRersveDate(Integer restaurantNo, java.util.Date reserveDate) {
 		Query<RestaurantReservationInfVO> query = getSession().createQuery("from RestaurantReservationInfVO where restaurantNo = :restaurantNo and reserveDate = :reserveDate",RestaurantReservationInfVO.class);
 		query.setParameter("restaurantNo", restaurantNo)
 			 .setParameter("reserveDate", reserveDate);
@@ -145,5 +145,14 @@ public class ReservationDaoImpl implements ReservationDao {
 			 .executeUpdate() > 0;
 	}
 
+
+	@Override
+	public boolean changeStatus(Integer restaurantNo, java.util.Date reserveDate, String reserveStatus) {
+		Query<?> query = getSession().createQuery("update ReservationVO set reserveStatus = :reserveStatus where restaurantNo = :restaurantNo and reserveDate = :reserveDate");
+		return query.setParameter("reserveStatus", reserveStatus)
+			 .setParameter("restaurantNo", restaurantNo)
+			 .setParameter("reserveDate", reserveDate)
+			 .executeUpdate() > 0;
+	}
 
 }
