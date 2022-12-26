@@ -33,7 +33,7 @@ public class RestaurantMemberLoginController {
 			session = req.getSession();
 			session.setAttribute("restaurantMemberVO", restaurantMemberVO);
 		}
-		
+		System.out.println(restaurantMemberVO);
 		return restaurantMemberVO;
 		
 	}
