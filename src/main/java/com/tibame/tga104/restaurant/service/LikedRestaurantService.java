@@ -6,9 +6,9 @@ import com.tibame.tga104.restaurant.vo.LikedRestaurantVO;
 
 public interface LikedRestaurantService {
 	
-	LikedRestaurantVO addLikedRestaurant(Integer memberNo,Integer restaurantNo);
+	boolean addLikedRestaurant(LikedRestaurantVO likedRestaurantVO);
 	
-	void deleteLikedRestaurant(Integer memberNo,Integer restaurantNo);
+	void deleteLikedRestaurant(LikedRestaurantVO likedRestaurantVO);
 	
 	List<LikedRestaurantVO> getListLikedRestaurant(Integer memberNo);
 

@@ -39,6 +39,18 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
     />
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        height: 100%;
+      }
+    </style>
   </head>
 
   <body>
@@ -150,7 +162,7 @@
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="breadcrumb__text">
-              <h2>STARBUCKS</h2>
+              <h2 id="restaurantName">STARBUCKS</h2>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6">
@@ -170,22 +182,22 @@
     <!-- 輪播廣告 Begin-->
     <div class="owl-carousel owl-theme">
       <div class="item">
-        <img src="./img/restaurant/starbucks/starbucks-1.jpg" />
+        <img src="" />
       </div>
       <div class="item">
-        <img src="./img/restaurant/starbucks/starbucks-2.jpg" />
+        <img src="" />
       </div>
       <div class="item">
-        <img src="./img/restaurant/starbucks/starbucks-3.jpg" />
+        <img src="" />
       </div>
       <div class="item">
-        <img src="./img/restaurant/starbucks/starbucks-4.jpg" />
+        <img src="" />
       </div>
       <div class="item">
-        <img src="./img/restaurant/starbucks/starbucks-5.jpg" />
+        <img src="" />
       </div>
       <div class="item">
-        <img src="./img/restaurant/starbucks/starbucks-6.jpg" />
+        <img src="" />
       </div>
     </div>
 
@@ -199,23 +211,26 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-            <div class="blog__item">
-              <div class="section-title">
-                <h2>POST</h2>
-              </div>
-
-              <div
-                class="blog__item__pic set-bg"
-                data-setbg="./img/restaurant/starbucks/starbucks-news1.jpg"
-              >
-                <div class="blog__pic__inner" style="bottom: -60px">
+            <div class="section-title">
+              <h2>POST</h2>
+            </div>
+            <!-- <div class="blog__item">
+              <div class="blog__item__pic set-bg">
+                <img src="./img/restaurant/starbucks/starbucks-news1.jpg" />
+                <div
+                  class="blog__pic__inner"
+                  style="position: relative; padding-top: 5px"
+                >
                   <div class="label">貼文類型</div>
                   <ul>
                     <li>13 Nov 2020</li>
                   </ul>
                 </div>
               </div>
-              <div class="blog__item__text" style="padding-top: 70px">
+              <div
+                class="blog__item__text"
+                style="position: relative; padding-top: 130px"
+              >
                 <h2>週末好星情Bonus Star</h2>
                 <p>
                   活動期間每週六及週日，會員單筆結帳滿350元，可額外獲贈5顆星
@@ -231,8 +246,8 @@
                 </div>
                 <a class="readmore" type="button">READ MORE</a>
               </div>
-            </div>
-            <div class="blog__item">
+            </div> -->
+            <!-- <div class="blog__item">
               <div
                 class="blog__item__pic set-bg"
                 data-setbg="./img/restaurant/starbucks/starbucks-news2.jpg"
@@ -281,20 +296,58 @@
                 </div>
                 <a class="readmore" type="button">READ MORE</a>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="col-lg-4">
             <div class="blog__sidebar">
-              <div class="blog__sidebar__item">
-                <h5><i class="fa fa-clock"></i> 9:30-22:30</h5>
-                <h5><i class="fa-solid fa-phone"></i> 2321-4348</h5>
-                <h5>
+              <div class="blog__sidebar__item" style="margin-bottom: 20px">
+                <h5 id="restaurantBusinessHour">
+                  <i class="fa fa-clock"></i>
+                </h5>
+                <h5 id="restaurantTel">
+                  <i class="fa-solid fa-phone"></i>
+                </h5>
+                <h5 id="restaurantAddr">
                   <i class="fa-solid fa-location-dot"></i>
-                  台北市中正區林森南路7-1號
                 </h5>
               </div>
               <div class="blog__sidebar__social">
-                <div class="rwd-map">
+                <!-- Map Begin -->
+                <div class="map">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-lg-4 col-md-7">
+                        <!-- <div class="map__inner">
+                <h6>餐廳名稱</h6>
+                <ul>
+                  <li>1000 Lakepoint Dr, Frisco, CO 80443, USA</li>
+                  <li>Sweetcake@support.com</li>
+                  <li>+1 800-786-1000</li>
+                </ul>
+              </div> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="map__iframe"
+                    id="map"
+                    width="600"
+                    height="450"
+                    style="border: 0"
+                  >
+                    <!-- <iframe
+                  width="600"
+                  height="350"
+                  frameborder="0"
+                  style="border: 0"
+                  id="googleIframe"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDhgGFoEYFMuq2c4ZJmpFyvabr8i6-u0ok&q=台北市大同區承德路一段1號2樓"
+                >
+                </iframe> -->
+                  </div>
+                </div>
+                <!-- Map End -->
+                <!-- <div class="rwd-map">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.7116318706817!2d121.51966501461976!3d25.04385850030052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a968cd618e8b%3A0x108d4f0c924eda6a!2z5pif5be05YWLICjmmYLku6Plr5PmiYDploDluIIp!5e0!3m2!1szh-TW!2stw!4v1669297216670!5m2!1szh-TW!2stw"
                     width="600"
@@ -304,9 +357,10 @@
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
                   ></iframe>
-                </div>
+                </div> -->
               </div>
             </div>
+
             <div class="blog__sidebar__item">
               <br />
               <br />
@@ -315,7 +369,9 @@
               <div class="blog__sidebar__recent">
                 <div id="comment">
                   <br />
-                  <h3 style="color: black">星巴克時代寓所門市</h3>
+                  <h3 id="comment_restaurantName" style="color: black">
+                    星巴克時代寓所門市
+                  </h3>
                   <h2>
                     <i class="fa-solid fa-star" color="orange"></i>
                     <i class="fa-solid fa-star" color="orange"></i>
@@ -371,7 +427,9 @@
                 感謝您支持好食光，點選收藏餐廳，即可在會員中心迅速找到本餐廳，更快獲得最新消息!
               </p>
               <form action="#">
-                <button type="submit" class="site-btn">收藏餐廳</button>
+                <button id="liked" type="button" class="site-btn">
+                  收藏餐廳
+                </button>
               </form>
             </div>
           </div>
@@ -512,29 +570,10 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/restaurant.js"></script>
     <script src="js/main.js"></script>
     <script src="js/backtop.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"></script>
-    <script src="js/restaurant.js"></script>
-    <script>
-      $(".owl-carousel").owlCarousel({
-        autoplay: true,
-        loop: true,
-        margin: 5,
-        nav: true,
-
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 2,
-          },
-          1000: {
-            items: 3,
-          },
-        },
-      });
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhgGFoEYFMuq2c4ZJmpFyvabr8i6-u0ok&callback=initMap"></script>
   </body>
 </html>
