@@ -111,13 +111,13 @@ public class MailService {
 		}
 	}
 
-//	public static void main(String args[]) throws FileNotFoundException {
-//		String to = "cindy5832@gmail.com";
-//		String subject = "密碼通知";
-//		String ch_name = "David";
-//		String passRandom = "111";
-//		String messageText = "Hello! " + ch_name + " 請謹記此密碼: " + passRandom + "\n" + " (已經啟用)";
-//		sendMail(to, subject, messageText);
-//	}
+	public static void main(String args[]) throws FileNotFoundException {
+		String to = "cindy5832@gmail.com";
+		String subject = "密碼通知";
+		String ch_name = "David";
+		String passRandom = "111";
+		String messageText = "Hello! " + ch_name + " 請謹記此密碼: " + passRandom + "\n" + " (已經啟用)";
+		sendMail(to, subject, messageText);
+	}
 
 }

@@ -38,6 +38,12 @@ public class RestaurantReservationInfVO {
 	@Column(name="remark")
 	private String remark;
 	
+	@Column(name="mail")
+	private String mail;
+	
+	@Column(name="reserveStatus")
+	private String reserveStatus;
+
 	public Integer getRestaurantNo() {
 		return restaurantNo;
 	}
@@ -54,11 +60,6 @@ public class RestaurantReservationInfVO {
 		this.reserveNum = reserveNum;
 	}
 
-	@Column(name="mail")
-	private String mail;
-	
-	@Column(name="reserveStatus")
-	private String reserveStatus;
 
 
 	
