@@ -123,5 +123,17 @@ document.querySelector("#search_detail").addEventListener("click", function () {
   // console.log("aa");
   var reserveDate = $("#reserve_search").val();
   sessionStorage.setItem("reserveDate", reserveDate);
+  $.ajax({
+    url: "../reservation/restaurant/statusChange",
+    type: "POST",
+    dataType: "json",
+    contentType: "application/json",
+    data: JSON.stringify({
+      reserveDate: reserveDate,
+    }),
+    success: function (b) {
+      console.log(b);
+    },
+  });
   location.href = "./restaurant_reservation.html";
 });

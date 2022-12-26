@@ -1,5 +1,6 @@
 package com.tibame.tga104.reservation.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.tibame.tga104.reservation.vo.MemberReserveInfVO;
@@ -22,6 +23,8 @@ public interface ReservationService {
 	List<RestaurantReservationInfVO> findByReserveDate(Integer restaurantNo, java.sql.Date date);
 	
 	boolean changeStatus(Integer reserveNo,String reserveStatus);
+	
+	boolean changeStatus(Integer restaurantNo, Date reserveDate);
 	
 	boolean reservation(ReservationVO reservationVO);
 	

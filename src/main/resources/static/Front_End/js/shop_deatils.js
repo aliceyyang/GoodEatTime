@@ -106,7 +106,7 @@ if (prodNo != null && prodNo > 0) {
       // );
 
       // 若商品已在購物車
-      if (prodNo in data.shoppingCart) {
+      if (data.shoppingCart && prodNo in data.shoppingCart) {
         $("a.primary-btn").text("已在購物車");
         $("a.primary-btn").addClass("added");
         $("div.pro-qty input").val(`${data.shoppingCart[prodNo]}`);
@@ -141,7 +141,7 @@ if (prodNo != null && prodNo > 0) {
         $(`#product_item_${index} .cart_add`).attr("data-prodNo", `${item.prodNo}`);
         
         // 若商品已在購物車
-        if (item.prodNo in shoppingCart) {
+        if (shoppingCart && item.prodNo in shoppingCart) {
           $(`#product_item_${index} .cart_add a`).text("已在購物車");
           $(`#product_item_${index} .cart_add`).addClass("added");
         }
@@ -226,7 +226,22 @@ $(function () {
       method: "POST",
       body: JSON.stringify(data),
       headers: {'content-type': 'application/json'}
-    }).then((r) => r.json())
+    }).then((r) => {
+      if(r.redirected) {
+        Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: "請先登入",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(()=>{
+          sessionStorage.setItem("URL_before_login", window.location.href);
+          window.location.href = r.url;
+        });
+      } else {
+        return r.json();
+      }
+    })
     .then((data) => {
       // console.log(data);
       $(this).closest("div").addClass("added");
@@ -248,7 +263,22 @@ $(function () {
       method: "POST",
       body: JSON.stringify(data),
       headers: {'content-type': 'application/json'}
-    }).then((r) => r.json())
+    }).then((r) => {
+      if(r.redirected) {
+        Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: "請先登入",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(()=>{
+          sessionStorage.setItem("URL_before_login", window.location.href);
+          window.location.href = r.url;
+        });
+      } else {
+        return r.json();
+      }
+    })
     .then((data) => {
       // console.log(data);
       $(this).closest("div").addClass("added");

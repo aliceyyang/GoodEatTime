@@ -48,7 +48,7 @@ public class AdOrderServiceImpl implements AdOrderService {
 
     @Override
     public List<AdOrder> getByAll() {
-        var data = adOrderDAO.getByAll();
+//        var data = adOrderDAO.getByAll();
 
 //        for (AdOrder adOrder : data) {
 //            if(adOrder.getSlideshowPic() !=null){
@@ -57,6 +57,6 @@ public class AdOrderServiceImpl implements AdOrderService {
 //            }
 //        }
 
-        return data;
+        return adOrderDAO.getByAll();
     }
 }

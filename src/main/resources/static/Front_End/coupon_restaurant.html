@@ -162,9 +162,8 @@
       <!-- 優惠券設定 -->
       <div class="col-lg-10">
         <div class="table-responsive">
-          <input type="text" id="coupon_search" placeholder="輸入欲查詢的優惠券" onkeyup="searchFunction()">
           <h2>優惠券資訊</h2>
-          <label id="insertCoupon" for="insertbtn">新增優惠券</label>
+          <label id="insertCoupon" for="insertbtn" style="display: none;">新增優惠券</label>
           <button type="button" id="insertbtn" onclick="insert()">新增優惠券</button>
           <table class="table" id="coupon_detail" cellspacing="0">
             <thead>
@@ -181,11 +180,11 @@
                 <th>發行張數上限</th>
                 <th>已發行張數</th>
                 <th>優惠券圖片</th>
-                <th></th>
+                <th>更新優惠券</th>
               </tr>
             </thead>
-            <tbody id="tbcoupon_detail">
-            </tbody>
+            <!-- <tbody id="tbcoupon_detail">
+            </tbody> -->
           </table>
         </div>
 
@@ -309,6 +308,7 @@
   <script src="js/jquery.slicknav.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
+  <script src="./dataTables/js/jquery.dataTables.js"></script>
   <script src="js/main.js"></script>
   <script src="js/coupon.js"></script>
 </body>

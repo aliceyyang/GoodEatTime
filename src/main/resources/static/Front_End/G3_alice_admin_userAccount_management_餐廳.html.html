@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
   <link rel="stylesheet" href="css/style.css" type="text/css" />
   <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
-  <link rel="stylesheet" href="css/reservation.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="css/reservation.css" type="text/css" /> -->
   <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" />
   <!-- <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js'
@@ -168,9 +168,9 @@
         </ul>
         </nav>
       </div>
-      <div class="col-lg-10">
+      <div class="col-lg-10" style="background-color:white;height:auto;padding-left:50px;">
         <div class="row-col-12"
-          style="align-items:center; display: grid;justify-content:left;height:10%; margin-top: 20px;margin-left: 20px;">
+          style="align-items:center; display: grid;justify-content:left;height:10%; margin-top: 20px;">
           <table>
             <tr>
               <th style="width:220px">
@@ -179,47 +179,38 @@
                   style="width: 200px; padding:7px; border-radius: 8px; box-shadow: 5px 5px 2px #FFD382;">
               </th>
               <!-- <th style="width:180px">
-                <button type="button" class=" btn btn-light" id="choose_customer_btn"
-                  style="width: 150px; padding:7px; border-radius: 8px; box-shadow: 5px 5px 2px #FFD382;">選擇消費者(拿掉?)</button>
-              </th>
-              <th style="width:180px">
-                <button type="button" class="btn btn-light" id="choose_restaurant_btn"
-                  style="width: 150px; padding:7px; border-radius: 8px; box-shadow: 5px 5px 2px #FFD382;">選擇餐廳(拿掉?)</button>
-              </th> -->
-              <th style="width:180px">
                 <button type="button" class="btn btn-light"
                   style="width: 150px; padding:7px; border-radius: 8px; box-shadow: 5px 5px 2px #F08632;">修改用戶資料</button>
               </th>
               <th style="width:180px">
                 <button type="button" class="btn btn-light"
                   style="width: 150px; padding:7px; border-radius: 8px; box-shadow: 5px 5px 2px #4d3b1b;">停用使用者</button>
-              </th>
+              </th> -->
             </tr>
           </table>
         </div>
-        <div class="table-responsive">
-          <table id="user_table" class="userNo-table table" width="100%" style="table-layout:fixed;">
-            <caption>1. 僅能編輯審核狀態欄位<br>3. 左側欄滑鼠移動會跑版QQ</caption>
+        <div class="table-responsive" style="margin-top:20px">
+          <table id="user_table" class="userNo-table table" style="table-layout:fixed;width: auto;">
+            <!-- <caption>1. 僅能編輯審核狀態欄位<br>3. 左側欄滑鼠移動會跑版QQ</caption> -->
             <thead align="center">
               <tr>
-                <th align="center" style="border:3px #FFD382 dashed;" id="" style="width:100px">修改/刪除</th>
-                <th align="center" style="border:3px #FFD382 dashed;" id="member_type">會員種類</th>
-                <th align="center" style="border:3px #FFD382 dashed;" id="rest_no">餐廳編號</th>
-                <th align="center" style="border:3px #FFD382 dashed;" id="user_account">使用者帳號</th>
-                <!-- 餐廳restaurantAccount / 消費者mail -->
-                <th align="center" style="border:3px #FFD382 dashed;" id="member_name">會員名稱</th>
-                <!-- 餐廳restaurantName / 消費者name -->
-                <!-- <th align="center" style="border:3px #FFD382 dashed;" id="member_level">會員等級</th> -->
-                <!-- 餐廳 NULL / 消費者memberLevel -->
-                <th align="center" style="border:3px #FFD382 dashed;" id="verified">審核狀態</th>
-                <!-- 餐廳restaurantStatus / 消費者verificationAccount -->
+                <th align="center" style="border:3px #FFD382 dashed; width:160px;padding:12px 37px 12px 37px">修改</th>
+                <th align="center" style="border:3px #FFD382 dashed; width:120px" id="member_type">會員種類</th>
+                <th align="center" style="border:3px #FFD382 dashed; width:250px" id="rest_no">餐廳編號</th>
+                <th align="center" style="border:3px #FFD382 dashed; width:250px" id="user_account">使用者帳號</th>
+                <th align="center" style="border:3px #FFD382 dashed; width:250px" id="member_name">會員名稱</th>
+                <th align="center" style="border:3px #FFD382 dashed; width:200px" id="verified">審核狀態</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="shipData">
               <tr align="center">
-                <td>
-                  <input type="button" value="修改">
-                  <input type="button" value="刪除">
+                <!-- <input type="button" style="width: auto; padding:2px; border-radius: 8px; box-shadow: 3px 3px 1px #FFD382;" value="修改"> -->
+                <!-- <input type="button" style="width: auto; padding:2px; border-radius: 8px; box-shadow: 3px 3px 1px #FFD382;" value="取消"> -->
+                <td style="padding:12px 30px 12px 30px">
+                  <input type="button" id="edit_btn" class="btn btn-light d-flex" value="修改" onclick="showButtonEvent()"
+                    style="float: left;width: auto; padding:2px; border-radius: 8px; box-shadow: 3px 3px 1px #FFD382;">
+                  <button id="btnCancel" type="button" class="btn btn-light d-flex" onclick="cancelOrder()"
+                    style="float: right;width: auto; padding:2px; border-radius: 8px; box-shadow: 3px 3px 1px #111111;">取消</button>
                 </td>
                 <td>餐廳</td>
                 <td>餐廳編號N</td>
@@ -227,12 +218,10 @@
                 <td>薄多義</td>
                 <td>尚未審核</td>
               </tr>
-
             </tbody>
           </table>
         </div>
       </div>
-
     </div>
 
   </section>
@@ -359,66 +348,138 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="js/main.js"></script>
-  <!-- <script src="js/reservation.js"></script> -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- <script src="js/alice.js"></script> -->
   <script src="js/alice_admin2_membership_management_page.js"></script>
   <script> // GET
-    const user_table = document.querySelector("#user_table");
-    const URL = "http://localhost:8080/admin/restaurant-accounts";
-    fetch(URL)
-      .then((r) => r.json())
-      .then((data) => {
-        user_table.innerHTML = data
-          .map(({ restaurantNo, restaurantAccount, restaurantName, restaurantStatus }) =>
-            template(restaurantNo, restaurantAccount, restaurantName, restaurantStatus)
-          )
-          .join("");
+    const URL = 'http://localhost:8080/admin/restaurant-accounts'
+    let resData = [];
+    // 抽換資料
+    const template = (resNo, account, name, verified) => {
+      return `<tr align="center">
+                <td style="padding:12px 30px 12px 20px">
+                  <input type="button" id="btnEdit${resNo}" class="btn btn-light edit_btn" value="修改" onclick="showButtonEvent()"
+                  style="float: center;width: auto; padding:2px; border-radius: 8px; box-shadow: 3px 3px 1px #FFD382;">
+                  <button id="btnCancel${resNo}" type="button" class="btn btn-light d-none" onclick="cancelOrder()"
+                  style="float:right;width: auto; padding:2px; border-radius: 8px; box-shadow: 3px 3px 1px #111111;">取消</button>
+                </td>
+                <td>餐廳</td>
+                <td>
+                  <div id="resNo${resNo}">${resNo}</div>
+                </td>
+                <td>${account}</td>
+                <td>${name}</td>
+                <td id="verified${resNo}" >
+                  <div class="d-flex justify-content-center" id="original_verified${resNo}">${!!verified ? '審核通過' : '尚未審核'}</div>
+                  <div class="d-none justify-content-center" id="new_verified_div${resNo}">
+                    <input id="new_verified${resNo}" type="checkbox" value="">審核通過
+                  </div>
+                </td>
+            </tr>`
+    }
+    const init = async () => {
+      // table
+      const shipData = document.querySelector('#shipData')
+      // GET
+      await fetch(URL).then((r) => r.json()).then((data) => {
+        resData = data
+        shipData.innerHTML = data.map(({
+          restaurantNo,
+          restaurantAccount,
+          restaurantName,
+          restaurantStatus
+        }) => template(
+          restaurantNo,
+          restaurantAccount,
+          restaurantName,
+          restaurantStatus)).join("");
       });
 
-    const template = (no, account, name, verified) => {
-      if (verified) {
-        return `<tr align="center">
-            <td>
-              <input type="button" value="修改" class="btn btn-light" style="width: 50px; padding:1px; border-radius: 4px; box-shadow: 2px 2px 1px #F08632;">
-              <input type="button" value="刪除" class="btn btn-light" style="width: 50px; padding:1px; border-radius: 4px; box-shadow: 2px 2px 1px #4d3b1b;">
-            <td>餐廳</td>
-            <td>${no}</td>
-            <td>${account}</td>
-            <td>${name}</td>
-            <td>審核通過</td>
-          </tr>`;
-      } else {
-        return `<tr align="center">
-            <td>
-              <input type="button" value="修改" class="btn btn-light" style="width: 50px; padding:1px; border-radius: 4px; box-shadow: 2px 2px 1px #F08632;">
-              <input type="button" value="刪除" class="btn btn-light" style="width: 50px; padding:1px; border-radius: 4px; box-shadow: 2px 2px 1px #4d3b1b;">
-            <td>餐廳</td>
-            <td>${no}</td>
-            <td>${account}</td>
-            <td>${name}</td>
-            <td>尚未審核</td>
-          </tr>`;
-      };
-    }
-  </script>
-  <script> // PUT
-    // const URL2 = "http://localhost:8080/admin/restaurant-accounts";  // {restaurantNo}
-    const updateData = (endpoint, data) => {
-      fetch(`${URL2}/${endpoint}`, {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
+      // get btn
+      const onEdit = document.querySelectorAll('.edit_btn')
+      onEdit.forEach((btn, index) => {
+        btn.onclick = () => { // 點選編輯按鈕
+          let { restaurantNo } = resData[index]
+          // 點擊變更-> 編輯 or 確認
+          let edit_btn = document.querySelector(`#btnEdit${restaurantNo}`)
+          edit_btn.value = edit_btn.value === '修改' ? '確認' : '修改';
+          // 取消
+          let cancel_btn = document.querySelector(`#btnCancel${restaurantNo}`)
+          cancel_btn.className = edit_btn.value === '修改' ? 'btn btn-light d-none' : 'btn btn-light d-flex';
+          // 審核狀態
+          let original_verified = document.querySelector(`#original_verified${restaurantNo}`)
+          let new_verified_div = document.querySelector(`#new_verified_div${restaurantNo}`)
+          // let verify = document.querySelectorAll(`#original_verified${restaurantNo}`)
+
+          // 判斷是否進行審核
+          if (original_verified.innerHTML === '尚未審核') {
+            // 審核狀態
+            original_verified.className = edit_btn.value === '修改' ? 'd-flex justify-content-center' : 'd-none justify-content-center';
+            new_verified_div.className = edit_btn.value === '修改' ? 'd-none justify-content-center' : 'd-flex justify-content-center';
+          } else {
+            // 審核狀態
+            alert('已審核通過，無法修改餐廳會員資料。')
+            edit_btn.value = '修改';
+            original_verified.className = 'd-flex justify-content-center';
+            new_verified_div.className = 'd-none justify-content-center';
+            cancel_btn.className = 'btn btn-light d-none';
+          }
+
+          // 點擊確認 -> PUT
+          const URL_PUT = 'http://localhost:8080/admin/restaurant-accounts'; // {restaurantNo}
+          if (edit_btn.value === '確認') {
+            edit_btn.onclick = () => {
+              let editItem = parseInt(document.querySelector(`#resNo2`).innerHTML.trim()); // 餐廳編號
+              // 審核狀態
+              let check_verified_btn = document.querySelector(`#new_verified${restaurantNo}`)
+              document.querySelector(`#new_verified${restaurantNo}`).checked ? check_verified_btn.setAttribute("value", "true") : check_verified_btn.setAttribute("value", "");
+              let verified_put = check_verified_btn.value
+              if (verified_put === 'true') {
+                if (confirm('確定修改審核狀態?')) {
+                  swal({
+                    title: "",
+                    text: "已成功修改，該餐廳會員審核通過",
+                    icon: "success",
+                    button: "OK",
+                  });
+                  const editOrder = endpoint => {
+                    fetch(`${URL_PUT}/${endpoint}`, {
+                      method: 'PUT',
+                      headers: { 'Content-type': 'application/json' },
+                      body: JSON.stringify({
+                        restaurantNo: editItem,
+                        restaurantStatus: verified_put
+                      })
+                    }).then((r) => r.json()).then((data) => {
+                      console.log(data); setTimeout(function () {
+                        location.reload();
+                      }, 1500);
+                    })
+                  }
+                  editOrder(editItem);
+                } else {
+                  swal("已取消修改審核狀態。", "", "info");
+                  setTimeout(function () {
+                    location.reload();
+                  }, 1500);
+                }
+              } else {
+                alert('未勾選審核通過，請再次確認或取消修改。')
+                location.reload();
+              }
+            }
+            cancel_btn.onclick = () => {
+              swal("已取消修改審核狀態。", "", "info");
+              setTimeout(function () {
+                location.reload();
+              }, 1500);
+            }
+          }
         }
       })
-        .then((r) => r.json())
-        .then((data) => console.log(data));
-    };
-
-    // 綁定事件後送出put method請求，抓到改動的資料傳入參數 -> (memberNo, request body data)
-    updateData('2', { restaurantStatus: true });
+    }
+    window.onload = init
   </script>
-
 </body>
 
 </html>
