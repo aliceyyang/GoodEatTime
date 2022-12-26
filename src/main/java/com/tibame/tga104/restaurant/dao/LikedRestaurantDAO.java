@@ -8,7 +8,7 @@ public interface LikedRestaurantDAO {
 	
 	public boolean insert(LikedRestaurantVO likedRestaurantVO);
 
-	public boolean delete(Integer memberNo,Integer restaurantNo);
+	public boolean delete(LikedRestaurantVO likedRestaurantVO);
 
 	public List<LikedRestaurantVO> findByMemberNo(Integer memberNo);
 
