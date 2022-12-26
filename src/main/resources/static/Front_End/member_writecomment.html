@@ -6,7 +6,7 @@
     <meta name="keywords" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RestaurantBackEnd | ProdInfo</title>
+    <title>Member | WriteComment</title>
 
     <!-- Google Font -->
     <link
@@ -38,52 +38,53 @@
       />
     <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
 
-    <style>
-      .nice-select {
-        width: 80%;
-      }
-      #prodMainPic {
-    display: none;
-      }
-
-      .prodPic {
-        width: 250px;
-        aspect-ratio: 16/9;
-        background: #ddd;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #aaa;
-        border: 2px dashed currentcolor;
-        cursor: pointer;
-        font-family: sans-serif;
-        transition: color 300ms ease-in-out, background 300ms ease-in-out;
-        outline: none;
-        overflow: hidden;
-      }
-
-      .prodPic:hover {
-        color: #777;
-        background: #ccc;
-      }
-
-      .prodPic:active {
-        border-color: turquoise;
-        color: turquoise;
-        background: #eee;
-      }
-
-      .prodPic:focus {
-        color: #777;
-        background: #ccc;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      }
-
-      .prodMainPic_image {
-        max-width: 100%;
-      }
-    </style>
   </head>
+  <style>
+    .nice-select {
+      width: 80%;
+    }
+    #prodCommentPic {
+      display: none;
+    }
+
+    .commentPic {
+      width: 250px;
+      aspect-ratio: 16/9;
+      background: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      border: 2px dashed currentcolor;
+      cursor: pointer;
+      font-family: sans-serif;
+      transition: color 300ms ease-in-out, background 300ms ease-in-out;
+      outline: none;
+      overflow: hidden;
+    }
+
+    .commentPic:hover {
+      color: #777;
+      background: #ccc;
+    }
+
+    .commentPic:active {
+      border-color: turquoise;
+      color: turquoise;
+      background: #eee;
+    }
+
+    .commentPic:focus {
+      color: #777;
+      background: #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .prodCommentPic_image {
+      max-width: 100%;
+    }
+  </style>
+
   <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -221,21 +222,29 @@
         <div class="col-lg-2" id="left">
           <nav class="header__menu mobile-menu" id="aaa">
             <ul>
-              <li class=""><a href="http">餐廳會員首頁</a></li>
-              <li class=""><a href="http">餐廳資訊</a></li>
-              <li class=""><a href="http">訂單管理</a></li>
-              <li class=""><a href="http">訂位管理</a></li>
-              <li class=""><a href="http">評論管理</a></li>
-              <li class=""><a href="http">優惠券設定</a></li>
-              <li class=""><a href="http">商品管理</a></li>
-              <li class=""><a href="http">銷售報表</a></li>
-              <li class=""><a href="http">購買廣告</a></li>
+              <li class=""><a href="http">帳號管理</a></li>
+              <li class=""><a href="http">訂位資訊</a></li>
+              <li class=""><a href="http">商城訂單</a></li>
+              <li class=""><a href="http">我的優惠券</a></li>
+              <li class=""><a href="http">我的最愛</a></li>
+              <li class=""><a href="http">我的評論</a></li>
             </ul>
           </nav>
         </div>
         <!-- 中間空白欄位 -->
         <!-- 上排 -->
         <div class="col-lg-10">
+          <div
+            class="row-cols-12"
+            style="
+              align-items: center;
+              display: grid;
+              justify-content: center;
+              height: 15%;
+            "
+          >
+            <h2>撰寫評論</h2>
+          </div>
           <div class="row">
             <div class="col-1"></div>
             <div class="col-10">
@@ -243,76 +252,71 @@
                 <form action method="POST">
                   <div class="row">
                     <div class="col">
-                      <br>
                       <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
-                            <label for="prodName">商品名稱：</label>
-                            <input type="text" name="prodName" id="prodName" placeholder="此為必填欄位">
+                            <label for="prodCommentTime">評論時間：</label>
+                            <input type="number" name="prodCommentTime" id="prodCommentTime" placeholder="自動顯示">
+                          </div>
+                        </div>
+                      </div>                
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="form-group">
+                            <label for="memberNo">評論帳號：</label>
+                            <input type="number" name="memberNo" id="memberNo" placeholder="自動顯示">
+                          </div>
+                        </div>
+                      </div>                   
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="form-group">
+                            <label for="prodNo">評論商品：</label>
+                            <input type="number" name="prodNo" id="prodNo" placeholder="此為必填欄位">
                           </div>
                         </div>
                       </div>
-                      <br>
                       <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
-                            <label for="prodCategoryNo">商品類別：</label>
-                            <input type="text" name="prodCategoryNo" id="prodCategoryNo" placeholder="此為必填欄位">
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label for="prodStock">商品庫存：</label>
-                            <input type="text" name="prodStock" id="prodStock" placeholder="此為必填欄位">
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label for="prodPrice">商品價格：</label>
-                            <input type="text" name="prodPrice" id="prodPrice" placeholder="此為必填欄位">
+                            <label for="prodCommentRating">評論星等：</label>
+                            <input type="number" name="prodCommentRating" id="prodCommentRating" placeholder="此為必填欄位">
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="col">
-                      <br>
                       <div class="row">
                         <div class="">
                           <div class="form-group">
-                            <label for="prodDescription">商品說明：</label>
-                            <textarea name="prodDescription" id="prodDescription" cols="25" rows="5"></textarea>
+                            <label for="prodCommentContent">評論內容：</label>
+                            <textarea name="prodCommentContent" id="prodCommentContent" cols="27" rows="5"></textarea>
                           </div>
                         </div>
                       </div>
-                      <br>
                       <div class="row">
                         <div class="">
                           <div class="form-group">
-                            <label for="prodContent">商品規格：</label>
-                            <textarea name="prodContent" id="prodContent" cols="25" rows="5"></textarea>
+                            <label class="prodCommentPic_text">評論圖片：</label>
+                            <label class="commentPic" for="prodCommentPic" tabIndex="0">
+                              <span class="prodCommentPic_image"></span>
+                            </label>
+                            <input type="file" name="prodCommentPic" id="prodCommentPic">
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="col">
-                      <br>
                       <div class="row">
-                        <div class="form-group">
-                          <label class="prodMainPic_text">商品圖片：</label>
-                          <label class="prodPic" for="prodMainPic" tabIndex="0">
-                            <span class="prodMainPic_image"></span>
-                          </label>
-                          <input type="file" name="prodMainPic" id="prodMainPic">
-                        </div>
-                        <div class="col-lg-8 submit">
-                          <div class="form-group" style="align-items: center; display: grid;justify-content:right;">
-                            <input type="button" id="submit_btn" class="submit_btn" value="商品資料上傳">
+                        <div class="">
+                          <div class="form-group">
+                            <label for="prodCommentContent">餐廳回覆：</label>
+                            <textarea name="prodCommentContent" id="prodCommentContent" cols="25" rows="10"></textarea>
+                          </div>
+                          <div class="col-lg-8 submit">
+                            <div class="form-group" style="align-items: center; display: grid;justify-content:right;">
+                              <input type="button" id="submit_btn" class="submit_btn" value="評論資料上傳">
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -323,7 +327,10 @@
             </div>
             <div class="col-1"></div>
           </div>
-        </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -445,10 +452,10 @@
     <script src="js/main.js"></script>
     <!-- <script src="js/reservation.js"></script> -->
     <!-- <script src="js/alice.js"></script> -->
-
+    
     <script> // 預覽圖片
-      const inputFile = document.querySelector("#prodMainPic");
-      const pictureImage = document.querySelector(".prodMainPic_image");
+      const inputFile = document.querySelector("#prodCommentPic");
+      const pictureImage = document.querySelector(".prodCommentPic_image");
       const pictureImageTxt = "可以選擇一張圖片";
       pictureImage.innerHTML = pictureImageTxt;
   
@@ -477,29 +484,26 @@
       }); 
     </script>
     <script> // POST
-      const URL = 'http://localhost:8080/product/addProdInfo';      
+      const URL = 'http://localhost:8080/prodcomment/Comment';      
       const submit_btn = document.getElementById("submit_btn");
       submit_btn.addEventListener("click", function () {
-        let updateName = document.querySelector("#prodName").value;
-        let updateCategoryNo = parseInt(document.querySelector("#prodCategoryNo").value);
-        let updateStock = parseInt(document.querySelector("#prodStock").value);
-        let updatePrice = parseInt(document.querySelector("#prodPrice").value);
-        let updateDescription = document.querySelector("#prodDescription").value;
-        let updateContent = document.querySelector("#prodContent").value;
-        // let updateMainPic = document.querySelector("#prodMainPic")
-        // const submit_btn = document.querySelector("#submit_btn");
+        // let updateProdCommentTime = ;
+        // let updateMemberNo = parseInt(document.querySelector("#memberNo").value);
+        // let updateProdNo = parseInt(document.querySelector("#prdNo").value);
+        let updateProdCommentRating = parseInt(document.querySelector("#prodCommentRating").value);
+        let updateProdCommentContent = document.querySelector("#prodCommentContent").value;
+        // let updateCommentPic = document.querySelector("#prodCommentPic")
+
           fetch(URL, {
             method: "POST",
-            headers: { 'Content-type': 'application/json', },
+            headers: { 'Content-type': 'application/json' },
             body: JSON.stringify({
-              restaurantNo: 2,
-              prodName: updateName,
-              prodCategoryNo: updateCategoryNo,
-              prodStock: updateStock,
-              prodPrice: updatePrice,
-              prodDescription: updateDescription,
-              prodContent: updateContent
-            }),
+              // name: updateName,
+              prodOrderNo:3,    //未抓資料先寫死。
+              prodNo: 3,        //未抓資料先寫死。
+              prodCommentRating: updateProdCommentRating,
+              prodCommentContent: updateProdCommentContent
+            })
           })
             .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
             .then((data) => { console.log(data); alert('送交訂單成功'); location.reload(); })

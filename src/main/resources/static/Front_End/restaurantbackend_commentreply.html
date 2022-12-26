@@ -35,18 +35,53 @@
       rel="stylesheet"
       href="css/member_page_overview.css"
       type="text/css"
-    />
+      />
     <link rel="stylesheet" href="css/alice_style.css" type="text/css" />
+
   </head>
   <style>
     .nice-select {
       width: 80%;
     }
-    table,
-    tr,
-    th,
-    td {
-      border: 1px solid black;
+    #prodCommentPic {
+      display: none;
+    }
+
+    .commentPic {
+      width: 250px;
+      aspect-ratio: 16/9;
+      background: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      border: 2px dashed currentcolor;
+      cursor: pointer;
+      font-family: sans-serif;
+      transition: color 300ms ease-in-out, background 300ms ease-in-out;
+      outline: none;
+      overflow: hidden;
+    }
+
+    .commentPic:hover {
+      color: #777;
+      background: #ccc;
+    }
+
+    .commentPic:active {
+      border-color: turquoise;
+      color: turquoise;
+      background: #eee;
+    }
+
+    .commentPic:focus {
+      color: #777;
+      background: #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .prodCommentPic_image {
+      max-width: 100%;
     }
   </style>
 
@@ -153,7 +188,26 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <nav class="header__menu mobile-menu"></nav>
+            <nav class="header__menu mobile-menu">
+              <ul>
+                <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
+                <li><a href="./about.html">會員專區</a></li>
+                <li><a href="./shop.html">餐廳</a></li>
+                <li><a href="./blog.html">線上商城</a></li>
+                <li>
+                  <a href="#">關於我們</a>
+                  <ul class="dropdown">
+                    <li><a href="./shop-details.html">Shop Details</a></li>
+                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                    <li><a href="./checkout.html">Check Out</a></li>
+                    <li><a href="./wisslist.html">Wisslist</a></li>
+                    <li><a href="./Class.html">Class</a></li>
+                    <li><a href="./blog-details.html">Blog Details</a></li>
+                  </ul>
+                </li>
+                <li><a href="./contact.html">地點搜尋</a></li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
@@ -168,15 +222,12 @@
         <div class="col-lg-2" id="left">
           <nav class="header__menu mobile-menu" id="aaa">
             <ul>
-              <li class=""><a href="http">餐廳會員首頁</a></li>
-              <li class=""><a href="http">餐廳資訊</a></li>
-              <li class=""><a href="http">訂單管理</a></li>
-              <li class=""><a href="http">訂位管理</a></li>
-              <li class=""><a href="http">評論管理</a></li>
-              <li class=""><a href="http">優惠券設定</a></li>
-              <li class=""><a href="http">商品管理</a></li>
-              <li class=""><a href="http">銷售報表</a></li>
-              <li class=""><a href="http">購買廣告</a></li>
+              <li class=""><a href="http">帳號管理</a></li>
+              <li class=""><a href="http">訂位資訊</a></li>
+              <li class=""><a href="http">商城訂單</a></li>
+              <li class=""><a href="http">我的優惠券</a></li>
+              <li class=""><a href="http">我的最愛</a></li>
+              <li class=""><a href="http">我的評論</a></li>
             </ul>
           </nav>
         </div>
@@ -189,68 +240,93 @@
               align-items: center;
               display: grid;
               justify-content: center;
-              height: 15%;
-              background-color: #fdf3ea;
+              height: 15%
             "
           >
             <h2>回覆評論</h2>
           </div>
-          <div class="row" style="height: 80%">
-            <div
-              class="row-cols-12"
-              style="background-color: #fdf3ea; margin: 15px; padding: 40px"
-            >
-              <!-- 回覆評論 -->
-              <div class="container" style="height: 90%">
-                <div class="row" style="height: 90%">
-                  <form action="http" method="post">
-                    <br />
-                    <label for="commentDate">評論時間：</label>
-                    <input type="date" name="commentDate" id="commentDate" />
-
-                    <label for="commentProd">評論商品：</label>
-                    <input type="number" name="commentProd" id="commentProd" />
-
-                    <label for="commmentRating">評論星等：</label>
-                    <input
-                      type="number"
-                      name="commmentRating"
-                      id="commmentRating"
-                    />
-                    <br />
-                    <label for="commmentId">評論ID：</label>
-                    <input type="text" name="commmentId" id="commmentId" />
-                    <br />
-                    <label for="commmentCustomer">顧客評論：</label>
-                    <textarea
-                      name="commmentCustomer"
-                      id="commmentCustomer"
-                      cols="40"
-                      rows="3"
-                    ></textarea>
-
-                    <label for="commmentPic">評論圖片：</label>
-                    <input
-                      type="file"
-                      name="commmentPic"
-                      id="commmentPic"
-                      accept="image/*"
-                      multiple="multiple"
-                    />
-                    <br />
-                    <label for="commmentReply">回覆評論：</label>
-                    <textarea
-                      name="commmentReply"
-                      id="commmentReply"
-                      cols="40"
-                      rows="3"
-                    ></textarea>
-                    <br />
-                    <br />
-                    <button type="submit" id="commentSubmit" class="btns">
-                      送出評論
-                    </button>
-                  </form>
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+              <div class="container">
+                <form action method="POST">
+                  <div class="row">
+                    <div class="col">
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="form-group">
+                            <label for="prodCommentTime">評論時間：</label>
+                            <input type="number" name="prodCommentTime" id="prodCommentTime" placeholder="自動顯示">
+                          </div>
+                        </div>
+                      </div>                
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="form-group">
+                            <label for="memberNo">評論帳號：</label>
+                            <input type="number" name="memberNo" id="memberNo" placeholder="自動顯示">
+                          </div>
+                        </div>
+                      </div>                   
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="form-group">
+                            <label for="prodNo">評論商品：</label>
+                            <input type="number" name="prodNo" id="prodNo" placeholder="此為必填欄位">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="form-group">
+                            <label for="prodCommentRating">評論星等：</label>
+                            <input type="number" name="prodCommentRating" id="prodCommentRating" placeholder="此為必填欄位">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <div class="">
+                          <div class="form-group">
+                            <label for="prodCommentContent">評論內容：</label>
+                            <textarea name="prodCommentContent" id="prodCommentContent" cols="27" rows="5"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="">
+                          <div class="form-group">
+                            <label class="prodCommentPic_text">評論圖片：</label>
+                            <label class="commentPic" for="prodCommentPic" tabIndex="0">
+                              <span class="prodCommentPic_image"></span>
+                            </label>
+                            <input type="file" name="prodCommentPic" id="prodCommentPic">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <div class="">
+                          <div class="form-group">
+                            <label for="restaurantReply">餐廳回覆：</label>
+                            <textarea name="restaurantReply" id="restaurantReply" cols="25" rows="10"></textarea>
+                          </div>
+                          <div class="col-lg-8 submit">
+                            <div class="form-group" style="align-items: center; display: grid;justify-content:right;">
+                              <input type="button" id="submit_btn" class="submit_btn" value="評論資料上傳">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-1"></div>
+          </div>
                 </div>
               </div>
             </div>
@@ -374,7 +450,57 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/reservation.js"></script>
-    <script src="js/alice.js"></script>
+    <!-- <script src="js/reservation.js"></script> -->
+    <!-- <script src="js/alice.js"></script> -->
+    
+    <script> // 預覽圖片
+      const inputFile = document.querySelector("#prodCommentPic");
+      const pictureImage = document.querySelector(".prodCommentPic_image");
+      const pictureImageTxt = "可以選擇一張圖片";
+      pictureImage.innerHTML = pictureImageTxt;
+  
+      inputFile.addEventListener("change", function (e) {
+        const inputTarget = e.target;
+        const file = inputTarget.files[0];
+  
+        if (file) {
+          const reader = new FileReader();
+  
+          reader.addEventListener("load", function (e) {
+            const readerTarget = e.target;
+  
+            const img = document.createElement("img");
+            img.src = readerTarget.result;
+            img.classList.add("prodMainPic_image");
+  
+            pictureImage.innerHTML = "";
+            pictureImage.appendChild(img);
+          });
+  
+          reader.readAsDataURL(file);
+        } else {
+          pictureImage.innerHTML = pictureImageTxt;
+        }
+      }); 
+    </script>
+    <script> // POST
+      const URL = 'http://localhost:8080/prodcomment/CommentReply';      
+      const submit_btn = document.getElementById("submit_btn");
+      submit_btn.addEventListener("click", function () {
+        let updateRestaurantReply = document.querySelector("#restaurantReply").value;
+        fetch(URL, {
+          method: "POST",
+          headers: { 'Content-type': 'application/json', },
+          body: JSON.stringify({
+            prodOrderNo:1,        //未抓資料先寫死。
+            prodNo: 1,            //未抓資料先寫死。
+            prodCommentRating:3,  //未抓資料先寫死。
+            restaurantReply: updateRestaurantReply
+          }),
+        })
+        .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
+        .then((data) => { console.log(data); alert('送交訂單成功'); location.reload(); })
+      })
+    </script>
   </body>
 </html>
