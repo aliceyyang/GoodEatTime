@@ -21,7 +21,7 @@ public class MemberCouponVO implements Serializable {
 	@Column(name = "couponNo", nullable = false)
 	private Integer couponNo;
 	
-	@Column(name = "usageStatus")
+	@Column(name = "usageStatus", columnDefinition = "Integer")
 	private Boolean usageStatus;
 
 	public MemberCouponVO() {

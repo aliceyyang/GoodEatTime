@@ -101,6 +101,43 @@ function Template({couponNo, couponStartTime, couponEndTime, couponContent, usag
       <button type="button" id="confirmbtn" onclick="onConfirmClick()">確認</button>
     </div>`
 }
+//=================================資料驗證==================================
+$(function () {
+  $("#tbcoupon_update").validate({
+    onkeyup : function (element, event) {
+      var value = this.elementValue(element).replace(/^\s+/g, "");
+      $(element).val(value);
+    },
+    rules: {
+      couponName: {
+        required: true,
+      },
+      couponStartTime: {
+        required: true,
+      },
+      couponEndTime: {
+        required: true,
+      },
+      usageLimitation: {
+        required: true,
+      },
+      amountOrFold : {
+        required: true,
+      },
+      maxIssueQty : {
+        required: true,
+      },
+      couponContent: {
+        required: true,
+      }
+    },
+    messages: {
+      couponName : {
+        required : "必填"
+      }
+    }
+  })
+})
 //==========================顯示圖片=================================
 
 function getPicUrl(base64Str) {
