@@ -306,5 +306,24 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      const delay = ms => new Promise(res => setTimeout(res, ms));
+      const myRedirect = async () => {
+        let before_url = sessionStorage.getItem("URL_before_login");
+        if (! before_url) {
+          return;
+        }
+        var redeirect = document.createElement("h2");
+        redeirect.innerText = "即將導向至原始頁面"
+        document.querySelector("div.blog__hero__text h2").insertAdjacentElement("afterend", redeirect);
+        await delay(3000);
+        // console.log("Waited 3s");
+        // console.log(before_url);
+        sessionStorage.removeItem("URL_before_login");
+        // await delay(5000);
+        window.location.href = before_url;
+      };
+      myRedirect();
+    </script>
   </body>
 </html>
