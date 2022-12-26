@@ -180,28 +180,43 @@
       </div>
       <div class="class__form" id="reserve_checkText">
         <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <p><i class="fa-solid fa-phone fa-xl"></i></p>
-            <p><span id="r_tel"></span></p>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="row">
+              <div class="col-6 col-md-6 col-sm-6">
+                <p><i class="fa-solid fa-phone fa-xl"></i></p>
+                <p>
+                  <i class="fa-solid fa-person fa-2xl"></i><i class="fa-solid fa-person-dress fa-2xl"></i>
+                </p>
+              </div>
+              <div class="col-6 col-md-6 col-sm-6">
+                <p><span id="r_tel"></span></p>
+                <p><span id="r_people"></span></p>
+              </div>
+            </div>
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <p>
-              <i class="fa-solid fa-person fa-2xl"></i><i class="fa-solid fa-person-dress fa-2xl"></i>
-            </p>
-            <p><span id="r_people"></span></p>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="row">
+              <div class="col-6 col-md-6 col-sm-6">
+                <p><i class="fa-solid fa-calendar-days fa-xl"></i></p>
+                <p><i class="fa-solid fa-clock fa-xl"></i></p>
+              </div>
+              <div class="col-6 col-md-6 col-sm-6">
+                <p><span id="r_date"></span></p>
+                <p><span id="r_time"></span></p>
+              </div>
+            </div>
+
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <p><i class="fa-solid fa-calendar-days fa-xl"></i></p>
-            <p><span id="r_date"></span></p>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <p><i class="fa-solid fa-clock fa-xl"></i></p>
-            <p><span id="r_time"></span></p>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <p id="r_remark" style="word-wrap: break-word"><i class="fa-solid fa-clipboard fa-xl"></i> 備註：</p>
           </div>
         </div>
         <div id="reserveConfirm_inf">
           <p>
-            若訂位資訊無誤，請按下<span>保留訂位</span>。座位將為您保留<span>10分鐘</span>，逾時取消不另行通知。訂位成功後，會發送訊息至會員設定的<span>e-mail</span>中，請留意信件消息。
+            若訂位資訊無誤，請按下<span>保留訂位</span>。座位將為您保留<span>10分鐘</span>，逾時取消不另行通知。
+          </p>
+          <p>
+            訂位成功後，會發送訊息至會員設定的<span>e-mail</span>中，請留意信件消息。
           </p>
           <button type="submit" class="site-btn col-lg-6 col-md-6 col-sm-6" id="btn_confirm">
             保留訂位
@@ -215,29 +230,6 @@
   </section>
   <!-- Class Section End -->
 
-  <!-- Map Begin -->
-  <div class="map">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-7">
-          <div class="map__inner">
-            <h6>餐廳名稱</h6>
-            <ul>
-              <li>1000 Lakepoint Dr, Frisco, CO 80443, USA</li>
-              <li>Sweetcake@support.com</li>
-              <li>+1 800-786-1000</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="map__iframe">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10784.188505644011!2d19.053119335158936!3d47.48899529453826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1543907528304"
-        height="300" style="border: 0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-    </div>
-  </div>
-  <!-- Map End -->
 
   <!-- Footer Section Begin -->
   <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">

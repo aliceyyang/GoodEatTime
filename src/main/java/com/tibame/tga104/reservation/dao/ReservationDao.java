@@ -1,5 +1,6 @@
 package com.tibame.tga104.reservation.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.tibame.tga104.reservation.vo.MemberReserveInfVO;
@@ -15,6 +16,8 @@ public interface ReservationDao {
 	
 	public boolean updateStatus(Integer reserveNo, String reserveStatus);
 	
+	public boolean changeStatus(Integer restaurantNo, Date reserveDate, String reserveStatus);
+	
 	public ReservationVO update(ReservationVO reservationVO);
 	
 	public ReservationVO findByPrimaryKey(Integer reserveNo);
@@ -27,6 +30,6 @@ public interface ReservationDao {
 	
 	public List<ReservationDetailVO> findByRestaurantNoAndDate(Integer restaurantNo, java.sql.Date reserveDate);
 	
-	public List<RestaurantReservationInfVO> findbyResveDate(Integer restaurantNo, java.sql.Date reserveDate);
+	public List<RestaurantReservationInfVO> findByRersveDate(Integer restaurantNo, java.util.Date reserveDate);
 	
 }
