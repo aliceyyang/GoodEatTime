@@ -304,6 +304,7 @@
                     class="form-control"
                     required="required"
                     maxlength="10"
+                    placeholder="請輸入電話格式"
                   />
                     
                     
@@ -334,6 +335,7 @@
                         type="mail"
                         class="form-control"
                         required="required"
+                        placeholder="請輸入E-mail格式"
                       />
                       <label id="mailPattern" style="float: right;color: #f66767;"></label>
                 </div>
@@ -658,7 +660,7 @@
               restaurantTel.style.border = "none";
             
             }else{
-              telPattern.innerHTML = "<span>*電話號碼格式錯誤</span>"
+              telPattern.innerHTML = "<span>*請輸入正確的電話格式，02xxxxxxxx</span>"
                 console.log(restaurantTel.value);
                 restaurantTel.style.border = "2px solid #F6D0C0";
                 success = false;
@@ -726,6 +728,12 @@ restaurantAccount.addEventListener("blur", () => {
         return;
       }
 
+      // //密碼及確認密碼需相同
+      // if(restaurantPassword != checkpassword){
+      //   Swal.fire('密碼及確認密碼需相同');
+      //   success = false;
+      //   return;
+      // }
         
 
         if(success) {

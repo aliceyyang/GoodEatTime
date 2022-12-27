@@ -107,11 +107,27 @@
 
 */
 var cartList;
-fetch("../cart/allDetail")
-  .then((r) => r.json())
-  .then((data) => {
+fetch("../cart/allDetail", {redirect: "follow"})
+  .then((r) => {
+    if(r.redirected) {
+      Swal.fire({ // sweet alert CDN
+        position: "center",
+        icon: "warning",
+        title: "請先登入",
+        showConfirmButton: false,
+        timer: 1000,
+      }).then(()=>{ // 動畫跑完後跳轉
+        sessionStorage.setItem("URL_before_login", window.location.href);
+        window.location.href = r.url;
+      });
+    } else {
+      return r.json();
+    }
+  })
+  // .then((r) => r.json())
+  ?.then((data) => { // 沒跳轉的話繼續執行後方程式碼
     cartList = data;
-    // console.log(data);
+    // console.log(cartList);
     $("div.shopping__cart__table").children().remove();
     $.each(cartList, (index, restaurant) => {
       let table_html = `<table>
@@ -263,8 +279,24 @@ $(function () {
       method: "PATCH",
       body: JSON.stringify(update),
       headers: { "content-type": "application/json" },
+      redirect: "follow"
     })
-      .then((r) => r.json())
+      .then((r) => {
+        if(r.redirected) {
+          Swal.fire({ // sweet alert CDN
+            position: "center",
+            icon: "warning",
+            title: "請先登入",
+            showConfirmButton: false,
+            timer: 1000,
+          }).then(()=>{ // 動畫跑完後跳轉
+            sessionStorage.setItem("URL_before_login", window.location.href);
+            window.location.href = r.url;
+          });
+        } else {
+          return r.json();
+        }
+      })
       .then((data) => {
         //   console.log(data);
       });
@@ -316,9 +348,25 @@ $(function () {
     fetch("../cart/delete", {
       method: "DELETE",
       body: JSON.stringify(delete_item),
-      headers: { "content-type": "application/json" }
+      headers: { "content-type": "application/json" },
+      redirect: "follow"
     })
-      .then((r) => r.json())
+      .then((r) => {
+        if(r.redirected) {
+          Swal.fire({ // sweet alert CDN
+            position: "center",
+            icon: "warning",
+            title: "請先登入",
+            showConfirmButton: false,
+            timer: 1000,
+          }).then(()=>{ // 動畫跑完後跳轉
+            sessionStorage.setItem("URL_before_login", window.location.href);
+            window.location.href = r.url;
+          });
+        } else {
+          return r.json();
+        }
+      })
       .then((data) => {
         //   console.log(data);
       });

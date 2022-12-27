@@ -64,8 +64,10 @@ function changePage(page, data) {
       data[i].prodCommentQty == 0
         ? 0
         : (data[i].totalCommentRating / data[i].prodCommentQty) * 20;
-    let addCart = data[i].prodNo in shoppingCart ? "已在購物車" : "加入購物車";
-    let addCartClass = data[i].prodNo in shoppingCart ? "cart_add added" : "cart_add";
+    // let addCart = data[i].prodNo in shoppingCart ? "已在購物車" : "加入購物車";
+    let addCart = shoppingCart ? (data[i].prodNo in shoppingCart ? "已在購物車" : "加入購物車"): "加入購物車";
+    // let addCartClass = data[i].prodNo in shoppingCart ? "cart_add added" : "cart_add";
+    let addCartClass = shoppingCart ? (data[i].prodNo in shoppingCart ? "cart_add added" : "cart_add"): "cart_add";
     let product_html = `<div class="col-lg-3 col-md-6 col-sm-6">
          <div class="product__item">
            <div
@@ -206,9 +208,25 @@ $(function () {
     fetch("../cart/insert", {
       method: "POST",
       body: JSON.stringify(data),
-      headers: {'content-type': 'application/json'}
-    }).then((r) => r.json())
-    .then((data) => {
+      headers: {'content-type': 'application/json'},
+      redirect: "follow"
+    }).then((r) => {
+      if(r.redirected) {
+        Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: "請先登入",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(()=>{
+          sessionStorage.setItem("URL_before_login", window.location.href);
+          window.location.href = r.url;
+        });
+      } else {
+        return r.json();
+      }
+    })
+    ?.then((data) => {
       // console.log(data);
       $(this).closest("div").addClass("added");
       $(this).text("已在購物車");

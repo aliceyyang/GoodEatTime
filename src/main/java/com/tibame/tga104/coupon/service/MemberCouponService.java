@@ -8,7 +8,7 @@ public interface MemberCouponService {
 
 	MemberCouponVO updateusageStatus(Integer memberNo, Integer coupponNo);
 	
-	MemberCouponVO getOneMemberCoupon(Integer memberCouponVO, Integer couponNo);
+	List<MemberCouponVO> getCouponBymemberNo(Integer memberNo);
 	
 	List<MemberCouponVO> getAll();
 }

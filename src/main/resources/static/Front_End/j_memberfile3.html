@@ -189,8 +189,7 @@
                       <img class="login_icon" src="../member/getPic" /><a
                         class="login_text"
                         href="./j_signin_member.html"
-                        >登入</a
-                      >
+                      ></a>
                     </li>
                   </ul>
                 </div>
@@ -286,7 +285,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                   <div class="breadcrumb__links">
                     <a href="./index.html">Home</a>
-                    <span>Checkout</span>
+                    <a id="btnLogout">登出</a>
                   </div>
                 </div>
               </div>
@@ -338,11 +337,11 @@
                               type="password"
                               class="form-control"
                               id="memberPassword"
-                              placeholder="設定密碼格式:含英數至少六個字元"
+                              placeholder="請輸入密碼，長度須介於6~12字元"
                               pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$"
                               required="required"
                               oninput="setCustomValidity('');"
-                              oninvalid="setCustomValidity('請輸入正確的密碼格式:含英數至少六個字元');"
+                              oninvalid="setCustomValidity('密碼長度須介於6~12字元');"
                               minlength="6"
                               maxlength="12"
                             />
@@ -609,13 +608,30 @@
         return;
       });
 
-      fetch("/member/info")
-        .then((resp) => resp.json())
-        .then((memberVO) => {
+      fetch("/member/info", { redirect: "follow" })
+        .then((r) => {
+          if (r.redirected) {
+            Swal.fire({
+              position: "center",
+              icon: "warning",
+              title: "請先登入",
+              showConfirmButton: false,
+              timer: 1000,
+            }).then(() => {
+              sessionStorage.setItem("URL_before_login", window.location.href);
+              window.location.href = r.url;
+            });
+          } else {
+            return r.json();
+          }
+        })
+        // .then((resp) => resp.json())
+        ?.then((memberVO) => {
           name.value = memberVO.name;
           tel.value = memberVO.tel;
           memberPassword.value = memberVO.memberPassword;
         });
+      // nameTag.innerHTML = name;
 
       document.querySelector("button").addEventListener("click", () => {
         //========================按下click事件後逐項進行判斷=========================
@@ -654,6 +670,17 @@
               }
             });
         }
+      });
+      //登出
+      document.querySelector("#btnLogout").addEventListener("click", () => {
+        fetch("../member/logout")
+          .then((resp) => resp.json())
+          .then((body) => {
+            Swal.fire(body.message);
+            if (body.successful) {
+              location = "GoodEatTime.html";
+            }
+          });
       });
     </script>
   </body>

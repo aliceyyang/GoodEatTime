@@ -34,6 +34,8 @@ var prodData;
 var shoppingCart;
 var similarProdList;
 
+let orginal_qty;
+
 if (prodNo != null && prodNo > 0) {
   fetch(`../product/detail?prodNo=${prodNo}`)
     .then((r) => r.json())
@@ -106,10 +108,12 @@ if (prodNo != null && prodNo > 0) {
       // );
 
       // 若商品已在購物車
-      if (prodNo in data.shoppingCart) {
+      if (data.shoppingCart && prodNo in data.shoppingCart) {
         $("a.primary-btn").text("已在購物車");
         $("a.primary-btn").addClass("added");
         $("div.pro-qty input").val(`${data.shoppingCart[prodNo]}`);
+        orginal_qty = $("div.pro-qty input").val();
+        // console.log(orginal_qty);
         $("div.product__details__option").addClass("added");
       }
       // 類似產品放入頁面中
@@ -141,7 +145,7 @@ if (prodNo != null && prodNo > 0) {
         $(`#product_item_${index} .cart_add`).attr("data-prodNo", `${item.prodNo}`);
         
         // 若商品已在購物車
-        if (item.prodNo in shoppingCart) {
+        if (shoppingCart && item.prodNo in shoppingCart) {
           $(`#product_item_${index} .cart_add a`).text("已在購物車");
           $(`#product_item_${index} .cart_add`).addClass("added");
         }
@@ -225,15 +229,32 @@ $(function () {
     fetch("../cart/insert", {
       method: "POST",
       body: JSON.stringify(data),
-      headers: {'content-type': 'application/json'}
-    }).then((r) => r.json())
-    .then((data) => {
+      headers: {'content-type': 'application/json'},
+      redirect: "follow"
+    }).then((r) => {
+      if(r.redirected) {
+        Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: "請先登入",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(()=>{
+          sessionStorage.setItem("URL_before_login", window.location.href);
+          window.location.href = r.url;
+        });
+      } else {
+        return r.json();
+      }
+    })
+    ?.then((data) => {
       // console.log(data);
       $(this).closest("div").addClass("added");
       $(this).text("已在購物車");
     });
   });
 
+  
   // 主產品加入購物車功能
   $("a.primary-btn").on("click", function(e){
     e.preventDefault();
@@ -247,9 +268,25 @@ $(function () {
     fetch("../cart/insertQty", {
       method: "POST",
       body: JSON.stringify(data),
-      headers: {'content-type': 'application/json'}
-    }).then((r) => r.json())
-    .then((data) => {
+      headers: {'content-type': 'application/json'},
+      redirect: "follow"
+    }).then((r) => {
+      if(r.redirected) {
+        Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: "請先登入",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(()=>{
+          sessionStorage.setItem("URL_before_login", window.location.href);
+          window.location.href = r.url;
+        });
+      } else {
+        return r.json();
+      }
+    })
+    ?.then((data) => {
       // console.log(data);
       $(this).closest("div").addClass("added");
       $(this).text("已在購物車");
@@ -259,11 +296,21 @@ $(function () {
   // 已在購物車的話，停止操作
   $("div.product__details__option").on("click", function(e){
     if($(this).hasClass("added")) {
+      console.log($(this).find("input").val());
+      $(this).find("input").val(orginal_qty);
+      e.stopPropagation();
       $(this).find("input").attr("disabled", "true");
       $('.pro-qty').unbind();
       // console.log(e);
       // 報告: 完全沒有效果...
-      e.stopPropagation();
+    }
+  });
+
+  $("div.product__details__option").on("change", "div.pro-qty input", function(){
+    console.log("aaa");
+    if (!$("div.product__details__option").hasClass("added")) {
+      orginal_qty = $(this).val();
+      console.log(orginal_qty);
     }
   });
 

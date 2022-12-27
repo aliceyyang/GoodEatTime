@@ -599,7 +599,8 @@
 
       const restaurantAccount = document.querySelector("#restaurantAccount");
       const restaurantPassword = document.querySelector("#restaurantPassword ");
-      document.querySelector("button").addEventListener("click", () => {
+      document.querySelector(".site-btn").addEventListener("click", () => {
+        console.log("aaa");
         fetch("../restaurant/login", {
           method: "POST",
           headers: {
@@ -612,10 +613,13 @@
         })
           .then((resp) => resp.json())
           .then((body) => {
+            console.log(body);
+            let restaurantMemberVO = JSON.stringify(body);
+            sessionStorage.setItem("restaurantMemberVO", restaurantMemberVO);
             if (body.successful) {
               location = "j_welcome_login1.html";
             } else {
-              alert(body.message);
+              Swal.fire(body.message);
             }
           });
       });

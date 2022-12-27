@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Cake Template" />
+    <meta name="keywords" content="Cake, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RestaurantBackEnd | ProdInfo</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>請先登入會員</title>
 
     <!-- Google Font -->
     <link
@@ -29,61 +29,20 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
-    <link rel="stylesheet" href="css/reservation.css" type="text/css" />
-    <link
-      rel="stylesheet"
-      href="css/member_page_overview.css"
-      type="text/css"
-      />
-    <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
 
     <style>
-      .nice-select {
-        width: 80%;
-      }
-      #prodMainPic {
-    display: none;
+      .GoodEatTime {
+        width: 152px;
+        height: 52px;
       }
 
-      .prodPic {
-        width: 250px;
-        aspect-ratio: 16/9;
-        background: #ddd;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #aaa;
-        border: 2px dashed currentcolor;
-        cursor: pointer;
-        font-family: sans-serif;
-        transition: color 300ms ease-in-out, background 300ms ease-in-out;
-        outline: none;
-        overflow: hidden;
-      }
-
-      .prodPic:hover {
-        color: #777;
-        background: #ccc;
-      }
-
-      .prodPic:active {
-        border-color: turquoise;
-        color: turquoise;
-        background: #eee;
-      }
-
-      .prodPic:focus {
-        color: #777;
-        background: #ccc;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      }
-
-      .prodMainPic_image {
-        max-width: 100%;
+      /* 登入成功畫面的底色要死白，透明度調整 */
+      .blog__hero__text {
+        background: #ffffffac;
       }
     </style>
   </head>
+
   <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -106,12 +65,7 @@
         </div>
       </div>
       <div class="offcanvas__logo">
-        <a href="./GoodEatTime.html"
-          ><img
-            class="GoodEatTimelogo"
-            src="/img/GoodEatTime_smlogo.png"
-            alt=""
-        /></a>
+        <a href="./index.html"><img src="img/logo.png" alt="" /></a>
       </div>
       <div id="mobile-menu-wrap"></div>
       <div class="offcanvas__option">
@@ -138,7 +92,7 @@
     </div>
     <!-- Offcanvas Menu End -->
 
-    <!-- Header Section Begin -->
+    <!-- Header開始 -->
     <header class="header">
       <div class="header__top">
         <div class="container">
@@ -211,136 +165,42 @@
         </div>
       </div>
     </header>
-    <!-- Header Section End -->
+    <!-- Header結束 -->
 
-    <!-- Class Section Begin -->
-    <section class="class">
-      <!-- <div class="container"> -->
-      <div class="row" id="member">
-        <!-- <div class="col-lg-2" id="left"> -->
-        <div class="col-lg-2" id="left">
-          <nav class="header__menu mobile-menu" id="aaa">
-            <ul>
-              <li class=""><a href="http">餐廳會員首頁</a></li>
-              <li class=""><a href="http">餐廳資訊</a></li>
-              <li class=""><a href="http">訂單管理</a></li>
-              <li class=""><a href="http">訂位管理</a></li>
-              <li class=""><a href="http">評論管理</a></li>
-              <li class=""><a href="http">優惠券設定</a></li>
-              <li class=""><a href="http">商品管理</a></li>
-              <li class=""><a href="http">銷售報表</a></li>
-              <li class=""><a href="http">購買廣告</a></li>
-            </ul>
-          </nav>
-        </div>
-        <!-- 中間空白欄位 -->
-        <!-- 上排 -->
-        <div class="col-lg-10">
-          <div class="row">
-            <div class="col-1"></div>
-            <div class="col-10">
-              <div class="container">
-                <form action method="POST">
-                  <div class="row">
-                    <div class="col">
-                      <br>
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label for="prodName">商品名稱：</label>
-                            <input type="text" name="prodName" id="prodName" placeholder="此為必填欄位">
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label for="prodCategoryNo">商品類別：</label>
-                            <input type="text" name="prodCategoryNo" id="prodCategoryNo" placeholder="此為必填欄位">
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label for="prodStock">商品庫存：</label>
-                            <input type="text" name="prodStock" id="prodStock" placeholder="此為必填欄位">
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label for="prodPrice">商品價格：</label>
-                            <input type="text" name="prodPrice" id="prodPrice" placeholder="此為必填欄位">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <br>
-                      <div class="row">
-                        <div class="">
-                          <div class="form-group">
-                            <label for="prodDescription">商品說明：</label>
-                            <textarea name="prodDescription" id="prodDescription" cols="25" rows="5"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="">
-                          <div class="form-group">
-                            <label for="prodContent">商品規格：</label>
-                            <textarea name="prodContent" id="prodContent" cols="25" rows="5"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <br>
-                      <div class="row">
-                        <div class="form-group">
-                          <label class="prodMainPic_text">商品圖片：</label>
-                          <label class="prodPic" for="prodMainPic" tabIndex="0">
-                            <span class="prodMainPic_image"></span>
-                          </label>
-                          <input type="file" name="prodMainPic" id="prodMainPic">
-                        </div>
-                        <div class="col-lg-8 submit">
-                          <div class="form-group" style="align-items: center; display: grid;justify-content:right;">
-                            <input type="button" id="submit_btn" class="submit_btn" value="商品資料上傳">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
+    <!-- NONO畫面 開始 -->
+    <div class="blog-hero set-bg" data-setbg="img/blog/blog-4.jpg">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-7">
+            <div class="blog__hero__text">
+              <!-- <div class="label">name</div> -->
+              <h2>Oops!</h2>
+              <h2>請先登入會員</h2>
+              <ul>
+                <!-- <li><span>會員中心</span></li> -->
+                <li><a href="">首頁</a></li>
+                <li><a href="">會員登入</a></li>
+                <li><a href="">加入會員</a></li>
+                <!-- <li><a href="">商城</a></li> -->
+              </ul>
             </div>
-            <div class="col-1"></div>
           </div>
         </div>
-        </div>
       </div>
-    </section>
-
-    <!-- Class Section End -->
+    </div>
+    <!-- NONO畫面 結束 -->
 
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
       <div class="mask">
         <div class="container">
           <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="footer__member">
                 <h6>會員專區</h6>
                 <div class="footer__social">
                   <a href="#">登入會員<i></i></a>
-                  <a href="#">定位管理<i></i></a>
+                  <a href="#">訂位管理<i></i></a>
                   <br />
                   <a href="#">加入會員<i></i></a>
                   <a href="#">定位管理<i></i></a>
@@ -349,6 +209,8 @@
                   <a href="#">我的評論<i></i></a>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__restaurant">
                 <h6>餐廳</h6>
                 <div class="footer__social">
@@ -358,7 +220,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__shopping">
                 <h6>線上商城</h6>
                 <div class="footer__social">
@@ -368,7 +230,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__aboutus">
                 <h6>關於我們</h6>
                 <div class="footer__social">
@@ -377,6 +239,8 @@
                   <a href="#">履歷<i></i></a>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-3 col-md-9 col-sm-12">
               <div class="footer__widget">
                 <h6>好食光</h6>
                 <ul>
@@ -443,67 +307,5 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-    <!-- <script src="js/reservation.js"></script> -->
-    <!-- <script src="js/alice.js"></script> -->
-
-    <script> // 預覽圖片
-      const inputFile = document.querySelector("#prodMainPic");
-      const pictureImage = document.querySelector(".prodMainPic_image");
-      const pictureImageTxt = "可以選擇一張圖片";
-      pictureImage.innerHTML = pictureImageTxt;
-  
-      inputFile.addEventListener("change", function (e) {
-        const inputTarget = e.target;
-        const file = inputTarget.files[0];
-  
-        if (file) {
-          const reader = new FileReader();
-  
-          reader.addEventListener("load", function (e) {
-            const readerTarget = e.target;
-  
-            const img = document.createElement("img");
-            img.src = readerTarget.result;
-            img.classList.add("prodMainPic_image");
-  
-            pictureImage.innerHTML = "";
-            pictureImage.appendChild(img);
-          });
-  
-          reader.readAsDataURL(file);
-        } else {
-          pictureImage.innerHTML = pictureImageTxt;
-        }
-      }); 
-    </script>
-    <script> // POST
-      const URL = 'http://localhost:8080/product/addProdInfo';      
-      const submit_btn = document.getElementById("submit_btn");
-      submit_btn.addEventListener("click", function () {
-        let updateName = document.querySelector("#prodName").value;
-        let updateCategoryNo = parseInt(document.querySelector("#prodCategoryNo").value);
-        let updateStock = parseInt(document.querySelector("#prodStock").value);
-        let updatePrice = parseInt(document.querySelector("#prodPrice").value);
-        let updateDescription = document.querySelector("#prodDescription").value;
-        let updateContent = document.querySelector("#prodContent").value;
-        // let updateMainPic = document.querySelector("#prodMainPic")
-        // const submit_btn = document.querySelector("#submit_btn");
-          fetch(URL, {
-            method: "POST",
-            headers: { 'Content-type': 'application/json', },
-            body: JSON.stringify({
-              restaurantNo: 2,
-              prodName: updateName,
-              prodCategoryNo: updateCategoryNo,
-              prodStock: updateStock,
-              prodPrice: updatePrice,
-              prodDescription: updateDescription,
-              prodContent: updateContent
-            }),
-          })
-            .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
-            .then((data) => { console.log(data); alert('送交訂單成功'); location.reload(); })
-        })
-    </script>
   </body>
 </html>

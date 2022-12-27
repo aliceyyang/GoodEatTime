@@ -9,9 +9,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.tibame.tga104.restaurant.dao.LikedRestaurantDAO;
 import com.tibame.tga104.restaurant.vo.LikedRestaurantVO;
 
+@Repository
 public class LikedRestaurantDAOImpl implements LikedRestaurantDAO{
 	
 
@@ -37,7 +40,7 @@ public class LikedRestaurantDAOImpl implements LikedRestaurantDAO{
 
 	
 	@Override
-	public boolean delete(Integer memberNo,Integer restaurantNo) {
+	public boolean delete(LikedRestaurantVO likedRestaurantVO) {
 		int rowCount = 0;
 		String delete = "delete from likedRestaurant "
 				+ "where memberNo = ? and restaurantNo = ?";
@@ -45,8 +48,8 @@ public class LikedRestaurantDAOImpl implements LikedRestaurantDAO{
 		try(Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement ps = con.prepareStatement(delete)){
 			
-			ps.setInt(1,memberNo);
-			ps.setInt(2,restaurantNo);
+			ps.setInt(1,likedRestaurantVO.getMemberNo());
+			ps.setInt(2,likedRestaurantVO.getRestaurantNo());
 			rowCount = ps.executeUpdate();
 			
 		}catch(Exception e) {
@@ -64,7 +67,9 @@ public class LikedRestaurantDAOImpl implements LikedRestaurantDAO{
 		
 		try (Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement ps = con.prepareStatement(findByMemberNo);
-				ResultSet rs = ps.executeQuery()){
+			){
+			ps.setInt(1, memberNo);
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				LikedRestaurantVO vo = new LikedRestaurantVO();
 				vo.setMemberNo(rs.getInt(1));
