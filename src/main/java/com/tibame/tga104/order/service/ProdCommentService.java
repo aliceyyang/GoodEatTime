@@ -1,5 +1,6 @@
 package com.tibame.tga104.order.service;
 
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class ProdCommentService {
 	}
 	
 	public ProdOrderDetailVO updateProdCommnet(ProdOrderDetailVO prodOrderDetailVO) {
+		if (prodOrderDetailVO.getProdCommentPic() == null && prodOrderDetailVO.getProdCommentPicStr() != null) {
+			prodOrderDetailVO.setProdCommentPic(Base64.getDecoder().decode(prodOrderDetailVO.getProdCommentPicStr()));
+		}
 		return dao.updateCommnet(prodOrderDetailVO);
 	}
 	

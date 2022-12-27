@@ -1,5 +1,6 @@
 package com.tibame.tga104.order.service;
 
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class RestaurantCommmentService {
 	}
 	
 	public ReservationVO updateRestaurantComment(ReservationVO reservationVO){
+		if (reservationVO.getCommentPic() == null && reservationVO.getCommentPicStr() != null) {
+			reservationVO.setCommentPic(Base64.getDecoder().decode(reservationVO.getCommentPicStr()));
+		}
 		return dao.updateCommnet(reservationVO);
 	}
 	public ReservationVO replyRestaurantComment(ReservationVO reservationVO) {

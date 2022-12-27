@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 
@@ -43,6 +44,8 @@ public class ProdOrderDetailVO implements Serializable{
 		private String restaurantReply;
 		@Column(name="restaurantReplyTime")
 		private java.sql.Timestamp restaurantReplyTime;
+		@Transient
+		private String prodCommentPicStr;
 		
 		public ProdOrderDetailPK getId() {
 			return new ProdOrderDetailPK(prodOrderNo, prodNo);
@@ -54,11 +57,13 @@ public class ProdOrderDetailVO implements Serializable{
 		
 		@Override
 		public String toString() {
-			return "ProdOrderDetailVO [prodOrderNo=" + prodOrderNo + ", prodNo=" + prodNo
-					+ ", prodQty=" + prodQty + ", prodCommentRating=" + prodCommentRating + ", prodCommentContent="
-					+ prodCommentContent + ", prodCommentPic=" + Arrays.toString(prodCommentPic) + ", prodCommentTime="
-					+ prodCommentTime + ", restaurantReply=" + restaurantReply + ", restaurantReplyTime=" + restaurantReplyTime + "]";
+			return "ProdOrderDetailVO [prodOrderNo=" + prodOrderNo + ", prodNo=" + prodNo + ", prodQty=" + prodQty
+					+ ", prodCommentRating=" + prodCommentRating + ", prodCommentContent=" + prodCommentContent
+					+ ", prodCommentPic=" + Arrays.toString(prodCommentPic) + ", prodCommentTime=" + prodCommentTime
+					+ ", restaurantReply=" + restaurantReply + ", restaurantReplyTime=" + restaurantReplyTime
+					+ ", prodCommentPicStr=" + prodCommentPicStr + "]";
 		}
+		
 		public Integer getProdOrderNo() {
 			return prodOrderNo;
 		}
@@ -119,6 +124,13 @@ public class ProdOrderDetailVO implements Serializable{
 		public void setRestaurantReplyTime(java.sql.Timestamp restaurantReplyTime) {
 			this.restaurantReplyTime = restaurantReplyTime;
 		}
+		public String getProdCommentPicStr() {
+			return prodCommentPicStr;
+		}
+		public void setProdCommentPicStr(String prodCommentPicStr) {
+			this.prodCommentPicStr = prodCommentPicStr;
+		}
+		
 
 }
 

@@ -214,25 +214,29 @@
           style="background-color: #fdf3ea; margin: 15px; padding: 40px"
           >
             <div class="" style="background-color: #fdf3ea; margin: 2%">
-              <div class="" style="height: 90%; margin: 2%">
+              <div class="row">
                 <div class="row">
-
-                  <div class="col-3 d-flex justify-content-center align-items-center">
-                    <!-- <label for="commentFor" style="margin: 0 !important;"></label> -->
-                    <input type="submit" value="搜尋評論" />
-                  </div>
-                  <div class="col-9">
-                    <select name="commentFor" id="commentFor">
-                      <option value="餐廳評論">餐廳評論</option>
-                      <option value="商品評論">商品評論</option>
-                    </select>
-                </div>
-                <!-- <form action="http" method="post"></form> -->
-
+                  <form action method="POST">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px;">
+                      <div class="form-group">
+                        <label for="commentFor">請選擇評論對象：</label>
+                        <select required="true" name="commentFor" id="commentFor">
+                          <option>此為必填欄位</option>
+                          <option value="1">餐廳評論</option>
+                          <option value="2">商品評論</option>
+                        </select>
+                      </div>
+                      <div class="col-lg-8 submit">
+                        <div class="form-group" style="align-items: center; display: grid;justify-content:left;">
+                          <input type="button" id="submit_btn" class="submit_btn" value="搜尋評論">
+                        </div>
+                      </div>
+                    </div>
+                  </form>
                 </div>
                 <br>
                 <br>
-                <div>________________________________________________________________________________________________________________</div>
+                <div>_______________________________________________________________________________________________________________________</div>
                 <div class="product__details__tab">
                     <div class="col-lg-12">
                         <ul class="nav nav-tabs" role="tablist">
@@ -305,7 +309,7 @@
                                   </tbody>
                                 </table>
                               </div>
-                            <!-- <div class="tab-pane" id="tabs-2" role="tabpanel">
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="row d-flex justify-content-center">
                                     <div class="col-lg-10">
                                         <table class="commmentList">
@@ -337,7 +341,7 @@
                                           </table>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>

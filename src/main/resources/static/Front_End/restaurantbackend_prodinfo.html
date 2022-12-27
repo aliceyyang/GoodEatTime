@@ -254,10 +254,22 @@
                       </div>
                       <br>
                       <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px;">
                           <div class="form-group">
                             <label for="prodCategoryNo">商品類別：</label>
-                            <input type="text" name="prodCategoryNo" id="prodCategoryNo" placeholder="此為必填欄位">
+                            <select required="true" name="prodCategoryNo" id="prodCategoryNo">
+                              <option>此為必填欄位</option>
+                              <option value="1">日式料理</option>
+                              <option value="2">義式料理</option>
+                              <option value="3">中式料理</option>
+                              <option value="4">美式料理</option>
+                              <option value="5">法式料理</option>
+                              <option value="6">港式料理</option>
+                              <option value="7">泰式料理</option>
+                              <option value="8">台灣料理</option>
+                              <option value="9">創意料理</option>
+                              <option value="10">烘焙甜點</option>
+                            </select>
                           </div>
                         </div>
                       </div>
@@ -308,7 +320,7 @@
                           <label class="prodPic" for="prodMainPic" tabIndex="0">
                             <span class="prodMainPic_image"></span>
                           </label>
-                          <input type="file" name="prodMainPic" id="prodMainPic">
+                          <input type="file" name="prodMainPic" id="prodMainPic" multiple accept="image/*">
                         </div>
                         <div class="col-lg-8 submit">
                           <div class="form-group" style="align-items: center; display: grid;justify-content:right;">
@@ -486,8 +498,10 @@
         let updatePrice = parseInt(document.querySelector("#prodPrice").value);
         let updateDescription = document.querySelector("#prodDescription").value;
         let updateContent = document.querySelector("#prodContent").value;
-        // let updateMainPic = document.querySelector("#prodMainPic")
-        // const submit_btn = document.querySelector("#submit_btn");
+        
+        const fileReader = new FileReader();
+        fileReader.onload = (event) => {
+          let updateProdMainPicStr = btoa(event.target.result);
           fetch(URL, {
             method: "POST",
             headers: { 'Content-type': 'application/json', },
@@ -498,11 +512,14 @@
               prodStock: updateStock,
               prodPrice: updatePrice,
               prodDescription: updateDescription,
-              prodContent: updateContent
+              prodContent: updateContent,
+              prodMainPicStr: updateProdMainPicStr
             }),
           })
             .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
             .then((data) => { console.log(data); alert('送交訂單成功'); location.reload(); })
+        }
+        fileReader.readAsBinaryString(inputFile.files[0]);
         })
     </script>
   </body>
