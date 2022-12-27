@@ -30,13 +30,14 @@ fetch("../order/receiver")
         showConfirmButton: false,
         timer: 1000,
       }).then(() => {
+        sessionStorage.setItem("URL_before_login", window.location.href);
         window.location.href = r.url;
       });
     }
     // console.log("有被執行嗎? ->有耶...");
     return r.json();
   })
-  .then((r) => r.json())
+  // .then((r) => r.json())
   .then((data) => {
     memberVO = data;
     console.log(memberVO);
@@ -283,7 +284,7 @@ $(function () {
       $(this).siblings().append(error_message);
       return;
     }
-    let pattern = /^0|^11|^12/;
+    let pattern = /^0[123456789]|^1[012]/;
     if (!pattern.test($(this).val().split(" / ").join(""))) {
       $(this).removeClass("check_ok");
       let error_message = "<span class='error_message'>&emsp;格式錯誤</span>";
@@ -462,7 +463,7 @@ $(function () {
           return r.json();
         }
       })
-      .then((data) => {
+      ?.then((data) => {
         if (data.message == "Insert Success") {
           Swal.fire({
             position: "center",
