@@ -1,34 +1,18 @@
-var tbcoupon_detail = document.querySelector("#tbcoupon_detail");
-var tbcoupon_update = document.querySelector("#tbcoupon_update");
-var tbcoupon_insert = document.querySelector("#tbcoupon_insert");
-
-function update(couponNo) {
-  sessionStorage.setItem("couponNo", couponNo);
-  location.href = "coupon_RESupdate.html";
-}
-function insert() {
-  //要從前一頁取得餐廳編號 暫時寫死
-  sessionStorage.setItem("restaurantNo", 1)
-  location.href = "coupon_RESinsert.html";
-}
 //===========================dataTable================================
 
 $(document).ready(function() {
   $("#coupon_detail").DataTable({
-    ajax:"../coupon/Manage",
-    type: "GET",
-    stateSave: true,
-    stateDuration: -1,
-    dataType: "json",
+      ajax:  "../coupon_member/coupon",
+      type: "POST",
+      ajax : "../coupon/Manage",
+      type: "GET",
+      
     columns: [
       {
-        data: "couponNo",
+        data: "couponNo"
       },
       {
         data: "couponName"
-      },
-      {
-        data: "couponApplyDate"
       },
       {
         data: "couponStartTime"
@@ -40,12 +24,6 @@ $(document).ready(function() {
         data: "couponContent"
       },
       {
-        data: "usageLimitation"
-      },
-      {
-        data: "amountOrFold"
-      },
-      {
         data: "couponType",
         render: function(data) {
           var couponType = data;
@@ -55,12 +33,6 @@ $(document).ready(function() {
             return "打折"
           }
         }
-      },
-      {
-        data: "maxIssueQty"
-      },
-      {
-        data: "issuedQty"
       },
       {
         data: "couponPicStr",
@@ -78,14 +50,6 @@ $(document).ready(function() {
           }
           return`<img src="${couponPicStr ? getPicUrl(couponPicStr) : ""}">`
         }
-      },
-      {
-        targets:-1,
-        data: "couponNo",
-        render: function(data, type, row) {
-          var couponNo = data;
-          return`<button type="button" id="updatebtn" onclick="update(${couponNo})">修改</button>`
-        },
       },
     ],
     language: {

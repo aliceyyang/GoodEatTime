@@ -19,27 +19,25 @@ public class OrderController {
 	private ProdOrderService prodOrderService;
 	
 	@GetMapping("receiver")
-	public MemberVO receiver (@SessionAttribute(name="memberVO", required=false)MemberVO memberVO) {
-		MemberVO vo = new MemberVO();
-		if (memberVO != null) {
-			vo.setMemberNo(memberVO.getMemberNo());
-			vo.setMail(memberVO.getMail());
-			vo.setTel(memberVO.getTel());
-			vo.setName(memberVO.getName());
+	public MemberVO receiver (@SessionAttribute(name="memberVO")MemberVO memberVO) {
+		if (memberVO == null) {
+			return null;
 		}
+		MemberVO vo = new MemberVO();
+		vo.setMemberNo(memberVO.getMemberNo());
+		vo.setMail(memberVO.getMail());
+		vo.setTel(memberVO.getTel());
+		vo.setName(memberVO.getName());
 		return vo;
 	}
 	
 	@PostMapping("insert")
 	public OrderInsertWrapper insert(@SessionAttribute(name="memberVO", required=false)MemberVO memberVO, 
 			@RequestBody OrderInsertWrapper order) {
-		Integer memberNo = null;
-		if (memberVO != null) {
-			memberNo = memberVO.getMemberNo();
+		if (memberVO == null || memberVO.getMemberNo() == null) {
+			return null;
 		}
-		System.out.println("memberNo="+memberNo);
-		// 目前memberNo還是先寫死
-//		memberNo = 5;
+		Integer memberNo = memberVO.getMemberNo();
 		order.getProdOrderVO().setMemberNo(memberNo);
 		OrderInsertWrapper result = prodOrderService.insert(order);
 		if (result == null) {

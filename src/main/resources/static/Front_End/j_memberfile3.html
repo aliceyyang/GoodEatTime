@@ -189,7 +189,6 @@
                       <img class="login_icon" src="../member/getPic" /><a
                         class="login_text"
                         href="./j_signin_member.html"
-                        id="nameTag"
                       ></a>
                     </li>
                   </ul>
@@ -609,9 +608,25 @@
         return;
       });
 
-      fetch("/member/info")
-        .then((resp) => resp.json())
-        .then((memberVO) => {
+      fetch("/member/info", { redirect: "follow" })
+        .then((r) => {
+          if (r.redirected) {
+            Swal.fire({
+              position: "center",
+              icon: "warning",
+              title: "請先登入",
+              showConfirmButton: false,
+              timer: 1000,
+            }).then(() => {
+              sessionStorage.setItem("URL_before_login", window.location.href);
+              window.location.href = r.url;
+            });
+          } else {
+            return r.json();
+          }
+        })
+        // .then((resp) => resp.json())
+        ?.then((memberVO) => {
           name.value = memberVO.name;
           tel.value = memberVO.tel;
           memberPassword.value = memberVO.memberPassword;

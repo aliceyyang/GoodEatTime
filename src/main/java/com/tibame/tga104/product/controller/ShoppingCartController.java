@@ -31,42 +31,36 @@ public class ShoppingCartController {
 	@GetMapping("all")
 	public Map<Integer, Integer> showAll(HttpSession session) {
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-		Integer memberNo = null;
-		if (memberVO != null) {
-			memberNo = memberVO.getMemberNo();
+		if (memberVO == null || memberVO.getMemberNo() == null) {
+			return null;
 		}
-		System.out.println("memberNo="+memberNo);
-		// 目前memberNo還是先寫死
-		return shoppingCartService.findByMemberNo(5);
+		Integer memberNo = memberVO.getMemberNo();
+		return shoppingCartService.findByMemberNo(memberNo);
 	}
 	
 	@GetMapping("allDetail")
 	public Collection<ShoppingCartWrapper> showAllDetail(HttpSession session) {
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-		Integer memberNo = null;
-		if (memberVO != null) {
-			memberNo = memberVO.getMemberNo();
+		if (memberVO == null || memberVO.getMemberNo() == null) {
+			return null;
 		}
-		System.out.println("memberNo="+memberNo);
-		// 目前memberNo還是先寫死
-		return shoppingCartService.convert(shoppingCartService.findByMemberNo(5));
+		Integer memberNo = memberVO.getMemberNo();
+		return shoppingCartService.convert(shoppingCartService.findByMemberNo(memberNo));
 	}
 	
 	@PostMapping("insert")
 	public Map<String, String> insert(@SessionAttribute(name="memberVO", required=false)MemberVO memberVO,
 			@RequestBody Map<String, Integer> prodNo) {
-		Integer memberNo = null;
-		if (memberVO != null) {
-			memberNo = memberVO.getMemberNo();
+		if (memberVO == null || memberVO.getMemberNo() == null) {
+			return null;
 		}
-		System.out.println("memberNo="+memberNo);
-		// 目前memberNo還是先寫死
+		Integer memberNo = memberVO.getMemberNo();
 		if (prodNo == null || prodNo.get("prodNo") == null) {
 			return null;
 		}
 		
 		ShoppingCartVO vo = new ShoppingCartVO();
-		vo.setMemberNo(5);
+		vo.setMemberNo(memberNo);
 		vo.setProdNo(prodNo.get("prodNo"));
 		vo.setProdQty(1);
 		
@@ -83,17 +77,15 @@ public class ShoppingCartController {
 	@PostMapping("insertQty")
 	public Map<String, String> insertQty(@SessionAttribute(name="memberVO", required=false)MemberVO memberVO,
 			@RequestBody Map<String, Integer> prod) {
-		Integer memberNo = null;
-		if (memberVO != null) {
-			memberNo = memberVO.getMemberNo();
+		if (memberVO == null || memberVO.getMemberNo() == null) {
+			return null;
 		}
-		System.out.println("memberNo="+memberNo);
-		// 目前memberNo還是先寫死
+		Integer memberNo = memberVO.getMemberNo();
 		if (prod == null || prod.get("prodNo") == null || prod.get("prodQty") == null) {
 			return null;
 		}
 		ShoppingCartVO vo = new ShoppingCartVO();
-		vo.setMemberNo(5);
+		vo.setMemberNo(memberNo);
 		vo.setProdNo(prod.get("prodNo"));
 		vo.setProdQty(prod.get("prodQty"));
 		
@@ -110,17 +102,15 @@ public class ShoppingCartController {
 	@PatchMapping("update")
 	public Map<String, String> update(@SessionAttribute(name="memberVO", required=false)MemberVO memberVO,
 			@RequestBody Map<String, Integer> prod) {
-		Integer memberNo = null;
-		if (memberVO != null) {
-			memberNo = memberVO.getMemberNo();
+		if (memberVO == null || memberVO.getMemberNo() == null) {
+			return null;
 		}
-		System.out.println("memberNo="+memberNo);
-		// 目前memberNo還是先寫死
+		Integer memberNo = memberVO.getMemberNo();
 		if (prod == null || prod.get("prodNo") == null || prod.get("prodQty") == null) {
 			return null;
 		}
 		ShoppingCartVO vo = new ShoppingCartVO();
-		vo.setMemberNo(5);
+		vo.setMemberNo(memberNo);
 		vo.setProdNo(prod.get("prodNo"));
 		vo.setProdQty(prod.get("prodQty"));
 		
@@ -137,17 +127,13 @@ public class ShoppingCartController {
 	@DeleteMapping("delete")
 	public Map<String, String> delete(@SessionAttribute(name="memberVO", required=false)MemberVO memberVO,
 			@RequestBody Map<String, Integer> prodNo) {
-		Integer memberNo = null;
-		if (memberVO != null) {
-			memberNo = memberVO.getMemberNo();
+		if (memberVO == null || memberVO.getMemberNo() == null) {
+			return null;
 		}
-		System.out.println("memberNo="+memberNo);
-		// 目前memberNo還是先寫死
+		Integer memberNo = memberVO.getMemberNo();
 		if (prodNo == null || prodNo.get("prodNo") == null) {
 			return null;
 		}
-		
-		memberNo = 5;
 		
 		Map<String, String> result = new HashMap<>();
 		if (shoppingCartService.delete(memberNo, prodNo.get("prodNo"))) {
