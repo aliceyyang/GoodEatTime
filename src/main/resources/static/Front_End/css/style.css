@@ -25,6 +25,15 @@
 10.  Footer Style
 -------------------------------------------------------------------*/
 /*----------------------------------------*/
+/*跑馬燈
+/*----------------------------------------*/
+#marquee {
+  background-color: #f08632;
+  width: 70%;
+  font-size: 25px;
+}
+
+/*----------------------------------------*/
 /* 會員專區左側欄
 /*----------------------------------------*/
 #left {
@@ -261,7 +270,6 @@ ol {
   z-index: 999;
 }
 
-
 .spacial-controls .search-switch {
   display: block;
   height: 100%;
@@ -309,7 +317,7 @@ ol {
   cursor: pointer;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
+  transform: rotate(45deg);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -324,7 +332,6 @@ ol {
 .row {
   display: flex;
   flex-wrap: wrap;
-  
 }
 .col {
   min-height: 50vh;
@@ -335,14 +342,14 @@ ol {
 
 @for $i from 1 through 12 {
   .col-#{$i} {
-    flex-grow:0;
-    flex-basis: calc(-30px + 100% *#{$i}* 1/12);
+    flex-grow: 0;
+    flex-basis: calc(-30px + 100% *#{$i}* 1 / 12);
   }
 }
 /*---------------------
   Header
 -----------------------*/
-.login_icon{
+.login_icon {
   position: relative;
   width: 40px;
   height: 40px;
@@ -364,14 +371,13 @@ ol {
 }
 
 .header__top__left {
-  
   left: 225px;
   position: absolute;
   margin-left: 30px;
   margin-right: 10px;
 }
 .header__top__left ul {
-  float:left;
+  float: left;
   left: -50%;
   position: relative;
 }
@@ -434,14 +440,14 @@ ol {
   color: #888888;
 }
 
-.goodeattime_logo{
+.goodeattime_logo {
   position: relative;
   margin-right: 20px;
-  width: auto; 
+  width: auto;
   height: 72px;
 }
 .header__logo {
-  position:absolute;
+  position: absolute;
   right: 80%;
   top: 25px;
   margin-right: 60px;
@@ -449,7 +455,7 @@ ol {
 .header__logo a {
   display: inline-block;
   /* @家銘更新 */
-  width: 144.32px; 
+  width: 144.32px;
   height: 72px;
   margin-top: -10px;
 }
@@ -511,9 +517,6 @@ ol {
 .header__top__right__cart .cart__price span {
   color: #111111;
 }
-
-
-
 
 .header__menu {
   text-align: center;
@@ -596,8 +599,8 @@ ol {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   justify-items: center;
 }
 
@@ -712,8 +715,8 @@ ol {
   border-color: transparent #f08632 #f08632 transparent;
   content: "";
   -webkit-transform: rotate(-135deg);
-      -ms-transform: rotate(-135deg);
-          transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  transform: rotate(-135deg);
   opacity: 0;
   -webkit-transition: all, 0.3s;
   -o-transition: all, 0.3s;
@@ -822,11 +825,11 @@ ol {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   position: absolute;
   right: 0;
   top: -50px;
@@ -909,7 +912,6 @@ ol {
  testimonial__slider
 -----------------------*/
 .testimonial__slider {
-
   padding-top: 90px;
   padding-bottom: 70px;
 }
@@ -938,7 +940,6 @@ ol {
 .testimonial__item {
   background: #ffffff;
   position: relative;
-  
 }
 .testimonial__item .rating {
   position: absolute;
@@ -994,7 +995,6 @@ ol {
   width: 100%;
 }
 
-
 .main .btn {
   position: absolute;
   left: 90%;
@@ -1012,7 +1012,7 @@ ol {
   height: 15px;
 }
 .main .news span {
-  border: 1mm ridge #F08632;
+  border: 1mm ridge #f08632;
   color: #000000;
   font-size: 20px;
   font-weight: 600;
@@ -1033,7 +1033,7 @@ ol {
   padding-top: 90px;
 }
 .main .section-title {
-  border: 1mm ridge #F08632;
+  border: 1mm ridge #f08632;
   margin-bottom: 10px;
 }
 .instagram__text h5 {
@@ -1067,7 +1067,6 @@ ol {
   margin-bottom: 0;
 }
 
-
 /*---------------------
   Map
 -----------------------*/
@@ -1095,7 +1094,7 @@ ol {
   text-align: center;
   background: #ffffff;
   -webkit-box-shadow: 0 0 10px rgba(223, 223, 224, 0.7);
-          box-shadow: 0 0 10px rgba(223, 223, 224, 0.7);
+  box-shadow: 0 0 10px rgba(223, 223, 224, 0.7);
   padding: 30px 25px 25px;
   position: relative;
 }
@@ -1109,8 +1108,8 @@ ol {
   background: #ffffff;
   content: "";
   -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-          transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
   margin: 0 auto;
 }
 .map__inner h6 {
@@ -1170,7 +1169,7 @@ ol {
   padding: 6px 10px 4px;
   border-radius: 2px;
   -webkit-box-shadow: 0 0 10px rgba(223, 223, 224, 0.7);
-          box-shadow: 0 0 10px rgba(223, 223, 224, 0.7);
+  box-shadow: 0 0 10px rgba(223, 223, 224, 0.7);
   -webkit-transition: all, 0.5s;
   -o-transition: all, 0.5s;
   transition: all, 0.5s;
@@ -1221,11 +1220,10 @@ ol {
   Footer
 -----------------------*/
 
-
 .footer {
   position: relative;
 }
-.mask{
+.mask {
   /*@家銘調整*/
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.608);
@@ -1244,7 +1242,7 @@ ol {
 }
 .footer__widget:after {
   position: absolute;
-  right:110%;
+  right: 110%;
   top: 0;
   width: 1px;
   height: 200px;
@@ -1252,7 +1250,7 @@ ol {
   content: "";
 }
 .footer__widget h6 {
-  font-size:30px;
+  font-size: 30px;
   color: #ffffff;
   font-weight: 600;
   text-transform: uppercase;
@@ -1264,7 +1262,7 @@ ol {
   color: #a4a4a4;
   line-height: 36px;
 }
-.footer__member{
+.footer__member {
   position: relative;
   display: grid;
   justify-content: center;
@@ -1274,11 +1272,10 @@ ol {
   color: rgba(22, 22, 22, 0.5);
   min-height: 15vh;
   transition: 0.5s all ease;
-
 }
 .footer__member:after {
   position: absolute;
-  right:110%;
+  right: 110%;
   top: 0;
   width: 1px;
   height: 200px;
@@ -1290,7 +1287,7 @@ ol {
   font-weight: 600;
   margin-bottom: 22px;
 }
- .footer__member .footer__social a {
+.footer__member .footer__social a {
   display: inline-block;
   color: #ffffff;
   /* @家銘取消背景色 */
@@ -1306,7 +1303,7 @@ ol {
 .footer__member .footer__social a:last-child {
   margin-right: 0;
 }
-.footer__restaurant{
+.footer__restaurant {
   position: relative;
   display: grid;
   justify-content: center;
@@ -1316,11 +1313,10 @@ ol {
   color: rgba(22, 22, 22, 0.5);
   min-height: 15vh;
   transition: 0.5s all ease;
- 
 }
 .footer__restaurant:after {
   position: absolute;
-  right:110%;
+  right: 110%;
   top: 0;
   width: 1px;
   height: 200px;
@@ -1332,7 +1328,7 @@ ol {
   font-weight: 600;
   margin-bottom: 22px;
 }
- .footer__restaurant .footer__social a {
+.footer__restaurant .footer__social a {
   display: inline-block;
   color: #ffffff;
   /* @家銘取消背景色 */
@@ -1349,7 +1345,7 @@ ol {
   margin-right: 0;
 }
 
-.footer__shopping{
+.footer__shopping {
   position: relative;
   display: grid;
   justify-content: center;
@@ -1359,11 +1355,10 @@ ol {
   color: rgba(22, 22, 22, 0.5);
   min-height: 15vh;
   transition: 0.5s all ease;
- 
 }
 .footer__shopping:after {
   position: absolute;
-  right:110%;
+  right: 110%;
   top: 0;
   width: 1px;
   height: 200px;
@@ -1375,7 +1370,7 @@ ol {
   font-weight: 600;
   margin-bottom: 22px;
 }
- .footer__shopping .footer__social a {
+.footer__shopping .footer__social a {
   display: inline-block;
   color: #ffffff;
   /* @家銘取消背景色 */
@@ -1389,7 +1384,7 @@ ol {
   margin-bottom: 10px;
 }
 
-.footer__aboutus{
+.footer__aboutus {
   position: relative;
   display: grid;
   justify-content: center;
@@ -1399,7 +1394,6 @@ ol {
   color: rgba(22, 22, 22, 0.5);
   min-height: 15vh;
   transition: 0.5s all ease;
- 
 }
 .footer__aboutus:after {
   position: absolute;
@@ -1415,7 +1409,7 @@ ol {
   font-weight: 600;
   margin-bottom: 22px;
 }
- .footer__aboutus .footer__social a {
+.footer__aboutus .footer__social a {
   display: inline-block;
   color: #ffffff;
   /* @家銘取消背景色 */
@@ -1593,7 +1587,7 @@ ol {
   position: relative;
   margin-bottom: 20px;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   -moz-box-shadow: inset 1px 4px 9px -6px rgba(0, 0, 0, 0.5);
 }
 .about__bar .about__bar__item .barfiller .tip {
@@ -1614,11 +1608,11 @@ ol {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   margin-bottom: 90px;
 }
 .about__video .play-btn {
@@ -1929,8 +1923,8 @@ ol {
 .product__details__tab .nav-tabs {
   border-bottom: 1px solid #e1e1e1;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 .product__details__tab .nav-tabs .nav-item {
   margin-right: 45px;
@@ -2021,22 +2015,44 @@ ol {
 .shopping__cart__table table tbody tr td.product__cart__item {
   width: 400px;
 }
-.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__pic {
+.shopping__cart__table
+  table
+  tbody
+  tr
+  td.product__cart__item
+  .product__cart__item__pic {
   float: left;
   margin-right: 30px;
 }
-.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__text {
+.shopping__cart__table
+  table
+  tbody
+  tr
+  td.product__cart__item
+  .product__cart__item__text {
   overflow: hidden;
   padding-top: 21px;
 }
-.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__text h6 {
+.shopping__cart__table
+  table
+  tbody
+  tr
+  td.product__cart__item
+  .product__cart__item__text
+  h6 {
   color: #111111;
   font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
   margin-bottom: 10px;
 }
-.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__text h5 {
+.shopping__cart__table
+  table
+  tbody
+  tr
+  td.product__cart__item
+  .product__cart__item__text
+  h5 {
   color: #111111;
   font-weight: 600;
   font-size: 16px;
@@ -2047,7 +2063,14 @@ ol {
 .shopping__cart__table table tbody tr td.quantity__item .quantity .pro-qty {
   width: 90px;
 }
-.shopping__cart__table table tbody tr td.quantity__item .quantity .pro-qty input {
+.shopping__cart__table
+  table
+  tbody
+  tr
+  td.quantity__item
+  .quantity
+  .pro-qty
+  input {
   width: 65px;
   border: none;
   text-align: center;
@@ -2055,7 +2078,14 @@ ol {
   font-size: 16px;
   font-weight: 500;
 }
-.shopping__cart__table table tbody tr td.quantity__item .quantity .pro-qty .qtybtn {
+.shopping__cart__table
+  table
+  tbody
+  tr
+  td.quantity__item
+  .quantity
+  .pro-qty
+  .qtybtn {
   font-size: 16px;
   color: #888888;
   width: 10px;
@@ -2411,15 +2441,31 @@ ol {
 .wishlist__cart__table table tbody tr td.product__cart__item {
   width: 540px;
 }
-.wishlist__cart__table table tbody tr td.product__cart__item .product__cart__item__pic {
+.wishlist__cart__table
+  table
+  tbody
+  tr
+  td.product__cart__item
+  .product__cart__item__pic {
   float: left;
   margin-right: 30px;
 }
-.wishlist__cart__table table tbody tr td.product__cart__item .product__cart__item__text {
+.wishlist__cart__table
+  table
+  tbody
+  tr
+  td.product__cart__item
+  .product__cart__item__text {
   overflow: hidden;
   padding-top: 35px;
 }
-.wishlist__cart__table table tbody tr td.product__cart__item .product__cart__item__text h6 {
+.wishlist__cart__table
+  table
+  tbody
+  tr
+  td.product__cart__item
+  .product__cart__item__text
+  h6 {
   color: #111111;
   font-size: 16px;
   font-weight: 600;
@@ -2889,11 +2935,11 @@ ol {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   height: 640px;
 }
 
@@ -2981,7 +3027,13 @@ ol {
   background: #ff0000;
 }
 .blog__details__share a.instagram {
-  background: -webkit-gradient(linear, left top, right top, from(#af00e1), to(#ff9e35));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#af00e1),
+    to(#ff9e35)
+  );
   background: -o-linear-gradient(left, #af00e1, #ff9e35);
   background: linear-gradient(to right, #af00e1, #ff9e35);
 }
@@ -3280,7 +3332,9 @@ ol {
 .blog__details__comment__item__text .blog__details__comment__btns a:last-child {
   margin-right: 0;
 }
-.blog__details__comment__item__text .blog__details__comment__btns a:last-child:after {
+.blog__details__comment__item__text
+  .blog__details__comment__btns
+  a:last-child:after {
   display: none;
 }
 
@@ -3423,7 +3477,12 @@ ol {
     right: 0px;
   }
 
-  .shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__text {
+  .shopping__cart__table
+    table
+    tbody
+    tr
+    td.product__cart__item
+    .product__cart__item__text {
     padding-top: 10px;
   }
 
@@ -3439,7 +3498,7 @@ ol {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   /* @家銘新增 */
   .header__logo {
-    margin-right: 20px
+    margin-right: 20px;
   }
   .header__menu ul li a {
     padding: 20px 28px 18px;
@@ -3676,7 +3735,7 @@ ol {
   }
 
   .slicknav_nav .slicknav_row,
-.slicknav_nav a {
+  .slicknav_nav a {
     padding: 7px 0;
     margin: 0;
     color: #111111;
@@ -3952,7 +4011,12 @@ ol {
     left: 5px;
   }
 
-  .shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__pic {
+  .shopping__cart__table
+    table
+    tbody
+    tr
+    td.product__cart__item
+    .product__cart__item__pic {
     float: none;
     margin-right: 0;
   }
@@ -3973,7 +4037,12 @@ ol {
     overflow-x: auto;
   }
 
-  .wishlist__cart__table table tbody tr td.product__cart__item .product__cart__item__pic {
+  .wishlist__cart__table
+    table
+    tbody
+    tr
+    td.product__cart__item
+    .product__cart__item__pic {
     float: none;
     margin-right: 0;
   }
@@ -4156,8 +4225,8 @@ ol {
 /* Small Device = 320px */
 @media only screen and (max-width: 479px) {
   .section-title h2,
-.blog__hero__text h2,
-.blog__item__text h2 {
+  .blog__hero__text h2,
+  .blog__item__text h2 {
     font-size: 28px;
     line-height: normal;
   }
