@@ -20,4 +20,6 @@ public interface CouponDao {
 	
 	public CouponVO insertByRestaurantNo(Integer restaurantNo);
 	
+	public List<CouponVO> getAllCouponPic();
+	
 }

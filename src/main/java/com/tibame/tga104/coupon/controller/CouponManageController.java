@@ -48,4 +48,13 @@ public class CouponManageController extends HttpServlet {
 //		req.setAttribute("list", list);
 //		req.getRequestDispatcher("coupon_restaurant.html").forward(req, resp);
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		List<CouponVO> list = svc.getAllcouponPic();
+		System.out.println(list);
+		resp.setContentType("application/json; charset=UTF-8");
+		resp.getWriter().write(gson.toJson(list));
+
+	}
 }

@@ -20,4 +20,5 @@ public interface CouponService {
 	
 	CouponVO insertByRestaurantNo(Integer restaurantNo);
 	
+	List<CouponVO> getAllcouponPic();
 }
