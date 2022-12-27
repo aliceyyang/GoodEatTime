@@ -20,11 +20,8 @@ public class MemberCouponServiceImpl implements MemberCouponService{
 	
 
 	@Override
-	public MemberCouponVO updateusageStatus(Integer memberNo, Integer couponNo) {
-		MemberCouponVO vo = new MemberCouponVO();
-		vo.setUsageStatus(vo.getUsageStatus());
-		dao.update(vo);
-		return vo;
+	public MemberCouponVO addOneCoupon(Integer couponNo) {
+		return dao.insert(null);
 	}
 
 	@Override
