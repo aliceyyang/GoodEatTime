@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -61,6 +62,10 @@ public class ReservationVO {
 	@Column(name = "restaurantReTime")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone= "GMT+8")
 	private java.sql.Timestamp restaurantReTime;
+	
+	@Transient
+    private String commentPicStr;
+
 
 	public ReservationVO() {
 
@@ -188,4 +193,11 @@ public class ReservationVO {
 		this.restaurantReTime = restaurantReTime;
 	}
 
+	public String getCommentPicStr() {
+		return commentPicStr;
+	}
+	
+	public void setCommentPicStr(String commentPicStr) {
+		this.commentPicStr = commentPicStr;
+	}
 }
