@@ -2,47 +2,33 @@ package com.tibame.tga104.coupon.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
-import com.tibame.tga104.common.connection.HibernateUtil;
 import com.tibame.tga104.coupon.dao.MemberCouponDAO;
 import com.tibame.tga104.coupon.vo.MemberCouponVO;
 
 @Repository
 public class MemberCouponDAOHibernate implements MemberCouponDAO {
-	private SessionFactory sessionFactory;
-
-	public MemberCouponDAOHibernate() {
-		super();
-		this.sessionFactory = sessionFactory;
-	}
+	@PersistenceContext
+	private Session	session;
 
 	public Session getSession() {
-		return sessionFactory.getCurrentSession();
+		return this.session;
 	}
 
 	@Override
-	public MemberCouponVO selectByMemberNo(Integer memberNo) {
-		if (memberNo != null) {
-			return this.getSession().get(MemberCouponVO.class, memberNo);
-		}
-		return null;
-	}
-
-	@Override
-	public MemberCouponVO insert(MemberCouponVO memberCouponVO) {
-		if (memberCouponVO != null && memberCouponVO.getMemberNo() == null) {
-			MemberCouponVO temp = this.getSession().get(MemberCouponVO.class, memberCouponVO);
+	public MemberCouponVO insert(Integer couponNo) {
+		if (couponNo != null) {
+			MemberCouponVO temp = this.getSession().get(MemberCouponVO.class, couponNo);
 			if (temp == null) {
-				this.getSession().save(memberCouponVO);
+				this.getSession().save(temp);
 				return temp;
 			}
 		}
@@ -92,6 +78,18 @@ public class MemberCouponDAOHibernate implements MemberCouponDAO {
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public List<MemberCouponVO> selectAllCouponByMemberNo(Integer memberNo) {
+		if (memberNo != null) {
+			String hql = "from MemberCouponVO where memberNo = : memberNo";
+			List<MemberCouponVO> result = this.getSession().createQuery(hql , MemberCouponVO.class).setParameter("memberNo", memberNo).list();
+//			System.out.println(result);
+			return result;
+//			return (List<MemberCouponVO>) this.getSession().get(MemberCouponVO.class, memberNo);
+		}
+		return null;
 	}
 
 }

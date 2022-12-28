@@ -208,7 +208,8 @@ $(function () {
     fetch("../cart/insert", {
       method: "POST",
       body: JSON.stringify(data),
-      headers: {'content-type': 'application/json'}
+      headers: {'content-type': 'application/json'},
+      redirect: "follow"
     }).then((r) => {
       if(r.redirected) {
         Swal.fire({
@@ -225,7 +226,7 @@ $(function () {
         return r.json();
       }
     })
-    .then((data) => {
+    ?.then((data) => {
       // console.log(data);
       $(this).closest("div").addClass("added");
       $(this).text("已在購物車");

@@ -92,4 +92,18 @@ public class CouponServiceImpl implements CouponService {
 		return couponVO;
 	}
 
+
+	@Override
+	public List<CouponVO> getAllcouponPic() {
+		List<CouponVO> list = dao.getAllCouponPic();
+		for (CouponVO vo : list) {
+			final byte[] couponPic = vo.getCouponPic();
+			if (couponPic != null && couponPic.length != 0) {
+				vo.setCouponPicStr(Base64.getEncoder().encodeToString(couponPic));
+				vo.setCouponPic(null);
+			}
+		}
+		return list;
+	}
+
 }
