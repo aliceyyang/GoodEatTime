@@ -567,9 +567,6 @@
     <script src="js/main.js"></script>
 
     <script>
-      // 驗證姓名不可為空
-      let success = true;
-
       // checkEye密碼切換遮蔽顯示
       $("#checkEye").click(function () {
         if ($(this).hasClass("fa-eye-slash")) {
@@ -632,7 +629,7 @@
         const checkpassword = recheckpw.value;
         //判斷確認密碼不可為空
         //判斷密碼及確認密碼需相同
-        if (password.length > 0 && password == checkpassword) {
+        if (password === checkpassword) {
           recheckpwPattern.innerHTML = "";
           recheckpw.style.border = "none";
           // if (memberPassword !== checkpassword) {
@@ -643,7 +640,6 @@
           recheckpw.style.border = "2px solid #F6D0C0";
           success = false;
         }
-        console.log("password_check" + success);
         return;
       });
 
@@ -723,15 +719,14 @@
 
       document.querySelector("#submitBtn").addEventListener("click", () => {
         //========================按下click事件後逐項進行判斷=========================
-
+        let success = true;
         // 驗證姓名不可為空
         if (!name) {
           Swal.fire("姓名需輸入");
           success = false;
-          console.log("aaa");
           return;
         }
-        console.log("submit" + success);
+
         // if(success){}
 
         const file = memberPic.files[0];
