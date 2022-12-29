@@ -175,9 +175,9 @@
                 <span>Good Eat Time</span>
                 <br />
                 <h2 class="">餐廳訂位評論</h2>
-                <h2>4.5</h2>
+                <h2 id="comment_avg">4.5</h2>
               </div>
-              <h3>共6則評論</h3>
+              <h3 id="comment_sum">共6則評論</h3>
             </div>
           </div>
           <div class="col-lg-6 col-md-6">
@@ -192,7 +192,7 @@
                 </p>
                 <div id="bar1" class="barfiller">
                   <div class="tipWrap"><span class="tip"></span></div>
-                  <span class="fill" data-percentage="95"></span>
+                  <span class="fill" data-percentage=""></span>
                 </div>
               </div>
               <div class="about__bar__item">
@@ -204,7 +204,7 @@
                 </p>
                 <div id="bar2" class="barfiller">
                   <div class="tipWrap"><span class="tip"></span></div>
-                  <span class="fill" data-percentage="80"></span>
+                  <span class="fill" data-percentage=""></span>
                 </div>
               </div>
               <div class="about__bar__item">
@@ -215,7 +215,7 @@
                 </p>
                 <div id="bar3" class="barfiller">
                   <div class="tipWrap"><span class="tip"></span></div>
-                  <span class="fill" data-percentage="50"></span>
+                  <span class="fill" data-percentage=""></span>
                 </div>
               </div>
               <div class="about__bar__item">
@@ -225,14 +225,14 @@
                 </p>
                 <div id="bar4" class="barfiller">
                   <div class="tipWrap"><span class="tip"></span></div>
-                  <span class="fill" data-percentage="20"></span>
+                  <span class="fill" data-percentage=""></span>
                 </div>
               </div>
               <div class="about__bar__item">
                 <p>1 <i class="fa-solid fa-star" color="orange"></i></p>
                 <div id="bar5" class="barfiller">
                   <div class="tipWrap"><span class="tip"></span></div>
-                  <span class="fill" data-percentage="30"></span>
+                  <span class="fill" data-percentage=""></span>
                 </div>
               </div>
             </div>
@@ -243,14 +243,15 @@
     <!-- About Section End -->
     <hr />
     <!-- Testimonial Section Begin -->
-    <div class="col-lg-6 comment">
+    <div id="all_comment"></div>
+    <!-- <div class="col-lg-6 comment">
       <div class="testimonial__item">
         <div class="testimonial__author">
           <div class="testimonial__author__pic">
-            <img src="img/testimonial/ta-1.jpg" alt="" />
+            <img class="member_pic" src="img/testimonial/ta-1.jpg" alt="" />
           </div>
           <div class="testimonial__author__text">
-            <h5>會員名稱</h5>
+            <h5 class="member_name">會員名稱</h5>
             <span class="restaurantCommentTime">2022-12-25</span>
           </div>
         </div>
@@ -267,14 +268,14 @@
             ><img src="img/restaurant/starbucks/comment.jpg"
           /></a>
         </div>
-        <p>
+        <p class="comment_content">
           餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容餐廳評價內容
         </p>
         <hr />
         <div class="restaurant_resp">
           <h5>業主回應</h5>
           <span class="restaurantReTime">2022-12-26</span>
-          <p>
+          <p class="restaurantRe">
             業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容業主回應內容
           </p>
         </div>
@@ -352,7 +353,7 @@
         </p>
         <hr />
       </div>
-    </div>
+    </div> -->
 
     <!-- Testimonial Section End -->
 
@@ -472,17 +473,17 @@
     <!-- Search End -->
 
     <!-- Js Plugins -->
+    <script src="js/restaurant_comment.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.barfiller.js"></script>
+    <!-- <script src="js/jquery.barfiller.js"></script> -->
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
     <script src="js/backtop.js"></script>
-    <script src="js/restaurant_comment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
   </body>
