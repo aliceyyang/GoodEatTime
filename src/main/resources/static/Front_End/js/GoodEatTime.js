@@ -14,7 +14,12 @@ $.ajax({
   }
 });
 
-
+$(".btn").on("click", ()=>{
+  const searchText = document.querySelector(".main_serch").value;
+  // console.log(searchText)
+  sessionStorage.setItem("searchText", searchText);
+  location.href="/Front_End/Search.html";
+})  
 
 
 function getcoupon(e) {
