@@ -14,6 +14,25 @@ $.ajax({
   }
 });
 
+
+
+
+function getcoupon(e) {
+  let couponNo = parseInt(e.target.dataset.couponNo);
+  // alert(couponNo);
+  $.ajax({
+    url: "../coupon_member/getCoupon",
+    type: "POST",
+    dataType: "json",
+    contentType: "application/json",
+    data: JSON.stringify({
+      "couponNo" : couponNo
+    }),
+    success: function (resp) {
+      alert(resp.successful ? '成功' : '已使用');
+    },
+   })
+}
 // function showPic(list) {
 //   for(let obj of list) {
 //     const picUrl = getPicUrl(obj.couponPicStr);
