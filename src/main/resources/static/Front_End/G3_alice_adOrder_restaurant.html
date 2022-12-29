@@ -8,7 +8,7 @@
   <meta name="keywords" content="Cake, unica, creative, html" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Restaurant | AdOrders</title>
+  <title>好食光 | 廣告管理</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
@@ -29,12 +29,19 @@
   <link rel="stylesheet" href="css/style.css" type="text/css" />
   <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
   <!-- <link rel="stylesheet" href="css/reservation.css" type="text/css" /> -->
-  <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" /> -->
   <!-- <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
 </head>
 <style>
   .nice-select {
     width: 80%;
+  }
+
+  /* ===餐廳後台消息通知跑馬燈=== */
+  #marquee {
+    background-color: #F08632;
+    width: 70%;
+    font-size: 25px;
   }
 </style>
 
@@ -124,22 +131,13 @@
         <div class="col-lg-12">
           <nav class="header__menu mobile-menu">
             <ul>
-              <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-              <li><a href="./about.html">會員專區</a></li>
-              <li><a href="./shop.html">餐廳</a></li>
-              <li><a href="./blog.html">線上商城</a></li>
-              <li>
-                <a href="#">關於我們</a>
-                <ul class="dropdown">
-                  <li><a href="./shop-details.html">Shop Details</a></li>
-                  <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                  <li><a href="./checkout.html">Check Out</a></li>
-                  <li><a href="./wisslist.html">Wisslist</a></li>
-                  <li><a href="./Class.html">Class</a></li>
-                  <li><a href="./blog-details.html">Blog Details</a></li>
-                </ul>
-              </li>
-              <li><a href="./contact.html">地點搜尋</a></li>
+              <!-- ===餐廳後台消息通知跑馬燈=== -->
+              <div class=" marquee text-white">
+                <marquee id="marquee" scrollamount="8" direction="left">
+                  [好食光重要通知]防詐騙提醒!近來有不肖業者偽冒好食光客服，蓄意詐騙錢財、竊取資料，請餐飲業者們先聯繫好食光平台查證哦!
+                </marquee>
+              </div>
+              <!-- ===餐廳後台消息通知跑馬燈=== -->
             </ul>
           </nav>
         </div>
@@ -171,12 +169,12 @@
       </div>
       <div class="col-lg-10" style="background-color:white;height:auto;">
         <div class="row-col-12"
-          style="align-items:center; display: grid;justify-content:left;height:10%; margin-top: 20px;margin-left: 5px;">
+          style="align-items:center; display: grid;justify-content:left;height:auto; margin-top: 20px;margin-left: 5px;">
           <!-- 餐廳身分 -> 看不到審核備註內容、在尚未審核通過前可以修改 "開始日期" 和 "更新圖片" 、 2. boolean為null的問題 -> solution可改成刪除嗎? -->
           <input type="search" class="membership_search" data-table="userNo-table" placeholder="輸入欲查詢之資料"
             style="width: 200px; padding:7px; border-radius: 8px; box-shadow: 5px 5px 2px #FFD382;">
         </div>
-        <div class="table-responsive" style="margin-top:20px">
+        <div class="table-responsive" style="margin-top:20px; height:auto;">
           <table class="userNo-table table" width="100%" style="table-layout:fixed; align-items: center;">
             <!-- <caption>1. 設定可修改狀態，連動到後端update DB<br>2. 綁定click事件更動編輯紐為確認 -> 餐廳僅可修改開始時間和編輯圖片<br>4. 消滅表格第七欄底線</caption> -->
             <thead align="center" valign="center">
@@ -366,7 +364,7 @@
   <script src="js/main.js"></script>
   <!-- <script src="js/reservation.js"></script> -->
   <!-- <script src="js/alice.js"></script> -->
-  <script src="js/alice_admin2_membership_management_page.js"></script>
+  <!-- <script src="js/alice_admin2_membership_management_page.js"></script> -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 

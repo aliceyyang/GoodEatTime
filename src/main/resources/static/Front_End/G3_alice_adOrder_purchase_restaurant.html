@@ -7,7 +7,7 @@
   <meta name="keywords" content="Cake, unica, creative, html" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Restaurant | AdOrder </title>
+  <title>好食光 | 廣告購買 </title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
@@ -28,11 +28,18 @@
   <link rel="stylesheet" href="css/style.css" type="text/css" />
   <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
   <!-- <link rel="stylesheet" href="css/reservation.css" type="text/css" /> -->
-  <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" /> -->
   <!-- <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
 </head>
 <style>
-  /*預覽圖CSS*/
+  /* ===餐廳後台消息通知跑馬燈=== */
+  #marquee {
+    background-color: #F08632;
+    width: 70%;
+    font-size: 25px;
+  }
+
+  /* 預覽圖CSS */
   .nice-select {
     width: 100%;
   }
@@ -165,22 +172,13 @@
         <div class="col-lg-12">
           <nav class="header__menu mobile-menu">
             <ul>
-              <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-              <li><a href="./about.html">會員專區</a></li>
-              <li><a href="./shop.html">餐廳</a></li>
-              <li><a href="./blog.html">線上商城</a></li>
-              <li>
-                <a href="#">關於我們</a>
-                <ul class="dropdown">
-                  <li><a href="./shop-details.html">Shop Details</a></li>
-                  <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                  <li><a href="./checkout.html">Check Out</a></li>
-                  <li><a href="./wisslist.html">Wisslist</a></li>
-                  <li><a href="./Class.html">Class</a></li>
-                  <li><a href="./blog-details.html">Blog Details</a></li>
-                </ul>
-              </li>
-              <li><a href="./contact.html">地點搜尋</a></li>
+              <!-- ===餐廳後台消息通知跑馬燈=== -->
+              <div class=" marquee text-white">
+                <marquee id="marquee" scrollamount="8" direction="left">
+                  [好食光重要通知]防詐騙提醒!近來有不肖業者偽冒好食光客服，蓄意詐騙錢財、竊取資料，請餐飲業者們先聯繫好食光平台查證哦!
+                </marquee>
+              </div>
+              <!-- ===餐廳後台消息通知跑馬燈=== -->
             </ul>
           </nav>
         </div>
@@ -248,7 +246,7 @@
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
                           <label for="ad_start" class="profile_details_text">廣告開始時間</label>
-                          <input class="form-control" type="date" id="ad_start" name="ad-start" value="" required>
+                          <input class="form-control" type="date" id="datePickerId" name="ad-start" value="" required>
                         </div>
                       </div>
                     </div>
@@ -423,6 +421,7 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- <script src="js/reservation.js"></script> -->
   <!-- <script src="js/alice.js"></script> -->
   <script> // 預覽圖片
@@ -458,11 +457,13 @@
   </script>
   <script> // 連動日期至方案
     // get start date
-    const startDate = document.getElementById("ad_start");
+    const startDate = document.getElementById("datePickerId");
     // get end date
     const endDate = document.getElementById("ad_end");
     // get select item
     const purchase = document.querySelector("#purchase_period");
+    // set limited (MIN) date 
+    datePickerId.min = new Date().toISOString().split("T")[0];
 
 
     // init
@@ -944,7 +945,7 @@
     const submit_btn = document.querySelector("#submit_btn");
 
     img.onchange = (e) => {
-      let ad_start = (document.querySelector("#ad_start").value + ' 00:00:00');
+      let ad_start = (document.querySelector("#datePickerId").value + ' 00:00:00');
       let ad_end = (document.querySelector("#ad_end").value + ' 00:00:00');
       let total_ad_amount = parseInt(document.querySelector("#total_ad_amount").value);
 
@@ -965,7 +966,22 @@
             }),
           })
             .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
-            .then((data) => { console.log(data); alert('送交訂單成功'); location.reload(); })
+            .then((data) => {
+              console.log(data);
+              swal("送交訂單成功，即將跳轉訂單頁面", "", "success");
+              setTimeout(function () {
+                // location.reload();
+                window.location.replace("http://localhost:8080/Front_End/G3_alice_adOrder_restaurant.html");
+                // window.location.replace = ("http://localhost:8080/Front_End/G3_alice_adOrder_restaurant.html");
+              }, 2500);
+
+
+
+
+
+
+              // alert('送交訂單成功'); location.reload();
+            })
         }
       }
     }

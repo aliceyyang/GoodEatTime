@@ -287,4 +287,26 @@ public class CouponDaoImpl implements CouponDao {
 			}
 			return vo;
 	}
+
+	@Override
+	public List<CouponVO> getAllCouponPic() {
+	try (Connection con = DriverManager.getConnection(URL,USER,PASSWORD);
+			PreparedStatement ps = con.prepareStatement("SELECT couponPic ,couponNo FROM GoodEatTime.coupon;")){
+		
+		try (ResultSet rs = ps.executeQuery()) {
+			List<CouponVO> list = new ArrayList<CouponVO>();
+			while (rs.next()) {
+				CouponVO vo = new CouponVO();
+				vo.setCouponPic(rs.getBytes("couponPic"));
+				vo.setCouponNo(rs.getInt("couponNo"));
+				
+				list.add(vo);
+			}
+			return list;
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return null;
+	}
 }

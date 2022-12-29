@@ -356,10 +356,12 @@
                 <ul class="member_m03">
                   <li class="li_right">
                     還不是會員?
-                    <a href="./j_registration.html" target="_blank">加入會員</a>
+                    <a href="./j_registration_member3.html" target="_blank"
+                      >加入會員</a
+                    >
                   </li>
                   <li class="li_left">
-                    <a href="./j_forgetpassword.html">忘記密碼</a>
+                    <a href="./j_forgetpassword_member3.html">忘記密碼</a>
                   </li>
                 </ul>
               </div>
@@ -618,30 +620,41 @@
 
       const mail = document.querySelector("#mail");
       const memberPassword = document.querySelector("#memberPassword");
+      const validText = document.querySelector("#validText");
+      const result = document.querySelector("#result");
 
       document.querySelector("#send").addEventListener("click", () => {
-        fetch("../member/login", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            mail: mail.value,
-            memberPassword: memberPassword.value,
-          }),
-        })
-          .then((resp) => resp.json())
-          .then((body) => {
-            // console.log(body);
-            let memberVO = JSON.stringify(body);
-            sessionStorage.setItem("memberVO", memberVO);
-            if (body.successful) {
-              location = "j_welcome_login1.html";
-            } else {
-              Swal.fire(body.message);
-              // alert(body.message);
-            }
-          });
+        //判定驗證碼輸入是否正確
+        if (mail.value == null) {
+          Swal.fire("請輸入帳號密碼");
+        } else if (memberPassword.value == null) {
+          Swal.fire("請輸入帳號密碼");
+        } else if (validText != result) {
+          Swal.fire("請輸入正確的驗證碼");
+        } else {
+          fetch("../member/login", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              mail: mail.value,
+              memberPassword: memberPassword.value,
+            }),
+          })
+            .then((resp) => resp.json())
+            .then((body) => {
+              // console.log(body);
+              let memberVO = JSON.stringify(body);
+              sessionStorage.setItem("memberVO", memberVO);
+              if (body.successful) {
+                location = "j_welcome_login1.html";
+              } else {
+                Swal.fire(body.message);
+                // alert(body.message);
+              }
+            });
+        }
       });
     </script>
   </body>
