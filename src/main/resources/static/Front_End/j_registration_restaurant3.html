@@ -728,12 +728,12 @@ restaurantAccount.addEventListener("blur", () => {
         return;
       }
 
-      // //密碼及確認密碼需相同
-      // if(restaurantPassword != checkpassword){
-      //   Swal.fire('密碼及確認密碼需相同');
-      //   success = false;
-      //   return;
-      // }
+      //密碼及確認密碼需相同
+      if(restaurantPassword.value != recheckpw.value){
+        Swal.fire('密碼及確認密碼需相同');
+        success = false;
+        return;
+      }
         
 
         if(success) {
@@ -754,7 +754,7 @@ restaurantAccount.addEventListener("blur", () => {
                 .then((resp) => resp.json())
                 .then((body) => {
                   if(body.successful){
-                    location = 'j_welcome_regis1.html';
+                    location = 'j_welcome_restaurantRegis.html';
                   }else{
                     Swal.fire(body.message);
                   }
