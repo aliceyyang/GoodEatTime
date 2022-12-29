@@ -80,11 +80,11 @@ $("#reserveTime").on("change", () => {
     console.log(send_data.reserveTime);
 
     document.querySelector(".time_error").innerHTML = "";
-    document.querySelector("#reserveTime").style.border = "none";
+    document.querySelector(".nice-select").style.border = "none";
   } else {
     // alert("請輸入想要訂位時段");
     document.querySelector(".time_error").innerHTML = "請輸入想要訂位時段";
-    document.querySelector("#reserveTime").style.border = "2px solid #F6D0C0";
+    document.querySelector(".nice-select").style.border = "2px solid #F6D0C0";
   }
 });
 
@@ -99,11 +99,11 @@ document.querySelector("#reserveNum").addEventListener("click", () => {
       document.querySelector(".date_error").innerHTML = "請輸入想要訂位日期";
       document.querySelector("#reserveDate").style.border = "2px solid #F6D0C0";
       document.querySelector(".time_error").innerHTML = "請輸入想要訂位時段";
-      document.querySelector("#reserveTime").style.border = "2px solid #F6D0C0";
+      document.querySelector(".nice-select").style.border = "2px solid #F6D0C0";
     } else if (!time) {
       console.log("2");
       document.querySelector(".time_error").innerHTML = "請輸入想要訂位時段";
-      document.querySelector("#reserveTime").style.border = "2px solid #F6D0C0";
+      document.querySelector(".nice-select").style.border = "2px solid #F6D0C0";
     } else {
       console.log("4");
       document.querySelector(".date_error").innerHTML = "請輸入想要訂位日期";
@@ -160,6 +160,22 @@ function checkReserveNum(num) {
 $("#btn_reserve").on("click", function (e) {
   e.preventDefault();
 
+  if (
+    !send_data.reserveDate &&
+    !send_data.reserveTime &&
+    !send_data.reserveNum
+  ) {
+    console.log("b");
+    document.querySelector(".date_error").innerHTML = "請輸入想要訂位日期";
+    document.querySelector("#reserveDate").style.border = "2px solid #F6D0C0";
+    document.querySelector(".time_error").innerHTML = "請輸入想要訂位時段";
+    document.querySelector(".nice-select").style.border = "2px solid #F6D0C0";
+    document.querySelector(".num_error").innerHTML = "請輸入想要訂位人數";
+    document.querySelector("#reserveNum").style.border = "2px solid #F6D0C0";
+    document.querySelector(".num_error").style.marginLeft = "40px";
+    return;
+  }
+
   if (!send_data.reserveDate) {
     console.log("b");
     document.querySelector(".date_error").innerHTML = "請輸入想要訂位日期";
@@ -170,7 +186,7 @@ $("#btn_reserve").on("click", function (e) {
   if (!send_data.reserveTime) {
     console.log("a");
     document.querySelector(".time_error").innerHTML = "請輸入想要訂位時段";
-    document.querySelector("#reserveTime").style.border = "2px solid #F6D0C0";
+    document.querySelector(".nice-select").style.border = "2px solid #F6D0C0";
     return;
   }
 
@@ -184,6 +200,7 @@ $("#btn_reserve").on("click", function (e) {
     } else {
       document.querySelector(".num_error").innerHTML = "請輸入想要訂位人數";
       document.querySelector("#reserveNum").style.border = "2px solid #F6D0C0";
+      document.querySelector(".num_error").style.marginLeft = "40px";
       return;
     }
   }

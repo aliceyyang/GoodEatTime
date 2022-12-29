@@ -33,7 +33,7 @@ public class MailService {
 	private final static String AUTH = "true";
 	private final static String PORT = "587";
 	private final static String STARTTLE_ENABLE = "true";
-	private final static String SENDER = "goodeattimeG3@gmail.com";//這裡是先寫死的唷
+	private final static String SENDER = "goodeattimeG3@gmail.com";
 	private final static String PASSWORD = "htawyhztrsbkzmsn";
 	
 //  設定傳送郵件:至收信人的Email信箱,Email主旨,Email內容
@@ -111,13 +111,13 @@ public class MailService {
 		}
 	}
 
-	public static void main(String args[]) throws FileNotFoundException {
-		String to = "cindy5832@gmail.com";
-		String subject = "密碼通知";
-		String ch_name = "David";
-		String passRandom = "111";
-		String messageText = "Hello! " + ch_name + " 請謹記此密碼: " + passRandom + "\n" + " (已經啟用)";
-		sendMail(to, subject, messageText);
-	}
+//	public static void main(String args[]) throws FileNotFoundException {
+//		String to = "ithan0117@gmail.com";
+//		String subject = "密碼通知";
+//		String ch_name = "David";
+//		String passRandom = "111";
+//		String messageText = "Hello! " + ch_name + " 請謹記此密碼: " + passRandom + "\n" + " (已經啟用)";
+//		sendMail(to, subject, messageText);
+//	}
 
 }

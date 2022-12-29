@@ -38,6 +38,9 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <style>
+      .checkout__input_eye input {
+        margin-bottom: 0px;
+      }
       .GoodEatTime {
         width: 152px;
         height: 52px;
@@ -75,47 +78,64 @@
       #checkEye {
         font-size: 20px;
         position: absolute;
-        /* bottom: 420px;
-        right: 30px; */
+        bottom: 37px;
+        right: 20px;
       }
 
       /* recheckEye位置 */
       #recheckEye {
         font-size: 20px;
         position: absolute;
-        /* bottom: 285px;
-        right: 30px; */
+        bottom: 37px;
+        right: 20px;
       }
 
       /* 因為Form拉掉，用div包，命div class為form */
-      .class__form .form input {
+      .checkout__input_eye {
+        margin-bottom: 6px;
+      }
+      .checkout__input_eye p {
+        color: #444444;
+        font-weight: 500;
+        margin-bottom: 12px;
+      }
+      .checkout__input_eye p span {
+        color: #f08632;
+      }
+      .checkout__input_eye input {
         height: 50px;
         width: 100%;
+        border: 1px solid #e1e1e1;
+        font-size: 14px;
+        color: #666666;
         padding-left: 20px;
-        font-size: 15px;
-        color: #444444;
-        background: #ffffff;
-        border: none;
         margin-bottom: 20px;
       }
-      .class__form .form input::-webkit-input-placeholder {
-        color: #444444;
+      .checkout__input_eye input::-webkit-input-placeholder {
+        color: #666666;
       }
-      .class__form .form input::-moz-placeholder {
-        color: #444444;
+      .checkout__input_eye input::-moz-placeholder {
+        color: #666666;
       }
-      .class__form .form input:-ms-input-placeholder {
-        color: #444444;
+      .checkout__input_eye input:-ms-input-placeholder {
+        color: #666666;
       }
-      .class__form .form input::-ms-input-placeholder {
-        color: #444444;
+      .checkout__input_eye input::-ms-input-placeholder {
+        color: #666666;
       }
-      .class__form .form input::placeholder {
-        color: #444444;
+      .checkout__input_eye input::placeholder {
+        color: #666666;
       }
-      .class__form .form button {
-        letter-spacing: 2px;
-        width: 100%;
+
+      .checkout__input_eye label {
+        font-size: 14px;
+        color: #444444;
+        position: relative;
+        padding-left: 30px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-bottom: 16px;
+        display: block;
       }
       /* sweetalert */
       body {
@@ -329,34 +349,27 @@
                           oninput="setCustomValidity('');"
                           oninvalid="setCustomValidity('請輸入正確的手機號瑪格式:09xx-xxxxxx');" -->
                       </div>
-                      <div class="checkout__input">
+                      <div class="checkout__input_eye">
                         <p>密碼<span>*</span></p>
-                        <div class="row">
-                          <div class="col-lg-11">
-                            <input
-                              type="password"
-                              class="form-control"
-                              id="memberPassword"
-                              placeholder="請輸入密碼，長度須介於6~12字元"
-                              pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$"
-                              required="required"
-                              oninput="setCustomValidity('');"
-                              oninvalid="setCustomValidity('密碼長度須介於6~12字元');"
-                              minlength="6"
-                              maxlength="12"
-                            />
-
-                            <label
-                              id="memberPasswordPattern"
-                              style="float: right; color: #f66767"
-                            ></label>
-                          </div>
-                          <div class="col-lg-1">
-                            <label for="checkpw"
-                              ><i id="checkEye" class="fas fa-eye-slash"></i
-                            ></label>
-                          </div>
-                        </div>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="memberPassword"
+                          placeholder="請輸入密碼，長度須介於6~12字元"
+                          pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$"
+                          required="required"
+                          oninput="setCustomValidity('');"
+                          oninvalid="setCustomValidity('密碼長度須介於6~12字元');"
+                          minlength="6"
+                          maxlength="12"
+                        />
+                        <label
+                          id="memberPasswordPattern"
+                          style="float: right; color: #f66767"
+                        ></label>
+                        <label for="memberPassword"
+                          ><i id="checkEye" class="fas fa-eye-slash"></i
+                        ></label>
                       </div>
 
                       <!-- 原checkbox改換小眼睛 -->
@@ -368,31 +381,25 @@
                         </label>
                       </div> -->
 
-                      <div class="checkout__input">
+                      <div class="checkout__input_eye">
                         <p>確認密碼<span>*</span></p>
-                        <div class="row">
-                          <div class="col-lg-11">
-                            <input
-                              type="password"
-                              class="form-control"
-                              id="recheckpw"
-                              placeholder="再次輸入密碼"
-                              required="required"
-                              oninput="setCustomValidity('');"
-                              onchange="if(document.getElementById('checkpw').value != document.getElementById('recheckpw').value){setCustomValidity('密碼不吻合');}"
-                            />
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="recheckpw"
+                          placeholder="再次輸入密碼"
+                          required="required"
+                          oninput="setCustomValidity('');"
+                          onchange="if(document.getElementById('checkpw').value != document.getElementById('recheckpw').value){setCustomValidity('密碼不吻合');}"
+                        />
 
-                            <label
-                              id="recheckpwPattern"
-                              style="float: right; color: #f66767"
-                            ></label>
-                          </div>
-                          <div class="col-lg-1">
-                            <label for="recheckpw"
-                              ><i id="recheckEye" class="fas fa-eye-slash"></i
-                            ></label>
-                          </div>
-                        </div>
+                        <label
+                          id="recheckpwPattern"
+                          style="float: right; color: #f66767"
+                        ></label>
+                        <label for="recheckpw"
+                          ><i id="recheckEye" class="fas fa-eye-slash"></i
+                        ></label>
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-6"></div>
@@ -525,9 +532,9 @@
       // checkEye密碼切換遮蔽顯示
       $("#checkEye").click(function () {
         if ($(this).hasClass("fa-eye-slash")) {
-          $("#checkpw").attr("type", "text");
+          $("#memberPassword").attr("type", "text");
         } else {
-          $("#checkpw").attr("type", "password");
+          $("#memberPassword").attr("type", "password");
         }
         $(this).toggleClass("fa-eye").toggleClass("fa-eye-slash");
       });
