@@ -1,9 +1,8 @@
 // ======================執行Google Map API 同時抓出餐廳的資料=======================
 
-var restaurantNumber; //本餐廳編號
 // google map
 function initMap() {
-  var restaurantAddress; //本餐廳地址
+  var restaurantNumber; //本餐廳編號
   fetch("http://localhost:8080/restaurant-read/3") //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
     .then((res) => res.json())
     .then((data) => {
@@ -15,7 +14,6 @@ function initMap() {
       const { restaurantBusinessHour } = data;
 
       restaurantNumber = restaurantNo;
-      restaurantAddress = restaurantAddr;
       document.getElementById("restaurantName").innerHTML = restaurantName;
       document.getElementById("restaurantTel").innerHTML += restaurantTel;
       document.getElementById("restaurantAddr").innerHTML += restaurantAddr;
@@ -24,6 +22,7 @@ function initMap() {
       document.getElementById("comment_restaurantName").innerHTML =
         restaurantName;
 
+      //================Google Map API==============
       geocoder = new google.maps.Geocoder();
       var myLatLng = new google.maps.LatLng(25.04, 121.512);
       var mapOptions = {
@@ -31,9 +30,67 @@ function initMap() {
         zoom: 16,
       };
       map = new google.maps.Map(document.getElementById("map"), mapOptions);
-      codeAddress(restaurantAddress);
+      codeAddress(restaurantAddr);
     });
+
+  //=========================點選收藏餐廳=================================
+  //找到該會員的所有收藏餐廳
+  fetch("http://localhost:8080/LikedRestaurant-list/1") //會員編號先寫死
+    .then((res) => res.json())
+    .then((list) => {
+      for (const item of list) {
+        const { restaurantNo } = item;
+        //如果有符合本餐廳編號的，就顯示已收藏
+        if (restaurantNo == restaurantNumber) {
+          $("#liked").html("已收藏");
+          $("#liked").addClass("liked");
+        }
+      }
+    });
+
+  $("#liked").on("click", function () {
+    if ($(this).hasClass("liked")) {
+      fetch("http://localhost:8080/LikedRestaurant-delete", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          memberNo: 1, //先寫死測試
+          restaurantNo: restaurantNumber, //本餐廳編號
+        }),
+      }).then(function () {
+        $("#liked").removeClass("liked");
+        $("#liked").trigger("classChange");
+        alert("已取消收藏!");
+      });
+    } else {
+      fetch("http://localhost:8080/LikedRestaurant-add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          memberNo: 1, //先寫死測試
+          restaurantNo: restaurantNumber, //本餐廳編號
+        }),
+      }).then(function () {
+        $("#liked").addClass("liked");
+        $("#liked").trigger("classChange");
+        alert("收藏成功!");
+      });
+    }
+  });
+
+  $("#liked").on("classChange", function (e) {
+    if ($(this).hasClass("liked")) {
+      $(this).html("已收藏");
+    } else {
+      $(this).html("收藏餐廳");
+    }
+  });
 }
+//================Google Map API==============
 function codeAddress(address) {
   geocoder.geocode({ address: address }, function (results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
@@ -99,7 +156,6 @@ fetch("http://localhost:8080/restaurant-readInfo/Post/3")
   .then((res) => res.json())
   .then((list) => {
     var post_uploaded = document.querySelector(".col-lg-8"); //準備裝已上傳貼文的div
-    var post_array = []; //準備裝多個貼文物件的陣列
     for (const item of list) {
       //多個貼文的陣列,一個個取出資料
       const { postType } = item;
@@ -132,69 +188,32 @@ fetch("http://localhost:8080/restaurant-readInfo/Post/3")
         <a class="readmore" type="button">READ MORE</a>
       </div>
     </div>`;
+
       post_uploaded.appendChild(newDiv);
     }
   });
 
-//=========================點選收藏餐廳=================================
+// ======================抓出餐廳已上傳的菜單======================
 
-//找到該會員的所有收藏餐廳
-fetch("http://localhost:8080/LikedRestaurant-list/1") //會員編號先寫死
+fetch("http://localhost:8080/restaurant-readInfo/Menu/3")
   .then((res) => res.json())
   .then((list) => {
+    const menu_list = document.querySelector("#menu_list"); //準備裝已上傳菜單的div
     for (const item of list) {
-      const { restaurantNo } = item;
-      //如果有符合本餐廳編號的，就顯示已收藏
-      if (restaurantNo == restaurantNumber) {
-        $("#liked").html("已收藏");
-        $("#liked").addClass("liked");
-      }
+      const { menuPicstr } = item;
+      const { menuPicRemark } = item;
+
+      const newDiv = document.createElement("div");
+      newDiv.innerHTML = `<div class="menu">
+      <img class="menu_pic" src="data:image/*;base64,${menuPicstr}" />
+      <h4 class="menu_remark">${menuPicRemark}</h4>
+      </div>`;
+
+      menu_list.appendChild(newDiv);
     }
   });
 
-$("#liked").on("click", function () {
-  if ($(this).hasClass("liked")) {
-    fetch("http://localhost:8080/LikedRestaurant-delete", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        memberNo: 1, //先寫死測試
-        restaurantNo: restaurantNumber, //本餐廳編號
-      }),
-    }).then(function () {
-      $("#liked").removeClass("liked");
-      $("#liked").trigger("classChange");
-      alert("已取消收藏!");
-    });
-  } else {
-    fetch("http://localhost:8080/LikedRestaurant-add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        memberNo: 1, //先寫死測試
-        restaurantNo: restaurantNumber, //本餐廳編號
-      }),
-    }).then(function () {
-      $("#liked").addClass("liked");
-      $("#liked").trigger("classChange");
-      alert("收藏成功!");
-    });
-  }
-});
-
-$("#liked").on("classChange", function (e) {
-  if ($(this).hasClass("liked")) {
-    $(this).html("已收藏");
-  } else {
-    $(this).html("收藏餐廳");
-  }
-});
-
-//=============================================================
+// ========================================================
 
 $(".breadcrumb__links a").bind("click", function () {
   var id = $(this).attr("data-id");

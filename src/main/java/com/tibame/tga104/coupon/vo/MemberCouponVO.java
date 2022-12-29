@@ -1,14 +1,17 @@
 package com.tibame.tga104.coupon.vo;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "memberCoupon")
+@IdClass(MemberCouponVO.PK.class)
 public class MemberCouponVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,7 +24,7 @@ public class MemberCouponVO implements Serializable {
 	@Column(name = "couponNo", nullable = false)
 	private Integer couponNo;
 	
-	@Column(name = "usageStatus", columnDefinition = "Integer")
+	@Column(name = "usageStatus", columnDefinition = "Integer" , insertable = false)
 	private Boolean usageStatus;
 
 	public MemberCouponVO() {
@@ -57,4 +60,28 @@ public class MemberCouponVO implements Serializable {
 		this.usageStatus = usageStatus;
 	}
 
+	static public class PK implements Serializable {
+		public Integer memberNo;
+		public Integer couponNo;
+		
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj) {
+				return true;
+			}
+			
+			if (obj == null || getClass() != obj.getClass()) {
+				return false;
+			}
+			
+			PK pk = (PK) obj;
+			return Objects.equals(memberNo, pk.memberNo)
+					&& Objects.equals(couponNo, pk.couponNo);
+		}
+		
+		@Override
+		public int hashCode() {
+			return Objects.hash(memberNo, couponNo);
+		}
+	}
 }

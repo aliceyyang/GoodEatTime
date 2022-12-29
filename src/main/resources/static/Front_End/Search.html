@@ -1,541 +1,592 @@
-
 <!DOCTYPE html>
-<html lang="zxx">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Cake Template">
-    <meta name="keywords" content="Cake, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GoodEatTime | 好食光</title>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="美食, 找餐廳, 訂位, 訂餐, html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>好食光 | Search</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-    
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/main_news.css" type="text/css">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
+    <link rel="stylesheet" href="css/barfiller.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/shopping_mall.css" type="text/css" />
+  </head>
+  <body>
     <!-- Page Preloder -->
     <div id="preloder">
-        <div class="loader"></div>
+      <div class="loader"></div>
     </div>
 
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
-        <div class="offcanvas__cart">
-            <div class="offcanvas__cart__links">
-                <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                <a href="#"><img src="img/icon/heart.png" alt=""></a>
-            </div>
-            <div class="offcanvas__cart__item">
-                <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                <div class="cart__price">Cart: <span>$0.00</span></div>
-            </div>
+      <div class="offcanvas__cart">
+        <div class="offcanvas__cart__links">
+          <a href="#" class="search-switch"
+            ><img src="img/icon/search.png" alt=""
+          /></a>
+          <a href="#"><img src="img/icon/heart.png" alt="" /></a>
         </div>
-        <div class="offcanvas__logo">
-            <a href="./GoodEatTime.html"><img class="GoodEatTimelogo" src="./img/GoodEatTime_smlogo.png"  alt=""></a>
+        <div class="offcanvas__cart__item">
+          <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
+          <div class="cart__price">Cart: <span>$0.00</span></div>
         </div>
-        <div id="mobile-menu-wrap"></div>
-        <div class="offcanvas__option">
+      </div>
+      <div class="offcanvas__logo">
+        <a href="./index.html"><img src="img/logo.png" alt="" /></a>
+      </div>
+      <div id="mobile-menu-wrap"></div>
+      <div class="offcanvas__option">
+        <ul>
+          <li>
+            USD <span class="arrow_carrot-down"></span>
             <ul>
-                <li>USD <span class="arrow_carrot-down"></span>
-                    <ul>
-                        <li>EUR</li>
-                        <li>USD</li>
-                    </ul>
-                </li>
-                <li>ENG <span class="arrow_carrot-down"></span>
-                    <ul>
-                        <li>Spanish</li>
-                        <li>ENG</li>
-                    </ul>
-                </li>
-                <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
+              <li>EUR</li>
+              <li>USD</li>
             </ul>
-        </div>
+          </li>
+          <li>
+            ENG <span class="arrow_carrot-down"></span>
+            <ul>
+              <li>Spanish</li>
+              <li>ENG</li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Sign in</a> <span class="arrow_carrot-down"></span>
+          </li>
+        </ul>
+      </div>
     </div>
     <!-- Offcanvas Menu End -->
 
-    <!-- Header開始 -->
+    <!-- Header Section Begin -->
     <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="header__top__inner">
-                            <div class="header__top__left">
-                                <ul>
-                                    <li><img class="login_icon" src="./img/Login_icon.png"><a class="login_text" href="#">登入</a></li>
-                                </ul>
-                            </div>
-                            <div class="header__logo">
-                                <a href="./GoodEatTime.html"><img class="goodeattime_logo" src="img/GoodEatTime_logoright.png" alt=""></a>
-                            </div>
-                            <div class="header__top__right">
-                                <div class="header__top__right__links">
-                                    <input type="text" class="main_serch" placeholder="搜尋餐廳" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                    <button type="submit" class="btn"><img src="img/icon/search.png"></button>
-                                    <a href="#"><img src="img/icon/heart.png" alt=""></a>
-                                </div>
-                                <div class="header__top__right__cart">
-                                    <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                                    <div class="cart__price">Cart: <span>$0.00</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="canvas__open"><i class="fa fa-bars"></i></div>
-            </div>
-        </div>
+      <div class="header__top">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <nav class="header__menu mobile-menu">
-                        <ul>
-                            <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-                            <li><a href="./about.html">會員專區</a></li>
-                            <li><a href="./shop.html">餐廳</a></li>
-                            <li><a href="./blog.html">線上商城</a></li>
-                            <li><a href="#">關於我們</a>
-                                <ul class="dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./wisslist.html">Wisslist</a></li>
-                                    <li><a href="./Class.html">Class</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./contact.html">地點搜尋</a></li>
-                        </ul>
-                    </nav>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="header__top__inner">
+                <div class="header__top__left">
+                  <ul>
+                    <li>
+                      <img class="login_icon" src="./img/Login_icon.png" /><a
+                        class="login_text"
+                        href="./j_signin_member3.html"
+                        >登入</a
+                      >
+                    </li>
+                  </ul>
                 </div>
+                <div class="header__logo">
+                  <a href="./GoodEatTime.html"
+                    ><img
+                      class="goodeattime_logo"
+                      src="img/GoodEatTime_logoright.png"
+                      alt=""
+                  /></a>
+                </div>
+                <div class="header__top__right">
+                  <div class="header__top__right__links">
+                    <a href="./shopping_mall.html" class="search-switch"
+                      ><img src="img/icon/search.png" alt=""
+                    /></a>
+                    <a href="./shopping_cart.html"
+                      ><img src="img/icon/heart.png" alt=""
+                    /></a>
+                  </div>
+                  <div class="header__top__right__cart">
+                    <a href="./shopping_cart.html"
+                      ><img src="img/icon/cart.png" alt="" /> <span>0</span></a
+                    >
+                    <div class="cart__price">Cart: <span>$0.00</span></div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
-    </header>
-    <!-- Header結束 -->
-
-<!-- main Section Begin -->
-<section class="main spad">
-    <div class="container">
+      </div>
+      <div class="container">
         <div class="row">
-            <div class="col-lg-5 col-md-9 col-sm-12 p-0">
-                <div class="search col-lg-12 col-md-12 ">
-                    <div class="search-text-bt">
-                        <div class="input-group col-md-12 col-sm-12">
-                          </div>
-                          <div class="news_title text-center col-lg-12 col-md-12 col-sm-12">
-                            <div class="news-title">
-                                <span>最新消息</span>
-                            </div>
-                            <div class="owl-carousel news__slider">
-                                <div class="news col-lg-12 col-md-12 col-sm-12">
-                                    <div class="news__item">
-                                        <img id="news_img" src="./img/main/bookingQ&A.png">
-                                    </div>
-                                </div>
-                                <div class="news col-lg-12 col-md-12 col-sm-12">
-                                    <div class="news__item">
-                                        <img id="news_img" src="./img/main/member.png">
-                                    </div>
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="news_col">
-                <div class="newsrst_row col-lg-12 col-md-12 col-sm-12" >
-                    <div class="newsrst_title text-center col-lg-12 col-md-12 col-sm-12">
-                        <div class="news-title">
-                            <span>推薦餐廳</span>
-                        </div>
-                    </div>
-                    <div class="owl-carousel newsrst__slider">
-                        <div class="news col-lg-12 col-md-12 col-sm-12">
-                            <div class="news__item">
-                                <img id="news_img" src="./img/main/restaurant.png">
-                            </div>
-                        </div>
-                        <div class="newsrst col-lg-12 col-md-12 col-sm-12">
-                            <div class="news__item">
-                                <img id="news_img" src="./img/main/restaurant1.png">
-                            </div>
-                        </div>
-                        <div class="newsrst col-lg-12 col-md-12 col-sm-12">
-                            <div class="news__item">
-                                <img id="news_img" src="./img/main/restaurant2.png">
-                            </div>
-                        </div>
-                        <div class="newsrst col-lg-12 col-md-12 col-sm-12">
-                            <div class="news__item">
-                                <img id="news_img" src="./img/main/restaurant3.png">
-                            </div>
-                        </div>
-                        <div class="newsrst col-lg-12 col-md-12 col-sm-12">
-                            <div class="news__item">
-                                <img id="news_img" src="./img/main/restaurant4.png">
-                            </div>
-                        </div>
-                        <div class="newsrst col-lg-6 col-md-6 col-sm-12">
-                            <div class="news__item">
-                                <img id="news_img" src="./img/main/restaurant5.png">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <div class="col-lg-12">
+            <nav class="header__menu mobile-menu">
+              <ul>
+                <li><a href="./GoodEatTime.html">首頁</a></li>
+                <li>
+                  <a href="./j_memberfile3.html">會員專區</a>
+                </li>
+                <li><a href="./restaurant_search.html">餐廳</a></li>
+                <li class=""><a href="./shopping_mall.html">線上商城</a></li>
+                <li>
+                  <a href="./about_us.html">關於我們</a>
+                  <!-- <ul class="dropdown">
+                  <li><a href="./shop-details.html">Shop Details</a></li>
+                  <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                  <li><a href="./checkout.html">Check Out</a></li>
+                  <li><a href="./wisslist.html">Wisslist</a></li>
+                  <li><a href="./Class.html">Class</a></li>
+                  <li><a href="./blog-details.html">Blog Details</a></li>
+                </ul> -->
+                </li>
+                <!-- <li><a href="./contact.html">地點搜尋</a></li> -->
+              </ul>
+            </nav>
+          </div>
         </div>
-    </div>
-</section>
-<!-- main Section End -->
+      </div>
+    </header>
+    <!-- Header Section End -->
 
-    <!-- 抽優惠券 開始 -->
-    <div class="categories">
-        <h2>優惠券</h2>
-        <div class="container">
-            <div class="row">
-                <div class="coupon__slider owl-carousel">
-                    <div class="coupon__item">
-                        <div class="coupon__item__icon">
-                            <img src="./img/main/coupon/Bite2Eat_coupon.png">
-                        </div>
-                    </div>
-                    <div class="coupon__item">
-                        <div class="coupon__item__icon">
-                            <img src="./img/main/coupon/McDonald’s_coupon.png">
-                        </div>
-                    </div>
-                    <div class="coupon__item">
-                        <div class="coupon__item__icon">
-                            <img src="./img/main/coupon/MOS-Burger_coupon.png">
-                        </div>
-                    </div>
-                    <div class="coupon__item">
-                        <div class="coupon__item__icon">
-                            <img src="./img/main/coupon/SHINYEH_coupon.png">
-                        </div>
-                    </div>
-                    <div class="coupon__item">
-                        <div class="coupon__item__icon">
-                            <img src="./img/main/coupon/starbucks_coupon.png">
-                        </div>
-                    </div>
-                    <div class="coupon__item">
-                        <div class="coupon__item__icon">
-                            <img src="./img/main/coupon/EATOGETHER.png">
-                        </div>
-                    </div>
-                </div>
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="breadcrumb__text">
+              <h2>搜尋餐廳</h2>
             </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="breadcrumb__links">
+              <a href="./GoodEatTime.html">首頁</a>
+              <span>搜尋餐廳</span>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <!-- 抽優惠券 結束 -->
+    <!-- Breadcrumb End -->
 
-    <!-- 滾動廣告 Begin -->
-    <section class="testimonial">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-title">
-                        <h2>新餐廳</h2>
-                    </div>
-                </div>
+    <!-- Shop Section Begin -->
+    <section class="shop spad">
+      <div class="container">
+        <div class="shop__option">
+          <div class="row">
+            <div class="col-lg-7 col-md-7">
+              <div class="shop__option__search">
+                <form action="#">
+                  <input type="text" placeholder="搜尋" />
+                  <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+              </div>
             </div>
-            <div class="row">
-                <div class="testimonial__slider owl-carousel">
-                    <div class="col-lg-6">
-                        <div class="NewRestaurant__item">
-                            <div class="NewRestaurant__author">
-                                <div class="NewRestaurant__author__pic">
-                                    <img src="./img/main/restaurant.png" alt="">
-                                </div>
-                                <div class="NewRestaurant__author__text">
-                                    <h5>Kerry D.Silva</h5>
-                                    <span>New york</span>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="NewRestaurant__item">
-                            <div class="NewRestaurant__author">
-                                <div class="NewRestaurant__author__pic">
-                                    <img src="img/main/restaurant1.png" alt="">
-                                </div>
-                                <div class="NewRestaurant__author__text">
-                                    <h5>Kerry D.Silva</h5>
-                                    <span>New york</span>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="NewRestaurant__item">
-                            <div class="NewRestaurant__author">
-                                <div class="NewRestaurant__author__pic">
-                                    <img src="img/main/restaurant2.png" alt="">
-                                </div>
-                                <div class="NewRestaurant__author__text">
-                                    <h5>Ophelia Nunez</h5>
-                                    <span>London</span>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="NewRestaurant__item">
-                            <div class="NewRestaurant__author">
-                                <div class="NewRestaurant__author__pic">
-                                    <img src="img/main/restaurant3.png" alt="">
-                                </div>
-                                <div class="NewRestaurant__author__text">
-                                    <h5>Kerry D.Silva</h5>
-                                    <span>New york</span>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="NewRestaurant__item">
-                            <div class="NewRestaurant__author">
-                                <div class="NewRestaurant__author__pic">
-                                    <img src="img/main/restaurant4.png" alt="">
-                                </div>
-                                <div class="NewRestaurant__author__text">
-                                    <h5>Ophelia Nunez</h5>
-                                    <span>London</span>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="NewRestaurant__item">
-                            <div class="NewRestaurant__author">
-                                <div class="NewRestaurant__author__pic">
-                                    <img src="img/main/restaurant5.png" alt="">
-                                </div>
-                                <div class="NewRestaurant__author__text">
-                                    <h5>Kerry D.Silva</h5>
-                                    <span>New york</span>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-lg-5 col-md-5">
+              <div class="shop__option__right">
+                <select>
+                  <option value="">預設排序</option>
+                  <option value="">價格低至高</option>
+                  <option value="">價格高至低</option>
+                  <option value="">可使用優惠券優先</option>
+                </select>
+                <a href="#"><i class="fa fa-list"></i></a>
+                <a href="#"><i class="fa fa-reorder"></i></a>
+              </div>
             </div>
+          </div>
         </div>
+        <div id="restaurant_area" class="row"></div>
+        <!-- <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="img/shop/product-1.jpg"
+              >
+              <div class="product__rating">
+                <div class="fill-ratings">
+                  <span>★★★★★</span>
+                </div>
+                <div class="empty-ratings">
+                  <span>★★★★★</span>
+                </div>
+              </div>
+                <div class="product__label">
+                  <span>餐廳名稱</span>
+                </div>
+              </div>
+              <div class="product__item__text">
+                <h6><a href="#">產品名稱產品名稱產品名稱產品名稱</a></h6>
+                <div class="product__item__price">NTD &nbsp; 32</div>
+                <div class="cart_add">
+                  <a href="#">加入購物車</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="img/shop/product-2.jpg"
+              >
+                <div class="product__label">
+                  <span>餐廳名稱</span>
+                </div>
+              </div>
+              <div class="product__item__text">
+                <h6><a href="#">Cookies and Cream</a></h6>
+                <div class="product__item__price">$30.00</div>
+                <div class="cart_add">
+                  <a href="#">加入購物車</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="img/shop/product-3.jpg"
+              >
+                <div class="product__label">
+                  <span>餐廳名稱</span>
+                </div>
+              </div>
+              <div class="product__item__text">
+                <h6><a href="#">Gluten Free Mini Dozen</a></h6>
+                <div class="product__item__price">$31.00</div>
+                <div class="cart_add">
+                  <a href="#">加入購物車</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="img/shop/product-4.jpg"
+              >
+                <div class="product__label">
+                  <span>餐廳名稱</span>
+                </div>
+              </div>
+              <div class="product__item__text">
+                <h6><a href="#">Cookie Dough</a></h6>
+                <div class="product__item__price">$25.00</div>
+                <div class="cart_add">
+                  <a href="#">加入購物車</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="img/shop/product-5.jpg"
+              >
+                <div class="product__label">
+                  <span>餐廳名稱</span>
+                </div>
+              </div>
+              <div class="product__item__text">
+                <h6><a href="#">Vanilla Salted Caramel</a></h6>
+                <div class="product__item__price">$05.00</div>
+                <div class="cart_add">
+                  <a href="#">加入購物車</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="img/shop/product-6.jpg"
+              >
+                <div class="product__label">
+                  <span>餐廳名稱</span>
+                </div>
+              </div>
+              <div class="product__item__text">
+                <h6><a href="#">German Chocolate</a></h6>
+                <div class="product__item__price">$14.00</div>
+                <div class="cart_add">
+                  <a href="#">加入購物車</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="img/shop/product-7.jpg"
+              >
+                <div class="product__label">
+                  <span>餐廳名稱</span>
+                </div>
+              </div>
+              <div class="product__item__text">
+                <h6><a href="#">Dulce De Leche</a></h6>
+                <div class="product__item__price">$32.00</div>
+                <div class="cart_add">
+                  <a href="#">加入購物車</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="img/shop/product-8.jpg"
+              >
+                <div class="product__label">
+                  <span>餐廳名稱</span>
+                </div>
+              </div>
+              <div class="product__item__text">
+                <h6><a href="#">Mississippi Mud</a></h6>
+                <div class="product__item__price">$08.00</div>
+                <div class="cart_add">
+                  <a href="#">加入購物車</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="img/shop/product-9.jpg"
+              >
+                <div class="product__label">
+                  <span>餐廳名稱</span>
+                </div>
+              </div>
+              <div class="product__item__text">
+                <h6><a href="#">VEGAN/GLUTEN FREE</a></h6>
+                <div class="product__item__price">$98.85</div>
+                <div class="cart_add">
+                  <a href="#">加入購物車</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="img/shop/product-10.jpg"
+              >
+                <div class="product__label">
+                  <span>餐廳名稱</span>
+                </div>
+              </div>
+              <div class="product__item__text">
+                <h6><a href="#">SWEET CELTICS</a></h6>
+                <div class="product__item__price">$5.77</div>
+                <div class="cart_add">
+                  <a href="#">加入購物車</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="img/shop/product-11.jpg"
+              >
+                <div class="product__label">
+                  <span>餐廳名稱</span>
+                </div>
+              </div>
+              <div class="product__item__text">
+                <h6><a href="#">SWEET AUTUMN LEAVES</a></h6>
+                <div class="product__item__price">$26.41</div>
+                <div class="cart_add">
+                  <a href="#">加入購物車</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="img/shop/product-12.jpg"
+              >
+                <div class="product__label">
+                  <span>餐廳名稱</span>
+                </div>
+              </div>
+              <div class="product__item__text">
+                <h6><a href="#">PALE YELLOW SWEET</a></h6>
+                <div class="product__item__price">$22.47</div>
+                <div class="cart_add">
+                  <a href="#">加入購物車</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <div class="shop__last__option">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="shop__pagination">
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#"><span class="arrow_carrot-right"></span></a>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="shop__last__text">
+                <p>查詢結果共 35 筆</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    <!-- 滾動廣告 End -->
-
-    <!-- Map Begin -->
-    <div class="map">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-7">
-                    <div class="map__inner">
-                        <h6>COlorado</h6>
-                        <ul>
-                            <li>1000 Lakepoint Dr, Frisco, CO 80443, USA</li>
-                            <li>Sweetcake@support.com</li>
-                            <li>+1 800-786-1000</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="map__iframe">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10784.188505644011!2d19.053119335158936!3d47.48899529453826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1543907528304" height="300" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-        </div>
-    </div>
-    <!-- Map End -->
+    <!-- Shop Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
-        <div class="mask">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            <div class="footer__member">
-                                <h6>會員專區</h6>
-                                <div class="footer__social">
-                                    <a href="#">登入會員<i ></i></a>
-                                    <a href="#">訂位管理<i ></i></a>
-                                    <br>
-                                    <a href="#">加入會員<i ></i></a>
-                                    <a href="#">定位管理<i ></i></a>
-                                    <br>
-                                    <a href="#">優惠券<i ></i></a>
-                                    <a href="#">我的評論<i ></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-3">
-                            <div class="footer__restaurant">
-                                <h6>餐廳</h6>
-                                <div class="footer__social">
-                                    <a href="#">訂位<i ></i></a>
-                                    <br>
-                                    <a href="#">購物車<i ></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-3">
-                            <div class="footer__shopping">
-                                <h6>線上商城</h6>
-                                <div class="footer__social">
-                                    <a href="#">商品搜尋<i ></i></a>
-                                    <br>
-                                    <a href="#">購物車<i ></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-3">
-                            <div class="footer__aboutus">
-                                <h6>關於我們</h6>
-                                <div class="footer__social">
-                                    <a href="#">網站介紹<i ></i></a>
-                                    <br>
-                                    <a href="#">履歷<i ></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-9 col-sm-12">
-                            <div class="footer__widget">
-                              <h6>好食光</h6>
-                              <ul>
-                                <li>指導老師：</li>
-                                <li>吳永志老師 &nbsp; | &nbsp; 吳冠宏老師</li>
-                                <li>張互賓老師 &nbsp; | &nbsp; 馬全德老師</li>
-                                <li>郭惠民老師 &nbsp; | &nbsp; 陳怡榕老師</li>
-                                <li>組員 :</li>
-                                <li>陳宜瀅 &nbsp; | &nbsp; 張家銘 &nbsp; | &nbsp; 楊婕妤</li>
-                                <li>游育碩 &nbsp; | &nbsp; 黃郁婕</li>
-                                <li>李佳欣 &nbsp; | &nbsp; 余可凡</li>
-                              </ul>
-                            </div>
-                          </div>
-                    </div>
+      <div class="mask">
+        <div>
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <div class="footer__member">
+                <h6>會員專區</h6>
+                <div class="footer__social">
+                  <a href="./j_signin_member3.html">登入會員<i></i></a>
+                  <a href="./member_reservation.html">訂位管理<i></i></a>
+                  <br />
+                  <a href="./j_registration_member3.html">加入會員<i></i></a>
+                  <a href="./member_order.html">訂單管理<i></i></a>
+                  <br />
+                  <a href="./coupon_member.html">優惠券<i></i></a>
+                  <a href="./member_comment.html">我的評論<i></i></a>
                 </div>
-          </div>
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <p class="copyright__text text-white"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                      </p>
-                  </div>
-                  <div class="col-lg-5">
-                    <div class="copyright__widget">
-                        <ul>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Site Map</a></li>
-                        </ul>
-                    </div>
-                </div>
+              </div>
             </div>
+            <div class="col-lg-2 col-md-3 col-sm-3">
+              <div class="footer__restaurant">
+                <h6>餐廳</h6>
+                <div class="footer__social">
+                  <!-- @這裡不確定要連去哪裡... -->
+                  <a href="#">訂位<i></i></a>
+                  <br />
+                  <a href="#">購物車<i></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3">
+              <div class="footer__shopping">
+                <h6>線上商城</h6>
+                <div class="footer__social">
+                  <a href="./shopping_mall.html">商品搜尋<i></i></a>
+                  <br />
+                  <a href="./shopping_cart.html">購物車<i></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3">
+              <div class="footer__aboutus">
+                <h6>關於我們</h6>
+                <div class="footer__social">
+                  <!-- @這裡也還不知道要連去哪裡... -->
+                  <a href="#">網站介紹<i></i></a>
+                  <br />
+                  <a href="#">履歷<i></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-9 col-sm-12">
+              <div class="footer__widget">
+                <h6>好食光</h6>
+                <ul>
+                  <li>指導老師：</li>
+                  <li>吳永志老師 &nbsp; | &nbsp; 吳冠宏老師</li>
+                  <li>張互賓老師 &nbsp; | &nbsp; 馬全德老師</li>
+                  <li>郭惠民老師 &nbsp; | &nbsp; 陳怡榕老師</li>
+                  <li>組員 :</li>
+                  <li>陳宜瀅 &nbsp; | &nbsp; 張家銘 &nbsp; | &nbsp; 楊婕妤</li>
+                  <li>游育碩 &nbsp; | &nbsp; 黃郁婕</li>
+                  <li>李佳欣 &nbsp; | &nbsp; 余可凡</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</footer>
-<!-- Footer Section End -->
+      </div>
+      <div class="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <p class="copyright__text text-white">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                All rights reserved | This template is made with
+                <i class="fa fa-heart" aria-hidden="true"></i> by
+                <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              </p>
+            </div>
+            <div class="col-lg-5">
+              <div class="copyright__widget">
+                <ul>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="#">Site Map</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
 
-<!-- Search Begin -->
-<div class="search-model">
-    <div class="h-100 d-flex align-items-center justify-content-center">
+    <!-- Search Begin -->
+    <div class="search-model">
+      <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch">+</div>
         <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
+          <input type="text" id="search-input" placeholder="Search here....." />
         </form>
+      </div>
     </div>
-</div>
-<!-- Search End -->
-
-<!-- Js Plugins -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/jquery.barfiller.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/jquery.slicknav.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.nicescroll.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/main_news.js"></script>
-</body>
+    <!-- Search End -->
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.barfiller.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+  </body>
 </html>

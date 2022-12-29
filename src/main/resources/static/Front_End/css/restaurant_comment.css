@@ -1,13 +1,25 @@
+.barfiller{
+  margin-top: 40px;
+}
+
 .col-lg-6.comment{
-    border: 1px solid gray;
-    padding:50px;
-    margin: 50px auto 50px auto;
+    /* border: 1px solid gray;
+    padding:50px; */
+    width: 800px;
+    
+}
+
+.testimonial__item{
+  width: 800px;
+  border: 1px solid gray;
+  padding:50px;
+  margin: 50px 35% 50px ;
 }
 
 .testimonial__item .rating {
     position: absolute;
-    left: 200px;
-    top: 0px;
+    left: 300px;
+    top: 40px;
   }
 
   .testimonial__item .rating span{
@@ -22,8 +34,8 @@
     width: 100px;
     height: 100px;
     position: absolute;
-    right: 40px;
-    top: -20px;
+    right: 120px;
+    top: 25px;
     
   }
 
@@ -32,6 +44,7 @@
     height: 100%;
     border: 1px dashed gray;
     padding: 2px;
+    object-fit: cover;
   }
 
   a > img:hover{

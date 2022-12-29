@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.tibame.tga104.coupon.dao.MemberCouponDAO;
 import com.tibame.tga104.coupon.vo.MemberCouponVO;
+import com.tibame.tga104.member.vo.MemberVO;
 
 
 @Service
@@ -20,8 +21,8 @@ public class MemberCouponServiceImpl implements MemberCouponService{
 	
 
 	@Override
-	public MemberCouponVO addOneCoupon(Integer couponNo) {
-		return dao.insert(null);
+	public MemberCouponVO addOneCoupon(Integer memberNo, Integer couponNo) {
+		return dao.insert(memberNo , couponNo);
 	}
 
 	@Override
@@ -33,7 +34,6 @@ public class MemberCouponServiceImpl implements MemberCouponService{
 	public List<MemberCouponVO> getAll() {
 		return dao.getAll();
 	}
-	
 }
 
 
