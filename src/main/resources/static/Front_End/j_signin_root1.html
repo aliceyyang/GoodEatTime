@@ -403,27 +403,44 @@
       const adminPassword = document.querySelector("#adminPassword");
       const checkPassword = document.querySelector("#checkPassword");
       document.querySelector("button").addEventListener("click", () => {
-        // fetch(url, {
-        fetch("../AdminLoginServlet", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            adminAccount: adminAccount.value,
-            adminPassword: adminPassword.value,
-          }),
-        })
-          .then((resp) => resp.json())
-          .then((body) => {
-            if (body.successful) {
-              // Swal.fire(body.message);
-              Swal.fire("登入成功");
-            } else {
-              Swal.fire("登入失敗", "請洽系統管理員");
-            }
-            //alert登入成功
-          });
+        //帳號密碼需數入
+        if (adminAccount.value === "") {
+          Swal.fire("請輸入帳號密碼", "", "warning");
+          return;
+        } else {
+        }
+
+        if (adminPassword.value === "") {
+          Swal.fire("請輸入帳號密碼", "", "warning");
+          return;
+        } else {
+        }
+        //判斷密碼及確認密碼相同
+        if (adminPassword.value != checkPassword.value) {
+          Swal.fire("密碼及確認密碼需相同", "", "warning");
+          return;
+        } else {
+          // fetch(url, {
+          fetch("../AdminLoginServlet", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              adminAccount: adminAccount.value,
+              adminPassword: adminPassword.value,
+            }),
+          })
+            .then((resp) => resp.json())
+            .then((body) => {
+              if (body.successful) {
+                // Swal.fire(body.message);
+                Swal.fire("登入成功", "", "success");
+              } else {
+                Swal.fire("登入失敗", "請洽系統管理員", "error");
+              }
+            });
+        }
       });
     </script>
   </body>

@@ -597,31 +597,55 @@
         var helper = new writeAuthCode(options);
       });
 
-      const restaurantAccount = document.querySelector("#restaurantAccount");
-      const restaurantPassword = document.querySelector("#restaurantPassword ");
+      var restaurantAccount = document.querySelector("#restaurantAccount");
+      var restaurantPassword = document.querySelector("#restaurantPassword ");
+      var validText = document.querySelector("#validText");
+      var result = document.querySelector("#result");
+      //逐項判斷
       document.querySelector(".site-btn").addEventListener("click", () => {
         console.log("aaa");
-        fetch("../restaurant/login", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            restaurantAccount: restaurantAccount.value,
-            restaurantPassword: restaurantPassword.value,
-          }),
-        })
-          .then((resp) => resp.json())
-          .then((body) => {
-            console.log(body);
-            let restaurantMemberVO = JSON.stringify(body);
-            sessionStorage.setItem("restaurantMemberVO", restaurantMemberVO);
-            if (body.successful) {
-              location = "j_welcome_login1.html";
-            } else {
-              Swal.fire(body.message);
-            }
-          });
+        //帳號密碼需數入
+        if (restaurantAccount.value === "") {
+          console.log("sos");
+          Swal.fire("請輸入帳號密碼", "", "warning");
+          return;
+        } else {
+        }
+
+        if (restaurantPassword.value === "") {
+          console.log("sos1");
+          Swal.fire("請輸入帳號密碼", "", "warning");
+          return;
+        } else {
+        }
+        //判斷驗證碼輸入是否正確
+        if (validText.value !== helper.options.txt) {
+          console.log("sos2");
+          Swal.fire("請輸入正確的驗證碼", "", "warning");
+          return;
+        } else {
+          fetch("../restaurant/login", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              restaurantAccount: restaurantAccount.value,
+              restaurantPassword: restaurantPassword.value,
+            }),
+          })
+            .then((resp) => resp.json())
+            .then((body) => {
+              console.log(body);
+              let restaurantMemberVO = JSON.stringify(body);
+              sessionStorage.setItem("restaurantMemberVO", restaurantMemberVO);
+              if (body.successful) {
+                location = "j_welcome_login1.html";
+              } else {
+                Swal.fire(body.message);
+              }
+            });
+        }
       });
     </script>
   </body>

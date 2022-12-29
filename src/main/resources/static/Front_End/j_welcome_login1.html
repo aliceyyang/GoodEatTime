@@ -105,8 +105,7 @@
                       <img class="login_icon" src="./img/Login_icon.png" /><a
                         class="login_text"
                         href="#"
-                        >登入</a
-                      >
+                      ></a>
                     </li>
                   </ul>
                 </div>
@@ -177,10 +176,10 @@
               <h2>登入成功</h2>
               <ul>
                 <!-- <li><span>會員中心</span></li> -->
-                <li><a href="">首頁</a></li>
+                <!-- <li><a href="">首頁</a></li>
                 <li><a href="">會員中心</a></li>
                 <li><a href="">找餐廳</a></li>
-                <li><a href="">商城</a></li>
+                <li><a href="">商城</a></li> -->
               </ul>
             </div>
           </div>
@@ -307,15 +306,17 @@
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
     <script>
-      const delay = ms => new Promise(res => setTimeout(res, ms));
+      const delay = (ms) => new Promise((res) => setTimeout(res, ms));
       const myRedirect = async () => {
         let before_url = sessionStorage.getItem("URL_before_login");
-        if (! before_url) {
+        if (!before_url) {
           return;
         }
         var redeirect = document.createElement("h2");
-        redeirect.innerText = "即將導向至原始頁面"
-        document.querySelector("div.blog__hero__text h2").insertAdjacentElement("afterend", redeirect);
+        redeirect.innerText = "即將導向至原始頁面";
+        document
+          .querySelector("div.blog__hero__text h2")
+          .insertAdjacentElement("afterend", redeirect);
         await delay(3000);
         // console.log("Waited 3s");
         // console.log(before_url);
