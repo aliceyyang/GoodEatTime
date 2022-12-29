@@ -349,6 +349,30 @@
                           oninput="setCustomValidity('');"
                           oninvalid="setCustomValidity('請輸入正確的手機號瑪格式:09xx-xxxxxx');" -->
                       </div>
+
+                      <div class="checkout__input_eye">
+                        <p>舊密碼<span>*</span></p>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="memberPassword1"
+                          placeholder="請輸入舊密碼"
+                          pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$"
+                          required="required"
+                          oninput="setCustomValidity('');"
+                          oninvalid="setCustomValidity('密碼長度須介於6~12字元');"
+                          minlength="6"
+                          maxlength="12"
+                        />
+                        <label
+                          id="memberPasswordPattern1"
+                          style="float: right; color: #f66767"
+                        ></label>
+                        <label for="memberPassword1"
+                          ><i id="checkEye" class="fas fa-eye-slash"></i
+                        ></label>
+                      </div>
+
                       <div class="checkout__input_eye">
                         <p>密碼<span>*</span></p>
                         <input
@@ -554,6 +578,28 @@
       const tel = document.querySelector("#tel");
       const memberPassword = document.querySelector("#memberPassword");
       const recheckpw = document.querySelector("#recheckpw");
+      const memberPassword1 = document.querySelector("#memberPassword1");
+
+      // =========================驗證舊密碼是否相同=========================
+      memberPassword1.addEventListener("blur", () => {
+        let memberPasswordPattern1 = document.getElementById(
+          "memberPasswordPattern1"
+        );
+
+        // 檢查這個值 是否符合6~12個字元
+        if (
+          memberPassword.value = memberVO.memberPassword;
+        ) {
+          memberPasswordPattern.innerHTML = "";
+          memberPassword.style.border = "none";
+        } else {
+          memberPasswordPattern.innerHTML =
+            "<span>*密碼長度需介於6~12個字元</span>";
+          memberPassword.style.border = "2px solid #F6D0C0";
+          success = false;
+        }
+        return;
+      });
 
       // =========================驗證密碼長度=========================
       memberPassword.addEventListener("blur", () => {
@@ -636,7 +682,7 @@
         ?.then((memberVO) => {
           name.value = memberVO.name;
           tel.value = memberVO.tel;
-          // memberPassword.value = memberVO.memberPassword;
+          memberPassword1.value = memberVO.memberPassword;
         });
       // nameTag.innerHTML = name;
 
