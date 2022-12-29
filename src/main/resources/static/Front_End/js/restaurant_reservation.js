@@ -299,14 +299,29 @@ function change(reserveNo) {
     reserveStatus = $(".switch-txt").attr("turnOff");
   }
   console.log("Selected data: " + reserveStatus);
-  $.ajax({
-    url: "../reservation/restaurant/statusUpdate",
-    type: "GET",
-    dataType: "json",
-    contentType: "application/json",
-    data: { reserveNo: reserveNo, reserveStatus: reserveStatus },
-    success: function (a) {
+
+  fetch(
+    `../reservation/restaurant/statusUpdate?reserveNo=${reserveNo}&reserveStatus=${reserveStatus}`
+  )
+    .then((resp) => {
+      if (resp.redirected) {
+        Swal.fire({
+          // sweet alert CDN
+          position: "center",
+          icon: "warning",
+          title: "請先登入",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(() => {
+          // 動畫跑完後跳轉
+          sessionStorage.setItem("URL_before_login", window.location.href);
+          window.location.href = resp.url;
+        });
+      } else {
+        return resp.json();
+      }
+    })
+    .then((a) => {
       console.log(a);
-    },
-  });
+    });
 }
