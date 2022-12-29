@@ -33,7 +33,7 @@ public class MailService {
 	private final static String AUTH = "true";
 	private final static String PORT = "587";
 	private final static String STARTTLE_ENABLE = "true";
-	private final static String SENDER = "goodeattimeG3@gmail.com";//這裡是先寫死的唷
+	private final static String SENDER = "goodeattimeG3@gmail.com";
 	private final static String PASSWORD = "htawyhztrsbkzmsn";
 	
 //  設定傳送郵件:至收信人的Email信箱,Email主旨,Email內容
