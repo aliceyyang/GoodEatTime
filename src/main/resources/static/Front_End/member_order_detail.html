@@ -183,11 +183,11 @@
     </header>
     <!-- Header Section End -->
 
-  <!-- Class Section Begin -->
-  <section class="class">
-    <!-- <div class="container"> -->
-    <div class="row" id="member">
-      <!-- <div class="col-lg-2" id="left"> -->
+    <!-- Class Section Begin -->
+    <section class="class">
+      <!-- <div class="container"> -->
+      <div class="row" id="member">
+        <!-- <div class="col-lg-2" id="left"> -->
         <div class="col-lg-2" id="left">
           <nav class="header__menu mobile-menu" id="aaa">
             <ul>
@@ -203,33 +203,162 @@
             </ul>
           </nav>
         </div>
-      <!-- 訂單資訊 -->
-      <div class="col-lg-10">
-        <div class="table-responsive">
-          <h2>訂單資訊</h2>
-          <table class="table" id="prodOrder" cellspacing="0">
-            <thead>
-              <tr class="header">
-                <th>訂單編號</th>
-                <th>餐廳名稱</th>
-                <th>訂單總金額</th>
-                <th>訂單成立時間</th>
-                <th>收貨人姓名</th>
-                <th>訂單狀態</th>
-                <th>查看</th>
-              </tr>
-            </thead>
-            <!-- <tbody id="tbcoupon_detail">
-            </tbody> -->
-          </table>
+        <!-- 訂單資訊 -->
+        <div class="col-lg-10">
+          <h2>訂單明細</h2>
+          
+            <label for="prodOrderNo">商城訂單編號：</label>
+            <input
+              style="width: 80px"
+              type="number"
+              name="prodOrderNo"
+              id="prodOrderNo"
+              disabled
+            />
+            <label for="orderStatus">訂單狀態：</label>
+            <input
+              style="width: 120px"
+              type="text"
+              name="orderStatus"
+              id="orderStatus"
+              disabled
+            />
+            <label for="prodOrderDate">訂單時間：</label>
+            <input
+              style="width: 200px"
+              type="text"
+              name="prodOrderDate"
+              id="prodOrderDate"
+              disabled
+            />
+            <label for="prodOderDeliverTime">出貨時間：</label>
+            <input
+              style="width: 200px"
+              type="text"
+              name="prodOderDeliverTime"
+              id="prodOderDeliverTime"
+              disabled
+            />
+            <br />
+            <label for="restaurantName">餐廳名稱：</label>
+            <input
+              style="width: 200px"
+              type="text"
+              name="restaurantName"
+              id="restaurantName"
+              disabled
+            />
+            <label for="name">訂購人：</label>
+            <input
+              style="width: 200px"
+              type="text"
+              name="name"
+              id="name"
+              disabled
+            />
+            <label for="tel">訂購人電話：</label>
+            <input
+              style="width: 200px"
+              type="text"
+              name="tel"
+              id="tel"
+              disabled
+            />
+            <br />
+            <label for="prodOrderReceiverName">收貨人：</label>
+            <input
+              style="width: 200px"
+              type="text"
+              name="prodOrderReceiverName"
+              id="prodOrderReceiverName"
+              disabled
+            />
+            <label for="prodOrderReceiverTel">收貨人電話：</label>
+            <input
+              style="width: 200px"
+              type="text"
+              name="prodOrderReceiverTel"
+              id="prodOrderReceiverTel"
+              disabled
+            />
+            <label for="prodOrderReceiverMail">收貨人MAIL：</label>
+            <input
+              style="width: 200px"
+              type="text"
+              name="prodOrderReceiverMail"
+              id="prodOrderReceiverMail"
+              disabled
+            />
+            <br />
+            <label for="prodOrderReceiverAddress">收貨人地址：</label>
+            <input
+              style="width: 800px"
+              type="text"
+              name="prodOrderReceiverAddress"
+              id="prodOrderReceiverAddress"
+              disabled
+            />
+            <br />
+            <label for="amountAfterCoupon">訂單金額：</label>
+            <input
+              style="width: 200px"
+              type="number"
+              name="amountAfterCoupon"
+              id="amountAfterCoupon"
+              disabled
+            />
+            <label for="invoiceNumber">發票號碼：</label>
+            <input
+              style="width: 200px"
+              type="text"
+              name="invoiceNumber"
+              id="invoiceNumber"
+              disabled
+            />
+            <label for="taxIDNumber">統一編號：</label>
+            <input
+              style="width: 200px"
+              type="text"
+              name="taxIDNumber"
+              id="taxIDNumber"
+              disabled
+            />
+            <div>
+              ____________________________________________________________________________________________________________________
+            </div>
+            <div>
+              <h5>訂單商品資訊：</h5>
+            </div>
+            <br />
+            <table class="orderdateil">
+              <thead>
+                <tr>
+                  <th>商品名稱</th>
+                  <th>商品數量</th>
+                  <th>單品金額</th>
+                  <th>金額小計</th>
+                  <th>評論</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>顯示查詢資料from table:prodInfo</td>
+                  <td>顯示查詢資料from table:prodInfo</td>
+                  <td>顯示查詢資料from table:prodOrderDetail</td>
+                  <td>顯示查詢資料from table:prodOrderDetail</td>
+                  <td>評論</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="返回訂單查詢"><a href="./member_order.html">返回訂單查詢</a></div>
+            <!-- <input type="submit" value="返回訂單查詢" />
+        <input type="submit" value="修改訂單狀態" /> -->
+          
         </div>
-
       </div>
-    </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Class Section End -->
+    <!-- Class Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
@@ -357,6 +486,6 @@
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
     <script src="./dataTables/js/jquery.dataTables.js"></script>
-    <script src="./js/member_order.js"></script>
+    <script src="./js/member_order_detail.js"></script>
   </body>
 </html>
