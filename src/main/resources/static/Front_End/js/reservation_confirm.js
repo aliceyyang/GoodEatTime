@@ -61,6 +61,7 @@ document.querySelector("#btn_cancel").addEventListener("click", () => {
     if (result.isConfirmed) {
       Swal.fire("訂位已取消", "", "success");
       sessionStorage.clear();
+      location.href = "./GoodEatTime.html";
     }
   });
 });
