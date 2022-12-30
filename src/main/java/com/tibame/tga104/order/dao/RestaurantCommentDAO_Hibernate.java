@@ -13,7 +13,6 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tibame.tga104.order.vo.ProdOrderDetailVO;
 import com.tibame.tga104.reservation.vo.ReservationVO;
 
 @Repository
@@ -24,6 +23,14 @@ public class RestaurantCommentDAO_Hibernate implements RestaurantCommentDAO_inte
 
 	public Session getSession() {
 		return this.session;
+	}
+	
+	@Override
+	public ReservationVO select(Integer reserveNo, Integer restaurantNo) {
+		if (reserveNo == null || restaurantNo == null) {
+			return null;
+		}
+		return this.getSession().get(ReservationVO.class, reserveNo);
 	}
 	
 	@Override
@@ -65,12 +72,12 @@ public class RestaurantCommentDAO_Hibernate implements RestaurantCommentDAO_inte
 	@Override
 	@Transactional
 	public ReservationVO updateCommnet (ReservationVO reservationVO) {
-		if(reservationVO != null && reservationVO.getReserveNo() != null && reservationVO.getMemberNo() != null) {
+		if(reservationVO != null && reservationVO.getReserveNo() != null) {
+			// && reservationVO.getMemberNo() != null 可以等抓到資料再放進去。
 			
-			String hql = "from ReservationVO where reserveNo= :reserveNo and memberNo = :memberNo";
+			String hql = "from ReservationVO where reserveNo= :reserveNo ";
 			ReservationVO queryResult = this.getSession().createQuery(hql, ReservationVO.class)
 					.setParameter("reserveNo", reservationVO.getReserveNo())
-					.setParameter("memberNo", reservationVO.getMemberNo())
 					.uniqueResult();
 			queryResult.setCommentRating(reservationVO.getCommentRating());
 			queryResult.setCommentContent(reservationVO.getCommentContent());
@@ -95,13 +102,11 @@ public class RestaurantCommentDAO_Hibernate implements RestaurantCommentDAO_inte
 
 	@Override
 	public ReservationVO replyComment(ReservationVO reservationVO) {
-		if (reservationVO != null && reservationVO.getReserveNo() != null && reservationVO.getMemberNo() != null && reservationVO.getCommentRating() != null) {
+		if (reservationVO != null && reservationVO.getReserveNo() != null) {
 			
-			String replyHQL = "from ReservationVO where reserveNo= :reserveNo and memberNo = :memberNo and commentRating = :commentRating ";
+			String replyHQL = "from ReservationVO where reserveNo= :reserveNo ";
 			ReservationVO queryResult = this.getSession().createQuery(replyHQL, ReservationVO.class)
 					.setParameter("reserveNo", reservationVO.getReserveNo())
-					.setParameter("memberNo", reservationVO.getMemberNo())
-					.setParameter("commentRating", reservationVO.getCommentRating())
 					.uniqueResult();
 			queryResult.setRestaurantRe(reservationVO.getRestaurantRe());
 			queryResult.setRestaurantReTime(new java.sql.Timestamp(new GregorianCalendar().getTimeInMillis()));
