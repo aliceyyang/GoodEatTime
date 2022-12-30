@@ -195,6 +195,7 @@
           <h2>- 會員側邊攔中的 "我的最愛" 功能暫時先刪除</h2>
           <h2>- "關於我們" 頁面尚未製作</h2>
           <h2>- "餐廳" (搜尋)頁面尚未製作</h2>
+          <button id="test_ajax">測試AJAX(jquery)</button>
         </div>
       </div>
     </section>
@@ -321,10 +322,37 @@
     <script src="js/jquery.nice-select.min.js"></script>
     <script src="js/jquery.barfiller.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/member_reservation.js"></script>
+    <script>
+      $("#test_ajax").on("click", function () {
+        $.ajax({
+          url: "../cart/allDetail",
+          type: "GET",
+          dataType: "json",
+          statusCode: {
+            302: function (r) {
+              console.log("redirect");  // 這邊沒有執行到
+              sessionStorage.setItem("URL_before_login", window.location.href);
+              window.location.href = r.url;
+            },
+          },
+          success: function(data, textStatus) {
+            console.log("success");  //這邊也沒有執行到
+            console.log(data);
+            console.log(data.redirect);
+          },
+          error: function(xhr) {
+            console.log("error");  // 這邊有執行到
+            console.log(xhr);      // 但拿到的物件為Get完登入頁面的xhr物件...
+            console.log(xhr.statusCode());
+            console.log(xhr.getAllResponseHeaders());
+          }
+        });
+      });
+    </script>
   </body>
 </html>

@@ -6,7 +6,7 @@
     <meta name="keywords" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RestaurantBackEnd | CommentReplyRestaurant</title>
+    <title>Member | CommentProdDisplay</title>
 
     <!-- Google Font -->
     <link
@@ -42,12 +42,12 @@
     .nice-select {
       width: 80%;
     }
-    #commentPic {
+    #prodCommentPic {
       display: none;
     }
 
-    .restaurantCommentPic {
-      width: 250px;
+    .commentPic {
+      width: 230px;
       aspect-ratio: 16/9;
       background: #ddd;
       display: flex;
@@ -62,24 +62,24 @@
       overflow: hidden;
     }
 
-    .restaurantCommentPic:hover {
+    .commentPic:hover {
       color: #777;
       background: #ccc;
     }
 
-    .restaurantCommentPic:active {
+    .commentPic:active {
       border-color: turquoise;
       color: turquoise;
       background: #eee;
     }
 
-    .restaurantCommentPic:focus {
+    .commentPic:focus {
       color: #777;
       background: #ccc;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
 
-    .commentPic_image {
+    .prodCommentPic_image {
       max-width: 100%;
     }
   </style>
@@ -242,7 +242,7 @@
               height: 15%;
             "
           >
-            <h2>回覆評論</h2>
+            <h2>觀看評論</h2>
           </div>
           <div class="row">
             <div class="col-1"></div>
@@ -254,13 +254,11 @@
                       <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
-                            <label for="restaurantCommentTime"
-                              >評論時間：</label
-                            >
+                            <label for="prodNo">評論商品：</label>
                             <input
-                              type="datetime"
-                              name="restaurantCommentTime"
-                              id="restaurantCommentTime"
+                              type="number"
+                              name="prodNo"
+                              id="prodNo"
                               readonly
                               placeholder="自動顯示"
                             />
@@ -271,97 +269,70 @@
                       <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
-                            <label for="memberNo">評論帳號：</label>
-                            <input
-                              type="number"
-                              name="memberNo"
-                              id="memberNo"
-                              readonly
-                              placeholder="自動顯示"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <br />
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label for="commentRating">評論星等：</label>
-                            <input
-                              type="number"
-                              name="commentRating"
-                              id="commentRating"
-                              readonly
-                              placeholder="此為必填欄位"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="row">
-                        <div class="">
-                          <div class="form-group">
-                            <label for="commentContent">評論內容：</label>
+                            <label for="prodCommentContent">評論內容：</label>
                             <textarea
-                              name="commentContent"
-                              id="commentContent"
+                              name="prodCommentContent"
+                              id="prodCommentContent"
                               readonly
-                              cols="27"
+                              cols="25"
                               rows="5"
                             ></textarea>
                           </div>
                         </div>
                       </div>
+                      <br />
+                    </div>
+                    <div class="col">
                       <div class="row">
-                        <div class="">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
-                            <label class="commentPic_text">評論圖片：</label>
-                            <label
-                              class="restaurantCommentPic"
-                              for="commentPic"
-                              tabindex="0"
-                            >
-                              <span class="commentPic_image"></span>
-                            </label>
-                            <img id="comment_pic" src="" />
-                            <!-- <input
-                              type="file"
-                              name="commentPic"
-                              id="commentPic"
-                            /> -->
+                            <label for="prodCommentRating">評論星等：</label>
+                            <input
+                              type="number"
+                              name="prodCommentRating"
+                              id="prodCommentRating"
+                              readonly
+                              placeholder="必填，請填數字1-5"
+                            />
                           </div>
                         </div>
                       </div>
+                      <br />
+                      <div class="row">
+                        <div class="">
+                          <div class="form-group">
+                            <label class="prodCommentPic_text"
+                              >評論圖片：</label
+                            >
+                            <label
+                              class="commentPic"
+                              for="prodCommentPic"
+                              tabindex="0"
+                            >
+                              <span class="prodCommentPic_image"></span>
+                            </label>
+                            <input
+                              type="file"
+                              name="prodCommentPic"
+                              id="prodCommentPic"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <br />
                     </div>
                     <div class="col">
                       <div class="row">
                         <div class="">
                           <div class="form-group">
-                            <label for="restaurantRe">餐廳回覆：</label>
+                            <label for="prodCommentContent">餐廳回覆：</label>
                             <textarea
-                              name="restaurantRe"
-                              id="restaurantRe"
+                              name="prodCommentContent"
+                              id="prodCommentContent"
+                              readonly
                               cols="25"
-                              rows="10"
+                              rows="7"
                             ></textarea>
-                          </div>
-                          <div class="col-lg-8 submit">
-                            <div
-                              class="form-group"
-                              style="
-                                align-items: center;
-                                display: grid;
-                                justify-content: right;
-                              "
-                            >
-                              <input
-                                type="button"
-                                id="submit_btn"
-                                class="submit_btn"
-                                value="評論資料上傳"
-                              />
-                            </div>
                           </div>
                         </div>
                       </div>
@@ -494,9 +465,9 @@
     <!-- <script src="js/reservation.js"></script> -->
     <!-- <script src="js/alice.js"></script> -->
 
-    <!-- <script>  // 預覽圖片，回覆用不到。
-      const inputFile = document.querySelector("#commentPic");
-      const pictureImage = document.querySelector(".commentPic_image");
+    <!-- <script> // 預覽圖片，Display用不到
+      const inputFile = document.querySelector("#prodCommentPic");
+      const pictureImage = document.querySelector(".prodCommentPic_image");
       const pictureImageTxt = "可以選擇一張圖片";
       pictureImage.innerHTML = pictureImageTxt;
 
@@ -526,51 +497,54 @@
     </script> -->
 
     <script>
-      let reservationVO = JSON.parse(sessionStorage.getItem("reservationVO"));
-      console.log(reservationVO);
-
-      document.getElementById("restaurantCommentTime").value =
-        reservationVO.restaurantCommentTime;
-      document.getElementById("commentRating").value =
-        reservationVO.commentRating;
-      document.getElementById("commentContent").value =
-        reservationVO.commentContent;
-      document
-        .getElementById("comment_pic")
-        .setAttribute(
-          "src",
-          `../restaurantcomment/ShowCommentPic?reserveNo=${reservationVO.reserveNo}&restaurantNo=${reservationVO.restaurantNo}`
-        );
+      let prodOrderDetailVO = JSON.parse(
+        sessionStorage.getItem("prodOrderDetailVO")
+      );
+      console.log(prodOrderDetailVO);
+      document.getElementById("prodNo").value = prodOrderDetailVO.prodNo;
+      document.getElementById("prodCommentContent").value =
+        prodOrderDetailVO.prodCommentContent;
+      document.getElementById("prodCommentRating").value =
+        prodOrderDetailVO.prodCommentRating;
     </script>
-    <script>
-      // GET：取得query string
-      // const params = new Proxy(new URLSearchParams(window.location.search), {
-      //   get: (searchParams, prop) => searchParams.get(prop),
-      // });
-      // let reserveNo = parseInt(params.reserveNo);
-      // console.log(reserveNo)
 
+    <!-- <script>
       // POST
-      const URL = "http://localhost:8080/restaurantcomment/CommnetReply";
+      const URL = "http://localhost:8080/prodcomment/Comment";
       const submit_btn = document.getElementById("submit_btn");
       submit_btn.addEventListener("click", function () {
-        let updatereserveNo = reservationVO.reserveNo;
-        let updateRestaurantRe = document.querySelector("#restaurantRe").value;
-        fetch(URL, {
-          method: "POST",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify({
-            reserveNo: updatereserveNo,
-            restaurantRe: updateRestaurantRe,
-          }),
-        })
-          .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
-          .then((data) => {
-            console.log(data);
-            alert("成功回覆評論 !");
-            location.reload();
-          });
+        let updateProdOrderNo = prodOrderDetailVO.prodOrderNo;
+        let updateProdNo = prodOrderDetailVO.prodNo;
+        let updateProdCommentRating = parseInt(
+          document.querySelector("#prodCommentRating").value
+        );
+        let updateProdCommentContent = document.querySelector(
+          "#prodCommentContent"
+        ).value;
+
+        const fileReader = new FileReader();
+        fileReader.onload = (event) => {
+          let updateProdCommentPicStr = btoa(event.target.result);
+          fetch(URL, {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+              prodOrderNo: updateProdOrderNo,
+              prodNo: updateProdNo,
+              prodCommentRating: updateProdCommentRating,
+              prodCommentContent: updateProdCommentContent,
+              prodCommentPicStr: updateProdCommentPicStr,
+            }),
+          })
+            .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
+            .then((data) => {
+              console.log(data);
+              alert("送交訂單成功");
+              location.reload();
+            });
+        };
+        fileReader.readAsBinaryString(inputFile.files[0]);
       });
-    </script>
+    </script> -->
   </body>
 </html>

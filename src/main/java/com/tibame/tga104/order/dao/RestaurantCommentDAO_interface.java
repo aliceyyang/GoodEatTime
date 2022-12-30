@@ -15,4 +15,6 @@ public interface RestaurantCommentDAO_interface {
 	
 	ReservationVO replyComment(ReservationVO reservationVO);
 
+	ReservationVO select(Integer reserveNo, Integer restaurantNo);
+
 }

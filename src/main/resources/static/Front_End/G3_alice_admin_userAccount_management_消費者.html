@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="css/style.css" type="text/css" />
   <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
   <!-- <link rel="stylesheet" href="css/reservation.css" type="text/css" /> -->
-  <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" /> -->
   <!-- <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
 </head>
 <style>
@@ -157,8 +157,9 @@
         <ul>
           <li class=""><a href="">總覽</a></li>
           <li class=""><a href="">使用者管理</a></li>
-          <li class=""><a href="">資料審核</a></li>
-          <li class=""><a href="">廣告方案設定</a></li>
+          <li class=""><a href="./G3_alice_admin_userAccount_management_消費者.html">消費者資料審核</a></li>
+          <li class=""><a href="./G3_alice_admin_userAccount_management_餐廳.html.html">餐廳會員資料審核</a></li>
+          <li class=""><a href="./G3_alice_adOrder_admin.html">廣告訂單審核</a></li>
           <li class=""><a href="">客訴處理</a></li>
           <li class=""><a href="">點數及優惠券設定</a></li>
           <li class=""><a href="">會員分級設定</a></li>
@@ -357,7 +358,7 @@
   <script src="js/main.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- <script src="js/alice.js"></script> -->
-  <script src="js/alice_admin2_membership_management_page.js"></script>
+  <!-- <script src="js/alice_admin2_membership_management_page.js"></script> -->
 
   <script> // GET
     // 抽換資料
@@ -401,21 +402,48 @@
       const shipData = document.querySelector('#shipData')
       // GET
       const URL = "http://localhost:8080/admin/member-accounts";
-      await fetch(URL).then((r) => r.json()).then((data) => {
-        resData = data
-        shipData.innerHTML = data.map(({
-          memberNo,
-          mail,
-          name,
-          memberLevel,
-          verificationAccount
-        }) => template(
-          memberNo,
-          mail,
-          name,
-          memberLevel,
-          verificationAccount)).join("");
-      });
+      await fetch(URL, { redirect: "follow" })
+        .then((r) => {
+          console.log("是否重導向" + r.redirected)
+          console.log(r.url)
+          var redirect_URL = r.url;
+          if (r.redirected) {
+            swal({
+              title: "",
+              text: "請先登入",
+              icon: "warning",
+              button: "OK",
+              timer: 1000,
+            })
+            // .then(() => {
+            // request was redirected, handle the redirect
+            setTimeout(function () {
+              sessionStorage.setItem("res_login", window.location.assign(redirect_URL))
+              // sessionStorage.setItem("URL_BEFORE_LOGIN", window.location.assign("http://localhost:8080/Front_End/j_signin_root1.html"))
+              // window.location.assign("http://localhost:8080/Front_End/j_signin_root1.html");
+              console.log("執行重導向成功");
+            }, 1000)
+            // })
+          } else {
+            // request was not redirected, return the response
+            console.log("登入成功，去抓所有消費者會員資料")
+            return r.json().then((data) => {
+              resData = data
+              shipData.innerHTML = data.map(({
+                memberNo,
+                mail,
+                name,
+                memberLevel,
+                verificationAccount
+              }) => template(
+                memberNo,
+                mail,
+                name,
+                memberLevel,
+                verificationAccount)).join("");
+            });
+          }
+        })
 
       // get btn
       const onEdit = document.querySelectorAll('.edit_btn')
@@ -569,20 +597,20 @@
   </script>
   <script> // PUT
     // const URL2 = "http://localhost:8080/admin/member-accounts"; // {memberNo}
-    const updateData = (endpoint, data) => {
-      fetch(`${URL2}/${endpoint}`, {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-        .then((r) => r.json())
-        .then((data) => console.log(data));
-    };
+    // const updateData = (endpoint, data) => {
+    //   fetch(`${URL2}/${endpoint}`, {
+    //     method: "PUT",
+    //     body: JSON.stringify(data),
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   })
+    //     .then((r) => r.json())
+    //     .then((data) => console.log(data));
+    // };
 
     // 綁定事件後送出put method請求，抓到改動的資料傳入參數 -> (memberNo, request body data)
-    updateData('2', { memberLevel: '3', verificationAccount: true });
+    // updateData('2', { memberLevel: '3', verificationAccount: true });
   </script>
 </body>
 

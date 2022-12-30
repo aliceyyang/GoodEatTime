@@ -35,9 +35,8 @@
       rel="stylesheet"
       href="css/member_page_overview.css"
       type="text/css"
-      />
-    <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
-
+    />
+    <link rel="stylesheet" href="css/alice_style.css" type="text/css" />
   </head>
   <style>
     .nice-select {
@@ -48,7 +47,7 @@
     }
 
     .commentPic {
-      width: 250px;
+      width: 230px;
       aspect-ratio: 16/9;
       background: #ddd;
       display: flex;
@@ -255,67 +254,98 @@
                       <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
-                            <label for="prodCommentTime">評論時間：</label>
-                            <input type="number" name="prodCommentTime" id="prodCommentTime" placeholder="自動顯示">
-                          </div>
-                        </div>
-                      </div>                
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label for="memberNo">評論帳號：</label>
-                            <input type="number" name="memberNo" id="memberNo" placeholder="自動顯示">
-                          </div>
-                        </div>
-                      </div>                   
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group">
                             <label for="prodNo">評論商品：</label>
-                            <input type="number" name="prodNo" id="prodNo" placeholder="此為必填欄位">
+                            <input
+                              type="number"
+                              name="prodNo"
+                              id="prodNo"
+                              readonly
+                              placeholder="自動顯示"
+                            />
                           </div>
                         </div>
                       </div>
+                      <br />
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="form-group">
+                            <label for="prodCommentContent">評論內容：</label>
+                            <textarea
+                              name="prodCommentContent"
+                              id="prodCommentContent"
+                              cols="25"
+                              rows="5"
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <br />
+                    </div>
+                    <div class="col">
                       <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
                             <label for="prodCommentRating">評論星等：</label>
-                            <input type="number" name="prodCommentRating" id="prodCommentRating" placeholder="此為必填欄位">
+                            <input
+                              type="number"
+                              name="prodCommentRating"
+                              id="prodCommentRating"
+                              placeholder="必填，請填數字1-5"
+                            />
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col">
+                      <br />
                       <div class="row">
                         <div class="">
                           <div class="form-group">
-                            <label for="prodCommentContent">評論內容：</label>
-                            <textarea name="prodCommentContent" id="prodCommentContent" cols="27" rows="5"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="">
-                          <div class="form-group">
-                            <label class="prodCommentPic_text">評論圖片：</label>
-                            <label class="commentPic" for="prodCommentPic" tabIndex="0">
+                            <label class="prodCommentPic_text"
+                              >評論圖片：</label
+                            >
+                            <label
+                              class="commentPic"
+                              for="prodCommentPic"
+                              tabindex="0"
+                            >
                               <span class="prodCommentPic_image"></span>
                             </label>
-                            <input type="file" name="prodCommentPic" id="prodCommentPic">
+                            <input
+                              type="file"
+                              name="prodCommentPic"
+                              id="prodCommentPic"
+                            />
                           </div>
                         </div>
                       </div>
+                      <br />
                     </div>
                     <div class="col">
                       <div class="row">
                         <div class="">
                           <div class="form-group">
                             <label for="prodCommentContent">餐廳回覆：</label>
-                            <textarea name="prodCommentContent" id="prodCommentContent" cols="25" rows="10"></textarea>
+                            <textarea
+                              name="prodCommentContent"
+                              id="prodCommentContent"
+                              cols="25"
+                              rows="7"
+                            ></textarea>
                           </div>
                           <div class="col-lg-8 submit">
-                            <div class="form-group" style="align-items: center; display: grid;justify-content:right;">
-                              <input type="button" id="submit_btn" class="submit_btn" value="評論資料上傳">
+                            <div
+                              class="form-group"
+                              style="
+                                align-items: center;
+                                display: grid;
+                                justify-content: right;
+                              "
+                            >
+                              <input
+                                type="button"
+                                id="submit_btn"
+                                class="submit_btn"
+                                value="評論資料上傳"
+                              />
                             </div>
                           </div>
                         </div>
@@ -326,10 +356,6 @@
               </div>
             </div>
             <div class="col-1"></div>
-          </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -452,64 +478,84 @@
     <script src="js/main.js"></script>
     <!-- <script src="js/reservation.js"></script> -->
     <!-- <script src="js/alice.js"></script> -->
-    
-    <script> // 預覽圖片
+
+    <script>
+      // 預覽圖片
       const inputFile = document.querySelector("#prodCommentPic");
       const pictureImage = document.querySelector(".prodCommentPic_image");
       const pictureImageTxt = "可以選擇一張圖片";
       pictureImage.innerHTML = pictureImageTxt;
-  
+
       inputFile.addEventListener("change", function (e) {
         const inputTarget = e.target;
         const file = inputTarget.files[0];
-  
+
         if (file) {
           const reader = new FileReader();
-  
+
           reader.addEventListener("load", function (e) {
             const readerTarget = e.target;
-  
+
             const img = document.createElement("img");
             img.src = readerTarget.result;
             img.classList.add("prodMainPic_image");
-  
+
             pictureImage.innerHTML = "";
             pictureImage.appendChild(img);
           });
-  
+
           reader.readAsDataURL(file);
         } else {
           pictureImage.innerHTML = pictureImageTxt;
         }
-      }); 
+      });
     </script>
-    <script> // POST
-      const URL = 'http://localhost:8080/prodcomment/Comment';      
+
+    <script>
+      let prodOrderDetailVO = JSON.parse(
+        sessionStorage.getItem("prodOrderDetailVO")
+      );
+      console.log(prodOrderDetailVO);
+      document.getElementById("prodNo").value = prodOrderDetailVO.prodNo;
+    </script>
+
+    <script>
+      // POST
+      const URL = "http://localhost:8080/prodcomment/Comment";
       const submit_btn = document.getElementById("submit_btn");
       submit_btn.addEventListener("click", function () {
-
-        let updateProdCommentRating = parseInt(document.querySelector("#prodCommentRating").value);
-        let updateProdCommentContent = document.querySelector("#prodCommentContent").value;
+        let updateProdOrderNo = prodOrderDetailVO.prodOrderNo;
+        let updateProdNo = prodOrderDetailVO.prodNo;
+        let updateProdCommentRating = parseInt(
+          document.querySelector("#prodCommentRating").value
+        );
+        let updateProdCommentContent = document.querySelector(
+          "#prodCommentContent"
+        ).value;
 
         const fileReader = new FileReader();
         fileReader.onload = (event) => {
           let updateProdCommentPicStr = btoa(event.target.result);
           fetch(URL, {
             method: "POST",
-            headers: { 'Content-type': 'application/json', },
+            headers: { "Content-type": "application/json" },
             body: JSON.stringify({
-              prodOrderNo:3,    //未抓資料先寫死。
-              prodNo: 3,        //未抓資料先寫死。
+              prodOrderNo: updateProdOrderNo,
+              prodNo: updateProdNo,
               prodCommentRating: updateProdCommentRating,
               prodCommentContent: updateProdCommentContent,
-              prodCommentPicStr: updateProdCommentPicStr
+              prodCommentPicStr: updateProdCommentPicStr,
             }),
           })
             .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
-            .then((data) => { console.log(data); alert('送交訂單成功'); location.reload(); })
-        }
+            .then((data) => {
+              console.log(data);
+              alert("送交訂單成功");
+              location.reload();
+            });
+        };
         fileReader.readAsBinaryString(inputFile.files[0]);
-        })
+      });
     </script>
   </body>
 </html>

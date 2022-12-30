@@ -152,17 +152,18 @@
     <!-- <div class="container"> -->
     <div class="row" id="member">
       <!-- <div class="col-lg-2" id="left"> -->
-      <div class="col-lg-2" id="left"">
+      <div class="col-lg-2" id="left">
         <nav class=" header__menu mobile-menu" id="aaa">
-        <ul>
-          <li class=""><a href="">總覽</a></li>
-          <li class=""><a href="">使用者管理</a></li>
-          <li class=""><a href="">資料審核</a></li>
-          <li class=""><a href="">廣告方案設定</a></li>
-          <li class=""><a href="">客訴處理</a></li>
-          <li class=""><a href="">點數及優惠券設定</a></li>
-          <li class=""><a href="">會員分級設定</a></li>
-        </ul>
+          <ul>
+            <li class=""><a href="">總覽</a></li>
+            <li class=""><a href="">使用者管理</a></li>
+            <li class=""><a href="./G3_alice_admin_userAccount_management_消費者.html">消費者資料審核</a></li>
+            <li class=""><a href="./G3_alice_admin_userAccount_management_餐廳.html.html">餐廳會員資料審核</a></li>
+            <li class=""><a href="./G3_alice_adOrder_admin.html">廣告訂單審核</a></li>
+            <li class=""><a href="">客訴處理</a></li>
+            <li class=""><a href="">點數及優惠券設定</a></li>
+            <li class=""><a href="">會員分級設定</a></li>
+          </ul>
         </nav>
       </div>
       <div class="col-lg-10" style="background-color:white;height:auto;">
@@ -349,8 +350,17 @@
 
   <script> // GET
     // const shipData = document.querySelector('#shipData')
-    const URL = 'http://localhost:8080/adOrders'
+    const URL = 'http://localhost:8080/adOrders/admin'
     let resData = [];
+    // 抓登入session手動比對編號
+    var adminNoLogin = sessionStorage.getItem("adminVO")
+    if (adminNoLogin == 'res_A_11') {
+      adminNoLogin = 1
+    } else if (adminNoLogin == 'res_A_12') {
+      adminNoLogin = 2
+    } else {
+      adminNoLogin = 3
+    }
     // 抽換資料
     const template = (order_no, rest_no, adminNo, orderTime, startTime, endTime, price, verified, verified_detail) => {
       return `<tr align="center">
@@ -367,8 +377,9 @@
                   <div class="d-flex justify-content-center" id="original_adminNo${order_no}">
                     ${!!adminNo == 0 ? '-' : adminNo}
                   </div>
-                  <div id="select_adminNo_div${order_no}" class="d-none">
-                    <input id="select_adminNo${order_no}" type="checkbox" value="3">傳送過來的值
+                  <div id="select_adminNo_div${order_no}" class="d-none justify-content-center">
+                    <input id="select_adminNo${order_no}" type="checkbox" value="">
+                    <label for="select_adminNo${order_no}"></label>
                   </div>
                 </td>
                 <td>${orderTime}</td>
@@ -420,28 +431,47 @@
       // table
       const shipData = document.querySelector('#shipData')
       // GET
-      await fetch(URL).then((r) => r.json()).then((data) => {
-        resData = data
-        shipData.innerHTML = data.map(({
-          adOrderNo,
-          restaurantNo,
-          adminNo,
-          adOrderTime,
-          adStartTime,
-          adEndTime,
-          adOrderPrice,
-          verified,
-          verificationDetail
-        }) => template(adOrderNo,
-          restaurantNo,
-          adminNo,
-          adOrderTime,
-          adStartTime,
-          adEndTime,
-          adOrderPrice,
-          verified,
-          verificationDetail)).join('')
-      });
+      await fetch(URL, { redirect: "follow" }).then((r) => {
+        console.log("是否重導向" + r.redirected)
+        console.log(r.url)
+        var redirect_URL = r.url;
+        if (r.redirected) {
+          swal({
+            title: "",
+            text: "請先登入",
+            icon: "warning",
+            button: "OK",
+            timer: 1000,
+          })
+          setTimeout(function () {
+            sessionStorage.setItem("res_login", window.location.assign(redirect_URL))
+            console.log("執行重導向成功");
+          }, 1000)
+        } else {
+          return r.json().then((data) => {
+            resData = data
+            shipData.innerHTML = data.map(({
+              adOrderNo,
+              restaurantNo,
+              adminNo,
+              adOrderTime,
+              adStartTime,
+              adEndTime,
+              adOrderPrice,
+              verified,
+              verificationDetail
+            }) => template(adOrderNo,
+              restaurantNo,
+              adminNo,
+              adOrderTime,
+              adStartTime,
+              adEndTime,
+              adOrderPrice,
+              verified,
+              verificationDetail)).join('')
+          });
+        }
+      })
 
       // get btn
       const onEdit = document.querySelectorAll('.edit_btn')
@@ -456,7 +486,11 @@
           // 管理員編號
           let original_adminNo = document.querySelector(`#original_adminNo${adOrderNo}`)
           let select_adminNo = document.querySelector(`#select_adminNo${adOrderNo}`)
+          select_adminNo.value = adminNoLogin
+          select_adminNo.innerHTML = adminNoLogin
+          document.querySelector(`#select_adminNo_div${adOrderNo}>label`).innerText = adminNoLogin
           let select_adminNo_div = document.querySelector(`#select_adminNo_div${adOrderNo}`)
+          // select_adminNo_div.append.innerText = adminNoLogin
           // 審核狀態
           let original_verified = document.querySelector(`#original_verified${adOrderNo}`)
           let new_verified_div = document.querySelector(`#new_verified_div${adOrderNo}`)
@@ -473,10 +507,10 @@
             if (original_adminNo.innerText === '-') {
               // 管理員編號
               original_adminNo.className = edit_btn.value === '編輯' ? 'd-flex justify-content-center' : 'd-none justify-content-center';
-              select_adminNo_div.className = edit_btn.value === '編輯' ? 'd-none' : 'd-flex';
+              select_adminNo_div.className = edit_btn.value === '編輯' ? 'd-none justify-content-center' : 'd-flex justify-content-center';
             } else {
               original_adminNo.className = 'd-flex justify-content-center';
-              select_adminNo_div.className = 'd-none';
+              select_adminNo_div.className = 'd-none justify-content-center';
               // original_verified.className = 'd-flex justify-content-center';
               // new_verified_div.className = 'd-none';
             }
@@ -498,7 +532,7 @@
 
 
           // 點擊確認 -> PUT
-          const URL_PUT = 'http://localhost:8080/adOrders'; // {adOrderNo}
+          const URL_PUT = 'http://localhost:8080/adOrders/admin'; // {adOrderNo}
           if (edit_btn.value === '確認') {
             edit_btn.onclick = () => {
               // 訂單編號
@@ -507,7 +541,10 @@
               let res_No = parseInt(document.querySelectorAll(`#restaurantNo2`)[0].innerHTML);
               // 管理員編號
               let check_admin_btn = document.querySelector(`#select_adminNo${adOrderNo}`)
-              document.querySelector(`#select_adminNo${adOrderNo}`).checked ? check_admin_btn.setAttribute("value", "3") : check_admin_btn.setAttribute("value", "");
+              if (!document.querySelector(`#select_adminNo${adOrderNo}`).checked) {
+                check_admin_btn.setAttribute("value", "")
+              }
+              // document.querySelector(`#select_adminNo${adOrderNo}`).checked ? check_admin_btn.value : check_admin_btn.setAttribute("value", "");
               let admin_put = parseInt(check_admin_btn.value)
               // 審核狀態
               let check_verified_btn = document.querySelector(`#new_verified${adOrderNo}`)
@@ -522,7 +559,7 @@
               // 價格
               let priceForPUT = parseInt(document.getElementById(`price${adOrderNo}`).innerText);
 
-              if (admin_put == 3 && verified_put === 'true' && verified_detail_put != null) {
+              if (admin_put != '' && verified_put === 'true' && verified_detail_put != null) {
                 if (confirm('確定修改訂單?')) {
                   swal({
                     title: "",
@@ -533,6 +570,7 @@
                   const editOrder = endpoint => {
                     fetch(`${URL_PUT}/${endpoint}`, {
                       method: 'PUT',
+                      redirect: "follow",
                       headers: { 'Content-type': 'application/json' },
                       body: JSON.stringify({
                         adOrderNo: editItem,
@@ -545,10 +583,29 @@
                         verificationDetail: verified_detail_put,
                         // slideshowPicBase64: [base64]
                       })
-                    }).then((r) => r.json()).then((data) => {
-                      console.log(data); setTimeout(function () {
-                        location.reload();
-                      }, 1500);
+                    }).then((r) => {
+                      console.log("是否重導向" + r.redirected)
+                      console.log(r.url)
+                      var redirect_URL = r.url
+                      if (r.redirected) {
+                        swal({
+                          title: "",
+                          text: "請先登入",
+                          icon: "warning",
+                          button: "OK",
+                          timer: 1000,
+                        })
+                        setTimeout(function () {
+                          sessionStorage.setItem("res_login", window.location.assign(redirect_URL))
+                          console.log("執行重導向成功");
+                        }, 1000)
+                      } else {
+                        return r.json().then((data) => {
+                          console.log(data); setTimeout(function () {
+                            location.reload();
+                          }, 1500);
+                        })
+                      }
                     })
                   }
                   editOrder(editItem);
