@@ -672,6 +672,8 @@
             .then((memberVO) => {
               if (memberVO.successful) {
                 Swal.fire("存檔成功!");
+                let memberVO = JSON.stringify(body);
+                sessionStorage.setItem("memberVO", memberVO);
               } else {
                 Swal.fire(memberVO.message);
               }
@@ -685,6 +687,8 @@
           .then((body) => {
             Swal.fire(body.message);
             if (body.successful) {
+              sessionStorage.removeItem("memberVO");
+              console.log("bye");
               location = "GoodEatTime.html";
             }
           });

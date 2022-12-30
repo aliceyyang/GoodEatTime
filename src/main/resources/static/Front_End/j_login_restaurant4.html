@@ -641,7 +641,7 @@
               let restaurantMemberVO = JSON.stringify(body);
               sessionStorage.setItem("restaurantMemberVO", restaurantMemberVO);
               if (body.successful) {
-                location = "j_welcome_login1.html";
+                location = "j_welcome_restaurant_Login1.html";
               } else {
                 Swal.fire(body.message);
               }
