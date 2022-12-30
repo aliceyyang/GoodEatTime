@@ -433,9 +433,12 @@
           })
             .then((resp) => resp.json())
             .then((body) => {
+              let resultadminVO = JSON.stringify(body);
+              sessionStorage.setItem("resultadminVO", resultadminVO);
               if (body.successful) {
                 // Swal.fire(body.message);
                 Swal.fire("登入成功", "", "success");
+                location = "j_welcome_adminLogin1.html";
               } else {
                 Swal.fire("登入失敗", "請洽系統管理員", "error");
               }

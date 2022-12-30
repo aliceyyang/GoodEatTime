@@ -26,7 +26,13 @@ import com.tibame.tga104.member.vo.MemberVO;
 	"/cart/update", 
 	"/cart/delete", 
 	"/order/**",
-	"/member/info"
+	"/member/info",
+	"/reservation/member/inf",
+	"/reservation/member",
+	"/prodcomment/**",
+	"/restaurantcomment/**",
+	"/reservation/member/inf",
+	"/reservation/member"
 })
 
 public class MemberLoginFilter extends HttpFilter {

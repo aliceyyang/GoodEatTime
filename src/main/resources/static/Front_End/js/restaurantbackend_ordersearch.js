@@ -1,76 +1,64 @@
+console.log("read success");
+// 判斷是否有登入
 if (!sessionStorage.getItem("restaurantMemberVO")) {
-  Swal.fire({
-    // sweet alert CDN
-    position: "center",
-    icon: "warning",
-    title: "請先登入",
-    showConfirmButton: false,
-    timer: 1000,
-  }).then(() => {
-    // 動畫跑完後跳轉
-    sessionStorage.setItem("URL_before_login", window.location.href);
-    window.location.href = "./j_login_restaurant4.html";
-  });
+    Swal.fire({ // sweet alert CDN
+        position: "center",
+        icon: "warning",
+        title: "請先登入",
+        showConfirmButton: false,
+        timer: 1000,
+      }).then(()=>{ // 動畫跑完後跳轉
+        sessionStorage.setItem("URL_before_login", window.location.href);
+        window.location.href = "./j_login_restaurant4.html";
+      });
 } else {
+
+  //===========================dataTable================================
   $(document).ready(function () {
-    $("#reserveinf").DataTable({
-      ajax: `../reservation/restaurant/reserveInf?date=${sessionStorage.getItem(
-        "reserveDate"
-      )}`,
+    $("#prodOrder").DataTable({
+      ajax: "../order/restaurantSearch",
+      type: "GET",
+  
       columns: [
         {
-          data: "reserveNo",
+          data: "prodOrderNo",
         },
         {
           data: "name",
         },
         {
-          data: "reserveDate",
+          data: "amountAfterCoupon",
         },
         {
-          data: "reserveTime",
+          data: "prodOrderDate",
         },
         {
-          data: "reserveNum",
+          data: "prodOrderReceiverName",
         },
         {
-          data: "tel",
+          data: "orderStatus",
         },
         {
-          data: "mail",
-        },
-        {
-          data: "remark",
-        },
-        {
-          data: "reserveStatus",
-          render: function (status, type, row) {
-            // console.log(row.reserveDate);
-            // console.log(type);
-            // console.log(status);
-            const today = new Date();
-            // console.log(today.toLocaleDateString());
-            const reserveDate = new Date(row.reserveDate);
-            // console.log(reserveDate.toLocaleDateString());
-            // console.log(
-            //   today.toLocaleDateString() > reserveDate.toLocaleDateString() ||
-            //     today.toLocaleDateString() < reserveDate.toLocaleDateString()
-            // );
-            if (
-              today.toLocaleDateString() > reserveDate.toLocaleDateString() ||
-              today.toLocaleDateString() < reserveDate.toLocaleDateString()
-            ) {
-              return status;
-            } else {
-              return `
-              <input type="checkbox" id="switch${row.reserveNo}" class="switchButton" onchange="change(${row.reserveNo})"/>
-              <label for="switch${row.reserveNo}" class="switchLabel">
-                  <span class="switch-txt" turnOn="報到成功" turnOff="未報到"></span>
-              </label>`;
-            }
-          },
+          data: null,
         },
       ],
+      drawCallback: function (settings) {
+        //   console.log($("tbody > tr"));
+        $.each($("tbody > tr"), function (index, item) {
+          // element.children().last().text("");
+          // console.log(item);
+          var last_th = $(item).children().last();
+          // var first_th = $(item).children().first();
+          last_th.text("");
+          var btn_html = "<button>詳細內容</button>";
+          last_th.append(btn_html);
+        });
+        $("td > button").on("click", function () {
+          var prodOrderNo = parseInt($(this).closest("tr").children().first().text());
+          console.log(prodOrderNo);
+          window.location.href = `./restaurantbackend_orderdetail.html?prodOrderNo=${prodOrderNo}`;
+        });
+      },
       language: {
         processing: "處理中...",
         loadingRecords: "載入中...",
@@ -79,31 +67,6 @@ if (!sessionStorage.getItem("restaurantMemberVO")) {
           previous: "上一頁",
           next: "下一頁",
           last: "最後一頁",
-        },
-        emptyTable: "目前沒有資料",
-        datetime: {
-          previous: "上一頁",
-          next: "下一頁",
-          hours: "時",
-          minutes: "分",
-          seconds: "秒",
-          amPm: ["上午", "下午"],
-          unknown: "未知",
-          weekdays: ["週日", "週一", "週二", "週三", "週四", "週五", "週六"],
-          months: [
-            "一月",
-            "二月",
-            "三月",
-            "四月",
-            "五月",
-            "六月",
-            "七月",
-            "八月",
-            "九月",
-            "十月",
-            "十一月",
-            "十二月",
-          ],
         },
         searchBuilder: {
           add: "新增條件",
@@ -303,40 +266,4 @@ if (!sessionStorage.getItem("restaurantMemberVO")) {
   });
 }
 
-function change(reserveNo) {
-  console.log(reserveNo);
-  var isChecked = $(`#switch${reserveNo}`).is(":checked");
-  console.log("isChecked: " + isChecked);
-  let reserveStatus;
-  if (isChecked) {
-    reserveStatus = $(".switch-txt").attr("turnOn");
-  } else {
-    reserveStatus = $(".switch-txt").attr("turnOff");
-  }
-  console.log("Selected data: " + reserveStatus);
 
-  fetch(
-    `../reservation/restaurant/statusUpdate?reserveNo=${reserveNo}&reserveStatus=${reserveStatus}`
-  )
-    .then((resp) => {
-      if (resp.redirected) {
-        Swal.fire({
-          // sweet alert CDN
-          position: "center",
-          icon: "warning",
-          title: "請先登入",
-          showConfirmButton: false,
-          timer: 1000,
-        }).then(() => {
-          // 動畫跑完後跳轉
-          sessionStorage.setItem("URL_before_login", window.location.href);
-          window.location.href = resp.url;
-        });
-      } else {
-        return resp.json();
-      }
-    })
-    .then((a) => {
-      console.log(a);
-    });
-}

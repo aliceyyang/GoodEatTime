@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RestaurantBackEnd | ProdInfo</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>RestaurantBackEnd | OrderDetail</title>
 
     <!-- Google Font -->
     <link
@@ -35,55 +35,22 @@
       rel="stylesheet"
       href="css/member_page_overview.css"
       type="text/css"
-      />
-    <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
-
-    <style>
-      .nice-select {
-        width: 80%;
-      }
-      #prodMainPic {
-    display: none;
-      }
-
-      .prodPic {
-        width: 250px;
-        aspect-ratio: 16/9;
-        background: #ddd;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #aaa;
-        border: 2px dashed currentcolor;
-        cursor: pointer;
-        font-family: sans-serif;
-        transition: color 300ms ease-in-out, background 300ms ease-in-out;
-        outline: none;
-        overflow: hidden;
-      }
-
-      .prodPic:hover {
-        color: #777;
-        background: #ccc;
-      }
-
-      .prodPic:active {
-        border-color: turquoise;
-        color: turquoise;
-        background: #eee;
-      }
-
-      .prodPic:focus {
-        color: #777;
-        background: #ccc;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      }
-
-      .prodMainPic_image {
-        max-width: 100%;
-      }
-    </style>
+    />
+    <link rel="stylesheet" href="css/alice_style.css" type="text/css" />
   </head>
+  <style>
+    .nice-select {
+      width: 80%;
+    }
+    table, tr, th, td {
+      border: 1px solid black;
+    }
+    table.orderdetail{
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+
   <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -187,26 +154,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <nav class="header__menu mobile-menu">
-              <ul>
-                <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-                <li><a href="./about.html">會員專區</a></li>
-                <li><a href="./shop.html">餐廳</a></li>
-                <li><a href="./blog.html">線上商城</a></li>
-                <li>
-                  <a href="#">關於我們</a>
-                  <ul class="dropdown">
-                    <li><a href="./shop-details.html">Shop Details</a></li>
-                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                    <li><a href="./checkout.html">Check Out</a></li>
-                    <li><a href="./wisslist.html">Wisslist</a></li>
-                    <li><a href="./Class.html">Class</a></li>
-                    <li><a href="./blog-details.html">Blog Details</a></li>
-                  </ul>
-                </li>
-                <li><a href="./contact.html">地點搜尋</a></li>
-              </ul>
-            </nav>
+            <nav class="header__menu mobile-menu"></nav>
           </div>
         </div>
       </div>
@@ -236,106 +184,192 @@
         <!-- 中間空白欄位 -->
         <!-- 上排 -->
         <div class="col-lg-10">
-          <div class="row">
-            <div class="col-1"></div>
-            <div class="col-10">
-              <div class="container">
-                <form action method="POST">
-                  <div class="row">
-                    <div class="col">
-                      <br>
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label for="prodName">商品名稱：</label>
-                            <input type="text" name="prodName" id="prodName" placeholder="此為必填欄位">
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px;">
-                          <div class="form-group">
-                            <label for="prodCategoryNo">商品類別：</label>
-                            <select required="true" name="prodCategoryNo" id="prodCategoryNo">
-                              <option>此為必填欄位</option>
-                              <option value="1">日式料理</option>
-                              <option value="2">義式料理</option>
-                              <option value="3">中式料理</option>
-                              <option value="4">美式料理</option>
-                              <option value="5">法式料理</option>
-                              <option value="6">港式料理</option>
-                              <option value="7">泰式料理</option>
-                              <option value="8">台灣料理</option>
-                              <option value="9">創意料理</option>
-                              <option value="10">烘焙甜點</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label for="prodStock">商品庫存：</label>
-                            <input type="text" name="prodStock" id="prodStock" placeholder="此為必填欄位">
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label for="prodPrice">商品價格：</label>
-                            <input type="text" name="prodPrice" id="prodPrice" placeholder="此為必填欄位">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <br>
-                      <div class="row">
-                        <div class="">
-                          <div class="form-group">
-                            <label for="prodDescription">商品說明：</label>
-                            <textarea name="prodDescription" id="prodDescription" cols="25" rows="5"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="">
-                          <div class="form-group">
-                            <label for="prodContent">商品規格：</label>
-                            <textarea name="prodContent" id="prodContent" cols="25" rows="5"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <br>
-                      <div class="row">
-                        <div class="form-group">
-                          <label class="prodMainPic_text">商品圖片：</label>
-                          <label class="prodPic" for="prodMainPic" tabIndex="0">
-                            <span class="prodMainPic_image"></span>
-                          </label>
-                          <input type="file" name="prodMainPic" id="prodMainPic" multiple accept="image/*">
-                        </div>
-                        <div class="col-lg-8 submit">
-                          <div class="form-group" style="align-items: center; display: grid;justify-content:right;">
-                            <input type="button" id="submit_btn" class="submit_btn" value="商品資料上傳">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+          <div
+            class="row-cols-12"
+            style="
+              align-items: center;
+              display: grid;
+              justify-content: center;
+              height: 15%;
+              background-color: #fdf3ea;
+            "
+          >
+            <h2>商城訂單資訊</h2>
+          </div>
+          <div class="row" style="height: 80%">
+            <div class="col-sm" style="background-color: #fdf3ea; margin: 15px">
+              <div class="container" style="height: 90%; margin: 2%">
+                <!-- <div class="row" style="height: 90%"> -->
+                  <!-- <table class="orderdetail">
+                    <tr>
+                      <td>商城訂單編號：</td>
+                      <td>訂單狀態：</td>
+                      <td>下單日：</td>
+                      <td>取貨日：</td>
+                    </tr>
+                    <tr>
+                      <td>訂購人：</td>
+                      <td>訂購電話：</td>
+                    </tr>
+                    <tr>
+                      <td>收貨人：</td>
+                      <td>收貨人電話：</td>
+                      <td>收貨人EMAIL：</td>
+                    </tr>
+                    <tr>
+                      <td>收貨人地址：</td>
+                    </tr>
+                  </table> -->
+                  <form action="http" method="post">
+                    <label for="prodOrderNo">商城訂單編號：</label>
+                    <input
+                      style="width: 120px"
+                      type="number"
+                      name="prodOrderNo"
+                      id="prodOrderNo"
+                      disabled
+                      placeholder="顯示商城訂單編號"
+                    />
+                    <label for="orderStatus">訂單狀態：</label>
+                    <input
+                      style="width: 120px"
+                      type="number"
+                      name="orderStatus"
+                      id="orderStatus"
+                      placeholder="狀態(可修改)"
+                    />
+                    <label for="prodOrderDate">訂單時間：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="prodOrderDate"
+                      id="prodOrderDate"
+                      disabled
+                      placeholder="顯示訂單時間"
+                    />
+                    <label for="prodOderDeliverTime">出貨時間：</label>
+                    <input
+                      style="width: 120px"
+                      type="number"
+                      name="prodOderDeliverTime"
+                      id="prodOderDeliverTime"
+                      disabled
+                      placeholder="顯示出貨時間"
+                    />
+                    <br />
+                    <label for="name">訂購人：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="name"
+                      id="name"
+                      disabled
+                      placeholder="from table:member"
+                    />
+                    <label for="tel">訂購人電話：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="tel"
+                      id="tel"
+                      disabled
+                      placeholder="from table:memeber"
+                    />
+                    <br />
+                    <label for="prodOrderReceiverName">收貨人：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="prodOrderReceiverName"
+                      id="prodOrderReceiverName"
+                      disabled
+                      placeholder="顯示收貨人"
+                    />
+                    <label for="prodOrderReceiverTel">收貨人電話：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="prodOrderReceiverTel"
+                      id="prodOrderReceiverTel"
+                      disabled
+                      placeholder="顯示收貨人電話"
+                    />
+                    <label for="prodOrderReceiverMail">收貨人MAIL：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="prodOrderReceiverMail"
+                      id="prodOrderReceiverMail"
+                      disabled
+                      placeholder="顯示收貨人MAIL"
+                    />
+                    <br />
+                    <label for="prodOrderReceiverAddress">收貨人地址：</label>
+                    <input
+                      style="width: 400px"
+                      type="number"
+                      name="prodOrderReceiverAddress"
+                      id="prodOrderReceiverAddress"
+                      disabled
+                      placeholder="顯示收貨人地址"
+                    />
+                    <br />
+                    <label for="amountAfterCoupon">訂單金額：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="amountAfterCoupon"
+                      id="amountAfterCoupon"
+                      disabled
+                      placeholder="顯示訂單折扣後金額"
+                    />
+                    <label for="invoiceNumber">發票號碼：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="invoiceNumber"
+                      id="invoiceNumber"
+                      disabled
+                      placeholder="顯示發票號碼"
+                    />
+                    <label for="taxIDNumber">統一編號：</label>
+                    <input
+                      style="width: 200px"
+                      type="number"
+                      name="taxIDNumber"
+                      id="taxIDNumber"
+                      disabled
+                      placeholder="顯示統一編號"
+                    />
+                  <div>
+                    ____________________________________________________________________________________________________________________
                   </div>
+                  <div>
+                    <h5>訂單商品資訊：</h5>
+                  </div>
+                  <br>
+                  <table class="orderdateil">
+                    <tr>
+                        <th>商品編號</th>
+                        <th>商品名稱</th>
+                        <th>商品數量</th>
+                        <th>單品金額</th>
+                    </tr>
+                    <tr>
+                        <td>顯示查詢資料from table:prodInfo</td>
+                        <td>顯示查詢資料from table:prodInfo</td>
+                        <td>顯示查詢資料from table:prodOrderDetail</td>
+                        <td>顯示查詢資料from table:prodOrderDetail</td>
+                    </tr>
+                  </table>
+                  <div class="返回訂單查詢"><a href="http">返回訂單查詢</a></div>
+                  <!-- <input type="submit" value="返回訂單查詢" />
+                  <input type="submit" value="修改訂單狀態" /> -->
                 </form>
+                </div>
               </div>
             </div>
-            <div class="col-1"></div>
           </div>
-        </div>
         </div>
       </div>
     </section>
@@ -455,72 +489,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-    <!-- <script src="js/reservation.js"></script> -->
-    <!-- <script src="js/alice.js"></script> -->
-
-    <script> // 預覽圖片
-      const inputFile = document.querySelector("#prodMainPic");
-      const pictureImage = document.querySelector(".prodMainPic_image");
-      const pictureImageTxt = "可以選擇一張圖片";
-      pictureImage.innerHTML = pictureImageTxt;
-  
-      inputFile.addEventListener("change", function (e) {
-        const inputTarget = e.target;
-        const file = inputTarget.files[0];
-  
-        if (file) {
-          const reader = new FileReader();
-  
-          reader.addEventListener("load", function (e) {
-            const readerTarget = e.target;
-  
-            const img = document.createElement("img");
-            img.src = readerTarget.result;
-            img.classList.add("prodMainPic_image");
-  
-            pictureImage.innerHTML = "";
-            pictureImage.appendChild(img);
-          });
-  
-          reader.readAsDataURL(file);
-        } else {
-          pictureImage.innerHTML = pictureImageTxt;
-        }
-      }); 
-    </script>
-    <script> // POST
-      const URL = 'http://localhost:8080/product/addProdInfo';      
-      const submit_btn = document.getElementById("submit_btn");
-      submit_btn.addEventListener("click", function () {
-        let updateName = document.querySelector("#prodName").value;
-        let updateCategoryNo = parseInt(document.querySelector("#prodCategoryNo").value);
-        let updateStock = parseInt(document.querySelector("#prodStock").value);
-        let updatePrice = parseInt(document.querySelector("#prodPrice").value);
-        let updateDescription = document.querySelector("#prodDescription").value;
-        let updateContent = document.querySelector("#prodContent").value;
-        
-        const fileReader = new FileReader();
-        fileReader.onload = (event) => {
-          let updateProdMainPicStr = btoa(event.target.result);
-          fetch(URL, {
-            method: "POST",
-            headers: { 'Content-type': 'application/json', },
-            body: JSON.stringify({
-              restaurantNo: 2,
-              prodName: updateName,
-              prodCategoryNo: updateCategoryNo,
-              prodStock: updateStock,
-              prodPrice: updatePrice,
-              prodDescription: updateDescription,
-              prodContent: updateContent,
-              prodMainPicStr: updateProdMainPicStr
-            }),
-          })
-            .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
-            .then((data) => { console.log(data); alert('成功新增商品 !'); location.reload(); })
-        }
-        fileReader.readAsBinaryString(inputFile.files[0]);
-        })
-    </script>
+    <script src="js/reservation.js"></script>
+    <script src="js/alice.js"></script>
   </body>
 </html>

@@ -151,25 +151,25 @@
         <div class="row">
           <div class="col-lg-12">
             <nav class="header__menu mobile-menu">
-                <ul>
-                  <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-                  <li><a href="./about.html">會員專區</a></li>
-                  <li><a href="./shop.html">餐廳</a></li>
-                  <li><a href="./blog.html">線上商城</a></li>
-                  <li>
-                    <a href="#">關於我們</a>
-                    <ul class="dropdown">
-                      <li><a href="./shop-details.html">Shop Details</a></li>
-                      <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                      <li><a href="./checkout.html">Check Out</a></li>
-                      <li><a href="./wisslist.html">Wisslist</a></li>
-                      <li><a href="./Class.html">Class</a></li>
-                      <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="./contact.html">地點搜尋</a></li>
-                </ul>
-              </nav>
+              <ul>
+                <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
+                <li><a href="./about.html">會員專區</a></li>
+                <li><a href="./shop.html">餐廳</a></li>
+                <li><a href="./blog.html">線上商城</a></li>
+                <li>
+                  <a href="#">關於我們</a>
+                  <ul class="dropdown">
+                    <li><a href="./shop-details.html">Shop Details</a></li>
+                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                    <li><a href="./checkout.html">Check Out</a></li>
+                    <li><a href="./wisslist.html">Wisslist</a></li>
+                    <li><a href="./Class.html">Class</a></li>
+                    <li><a href="./blog-details.html">Blog Details</a></li>
+                  </ul>
+                </li>
+                <li><a href="./contact.html">地點搜尋</a></li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
@@ -206,147 +206,353 @@
               background-color: #fdf3ea;
             "
           >
-          <h2>評論管理</h2>
-        </div>
-        <div class="row" style="height: 80%">
-          <div
-          class="row-cols-12"
-          style="background-color: #fdf3ea; margin: 15px; padding: 40px"
-          >
-            <div class="" style="background-color: #fdf3ea; margin: 2%">
-              <div class="row">
+            <h2>評論管理</h2>
+          </div>
+          <div class="row" style="height: 80%">
+            <div
+              class="row-cols-12"
+              style="background-color: #fdf3ea; margin: 15px; padding: 40px"
+            >
+              <div class="" style="background-color: #fdf3ea; margin: 2%">
                 <div class="row">
-                  <form action method="POST">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px;">
-                      <div class="form-group">
-                        <label for="commentFor">請選擇評論對象：</label>
-                        <select required="true" name="commentFor" id="commentFor">
-                          <option>此為必填欄位</option>
-                          <option value="1">餐廳評論</option>
-                          <option value="2">商品評論</option>
-                        </select>
+                  <div class="row">
+                    <form action method="POST">
+                      <div
+                        class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                        style="margin-bottom: 15px"
+                      >
+                        <div class="form-group">
+                          <label for="commentFor">請選擇評論對象：</label>
+                          <select
+                            required="true"
+                            name="commentFor"
+                            id="commentFor"
+                          >
+                            <option>此為必填欄位</option>
+                            <option value="餐廳評論">餐廳評論</option>
+                            <option value="商品評論">商品評論</option>
+                          </select>
+                        </div>
                       </div>
                       <div class="col-lg-8 submit">
-                        <div class="form-group" style="align-items: center; display: grid;justify-content:left;">
-                          <input type="button" id="submit_btn" class="submit_btn" value="搜尋評論">
+                        <div
+                          class="form-group"
+                          style="
+                            align-items: center;
+                            display: grid;
+                            justify-content: left;
+                          "
+                        >
+                          <input
+                            type="button"
+                            id="submit_btn"
+                            class="submit_btn"
+                            value="搜尋評論"
+                          />
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <br />
+                  <br />
+                  <div>
+                    _______________________________________________________________________________________________________________________
+                  </div>
+                  <div class="product__details__tab">
+                    <div class="col-lg-12">
+                      <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                          <a
+                            class="nav-link active"
+                            data-toggle="tab"
+                            href="#tabs-1"
+                            role="tab"
+                            >已評論過</a
+                          >
+                        </li>
+                        <li class="nav-item">
+                          <a
+                            class="nav-link"
+                            data-toggle="tab"
+                            href="#tabs-2"
+                            role="tab"
+                            >尚未評論過</a
+                          >
+                        </li>
+                      </ul>
+                      <div class="tab-content">
+                        <div
+                          class="tab-pane active"
+                          id="tabs-1"
+                          role="tabpanel"
+                        >
+                          <div class="row d-flex justify-content-center">
+                            <table
+                              class="notnullprodcomment"
+                              width="100%"
+                              style="table-layout: fixed"
+                            >
+                              <thead align="center">
+                                <tr>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    訂單編號
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    商品名稱
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    評論日期
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    評論星等
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    商家回覆
+                                  </th>
+                                  <!-- <th>編輯</th> -->
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr align="center">
+                                  <td>abc</td>
+                                  <td>123</td>
+                                  <td>abc</td>
+                                  <td>abc</td>
+                                  <td>abc</td>
+                                  <td>
+                                    <button
+                                      type="button"
+                                      class="btn btn-light"
+                                      style="
+                                        width: auto;
+                                        padding: 2px;
+                                        border-radius: 8px;
+                                        box-shadow: 3px 3px 1px #ffd382;
+                                      "
+                                    >
+                                      觀看評論
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <table
+                              class="notnullrestaurantcomment"
+                              width="100%"
+                              style="table-layout: fixed"
+                            >
+                              <thead align="center">
+                                <tr>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    訂位編號
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    餐廳名稱
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    評論日期
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    評論星等
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    商家回覆
+                                  </th>
+                                  <!-- <th>編輯</th> -->
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr align="center">
+                                  <td>abc</td>
+                                  <td>123</td>
+                                  <td>abc</td>
+                                  <td>這是資料</td>
+                                  <td>abc</td>
+                                  <td>
+                                    <button
+                                      type="button"
+                                      class="btn btn-light"
+                                      style="
+                                        width: auto;
+                                        padding: 2px;
+                                        border-radius: 8px;
+                                        box-shadow: 3px 3px 1px #ffd382;
+                                      "
+                                    >
+                                      觀看評論
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="tab-pane" id="tabs-2" role="tabpanel">
+                          <div class="row d-flex justify-content-center">
+                            <table
+                              class="nullprodcomment"
+                              width="100%"
+                              style="table-layout: fixed"
+                            >
+                              <thead align="center">
+                                <tr>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    訂單編號
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    商品名稱
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    評論日期
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    評論星等
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    商家回覆
+                                  </th>
+                                  <!-- <th>編輯</th> -->
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr align="center">
+                                  <td>abc</td>
+                                  <td>123</td>
+                                  <td>-</td>
+                                  <td>-</td>
+                                  <td>-</td>
+                                  <td>
+                                    <button
+                                      type="button"
+                                      class="btn btn-light"
+                                      style="
+                                        width: auto;
+                                        padding: 2px;
+                                        border-radius: 8px;
+                                        box-shadow: 3px 3px 1px #ffd382;
+                                      "
+                                    >
+                                      觀看評論
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <table
+                              class="nullrestaurantcomment"
+                              width="100%"
+                              style="table-layout: fixed"
+                            >
+                              <thead align="center">
+                                <tr>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    訂位編號
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    餐廳名稱
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    評論日期
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    評論星等
+                                  </th>
+                                  <th
+                                    align="center"
+                                    style="border: 3px #ffd382 dashed"
+                                  >
+                                    商家回覆
+                                  </th>
+                                  <!-- <th>編輯</th> -->
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr align="center">
+                                  <td>abc</td>
+                                  <td>123</td>
+                                  <td>-</td>
+                                  <td>-</td>
+                                  <td>-</td>
+                                  <td>
+                                    <button
+                                      type="button"
+                                      class="btn btn-light"
+                                      style="
+                                        width: auto;
+                                        padding: 2px;
+                                        border-radius: 8px;
+                                        box-shadow: 3px 3px 1px #ffd382;
+                                      "
+                                    >
+                                      撰寫評論
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </form>
-                </div>
-                <br>
-                <br>
-                <div>_______________________________________________________________________________________________________________________</div>
-                <div class="product__details__tab">
-                    <div class="col-lg-12">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">已評論過</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">尚未評論過</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="table-responsive">
-                                <table class="userNo-table table" width="100%" style="table-layout:fixed;">
-
-                                  <thead align="center">
-                                    <tr>
-                                      <th align="center" style="border:3px #FFD382 dashed;">訂單編號</th>
-                                      <th align="center" style="border:3px #FFD382 dashed;">商品名稱</th>
-                                      <th align="center" style="border:3px #FFD382 dashed;">評論日期</th>
-                                      <th align="center" style="border:3px #FFD382 dashed;">評論星等</th>
-                                      <th align="center" style="border:3px #FFD382 dashed;">商家回覆</th>
-                                      <!-- <th>編輯</th> -->
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr align="center">
-                                      <td>abc</td>
-                                      <td>123</td>
-                                      <td>abc</td>
-                                      <td>abc</td>
-                                      <td>abc</td>
-                                      <td>
-                                        <button type="button" class="btn btn-light"
-                                          style="width: auto; padding:2px; border-radius: 8px; box-shadow: 3px 3px 1px #FFD382;">觀看</button>
-                                      </td>
-                                    </tr>
-                                    <tr align="center">
-                                      <td>abc</td>
-                                      <td>123</td>
-                                      <td>abc</td>
-                                      <td>xyz</td>
-                                      <td>abc</td>
-                                      <td>
-                                        <button type="button" class="btn btn-light"
-                                          style="width: auto; padding:2px; border-radius: 8px; box-shadow: 3px 3px 1px #FFD382;">觀看</button>
-                                      </td>
-                                    </tr>
-                                    <tr align="center">
-                                      <td>abc</td>
-                                      <td>123</td>
-                                      <td>abc</td>
-                                      <td>777</td>
-                                      <td>abc</td>
-                                      <td>
-                                        <button type="button" class="btn btn-light"
-                                          style="width: auto; padding:2px; border-radius: 8px; box-shadow: 3px 3px 1px #FFD382;">觀看</button>
-                                      </td>
-                                    </tr>
-                                    <tr align="center">
-                                      <td>abc</td>
-                                      <td>123</td>
-                                      <td>abc</td>
-                                      <td>這是資料</td>
-                                      <td>abc</td>
-                                      <td>
-                                        <button type="button" class="btn btn-light"
-                                          style="width: auto; padding:2px; border-radius: 8px; box-shadow: 3px 3px 1px #FFD382;">觀看</button>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-lg-10">
-                                        <table class="commmentList">
-                                            <tr>
-                                                <th>評論對象</th>
-                                                <th>評論ID</th>
-                                                <th>評論商品</th>
-                                                <th>評論日期</th>
-                                                <th>評論星等</th>
-                                                <th>評論回覆</th>
-                                            </tr>
-                                            <tr>
-                                                <td>from table:
-                                                  reservation
-                                                  prodOrderDetail</td>
-                                                <td>from table:
-                                                  reservation
-                                                  prodOrderDetail</td>
-                                                <td>評論對象是餐廳
-                                                  此欄空白</td>
-                                                <td>from table:
-                                                  reservation
-                                                  prodOrderDetail</td>
-                                                <td>from table:
-                                                  reservation
-                                                  prodOrderDetail</td>
-                                                <td><input type="submit" value="撰寫評論" /></td>
-                                            </tr>
-                                          </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                </form>
+                  </div>
+                  <br />
                 </div>
               </div>
             </div>
@@ -470,7 +676,264 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/reservation.js"></script>
     <script src="js/alice.js"></script>
+
+    <script>
+      const submit_btn = document.getElementById("submit_btn");
+      let resultList;
+      submit_btn.addEventListener("click", function () {
+        console.log(
+          document.querySelector("div.nice-select span.current").innerText
+        );
+        let choice = document.querySelector(
+          "div.nice-select span.current"
+        ).innerText;
+        if (choice == "餐廳評論") {
+          fetch("http://localhost:8080/restaurantcomment/NotNullComment", {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: "",
+          })
+            .then((r) => r.json())
+            .then((data) => {
+              console.log(data);
+              resultList = data;
+              document.querySelector(
+                "table.notnullrestaurantcomment tbody"
+              ).innerHTML = "";
+              data.forEach(function (element, index) {
+                console.log(element);
+                let tbody_html = document.createElement("tr");
+                let tr_html = `
+                          <td>${element.reserveNo}</td>
+                          <td>${element.restaurantNo}</td>
+                          <td>${element.restaurantCommentTime}</td>
+                          <td>${element.commentRating}</td>
+                          <td>是</td>
+                          <td>
+                            <a
+                              class="comment_reply"
+                              style="
+                                        width: auto;
+                                        padding: 2px;
+                                        border-radius: 8px;
+                                        color: black;
+                                        box-shadow: 3px 3px 1px #ffd382;
+                                      "
+                              href="./member_commentrestaurantdisplay.html"
+                              data-listIndex="${index}"
+                              >觀看評論</a
+                            >
+                          </td>`;
+                tbody_html.innerHTML = tr_html;
+                document
+                  .querySelector("table.notnullrestaurantcomment tbody")
+                  .append(tbody_html);
+              });
+            });
+          const notnullrestaurantcomment_html = document.querySelector(
+            "table.notnullrestaurantcomment"
+          );
+          console.log(notnullrestaurantcomment_html);
+          notnullrestaurantcomment_html.addEventListener("click", function (e) {
+            if (e.target.tagName.toLowerCase() === "a") {
+              // e.preventDefault();
+              console.log(e);
+              // console.log(e.target.getAttribute("data-listIndex"));
+              let list_index = parseInt(
+                e.target.getAttribute("data-listIndex")
+              );
+              sessionStorage.setItem(
+                "reservationVO",
+                JSON.stringify(resultList[list_index])
+              );
+            }
+          });
+          fetch("http://localhost:8080/restaurantcomment/NullComment", {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: "",
+          })
+            .then((r) => r.json())
+            .then((data) => {
+              console.log(data);
+              resultList = data;
+              document.querySelector(
+                "table.nullrestaurantcomment tbody"
+              ).innerHTML = "";
+              data.forEach(function (element, index) {
+                console.log(element);
+                let tbody_html = document.createElement("tr");
+                let tr_html = `
+                          <td>${element.reserveNo}</td>
+                          <td>${element.restaurantNo}</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>
+                            <a
+                              class="comment_reply"
+                              style="
+                                        width: auto;
+                                        padding: 2px;
+                                        border-radius: 8px;
+                                        color: black;
+                                        box-shadow: 3px 3px 1px #ffd382;
+                                      "
+                              href="./member_commentrestaurant.html"
+                              data-listIndex="${index}"
+                              >撰寫評論</a
+                            >
+                          </td>`;
+                tbody_html.innerHTML = tr_html;
+                document
+                  .querySelector("table.nullrestaurantcomment tbody")
+                  .append(tbody_html);
+              });
+              const nullrestaurantcomment_html = document.querySelector(
+                "table.nullrestaurantcomment"
+              );
+              console.log(nullrestaurantcomment_html);
+              nullrestaurantcomment_html.addEventListener(
+                "click",
+                function (e) {
+                  if (e.target.tagName.toLowerCase() === "a") {
+                    // e.preventDefault();
+                    console.log(e);
+                    // console.log(e.target.getAttribute("data-listIndex"));
+                    let list_index = parseInt(
+                      e.target.getAttribute("data-listIndex")
+                    );
+                    sessionStorage.setItem(
+                      "reservationVO",
+                      JSON.stringify(resultList[list_index])
+                    );
+                  }
+                }
+              );
+            });
+        } else if (choice == "商品評論") {
+          fetch("http://localhost:8080/prodcomment/NotNullComment", {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: "",
+          })
+            .then((r) => r.json())
+            .then((data) => {
+              console.log(data);
+              resultList = data;
+              document.querySelector(
+                "table.notnullprodcomment tbody"
+              ).innerHTML = "";
+              data.forEach(function (element, index) {
+                console.log(element);
+                let tbody_html = document.createElement("tr");
+                let tr_html = `
+                          <td>${element.prodOrderNo}</td>
+                          <td>${element.prodNo}</td>
+                          <td>${element.prodCommentTime}</td>
+                          <td>${element.prodCommentRating}</td>
+                          <td>是</td>
+                          <td>
+                            <a
+                              class="comment_reply"
+                              style="
+                                        width: auto;
+                                        padding: 2px;
+                                        border-radius: 8px;
+                                        color: black;
+                                        box-shadow: 3px 3px 1px #ffd382;
+                                      "
+                              href="./member_commentproddisplay.html"
+                              data-listIndex="${index}"
+                              >觀看評論</a
+                            >
+                          </td>`;
+                tbody_html.innerHTML = tr_html;
+                document
+                  .querySelector("table.notnullprodcomment tbody")
+                  .append(tbody_html);
+              });
+              const notnullprodcomment_html = document.querySelector(
+                "table.notnullprodcomment"
+              );
+              console.log(notnullprodcomment_html);
+              notnullprodcomment_html.addEventListener("click", function (e) {
+                if (e.target.tagName.toLowerCase() === "a") {
+                  // e.preventDefault();
+                  console.log(e);
+                  // console.log(e.target.getAttribute("data-listIndex"));
+                  let list_index = parseInt(
+                    e.target.getAttribute("data-listIndex")
+                  );
+                  sessionStorage.setItem(
+                    "prodOrderDetailVO",
+                    JSON.stringify(resultList[list_index])
+                  );
+                }
+              });
+            });
+          fetch("http://localhost:8080/prodcomment/NullComment", {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: "",
+          })
+            .then((r) => r.json())
+            .then((data) => {
+              console.log(data);
+              resultList = data;
+              document.querySelector("table.nullprodcomment tbody").innerHTML =
+                "";
+              data.forEach(function (element, index) {
+                console.log(element);
+                let tbody_html = document.createElement("tr");
+                let tr_html = `
+                          <td>${element.prodOrderNo}</td>
+                          <td>${element.prodNo}</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>
+                            <a
+                              class="comment_reply"
+                              style="
+                                        width: auto;
+                                        padding: 2px;
+                                        border-radius: 8px;
+                                        color: black;
+                                        box-shadow: 3px 3px 1px #ffd382;
+                                      "
+                              href="./member_commentprod.html"
+                              data-listIndex="${index}"
+                              >撰寫評論</a
+                            >
+                          </td>`;
+                tbody_html.innerHTML = tr_html;
+                document
+                  .querySelector("table.nullprodcomment tbody")
+                  .append(tbody_html);
+              });
+              const nullprodcomment_html = document.querySelector(
+                "table.nullprodcomment"
+              );
+              console.log(nullprodcomment_html);
+              nullprodcomment_html.addEventListener("click", function (e) {
+                if (e.target.tagName.toLowerCase() === "a") {
+                  // e.preventDefault();
+                  console.log(e);
+                  // console.log(e.target.getAttribute("data-listIndex"));
+                  let list_index = parseInt(
+                    e.target.getAttribute("data-listIndex")
+                  );
+                  sessionStorage.setItem(
+                    "prodOrderDetailVO",
+                    JSON.stringify(resultList[list_index])
+                  );
+                }
+              });
+            });
+        }
+      });
+    </script>
   </body>
 </html>

@@ -159,7 +159,41 @@ function checkReserveNum(num) {
 // submit訂位資訊 + 驗證
 $("#btn_reserve").on("click", function (e) {
   e.preventDefault();
+  let memberVO = JSON.parse(sessionStorage.getItem("memberVO"));
+  if(!memberVO){
+    Swal.fire({
+      // sweet alert CDN
+      position: "center",
+      icon: "warning",
+      title: "請先登入",
+      showConfirmButton: false,
+      timer: 1000,
+    }).then(() => {
+      // 動畫跑完後跳轉
+      sessionStorage.setItem("URL_before_login", window.location.href);
+      window.location.href = "./j_login_restaurant4.html";
+    });
+  }else{
+    send_data.name = memberVO.name;
+    send_data.tel = memberVO.tel;
+    send_data.memberNo = memberVO.memberNo;
+    checkInf();
+    
+    if ($("#remark").val() != "") {
+      send_data.remark = $("#remark").val();
+    } else {
+      send_data.remark = "無";
+    }
+    
+    send_data.restaurantNo = 2; // 暫時寫死
+    // console.log(send_data);
+    sessionStorage.setItem("reservation_inf", JSON.stringify(send_data));
+    location.href = "./reservation_confirm.html";
+  } 
+});
 
+// 按下送出資料驗證
+function checkInf(){
   if (
     !send_data.reserveDate &&
     !send_data.reserveTime &&
@@ -204,20 +238,9 @@ $("#btn_reserve").on("click", function (e) {
       return;
     }
   }
+}
 
-  if ($("#remark").val() != "") {
-    send_data.remark = $("#remark").val();
-  } else {
-    send_data.remark = "無";
-  }
 
-  send_data.memberNo = 2; // 暫時寫死
-  send_data.tel = "0921399718"; // 暫時寫死
-  send_data.restaurantNo = 2; // 暫時寫死
-  // console.log(send_data);
-  sessionStorage.setItem("reservation_inf", JSON.stringify(send_data));
-  location.href = "./reservation_confirm.html";
-});
 
 // Session資料
 var reserve_data = function () {
@@ -226,13 +249,11 @@ var reserve_data = function () {
       sessionStorage.getItem("reservation_inf")
     );
     console.log(reservation_inf);
-    reservation_inf.reserveNum = $("#reserveNum").val();
-    reservation_inf.reserveDate = $("#reserveDate").val();
-    reservation_inf.reserveTime = $("#reserveTime").val();
-    reservation_inf.remark = $("#remark").val();
-    reservation_inf.tel = "0921399718"; // 暫時寫死
-    reservation_inf.memberNo = 2; // 暫時寫死
-    reservation_inf.restaurantNo = 2; // 暫時寫死
+    let memberVO = JSON.parse(sessionStorage.getItem("memberVO"));
+    $("#reserveNum").val() = reservation_inf.reserveNum;
+    $("#reserveDate").val() = reservation_inf.reserveDate;
+    $("#reserveTime").val() = reservation_inf.reserveTime;
+    $("#remark").val() = reservation_inf.remark;
   }
 };
 reserve_data();
