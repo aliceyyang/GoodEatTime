@@ -1,3 +1,4 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -195,16 +196,15 @@
       <div class="col-lg-2" id="left">
         <nav class="header__menu mobile-menu" id="aaa">
           <ul>
-            <li class=""><a href="#">餐廳會員首頁</a></li>
-            <li class=""><a href="">餐廳資訊</a></li>
-            <li class=""><a href="">訂單管理</a></li>
-            <li class=""><a href="">訂位管理</a></li>
-            <li class=""><a href="">評論管理</a></li>
-            <li class=""><a href="">折價券設定</a></li>
-            <li class=""><a href="">餐點資料設定</a></li>
-            <li class=""><a href="">權限設定</a></li>
-            <li class=""><a href="">銷售報表</a></li>
-            <li class=""><a href="">購買廣告</a></li>
+            <li><a href="./restaurant_info-management.html">餐廳資訊</a></li>
+            <li><a href="./restaurantbackend_prodinfo.html">商品管理</a></li>
+            <li><a href="./restaurantbackend_ordersearch.html">訂單管理</a></li>
+            <li class="active"><a href="./restaurant_reserve-management.html">訂位管理</a></li>
+            <li><a href="./restaurantbackend_comment.html">評論管理</a></li>
+            <li><a href="./coupon_restaurant.html">優惠券設定</a></li>
+            <li><a href="./G3_alice_adOrder_restaurant.html">廣告訂單</a></li>
+            <li><a href="./G3_alice_adOrder_purchase_restaurant.html">購買廣告</a></li>
+            </li>
           </ul>
         </nav>
       </div>
@@ -421,7 +421,6 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="js/main.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- <script src="js/reservation.js"></script> -->
   <!-- <script src="js/alice.js"></script> -->
   <script> // 預覽圖片
@@ -728,7 +727,7 @@
 
           break;
         case "90":
-          if (month == 2 || month == 4 || month == 5 || month == 6 || month == 7) {
+          if (month == 2 || month == 4 || month == 5 || month == 6) {
             if (date < 10) {
               let year3_str = (year).toString();
               let month3_str = (month + 3).toString();
@@ -760,6 +759,40 @@
               let month3_str = (month + 3).toString();
               let date3_str = '30';
               endDate.value = year3_str + '-0' + month3_str + '-' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            }
+          } else if (month == 7) {
+            if (date < 10) {
+              let year3_str = (year).toString();
+              let month3_str = (month + 3).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-' + month3_str + '-0' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            } else {
+              let year3_str = (year).toString();
+              let month3_str = (month + 3).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-' + month3_str + '-' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            }
+          } else if (month == 8) {
+            if (date < 10) {
+              let year3_str = (year).toString();
+              let month3_str = (month + 3).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-' + month3_str + '-0' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            } else if (date == 31) {
+              let year3_str = (year).toString();
+              let month3_str = (month + 3).toString();
+              let date3_str = ("30");
+              endDate.value = year3_str + '-' + month3_str + '-' + date3_str;
+              document.getElementById("total_ad_amount").setAttribute('value', 3000)
+            } else {
+              let year3_str = (year).toString();
+              let month3_str = (month + 3).toString();
+              let date3_str = date.toString();
+              endDate.value = year3_str + '-' + month3_str + '-' + date3_str;
               document.getElementById("total_ad_amount").setAttribute('value', 3000)
             }
           } else if (month == 9) {
@@ -944,6 +977,15 @@
     const img = document.querySelector("#picture__input");
     const submit_btn = document.querySelector("#submit_btn");
 
+    submit_btn.onclick = () => {
+      if (document.querySelector("#datePickerId").value == null
+        || document.querySelector("#ad_end").value == ''
+        || total_ad_amount == null
+        || img.value == '') {
+        alert("請正確填寫訂單資料！")
+      }
+    }
+
     img.onchange = (e) => {
       let ad_start = (document.querySelector("#datePickerId").value + ' 00:00:00');
       let ad_end = (document.querySelector("#ad_end").value + ' 00:00:00');
@@ -954,34 +996,65 @@
       read.onload = (data) => {
         submit_btn.onclick = () => {
           let base64 = data.target.result.slice(23).replace("[", "");
-          fetch(URL, {
-            method: "POST",
-            headers: { 'Content-type': 'application/json', },
-            body: JSON.stringify({
-              restaurantNo: 4,
-              adStartTime: ad_start,
-              adEndTime: ad_end,
-              adOrderPrice: total_ad_amount,
-              slideshowPicBase64: [base64]
-            }),
-          })
-            .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
-            .then((data) => {
-              console.log(data);
-              swal("送交訂單成功，即將跳轉訂單頁面", "", "success");
-              setTimeout(function () {
-                // location.reload();
-                window.location.replace("http://localhost:8080/Front_End/G3_alice_adOrder_restaurant.html");
-                // window.location.replace = ("http://localhost:8080/Front_End/G3_alice_adOrder_restaurant.html");
-              }, 2500);
 
-
-
-
-
-
-              // alert('送交訂單成功'); location.reload();
+          if (document.querySelector("#datePickerId").value != null
+            && document.querySelector("#ad_end").value != ''
+            && total_ad_amount != null
+            && img.value != '') {
+            fetch(URL, {
+              method: "POST",
+              redirect: "follow",
+              headers: { 'Content-type': 'application/json', },
+              body: JSON.stringify({
+                // restaurantNo: sessionStorage.getItem("restaurantMemberVO"),
+                adStartTime: ad_start,
+                adEndTime: ad_end,
+                adOrderPrice: total_ad_amount,
+                slideshowPicBase64: [base64]
+              }),
+            }).then((r) => {
+              console.log("是否重導向" + r.redirected)
+              console.log(r.url)
+              var redirect_URL = r.url;
+              if (r.redirected) {
+                console.log("進入sweet alert")
+                // swal("請先登入", "", "warning");
+                swal({
+                  title: "",
+                  text: "請先登入",
+                  icon: "warning",
+                  button: "OK",
+                  timer: 1000,
+                })
+                // .then(() => {
+                console.log("重導向路徑")
+                setTimeout(function () {
+                  sessionStorage.setItem("res_login", window.location.assign(redirect_URL))
+                }, 1000)
+                // })
+              } else {
+                console.log("已登入，讀取資料")
+                r.json().then((data) => {
+                  swal("送交訂單成功，即將跳轉訂單頁面", "", "success");
+                  setTimeout(function () {
+                    window.location.assign("http://localhost:8080/Front_End/G3_alice_adOrder_restaurant.html");
+                  }, 2500);
+                })
+              }
             })
+            // .then((data) => {
+            //   // console.log(data);
+            //   swal("送交訂單成功，即將跳轉訂單頁面", "", "success");
+            //   setTimeout(function () {
+            //     // location.reload();
+            //     window.location.assign("http://localhost:8080/Front_End/G3_alice_adOrder_restaurant.html");
+            //     // window.location.replace = ("http://localhost:8080/Front_End/G3_alice_adOrder_restaurant.html");
+            //   }, 2500);
+            //   // alert('送交訂單成功'); location.reload();
+            // })
+          } else {
+            alert("請正確填寫訂單資料！")
+          }
         }
       }
     }
