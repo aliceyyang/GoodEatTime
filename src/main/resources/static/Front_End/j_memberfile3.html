@@ -279,14 +279,14 @@
           <nav class="header__menu mobile-menu" id="left">
             <ul>
               <li class="active">
-                <a href="./j_memberfile.html">帳號管理</a>
+                <a href="./j_memberfile3.html">帳號管理</a>
               </li>
-              <li><a href="">訂位資訊</a></li>
-              <li><a href="">商城訂單</a></li>
-              <li><a href="">我的評論</a></li>
-              <li><a href="">OOO</a></li>
-              <li><a href="">XXX</a></li>
-              <li><a href="">YYY</a></li>
+              <li><a href="./member_reservation.html">訂位資訊</a></li>
+              <li><a href="./member_order.html">商城訂單</a></li>
+              <li><a href="./member_comment.html">我的評論</a></li>
+              <li><a href="./coupon_member.html">我的優惠券</a></li>
+              <!-- <li><a href="">XXX</a></li>
+              <li><a href="">YYY</a></li> -->
             </ul>
           </nav>
         </div>
@@ -636,7 +636,7 @@
         ?.then((memberVO) => {
           name.value = memberVO.name;
           tel.value = memberVO.tel;
-          memberPassword.value = memberVO.memberPassword;
+          // memberPassword.value = memberVO.memberPassword;
         });
       // nameTag.innerHTML = name;
 
@@ -672,6 +672,8 @@
             .then((memberVO) => {
               if (memberVO.successful) {
                 Swal.fire("存檔成功!");
+                let memberVO = JSON.stringify(body);
+                sessionStorage.setItem("memberVO", memberVO);
               } else {
                 Swal.fire(memberVO.message);
               }
@@ -685,6 +687,8 @@
           .then((body) => {
             Swal.fire(body.message);
             if (body.successful) {
+              sessionStorage.removeItem("memberVO");
+              console.log("bye");
               location = "GoodEatTime.html";
             }
           });

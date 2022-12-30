@@ -24,12 +24,21 @@ public class MemberCouponDAOHibernate implements MemberCouponDAO {
 	}
 
 	@Override
-	public MemberCouponVO insert(Integer couponNo) {
+	public MemberCouponVO insert(Integer memberNo, Integer couponNo) {
 		if (couponNo != null) {
-			MemberCouponVO temp = this.getSession().get(MemberCouponVO.class, couponNo);
-			if (temp == null) {
-				this.getSession().save(temp);
-				return temp;
+			MemberCouponVO.PK pk = new MemberCouponVO.PK();
+			pk.memberNo = memberNo;
+			pk.couponNo = couponNo;
+			Session session = getSession();
+			MemberCouponVO memberCouponVO = session.get(MemberCouponVO.class, pk);
+			if (memberCouponVO != null) {
+				return null;
+			} else {
+				memberCouponVO = new MemberCouponVO();
+				memberCouponVO.setMemberNo(memberNo);
+				memberCouponVO.setCouponNo(couponNo);
+				session.save(memberCouponVO);
+				return memberCouponVO;
 			}
 		}
 		return null;
@@ -91,5 +100,4 @@ public class MemberCouponDAOHibernate implements MemberCouponDAO {
 		}
 		return null;
 	}
-
 }

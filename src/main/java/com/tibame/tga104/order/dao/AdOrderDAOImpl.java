@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
-import org.springframework.util.Base64Utils;
 
 import java.util.*;
 
@@ -33,12 +32,13 @@ public class AdOrderDAOImpl implements AdOrderDAO {
     }
 
     @Override
-    public Integer createAdOrder(AdOrderRequest adOrderRequest) {
+    public Integer createAdOrder(Integer restaurantNoFromLogin, AdOrderRequest adOrderRequest) {
         String sql = "insert into adOrder(restaurantNo, adminNo, adOrderTime, adStartTime, adEndTime, verified, " +
                 "verificationDetail, adOrderPrice, slideshowPic) values(:restaurantNo, :adminNo, :adOrderTime, " +
                 ":adStartTime, :adEndTime, :verified, :verificationDetail, :adOrderPrice, :slideshowPic)";
         Map<String, Object> map = new HashMap();
-        map.put("restaurantNo", adOrderRequest.getRestaurantNo());
+//        map.put("restaurantNo", adOrderRequest.getRestaurantNo());
+        map.put("restaurantNo", restaurantNoFromLogin);
         map.put("adminNo", adOrderRequest.getAdminNo());
         map.put("adOrderTime", new Date());
         map.put("adStartTime", adOrderRequest.getAdStartTime());
@@ -70,6 +70,7 @@ public class AdOrderDAOImpl implements AdOrderDAO {
         map.put("adOrderNo", adOrderNo);
 
         map.put("restaurantNo", adOrderRequest.getRestaurantNo());
+//        map.put("adminNo", adminNoFromLogin);
         map.put("adminNo", adOrderRequest.getAdminNo());
         map.put("adStartTime", adOrderRequest.getAdStartTime());
         map.put("adEndTime", adOrderRequest.getAdEndTime());

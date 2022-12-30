@@ -154,16 +154,15 @@
       <div class="col-lg-2" id="left"">
         <nav class=" header__menu mobile-menu" id="aaa">
         <ul>
-          <li class=""><a href="#">餐廳會員首頁</a></li>
-          <li class=""><a href="">餐廳資訊</a></li>
-          <li class=""><a href="">訂單管理</a></li>
-          <li class=""><a href="">訂位管理</a></li>
-          <li class=""><a href="">評論管理</a></li>
-          <li class=""><a href="">折價券設定</a></li>
-          <li class=""><a href="">餐點資料設定</a></li>
-          <li class=""><a href="">權限設定</a></li>
-          <li class=""><a href="">銷售報表</a></li>
-          <li class=""><a href="">購買廣告</a></li>
+          <li><a href="./restaurant_info-management.html">餐廳資訊</a></li>
+          <li><a href="./restaurantbackend_prodinfo.html">商品管理</a></li>
+          <li><a href="./restaurantbackend_ordersearch.html">訂單管理</a></li>
+          <li class="active"><a href="./restaurant_reserve-management.html">訂位管理</a></li>
+          <li><a href="./restaurantbackend_comment.html">評論管理</a></li>
+          <li><a href="./coupon_restaurant.html">優惠券設定</a></li>
+          <li><a href="./G3_alice_adOrder_restaurant.html">廣告訂單</a></li>
+          <li><a href="./G3_alice_adOrder_purchase_restaurant.html">購買廣告</a></li>
+          </li>
         </ul>
         </nav>
       </div>
@@ -369,7 +368,7 @@
 
 
   <script> // GET
-    const URL = 'http://localhost:8080/adOrders/restaurantNo/4'
+    const URL = 'http://localhost:8080/adOrders/restaurantNo/2'
     let resData = [];
     // 抽換資料
     const template = (order_no, rest_no, orderTime, startTime, endTime, price, verified, pic) => {
@@ -436,26 +435,45 @@
       // table
       const shipData = document.querySelector('#shipData')
       // GET
-      await fetch(URL).then((r) => r.json()).then((data) => {
-        resData = data
-        shipData.innerHTML = data.map(({
-          adOrderNo,
-          restaurantNo,
-          adOrderTime,
-          adStartTime,
-          adEndTime,
-          adOrderPrice,
-          verified,
-          slideshowPic
-        }) => template(adOrderNo,
-          restaurantNo,
-          adOrderTime,
-          adStartTime,
-          adEndTime,
-          adOrderPrice,
-          verified,
-          slideshowPic)).join('')
-      });
+      await fetch(URL, { redirect: "follow" }).then((r) => {
+        console.log("是否重導向" + r.redirected)
+        console.log(r.url)
+        var redirect_URL = r.url;
+        if (r.redirected) {
+          swal({
+            title: "",
+            text: "請先登入",
+            icon: "warning",
+            button: "OK",
+            timer: 1000,
+          })
+          setTimeout(function () {
+            sessionStorage.setItem("res_login", window.location.assign(redirect_URL))
+            console.log("執行重導向成功");
+          }, 1000)
+        } else {
+          return r.json().then((data) => {
+            resData = data
+            shipData.innerHTML = data.map(({
+              adOrderNo,
+              restaurantNo,
+              adOrderTime,
+              adStartTime,
+              adEndTime,
+              adOrderPrice,
+              verified,
+              slideshowPic
+            }) => template(adOrderNo,
+              restaurantNo,
+              adOrderTime,
+              adStartTime,
+              adEndTime,
+              adOrderPrice,
+              verified,
+              slideshowPic)).join('')
+          });
+        }
+      })
 
       // get all btn
       const onEdit = document.querySelectorAll('.edit_btn')
@@ -754,7 +772,7 @@
                 }
                 break;
               case 3:
-                if (month == 2 || month == 4 || month == 5 || month == 6 || month == 7) {
+                if (month == 2 || month == 4 || month == 5 || month == 6) {
                   if (date < 10) {
                     let year3_str = (year).toString();
                     let month3_str = (month + 3).toString();
@@ -766,7 +784,7 @@
                     let date3_str = date.toString();
                     backer.value = year3_str + '-0' + month3_str + '-' + date3_str;
                   }
-                } else if (month == 1 || month == 3 || month == 8) {
+                } else if (month == 1 || month == 3) {
                   if (date < 10) {
                     let year3_str = (year).toString();
                     let month3_str = (month + 3).toString();
@@ -782,6 +800,40 @@
                     let month3_str = (month + 3).toString();
                     let date3_str = '30';
                     backer.value = year3_str + '-0' + month3_str + '-' + date3_str;
+                  }
+                } else if (month == 7) {
+                  if (date < 10) {
+                    let year3_str = (year).toString();
+                    let month3_str = (month + 3).toString();
+                    let date3_str = date.toString();
+                    endDate.value = year3_str + '-' + month3_str + '-0' + date3_str;
+                    document.getElementById("total_ad_amount").setAttribute('value', 3000)
+                  } else {
+                    let year3_str = (year).toString();
+                    let month3_str = (month + 3).toString();
+                    let date3_str = date.toString();
+                    endDate.value = year3_str + '-' + month3_str + '-' + date3_str;
+                    document.getElementById("total_ad_amount").setAttribute('value', 3000)
+                  }
+                } else if (month == 8) {
+                  if (date < 10) {
+                    let year3_str = (year).toString();
+                    let month3_str = (month + 3).toString();
+                    let date3_str = date.toString();
+                    endDate.value = year3_str + '-' + month3_str + '-0' + date3_str;
+                    document.getElementById("total_ad_amount").setAttribute('value', 3000)
+                  } else if (date == 31) {
+                    let year3_str = (year).toString();
+                    let month3_str = (month + 3).toString();
+                    let date3_str = ("30");
+                    endDate.value = year3_str + '-' + month3_str + '-' + date3_str;
+                    document.getElementById("total_ad_amount").setAttribute('value', 3000)
+                  } else {
+                    let year3_str = (year).toString();
+                    let month3_str = (month + 3).toString();
+                    let date3_str = date.toString();
+                    endDate.value = year3_str + '-' + month3_str + '-' + date3_str;
+                    document.getElementById("total_ad_amount").setAttribute('value', 3000)
                   }
                 } else if (month == 9) {
                   if (date < 10) {
@@ -942,7 +994,7 @@
 
           // PUT
           // api
-          const URL_PUT = 'http://localhost:8080/adOrders';
+          const URL_PUT = 'http://localhost:8080/adOrders/restaurant';
           if (edit_btn.value === '確認') {
             edit_btn.onclick = () => {
               // get edit data
@@ -967,7 +1019,7 @@
                       headers: { 'Content-type': 'application/json' },
                       body: JSON.stringify({
                         adOrderNo: editItem,
-                        restaurantNo: 4,
+                        // restaurantNo: 4,
                         adStartTime: startDateForPOST,
                         adEndTime: endDateForPOST,
                         adOrderPrice: parseInt(document.getElementById(`price${adOrderNo}`).innerText),

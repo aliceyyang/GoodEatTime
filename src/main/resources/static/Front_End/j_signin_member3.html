@@ -494,6 +494,7 @@
 
     <script>
       // 密碼切換遮蔽顯示
+      var helper;
       $("#checkEye").click(function () {
         if ($(this).hasClass("fa-eye-slash")) {
           $("#memberPassword").attr("type", "text");
@@ -615,23 +616,37 @@
           return "rgb(" + r + "," + g + "," + b + ")";
         }
 
-        var helper = new writeAuthCode(options);
+        helper = new writeAuthCode(options);
       });
 
-      const mail = document.querySelector("#mail");
-      const memberPassword = document.querySelector("#memberPassword");
-      const validText = document.querySelector("#validText");
-      const result = document.querySelector("#result");
+      var mail = document.querySelector("#mail");
+      var memberPassword = document.querySelector("#memberPassword");
+      var validText = document.querySelector("#validText");
+      var result = document.querySelector("#result");
 
-      document.querySelector("#send").addEventListener("click", () => {
-        //判定驗證碼輸入是否正確
-        if (mail.value == null) {
-          Swal.fire("請輸入帳號密碼");
-        } else if (memberPassword.value == null) {
-          Swal.fire("請輸入帳號密碼");
-        } else if (validText != result) {
-          Swal.fire("請輸入正確的驗證碼");
+      document.querySelector("#send").addEventListener("click", (e) => {
+        e.preventDefault;
+        //帳號密碼需輸入
+        if (mail.value === "") {
+          console.log("sos");
+          Swal.fire("請輸入帳號密碼", "", "warning");
+          return;
         } else {
+        }
+
+        if (memberPassword.value === "") {
+          console.log("sos1");
+          Swal.fire("請輸入帳號密碼", "", "warning");
+          return;
+        } else {
+        }
+        //判斷驗證碼輸入是否正確
+        if (validText.value !== helper.options.txt) {
+          console.log("sos2");
+          Swal.fire("請輸入正確的驗證碼", "", "warning");
+          return;
+        } else {
+          console.log("sos3");
           fetch("../member/login", {
             method: "POST",
             headers: {

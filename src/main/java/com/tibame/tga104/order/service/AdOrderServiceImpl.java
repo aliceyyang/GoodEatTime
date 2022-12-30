@@ -3,10 +3,8 @@ package com.tibame.tga104.order.service;
 import com.tibame.tga104.order.dao.AdOrderDAO;
 import com.tibame.tga104.order.dto.AdOrderRequest;
 import com.tibame.tga104.order.vo.AdOrder;
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -18,11 +16,11 @@ public class AdOrderServiceImpl implements AdOrderService {
     private AdOrderDAO adOrderDAO;
 
     @Override
-    public Integer createAdOrder(AdOrderRequest adOrderRequest) {
+    public Integer createAdOrder(Integer restaurantNoFromLogin, AdOrderRequest adOrderRequest) {
         if (adOrderRequest.getSlideshowPicBase64() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } else {
-            return adOrderDAO.createAdOrder(adOrderRequest);
+            return adOrderDAO.createAdOrder(restaurantNoFromLogin, adOrderRequest);
         }
     }
 

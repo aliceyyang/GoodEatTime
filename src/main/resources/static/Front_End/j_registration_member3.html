@@ -725,6 +725,10 @@
           Swal.fire("姓名需輸入");
           success = false;
           return;
+        } else if (memberPassword.value !== recheckpw.value) {
+          Swal.fire("密碼及確認密碼需相同");
+          success = false;
+          return;
         }
 
         // if(success){}
