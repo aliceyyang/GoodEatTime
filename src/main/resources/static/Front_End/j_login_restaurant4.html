@@ -472,6 +472,7 @@
     <script src="js/main.js"></script>
 
     <script>
+      var helper;
       // 密碼切換遮蔽顯示
       $("#checkEye").click(function () {
         if ($(this).hasClass("fa-eye-slash")) {
@@ -594,7 +595,7 @@
           return "rgb(" + r + "," + g + "," + b + ")";
         }
 
-        var helper = new writeAuthCode(options);
+        helper = new writeAuthCode(options);
       });
 
       var restaurantAccount = document.querySelector("#restaurantAccount");
