@@ -211,8 +211,10 @@ $("#btn_reserve").on("click", function (e) {
     send_data.remark = "無";
   }
 
-  send_data.memberNo = 2; // 暫時寫死
-  send_data.tel = "0921399718"; // 暫時寫死
+  let memberVO = JSON.parse(sessionStorage.getItem("memberVO"));
+  send_data.name = memberVO.name;
+  send_data.tel = memberVO.tel;
+  send_data.memberNo = memberVO.memberNo;
   send_data.restaurantNo = 2; // 暫時寫死
   // console.log(send_data);
   sessionStorage.setItem("reservation_inf", JSON.stringify(send_data));
@@ -226,12 +228,14 @@ var reserve_data = function () {
       sessionStorage.getItem("reservation_inf")
     );
     console.log(reservation_inf);
+    let memberVO = JSON.parse(sessionStorage.getItem("memberVO"));
     reservation_inf.reserveNum = $("#reserveNum").val();
     reservation_inf.reserveDate = $("#reserveDate").val();
     reservation_inf.reserveTime = $("#reserveTime").val();
     reservation_inf.remark = $("#remark").val();
-    reservation_inf.tel = "0921399718"; // 暫時寫死
-    reservation_inf.memberNo = 2; // 暫時寫死
+    reservation_inf.tel = memberVO.tel;
+    reservation_inf.name = memberVO.name;
+    reservation_inf.memberNo = memberVO.memberNo;
     reservation_inf.restaurantNo = 2; // 暫時寫死
   }
 };

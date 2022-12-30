@@ -24,36 +24,69 @@ function searchFunction() {
 // 日期排序
 function init() {
   const reserve = document.querySelector("#reserve");
-  const url = '../reservation/member/inf';
+  const url = "../reservation/member/inf";
   // fetch
   fetch(url)
     // body to json
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.redirected) {
+        Swal.fire({
+          // sweet alert CDN
+          position: "center",
+          icon: "warning",
+          title: "請先登入",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(() => {
+          // 動畫跑完後跳轉
+          sessionStorage.setItem("URL_before_login", window.location.href);
+          window.location.href = res.url;
+        });
+      } else {
+        return res.json();
+      }
+    })
     // get data
     .then((data) => {
       data = data.sort((a, b) => {
-        if (a.reserveDate > b.reserveDate) return 1
-        if (a.reserveDate < b.reserveDate) return -1
-        return 0
-      })
+        if (a.reserveDate > b.reserveDate) return 1;
+        if (a.reserveDate < b.reserveDate) return -1;
+        return 0;
+      });
 
-      reserve.innerHTML =
-        data.map((e) => Template(e.reserveNo, e.restaurantName, e.memberNo, e.reserveDate, e.reserveTime, e.reserveNum, e.remark)).join('')
-
+      reserve.innerHTML = data
+        .map((e) =>
+          Template(
+            e.reserveNo,
+            e.restaurantName,
+            e.memberNo,
+            e.reserveDate,
+            e.reserveTime,
+            e.reserveNum,
+            e.remark
+          )
+        )
+        .join("");
     });
 }
 
-
-
 window.onload = init;
 
-function Template(reserveNo, restaurantName, memberNo, reserveDate, reserveTime, reserveNum, remark) {
+function Template(
+  reserveNo,
+  restaurantName,
+  memberNo,
+  reserveDate,
+  reserveTime,
+  reserveNum,
+  remark
+) {
   return `<tr>
   <td>${reserveNo}</td>
   <td>${restaurantName}</td>
   <td>${reserveDate}</td>
   <td>${reserveTime}</td>
   <td>${reserveNum}</td>
-  <td>${remark ?? '-'}</td>
-  </tr> `
+  <td>${remark ?? "-"}</td>
+  </tr> `;
 }
