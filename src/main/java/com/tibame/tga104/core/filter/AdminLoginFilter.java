@@ -18,7 +18,10 @@ import com.tibame.tga104.member.vo.MemberVO;
 
 
 //需與組員討論除登入頁面外,需要放的網址列為何
-@WebFilter({"/admin/**","/adOrders/admin/{adOrderNo}","/adOrders/admin"})
+@WebFilter({"/admin/**",
+			"/adOrders/admin/{adOrderNo}",
+			"/adOrders/admin",
+			"admin/member-accounts"})
 
 public class AdminLoginFilter extends HttpFilter {
 	private static final long serialVersionUID = 1L;
