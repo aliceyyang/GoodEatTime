@@ -21,7 +21,13 @@ import com.tibame.tga104.member.vo.RestaurantMemberVO;
 			"/adOrders",
 			"/prodcomment/**",
 			"/restaurantcomment/**",
-			"/addProdInfo/**"
+			"/addProdInfo/**",
+			"/reservation/restaurant", 
+			"/reservation/restaurant/statusChange",
+			"/reservation/restaurant/inf", 
+			"/reservation/restaurant/reserveStatus",
+			"/reservation/restaurant/reserveInf",
+			"/reservation/restaurant/statusUpdate"
 			})
 
 public class RestaurantMemberLoginFilter extends HttpFilter {

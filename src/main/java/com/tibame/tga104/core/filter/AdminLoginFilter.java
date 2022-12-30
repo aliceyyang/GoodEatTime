@@ -21,7 +21,7 @@ import com.tibame.tga104.member.vo.MemberVO;
 @WebFilter({"/admin/**",
 			"/adOrders/admin/{adOrderNo}",
 			"/adOrders/admin",
-			"admin/member-accounts"})
+			"/admin/member-accounts"})
 
 public class AdminLoginFilter extends HttpFilter {
 	private static final long serialVersionUID = 1L;
