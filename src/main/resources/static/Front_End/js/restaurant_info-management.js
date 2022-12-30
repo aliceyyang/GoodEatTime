@@ -1,29 +1,55 @@
 // ======================抓出餐廳原本的資料顯示在表單=======================
-
-fetch("http://localhost:8080/restaurant-read/3") //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
-  .then((resp) => resp.json())
-  .then((data) => {
-    //輸入需要的屬性取出資料庫中的值
-    const { restaurantName } = data;
-    const { restaurantTel } = data;
-    const { restaurantAddr } = data;
-    const { restaurantBusinessHour } = data;
-    const { restaurantTaxIDNo } = data;
-    const { restaurantAccountInfo } = data;
-    const { restaurantAccount } = data;
-    const { restaurantPassword } = data;
-    //把取出的值塞進表單的input標籤
-    document.getElementById("restaurantName").value = restaurantName;
-    document.getElementById("restaurantTel").value = restaurantTel;
-    document.getElementById("restaurantAddr").value = restaurantAddr;
-    document.getElementById("restaurantBusinessHour").value =
-      restaurantBusinessHour;
-    document.getElementById("restaurantTaxIDNo").value = restaurantTaxIDNo;
-    document.getElementById("restaurantAccountInfo").value =
-      restaurantAccountInfo;
-    document.getElementById("restaurantAccount").value = restaurantAccount;
-    document.getElementById("restaurantPassword").value = restaurantPassword;
-  });
+var restaurantNumber;
+fetch("http://localhost:8080/restaurant-read/0", {
+  method: "GET",
+  redirect: "follow",
+}).then((resp) => {
+  var redirect_URL = resp.url;
+  console.log("是否重導向" + resp.redirected);
+  if (resp.redirected) {
+    console.log("sss");
+    alert("請先登入");
+    // swal({
+    //   title: "",
+    //   text: "請先登入",
+    //   icon: "warning",
+    //   button: "OK",
+    //   timer: 1000,
+    // });
+    setTimeout(function () {
+      sessionStorage.setItem(
+        "resp_login",
+        window.location.assign(redirect_URL)
+      );
+    }, 1000);
+  } else {
+    resp.json().then((data) => {
+      console.log("已登入!!!");
+      //輸入需要的屬性取出資料庫中的值
+      const { restaurantNo } = data;
+      const { restaurantName } = data;
+      const { restaurantTel } = data;
+      const { restaurantAddr } = data;
+      const { restaurantBusinessHour } = data;
+      const { restaurantTaxIDNo } = data;
+      const { restaurantAccountInfo } = data;
+      const { restaurantAccount } = data;
+      const { restaurantPassword } = data;
+      //把取出的值塞進表單的input標籤
+      restaurantNumber = restaurantNo;
+      document.getElementById("restaurantName").value = restaurantName;
+      document.getElementById("restaurantTel").value = restaurantTel;
+      document.getElementById("restaurantAddr").value = restaurantAddr;
+      document.getElementById("restaurantBusinessHour").value =
+        restaurantBusinessHour;
+      document.getElementById("restaurantTaxIDNo").value = restaurantTaxIDNo;
+      document.getElementById("restaurantAccountInfo").value =
+        restaurantAccountInfo;
+      document.getElementById("restaurantAccount").value = restaurantAccount;
+      document.getElementById("restaurantPassword").value = restaurantPassword;
+    });
+  }
+});
 
 // ========================看見密碼用的把啾=============================
 
@@ -153,22 +179,45 @@ $(function () {
 
 // =======================抓出餐廳已上傳的輪播圖片======================
 var quota; //還可上傳的圖片額度
-fetch("http://localhost:8080/restaurant-readInfo/CarouselPic/3") //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
-  .then((res) => res.json())
-  .then((list) => {
-    const carousel_uploaded = document.querySelector("#carousel_uploaded"); //準備裝已上傳圖片的div
-    const carousel_quota = document.querySelector("#carousel_quota"); //放圖片額度文字的span
-    quota = 6 - list.length;
-    carousel_quota.innerHTML = `可再上傳${quota}張輪播圖片`;
-    for (const item of list) {
-      //多張輪播圖的陣列,一張一張取出圖片PK跟base64Str
-      const { carouselPicNo } = item;
-      const { carouselPicStr } = item;
-      const newDiv = document.createElement("div");
-      newDiv.innerHTML = `<div  id="cPic_${carouselPicNo}" class="uploaded_pic"><span class="delete_btn">✖</span><img src="data:image/*;base64,${carouselPicStr}"></div>`;
-      carousel_uploaded.appendChild(newDiv);
-    }
-  });
+fetch("http://localhost:8080/restaurant-readInfo/CarouselPic/0", {
+  method: "GET",
+  redirect: "follow",
+}).then((res) => {
+  var redirect_URL = res.url;
+  console.log("是否重導向" + res.redirected);
+  if (res.redirected) {
+    console.log("sss");
+    alert("請先登入");
+    // swal({
+    //   title: "",
+    //   text: "請先登入",
+    //   icon: "warning",
+    //   button: "OK",
+    //   timer: 1000,
+    // });
+    setTimeout(function () {
+      sessionStorage.setItem(
+        "resp_login",
+        window.location.assign(redirect_URL)
+      );
+    }, 1000);
+  } else {
+    res.json().then((list) => {
+      const carousel_uploaded = document.querySelector("#carousel_uploaded"); //準備裝已上傳圖片的div
+      const carousel_quota = document.querySelector("#carousel_quota"); //放圖片額度文字的span
+      quota = 6 - list.length;
+      carousel_quota.innerHTML = `可再上傳${quota}張輪播圖片`;
+      for (const item of list) {
+        //多張輪播圖的陣列,一張一張取出圖片PK跟base64Str
+        const { carouselPicNo } = item;
+        const { carouselPicStr } = item;
+        const newDiv = document.createElement("div");
+        newDiv.innerHTML = `<div  id="cPic_${carouselPicNo}" class="uploaded_pic"><span class="delete_btn">✖</span><img src="data:image/*;base64,${carouselPicStr}"></div>`;
+        carousel_uploaded.appendChild(newDiv);
+      }
+    });
+  }
+});
 
 // ===========================輪播圖點擊刪除=========================
 
@@ -279,32 +328,53 @@ drop_zone.addEventListener("drop", function (e) {
 // ======================抓出餐廳已上傳的菜單======================
 
 var menu_array = []; //準備裝多個菜單物件的陣列
-fetch("http://localhost:8080/restaurant-readInfo/Menu/3")
-  .then((res) => res.json())
-  .then((list) => {
-    const menu_uploaded = document.querySelector("#menu_uploaded"); //準備裝已上傳菜單的div
-    for (const item of list) {
-      const { menuNo } = item;
-      const { menuPicstr } = item;
-      const { menuPicRemark } = item;
+fetch("http://localhost:8080/restaurant-readInfo/Menu/3", {
+  method: "GET",
+  redirect: "follow",
+}).then((res) => {
+  var redirect_URL = res.url;
+  console.log("是否重導向" + res.redirected);
+  if (res.redirected) {
+    alert("請先登入");
+    // swal({
+    //   title: "",
+    //   text: "請先登入",
+    //   icon: "warning",
+    //   button: "OK",
+    //   timer: 1000,
+    // });
+    setTimeout(function () {
+      sessionStorage.setItem(
+        "resp_login",
+        window.location.assign(redirect_URL)
+      );
+    }, 1000);
+  } else {
+    res.json().then((list) => {
+      const menu_uploaded = document.querySelector("#menu_uploaded"); //準備裝已上傳菜單的div
+      for (const item of list) {
+        const { menuNo } = item;
+        const { menuPicstr } = item;
+        const { menuPicRemark } = item;
 
-      menu_array.push({
-        menuNo: menuNo,
-        menuPicstr: menuPicstr,
-        menuPicRemark: menuPicRemark,
-      });
+        menu_array.push({
+          menuNo: menuNo,
+          menuPicstr: menuPicstr,
+          menuPicRemark: menuPicRemark,
+        });
 
-      const newDiv = document.createElement("div");
-      newDiv.innerHTML = `<div id="mPic_${menuNo}" class="uploaded_menu">
+        const newDiv = document.createElement("div");
+        newDiv.innerHTML = `<div id="mPic_${menuNo}" class="uploaded_menu">
       <img src="data:image/*;base64,${menuPicstr}" />
       <a class="delete_menu">刪除</a>
       <a class="edit_menu">編輯</a>
       </div>`;
 
-      menu_uploaded.appendChild(newDiv);
-    }
-  });
-
+        menu_uploaded.appendChild(newDiv);
+      }
+    });
+  }
+});
 // ===============================菜單編輯==========================
 
 $(document).on("click", ".edit_menu", function () {
@@ -447,38 +517,59 @@ drop_zone2.addEventListener("drop", function (e) {
 // ======================抓出餐廳已上傳的貼文======================
 
 var post_array = []; //準備裝多個貼文物件的陣列
-fetch("http://localhost:8080/restaurant-readInfo/Post/3")
-  .then((res) => res.json())
-  .then((list) => {
-    const post_uploaded = document.querySelector("#post_uploaded"); //準備裝已上傳貼文的div
-    for (const item of list) {
-      //多個貼文的陣列,一個個取出資料
-      const { restaurantPostNo } = item;
-      const { postType } = item;
-      const { postPicStr } = item;
-      const { postTitle } = item;
-      const { postContent } = item;
-      //存成貼文物件，push進準備好的陣列
-      post_array.push({
-        restaurantPostNo: restaurantPostNo,
-        postType: postType,
-        postPicStr: postPicStr,
-        postTitle: postTitle,
-        postContent: postContent,
-      });
+fetch("http://localhost:8080/restaurant-readInfo/Post/3", {
+  method: "GET",
+  redirect: "follow",
+}).then((res) => {
+  var redirect_URL = res.url;
+  if (res.redirected) {
+    alert("請先登入");
+    // swal({
+    //   title: "",
+    //   text: "請先登入",
+    //   icon: "warning",
+    //   button: "OK",
+    //   timer: 1000,
+    // });
+    setTimeout(function () {
+      sessionStorage.setItem(
+        "resp_login",
+        window.location.assign(redirect_URL)
+      );
+    }, 1000);
+  } else {
+    res.json().then((list) => {
+      const post_uploaded = document.querySelector("#post_uploaded"); //準備裝已上傳貼文的div
+      for (const item of list) {
+        //多個貼文的陣列,一個個取出資料
+        const { restaurantPostNo } = item;
+        const { postType } = item;
+        const { postPicStr } = item;
+        const { postTitle } = item;
+        const { postContent } = item;
+        //存成貼文物件，push進準備好的陣列
+        post_array.push({
+          restaurantPostNo: restaurantPostNo,
+          postType: postType,
+          postPicStr: postPicStr,
+          postTitle: postTitle,
+          postContent: postContent,
+        });
 
-      const newDiv = document.createElement("div");
-      newDiv.innerHTML = `<div id="pPic_${restaurantPostNo}" class="uploaded_restaurantPost">
+        const newDiv = document.createElement("div");
+        newDiv.innerHTML = `<div id="pPic_${restaurantPostNo}" class="uploaded_restaurantPost">
       <span class="uploaded_postType">${postType}</span> | <span class="uploaded_postTitle">${postTitle.substring(
-        0,
-        9
-      )}...</span>
+          0,
+          9
+        )}...</span>
       <a class="delete_post">刪除</a>
       <a class="edit_post">編輯</a>
     </div>`;
-      post_uploaded.appendChild(newDiv);
-    }
-  });
+        post_uploaded.appendChild(newDiv);
+      }
+    });
+  }
+});
 
 // ===============================貼文編輯==========================
 

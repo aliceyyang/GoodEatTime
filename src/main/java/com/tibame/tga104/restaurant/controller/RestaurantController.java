@@ -2,6 +2,8 @@ package com.tibame.tga104.restaurant.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tibame.tga104.member.vo.RestaurantMemberVO;
 import com.tibame.tga104.restaurant.service.RestaurantService;
 import com.tibame.tga104.restaurant.vo.RestaurantVO;
 
@@ -22,7 +25,7 @@ public class RestaurantController {
 	private RestaurantService restaurantService;
 	
 //	查詢所有餐廳
-	@GetMapping("/restaurant-read")
+	@GetMapping({"/restaurant-read/*","/restaurant-readInfo/*"})
 	public ResponseEntity<List<RestaurantVO>> getByAll() {
 		List<RestaurantVO> list = restaurantService.getAll();
 		return ResponseEntity.status(HttpStatus.OK).body(list);
@@ -30,9 +33,23 @@ public class RestaurantController {
 	
 //	輸入餐廳編號查詢
 	@GetMapping("/restaurant-read/{restaurantNo}")
-	public ResponseEntity<RestaurantVO> getByRestaurantNo(@PathVariable Integer restaurantNo) {
-		RestaurantVO vo = restaurantService.getOneRestaurant(restaurantNo);
+	public ResponseEntity<RestaurantVO> getByRestaurantNo(HttpSession httpSession, 
+														  @PathVariable Integer restaurantNo) {
+		RestaurantMemberVO session = (RestaurantMemberVO)httpSession.getAttribute("restaurantMemberVO");
+		
+		if (session == null) {
+            System.out.println("尚未登入");
+            return null;
+        }
+		RestaurantVO restaurantVOLogin = new RestaurantVO();
+        Integer restaurantNoLogin = session.getRestaurantNo();
+        restaurantVOLogin.setRestaurantNo(restaurantNoLogin);
+        
+        RestaurantVO vo = restaurantService.getOneRestaurant(restaurantNoLogin);
+        
+        System.out.println("取得餐廳資訊 編號:" + restaurantNoLogin);
 		return ResponseEntity.status(HttpStatus.OK).body(vo);
+				
 	}
 	
 //	新增餐廳
