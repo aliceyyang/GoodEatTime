@@ -294,6 +294,6 @@ fetch("/restaurant-comment/3")
       all_comment.appendChild(newDiv);
     }
 
-    comment_avg /= list.length;
+    comment_avg = Math.round((comment_avg / list.length) * 10) / 10;
     $("#comment_avg").html(comment_avg); //平均分數
   });

@@ -369,26 +369,20 @@
                     <i class="fa-solid fa-star" color="orange"></i>
                     <i class="fa-solid fa-star-half-stroke" color="orange"></i>
                   </h2>
-                  <span><h2>4.5</h2></span>
+                  <span><h2 id="comment_avg">4.5</h2></span>
                   <span
-                    ><h5 style="color: gray" href="#" type="button">
+                    ><h5 id="comment_sum" href="#" type="button">
                       共6則評論
                     </h5></span
                   >
                   <span><h3 style="color: black">最近一則評論</h3></span>
                   <div id="latest_comment">
-                    <span><h4>會員姓名</h4></span>
-                    <span><h2 style="font-style: italic">5</h2></span>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <span
-                      ><h6>
-                        評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容
-                      </h6></span
-                    >
+                    <h4 id="member_name" style="color: black">會員姓名</h4>
+                    <h2 id="comment_rating" style="font-style: italic">5</h2>
+                    <div id="rating_stars"></div>
+                    <h6 id="comment_content" style="color: black; margin: 8px">
+                      評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容
+                    </h6>
                   </div>
                 </div>
               </div>
@@ -557,6 +551,6 @@
     <script src="js/main.js"></script>
     <script src="js/backtop.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhgGFoEYFMuq2c4ZJmpFyvabr8i6-u0ok&callback=initMap"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhgGFoEYFMuq2c4ZJmpFyvabr8i6-u0ok&callback=initMap"></script> -->
   </body>
 </html>

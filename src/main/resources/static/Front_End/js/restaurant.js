@@ -213,6 +213,42 @@ fetch("http://localhost:8080/restaurant-readInfo/Menu/3")
     }
   });
 
+//===============================餐廳評價===================================
+
+fetch("/restaurant-comment/3")
+  .then((resp) => resp.json())
+  .then((list) => {
+    $("#comment_sum").html(`共${list.length}則評論`);
+    var comment_avg = 0;
+    for (let obj of list) {
+      const { commentRating } = obj;
+      comment_avg += commentRating; //加總所有評分
+    }
+
+    comment_avg = Math.round((comment_avg / list.length) * 10) / 10;
+    $("#comment_avg").html(comment_avg); //平均分數
+
+    const { name } = list[0];
+    const { commentRating } = list[0];
+    const { commentContent } = list[0];
+
+    $("#member_name").html(name);
+    $("#comment_rating").html(commentRating);
+    $("#comment_content").html(commentContent);
+
+    let stars = "";
+    //根據分數來新增等量的黃色星星
+    for (var i = 1; i <= commentRating; i++) {
+      stars += '<i class="fa-solid fa-star" color="orange"></i>';
+    }
+    //根據差多少星星來新增等量的灰色星星
+    for (var i = 1; i <= 5 - commentRating; i++) {
+      stars += '<i class="fa-solid fa-star" color="gray"></i>';
+    }
+
+    $("#rating_stars").html(stars);
+  });
+
 // ========================================================
 
 $(".breadcrumb__links a").bind("click", function () {
