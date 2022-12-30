@@ -25,7 +25,7 @@ public class RestaurantController {
 	private RestaurantService restaurantService;
 	
 //	查詢所有餐廳
-	@GetMapping({"/restaurant-read/*","/restaurant-readInfo/*"})
+	@GetMapping("/restaurant-read")
 	public ResponseEntity<List<RestaurantVO>> getByAll() {
 		List<RestaurantVO> list = restaurantService.getAll();
 		return ResponseEntity.status(HttpStatus.OK).body(list);
