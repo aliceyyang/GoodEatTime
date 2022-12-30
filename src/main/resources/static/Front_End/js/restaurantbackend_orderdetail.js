@@ -5,7 +5,8 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 let prodOrderNo = parseInt(params.prodOrderNo);
-fetch(`../order/detail?prodOrderNo=${prodOrderNo}`)
+let orderSearchVOList;
+fetch(`../order/restaurantdetail?prodOrderNo=${prodOrderNo}`)
   .then((r) => {
     if (r.redirected) {
       Swal.fire({
@@ -25,8 +26,14 @@ fetch(`../order/detail?prodOrderNo=${prodOrderNo}`)
     }
   })
   ?.then((data) => {
+    orderSearchVOList = data;
     document.getElementById("prodOrderNo").value = prodOrderNo;
-    document.getElementById("orderStatus").value = data[0].orderStatus;
+    // document.getElementById("orderStatus").value = data[0].orderStatus;
+    document.querySelectorAll("option.orderStatus").forEach(function (element) {
+      if (element.innerText == data[0].orderStatus) {
+        element.selected = "selected";
+      }
+    });
     document.getElementById("prodOrderDate").value = data[0].prodOrderDate;
     document.getElementById("prodOderDeliverTime").value = data[0]
       .prodOderDeliverTime
@@ -59,14 +66,16 @@ fetch(`../order/detail?prodOrderNo=${prodOrderNo}`)
       <td>NTD ${element.prodQty * element.prodPrice}</td>
       <td><button data-index="${index}">前往評論</button></td>
     </tr>`;
-      document.querySelector(".orderdateil tbody").insertAdjacentHTML("beforeend", tr_html);
+      document
+        .querySelector(".orderdateil tbody")
+        .insertAdjacentHTML("beforeend", tr_html);
     });
     $("td > button").on("click", function () {
       let index = $(this).attr("data-index");
       console.log(orderSearchVOList);
       console.log(orderSearchVOList[index]);
       sessionStorage.setItem("orderSearchVOList", orderSearchVOList[index]);
-      // window.location.href = "./member_commentprod.html";
-      });
-    console.log(data);
+      window.location.href = "./restaurantbackend_commentreply.html";
+    });
+    // console.log(data);
   });

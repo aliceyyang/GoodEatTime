@@ -1,6 +1,6 @@
-// console.log("read success");
+console.log("read success");
 // 判斷是否有登入
-if (!sessionStorage.getItem("memberVO")) {
+if (!sessionStorage.getItem("restaurantMemberVO")) {
     Swal.fire({ // sweet alert CDN
         position: "center",
         icon: "warning",
@@ -9,14 +9,14 @@ if (!sessionStorage.getItem("memberVO")) {
         timer: 1000,
       }).then(()=>{ // 動畫跑完後跳轉
         sessionStorage.setItem("URL_before_login", window.location.href);
-        window.location.href = "./j_signin_member3.html";
+        window.location.href = "./j_login_restaurant4.html";
       });
 } else {
 
   //===========================dataTable================================
   $(document).ready(function () {
     $("#prodOrder").DataTable({
-      ajax: "../order/memberSearch",
+      ajax: "../order/restaurantSearch",
       type: "GET",
   
       columns: [
@@ -24,7 +24,7 @@ if (!sessionStorage.getItem("memberVO")) {
           data: "prodOrderNo",
         },
         {
-          data: "restaurantName",
+          data: "name",
         },
         {
           data: "amountAfterCoupon",
@@ -56,7 +56,7 @@ if (!sessionStorage.getItem("memberVO")) {
         $("td > button").on("click", function () {
           var prodOrderNo = parseInt($(this).closest("tr").children().first().text());
           console.log(prodOrderNo);
-          window.location.href = `./member_order_detail.html?prodOrderNo=${prodOrderNo}`;
+          window.location.href = `./restaurantbackend_orderdetail.html?prodOrderNo=${prodOrderNo}`;
         });
       },
       language: {
