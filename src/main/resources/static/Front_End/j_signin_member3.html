@@ -664,8 +664,6 @@
               sessionStorage.setItem("memberVO", memberVO);
               if (body.successful) {
                 location = "j_welcome_login1.html";
-                sessionStorage.clear();
-                console.log("bye");
               } else {
                 Swal.fire(body.message);
                 // alert(body.message);
