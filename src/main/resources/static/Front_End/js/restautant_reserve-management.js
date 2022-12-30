@@ -1,27 +1,39 @@
 // 選擇營業星期，顯示時段開放預約人數 (select)
 $("#weekDay").on("change", function () {
   let weekDay = $("#weekDay").val();
-  $.ajax({
-    url: "../reservation/restaurant/inf",
-    type: "GET",
-    dataType: "json",
-    data: { weekDay: weekDay },
-    success: function (arr) {
+  fetch(`../reservation/restaurant/inf?weekDay=${weekDay}`)
+    .then((resp) => {
+      if (resp.redirected) {
+        Swal.fire({
+          // sweet alert CDN
+          position: "center",
+          icon: "warning",
+          title: "請先登入",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(() => {
+          // 動畫跑完後跳轉
+          sessionStorage.setItem("URL_before_login", window.location.href);
+          window.location.href = resp.url;
+        });
+      } else {
+        return resp.json();
+      }
+    })
+    .then(function (arr) {
       $("#allowReserveNum_12").val(arr[0]?.allowReserveNum ?? 0);
       $("#allowReserveNum_13").val(arr[1]?.allowReserveNum ?? 0);
       $("#allowReserveNum_18").val(arr[2]?.allowReserveNum ?? 0);
       $("#allowReserveNum_19").val(arr[3]?.allowReserveNum ?? 0);
-    },
-  });
+    });
 });
 
 // 設定營業時間及人數
 $("#set_store").on("click", function () {
-  $.ajax({
-    url: "../reservation/restaurant",
-    type: "POST",
-    contentType: "application/json",
-    data: JSON.stringify([
+  fetch("../reservation/restaurant", {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify([
       {
         weekDay: $("#weekDay").val(),
         reserveTime: "12:00",
@@ -43,12 +55,27 @@ $("#set_store").on("click", function () {
         allowReserveNum: $("#allowReserveNum_19").val(),
       },
     ]),
-    dataType: "JSON",
-    success: function (data) {
+  })
+    .then((resp) => {
+      if (resp.redirected) {
+        Swal.fire({
+          // sweet alert CDN
+          position: "center",
+          icon: "warning",
+          title: "請先登入",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(() => {
+          // 動畫跑完後跳轉
+          sessionStorage.setItem("URL_before_login", window.location.href);
+          window.location.href = resp.url;
+        });
+      } else {
+        return resp.json();
+      }
+    })
+    .then((data) => {
       console.log(data);
-    },
-
-    complete: function () {
       Swal.fire({
         position: "center",
         icon: "success",
@@ -56,8 +83,7 @@ $("#set_store").on("click", function () {
         showConfirmButton: false,
         timer: 1000,
       });
-    },
-  });
+    });
 });
 
 // default today
@@ -86,12 +112,26 @@ status();
 function status() {
   var reserveDate = $("#reserve_search").val();
   const tbReserve_status = $("#tbReserve_status");
-  $.ajax({
-    url: "../reservation/restaurant/reserveStatus",
-    type: "GET",
-    dataType: "json",
-    data: { date: reserveDate },
-    success: function (a) {
+  fetch(`../reservation/restaurant/reserveStatus?date=${reserveDate}`)
+    .then((resp) => {
+      if (resp.redirected) {
+        Swal.fire({
+          // sweet alert CDN
+          position: "center",
+          icon: "warning",
+          title: "請先登入",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(() => {
+          // 動畫跑完後跳轉
+          sessionStorage.setItem("URL_before_login", window.location.href);
+          window.location.href = resp.url;
+        });
+      } else {
+        return resp.json();
+      }
+    })
+    .then((a) => {
       console.log(a);
       console.log(tbReserve_status);
       tbReserve_status.html(
@@ -106,8 +146,7 @@ function status() {
           )
           .join("")
       );
-    },
-  });
+    });
 }
 
 function Template(reserveDate, reserveTime, totalReserveNum, availableSeats) {
@@ -123,17 +162,30 @@ document.querySelector("#search_detail").addEventListener("click", function () {
   // console.log("aa");
   var reserveDate = $("#reserve_search").val();
   sessionStorage.setItem("reserveDate", reserveDate);
-  $.ajax({
-    url: "../reservation/restaurant/statusChange",
-    type: "POST",
-    dataType: "json",
-    contentType: "application/json",
-    data: JSON.stringify({
-      reserveDate: reserveDate,
-    }),
-    success: function (b) {
-      console.log(b);
-    },
-  });
-  location.href = "./restaurant_reservation.html";
+  fetch("../reservation/restaurant/statusChange", {
+    method: "POST",
+    headers: { "content-Type": "application/json" },
+    body: JSON.stringify({ reserveDate: reserveDate }),
+  })
+    .then((resp) => {
+      if (resp.redirected) {
+        Swal.fire({
+          // sweet alert CDN
+          position: "center",
+          icon: "warning",
+          title: "請先登入",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(() => {
+          // 動畫跑完後跳轉
+          sessionStorage.setItem("URL_before_login", window.location.href);
+          window.location.href = resp.url;
+        });
+      } else {
+        return resp.json();
+      }
+    })
+    .then((b) => {
+      location.href = "./restaurant_reservation.html";
+    });
 });
