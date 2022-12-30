@@ -1,5 +1,6 @@
 package com.tibame.tga104.restaurant.service.impl;
 
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +16,32 @@ public class RestaurantSearchImpl implements RestaurantSearchDAO{
 
 	@Override
 	public List<RestaurantSearchVO> getAll() {
-		return dao.getAll();
+		List<RestaurantSearchVO> list = dao.getAll();
+		for (RestaurantSearchVO vo :list) {
+			final byte[] carouselPic = vo.getCarouselPic();
+			if (carouselPic != null && carouselPic.length != 0) {
+				vo.setCarouselPicStr(Base64.getEncoder().encodeToString(carouselPic));
+				vo.setCarouselPic(null);
+			}
+		}
+		return list;
 	}
 
 	@Override
 	public List<RestaurantSearchVO> selectByrestaurantName(String restaurantName) {
-		if (restaurantName != null && restaurantName.trim().isEmpty()) {
-			return dao.selectByrestaurantName(restaurantName);
+		List<RestaurantSearchVO> list = dao.selectByrestaurantName(restaurantName);
+		for (RestaurantSearchVO vo : list) {
+			final byte[] carouselPic = vo.getCarouselPic();
+			if (carouselPic != null && carouselPic.length != 0) {
+				vo.setCarouselPicStr(Base64.getEncoder().encodeToString(carouselPic));
+				vo.setCarouselPic(null);
+			}
 		}
-		return null;
+		return list;
+		//		if (restaurantName != null) {
+//			return dao.selectByrestaurantName(restaurantName);
+//		}
+//		return null;
 	}
 	
 
