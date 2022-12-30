@@ -34,8 +34,8 @@ public class ProdCommentDAO_Hibernate implements ProdCommentDAO_interface {
 		Root<ProdOrderDetailVO> root = criteriaQuery.from(ProdOrderDetailVO.class);
 		criteriaQuery = criteriaQuery.where(criteriaBuilder.isNotNull(root.get("prodCommentRating")));	
 		TypedQuery<ProdOrderDetailVO> typedQuery = this.getSession().createQuery(criteriaQuery);
-		typedQuery.setFirstResult(0);
-		typedQuery.setMaxResults(4);
+//		typedQuery.setFirstResult(0);
+//		typedQuery.setMaxResults(4);
 		List<ProdOrderDetailVO> notNullResult = typedQuery.getResultList();		
 		if (notNullResult!=null && !notNullResult.isEmpty()) {
 			return notNullResult;
@@ -93,14 +93,14 @@ public class ProdCommentDAO_Hibernate implements ProdCommentDAO_interface {
 	}
 	
 	public ProdOrderDetailVO replyComment(ProdOrderDetailVO prodOrderDetailVO) {
-		if (prodOrderDetailVO != null && prodOrderDetailVO.getProdOrderNo() != null && prodOrderDetailVO.getProdNo() != null && prodOrderDetailVO.getProdCommentRating() != null) {
+		if (prodOrderDetailVO != null && prodOrderDetailVO.getProdOrderNo() != null) {
 			
-			String replyHQL = "from ProdOrderDetailVO where prodOrderNo= :prodOrderNo and prodNo = :prodNo and prodCommentRating = :prodCommentRating ";
+			String replyHQL = "from ProdOrderDetailVO where prodOrderNo= :prodOrderNo ";
 			ProdOrderDetailVO queryResult = this.getSession().createQuery(replyHQL, ProdOrderDetailVO.class)
 					.setParameter("prodOrderNo", prodOrderDetailVO.getProdOrderNo())
-					.setParameter("prodNo", prodOrderDetailVO.getProdNo())
-					.setParameter("prodCommentRating", prodOrderDetailVO.getProdCommentRating())
 					.uniqueResult();
+			System.out.println(queryResult);
+			
 			queryResult.setRestaurantReply(prodOrderDetailVO.getRestaurantReply());
 			queryResult.setRestaurantReplyTime(new java.sql.Timestamp(new GregorianCalendar().getTimeInMillis()));
 			

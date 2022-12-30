@@ -61,28 +61,6 @@ document.querySelector("#btn_confirm").addEventListener("click", () => {
         location.href = "./GoodEatTime.html";
       });
     });
-
-  // $.ajax({
-  //   url: "../reservation/member",
-  //   type: "POST",
-  //   contentType: "application/json",
-  //   data: sessionStorage.getItem("reservation_inf"),
-  //   dataType: "json",
-  //   success: function (a) {
-  //     console.log(a);
-  //   },
-  //   complete: () => {
-  //     Swal.fire({
-  //       position: "center",
-  //       icon: "success",
-  //       title: "儲存成功",
-  //       showConfirmButton: false,
-  //       timer: 1000,
-  //     }).then(() => {
-  //       location.href = "./GoodEatTime.html";
-  //     });
-  //   },
-  // });
 });
 
 document.querySelector("#btn_cancel").addEventListener("click", () => {

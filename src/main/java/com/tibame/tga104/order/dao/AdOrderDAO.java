@@ -7,7 +7,7 @@ import com.tibame.tga104.order.vo.AdOrder;
 import java.util.List;
 
 public interface AdOrderDAO {
-    Integer createAdOrder(AdOrderRequest adOrderRequest);
+    Integer createAdOrder(Integer restaurantNoFromLogin, AdOrderRequest adOrderRequest);
 
     void updateAdOrder(Integer adOrderNo, AdOrderRequest adOrderRequest);
 

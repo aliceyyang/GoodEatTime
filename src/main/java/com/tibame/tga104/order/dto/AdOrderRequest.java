@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class AdOrderRequest {
 
-    @NotNull
+//    @NotNull
     private Integer restaurantNo;
     private Integer adminNo;
 //    @NotNull

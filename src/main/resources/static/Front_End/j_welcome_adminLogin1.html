@@ -6,7 +6,7 @@
     <meta name="keywords" content="Cake, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>管理員登入</title>
+    <title>登入成功</title>
 
     <!-- Google Font -->
     <link
@@ -17,9 +17,6 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-
-    <!-- /sweetalert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
@@ -34,91 +31,14 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 
     <style>
-      #memberPassword {
-        margin-bottom: -10px;
-      }
-
-      .btn {
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 2px;
-        padding: 14px 30px;
-      }
-
-      #mycanvas {
-        cursor: pointer;
-        text-align: center;
-      }
-      #myform {
-        margin: 0px auto;
-        width: 300px;
-        height: 200px;
-        border: 5px #ffac55 solid;
-      }
-
-      /* 將忘記密碼及加入會員的點點消除 */
-      .mod > ul > li {
-        list-style: none;
-        /* display: inline-block; */
-      }
-      /* .li_right {
-        margin-right: 250px;
-      } */
-
       .GoodEatTime {
         width: 152px;
         height: 52px;
       }
 
-      /* GOOD EAT TIME字樣(含)以下的資料 位置往上調 */
-      .spad {
-        padding-top: 50px;
-      }
-
-      /* checkEye位置 */
-      #checkEye {
-        font-size: 20px;
-        position: absolute;
-        top: 197px;
-        right: 40px;
-      }
-
-      /* 因為Form拉掉，用div包，命div class為form */
-      .class__form .form input {
-        height: 50px;
-        width: 100%;
-        padding-left: 20px;
-        font-size: 15px;
-        color: #444444;
-        background: #ffffff;
-        border: none;
-        margin-bottom: 20px;
-      }
-      .class__form .form input::-webkit-input-placeholder {
-        color: #444444;
-      }
-      .class__form .form input::-moz-placeholder {
-        color: #444444;
-      }
-      .class__form .form input:-ms-input-placeholder {
-        color: #444444;
-      }
-      .class__form .form input::-ms-input-placeholder {
-        color: #444444;
-      }
-      .class__form .form input::placeholder {
-        color: #444444;
-      }
-      .class__form .form button {
-        letter-spacing: 2px;
-        width: 100%;
-      }
-
-      /* sweetalert */
-      body {
-        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
-          Arial, sans-serif;
+      /* 登入成功畫面的底色要死白，透明度調整 */
+      .blog__hero__text {
+        background: #ffffffac;
       }
     </style>
   </head>
@@ -185,8 +105,7 @@
                       <img class="login_icon" src="./img/Login_icon.png" /><a
                         class="login_text"
                         href="#"
-                        >登入</a
-                      >
+                      ></a>
                     </li>
                   </ul>
                 </div>
@@ -224,7 +143,7 @@
             <nav class="header__menu mobile-menu">
               <ul>
                 <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-                <li><a href="./about.html">會員專區</a></li>
+                <li><a href="./G3_alice_admin_overview.html">管理員</a></li>
                 <li><a href="./shop.html">餐廳</a></li>
                 <li><a href="./blog.html">線上商城</a></li>
                 <li>
@@ -247,54 +166,39 @@
     </header>
     <!-- Header結束 -->
 
-    <!-- 管理員登入 開始 -->
-    <section class="class spad">
+    <!-- 登入成功畫面 開始 -->
+    <div class="blog-hero set-bg" data-setbg="img/blog/details/blog-hero.jpg">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="class__form">
-              <div class="section-title">
-                <span>Good Eat Time</span>
-                <h2>管理員登入</h2>
-              </div>
-              <!-- <form action="AdminLoginServlet"> -->
-              <div class="form">
-                <input
-                  type="text"
-                  id="adminAccount"
-                  placeholder="請輸入帳號，長度須介於5~50字元"
-                />
-
-                <input
-                  type="text"
-                  id="adminPassword"
-                  placeholder="請輸入密碼，長度須介於6~12字元"
-                />
-
-                <input type="text" placeholder="確認密碼" id="checkPassword" />
-
-                <!-- <button type="submit" class="site-btn">登入</button> -->
-                <button class="site-btn">登入</button>
-              </div>
-              <!-- </form> -->
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-7">
+            <div class="blog__hero__text">
+              <!-- <div class="label">name</div> -->
+              <h2>登入成功</h2>
+              <ul>
+                <!-- <li><span>會員中心</span></li> -->
+                <!-- <li><a href="">首頁</a></li>
+                <li><a href="">會員中心</a></li>
+                <li><a href="">找餐廳</a></li>
+                <li><a href="">商城</a></li> -->
+              </ul>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <!-- 管理員登入 結束 -->
+    </div>
+    <!-- 登入成功畫面 結束 -->
 
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
       <div class="mask">
         <div class="container">
           <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="footer__member">
                 <h6>會員專區</h6>
                 <div class="footer__social">
                   <a href="#">登入會員<i></i></a>
-                  <a href="#">定位管理<i></i></a>
+                  <a href="#">訂位管理<i></i></a>
                   <br />
                   <a href="#">加入會員<i></i></a>
                   <a href="#">定位管理<i></i></a>
@@ -303,6 +207,8 @@
                   <a href="#">我的評論<i></i></a>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__restaurant">
                 <h6>餐廳</h6>
                 <div class="footer__social">
@@ -312,7 +218,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__shopping">
                 <h6>線上商城</h6>
                 <div class="footer__social">
@@ -322,7 +228,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__aboutus">
                 <h6>關於我們</h6>
                 <div class="footer__social">
@@ -331,6 +237,8 @@
                   <a href="#">履歷<i></i></a>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-3 col-md-9 col-sm-12">
               <div class="footer__widget">
                 <h6>好食光</h6>
                 <ul>
@@ -397,54 +305,26 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-
     <script>
-      const adminAccount = document.querySelector("#adminAccount");
-      const adminPassword = document.querySelector("#adminPassword");
-      const checkPassword = document.querySelector("#checkPassword");
-      document.querySelector("button").addEventListener("click", () => {
-        //帳號密碼需數入
-        if (adminAccount.value === "") {
-          Swal.fire("請輸入帳號密碼", "", "warning");
+      const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+      const myRedirect = async () => {
+        let before_url = sessionStorage.getItem("URL_before_login");
+        if (!before_url) {
           return;
-        } else {
         }
-
-        if (adminPassword.value === "") {
-          Swal.fire("請輸入帳號密碼", "", "warning");
-          return;
-        } else {
-        }
-        //判斷密碼及確認密碼相同
-        if (adminPassword.value != checkPassword.value) {
-          Swal.fire("密碼及確認密碼需相同", "", "warning");
-          return;
-        } else {
-          // fetch(url, {
-          fetch("../AdminLoginServlet", {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-              adminAccount: adminAccount.value,
-              adminPassword: adminPassword.value,
-            }),
-          })
-            .then((resp) => resp.json())
-            .then((body) => {
-              let adminVO = JSON.stringify(body);
-              sessionStorage.setItem("adminVO", adminVO);
-              if (body.successful) {
-                // Swal.fire(body.message);
-                Swal.fire("登入成功", "", "success");
-                location = "j_welcome_adminLogin1.html";
-              } else {
-                Swal.fire("登入失敗", "請洽系統管理員", "error");
-              }
-            });
-        }
-      });
+        var redeirect = document.createElement("h2");
+        redeirect.innerText = "即將導向至原始頁面";
+        document
+          .querySelector("div.blog__hero__text h2")
+          .insertAdjacentElement("afterend", redeirect);
+        await delay(3000);
+        // console.log("Waited 3s");
+        // console.log(before_url);
+        sessionStorage.removeItem("URL_before_login");
+        // await delay(5000);
+        window.location.href = before_url;
+      };
+      myRedirect();
     </script>
   </body>
 </html>
