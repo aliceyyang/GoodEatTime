@@ -16,7 +16,13 @@ import com.tibame.tga104.member.vo.RestaurantMemberVO;
 
 
 //需與組員討論除登入頁面外,需要放的網址列為何
-@WebFilter({"/adOrders/restaurantNo/*", "/adOrders/restaurant/{adOrderNo}", "/adOrders"})
+@WebFilter({"/adOrders/restaurantNo/*",
+			"/adOrders/restaurant/{adOrderNo}", 
+			"/adOrders",
+			"/prodcomment/**",
+			"/restaurantcomment/**",
+			"/addProdInfo/**"
+			})
 
 public class RestaurantMemberLoginFilter extends HttpFilter {
     private static final long serialVersionUID = 1L;
