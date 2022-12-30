@@ -1,5 +1,6 @@
 package com.tibame.tga104.restaurant.vo;
 
+import org.springframework.data.annotation.Transient;
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -15,9 +16,9 @@ public class RestaurantSearchVO implements Serializable{
 	@Id
 	@Column(name ="restaurantNo")
 	private Integer restaurantNo;
-
-	@Column(name = "restaurantPic")
-	private byte[] restaurantPic;
+	@Id
+	@Column(name = "carouselPic")
+	private byte[] carouselPic;
 	
 	@Column(name = "restaurantName")
 	private String restaurantName;
@@ -36,21 +37,32 @@ public class RestaurantSearchVO implements Serializable{
 	
 	@Column(name = "totalCommentRating")
 	private Integer totalCommentRating;
+	
+	private transient String carouselPicStr;
 
 	@Override
 	public String toString() {
-		return "RestaurantSearchVO [restaurantPic=" + Arrays.toString(restaurantPic) + ", restaurantName="
-				+ restaurantName + ", restaurantTel=" + restaurantTel + ", restaurantAddr=" + restaurantAddr
-				+ ", restaurantBusinessHour=" + restaurantBusinessHour + ", restaurantCommentQuantity="
-				+ restaurantCommentQuantity + ", totalCommentRating=" + totalCommentRating + "]";
+		return "RestaurantSearchVO [restaurantNo=" + restaurantNo + ", carouselPic=" + Arrays.toString(carouselPic)
+				+ ", restaurantName=" + restaurantName + ", restaurantTel=" + restaurantTel + ", restaurantAddr="
+				+ restaurantAddr + ", restaurantBusinessHour=" + restaurantBusinessHour + ", restaurantCommentQuantity="
+				+ restaurantCommentQuantity + ", totalCommentRating=" + totalCommentRating + ", carouselPicStr="
+				+ carouselPicStr + "]";
+	}
+	
+	public Integer getRestaurantNo() {
+		return restaurantNo;
 	}
 
-	public byte[] getRestaurantPic() {
-		return restaurantPic;
+	public void setRestaurantNo(Integer restaurantNo) {
+		this.restaurantNo = restaurantNo;
 	}
 
-	public void setRestaurantPic(byte[] restaurantPic) {
-		this.restaurantPic = restaurantPic;
+	public byte[] getCarouselPic() {
+		return carouselPic;
+	}
+
+	public void setCarouselPic(byte[] restaurantPic) {
+		this.carouselPic = restaurantPic;
 	}
 
 	public String getRestaurantName() {
@@ -99,6 +111,14 @@ public class RestaurantSearchVO implements Serializable{
 
 	public void setTotalCommentRating(Integer totalCommentRating) {
 		this.totalCommentRating = totalCommentRating;
+	}
+
+	public String getCarouselPicStr() {
+		return carouselPicStr;
+	}
+
+	public void setCarouselPicStr(String carouselPicStr) {
+		this.carouselPicStr = carouselPicStr;
 	}
 	
 	
