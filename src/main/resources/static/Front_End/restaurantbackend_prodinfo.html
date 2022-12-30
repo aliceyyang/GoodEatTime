@@ -517,7 +517,7 @@
             }),
           })
             .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
-            .then((data) => { console.log(data); alert('送交訂單成功'); location.reload(); })
+            .then((data) => { console.log(data); alert('成功新增商品 !'); location.reload(); })
         }
         fileReader.readAsBinaryString(inputFile.files[0]);
         })

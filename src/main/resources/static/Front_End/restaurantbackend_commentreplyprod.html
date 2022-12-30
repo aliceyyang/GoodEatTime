@@ -256,7 +256,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
                             <label for="prodCommentTime">評論時間：</label>
-                            <input type="number" name="prodCommentTime" id="prodCommentTime" placeholder="自動顯示">
+                            <input type="datetime" name="prodCommentTime" id="prodCommentTime" readonly placeholder="自動顯示">
                           </div>
                         </div>
                       </div>                
@@ -264,7 +264,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
                             <label for="memberNo">評論帳號：</label>
-                            <input type="number" name="memberNo" id="memberNo" placeholder="自動顯示">
+                            <input type="number" name="memberNo" id="memberNo" readonly placeholder="自動顯示">
                           </div>
                         </div>
                       </div>                   
@@ -272,7 +272,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
                             <label for="prodNo">評論商品：</label>
-                            <input type="number" name="prodNo" id="prodNo" placeholder="此為必填欄位">
+                            <input type="number" name="prodNo" id="prodNo" readonly placeholder="此為必填欄位">
                           </div>
                         </div>
                       </div>
@@ -280,7 +280,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
                             <label for="prodCommentRating">評論星等：</label>
-                            <input type="number" name="prodCommentRating" id="prodCommentRating" placeholder="此為必填欄位">
+                            <input type="number" name="prodCommentRating" id="prodCommentRating" readonly placeholder="此為必填欄位">
                           </div>
                         </div>
                       </div>
@@ -290,7 +290,7 @@
                         <div class="">
                           <div class="form-group">
                             <label for="prodCommentContent">評論內容：</label>
-                            <textarea name="prodCommentContent" id="prodCommentContent" cols="27" rows="5"></textarea>
+                            <textarea name="prodCommentContent" id="prodCommentContent" readonly cols="27" rows="5"></textarea>
                           </div>
                         </div>
                       </div>
@@ -301,7 +301,8 @@
                             <label class="commentPic" for="prodCommentPic" tabIndex="0">
                               <span class="prodCommentPic_image"></span>
                             </label>
-                            <input type="file" name="prodCommentPic" id="prodCommentPic">
+                            <img id="comment_pic" src="">
+                            <!-- <input type="file" name="prodCommentPic" id="prodCommentPic"> -->
                           </div>
                         </div>
                       </div>
@@ -453,7 +454,7 @@
     <!-- <script src="js/reservation.js"></script> -->
     <!-- <script src="js/alice.js"></script> -->
     
-    <script> // 預覽圖片
+    <!-- <script> // 預覽圖片，回覆用不到。
       const inputFile = document.querySelector("#prodCommentPic");
       const pictureImage = document.querySelector(".prodCommentPic_image");
       const pictureImageTxt = "可以選擇一張圖片";
@@ -482,24 +483,48 @@
           pictureImage.innerHTML = pictureImageTxt;
         }
       }); 
+    </script> -->
+
+    <script>
+      // 取出 sessionStorage 物件，轉回 (物件?) 型態(原本是JSON字串格式)。
+      let prodOrderDetailVO = JSON.parse(sessionStorage.getItem("prodOrderDetailVO"));
+      console.log(prodOrderDetailVO);
+
+      // 取出 prodOrderDetailVO 物件裡的 prodCommentTime 屬性。
+      document.getElementById("prodCommentTime").value = prodOrderDetailVO.prodCommentTime;
+      document.getElementById("prodNo").value = prodOrderDetailVO.prodNo;
+      document.getElementById("prodCommentRating").value = prodOrderDetailVO.prodCommentRating;
+      document.getElementById("prodCommentContent").value = prodOrderDetailVO.prodCommentContent;
+
+      // 取出資料庫內的圖，並利用 ` 模板字串符 ` 顯示在畫面上。
+      document.getElementById("comment_pic").setAttribute("src",`../prodcomment/ShowCommentPic?prodOrderNo=${prodOrderDetailVO.prodOrderNo}&prodNo=${prodOrderDetailVO.prodNo}`);
+      
     </script>
-    <script> // POST
+    <script>
+      // GET：取得query string
+      // const params = new Proxy(new URLSearchParams(window.location.search), {
+      //   get: (searchParams, prop) => searchParams.get(prop),
+      // });
+      // let reserveNo = parseInt(params.reserveNo);
+      // console.log(reserveNo)
+    
+    
+      // POST
       const URL = 'http://localhost:8080/prodcomment/CommentReply';      
       const submit_btn = document.getElementById("submit_btn");
       submit_btn.addEventListener("click", function () {
+        let updateProdOrderNo = prodOrderDetailVO.prodOrderNo;
         let updateRestaurantReply = document.querySelector("#restaurantReply").value;
         fetch(URL, {
           method: "POST",
           headers: { 'Content-type': 'application/json' },
           body: JSON.stringify({
-            prodOrderNo:3,        //未抓資料先寫死。
-            prodNo: 3,            //未抓資料先寫死。
-            prodCommentRating:3,  //未抓資料先寫死。
+            prodOrderNo: updateProdOrderNo,
             restaurantReply: updateRestaurantReply
           })
         })
         .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
-        .then((data) => { console.log(data); alert('送交訂單成功'); location.reload(); })
+        .then((data) => { console.log(data); alert('成功回覆評論 ! '); location.reload(); })
       })
     </script>
   </body>

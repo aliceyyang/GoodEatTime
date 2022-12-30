@@ -18,6 +18,13 @@ public class RestaurantCommmentService {
 	@Autowired
 	private RestaurantCommentDAO_Hibernate dao;
 	
+	public ReservationVO select(Integer reserveNo, Integer restaurantNo) {
+		if(reserveNo == null || restaurantNo == null || reserveNo < 0 || restaurantNo < 0) {
+			return null;
+		}
+		return dao.select(reserveNo, restaurantNo);
+	}
+	
 	public List<ReservationVO> selectNotNullComment() {
 		return dao.getNotNullComment();
 	}
