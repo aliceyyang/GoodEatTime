@@ -372,16 +372,16 @@ input[type="checkbox"] {
   margin-left: 10px;
   position: absolute;
   content: attr(turnOn);
-  color: #fff;
+  color: black;
 }
 .switch-txt::after {
   margin-left: 70px;
   content: attr(turnOff);
-  color: #ccc;
+  color: white;
 }
 
 input:checked + .switchLabel {
-  background: #f6e04f;
+  background: #f6d554;
 }
 
 .switchLabel:active:after {
