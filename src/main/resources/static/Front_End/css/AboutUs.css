@@ -153,11 +153,11 @@ button#btn_cancel {
   -------------------------------------*/
 /* 訂位人數設定 */
 .restaurant_reserveinf h2,
-h3 {
+h3, h4,h5 {
   text-align: center;
   padding: 12px;
-  color: black;
-  background-color: #FFEFDE;
+  color: rgb(255, 255, 255);
+  background-color: #313131;
   margin-bottom: 10px;
   border: 2px solid;
 }
@@ -494,15 +494,17 @@ label#updatePicdata {
 }
 
 #aboutus__titel .block .vitae{
-  font-size: 20px;
-  text-align: center;
+    line-height: 60px;
+    font-weight: bold;
+    padding-left: 18px;
+    color: white;
 }
 
 .wrapper .block {
   width: 100%;
     height: 60px;
-    background-color: #D25541;
-    border-right: 3px solid #D25541;
+    background-color: #f08632;
+    border-right: 3px solid #f08632;
     color: #FFFFFF;
     display: flex;
     justify-content: space-between;
@@ -521,4 +523,47 @@ label#updatePicdata {
 #aboutus__titel .block h3{
   font-size: 20px;
   text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+.vitae_list {
+padding-left: 5%;
+padding-top: 15px;
+padding-bottom: 30px;
+}
+
+.aboutGoodEatTime{
+  display: flex;
+  flex-direction: row;
+}
+
+ .aboutGoodEatTime .aboutus  img{
+padding-bottom: 15px;
+}
+
+.aboutGoodEatTime div div p{
+  font-size: 14px;
+  line-height: 16px;
+  padding: 0 0 0 30px;
+  max-width: 100%;
+}
+.text {
+  float: left;
+}
+
+.aboutus {
+  float: right;
+}
+
+.aboutGoodEatTime div h4{
+  text-align: center;
+  padding: 12px;
+  color: rgb(255, 255, 255);
+  background-color: #313131;
+  margin-bottom: 10px;
+  border: 2px solid;
+  width: 1200px;
 }

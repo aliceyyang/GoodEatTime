@@ -433,8 +433,8 @@
           })
             .then((resp) => resp.json())
             .then((body) => {
-              let adminVO = JSON.stringify(body);
-              sessionStorage.setItem("adminVO", adminVO);
+              let resultadminVO = JSON.stringify(body);
+              sessionStorage.setItem("resultadminVO", resultadminVO);
               if (body.successful) {
                 // Swal.fire(body.message);
                 Swal.fire("登入成功", "", "success");
