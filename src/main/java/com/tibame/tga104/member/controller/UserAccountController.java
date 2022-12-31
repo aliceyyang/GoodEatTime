@@ -4,6 +4,7 @@ import com.tibame.tga104.member.dto.MemberRequest;
 import com.tibame.tga104.member.service.MemberSpringService;
 import com.tibame.tga104.member.vo.AdminVO;
 import com.tibame.tga104.member.vo.MemberVO;
+import com.tibame.tga104.member.vo.RestaurantMemberVO;
 import com.tibame.tga104.restaurant.dto.RestaurantRequest;
 import com.tibame.tga104.restaurant.service.RestaurantService;
 import com.tibame.tga104.restaurant.vo.RestaurantVO;
@@ -62,18 +63,19 @@ public class UserAccountController {
     }
 
     @GetMapping("/admin/restaurant-accounts")
-    public ResponseEntity<List<RestaurantVO>> getRestaurantByAll(/*@SessionAttribute(name = "adminVO") AdminVO adminVO*/) {
-//        if (adminVO == null) {
-//            return null;
-//        }
+    public ResponseEntity<List<RestaurantVO>> getRestaurantByAll(/*HttpSession httpSession*/
+            /*@SessionAttribute(name = "adminVO") AdminVO adminVO*/) {
+
+//        RestaurantMemberVO resSession = (RestaurantMemberVO) httpSession.getAttribute("restaurantMemberVO");
+//        if (resSession == null) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 
         List<RestaurantVO> restaurantVOList = restaurantService.getRestaurantByAll();
         return ResponseEntity.status(HttpStatus.OK).body(restaurantVOList);
     }
 
     @GetMapping("/admin/restaurant-accounts/{restaurantNo}")
-    public ResponseEntity<RestaurantVO> getRestaurantByNo(/*@SessionAttribute(name = "adminVO") AdminVO adminVO,*/ @PathVariable Integer restaurantNo) {
-//        if (adminVO == null) return null;
+    public ResponseEntity<RestaurantVO> getRestaurantByNo(/*@SessionAttribute(name = "adminVO") AdminVO adminVO,*/
+                                                          @PathVariable Integer restaurantNo) {
 
         RestaurantVO restaurantVO = restaurantService.getRestaurantByNo(restaurantNo);
         return ResponseEntity.status(HttpStatus.OK).body(restaurantVO);
