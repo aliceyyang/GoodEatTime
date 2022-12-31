@@ -1,6 +1,9 @@
 // =====================五種星等百分比=========================
+const restaurantNo = sessionStorage.getItem("restaurantNo");
+const restaurantName = sessionStorage.getItem("restaurantName");
+document.getElementById("restaurantName").innerHTML = restaurantName;
 
-fetch("/restaurant-rating/3")
+fetch(`/restaurant-rating/${restaurantNo}`)
   .then((resp) => resp.json())
   .then((list) => {
     var sum = 0;
@@ -215,7 +218,7 @@ fetch("/restaurant-rating/3")
 
 // =====================取得所有評論=========================
 
-fetch("/restaurant-comment/3")
+fetch(`/restaurant-comment/${restaurantNo}`)
   .then((resp) => resp.json())
   .then((list) => {
     $("#comment_sum").html(`共${list.length}則評論`);
@@ -296,4 +299,18 @@ fetch("/restaurant-comment/3")
 
     comment_avg = Math.round((comment_avg / list.length) * 10) / 10;
     $("#comment_avg").html(comment_avg); //平均分數
+
+    let restaurantStars = "";
+
+    //餐廳平均分數 算出整數部分要有幾顆星星
+    for (var i = 1; i <= Math.trunc(comment_avg); i++) {
+      restaurantStars += '<i class="fa-solid fa-star" color="orange"></i>';
+    }
+
+    //餐廳平均分數 算出小數點大於0.5 就顯示半顆星星
+    if (comment_avg - Math.trunc(comment_avg) >= 0.5) {
+      restaurantStars += '<i class="fa-solid fa-star-half" color="orange"></i>';
+    }
+
+    $("#restaurant_stars").html(restaurantStars);
   });

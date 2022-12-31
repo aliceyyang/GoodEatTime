@@ -3,7 +3,7 @@
 // google map
 function initMap() {
   var restaurantNumber; //本餐廳編號
-  fetch("http://localhost:8080/restaurant-read/3") //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
+  fetch("http://localhost:8080/restaurant-page/3") //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
     .then((res) => res.json())
     .then((data) => {
       //輸入需要的屬性取出資料庫中的值
@@ -12,6 +12,8 @@ function initMap() {
       const { restaurantTel } = data;
       const { restaurantAddr } = data;
       const { restaurantBusinessHour } = data;
+      sessionStorage.setItem("restaurantNo", restaurantNo);
+      sessionStorage.setItem("restaurantName", restaurantName);
 
       restaurantNumber = restaurantNo;
       document.getElementById("restaurantName").innerHTML = restaurantName;
@@ -35,7 +37,7 @@ function initMap() {
 
   //=========================點選收藏餐廳=================================
   //找到該會員的所有收藏餐廳
-  fetch("http://localhost:8080/LikedRestaurant-list/1") //會員編號先寫死
+  fetch("http://localhost:8080/LikedRestaurant-list/0") //會員編號先寫死
     .then((res) => res.json())
     .then((list) => {
       for (const item of list) {
@@ -56,7 +58,7 @@ function initMap() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          memberNo: 1, //先寫死測試
+          memberNo: 0,
           restaurantNo: restaurantNumber, //本餐廳編號
         }),
       }).then(function () {
@@ -67,17 +69,37 @@ function initMap() {
     } else {
       fetch("http://localhost:8080/LikedRestaurant-add", {
         method: "POST",
+        redirect: "follow",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          memberNo: 1, //先寫死測試
+          memberNo: 0,
           restaurantNo: restaurantNumber, //本餐廳編號
         }),
-      }).then(function () {
-        $("#liked").addClass("liked");
-        $("#liked").trigger("classChange");
-        alert("收藏成功!");
+      }).then((res) => {
+        console.log("是否重導向" + res.redirected);
+        var redirect_URL = res.url;
+        if (res.redirected) {
+          alert("請先登入會員");
+          // swal({
+          //   title: "",
+          //   text: "請先登入",
+          //   icon: "warning",
+          //   button: "OK",
+          //   timer: 1000,
+          // })
+          setTimeout(function () {
+            sessionStorage.setItem(
+              "res_login",
+              window.location.assign(redirect_URL)
+            );
+          }, 1000);
+        } else {
+          $("#liked").addClass("liked");
+          $("#liked").trigger("classChange");
+          alert("收藏成功!");
+        }
       });
     }
   });
@@ -195,7 +217,7 @@ fetch("http://localhost:8080/restaurant-readInfo/Post/3")
 
 // ======================抓出餐廳已上傳的菜單======================
 
-fetch("http://localhost:8080/restaurant-readInfo/Menu/3")
+fetch("/restaurant-readInfo/Menu/3")
   .then((res) => res.json())
   .then((list) => {
     const menu_list = document.querySelector("#menu_list"); //準備裝已上傳菜單的div
@@ -227,6 +249,20 @@ fetch("/restaurant-comment/3")
 
     comment_avg = Math.round((comment_avg / list.length) * 10) / 10;
     $("#comment_avg").html(comment_avg); //平均分數
+
+    let restaurantStars = "";
+
+    //餐廳平均分數 算出整數部分要有幾顆星星
+    for (var i = 1; i <= Math.trunc(comment_avg); i++) {
+      restaurantStars += '<i class="fa-solid fa-star" color="orange"></i>';
+    }
+
+    //餐廳平均分數 算出小數點大於0.5 就顯示半顆星星
+    if (comment_avg - Math.trunc(comment_avg) >= 0.5) {
+      restaurantStars += '<i class="fa-solid fa-star-half" color="orange"></i>';
+    }
+
+    $("#restaurant_stars").html(restaurantStars);
 
     const { name } = list[0];
     const { commentRating } = list[0];

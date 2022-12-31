@@ -37,6 +37,7 @@
   }
 
   div#comment{
+    padding: 10px;
     width:360px;
     height:450px;
    background: #fdf3ea;
@@ -45,12 +46,13 @@
   #comment_sum:hover {
     color: gray;
     transform: scale(0.98);
+    cursor: pointer;
   }
 
   div#latest_comment{
     padding: 10px;
     margin-right: 2px;
-    width:360px;
+    width:340px;
     height:190px;
     background-color: #F6D3B6;
   }
