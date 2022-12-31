@@ -31,23 +31,31 @@ public class RestaurantController {
 		return ResponseEntity.status(HttpStatus.OK).body(list);
 	}
 	
-//	輸入餐廳編號查詢
+//	輸入餐廳編號查詢 Filter
 	@GetMapping("/restaurant-read/{restaurantNo}")
 	public ResponseEntity<RestaurantVO> getByRestaurantNo(HttpSession httpSession, 
 														  @PathVariable Integer restaurantNo) {
 		RestaurantMemberVO session = (RestaurantMemberVO)httpSession.getAttribute("restaurantMemberVO");
 		
 		if (session == null) {
-            System.out.println("尚未登入");
+            System.out.println("餐廳尚未登入");
             return null;
         }
-		RestaurantVO restaurantVOLogin = new RestaurantVO();
-        Integer restaurantNoLogin = session.getRestaurantNo();
-        restaurantVOLogin.setRestaurantNo(restaurantNoLogin);
+//		RestaurantVO restaurantVOLogin = new RestaurantVO();
+//      Integer restaurantNoLogin = session.getRestaurantNo();
+//      restaurantVOLogin.setRestaurantNo(session.getRestaurantNo());
+		restaurantNo = session.getRestaurantNo();
         
-        RestaurantVO vo = restaurantService.getOneRestaurant(restaurantNoLogin);
+        RestaurantVO vo = restaurantService.getOneRestaurant(restaurantNo);
         
-        System.out.println("取得餐廳資訊 編號:" + restaurantNoLogin);
+		return ResponseEntity.status(HttpStatus.OK).body(vo);
+				
+	}
+	
+//	輸入餐廳編號查詢 
+	@GetMapping("/restaurant-page/{restaurantNo}")
+	public ResponseEntity<RestaurantVO> getPage(@PathVariable Integer restaurantNo) {
+        RestaurantVO vo = restaurantService.getOneRestaurant(restaurantNo);
 		return ResponseEntity.status(HttpStatus.OK).body(vo);
 				
 	}
@@ -60,8 +68,12 @@ public class RestaurantController {
 	
 //	餐廳方更新自己餐廳資料
 	@PutMapping("/restaurant-update/{restaurantNo}")
-	public ResponseEntity<RestaurantVO>  updateRestaurant(@PathVariable Integer restaurantNo,
+	public ResponseEntity<RestaurantVO>  updateRestaurant(HttpSession httpSession, @PathVariable Integer restaurantNo,
 								   						  @RequestBody RestaurantVO restaurant) {
+		RestaurantMemberVO session = (RestaurantMemberVO)httpSession.getAttribute("restaurantMemberVO");
+		if(session != null) {
+			restaurantNo = session.getRestaurantNo();
+		}
 		
 		RestaurantVO vo = 
 		restaurantService.updateRestaurant(restaurant.getRestaurantTel(), restaurant.getRestaurantName(), restaurant.getRestaurantTaxIDNo(), 

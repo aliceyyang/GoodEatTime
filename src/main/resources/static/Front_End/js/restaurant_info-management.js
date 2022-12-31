@@ -5,9 +5,7 @@ fetch("http://localhost:8080/restaurant-read/0", {
   redirect: "follow",
 }).then((resp) => {
   var redirect_URL = resp.url;
-  console.log("是否重導向" + resp.redirected);
   if (resp.redirected) {
-    console.log("sss");
     alert("請先登入");
     // swal({
     //   title: "",
@@ -24,7 +22,6 @@ fetch("http://localhost:8080/restaurant-read/0", {
     }, 1000);
   } else {
     resp.json().then((data) => {
-      console.log("已登入!!!");
       //輸入需要的屬性取出資料庫中的值
       const { restaurantNo } = data;
       const { restaurantName } = data;
@@ -155,7 +152,7 @@ $(function () {
       const restaurantPassword = $("#restaurantPassword").val();
 
       fetch(
-        "http://localhost:8080/restaurant-update/3", //餐廳編號先寫死測試
+        "http://localhost:8080/restaurant-update/0", //餐廳編號先寫死測試
         {
           method: "PUT",
           headers: {
@@ -179,45 +176,22 @@ $(function () {
 
 // =======================抓出餐廳已上傳的輪播圖片======================
 var quota; //還可上傳的圖片額度
-fetch("http://localhost:8080/restaurant-readInfo/CarouselPic/0", {
-  method: "GET",
-  redirect: "follow",
-}).then((res) => {
-  var redirect_URL = res.url;
-  console.log("是否重導向" + res.redirected);
-  if (res.redirected) {
-    console.log("sss");
-    alert("請先登入");
-    // swal({
-    //   title: "",
-    //   text: "請先登入",
-    //   icon: "warning",
-    //   button: "OK",
-    //   timer: 1000,
-    // });
-    setTimeout(function () {
-      sessionStorage.setItem(
-        "resp_login",
-        window.location.assign(redirect_URL)
-      );
-    }, 1000);
-  } else {
-    res.json().then((list) => {
-      const carousel_uploaded = document.querySelector("#carousel_uploaded"); //準備裝已上傳圖片的div
-      const carousel_quota = document.querySelector("#carousel_quota"); //放圖片額度文字的span
-      quota = 6 - list.length;
-      carousel_quota.innerHTML = `可再上傳${quota}張輪播圖片`;
-      for (const item of list) {
-        //多張輪播圖的陣列,一張一張取出圖片PK跟base64Str
-        const { carouselPicNo } = item;
-        const { carouselPicStr } = item;
-        const newDiv = document.createElement("div");
-        newDiv.innerHTML = `<div  id="cPic_${carouselPicNo}" class="uploaded_pic"><span class="delete_btn">✖</span><img src="data:image/*;base64,${carouselPicStr}"></div>`;
-        carousel_uploaded.appendChild(newDiv);
-      }
-    });
-  }
-});
+fetch("http://localhost:8080/restaurant-readInfo/CarouselPic/0")
+  .then((res) => res.json())
+  .then((list) => {
+    const carousel_uploaded = document.querySelector("#carousel_uploaded"); //準備裝已上傳圖片的div
+    const carousel_quota = document.querySelector("#carousel_quota"); //放圖片額度文字的span
+    quota = 6 - list.length;
+    carousel_quota.innerHTML = `可再上傳${quota}張輪播圖片`;
+    for (const item of list) {
+      //多張輪播圖的陣列,一張一張取出圖片PK跟base64Str
+      const { carouselPicNo } = item;
+      const { carouselPicStr } = item;
+      const newDiv = document.createElement("div");
+      newDiv.innerHTML = `<div  id="cPic_${carouselPicNo}" class="uploaded_pic"><span class="delete_btn">✖</span><img src="data:image/*;base64,${carouselPicStr}"></div>`;
+      carousel_uploaded.appendChild(newDiv);
+    }
+  });
 
 // ===========================輪播圖點擊刪除=========================
 
@@ -273,8 +247,7 @@ function readFiles(files) {
       base64arr.push(e.target.result.split(",")[1]); //要截掉前面的data:image/png;base64, 才是圖像編碼
       if (files.length === base64arr.length) {
         //等陣列裝好所有選的圖檔後進來執行
-        fetch("http://localhost:8080/restaurant-uploadMultiplePics/3", {
-          //最後面是餐廳編號，我先寫死測試QAQ
+        fetch("http://localhost:8080/restaurant-uploadMultiplePics/0", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -328,53 +301,31 @@ drop_zone.addEventListener("drop", function (e) {
 // ======================抓出餐廳已上傳的菜單======================
 
 var menu_array = []; //準備裝多個菜單物件的陣列
-fetch("http://localhost:8080/restaurant-readInfo/Menu/3", {
-  method: "GET",
-  redirect: "follow",
-}).then((res) => {
-  var redirect_URL = res.url;
-  console.log("是否重導向" + res.redirected);
-  if (res.redirected) {
-    alert("請先登入");
-    // swal({
-    //   title: "",
-    //   text: "請先登入",
-    //   icon: "warning",
-    //   button: "OK",
-    //   timer: 1000,
-    // });
-    setTimeout(function () {
-      sessionStorage.setItem(
-        "resp_login",
-        window.location.assign(redirect_URL)
-      );
-    }, 1000);
-  } else {
-    res.json().then((list) => {
-      const menu_uploaded = document.querySelector("#menu_uploaded"); //準備裝已上傳菜單的div
-      for (const item of list) {
-        const { menuNo } = item;
-        const { menuPicstr } = item;
-        const { menuPicRemark } = item;
+fetch("http://localhost:8080/restaurant-readInfo/Menu/0")
+  .then((res) => res.json())
+  .then((list) => {
+    const menu_uploaded = document.querySelector("#menu_uploaded"); //準備裝已上傳菜單的div
+    for (const item of list) {
+      const { menuNo } = item;
+      const { menuPicstr } = item;
+      const { menuPicRemark } = item;
 
-        menu_array.push({
-          menuNo: menuNo,
-          menuPicstr: menuPicstr,
-          menuPicRemark: menuPicRemark,
-        });
+      menu_array.push({
+        menuNo: menuNo,
+        menuPicstr: menuPicstr,
+        menuPicRemark: menuPicRemark,
+      });
 
-        const newDiv = document.createElement("div");
-        newDiv.innerHTML = `<div id="mPic_${menuNo}" class="uploaded_menu">
+      const newDiv = document.createElement("div");
+      newDiv.innerHTML = `<div id="mPic_${menuNo}" class="uploaded_menu">
       <img src="data:image/*;base64,${menuPicstr}" />
       <a class="delete_menu">刪除</a>
       <a class="edit_menu">編輯</a>
       </div>`;
 
-        menu_uploaded.appendChild(newDiv);
-      }
-    });
-  }
-});
+      menu_uploaded.appendChild(newDiv);
+    }
+  });
 // ===============================菜單編輯==========================
 
 $(document).on("click", ".edit_menu", function () {
@@ -423,7 +374,7 @@ function readFile(pic, pic_remark) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        restaurantNo: 3, //餐廳編號我先寫死測試T_T
+        restaurantNo: 0,
         menuPicstr: base64, //VO那邊要先建一個String的屬性來裝base64的編碼，過去controller再轉byte陣列
         menuPicRemark: pic_remark,
       }),
@@ -517,59 +468,38 @@ drop_zone2.addEventListener("drop", function (e) {
 // ======================抓出餐廳已上傳的貼文======================
 
 var post_array = []; //準備裝多個貼文物件的陣列
-fetch("http://localhost:8080/restaurant-readInfo/Post/3", {
-  method: "GET",
-  redirect: "follow",
-}).then((res) => {
-  var redirect_URL = res.url;
-  if (res.redirected) {
-    alert("請先登入");
-    // swal({
-    //   title: "",
-    //   text: "請先登入",
-    //   icon: "warning",
-    //   button: "OK",
-    //   timer: 1000,
-    // });
-    setTimeout(function () {
-      sessionStorage.setItem(
-        "resp_login",
-        window.location.assign(redirect_URL)
-      );
-    }, 1000);
-  } else {
-    res.json().then((list) => {
-      const post_uploaded = document.querySelector("#post_uploaded"); //準備裝已上傳貼文的div
-      for (const item of list) {
-        //多個貼文的陣列,一個個取出資料
-        const { restaurantPostNo } = item;
-        const { postType } = item;
-        const { postPicStr } = item;
-        const { postTitle } = item;
-        const { postContent } = item;
-        //存成貼文物件，push進準備好的陣列
-        post_array.push({
-          restaurantPostNo: restaurantPostNo,
-          postType: postType,
-          postPicStr: postPicStr,
-          postTitle: postTitle,
-          postContent: postContent,
-        });
+fetch("http://localhost:8080/restaurant-readInfo/Post/0")
+  .then((res) => res.json())
+  .then((list) => {
+    const post_uploaded = document.querySelector("#post_uploaded"); //準備裝已上傳貼文的div
+    for (const item of list) {
+      //多個貼文的陣列,一個個取出資料
+      const { restaurantPostNo } = item;
+      const { postType } = item;
+      const { postPicStr } = item;
+      const { postTitle } = item;
+      const { postContent } = item;
+      //存成貼文物件，push進準備好的陣列
+      post_array.push({
+        restaurantPostNo: restaurantPostNo,
+        postType: postType,
+        postPicStr: postPicStr,
+        postTitle: postTitle,
+        postContent: postContent,
+      });
 
-        const newDiv = document.createElement("div");
-        newDiv.innerHTML = `<div id="pPic_${restaurantPostNo}" class="uploaded_restaurantPost">
+      const newDiv = document.createElement("div");
+      newDiv.innerHTML = `<div id="pPic_${restaurantPostNo}" class="uploaded_restaurantPost">
       <span class="uploaded_postType">${postType}</span> | <span class="uploaded_postTitle">${postTitle.substring(
-          0,
-          9
-        )}...</span>
+        0,
+        9
+      )}...</span>
       <a class="delete_post">刪除</a>
       <a class="edit_post">編輯</a>
     </div>`;
-        post_uploaded.appendChild(newDiv);
-      }
-    });
-  }
-});
+      post_uploaded.appendChild(newDiv);
+    }
+  });
 
 // ===============================貼文編輯==========================
 
@@ -634,7 +564,7 @@ function readPostFile(pic, post_type, post_title, post_content) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        restaurantNo: 3, //餐廳編號先寫死測試
+        restaurantNo: 0,
         postType: post_type,
         postPicStr: base64, //VO那邊要先建一個String的屬性來裝base64的編碼，過去controller再轉byte陣列
         postTitle: post_title,

@@ -37,21 +37,17 @@ public class UpdatePicController {
 
 //	查詢該餐廳所有輪播圖片/貼文/菜單
 	@GetMapping("/restaurant-readInfo/{management}/{restaurantNo}")
-	public ResponseEntity<List> getByRestaurantNo(HttpSession httpSession, @PathVariable String management,
-			@PathVariable Integer restaurantNo) {
-
-		RestaurantMemberVO session = (RestaurantMemberVO) httpSession.getAttribute("restaurantMemberVO");
-
-		if (session == null) {
-			System.out.println("尚未登入");
-			return null;
-		}
-		Integer restaurantNoLogin = session.getRestaurantNo();
+	public ResponseEntity<List> getByRestaurantNo(HttpSession httpSession,
+												 @PathVariable String management,
+												 @PathVariable Integer restaurantNo) {
 		
-		switch (management) {
+		RestaurantMemberVO session = (RestaurantMemberVO)httpSession.getAttribute("restaurantMemberVO");
+		if (session != null) {
+            restaurantNo = session.getRestaurantNo();
+        }
+			switch (management) {
 		case "CarouselPic": {
-
-			List<RestaurantCarouselPicVO> carouselPicVO = carouselPicService.findByRestaurantNo(restaurantNoLogin);
+			List<RestaurantCarouselPicVO> carouselPicVO = carouselPicService.findByRestaurantNo(restaurantNo);
 			for (RestaurantCarouselPicVO vo : carouselPicVO) {
 				if (vo.getCarouselPic() != null) {
 					String base64 = Base64.getEncoder().encodeToString(vo.getCarouselPic());
@@ -60,8 +56,9 @@ public class UpdatePicController {
 			}
 			return ResponseEntity.status(HttpStatus.OK).body(carouselPicVO);
 		}
+		
 		case "Post": {
-			List<RestaurantPostVO> postVO = postService.findByRestaurantNo(restaurantNoLogin);
+			List<RestaurantPostVO> postVO = postService.findByRestaurantNo(restaurantNo);
 			for (RestaurantPostVO vo : postVO) {
 				if (vo.getPostPic() != null) {
 					String base64 = Base64.getEncoder().encodeToString(vo.getPostPic());
@@ -70,8 +67,9 @@ public class UpdatePicController {
 			}
 			return ResponseEntity.status(HttpStatus.OK).body(postVO);
 		}
+		
 		case "Menu": {
-			List<MenuVO> menuVO = menuService.findByRestaurantNo(restaurantNoLogin);
+			List<MenuVO> menuVO = menuService.findByRestaurantNo(restaurantNo);
 			for (MenuVO vo : menuVO) {
 				if (vo.getMenuPic() != null) {
 					String base64 = Base64.getEncoder().encodeToString(vo.getMenuPic());
