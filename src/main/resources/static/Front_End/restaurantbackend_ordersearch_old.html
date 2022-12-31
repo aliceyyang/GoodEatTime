@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Cake Template" />
-    <meta name="keywords" content="Cake, unica, creative, html" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>登入成功</title>
+    <title>RestaurantBackEnd | OrderSearch</title>
 
     <!-- Google Font -->
     <link
@@ -29,20 +29,27 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
+    <link rel="stylesheet" href="css/reservation.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="css/member_page_overview.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="css/alice_style.css" type="text/css" />
 
     <style>
-      .GoodEatTime {
-        width: 152px;
-        height: 52px;
+      .nice-select {
+        width: 80%;
       }
-
-      /* 登入成功畫面的底色要死白，透明度調整 */
-      .blog__hero__text {
-        background: #ffffffac;
+      table,
+      tr,
+      th,
+      td {
+        border: 1px solid black;
       }
     </style>
   </head>
-
   <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -65,7 +72,12 @@
         </div>
       </div>
       <div class="offcanvas__logo">
-        <a href="./index.html"><img src="img/logo.png" alt="" /></a>
+        <a href="./GoodEatTime.html"
+          ><img
+            class="GoodEatTimelogo"
+            src="/img/GoodEatTime_smlogo.png"
+            alt=""
+        /></a>
       </div>
       <div id="mobile-menu-wrap"></div>
       <div class="offcanvas__option">
@@ -92,7 +104,7 @@
     </div>
     <!-- Offcanvas Menu End -->
 
-    <!-- Header開始 -->
+    <!-- Header Section Begin -->
     <header class="header">
       <div class="header__top">
         <div class="container">
@@ -105,7 +117,8 @@
                       <img class="login_icon" src="./img/Login_icon.png" /><a
                         class="login_text"
                         href="#"
-                      ></a>
+                        >登入</a
+                      >
                     </li>
                   </ul>
                 </div>
@@ -140,67 +153,134 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <nav class="header__menu mobile-menu">
-              <ul>
-                <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-                <li>
-                  <a href="./restaurant_info-management.html">餐廳後台</a>
-                </li>
-                <li><a href="./restaurant_search.html">餐廳</a></li>
-                <li><a href="./shopping_mall.html">線上商城</a></li>
-                <li>
-                  <a href="./about_us.html">關於我們</a>
-                  <ul class="dropdown">
-                    <li><a href="./shop-details.html">Shop Details</a></li>
-                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                    <li><a href="./checkout.html">Check Out</a></li>
-                    <li><a href="./wisslist.html">Wisslist</a></li>
-                    <li><a href="./Class.html">Class</a></li>
-                    <li><a href="./blog-details.html">Blog Details</a></li>
-                  </ul>
-                </li>
-                <li><a href="./contact.html">地點搜尋</a></li>
-              </ul>
-            </nav>
+            <nav class="header__menu mobile-menu"></nav>
           </div>
         </div>
       </div>
     </header>
-    <!-- Header結束 -->
+    <!-- Header Section End -->
 
-    <!-- 登入成功畫面 開始 -->
-    <div class="blog-hero set-bg" data-setbg="img/blog/details/blog-hero.jpg">
-      <div class="container">
-        <div class="row d-flex justify-content-center">
-          <div class="col-lg-7">
-            <div class="blog__hero__text">
-              <!-- <div class="label">name</div> -->
-              <h2>登入成功</h2>
-              <ul>
-                <!-- <li><span>會員中心</span></li> -->
-                <!-- <li><a href="">首頁</a></li>
-                <li><a href="">會員中心</a></li>
-                <li><a href="">找餐廳</a></li>
-                <li><a href="">商城</a></li> -->
-              </ul>
+    <!-- Class Section Begin -->
+    <section class="class">
+      <!-- <div class="container"> -->
+      <div class="row" id="member">
+        <!-- <div class="col-lg-2" id="left"> -->
+        <div class="col-lg-2" id="left">
+          <nav class="header__menu mobile-menu" id="aaa">
+            <ul>
+              <li class=""><a href="http">餐廳會員首頁</a></li>
+              <li class=""><a href="http">餐廳資訊</a></li>
+              <li class=""><a href="http">訂單管理</a></li>
+              <li class=""><a href="http">訂位管理</a></li>
+              <li class=""><a href="http">評論管理</a></li>
+              <li class=""><a href="http">優惠券設定</a></li>
+              <li class=""><a href="http">商品管理</a></li>
+              <li class=""><a href="http">銷售報表</a></li>
+              <li class=""><a href="http">購買廣告</a></li>
+            </ul>
+          </nav>
+        </div>
+        <!-- 中間空白欄位 -->
+        <!-- 上排 -->
+        <div class="col-lg-10">
+          <div
+            class="row-cols-12"
+            style="
+              align-items: center;
+              display: grid;
+              justify-content: center;
+              height: 15%;
+              background-color: #fdf3ea;
+            "
+          >
+            <h2>訂單管理</h2>
+          </div>
+          <div class="row" style="height: 80%">
+            <div
+              class="row-cols-12"
+              style="background-color: #fdf3ea; margin: 15px; padding: 33px"
+            >
+              <!-- 商城訂單查詢 -->
+              <div class="container" style="height: 90%">
+                <div class="row-cols-12" style="height: 90%">
+                  <form action="http" method="post">
+                    <br />
+                    <label for="prodOrderNo">商城訂單編號：</label>
+                    <input type="number" name="prodOrderNo" id="prodOrderNo" />
+                    <label for="orderStatus">訂單狀態：</label>
+                    <select name="orderStatus" id="orderStatus">
+                      <option value="訂單成立">訂單成立</option>
+                      <option value="已寄出">已寄出</option>
+                      <option value="已到貨">已到貨</option>
+                      <option value="已取貨">已取貨</option>
+                    </select>
+                    <br />
+                    <br />
+                    <br />
+                    <label for="prodNo">商品編號：</label>
+                    <input type="number" name="prodNo" id="prodNo" />
+                    <label for="prodOrderDate">訂單時間：</label>
+                    <input
+                      type="date"
+                      name="prodOrderDate"
+                      id="prodOrderDate"
+                    />
+                    <br />
+                    <label for="prodName">商品名稱： </label>
+                    <input type="text" name="prodName" id="prodName" />
+                    <label for="prodOderDeliverTime">出貨時間：</label>
+                    <input
+                      type="date"
+                      name="prodOderDeliverTime"
+                      id="prodOderDeliverTime"
+                    />
+                    <input type="submit" value="訂單查詢" />
+                  </form>
+                  <div>
+                    _______________________________________________________________________________________________________________________
+                  </div>
+                  <table class="orderList">
+                    <tr>
+                      <th>訂單編號</th>
+                      <th>訂單狀態</th>
+                      <th>訂單時間</th>
+                      <th>出貨時間</th>
+                      <th>修改訂單</th>
+                    </tr>
+                    <tr>
+                      <td>from table: prodOrder</td>
+                      <td>from table: prodOrder</td>
+                      <td>from table: prodOrder</td>
+                      <td>from table: prodOrder</td>
+                      <td>
+                        <a
+                          href="http://127.0.0.1:5500/restaurantbackend_orderdetail.html"
+                          >修改</a
+                        >
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- 登入成功畫面 結束 -->
+    </section>
+
+    <!-- Class Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
       <div class="mask">
         <div class="container">
           <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="col-lg-4 col-md-6 col-sm-6">
               <div class="footer__member">
                 <h6>會員專區</h6>
                 <div class="footer__social">
                   <a href="#">登入會員<i></i></a>
-                  <a href="#">訂位管理<i></i></a>
+                  <a href="#">定位管理<i></i></a>
                   <br />
                   <a href="#">加入會員<i></i></a>
                   <a href="#">定位管理<i></i></a>
@@ -209,8 +289,6 @@
                   <a href="#">我的評論<i></i></a>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__restaurant">
                 <h6>餐廳</h6>
                 <div class="footer__social">
@@ -220,7 +298,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="col-lg-4 col-md-6 col-sm-6">
               <div class="footer__shopping">
                 <h6>線上商城</h6>
                 <div class="footer__social">
@@ -230,7 +308,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="col-lg-4 col-md-6 col-sm-6">
               <div class="footer__aboutus">
                 <h6>關於我們</h6>
                 <div class="footer__social">
@@ -239,8 +317,6 @@
                   <a href="#">履歷<i></i></a>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-3 col-md-9 col-sm-12">
               <div class="footer__widget">
                 <h6>好食光</h6>
                 <ul>
@@ -307,26 +383,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-    <script>
-      const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-      const myRedirect = async () => {
-        let before_url = sessionStorage.getItem("URL_before_login");
-        if (!before_url) {
-          return;
-        }
-        var redeirect = document.createElement("h2");
-        redeirect.innerText = "即將導向至原始頁面";
-        document
-          .querySelector("div.blog__hero__text h2")
-          .insertAdjacentElement("afterend", redeirect);
-        await delay(3000);
-        // console.log("Waited 3s");
-        // console.log(before_url);
-        sessionStorage.removeItem("URL_before_login");
-        // await delay(5000);
-        window.location.href = before_url;
-      };
-      myRedirect();
-    </script>
+    <script src="js/reservation.js"></script>
+    <script src="js/alice.js"></script>
   </body>
 </html>

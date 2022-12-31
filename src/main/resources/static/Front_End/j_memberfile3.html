@@ -1,3 +1,4 @@
+j_memberfile3.html
 <!DOCTYPE html>
 <html lang="zxx">
   <head>
@@ -208,7 +209,6 @@
                       <!-- 將會員頭貼呈現在此 -->
                       <img class="login_icon" src="../member/getPic" /><a
                         class="login_text"
-                        href="./j_signin_member.html"
                       ></a>
                     </li>
                   </ul>
@@ -390,7 +390,7 @@
                           placeholder="再次輸入密碼"
                           required="required"
                           oninput="setCustomValidity('');"
-                          onchange="if(document.getElementById('checkpw').value != document.getElementById('recheckpw').value){setCustomValidity('密碼不吻合');}"
+                          onchange="if(document.getElementById('memberPassword').value != document.getElementById('recheckpw').value){setCustomValidity('密碼不吻合');}"
                         />
 
                         <label
@@ -527,6 +527,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/logged_member.js"></script>
 
     <script>
       // checkEye密碼切換遮蔽顯示
@@ -672,8 +673,6 @@
             .then((memberVO) => {
               if (memberVO.successful) {
                 Swal.fire("存檔成功!");
-                let memberVO = JSON.stringify(body);
-                sessionStorage.setItem("memberVO", memberVO);
               } else {
                 Swal.fire(memberVO.message);
               }
@@ -687,8 +686,6 @@
           .then((body) => {
             Swal.fire(body.message);
             if (body.successful) {
-              sessionStorage.removeItem("memberVO");
-              console.log("bye");
               location = "GoodEatTime.html";
             }
           });

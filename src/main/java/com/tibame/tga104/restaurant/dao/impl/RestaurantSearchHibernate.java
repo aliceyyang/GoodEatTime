@@ -25,17 +25,14 @@ public class RestaurantSearchHibernate implements RestaurantSearchDAO {
 
 	@Override
 	public List<RestaurantSearchVO> getAll() {
-		String hql = "from RestaurantSearchVO";
-		List<RestaurantSearchVO> result = this.getSession().createQuery(hql, RestaurantSearchVO.class).list();
-		return result;
+		return this.getSession().createQuery("from RestaurantSearchVO", RestaurantSearchVO.class).list();
 	}
 
 	@Override
 	public List<RestaurantSearchVO> selectByrestaurantName(String restaurantName) {
 		if (restaurantName != null) {
-			String hql = "from RestaurantSearchVO where restaurantName like :restaurantName";
-			List<RestaurantSearchVO> result = this.getSession().createQuery(hql, RestaurantSearchVO.class)
-					.setParameter("restaurantName", "'%" + restaurantName + "%'").list();
+			String hql = "from RestaurantSearchVO where restaurantName like '%" + restaurantName + "%'";
+			List<RestaurantSearchVO> result = this.getSession().createQuery(hql, RestaurantSearchVO.class).list();
 			return result;
 		}
 		return null;

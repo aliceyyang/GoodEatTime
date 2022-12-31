@@ -8,5 +8,5 @@ public interface RestaurantSearchDAO {
 
 	public List<RestaurantSearchVO> getAll();
 	
-	public List<RestaurantSearchVO> selectByrestaurantName(String restaurantNo);
+	public List<RestaurantSearchVO> selectByrestaurantName(String restaurantName);
 }
