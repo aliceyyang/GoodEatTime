@@ -457,12 +457,14 @@
           const URL_PUT = 'http://localhost:8080/admin/restaurant-accounts'; // {restaurantNo}
           if (edit_btn.value === '確認') {
             edit_btn.onclick = () => {
-              let editItem = parseInt(document.querySelector(`#resNo2`).innerHTML.trim()); // 餐廳編號
               // 審核狀態
               let check_verified_btn = document.querySelector(`#new_verified${restaurantNo}`)
+              // check_verified_btn.value = check_verified_btn.checked ? 'true' : '';
               document.querySelector(`#new_verified${restaurantNo}`).checked ? check_verified_btn.setAttribute("value", "true") : check_verified_btn.setAttribute("value", "");
-              let verified_put = check_verified_btn.value
+              let verified_put = check_verified_btn.value.toString()
+              let editItem = parseInt(document.querySelector(`#resNo${restaurantNo}`).innerHTML.trim()); // 餐廳編號
               if (verified_put === 'true') {
+                console.log(verified_put)
                 if (confirm('確定修改審核狀態?')) {
                   swal({
                     title: "",

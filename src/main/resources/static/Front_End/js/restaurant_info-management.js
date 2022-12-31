@@ -1,29 +1,52 @@
 // ======================抓出餐廳原本的資料顯示在表單=======================
-
-fetch("http://localhost:8080/restaurant-read/3") //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
-  .then((resp) => resp.json())
-  .then((data) => {
-    //輸入需要的屬性取出資料庫中的值
-    const { restaurantName } = data;
-    const { restaurantTel } = data;
-    const { restaurantAddr } = data;
-    const { restaurantBusinessHour } = data;
-    const { restaurantTaxIDNo } = data;
-    const { restaurantAccountInfo } = data;
-    const { restaurantAccount } = data;
-    const { restaurantPassword } = data;
-    //把取出的值塞進表單的input標籤
-    document.getElementById("restaurantName").value = restaurantName;
-    document.getElementById("restaurantTel").value = restaurantTel;
-    document.getElementById("restaurantAddr").value = restaurantAddr;
-    document.getElementById("restaurantBusinessHour").value =
-      restaurantBusinessHour;
-    document.getElementById("restaurantTaxIDNo").value = restaurantTaxIDNo;
-    document.getElementById("restaurantAccountInfo").value =
-      restaurantAccountInfo;
-    document.getElementById("restaurantAccount").value = restaurantAccount;
-    document.getElementById("restaurantPassword").value = restaurantPassword;
-  });
+var restaurantNumber;
+fetch("http://localhost:8080/restaurant-read/0", {
+  method: "GET",
+  redirect: "follow",
+}).then((resp) => {
+  var redirect_URL = resp.url;
+  if (resp.redirected) {
+    alert("請先登入");
+    // swal({
+    //   title: "",
+    //   text: "請先登入",
+    //   icon: "warning",
+    //   button: "OK",
+    //   timer: 1000,
+    // });
+    setTimeout(function () {
+      sessionStorage.setItem(
+        "resp_login",
+        window.location.assign(redirect_URL)
+      );
+    }, 1000);
+  } else {
+    resp.json().then((data) => {
+      //輸入需要的屬性取出資料庫中的值
+      const { restaurantNo } = data;
+      const { restaurantName } = data;
+      const { restaurantTel } = data;
+      const { restaurantAddr } = data;
+      const { restaurantBusinessHour } = data;
+      const { restaurantTaxIDNo } = data;
+      const { restaurantAccountInfo } = data;
+      const { restaurantAccount } = data;
+      const { restaurantPassword } = data;
+      //把取出的值塞進表單的input標籤
+      restaurantNumber = restaurantNo;
+      document.getElementById("restaurantName").value = restaurantName;
+      document.getElementById("restaurantTel").value = restaurantTel;
+      document.getElementById("restaurantAddr").value = restaurantAddr;
+      document.getElementById("restaurantBusinessHour").value =
+        restaurantBusinessHour;
+      document.getElementById("restaurantTaxIDNo").value = restaurantTaxIDNo;
+      document.getElementById("restaurantAccountInfo").value =
+        restaurantAccountInfo;
+      document.getElementById("restaurantAccount").value = restaurantAccount;
+      document.getElementById("restaurantPassword").value = restaurantPassword;
+    });
+  }
+});
 
 // ========================看見密碼用的把啾=============================
 
@@ -129,7 +152,7 @@ $(function () {
       const restaurantPassword = $("#restaurantPassword").val();
 
       fetch(
-        "http://localhost:8080/restaurant-update/3", //餐廳編號先寫死測試
+        "http://localhost:8080/restaurant-update/0", //餐廳編號先寫死測試
         {
           method: "PUT",
           headers: {
@@ -153,7 +176,7 @@ $(function () {
 
 // =======================抓出餐廳已上傳的輪播圖片======================
 var quota; //還可上傳的圖片額度
-fetch("http://localhost:8080/restaurant-readInfo/CarouselPic/3") //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
+fetch("http://localhost:8080/restaurant-readInfo/CarouselPic/0")
   .then((res) => res.json())
   .then((list) => {
     const carousel_uploaded = document.querySelector("#carousel_uploaded"); //準備裝已上傳圖片的div
@@ -224,8 +247,7 @@ function readFiles(files) {
       base64arr.push(e.target.result.split(",")[1]); //要截掉前面的data:image/png;base64, 才是圖像編碼
       if (files.length === base64arr.length) {
         //等陣列裝好所有選的圖檔後進來執行
-        fetch("http://localhost:8080/restaurant-uploadMultiplePics/3", {
-          //最後面是餐廳編號，我先寫死測試QAQ
+        fetch("http://localhost:8080/restaurant-uploadMultiplePics/0", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -279,7 +301,7 @@ drop_zone.addEventListener("drop", function (e) {
 // ======================抓出餐廳已上傳的菜單======================
 
 var menu_array = []; //準備裝多個菜單物件的陣列
-fetch("http://localhost:8080/restaurant-readInfo/Menu/3")
+fetch("http://localhost:8080/restaurant-readInfo/Menu/0")
   .then((res) => res.json())
   .then((list) => {
     const menu_uploaded = document.querySelector("#menu_uploaded"); //準備裝已上傳菜單的div
@@ -304,7 +326,6 @@ fetch("http://localhost:8080/restaurant-readInfo/Menu/3")
       menu_uploaded.appendChild(newDiv);
     }
   });
-
 // ===============================菜單編輯==========================
 
 $(document).on("click", ".edit_menu", function () {
@@ -353,7 +374,7 @@ function readFile(pic, pic_remark) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        restaurantNo: 3, //餐廳編號我先寫死測試T_T
+        restaurantNo: 0,
         menuPicstr: base64, //VO那邊要先建一個String的屬性來裝base64的編碼，過去controller再轉byte陣列
         menuPicRemark: pic_remark,
       }),
@@ -447,7 +468,7 @@ drop_zone2.addEventListener("drop", function (e) {
 // ======================抓出餐廳已上傳的貼文======================
 
 var post_array = []; //準備裝多個貼文物件的陣列
-fetch("http://localhost:8080/restaurant-readInfo/Post/3")
+fetch("http://localhost:8080/restaurant-readInfo/Post/0")
   .then((res) => res.json())
   .then((list) => {
     const post_uploaded = document.querySelector("#post_uploaded"); //準備裝已上傳貼文的div
@@ -543,7 +564,7 @@ function readPostFile(pic, post_type, post_title, post_content) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        restaurantNo: 3, //餐廳編號先寫死測試
+        restaurantNo: 0,
         postType: post_type,
         postPicStr: base64, //VO那邊要先建一個String的屬性來裝base64的編碼，過去controller再轉byte陣列
         postTitle: post_title,

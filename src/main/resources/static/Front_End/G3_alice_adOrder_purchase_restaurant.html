@@ -991,8 +991,9 @@
     }
 
     img.onchange = (e) => {
-      let ad_start = (document.querySelector("#datePickerId").value + ' 00:00:00');
-      let ad_end = (document.querySelector("#ad_end").value + ' 00:00:00');
+
+      let ad_start = (document.querySelector("#datePickerId").value + ' 00:00:00').toString();
+      let ad_end = (document.querySelector("#ad_end").value + ' 00:00:00').toString();
       let total_ad_amount = parseInt(document.querySelector("#total_ad_amount").value);
 
       let read = new FileReader();
