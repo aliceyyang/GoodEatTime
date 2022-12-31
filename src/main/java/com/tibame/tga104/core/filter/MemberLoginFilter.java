@@ -32,7 +32,8 @@ import com.tibame.tga104.member.vo.MemberVO;
 	"/prodcomment/**",
 	"/restaurantcomment/**",
 	"/reservation/member/inf",
-	"/reservation/member"
+	"/reservation/member",
+	"/LikedRestaurant-add"
 })
 
 public class MemberLoginFilter extends HttpFilter {
