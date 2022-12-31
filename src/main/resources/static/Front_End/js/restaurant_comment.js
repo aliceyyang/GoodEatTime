@@ -1,6 +1,14 @@
 // =====================五種星等百分比=========================
-const restaurantNo = sessionStorage.getItem("restaurantNo");
-const restaurantName = sessionStorage.getItem("restaurantName");
+let restaurantNo = 3; //避免網址直接輸入restaurant_comment.html打不開，這邊先寫死
+//照理來說應從餐廳頁面連過來，所以會有sessionStorage存的餐廳編號
+if (sessionStorage.getItem("restaurantNo") != null) {
+  restaurantNo = sessionStorage.getItem("restaurantNo");
+}
+let restaurantName = "餐廳名稱";
+//照理來說應從餐廳頁面連過來，所以會有sessionStorage存的餐廳名稱
+if (sessionStorage.getItem("restaurantName") != null) {
+  restaurantName = sessionStorage.getItem("restaurantName");
+}
 document.getElementById("restaurantName").innerHTML = restaurantName;
 
 fetch(`/restaurant-rating/${restaurantNo}`)
