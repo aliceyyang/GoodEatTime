@@ -55,4 +55,15 @@ public class ShowProdInMallDAO_Hibernate implements ShowProdInMallDAO {
 		return null;
 	}
 
+	@Override
+	public List<ShowProdInMallVO> getFromRestaurant(Integer restaurantNo) {
+		if (restaurantNo == null || restaurantNo < 1 ) {
+			return null;
+		}
+
+		String hql = "from ShowProdInMallVO where restaurantNo = :restaurantNo";
+		return this.getSession().createQuery(hql, ShowProdInMallVO.class)
+				.setParameter("restaurantNo", restaurantNo).list();
+	}
+
 }
