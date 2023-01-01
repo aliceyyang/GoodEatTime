@@ -45,7 +45,7 @@ public class LikedRestaurantController {
 	}
 	
 	//列出該會員所有最愛餐廳
-	@GetMapping("/LikedRestaurant-list/{memberNo}")
+	@GetMapping("/LikedRestaurant-list-page/{memberNo}")
 	public List<LikedRestaurantVO> getListLikedRestaurant(HttpSession httpSession, @PathVariable Integer memberNo){
 		MemberVO session = (MemberVO)httpSession.getAttribute("memberVO");
 		if (session != null) {
@@ -54,5 +54,16 @@ public class LikedRestaurantController {
 		
 		return service.getListLikedRestaurant(memberNo);
 	}
+	
+	//列出該會員所有最愛餐廳 Filter
+		@GetMapping("/LikedRestaurant-list/{memberNo}")
+		public List<LikedRestaurantVO> getMemberLikedRestaurant(HttpSession httpSession, @PathVariable Integer memberNo){
+			MemberVO session = (MemberVO)httpSession.getAttribute("memberVO");
+			if (session == null) {
+				return null;
+	        }
+			memberNo = session.getMemberNo();
+			return service.getListLikedRestaurant(memberNo);
+		}
 
 }
