@@ -6,20 +6,19 @@ fetch("http://localhost:8080/restaurant-read/0", {
 }).then((resp) => {
   var redirect_URL = resp.url;
   if (resp.redirected) {
-    alert("請先登入");
-    // swal({
-    //   title: "",
-    //   text: "請先登入",
-    //   icon: "warning",
-    //   button: "OK",
-    //   timer: 1000,
-    // });
-    setTimeout(function () {
+    // alert("請先登入");
+    Swal.fire({
+      position: "center",
+      icon: "warning",
+      title: "請先登入",
+      showConfirmButton: false,
+      timer: 1000,
+    }).then(() => {
       sessionStorage.setItem(
         "resp_login",
         window.location.assign(redirect_URL)
       );
-    }, 1000);
+    });
   } else {
     resp.json().then((data) => {
       //輸入需要的屬性取出資料庫中的值

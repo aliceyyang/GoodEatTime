@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="member_reservation" />
+  <meta name="keywords" content="Cake, unica, creative, html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Member | Reservation</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <style>
+      .product__cart__item__pic > img{
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+      }
+
+      .wishlist__cart__table table tbody tr td.product__cart__item {
+        width: 400px;
+      }
+
+      #likedRestaurant{
+        background-color: #FDF3EA;
+        margin-left: 100px;
+        width: 800px;
+        border:10px solid #FDF3EA;
+        
+      }
+      td , tr{
+        border-bottom: 1px solid gray;
+      }
+
+      .primary-btn , .rName , .rPic{
+        cursor: pointer;
+      }
+    </style>
+</head>
+
+<body>
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Offcanvas Menu Begin -->
+  <div class="offcanvas-menu-overlay"></div>
+  <div class="offcanvas-menu-wrapper">
+    <div class="offcanvas__cart">
+      <div class="offcanvas__cart__links">
+        <a href="#" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
+        <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+      </div>
+      <div class="offcanvas__cart__item">
+        <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
+        <div class="cart__price">Cart: <span>$0.00</span></div>
+      </div>
+    </div>
+    <div class="offcanvas__logo">
+      <a href="./GoodEatTime.html"><img class="GoodEatTimelogo" src="/img/GoodEatTime_smlogo.png" alt="" /></a>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+    <div class="offcanvas__option">
+      <ul>
+        <li>
+          USD <span class="arrow_carrot-down"></span>
+          <ul>
+            <li>EUR</li>
+            <li>USD</li>
+          </ul>
+        </li>
+        <li>
+          ENG <span class="arrow_carrot-down"></span>
+          <ul>
+            <li>Spanish</li>
+            <li>ENG</li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Sign in</a> <span class="arrow_carrot-down"></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Offcanvas Menu End -->
+
+  <!-- Header Section Begin -->
+  <header class="header">
+    <div class="header__top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="header__top__inner">
+              <div class="header__top__left">
+                <ul>
+                  <li><img class="login_icon" src="./img/Login_icon.png"><a class="login_text" href="#">登入</a></li>
+                </ul>
+              </div>
+              <div class="header__logo">
+                <a href="./GoodEatTime.html"><img class="goodeattime_logo" src="img/GoodEatTime_logoright.png"
+                    alt="" /></a>
+              </div>
+              <div class="header__top__right">
+                <div class="header__top__right__links">
+                  <a href="./shopping_mall.html" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
+                  <a href="./shopping_cart.html"><img src="img/icon/heart.png" alt="" /></a>
+                </div>
+                <div class="header__top__right__cart">
+                  <a href="./shopping_cart.html"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
+                  <div class="cart__price">Cart: <span>$0.00</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="canvas__open"><i class="fa fa-bars"></i></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <nav class="header__menu mobile-menu">
+            <ul>
+              <li><a href="./GoodEatTime.html">首頁</a></li>
+              <li class="active">
+                <a href="./j_memberfile3.html">會員專區</a>
+              </li>
+              <li><a href="./restaurant_search.html">餐廳</a></li>
+              <li><a href="./shopping_mall.html">線上商城</a></li>
+              <li>
+                <a href="./about_us.html">關於我們</a>
+                <!-- <ul class="dropdown">
+                <li><a href="./shop-details.html">Shop Details</a></li>
+                <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                <li><a href="./checkout.html">Check Out</a></li>
+                <li><a href="./wisslist.html">Wisslist</a></li>
+                <li><a href="./Class.html">Class</a></li>
+                <li><a href="./blog-details.html">Blog Details</a></li>
+              </ul> -->
+              </li>
+              <!-- <li><a href="./contact.html">地點搜尋</a></li> -->
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Header Section End -->
+
+  <!-- Class Section Begin -->
+  <section class="class" style="background-color: white;">
+    <!-- <div class="container"> -->
+    <div class="row" id="member" style="width: 1263.33px">
+      <!-- <div class="col-lg-2" id="left"> -->
+      <div class="col-lg-2" id="left">
+        <nav class="header__menu mobile-menu" id="aaa">
+          <ul>
+            <!-- @會員側邊欄連結修改 -->
+            <li>
+              <a href="./j_memberfile3.html">帳號管理</a>
+            </li>
+            <li><a href="./member_reservation.html">訂位資訊</a></li>
+            <li><a href="./member_order.html">商城訂單</a></li>
+            <li><a href="./member_comment.html">我的評論</a></li>
+            <li><a href="">我的最愛</a></li>
+            <li><a href="./coupon_member.html">我的優惠券</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- 收藏資訊 -->
+      <div class="wishlist__cart__table" style="width: 1050px;padding: 30px; background-color: white;">
+        <h2 style="text-align: center; margin-bottom: 20px;">我的最愛</h2>
+        <table id="likedRestaurant">
+            <thead>
+                <tr>
+                    <th style="font-size: 20px;">收藏的餐廳</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+      <div class="col-lg-10">
+        
+
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Class Section End -->
+
+  <!-- Footer Section Begin -->
+  <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
+    <div class="mask">
+      <div>
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="footer__member">
+              <h6>會員專區</h6>
+              <div class="footer__social">
+                <!-- @Footer連結請更改 -->
+                <a href="./j_signin_member3.html">登入會員<i></i></a>
+                <a href="./member_reservation.html">訂位管理<i></i></a>
+                <br />
+                <a href="./j_registration_member3.html">加入會員<i></i></a>
+                <a href="./member_order.html">訂單管理<i></i></a>
+                <br />
+                <a href="./coupon_member.html">優惠券&nbsp&nbsp&nbsp&nbsp<i></i></a>
+                <a href="./member_comment.html">我的評論<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="footer__restaurant">
+              <h6>餐廳</h6>
+              <div class="footer__social">
+                <!-- @這裡不確定要連去哪裡... -->
+                <a href="#">訂位<i></i></a>
+                <br />
+                <a href="#">購物車<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="footer__shopping">
+              <h6>線上商城</h6>
+              <div class="footer__social">
+                <!-- @Footer連結請更改 -->
+                <a href="./shopping_mall.html">商品搜尋<i></i></a>
+                <br />
+                <a href="./shopping_cart.html">購物車<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="footer__aboutus">
+              <h6>關於我們</h6>
+              <div class="footer__social">
+                <!-- @這裡也還不知道要連去哪裡... -->
+                <a href="#">網站介紹<i></i></a>
+                <br />
+                <a href="#">履歷<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-9 col-sm-12">
+            <div class="footer__widget">
+              <h6>好食光</h6>
+              <ul>
+                <li>指導老師：</li>
+                <li>吳永志老師 &nbsp; | &nbsp; 吳冠宏老師</li>
+                <li>張互賓老師 &nbsp; | &nbsp; 馬全德老師</li>
+                <li>郭惠民老師 &nbsp; | &nbsp; 陳怡榕老師</li>
+                <li>組員 :</li>
+                <li>陳宜瀅 &nbsp; | &nbsp; 張家銘 &nbsp; | &nbsp; 楊婕妤</li>
+                <li>游育碩 &nbsp; | &nbsp; 黃郁婕</li>
+                <li>李佳欣 &nbsp; | &nbsp; 余可凡</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <p class="copyright__text text-white">
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              All rights reserved | This template is made with
+              <i class="fa fa-heart" aria-hidden="true"></i> by
+              <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+          <div class="col-lg-5">
+            <div class="copyright__widget">
+              <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Site Map</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer Section End -->
+
+  <!-- Search Begin -->
+  <div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+      <div class="search-close-switch">+</div>
+      <form class="search-model-form">
+        <input type="text" id="search-input" placeholder="Search here....." />
+      </form>
+    </div>
+  </div>
+  <!-- Search End -->
+
+  <!-- Js Plugins -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery.barfiller.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/logged_member.js"></script>
+<script src="js/member_likedRestaurant.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
