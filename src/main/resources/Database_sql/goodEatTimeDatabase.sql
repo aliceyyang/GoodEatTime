@@ -31,15 +31,15 @@ restaurantPost: line 679
 V_showProdDetail: line 698
 v_OrderSearch: line 715
 v_restaurant_reservation: line 729
-
+v_restaurantpic : line 750
 
 =======================================*/
 
 use goodeattime;
-
 set AUTOCOMMIT = 0;
 
 /*沒有被參照的表格先刪*/
+drop view if exists v_restaurantpic;
 drop view if exists v_restaurant_reservation;
 drop view if exists v_OrderSearch;
 drop view if exists V_showProdDetail;
@@ -126,10 +126,10 @@ constraint restaurantNo_PK primary key(restaurantNo));
 
 insert into restaurant(restaurantTel, restaurantName, restaurantTaxIDNo, restaurantAccountInfo, restaurantBusinessHour, restaurantAddr, restaurantAccount, restaurantPassword)
 values('0229540410','薄多義','53914855',null,'11:00-20:30','台北市中正區忠孝東路一段150號','restaurant1001@gmail.com','1001restaurant'),
-('0225963255','欣葉台菜','12107610',null,'11:00-21:00','台北市中正區林森南路1號','restaurant1002','1002restaurant@gmail.com'),
-('0229341343','星巴克 (時代寓所門市)','53234955',null,'11:00-20:30','台北市中正區林森南路7-1號','restaurant1003@gmail.com','1003restaurant'),
-('0221243563','麥當勞-林森二餐廳','34256575',null,'11:00-20:30','台北市中正區林森南路1號','restaurant1004@gmail.com','1004restaurant'),
-('0221345678','摩斯漢堡 善導寺店','12124455',null,'11:00-20:30','台北市中正區忠孝東路一段178號','restaurant1005@gmail.com','1005restaurant');
+('0225963255','欣葉台菜','12107610',null,'11:00-21:00','台北市中正區林森南路1號','restaurant1002@gmail.com','1002restaurant'),
+('0229341343','星巴克','53234955',null,'11:00-20:30','台北市中正區林森南路7-1號','restaurant1003@gmail.com','1003restaurant'),
+('0221243563','麥當勞','34256575',null,'11:00-20:30','台北市中正區林森南路1號','restaurant1004@gmail.com','1004restaurant'),
+('0221345678','摩斯漢堡','12124455',null,'11:00-20:30','台北市中正區忠孝東路一段178號','restaurant1005@gmail.com','1005restaurant');
 commit;
 
 
@@ -715,15 +715,15 @@ commit;
 --  v_OrderSearch
 /*==========================================================================================*/
 create view v_OrderSearch as
-select po.*, pod.prodNo, pi.prodName, pod.prodQty, pi.prodPrice, mb.name, mb.tel
+select po.*, r.restaurantName, c.couponName, pod.prodNo, pi.prodName, pod.prodQty, pi.prodPrice, mb.name, mb.tel
 from
     prodOrder po
-    join prodOrderDetail pod
-        on po.prodOrderNo = pod.prodOrderNo
-            join prodInfo pi
-                on pi.prodNo = pod.prodNo
-                    join member mb
-                        on po.memberNo = mb.memberNo;
+    join prodOrderDetail pod on po.prodOrderNo = pod.prodOrderNo
+	join prodInfo pi on pi.prodNo = pod.prodNo
+	join member mb on po.memberNo = mb.memberNo
+	join restaurant r on r.restaurantNo = po.restaurantNo
+	left join coupon c on c.couponNo = po.couponNo;
+                            
 commit;
 
 --  v_restaurant_reservation
@@ -745,5 +745,14 @@ CREATE VIEW v_restaurant_reservation AS
             JOIN
         member m ON r.memberNo = m.memberNo;
 commit;
+
+
+--  v_restaurantpic
+/*==========================================================================================*/
+create view v_restaurantpic as 
+select r.restaurantNo,  min(rp.carouselPic) as carouselPic, r.restaurantName, r.restaurantTel, r.restaurantAddr, r.restaurantBusinessHour, r.restaurantCommentQuantity, r.totalCommentRating from restaurant r
+left join restaurantCarouselPic rp
+    on rp.restaurantNo = r.restaurantNo
+        group by r.restaurantNo, r.restaurantName, r.restaurantTel, r.restaurantAddr, r.restaurantBusinessHour, r.restaurantCommentQuantity, r.totalCommentRating;
 
 set AUTOCOMMIT = 1;
