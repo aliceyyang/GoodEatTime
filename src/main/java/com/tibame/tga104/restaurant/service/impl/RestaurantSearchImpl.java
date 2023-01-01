@@ -1,15 +1,18 @@
 package com.tibame.tga104.restaurant.service.impl;
 
 import java.util.Base64;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.tibame.tga104.restaurant.dao.RestaurantSearchDAO;
+import com.tibame.tga104.restaurant.service.RestaurantSearchService;
 import com.tibame.tga104.restaurant.vo.RestaurantSearchVO;
+
 @Component
-public class RestaurantSearchImpl implements RestaurantSearchDAO{
+public class RestaurantSearchImpl implements RestaurantSearchService {
 
 	@Autowired
 	private RestaurantSearchDAO dao;
@@ -17,7 +20,7 @@ public class RestaurantSearchImpl implements RestaurantSearchDAO{
 	@Override
 	public List<RestaurantSearchVO> getAll() {
 		List<RestaurantSearchVO> list = dao.getAll();
-		for (RestaurantSearchVO vo :list) {
+		for (RestaurantSearchVO vo : list) {
 			final byte[] carouselPic = vo.getCarouselPic();
 			if (carouselPic != null && carouselPic.length != 0) {
 				vo.setCarouselPicStr(Base64.getEncoder().encodeToString(carouselPic));
@@ -38,11 +41,34 @@ public class RestaurantSearchImpl implements RestaurantSearchDAO{
 			}
 		}
 		return list;
-		//		if (restaurantName != null) {
+		// if (restaurantName != null) {
 //			return dao.selectByrestaurantName(restaurantName);
 //		}
 //		return null;
 	}
-	
+
+	@Override
+	public List<RestaurantSearchVO> selectNewrestaurant() {
+		List<RestaurantSearchVO> AllList = dao.getAll();
+		for (RestaurantSearchVO vo : AllList) {
+			final byte[] carouselPic = vo.getCarouselPic();
+			if (carouselPic != null && carouselPic.length != 0) {
+				vo.setCarouselPicStr(Base64.getEncoder().encodeToString(carouselPic));
+				vo.setCarouselPic(null);
+			}
+		}
+		List<RestaurantSearchVO> newlist = new LinkedList<>();
+
+		for (int i = 1; i <= 3; i++) {
+			newlist.add(AllList.get(AllList.size() - i));
+		}
+//		newlist.add(AllList.get(AllList.size() - 1));
+//		newlist.add(AllList.get(AllList.size() - 2));
+//		newlist.add(AllList.get(AllList.size() - 3));
+//		newlist.add(AllList.get(AllList.size() - 4));
+
+		return newlist;
+
+	}
 
 }

@@ -511,5 +511,15 @@ SearchRestaurant__slider
   border-radius: 2px;
   margin-bottom: 20px;
   width: 100%;
-  
+}
+
+#restaurant_area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+}
+
+div.ResInfo {
+  display: block;
+  float: left;
 }
