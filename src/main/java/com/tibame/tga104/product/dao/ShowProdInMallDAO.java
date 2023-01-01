@@ -8,5 +8,6 @@ public interface ShowProdInMallDAO {
 	public ShowProdInMallVO select(Integer prodNo);
 	public List<ShowProdInMallVO> getAll();
 	public List<ShowProdInMallVO> getFromProdCategory(Integer prodCategoryNo);
+	public List<ShowProdInMallVO> getFromRestaurant(Integer restaurantNo);
 	public List<ShowProdInMallVO> select6ByCategory(Integer prodCategoryNo);
 }

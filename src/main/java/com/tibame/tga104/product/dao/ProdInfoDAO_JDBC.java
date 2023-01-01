@@ -205,5 +205,11 @@ public class ProdInfoDAO_JDBC implements ProdInfoDAO{
 		
 		return list;
 	}
+
+	@Override
+	public List<ProdInfoVO> findByRestaurant(Integer restaurantNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
