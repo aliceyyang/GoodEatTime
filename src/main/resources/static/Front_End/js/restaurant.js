@@ -1,5 +1,5 @@
 // ======================執行Google Map API 同時抓出餐廳的資料=======================
-let restaurantNum = 3; //避免網址直接輸入restaurant_comment.html打不開，這邊先寫死
+let restaurantNum = 3; //避免網址直接輸入restaurant.html打不開，這邊先寫死
 //照理來說是從其他地方連過來，所以會有sessionStorage存的餐廳編號
 if (sessionStorage.getItem("restaurantNo") != null) {
   restaurantNum = sessionStorage.getItem("restaurantNo");
@@ -8,7 +8,7 @@ if (sessionStorage.getItem("restaurantNo") != null) {
 function initMap() {
   var restaurantNumber; //本餐廳編號
   var restaurant_Name;
-  fetch(`http://localhost:8080/restaurant-page/${restaurantNum}`) //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
+  fetch(`http://localhost:8080/restaurant-page/${restaurantNum}`) //因為fetch默認GET請求，所以不用特別輸入method:GET
     .then((res) => res.json())
     .then((data) => {
       //輸入需要的屬性取出資料庫中的值
@@ -87,7 +87,6 @@ function initMap() {
           restaurantNo: restaurantNumber, //本餐廳編號
         }),
       }).then((res) => {
-        console.log("是否重導向" + res.redirected);
         var redirect_URL = res.url;
         if (res.redirected) {
           Swal.fire({
@@ -97,10 +96,8 @@ function initMap() {
             showConfirmButton: false,
             timer: 1000,
           }).then(() => {
-            sessionStorage.setItem(
-              "resp_login",
-              window.location.assign(redirect_URL)
-            );
+            sessionStorage.setItem("URL_before_login", window.location.href);
+            window.location.href = res.url;
           });
         } else {
           $("#liked").addClass("liked");
@@ -282,10 +279,12 @@ fetch(`/restaurant-comment/${restaurantNum}`)
     const { name } = list[0];
     const { commentRating } = list[0];
     const { commentContent } = list[0];
+    const { restaurantCommentTime } = list[0];
 
     $("#member_name").html(name);
     $("#comment_rating").html(commentRating);
     $("#comment_content").html(commentContent);
+    $("#comment_time").html(restaurantCommentTime);
 
     let stars = "";
     //根據分數來新增等量的黃色星星
@@ -298,6 +297,14 @@ fetch(`/restaurant-comment/${restaurantNum}`)
     }
 
     $("#rating_stars").html(stars);
+  });
+
+// =======================優惠券領取===============================
+
+fetch("../coupon/Manage")
+  .then((resp) => resp.json())
+  .then((list) => {
+    console.log(list);
   });
 
 // ========================================================

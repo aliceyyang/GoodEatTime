@@ -1,12 +1,11 @@
 // ======================抓出餐廳原本的資料顯示在表單=======================
+
 var restaurantNumber;
 fetch("http://localhost:8080/restaurant-read/0", {
   method: "GET",
   redirect: "follow",
 }).then((resp) => {
-  var redirect_URL = resp.url;
   if (resp.redirected) {
-    // alert("請先登入");
     Swal.fire({
       position: "center",
       icon: "warning",
@@ -14,10 +13,8 @@ fetch("http://localhost:8080/restaurant-read/0", {
       showConfirmButton: false,
       timer: 1000,
     }).then(() => {
-      sessionStorage.setItem(
-        "resp_login",
-        window.location.assign(redirect_URL)
-      );
+      sessionStorage.setItem("URL_before_login", window.location.href);
+      window.location.href = resp.url;
     });
   } else {
     resp.json().then((data) => {
@@ -217,7 +214,8 @@ var carousel_file_el = document.getElementById("carousel_file");
 carousel_file_el.addEventListener("click", function (e) {
   if (quota == 0) {
     e.preventDefault();
-    alert("輪播圖片最多共6張，請先刪除不要的圖片再重新選擇!");
+    Swal.fire("輪播圖片最多共6張<br>請先刪除不要的圖片再重新選擇!");
+    // alert("輪播圖片最多共6張，請先刪除不要的圖片再重新選擇!");
   }
 });
 

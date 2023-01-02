@@ -14,6 +14,10 @@ fetch("http://localhost:8080/LikedRestaurant-list/0", {
       timer: 1000,
     }).then(() => {
       sessionStorage.setItem(
+        "URL_before_login",
+        "http://localhost:8080/Front_End/member_likedRestaurant.html"
+      );
+      sessionStorage.setItem(
         "resp_login",
         window.location.assign(redirect_URL)
       );
