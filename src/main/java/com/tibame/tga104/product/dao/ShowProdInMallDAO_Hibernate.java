@@ -1,5 +1,6 @@
 package com.tibame.tga104.product.dao;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.PersistenceContext;
@@ -9,6 +10,7 @@ import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.tibame.tga104.product.vo.ProdInfoVO;
 import com.tibame.tga104.product.vo.ShowProdDetailVO;
 import com.tibame.tga104.product.vo.ShowProdInMallVO;
 
@@ -64,6 +66,23 @@ public class ShowProdInMallDAO_Hibernate implements ShowProdInMallDAO {
 		String hql = "from ShowProdInMallVO where restaurantNo = :restaurantNo";
 		return this.getSession().createQuery(hql, ShowProdInMallVO.class)
 				.setParameter("restaurantNo", restaurantNo).list();
+	}
+
+	@Override
+	public List<ShowProdInMallVO> searchByString(String keyword) {
+		if (keyword == null) {
+			return null;
+		}
+		String hql = "from ShowProdDetailVO where prodName like '%" + keyword + "%'"
+				+ "or prodDescription like '%" + keyword + "%'" + "or prodContent like '%" + keyword + "%'"
+				+ "or restaurantName like '%" + keyword + "%'" + "or prodCategory like '%" + keyword + "%'";
+		List<ShowProdDetailVO> temp = this.getSession().createQuery(hql, ShowProdDetailVO.class).list();
+		
+		List<ShowProdInMallVO> result = new LinkedList<>();
+		for(ShowProdDetailVO vo : temp) {
+			result.add(this.getSession().get(ShowProdInMallVO.class, vo.getProdNo()));
+		}
+		return result;
 	}
 
 }
