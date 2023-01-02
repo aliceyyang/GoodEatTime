@@ -199,7 +199,7 @@
     </div>
     <!-- Offcanvas Menu End -->
 
-    <!-- Header開始 -->
+    <!-- Header Section Begin -->
     <header class="header">
       <div class="header__top">
         <div class="container">
@@ -209,14 +209,16 @@
                 <div class="header__top__left">
                   <ul>
                     <li>
-                      <!-- 將會員頭貼呈現在此 -->
-                      <img class="login_icon" src="../member/getPic" /><a
+                      <img class="login_icon" src="./img/Login_icon.png" /><a
                         class="login_text"
-                      ></a>
+                        href="./j_signin_member3.html"
+                        >登入</a
+                      >
                     </li>
                   </ul>
                 </div>
                 <div class="header__logo">
+                  <!-- @Header連結請更改~ -->
                   <a href="./GoodEatTime.html"
                     ><img
                       class="goodeattime_logo"
@@ -226,13 +228,16 @@
                 </div>
                 <div class="header__top__right">
                   <div class="header__top__right__links">
-                    <a href="" class="search-switch"
+                    <!-- @Header連結請更改~ -->
+                    <a href="./shopping_mall.html" class="search-switch"
                       ><img src="img/icon/search.png" alt=""
                     /></a>
-                    <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+                    <a href="./shopping_cart.html"
+                      ><img src="img/icon/heart.png" alt=""
+                    /></a>
                   </div>
                   <div class="header__top__right__cart">
-                    <a href="#"
+                    <a href="./shopping_cart.html"
                       ><img src="img/icon/cart.png" alt="" /> <span>0</span></a
                     >
                     <div class="cart__price">Cart: <span>$0.00</span></div>
@@ -249,29 +254,32 @@
           <div class="col-lg-12">
             <nav class="header__menu mobile-menu">
               <ul>
+                <!-- @Header連結請更改~ -->
                 <li><a href="./GoodEatTime.html">首頁</a></li>
-                <li class="active"><a href="./about.html">會員專區</a></li>
-                <li><a href="./shop.html">餐廳</a></li>
-                <li><a href="./blog.html">線上商城</a></li>
+                <li class="active">
+                  <a href="./j_memberfile3.html">會員專區</a>
+                </li>
+                <li><a href="./restaurant_search.html">餐廳</a></li>
+                <li><a href="./shopping_mall.html">線上商城</a></li>
                 <li>
-                  <a href="#">關於我們</a>
-                  <ul class="dropdown">
+                  <a href="./about_us.html">關於我們</a>
+                  <!-- <ul class="dropdown">
                     <li><a href="./shop-details.html">Shop Details</a></li>
                     <li><a href="./shoping-cart.html">Shoping Cart</a></li>
                     <li><a href="./checkout.html">Check Out</a></li>
                     <li><a href="./wisslist.html">Wisslist</a></li>
                     <li><a href="./Class.html">Class</a></li>
                     <li><a href="./blog-details.html">Blog Details</a></li>
-                  </ul>
+                  </ul> -->
                 </li>
-                <li><a href="./contact.html">地點搜尋</a></li>
+                <!-- <li><a href="./contact.html">地點搜尋</a></li> -->
               </ul>
             </nav>
           </div>
         </div>
       </div>
     </header>
-    <!-- Header結束 -->
+    <!-- Header Section End -->
 
     <!-- 會員資料管理 開始 -->
     <section class="class">
@@ -281,6 +289,17 @@
         <div class="col-lg-2">
           <nav class="header__menu mobile-menu" id="left">
             <ul>
+              <!-- @會員側邊欄連結修改 -->
+              <li>
+                <a href="./j_memberfile3.html">帳號管理</a>
+              </li>
+              <li><a href="./member_reservation.html">訂位資訊</a></li>
+              <li><a href="./member_order.html">商城訂單</a></li>
+              <li><a href="./member_comment.html">我的評論</a></li>
+              <li><a href="./member_likedRestaurant.html">我的最愛</a></li>
+              <li><a href="./coupon_member.html">我的優惠券</a></li>
+            </ul>
+            <!-- <ul>
               <li class="active">
                 <a href="./j_memberfile3.html">帳號管理</a>
               </li>
@@ -288,9 +307,9 @@
               <li><a href="./member_order.html">商城訂單</a></li>
               <li><a href="./member_comment.html">我的評論</a></li>
               <li><a href="./coupon_member.html">我的優惠券</a></li>
-              <!-- <li><a href="">XXX</a></li>
+              <li><a href="">XXX</a></li>
               <li><a href="">YYY</a></li> -->
-            </ul>
+            <!-- </ul>  -->
           </nav>
         </div>
         <!-- 左側欄 結束 -->
@@ -698,7 +717,7 @@
               // location = "GoodEatTime.html";
               Swal.fire({
                 title: "登出成功!",
-                text: "畫面即將導回首頁",
+                text: "",
                 icon: "success",
               }).then(function () {
                 window.location.href = "GoodEatTime.html";
