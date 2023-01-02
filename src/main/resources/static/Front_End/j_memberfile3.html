@@ -146,6 +146,7 @@
     </style>
   </head>
 
+
   <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -303,8 +304,14 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                   <div class="breadcrumb__links">
-                    <a href="./index.html">Home</a>
-                    <a id="btnLogout">登出</a>
+                    <!-- <a id="btnLogout">登出</a> -->
+                    <button
+                      id="btnLogout"
+                      type="button"
+                      class="btn btn-outline-dark btn-sm"
+                    >
+                      登出
+                    </button>
                   </div>
                 </div>
               </div>
@@ -683,9 +690,16 @@
         fetch("../member/logout")
           .then((resp) => resp.json())
           .then((body) => {
-            Swal.fire(body.message);
+            // Swal.fire(body.message);
             if (body.successful) {
-              location = "GoodEatTime.html";
+              // location = "GoodEatTime.html";
+              Swal.fire({
+                title: "登出成功",
+                text: "畫面即將導回首頁",
+                icon: "success",
+              }).then(function () {
+                window.location.href = "GoodEatTime.html";
+              });
             }
           });
       });
