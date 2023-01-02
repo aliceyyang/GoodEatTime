@@ -28,4 +28,8 @@ public class ShowProdInMallService {
 	public List<ShowProdInMallVO> getFromRestaurant(Integer restaurantNo) {
 		return dao.getFromRestaurant(restaurantNo);
 	}
+	
+	public List<ShowProdInMallVO> searchByString(String keyword) {
+		return dao.searchByString(keyword);
+	}
 }

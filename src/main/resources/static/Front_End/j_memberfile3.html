@@ -38,6 +38,10 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <style>
+      .breadcrumb__links a:after {
+        content: none;
+      }
+
       .checkout__input_eye input {
         margin-bottom: 0px;
       }
@@ -303,8 +307,14 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                   <div class="breadcrumb__links">
-                    <a href="./index.html">Home</a>
-                    <a id="btnLogout">登出</a>
+                    <!-- <a href="GoodEatTime.html">Home</a> -->
+                    <!-- <a id="btnLogout">登出</a> -->
+                    <a
+                      id="btnLogout"
+                      class="btn btn-outline-dark btn-sm"
+                      role="button"
+                      >登出</a
+                    >
                   </div>
                 </div>
               </div>
@@ -648,11 +658,11 @@
           memberPassword.value.length < 6 ||
           memberPassword.value.length > 12
         ) {
-          Swal.fire("長度需介於6~12個字元");
+          Swal.fire("長度需介於6~12個字元", "", "warning");
           success = false;
         }
         if (recheckpw.value != memberPassword.value) {
-          Swal.fire("密碼確認密碼需相同");
+          Swal.fire("密碼確認密碼需相同", "", "warning");
           success = false;
         }
 
@@ -671,7 +681,7 @@
             .then((resp) => resp.json())
             .then((memberVO) => {
               if (memberVO.successful) {
-                Swal.fire("存檔成功!");
+                Swal.fire("存檔成功!", "", "success");
               } else {
                 Swal.fire(memberVO.message);
               }
@@ -683,9 +693,16 @@
         fetch("../member/logout")
           .then((resp) => resp.json())
           .then((body) => {
-            Swal.fire(body.message);
             if (body.successful) {
-              location = "GoodEatTime.html";
+              // Swal.fire("登出成功!", "", success);
+              // location = "GoodEatTime.html";
+              Swal.fire({
+                title: "登出成功!",
+                text: "畫面即將導回首頁",
+                icon: "success",
+              }).then(function () {
+                window.location.href = "GoodEatTime.html";
+              });
             }
           });
       });

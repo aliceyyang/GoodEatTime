@@ -42,22 +42,33 @@ public class ProdInfoController {
 	private ProdInfoService prodInfoService;
 
 	@GetMapping("all")
-	public ShoppingMallWrapper showAll(@SessionAttribute(name = "memberVO", required = false) MemberVO memberVO,
-			@RequestParam(required = false) Integer restaurantNo, @RequestParam(required = false) Integer prodCategoryNo) {
+	public ShoppingMallWrapper showAll(
+			@SessionAttribute(name = "memberVO", required = false) MemberVO memberVO,
+			@RequestParam(required = false) Integer restaurantNo, 
+			@RequestParam(required = false) Integer prodCategoryNo, 
+			@RequestParam(required = false) String keyword) {
 
-		ShoppingMallWrapper result = new ShoppingMallWrapper.Builder().setProdList(showProdInMallService.getAll())
+//		ShoppingMallWrapper result = new ShoppingMallWrapper.Builder().setProdList(showProdInMallService.getAll())
+//				.setProdCategoryList(prodCategoryService.getAll()).build();
+//		
+		
+		ShoppingMallWrapper result = new ShoppingMallWrapper.Builder()
 				.setProdCategoryList(prodCategoryService.getAll()).build();
 		
-		if (restaurantNo != null) {
-			result.setProdList(showProdInMallService.getFromRestaurant(restaurantNo));
-		} else if (prodCategoryNo != null) {
-			result.setProdList(showProdInMallService.getFromProdCategory(prodCategoryNo));
-		}
-
 		Integer memberNo = null;
 		if (memberVO != null) {
 			memberNo = memberVO.getMemberNo();
 			result.setShoppingCart(shoppingCartService.findByMemberNo(5));
+		}
+		
+		if (keyword != null && keyword != "") {
+			result.setProdList(showProdInMallService.searchByString(keyword));
+		} else if (restaurantNo != null) {
+			result.setProdList(showProdInMallService.getFromRestaurant(restaurantNo));
+		} else if (prodCategoryNo != null) {
+			result.setProdList(showProdInMallService.getFromProdCategory(prodCategoryNo));
+		} else {
+			result.setProdList(showProdInMallService.getAll());
 		}
 
 		return result;
