@@ -9,4 +9,6 @@ public interface RestaurantSearchService {
 	public List<RestaurantSearchVO> getAll();
 	
 	public List<RestaurantSearchVO> selectByrestaurantName(String restaurantName);
-}
+	
+	public List<RestaurantSearchVO> selectNewrestaurant();
+ }

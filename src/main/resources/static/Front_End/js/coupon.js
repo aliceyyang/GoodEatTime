@@ -8,7 +8,7 @@ function update(couponNo) {
 }
 function insert() {
   //要從前一頁取得餐廳編號 暫時寫死
-  sessionStorage.setItem("restaurantNo", 1)
+  sessionStorage.getItem("restaurantMemberVO", restaurantMemberVO.restaurantNo)
   location.href = "coupon_RESinsert.html";
 }
 //===========================dataTable================================
