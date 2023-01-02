@@ -501,7 +501,7 @@ label#updatePicdata {
 }
 
 .wrapper .block {
-  width: 100%;
+    width: 1200px;
     height: 60px;
     background-color: #f08632;
     border-right: 3px solid #f08632;
@@ -530,9 +530,10 @@ ul {
 }
 
 .vitae_list {
-padding-left: 5%;
+padding-left: 8%;
 padding-top: 15px;
 padding-bottom: 30px;
+max-width: 90%;
 }
 
 .aboutGoodEatTime{
@@ -567,3 +568,10 @@ padding-bottom: 15px;
   border: 2px solid;
   width: 1200px;
 }
+
+
+
+  /*==============================================*/
+
+  
+  
