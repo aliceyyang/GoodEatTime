@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tibame.tga104.order.service.ProdCommentService;
 import com.tibame.tga104.order.service.ProdOrderDetailService;
+import com.tibame.tga104.order.vo.ProdCommentReplyVO;
 import com.tibame.tga104.order.vo.ProdOrderDetailVO;
 
 @RestController
@@ -25,13 +26,24 @@ public class ProdCommentController {
 	private ProdOrderDetailService prodOrderDetailService;
 	
 	@PostMapping("NotNullComment")
-	public List<ProdOrderDetailVO> notNullComment(){
-		return prodCommentService.selectNotNullComment();
+	public List<ProdCommentReplyVO> notNullComment(@RequestBody ProdCommentReplyVO prodCommentReplyVO){
+//		System.out.println(prodCommentService.selectNotNullComment(prodCommentReplyVO));
+		return prodCommentService.selectNotNullComment(prodCommentReplyVO);
 	}
 	
 	@PostMapping("NullComment")
-	public List<ProdOrderDetailVO> nullComment(){
+	public List<ProdCommentReplyVO> nullComment(){
 		return prodCommentService.selectNullComment();
+	}
+	
+	@PostMapping("ForMemberNotNullComment")
+	public List<ProdCommentReplyVO> forMemberNotNullComment(@RequestBody ProdCommentReplyVO prodCommentReplyVO){
+		return prodCommentService.selectForMemberNotNullComment(prodCommentReplyVO);
+	}
+	
+	@PostMapping("ForMemberNullComment")
+	public List<ProdCommentReplyVO> forMemberNullComment(@RequestBody ProdCommentReplyVO prodCommentReplyVO){
+		return prodCommentService.selectForMemberNullComment(prodCommentReplyVO);
 	}
 	
 	@PostMapping("Comment")

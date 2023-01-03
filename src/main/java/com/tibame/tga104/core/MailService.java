@@ -27,7 +27,6 @@ import javax.mail.internet.MimeUtility;
 
 import org.springframework.util.ResourceUtils;
 
-
 public class MailService {
 	private final static String HOST = "smtp.gmail.com";
 	private final static String AUTH = "true";
@@ -35,9 +34,9 @@ public class MailService {
 	private final static String STARTTLE_ENABLE = "true";
 	private final static String SENDER = "goodeattimeG3@gmail.com";
 	private final static String PASSWORD = "htawyhztrsbkzmsn";
-	
-//  設定傳送郵件:至收信人的Email信箱,Email主旨,Email內容
-	public static void sendMail(String mail, String mailSubject, String mailBody) throws FileNotFoundException {
+	private final static Session session = setting();
+
+	private static Session setting() {
 //		String recipientCcs = "副本mail";
 		Properties props = new Properties();
 		props.put("mail.smtp.host", HOST);
@@ -55,6 +54,35 @@ public class MailService {
 		};
 
 		Session session = Session.getDefaultInstance(props, authenticator);
+		
+		return session;
+	}
+
+	public static Session getMessage() {
+		return session;
+	}
+
+	// 設定傳送郵件:至收信人的Email信箱,Email主旨,Email內容
+	public static void sendMail(String mail, String mailSubject, String mailBody) throws FileNotFoundException {
+//		String recipientCcs = "副本mail";
+//		Properties props = new Properties();
+//		props.put("mail.smtp.host", HOST);
+//		props.put("mail.smtp.auth", AUTH);
+//		props.put("mail.smtp.port", PORT);
+//		props.put("mail.smtp.starttls.enable", STARTTLE_ENABLE);
+//		props.put("mail.smtp.ssl.trust", HOST);
+//		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+//
+////      設定 gmail 的帳號 & 密碼 (將藉由你的Gmail來傳送Email)
+//		Authenticator authenticator = new Authenticator() {
+//			protected PasswordAuthentication getPasswordAuthentication() {
+//				return new PasswordAuthentication(SENDER, PASSWORD);
+//			}
+//		};
+//
+//		Session session = Session.getDefaultInstance(props, authenticator);
+//		Message message = new MimeMessage(session);
+//		Message message = MailService.getMessage();
 		Message message = new MimeMessage(session);
 
 		try {
@@ -78,7 +106,7 @@ public class MailService {
 
 ////          second part (the image) 可根據自己需要決定是否要加這段 (不需要就註解至85行)
 			File file = ResourceUtils.getFile("classpath:static/Front_End/img/GoodEatTime_smlogo.png");
-			
+
 			MimeBodyPart messageImgBody = new MimeBodyPart();
 			DataSource fds = new FileDataSource(file);
 

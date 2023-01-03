@@ -1,7 +1,7 @@
 $(window).on("load", function () {
   var check_func = function () {
     // 餐廳資訊
-    $("#restaurant").html(sessionStorage.getItem("restaurantName"));
+    $("#restaurantName").html(sessionStorage.getItem("restaurantName"));
     $("#phone").html(sessionStorage.getItem("restaurantTel"));
     $("#address").html(sessionStorage.getItem("restaurantAddr"));
     // 星等
@@ -48,7 +48,7 @@ document.querySelector("#btn_confirm").addEventListener("click", () => {
   fetch("../reservation/member", {
     method: "POST",
     headers: { "content-Type": "application/json" },
-    body: JSON.stringify(sessionStorage.getItem("reservation_inf")),
+    body: sessionStorage.getItem("reservation_inf"),
   })
     .then((resp) => {
       if (resp.redirected) {
