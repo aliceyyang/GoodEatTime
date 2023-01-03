@@ -98,10 +98,10 @@
               <div class="header__top__right">
                 <div class="header__top__right__links">
                   <a href="./shopping_mall.html" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
-                  <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+                  <a href="./member_likedRestaurant.html"><img src="img/icon/heart.png" alt="" /></a>
                 </div>
                 <div class="header__top__right__cart">
-                  <a href="#"><img src="img/icon/cart.png" alt="" /></a>
+                  <a href="./shopping_cart.html"><img src="img/icon/cart.png" alt="" /></a>
                   <!-- <div class="cart__price">Cart: <span>$0.00</span></div> -->
                 </div>
               </div>
@@ -116,13 +116,13 @@
         <div class="col-lg-12">
           <nav class="header__menu mobile-menu">
             <ul>
-               <!-- ===餐廳後台消息通知跑馬燈=== -->
+              <!-- ===餐廳後台消息通知跑馬燈=== -->
               <div class=" marquee text-white">
                 <marquee id="marquee" scrollamount="8" direction="left">
-                  [好食光重要通知]防詐騙提醒!近來有不肖業者偽冒好食光客服，蓄意詐騙錢財、竊取資料，請餐飲業者們先聯繫好食光平台查證哦!     
-                   </marquee>
+                  [好食光重要通知]防詐騙提醒!近來有不肖業者偽冒好食光客服，蓄意詐騙錢財、竊取資料，請餐飲業者們先聯繫好食光平台查證哦!
+                </marquee>
               </div>
-               <!-- ===餐廳後台消息通知跑馬燈=== -->
+              <!-- ===餐廳後台消息通知跑馬燈=== -->
             </ul>
           </nav>
         </div>
@@ -136,26 +136,26 @@
     <!-- <div class="container"> -->
     <div class="row" id="member">
       <!-- <div class="col-lg-2" id="left"> -->
-        <div class="col-lg-2 col-md-2 col-sm-2" id="left">
-          <nav class="header__menu mobile-menu" id="aaa">
-            <ul>
-              <li><a href="./restaurant_info-management.html">餐廳資訊</a></li>
-              <li><a href="./restaurantbackend_prodinfo.html">商品管理</a></li>
-              <li><a href="./restaurantbackend_ordersearch.html">訂單管理</a></li>
-              <li><a href="./restaurant_reserve-management.html">訂位管理</a></li>
-              <li><a href="./restaurantbackend_comment.html">評論管理</a></li>
-              <li><a href="./coupon_restaurant.html">優惠券設定</a></li>
-              <li><a href="./G3_alice_adOrder_restaurant.html">廣告訂單</a></li>
-              <li><a href="./G3_alice_adOrder_purchase_restaurant.html">購買廣告</a></li>
-              </li>
-            </ul>
-          </nav>
-        </div>
+      <div class="col-lg-2 col-md-2 col-sm-2" id="left">
+        <nav class="header__menu mobile-menu" id="aaa">
+          <ul>
+            <li><a href="./restaurant_info-management.html">餐廳資訊</a></li>
+            <li><a href="./restaurantbackend_prodinfo.html">商品管理</a></li>
+            <li><a href="./restaurantbackend_ordersearch.html">訂單管理</a></li>
+            <li><a href="./restaurant_reserve-management.html">訂位管理</a></li>
+            <li><a href="./restaurantbackend_comment.html">評論管理</a></li>
+            <li><a href="./coupon_restaurant.html">優惠券設定</a></li>
+            <li><a href="./G3_alice_adOrder_restaurant.html">廣告訂單</a></li>
+            <li><a href="./G3_alice_adOrder_purchase_restaurant.html">購買廣告</a></li>
+            </li>
+          </ul>
+        </nav>
+      </div>
       <!-- 餐廳資訊 -->
       <div class="restaurant_reserveinf col-lg-10 col-md-10 col-sm-10">
-        
+
         <h2 style="text-align:center ; margin: 15px auto 15px; color: rgb(53, 51, 51);">餐廳資訊</h2>
-        <div class="row" >
+        <div class="row">
           <div class="info_tab">
             <ul class="tab_title">
               <li class="active">
@@ -166,38 +166,40 @@
               </li>
               <li>
                 <a href="javascript:;" data-tablink="set_news">餐廳貼文</a>
-                </li>
-                <li>
-                  <a href="javascript:;" data-tablink="set_menu">餐廳菜單</a>
-                  </li>
+              </li>
+              <li>
+                <a href="javascript:;" data-tablink="set_menu">餐廳菜單</a>
+              </li>
             </ul>
             <div class="tab_inner_wrap">
               <div id="set_info" class="tab_inner" style="text-align:center">
-              <h3>資料修改</h3>
-              <div class="class__sidebar" style="width:70% ; margin: 0px auto">
-                <form action="#" id="restaurant_info">
+                <h3>資料修改</h3>
+                <div class="class__sidebar" style="width:70% ; margin: 0px auto">
+                  <form action="#" id="restaurant_info">
                     <input type="text" id="restaurantName" name="restaurantName" placeholder="餐廳名稱">
                     <input type="text" id="restaurantTel" name="restaurantTel" placeholder="電話">
-                    <input type="text" id="restaurantAddr" name="restaurantAddr"  placeholder="地址">
-                    <input type="textarea" id="restaurantBusinessHour" name="restaurantBusinessHour" placeholder="營業時間說明">
+                    <input type="text" id="restaurantAddr" name="restaurantAddr" placeholder="地址">
+                    <input type="textarea" id="restaurantBusinessHour" name="restaurantBusinessHour"
+                      placeholder="營業時間說明">
                     <input type="text" id="restaurantTaxIDNo" name="restaurantTaxIDNo" placeholder="統一編號">
                     <input type="text" id="restaurantAccountInfo" name="restaurantAccountInfo" placeholder="帳戶資訊">
                     <input type="email" id="restaurantAccount" name="restaurantAccount" placeholder="餐廳帳號">
                     <input type="password" id="restaurantPassword" name="restaurantPassword" placeholder="餐廳密碼">
                     <i id="passwordEye" class="fas fa-eye-slash"></i>
-                    <input type="password" id="restaurantPasswordCheck" name="restaurantPasswordCheck" placeholder="請再次輸入密碼">
-                    <button type ="submit" id="setting" class="site-btn">儲存設定</button> 
-                </form>
-            </div>
-            </div>
+                    <input type="password" id="restaurantPasswordCheck" name="restaurantPasswordCheck"
+                      placeholder="請再次輸入密碼">
+                    <button type="submit" id="setting" class="site-btn">儲存設定</button>
+                  </form>
+                </div>
+              </div>
               <div id="set_pic" class="tab_inner" style="height: 600px">
                 <h3 style="text-align:center">圖片設定</h3>
                 <form id="carousel" style="width:450px ; float:left">
                   <h4 style="text-align:center">圖片上傳</h4>
                   <h6 style="text-align:center">輪播圖片最多6張</h6>
                   <label>
-                  <input type="file" id="carousel_file"  accept="image/*" multiple="multiple" required/>
-                </label>
+                    <input type="file" id="carousel_file" accept="image/*" multiple="multiple" required />
+                  </label>
                   <div id="drop_zone" style="margin-left: 15%"><span id="carousel_quota" class="text"></span></div>
                   <br />
                   <br />
@@ -212,39 +214,39 @@
               <div id="set_news" class="tab_inner" style="height: 1250px">
                 <h3 style="text-align:center">貼文設定</h3>
                 <form id="news" style="width:450px ; float:left">
-                    <h4 style="text-align:center">貼文撰寫</h4>
-                    <h6  id="editing" style="text-align:center">正在編輯已上傳貼文</h6>
-                    <input type="hidden" name="restaurantPostNo" value=""/>
-                    <br />
-                    <input type="file" id="news_file" accept="image/*" required/>
-                    <br />
-                    <br />
-                    <div id="drop_zone3" style="margin-left: 15%"><span class="text">貼文圖片</span></div>
-                    <br />
-                    <br />
-                    <label for="article">貼文類型</label>
-                    <br />
-                    <select id="post_type" style="margin-bottom:30px ; margin-left: 15%">
-                      <option value="activity">熱門活動</option>
-                      <option value="news">消息公告</option>
-                      <option value="coupon">優惠券</option>
-                      <option value="bonus">紅利點數</option>
-                    </select>
-                    <br />
-                    <br />
-                    <br />
-                    <label for="title">貼文標題</label>
-                    <br />
-                    <input type="text" id="title" style="margin-left: 15% ; width: 380px;"/>
-                    <br />
-                    <br />
-                    <label for="article">貼文內容</label>
-                    <br />
-                    <textarea id="content" style="margin-left: 15%"></textarea>
-                <div id="news_btn">
-                  <button type="reset" class="btns">清空資料</button>
-                  <button type="submit" id="btn_submit3" class="btns">送出資料</button>
-                </div>
+                  <h4 style="text-align:center">貼文撰寫</h4>
+                  <h6 id="editing" style="text-align:center">正在編輯已上傳貼文</h6>
+                  <input type="hidden" name="restaurantPostNo" value="" />
+                  <br />
+                  <input type="file" id="news_file" accept="image/*" required />
+                  <br />
+                  <br />
+                  <div id="drop_zone3" style="margin-left: 15%"><span class="text">貼文圖片</span></div>
+                  <br />
+                  <br />
+                  <label for="article">貼文類型</label>
+                  <br />
+                  <select id="post_type" style="margin-bottom:30px ; margin-left: 15%">
+                    <option value="activity">熱門活動</option>
+                    <option value="news">消息公告</option>
+                    <option value="coupon">優惠券</option>
+                    <option value="bonus">紅利點數</option>
+                  </select>
+                  <br />
+                  <br />
+                  <br />
+                  <label for="title">貼文標題</label>
+                  <br />
+                  <input type="text" id="title" style="margin-left: 15% ; width: 380px;" />
+                  <br />
+                  <br />
+                  <label for="article">貼文內容</label>
+                  <br />
+                  <textarea id="content" style="margin-left: 15%"></textarea>
+                  <div id="news_btn">
+                    <button type="reset" class="btns">清空資料</button>
+                    <button type="submit" id="btn_submit3" class="btns">送出資料</button>
+                  </div>
                 </form>
                 <h4 style="text-align:center">已上傳的貼文 </h4>
                 <div id="post_uploaded">
@@ -254,9 +256,9 @@
                 <h3 style="text-align:center">菜單設定</h3>
                 <form id="menu" style="width:450px ; float:left ">
                   <h4 style="text-align:center">菜單上傳</h4>
-                  <h6  id="editing_menu" style="text-align:center">正在編輯已上傳菜單</h6>
-                    <input type="hidden" name="menuNo" value=""/>
-                  <input type="file" id="menu_file" accept="image/*" required/>
+                  <h6 id="editing_menu" style="text-align:center">正在編輯已上傳菜單</h6>
+                  <input type="hidden" name="menuNo" value="" />
+                  <input type="file" id="menu_file" accept="image/*" required />
                   <br />
                   <br />
                   <div id="drop_zone2" style="margin-left: 15%"><span class="text">菜單圖片</span></div>
@@ -281,103 +283,103 @@
 
   <!-- Class Section End -->
 
-      <!-- Footer Section Begin -->
-      <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
-        <div class="mask">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-3 col-md-3 col-sm-3">
-                <div class="footer__member">
-                  <h6>會員專區</h6>
-                  <div class="footer__social">
-                    <a href="./j_signin_member3.html">登入會員<i></i></a>
-                  <a href="./member_reservation.html">訂位管理<i></i></a>
-                  <br />
-                  <a href="./j_registration_member3.html">加入會員<i></i></a>
-                  <a href="./member_order.html">訂單管理<i></i></a>
-                  <br />
-                  <a href="./coupon_member.html">優惠券<i></i></a>
-                  <a href="./member_comment.html">我的評論<i></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-md-3 col-sm-3">
-                <div class="footer__restaurant">
-                  <h6>餐廳</h6>
-                  <div class="footer__social">
-                    <a href="./reservation.html">訂位<i></i></a>
-                    <br />
-                    <a href="./shopping_cart.html">購物車<i></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-md-3 col-sm-3">
-                <div class="footer__shopping">
-                  <h6>線上商城</h6>
-                  <div class="footer__social">
-                    <a href="./shopping_mall.html">商品搜尋<i></i></a>
-                    <br />
-                    <a href="./shopping_cart.html">購物車<i></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-md-3 col-sm-3">
-                <div class="footer__aboutus">
-                  <h6>關於我們</h6>
-                  <div class="footer__social">
-                    <a href="./about_us.html">網站介紹<i></i></a>
-                    <br />
-                    <a href="./about_us.html">履歷<i></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-9 col-sm-12">
-                <div class="footer__widget">
-                  <h6>好食光</h6>
-                  <ul>
-                    <li>指導老師：</li>
-                    <li>吳永志老師 | 吳冠宏老師</li>
-                    <li>張互賓老師 | 郭惠民老師</li>
-                    <li>陳怡榕老師 | 馬全德老師</li>
-                    <li>組員 :</li>
-                    <li>陳宜瀅 | 張家銘 | 楊婕妤</li>
-                    <li>游育碩 | 黃郁婕 | 李佳欣 | 余可凡</li>
-                  </ul>
-                </div>
+  <!-- Footer Section Begin -->
+  <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
+    <div class="mask">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="footer__member">
+              <h6>會員專區</h6>
+              <div class="footer__social">
+                <a href="./j_signin_member3.html">登入會員<i></i></a>
+                <a href="./member_reservation.html">訂位管理<i></i></a>
+                <br />
+                <a href="./j_registration_member3.html">加入會員<i></i></a>
+                <a href="./member_order.html">訂單管理<i></i></a>
+                <br />
+                <a href="./coupon_member.html">優惠券<i></i></a>
+                <a href="./member_comment.html">我的評論<i></i></a>
               </div>
             </div>
           </div>
-        </div>
-        <div class="copyright">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-7">
-                <p class="copyright__text text-white">
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                  Copyright &copy;
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  All rights reserved | This template is made with
-                  <i class="fa fa-heart" aria-hidden="true"></i> by
-                  <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </p>
-              </div>
-              <div class="col-lg-5">
-                <div class="copyright__widget">
-                  <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Site Map</a></li>
-                  </ul>
-                </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="footer__restaurant">
+              <h6>餐廳</h6>
+              <div class="footer__social">
+                <a href="./reservation.html">訂位<i></i></a>
+                <br />
+                <a href="./shopping_cart.html">購物車<i></i></a>
               </div>
             </div>
           </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="footer__shopping">
+              <h6>線上商城</h6>
+              <div class="footer__social">
+                <a href="./shopping_mall.html">商品搜尋<i></i></a>
+                <br />
+                <a href="./shopping_cart.html">購物車<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="footer__aboutus">
+              <h6>關於我們</h6>
+              <div class="footer__social">
+                <a href="./AboutUs.html">網站介紹<i></i></a>
+                <br />
+                <a href="./AboutUs.html">履歷<i></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-9 col-sm-12">
+            <div class="footer__widget">
+              <h6>好食光</h6>
+              <ul>
+                <li>指導老師：</li>
+                <li>吳永志老師 | 吳冠宏老師</li>
+                <li>張互賓老師 | 郭惠民老師</li>
+                <li>陳怡榕老師 | 馬全德老師</li>
+                <li>組員 :</li>
+                <li>陳宜瀅 | 張家銘 | 楊婕妤</li>
+                <li>游育碩 | 黃郁婕 | 李佳欣 | 余可凡</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </footer>
-      <!-- Footer Section End -->
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <p class="copyright__text text-white">
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              All rights reserved | This template is made with
+              <i class="fa fa-heart" aria-hidden="true"></i> by
+              <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+          <div class="col-lg-5">
+            <div class="copyright__widget">
+              <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Site Map</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer Section End -->
 
   <!-- Search Begin -->
   <div class="search-model">
@@ -402,8 +404,9 @@
   <script src="js/main.js"></script>
   <!-- <script src="js/restautant_reserve-management.js"></script> -->
   <script src="js/restaurant_info-management.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/logged_restaurant.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 

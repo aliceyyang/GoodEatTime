@@ -670,7 +670,14 @@
               let memberVO = JSON.stringify(body);
               sessionStorage.setItem("memberVO", memberVO);
               if (body.successful) {
-                location = "j_welcome_login1.html";
+                Swal.fire({
+                  title: "登入成功!",
+                  text: "",
+                  icon: "success",
+                }).then(function () {
+                  window.location.href = "j_welcome_login1.html";
+                });
+                // location = "j_welcome_login1.html";
               } else {
                 Swal.fire(body.message);
                 // alert(body.message);
