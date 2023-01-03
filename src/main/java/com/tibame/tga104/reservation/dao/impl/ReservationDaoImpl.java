@@ -123,6 +123,7 @@ public class ReservationDaoImpl implements ReservationDao {
 		query.setParameter("restaurantNo", restaurantNo)
 			 .setParameter("reserveDate", reserveDate);
 		List<ReservationDetailVO> reservationDetailVO = query.list();
+		System.out.println(reservationDetailVO);
 		return reservationDetailVO;
 	}
 
