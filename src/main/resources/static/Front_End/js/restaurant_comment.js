@@ -321,4 +321,9 @@ fetch(`../restaurant-comment/${restaurantNo}`)
     }
 
     $("#restaurant_stars").html(restaurantStars);
+
+    $("a.toShop").attr(
+      "href",
+      `./shopping_mall.html?restaurantNo=${restaurantNum}`
+    );
   });

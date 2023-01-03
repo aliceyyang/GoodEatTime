@@ -4,7 +4,10 @@ let restaurantNum = 3; //避免網址直接輸入restaurant.html打不開，這�
 if (sessionStorage.getItem("restaurantNo") != null) {
   restaurantNum = sessionStorage.getItem("restaurantNo");
 }
-console.log(restaurantNum);
+$("a.toShop").attr(
+  "href",
+  `./shopping_mall.html?restaurantNo=${restaurantNum}`
+);
 // google map
 function initMap() {
   var restaurant_Name;
