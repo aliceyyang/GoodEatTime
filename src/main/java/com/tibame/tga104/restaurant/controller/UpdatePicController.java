@@ -37,14 +37,8 @@ public class UpdatePicController {
 
 //	查詢該餐廳所有輪播圖片/貼文/菜單
 	@GetMapping("/restaurant-readInfo/{management}/{restaurantNo}")
-	public ResponseEntity<List> getByRestaurantNo(HttpSession httpSession,
-												 @PathVariable String management,
+	public ResponseEntity<List> getByRestaurantNo(@PathVariable String management,
 												 @PathVariable Integer restaurantNo) {
-		
-		RestaurantMemberVO session = (RestaurantMemberVO)httpSession.getAttribute("restaurantMemberVO");
-		if (session != null) {
-            restaurantNo = session.getRestaurantNo();
-        }
 			switch (management) {
 		case "CarouselPic": {
 			List<RestaurantCarouselPicVO> carouselPicVO = carouselPicService.findByRestaurantNo(restaurantNo);
