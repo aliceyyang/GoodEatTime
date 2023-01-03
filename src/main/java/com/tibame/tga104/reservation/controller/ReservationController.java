@@ -113,7 +113,7 @@ public class ReservationController {
 // ----------------------------------------------------------------	
 
 
-	// 消費者訂位ok
+	// 消費者訂位
 	@PostMapping("member")
 	public boolean member(@RequestBody ReservationVO vo, HttpSession httpSession) {
 		MemberVO memberVO = (MemberVO) httpSession.getAttribute("memberVO");
@@ -140,9 +140,7 @@ public class ReservationController {
 
 	// 查找餐廳營業時間(星期)
 	@GetMapping("restaurant/date")
-	public List<Integer> reserveTime(HttpSession session) {
-		RestaurantMemberVO restaurantMemberVO = (RestaurantMemberVO) session.getAttribute("restaurantMemberVO");
-		int restaurantNo = restaurantMemberVO.getRestaurantNo();
+	public List<Integer> reserveTime(@RequestParam Integer restaurantNo) {
 		return reserveTimeService.findByRestaurantNo(restaurantNo);
 	}
 
@@ -154,10 +152,8 @@ public class ReservationController {
 
 	// -----------查找可訂位人數ok
 	@PostMapping("restaurant/seat")
-	public int seats(@RequestBody ReservationVO vo, HttpSession session) {
-		RestaurantMemberVO restaurantMemberVO = (RestaurantMemberVO) session.getAttribute("restaurantMemberVO");
-		int restaurantNo = restaurantMemberVO.getRestaurantNo();
-		return reserveTimeService.getAvailableSeats(restaurantNo, vo.getReserveDate(), vo.getReserveTime());
+	public int seats(@RequestBody ReservationVO vo) {
+		return reserveTimeService.getAvailableSeats(vo.getRestaurantNo(), vo.getReserveDate(), vo.getReserveTime());
 	}
 
 //	@PostMapping("restaurant/seat")

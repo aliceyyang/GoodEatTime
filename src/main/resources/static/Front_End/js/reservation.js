@@ -1,10 +1,59 @@
 let send_data = {};
+const restaurantNo = sessionStorage.getItem("restaurantNo");
+
+// 餐廳資訊
+$("#restaurant").html(sessionStorage.getItem("restaurantName"));
+$("#phone").html(sessionStorage.getItem("restaurantTel"));
+
+// 星等
+const rate = sessionStorage.getItem("restaurantRating");
+// let rate = 4.8;
+let star = Math.trunc(rate);
+for (var i = 1; i <= rate; i++) {
+  document.getElementById("star_" + i).classList.add("checked");
+}
+if (rate - star >= 0.5) {
+  document
+    .getElementById("star_" + (star + 1))
+    .setAttribute("class", "fa-solid fa-star-half-stroke checked");
+}
+$("#rating").html(rate);
+
+// google map
+const restaurantAddr = sessionStorage.getItem("restaurantAddr");
+$("#address").html(restaurantAddr);
+var addr = restaurantAddr;
+function initMap() {
+  geocoder = new google.maps.Geocoder();
+  var myLatLng = new google.maps.LatLng(25.04, 121.512);
+  var mapOptions = {
+    center: myLatLng,
+    zoom: 16,
+  };
+  map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  codeAddress(addr);
+}
+function codeAddress(address) {
+  geocoder.geocode({ address: address }, function (results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location); //center the map over the result
+      //place a marker at the location
+      var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location,
+      });
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+  });
+}
 
 // dateTimePicker & 日期驗證
 $(function weekDay() {
   $.ajax({
     url: "../reservation/restaurant/date",
     type: "GET",
+    data: { restaurantNo: restaurantNo },
     dataType: "json",
     success: function (arr) {
       console.log(arr);
@@ -39,38 +88,6 @@ $(function weekDay() {
     },
   });
 });
-
-// google map
-// const params = new Proxy(new URLSearchParams(window.location.search), {
-//   get: (searchParams, prop) => searchParams.get(prop),
-// });
-// let restaurantAddr = params.restaurantAddr;
-// console.log(value)
-var restaurantAddr = "台北市中正區忠孝東路一段150號";
-function initMap() {
-  geocoder = new google.maps.Geocoder();
-  var myLatLng = new google.maps.LatLng(25.04, 121.512);
-  var mapOptions = {
-    center: myLatLng,
-    zoom: 16,
-  };
-  map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  codeAddress(restaurantAddr);
-}
-function codeAddress(address) {
-  geocoder.geocode({ address: address }, function (results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      map.setCenter(results[0].geometry.location); //center the map over the result
-      //place a marker at the location
-      var marker = new google.maps.Marker({
-        map: map,
-        position: results[0].geometry.location,
-      });
-    } else {
-      alert("Geocode was not successful for the following reason: " + status);
-    }
-  });
-}
 
 // 訂位時段驗證
 $("#reserveTime").on("change", () => {
@@ -118,6 +135,7 @@ document.querySelector("#reserveNum").addEventListener("click", () => {
       dataType: "json",
       contentType: "application/json",
       data: JSON.stringify({
+        restaurantNo: restaurantNo,
         reserveDate: send_data.reserveDate,
         reserveTime: send_data.reserveTime,
       }),
@@ -233,7 +251,7 @@ $("#btn_reserve").on("click", function (e) {
     send_data.tel = memberVO.tel;
     send_data.memberNo = memberVO.memberNo;
 
-    send_data.restaurantNo = 1; // 暫時寫死
+    send_data.restaurantNo = restaurantNo;
     // console.log(send_data);
     sessionStorage.setItem("reservation_inf", JSON.stringify(send_data));
     location.href = "./reservation_confirm.html";
@@ -246,8 +264,15 @@ function reserve_data() {
     let reservation_inf = JSON.parse(sessionStorage.getItem("reservation_inf"));
     console.log(reservation_inf);
     $("#reserveNum").val(reservation_inf.reserveNum);
+    send_data.reserveNum = reservation_inf.reserveNum;
     $("#reserveDate").val(reservation_inf.reserveDate);
-    $("#reserveTime").val(reservation_inf.reserveTime);
+    send_data.reserveDate = reservation_inf.reserveDate;
+    $.each($("div.nice-select li"), (index, item) => {
+      if ($(item).attr("data-value") == reservation_inf.reserveTime) {
+        $(item).trigger("click");
+        $(item).trigger("click");
+      }
+    });
     $("#remark").val(reservation_inf.remark);
   }
 }

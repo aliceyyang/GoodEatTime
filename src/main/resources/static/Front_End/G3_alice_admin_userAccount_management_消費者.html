@@ -105,7 +105,7 @@
               <div class="header__top__right">
                 <div class="header__top__right__links">
                   <a href="" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
-                  <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+                  <a href="./member_likedRestaurant.html"><img src="img/icon/heart.png" alt="" /></a>
                 </div>
                 <div class="header__top__right__cart">
                   <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
@@ -290,9 +290,9 @@
               <h6>關於我們</h6>
               <div class="footer__social">
                 <!-- @這裡也還不知道要連去哪裡... -->
-                <a href="#">網站介紹<i></i></a>
+                <a href="./AboutUs.html">網站介紹<i></i></a>
                 <br />
-                <a href="#">履歷<i></i></a>
+                <a href="./AboutUs.html">履歷<i></i></a>
               </div>
             </div>
           </div>
@@ -411,7 +411,7 @@
       // table
       const shipData = document.querySelector('#shipData')
       // GET
-      const URL = "http://localhost:8080/admin/member-accounts";
+      const URL = "../admin/member-accounts";
       await fetch(URL, { redirect: "follow" })
         .then((r) => {
           console.log("是否重導向" + r.redirected)
@@ -490,7 +490,7 @@
           }
 
           // 點擊確認 -> PUT
-          const URL_PUT = 'http://localhost:8080/admin/member-accounts'; // {memberNo}
+          const URL_PUT = '../admin/member-accounts'; // {memberNo}
           if (edit_btn.value === '確認') {
             edit_btn.onclick = () => {
               let editItem = parseInt(document.querySelector(`#memNo${memberNo}`).innerHTML.trim()); // 消費者編號

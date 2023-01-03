@@ -10,4 +10,5 @@ public interface ShowProdInMallDAO {
 	public List<ShowProdInMallVO> getFromProdCategory(Integer prodCategoryNo);
 	public List<ShowProdInMallVO> getFromRestaurant(Integer restaurantNo);
 	public List<ShowProdInMallVO> select6ByCategory(Integer prodCategoryNo);
+	public List<ShowProdInMallVO> searchByString(String keyword);
 }

@@ -1,5 +1,24 @@
 $(window).on("load", function () {
   var check_func = function () {
+    // 餐廳資訊
+    $("#restaurant").html(sessionStorage.getItem("restaurantName"));
+    $("#phone").html(sessionStorage.getItem("restaurantTel"));
+    $("#address").html(sessionStorage.getItem("restaurantAddr"));
+    // 星等
+    const rate = sessionStorage.getItem("restaurantRating");
+    // let rate = 4.8;
+    let star = Math.trunc(rate);
+    for (var i = 1; i <= rate; i++) {
+      $("#star_" + i).addClass("checked");
+    }
+    if (rate - star >= 0.5) {
+      $("#star_" + (star + 1)).attr(
+        "class",
+        "fa-solid fa-star-half-stroke checked"
+      );
+    }
+    $("#rating").html(rate);
+
     const reservation_inf = JSON.parse(
       sessionStorage.getItem("reservation_inf")
     );
