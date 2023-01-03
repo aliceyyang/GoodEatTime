@@ -48,6 +48,112 @@
   </style>
 
   <body>
+    <table
+      id="prodcommmentList"
+      class="prodcommmentList"
+      width="100%"
+      style="table-layout: fixed; display: none"
+    >
+      <thead align="center">
+        <tr>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 100px">
+            評論對象
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 150px">
+            評論帳號
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 300px">
+            評論商品
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 200px">
+            評論日期
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 100px">
+            評論星等
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 100px">
+            回覆評論
+          </th>
+          <!-- <th>編輯</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr align="center">
+          <td>abc</td>
+          <td>123</td>
+          <td>abc</td>
+          <td>abc</td>
+          <td>abc</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-light"
+              style="
+                width: auto;
+                padding: 2px;
+                border-radius: 8px;
+                box-shadow: 3px 3px 1px #ffd382;
+              "
+            >
+              觀看評論
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table
+      id="prodcommmentList"
+      class="prodcommmentList"
+      width="100%"
+      style="table-layout: fixed; display: none"
+    >
+      <thead align="center">
+        <tr>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 100px">
+            評論對象
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 150px">
+            評論帳號
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 300px">
+            評論商品
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 200px">
+            評論日期
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 100px">
+            評論星等
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 100px">
+            回覆評論
+          </th>
+          <!-- <th>編輯</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr align="center">
+          <td>abc</td>
+          <td>123</td>
+          <td>abc</td>
+          <td>abc</td>
+          <td>abc</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-light"
+              style="
+                width: auto;
+                padding: 2px;
+                border-radius: 8px;
+                box-shadow: 3px 3px 1px #ffd382;
+              "
+            >
+              觀看評論
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <!-- Page Preloder -->
     <div id="preloder">
       <div class="loader"></div>
@@ -113,13 +219,14 @@
                     <li>
                       <img class="login_icon" src="./img/Login_icon.png" /><a
                         class="login_text"
-                        href="#"
+                        href="./j_signin_member3.html"
                         >登入</a
                       >
                     </li>
                   </ul>
                 </div>
                 <div class="header__logo">
+                  <!-- @Header連結請更改~ -->
                   <a href="./GoodEatTime.html"
                     ><img
                       class="goodeattime_logo"
@@ -129,13 +236,16 @@
                 </div>
                 <div class="header__top__right">
                   <div class="header__top__right__links">
-                    <a href="" class="search-switch"
+                    <!-- @Header連結請更改~ -->
+                    <a href="./shopping_mall.html" class="search-switch"
                       ><img src="img/icon/search.png" alt=""
                     /></a>
-                    <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+                    <a href="./shopping_cart.html"
+                      ><img src="img/icon/heart.png" alt=""
+                    /></a>
                   </div>
                   <div class="header__top__right__cart">
-                    <a href="#"
+                    <a href="./shopping_cart.html"
                       ><img src="img/icon/cart.png" alt="" /> <span>0</span></a
                     >
                     <div class="cart__price">Cart: <span>$0.00</span></div>
@@ -152,22 +262,25 @@
           <div class="col-lg-12">
             <nav class="header__menu mobile-menu">
               <ul>
-                <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-                <li><a href="./about.html">會員專區</a></li>
-                <li><a href="./shop.html">餐廳</a></li>
-                <li><a href="./blog.html">線上商城</a></li>
-                <li>
-                  <a href="#">關於我們</a>
-                  <ul class="dropdown">
-                    <li><a href="./shop-details.html">Shop Details</a></li>
-                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                    <li><a href="./checkout.html">Check Out</a></li>
-                    <li><a href="./wisslist.html">Wisslist</a></li>
-                    <li><a href="./Class.html">Class</a></li>
-                    <li><a href="./blog-details.html">Blog Details</a></li>
-                  </ul>
+                <!-- @Header連結請更改~ -->
+                <li><a href="./GoodEatTime.html">首頁</a></li>
+                <li class="active">
+                  <a href="./j_memberfile3.html">會員專區</a>
                 </li>
-                <li><a href="./contact.html">地點搜尋</a></li>
+                <li><a href="./restaurant_search.html">餐廳</a></li>
+                <li><a href="./shopping_mall.html">線上商城</a></li>
+                <li>
+                  <a href="./about_us.html">關於我們</a>
+                  <!-- <ul class="dropdown">
+                  <li><a href="./shop-details.html">Shop Details</a></li>
+                  <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                  <li><a href="./checkout.html">Check Out</a></li>
+                  <li><a href="./wisslist.html">Wisslist</a></li>
+                  <li><a href="./Class.html">Class</a></li>
+                  <li><a href="./blog-details.html">Blog Details</a></li>
+                </ul> -->
+                </li>
+                <!-- <li><a href="./contact.html">地點搜尋</a></li> -->
               </ul>
             </nav>
           </div>
@@ -184,12 +297,15 @@
         <div class="col-lg-2" id="left">
           <nav class="header__menu mobile-menu" id="aaa">
             <ul>
-              <li class=""><a href="http">帳號管理</a></li>
-              <li class=""><a href="http">訂位資訊</a></li>
-              <li class=""><a href="http">商城訂單</a></li>
-              <li class=""><a href="http">我的優惠券</a></li>
-              <li class=""><a href="http">我的最愛</a></li>
-              <li class=""><a href="http">我的評論</a></li>
+              <!-- @會員側邊欄連結修改 -->
+              <li class="active">
+                <a href="./j_memberfile3.html">帳號管理</a>
+              </li>
+              <li><a href="./member_reservation.html">訂位資訊</a></li>
+              <li><a href="./member_order.html">商城訂單</a></li>
+              <li><a href="./member_comment.html">我的評論</a></li>
+              <li><a href="./member_likedRestaurant.html">我的最愛</a></li>
+              <li><a href="./coupon_member.html">我的優惠券</a></li>
             </ul>
           </nav>
         </div>
@@ -203,7 +319,6 @@
               display: grid;
               justify-content: center;
               height: 10%;
-              background-color: #fdf3ea;
             "
           >
             <h2>評論管理</h2>
@@ -288,39 +403,55 @@
                         >
                           <div class="row d-flex justify-content-center">
                             <table
+                              id="notnullprodcomment"
                               class="notnullprodcomment"
                               width="100%"
-                              style="table-layout: fixed"
+                              style="table-layout: fixed; display: none"
                             >
                               <thead align="center">
                                 <tr>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     訂單編號
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 300px;
+                                    "
                                   >
                                     商品名稱
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 200px;
+                                    "
                                   >
                                     評論日期
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     評論星等
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     商家回覆
                                   </th>
@@ -352,39 +483,55 @@
                               </tbody>
                             </table>
                             <table
+                              id="notnullrestaurantcomment"
                               class="notnullrestaurantcomment"
                               width="100%"
-                              style="table-layout: fixed"
+                              style="table-layout: fixed; display: none"
                             >
                               <thead align="center">
                                 <tr>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     訂位編號
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 300px;
+                                    "
                                   >
                                     餐廳名稱
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 200px;
+                                    "
                                   >
                                     評論日期
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     評論星等
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     商家回覆
                                   </th>
@@ -420,39 +567,55 @@
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
                           <div class="row d-flex justify-content-center">
                             <table
+                              id="nullprodcomment"
                               class="nullprodcomment"
                               width="100%"
-                              style="table-layout: fixed"
+                              style="table-layout: fixed; display: none"
                             >
                               <thead align="center">
                                 <tr>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     訂單編號
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 300px;
+                                    "
                                   >
                                     商品名稱
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 200px;
+                                    "
                                   >
                                     評論日期
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     評論星等
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     商家回覆
                                   </th>
@@ -484,39 +647,55 @@
                               </tbody>
                             </table>
                             <table
+                              id="nullrestaurantcomment"
                               class="nullrestaurantcomment"
                               width="100%"
-                              style="table-layout: fixed"
+                              style="table-layout: fixed; display: none"
                             >
                               <thead align="center">
                                 <tr>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     訂位編號
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 300px;
+                                    "
                                   >
                                     餐廳名稱
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 200px;
+                                    "
                                   >
                                     評論日期
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     評論星等
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     商家回覆
                                   </th>
@@ -566,58 +745,69 @@
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
       <div class="mask">
-        <div class="container">
+        <div>
           <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="footer__member">
                 <h6>會員專區</h6>
                 <div class="footer__social">
-                  <a href="#">登入會員<i></i></a>
-                  <a href="#">定位管理<i></i></a>
+                  <!-- @Footer連結請更改 -->
+                  <a href="./j_signin_member3.html">登入會員<i></i></a>
+                  <a href="./member_reservation.html">訂位管理<i></i></a>
                   <br />
-                  <a href="#">加入會員<i></i></a>
-                  <a href="#">定位管理<i></i></a>
+                  <a href="./j_registration_member3.html">加入會員<i></i></a>
+                  <a href="./member_order.html">訂單管理<i></i></a>
                   <br />
-                  <a href="#">優惠券<i></i></a>
-                  <a href="#">我的評論<i></i></a>
+                  <a href="./coupon_member.html">優惠券<i></i></a>
+                  <a href="./member_comment.html">我的評論<i></i></a>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__restaurant">
                 <h6>餐廳</h6>
                 <div class="footer__social">
+                  <!-- @這裡不確定要連去哪裡... -->
                   <a href="#">訂位<i></i></a>
                   <br />
                   <a href="#">購物車<i></i></a>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__shopping">
                 <h6>線上商城</h6>
                 <div class="footer__social">
-                  <a href="#">商品搜尋<i></i></a>
+                  <!-- @Footer連結請更改 -->
+                  <a href="./shopping_mall.html">商品搜尋<i></i></a>
                   <br />
-                  <a href="#">購物車<i></i></a>
+                  <a href="./shopping_cart.html">購物車<i></i></a>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__aboutus">
                 <h6>關於我們</h6>
                 <div class="footer__social">
+                  <!-- @這裡也還不知道要連去哪裡... -->
                   <a href="#">網站介紹<i></i></a>
                   <br />
                   <a href="#">履歷<i></i></a>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-3 col-md-9 col-sm-12">
               <div class="footer__widget">
                 <h6>好食光</h6>
                 <ul>
                   <li>指導老師：</li>
-                  <li>吳永志老師 吳冠宏老師 郭惠民老師 陳怡榕老師</li>
+                  <li>吳永志老師 &nbsp; | &nbsp; 吳冠宏老師</li>
+                  <li>張互賓老師 &nbsp; | &nbsp; 馬全德老師</li>
+                  <li>郭惠民老師 &nbsp; | &nbsp; 陳怡榕老師</li>
                   <li>組員 :</li>
-                  <li>陳宜瀅 張家銘 楊婕妤</li>
-                  <li>游育碩 黃郁婕 李佳欣 余可凡</li>
+                  <li>陳宜瀅 &nbsp; | &nbsp; 張家銘 &nbsp; | &nbsp; 楊婕妤</li>
+                  <li>游育碩 &nbsp; | &nbsp; 黃郁婕</li>
+                  <li>李佳欣 &nbsp; | &nbsp; 余可凡</li>
                 </ul>
               </div>
             </div>
@@ -677,10 +867,26 @@
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/alice.js"></script>
+    <script src="js/logged_member.js"></script>
 
     <script>
+      let memberVO = JSON.parse(sessionStorage.getItem("memberVO"));
+      console.log(memberVO);
+      let updateMemberNo = memberVO.memberNo;
+      console.log(updateMemberNo);
       const submit_btn = document.getElementById("submit_btn");
-      let resultList;
+      let notnullrestaurantcommentList;
+      let nullrestaurantcommentList;
+      let notnullprodcommentList;
+      let nullprodcommentList;
+      const notnullrestaurantcomment = document.getElementById(
+        "notnullrestaurantcomment"
+      );
+      const nullrestaurantcomment = document.getElementById(
+        "nullrestaurantcomment"
+      );
+      const notnullprodcomment = document.getElementById("notnullprodcomment");
+      const nullprodcomment = document.getElementById("nullprodcomment");
       submit_btn.addEventListener("click", function () {
         console.log(
           document.querySelector("div.nice-select span.current").innerText
@@ -689,30 +895,37 @@
           "div.nice-select span.current"
         ).innerText;
         if (choice == "餐廳評論") {
-          fetch("http://localhost:8080/restaurantcomment/NotNullComment", {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: "",
-          })
+          fetch(
+            "http://localhost:8080/restaurantcomment/ForMemberNotNullComment",
+            {
+              method: "POST",
+              headers: { "Content-type": "application/json" },
+              body: JSON.stringify({
+                memberNo: updateMemberNo,
+              }),
+            }
+          )
             .then((r) => r.json())
-            .then((data) => {
-              console.log(data);
-              resultList = data;
+            .then((data_ForMemberNotNullComment) => {
+              console.log(data_ForMemberNotNullComment);
+              notnullrestaurantcommentList = data_ForMemberNotNullComment;
               document.querySelector(
                 "table.notnullrestaurantcomment tbody"
               ).innerHTML = "";
-              data.forEach(function (element, index) {
+              notnullrestaurantcomment.style.display = "block";
+
+              data_ForMemberNotNullComment.forEach(function (element, index) {
                 console.log(element);
                 let tbody_html = document.createElement("tr");
                 let tr_html = `
                           <td>${element.reserveNo}</td>
-                          <td>${element.restaurantNo}</td>
+                          <td>${element.restaurantName}</td>
                           <td>${element.restaurantCommentTime}</td>
                           <td>${element.commentRating}</td>
                           <td>是</td>
                           <td>
                             <a
-                              class="comment_reply"
+                              class="a"
                               style="
                                         width: auto;
                                         padding: 2px;
@@ -737,6 +950,8 @@
           console.log(notnullrestaurantcomment_html);
           notnullrestaurantcomment_html.addEventListener("click", function (e) {
             if (e.target.tagName.toLowerCase() === "a") {
+              e.target.classList.contains("a");
+              console.log(e.target.classList.contains("a"));
               // e.preventDefault();
               console.log(e);
               // console.log(e.target.getAttribute("data-listIndex"));
@@ -744,35 +959,42 @@
                 e.target.getAttribute("data-listIndex")
               );
               sessionStorage.setItem(
-                "reservationVO",
-                JSON.stringify(resultList[list_index])
+                "restCommentReplyVO",
+                JSON.stringify(notnullrestaurantcommentList[list_index])
               );
             }
           });
-          fetch("http://localhost:8080/restaurantcomment/NullComment", {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: "",
-          })
+          fetch(
+            "http://localhost:8080/restaurantcomment/ForMemberNullComment",
+            {
+              method: "POST",
+              headers: { "Content-type": "application/json" },
+              body: JSON.stringify({
+                memberNo: updateMemberNo,
+              }),
+            }
+          )
             .then((r) => r.json())
-            .then((data) => {
-              console.log(data);
-              resultList = data;
+            .then((data_ForMemberNullComment) => {
+              console.log(data_ForMemberNullComment);
+              nullrestaurantcommentList = data_ForMemberNullComment;
               document.querySelector(
                 "table.nullrestaurantcomment tbody"
               ).innerHTML = "";
-              data.forEach(function (element, index) {
+              nullrestaurantcomment.style.display = "block";
+
+              data_ForMemberNullComment.forEach(function (element, index) {
                 console.log(element);
                 let tbody_html = document.createElement("tr");
                 let tr_html = `
                           <td>${element.reserveNo}</td>
-                          <td>${element.restaurantNo}</td>
+                          <td>${element.restaurantName}</td>
                           <td>-</td>
                           <td>-</td>
                           <td>-</td>
                           <td>
                             <a
-                              class="comment_reply"
+                              class="b"
                               style="
                                         width: auto;
                                         padding: 2px;
@@ -798,45 +1020,52 @@
                 "click",
                 function (e) {
                   if (e.target.tagName.toLowerCase() === "a") {
+                    e.target.classList.contains("b");
+                    console.log(e.target.classList.contains("b"));
                     // e.preventDefault();
                     console.log(e);
-                    // console.log(e.target.getAttribute("data-listIndex"));
+                    console.log(e.target.getAttribute("data-listIndex"));
                     let list_index = parseInt(
                       e.target.getAttribute("data-listIndex")
                     );
+                    console.log(nullrestaurantcommentList);
                     sessionStorage.setItem(
-                      "reservationVO",
-                      JSON.stringify(resultList[list_index])
+                      "restCommentReplyVO",
+                      JSON.stringify(nullrestaurantcommentList[list_index])
                     );
                   }
                 }
               );
             });
         } else if (choice == "商品評論") {
-          fetch("http://localhost:8080/prodcomment/NotNullComment", {
+          fetch("http://localhost:8080/prodcomment/ForMemberNotNullComment", {
             method: "POST",
             headers: { "Content-type": "application/json" },
-            body: "",
+            body: JSON.stringify({
+              memberNo: updateMemberNo,
+            }),
           })
             .then((r) => r.json())
-            .then((data) => {
-              console.log(data);
-              resultList = data;
+            .then((data_ForMemberNotNullComment) => {
+              console.log(data_ForMemberNotNullComment);
+              notnullprodcommentList = data_ForMemberNotNullComment;
               document.querySelector(
                 "table.notnullprodcomment tbody"
               ).innerHTML = "";
-              data.forEach(function (element, index) {
+              notnullprodcomment.style.display = "block";
+
+              data_ForMemberNotNullComment.forEach(function (element, index) {
                 console.log(element);
                 let tbody_html = document.createElement("tr");
                 let tr_html = `
                           <td>${element.prodOrderNo}</td>
-                          <td>${element.prodNo}</td>
+                          <td>${element.prodName}</td>
                           <td>${element.prodCommentTime}</td>
                           <td>${element.prodCommentRating}</td>
                           <td>是</td>
                           <td>
                             <a
-                              class="comment_reply"
+                              class="c"
                               style="
                                         width: auto;
                                         padding: 2px;
@@ -860,6 +1089,7 @@
               console.log(notnullprodcomment_html);
               notnullprodcomment_html.addEventListener("click", function (e) {
                 if (e.target.tagName.toLowerCase() === "a") {
+                  e.target.classList.contains("c");
                   // e.preventDefault();
                   console.log(e);
                   // console.log(e.target.getAttribute("data-listIndex"));
@@ -867,35 +1097,39 @@
                     e.target.getAttribute("data-listIndex")
                   );
                   sessionStorage.setItem(
-                    "prodOrderDetailVO",
-                    JSON.stringify(resultList[list_index])
+                    "prodCommentReplyVO",
+                    JSON.stringify(notnullprodcommentList[list_index])
                   );
                 }
               });
             });
-          fetch("http://localhost:8080/prodcomment/NullComment", {
+          fetch("http://localhost:8080/prodcomment/ForMemberNullComment", {
             method: "POST",
             headers: { "Content-type": "application/json" },
-            body: "",
+            body: JSON.stringify({
+              memberNo: updateMemberNo,
+            }),
           })
             .then((r) => r.json())
-            .then((data) => {
-              console.log(data);
-              resultList = data;
+            .then((data_ForMemberNullComment) => {
+              console.log(data_ForMemberNullComment);
+              nullprodcommentList = data_ForMemberNullComment;
               document.querySelector("table.nullprodcomment tbody").innerHTML =
                 "";
-              data.forEach(function (element, index) {
+              nullprodcomment.style.display = "block";
+
+              data_ForMemberNullComment.forEach(function (element, index) {
                 console.log(element);
                 let tbody_html = document.createElement("tr");
                 let tr_html = `
                           <td>${element.prodOrderNo}</td>
-                          <td>${element.prodNo}</td>
+                          <td>${element.prodName}</td>
                           <td>-</td>
                           <td>-</td>
                           <td>-</td>
                           <td>
                             <a
-                              class="comment_reply"
+                              class="d"
                               style="
                                         width: auto;
                                         padding: 2px;
@@ -919,6 +1153,7 @@
               console.log(nullprodcomment_html);
               nullprodcomment_html.addEventListener("click", function (e) {
                 if (e.target.tagName.toLowerCase() === "a") {
+                  e.target.classList.contains("d");
                   // e.preventDefault();
                   console.log(e);
                   // console.log(e.target.getAttribute("data-listIndex"));
@@ -926,8 +1161,8 @@
                     e.target.getAttribute("data-listIndex")
                   );
                   sessionStorage.setItem(
-                    "prodOrderDetailVO",
-                    JSON.stringify(resultList[list_index])
+                    "prodCommentReplyVO",
+                    JSON.stringify(nullprodcommentList[list_index])
                   );
                 }
               });

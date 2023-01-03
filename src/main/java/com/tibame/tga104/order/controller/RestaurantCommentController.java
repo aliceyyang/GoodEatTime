@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tibame.tga104.order.service.RestaurantCommmentService;
+import com.tibame.tga104.order.vo.ProdCommentReplyVO;
+import com.tibame.tga104.order.vo.RestCommentReplyVO;
 import com.tibame.tga104.reservation.vo.ReservationVO;
 
 @RestController
@@ -21,13 +23,25 @@ public class RestaurantCommentController {
 	private RestaurantCommmentService restaurantCommmentService;
 	
 	@PostMapping("NotNullComment")
-	public List<ReservationVO> NotNullComment(){
-		return restaurantCommmentService.selectNotNullComment();
+	public List<RestCommentReplyVO> NotNullComment(@RequestBody RestCommentReplyVO restCommentReplyVO){
+//		System.out.println(restCommentReplyVO);
+		return restaurantCommmentService.selectNotNullComment(restCommentReplyVO);
 	}
 	
 	@PostMapping("NullComment")
-	public List<ReservationVO> NullComment(){
+	public List<RestCommentReplyVO> NullComment(){
 		return restaurantCommmentService.selectNullComment();
+	}
+	
+	@PostMapping("ForMemberNotNullComment")
+	public List<RestCommentReplyVO> forMemberNotNullComment(@RequestBody RestCommentReplyVO restCommentReplyVO){
+		return restaurantCommmentService.selectForMemberNotNullComment(restCommentReplyVO);
+	}
+	
+	@PostMapping("ForMemberNullComment")
+	public List<RestCommentReplyVO> forMemberNullComment(@RequestBody RestCommentReplyVO restCommentReplyVO){
+		System.out.println(restaurantCommmentService.selectForMemberNullComment(restCommentReplyVO));
+		return restaurantCommmentService.selectForMemberNullComment(restCommentReplyVO);
 	}
 		
 	@PostMapping("Commnet")
