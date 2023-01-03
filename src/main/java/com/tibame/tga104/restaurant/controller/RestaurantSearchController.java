@@ -25,8 +25,7 @@ public class RestaurantSearchController {
 	@GetMapping("/search")
 	public List<RestaurantSearchVO> search(@RequestParam String restaurantName) {
 		System.out.println(restaurantName);
-		if(restaurantName != null && !restaurantName.equals("")) 
-		{
+		if(restaurantName != null && !restaurantName.equals("")) {
 			List<RestaurantSearchVO> list = restaurantSearchImpl.selectByrestaurantName(restaurantName);
 			return list;
 		}

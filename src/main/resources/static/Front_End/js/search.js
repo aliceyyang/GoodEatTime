@@ -149,6 +149,7 @@ Swal.fire({
   if (result.dismiss === Swal.DismissReason.timer) {
     console.log('I was closed by the timer')
     var searchText =  document.querySelector(".restaurantSearch").value;
+    console.log(searchText);
   sessionStorage.setItem("searchText",searchText);
   $.ajax({
     url: "/search_restaurant/search",
@@ -156,8 +157,7 @@ Swal.fire({
     dataType: "json",
     data: {restaurantName : searchText},
     success: function(data) {
-      var data = sessionStorage.getItem("restaurantSearchVO");
-      console.log(data);
+      
       
        
       $("div#restaurant_area.row").remove();
