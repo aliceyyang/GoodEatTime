@@ -48,7 +48,7 @@ document.querySelector("#btn_confirm").addEventListener("click", () => {
   fetch("../reservation/member", {
     method: "POST",
     headers: { "content-Type": "application/json" },
-    body: JSON.stringify(sessionStorage.getItem("reservation_inf")),
+    body: sessionStorage.getItem("reservation_inf"),
   })
     .then((resp) => {
       if (resp.redirected) {

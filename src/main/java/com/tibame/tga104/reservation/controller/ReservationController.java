@@ -127,38 +127,16 @@ public class ReservationController {
 		return false;
 	}
 
-//	@PostMapping("member")
-//	public boolean member(@RequestBody ReservationVO vo) {
-//		if (vo != null && vo.getMemberNo() != null) {
-//			if (vo.getReserveNum() <= reserveTimeService.getAvailableSeats(vo.getRestaurantNo(), vo.getReserveDate(),
-//					vo.getReserveTime())) {
-//				return reservationService.reservation(vo);
-//			}
-//		}
-//		return false;
-//	}
-
 	// 查找餐廳營業時間(星期)
 	@GetMapping("restaurant/date")
 	public List<Integer> reserveTime(@RequestParam Integer restaurantNo) {
 		return reserveTimeService.findByRestaurantNo(restaurantNo);
 	}
 
-	// wrong
-//	@GetMapping("restaurant/date")
-//	public List<Integer> reserveTime() {
-//		return reserveTimeService.findByRestaurantNo(2);
-//	}
-
 	// -----------查找可訂位人數ok
 	@PostMapping("restaurant/seat")
 	public int seats(@RequestBody ReservationVO vo) {
 		return reserveTimeService.getAvailableSeats(vo.getRestaurantNo(), vo.getReserveDate(), vo.getReserveTime());
 	}
-
-//	@PostMapping("restaurant/seat")
-//	public Integer seats(@RequestBody ReservationVO vo) {
-//		return reserveTimeService.getAvailableSeats(2, vo.getReserveDate(), vo.getReserveTime());
-//	}
 
 }
