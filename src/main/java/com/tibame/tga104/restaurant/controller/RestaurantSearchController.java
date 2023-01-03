@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tibame.tga104.restaurant.service.impl.RestaurantSearchImpl;
 import com.tibame.tga104.restaurant.vo.RestaurantSearchVO;
+import com.tibame.tga104.restaurant.vo.RestaurantVO;
 
 @RestController
 @RequestMapping("/search_restaurant")
@@ -24,18 +25,24 @@ public class RestaurantSearchController {
 	@GetMapping("/search")
 	public List<RestaurantSearchVO> search(@RequestParam String restaurantName) {
 		System.out.println(restaurantName);
-		List<RestaurantSearchVO> list = restaurantSearchImpl.selectByrestaurantName(restaurantName);
-		System.out.println(list);
-			if (list != null && !list.isEmpty()) {
+		if(restaurantName != null && !restaurantName.equals("")) {
+			List<RestaurantSearchVO> list = restaurantSearchImpl.selectByrestaurantName(restaurantName);
+			return list;
+		}
+		
+//		System.out.println(list);
+//			if (list != null && !list.isEmpty()) {
 //				System.out.println("b");
 //				System.out.println(list);
-				return list;
-			} else {
-				List<RestaurantSearchVO> listAll =  restaurantSearchImpl.getAll();
-//				System.out.println("a");
-//				System.out.println(listAll);
-				return listAll;
-			}
+//				return list;
+//			}
+//			} else {
+//				List<RestaurantSearchVO> listAll =  restaurantSearchImpl.getAll();
+////				System.out.println("a");
+////				System.out.println(listAll);
+//				return listAll;
+//			}
+			return null;
 	}
 	
 	@GetMapping("/newrestaurant")
@@ -43,5 +50,17 @@ public class RestaurantSearchController {
 		List<RestaurantSearchVO> newlist = restaurantSearchImpl.selectNewrestaurant();
 		System.out.println(newlist);
 		return newlist;
+	}
+	
+	@GetMapping("/gorestaurantpage") List<RestaurantSearchVO> searchByrestaurantNo(@RequestParam Integer restaurantNo) {
+		List<RestaurantSearchVO> list = restaurantSearchImpl.selectByrestaurantNo(restaurantNo);
+		System.out.println(list);
+		return list;
+	}
+	@GetMapping("/getAll") List<RestaurantSearchVO> allrestaurant() {
+		List<RestaurantSearchVO> listAll =  restaurantSearchImpl.getAll();
+//			System.out.println("a");
+//			System.out.println(listAll);
+			return listAll;
 	}
 }

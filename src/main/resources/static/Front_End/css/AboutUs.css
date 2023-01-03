@@ -153,13 +153,29 @@ button#btn_cancel {
   -------------------------------------*/
 /* 訂位人數設定 */
 .restaurant_reserveinf h2,
-h3, h4,h5 {
+h3, h4{
+  font-size: 20px;
   text-align: center;
   padding: 12px;
   color: rgb(255, 255, 255);
   background-color: #313131;
   margin-bottom: 10px;
   border: 2px solid;
+}
+
+ h5.division{
+  font-size: 10px;
+  text-align: center;
+  padding: 12px;
+  color: rgb(255, 255, 255);
+  background-color: #313131;
+  margin-bottom: 10px;
+  border: 2px solid;
+}
+
+h5.division p {
+  font-size: 10px;
+  color: white;
 }
 
 .reserve_set table,
@@ -530,9 +546,10 @@ ul {
 }
 
 .vitae_list {
+display: flex;
 padding-left: 8%;
 padding-top: 15px;
-padding-bottom: 30px;
+padding-bottom: 20px;
 max-width: 90%;
 }
 

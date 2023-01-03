@@ -11,7 +11,7 @@ if (sessionStorage.getItem("restaurantName") != null) {
 }
 document.getElementById("restaurantName").innerHTML = restaurantName;
 
-fetch(`/restaurant-rating/${restaurantNo}`)
+fetch(`../restaurant-rating/${restaurantNo}`)
   .then((resp) => resp.json())
   .then((list) => {
     var sum = 0;
@@ -226,7 +226,7 @@ fetch(`/restaurant-rating/${restaurantNo}`)
 
 // =====================取得所有評論=========================
 
-fetch(`/restaurant-comment/${restaurantNo}`)
+fetch(`../restaurant-comment/${restaurantNo}`)
   .then((resp) => resp.json())
   .then((list) => {
     $("#comment_sum").html(`共${list.length}則評論`);
@@ -321,4 +321,9 @@ fetch(`/restaurant-comment/${restaurantNo}`)
     }
 
     $("#restaurant_stars").html(restaurantStars);
+
+    $("a.toShop").attr(
+      "href",
+      `./shopping_mall.html?restaurantNo=${restaurantNum}`
+    );
   });

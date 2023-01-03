@@ -22,9 +22,25 @@ public class MemberRegistController {
 			memberVO.setMessage("註冊失敗");
 			return memberVO;
 		} else {
-			memberVO = memberService.register(memberVO);
+			String code = memberService.getVerificationCode(memberVO.getMail());
+			if(memberVO.getVerificationCode().equals(code)) {
+				return memberService.register(memberVO);
+			}else {
+				memberVO = new MemberVO();
+				memberVO.setSuccessful(false);
+				memberVO.setMessage("註冊失敗");
+				return memberVO;
+			}
 		}
-		return memberVO;
+	}
+	
+	@PostMapping("/confirm")
+	public boolean verify(@RequestBody MemberVO memberVO) {
+		if(memberVO != null) {
+			memberService.sendVerificationCode(memberVO.getMail());
+			return true;
+		}
+		return false;
 	}
 
 }

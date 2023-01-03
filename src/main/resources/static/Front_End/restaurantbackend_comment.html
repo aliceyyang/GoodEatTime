@@ -42,12 +42,12 @@
     .nice-select {
       width: 80%;
     }
-    table,
+    /* table,
     tr,
     th,
     td {
       border: 1px solid black;
-    }
+    } */
   </style>
 
   <body>
@@ -190,7 +190,6 @@
               display: grid;
               justify-content: center;
               height: 15%;
-              background-color: #fdf3ea;
             "
           >
             <h2>評論管理</h2>
@@ -203,70 +202,120 @@
               <div class="container" style="height: 90%">
                 <div class="row-cols-12" style="height: 90%">
                   <form action method="POST">
-                    <br />
-                    <div class="form-group">
-                      <div
-                        class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-                        style="margin-bottom: 15px"
-                      >
-                        <label for="commentFor">評論對象：</label>
-                        <select name="commentFor" id="commentFor">
+                    <div
+                      class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                      style="margin-bottom: 15px"
+                    >
+                      <div class="form-group">
+                        <label for="commentFor">請選擇評論對象：</label>
+                        <select
+                          required="true"
+                          name="commentFor"
+                          id="commentFor"
+                        >
+                          <option>此為必填欄位</option>
                           <option value="餐廳評論">餐廳評論</option>
                           <option value="商品評論">商品評論</option>
                         </select>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <label for="name">評論帳號：</label>
-                        <input type="text" name="name" id="name" />
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <label for="commentProd">評論商品：</label>
+                    <div class="col-lg-8 submit">
+                      <div
+                        class="form-group"
+                        style="
+                          align-items: center;
+                          display: grid;
+                          justify-content: left;
+                        "
+                      >
                         <input
-                          type="text"
-                          name="commentProd"
-                          id="commentProd"
+                          type="button"
+                          id="submit_btn"
+                          class="submit_btn"
+                          value="搜尋評論"
                         />
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <label for="commentTime">評論日期：</label>
-                        <input
-                          type="date"
-                          name="commentTime"
-                          id="commentTime"
-                        />
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <label for="commentRating">評論星等：</label>
-                        <input
-                          type="number"
-                          name="commentRating"
-                          id="commentRating"
-                        />
-                      </div>
-                      <div class="col-lg-8 submit">
-                        <div class="form-group">
-                          <input
-                            type="button"
-                            id="submit_btn"
-                            class="submit_btn"
-                            value="評論查詢"
-                          />
-                        </div>
                       </div>
                     </div>
                   </form>
                   <div>
                     _______________________________________________________________________________________________________________________
                   </div>
-                  <table class="prodcommmentList">
+                  <table
+                    id="prodcommmentList"
+                    class="prodcommmentList"
+                    width="100%"
+                    style="table-layout: fixed; display: none"
+                  >
+                    <thead align="center">
+                      <tr>
+                        <th
+                          align="center"
+                          style="border: 3px #ffd382 dashed; width: 100px"
+                        >
+                          評論對象
+                        </th>
+                        <th
+                          align="center"
+                          style="border: 3px #ffd382 dashed; width: 150px"
+                        >
+                          評論帳號
+                        </th>
+                        <th
+                          align="center"
+                          style="border: 3px #ffd382 dashed; width: 300px"
+                        >
+                          評論商品
+                        </th>
+                        <th
+                          align="center"
+                          style="border: 3px #ffd382 dashed; width: 200px"
+                        >
+                          評論日期
+                        </th>
+                        <th
+                          align="center"
+                          style="border: 3px #ffd382 dashed; width: 100px"
+                        >
+                          評論星等
+                        </th>
+                        <th
+                          align="center"
+                          style="border: 3px #ffd382 dashed; width: 100px"
+                        >
+                          回覆評論
+                        </th>
+                        <!-- <th>編輯</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr align="center">
+                        <td>abc</td>
+                        <td>123</td>
+                        <td>abc</td>
+                        <td>abc</td>
+                        <td>abc</td>
+                        <td>
+                          <button
+                            type="button"
+                            class="btn btn-light"
+                            style="
+                              width: auto;
+                              padding: 2px;
+                              border-radius: 8px;
+                              box-shadow: 3px 3px 1px #ffd382;
+                            "
+                          >
+                            觀看評論
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- <table
+                    class="prodcommmentList"
+                    id="prodcommmentList"
+                    style="display: none"
+                  >
                     <thead>
                       <tr>
                         <th>評論對象</th>
@@ -292,8 +341,82 @@
                         </td>
                       </tr>
                     </tbody>
+                  </table> -->
+                  <table
+                    id="restcommmentList"
+                    class="restcommmentList"
+                    width="100%"
+                    style="
+                      table-layout: fixed;
+                      display: none;
+                      margin-left: auto;
+                      margin-right: auto;
+                    "
+                  >
+                    <thead align="center">
+                      <tr>
+                        <th
+                          align="center"
+                          style="border: 3px #ffd382 dashed; width: 160px"
+                        >
+                          評論對象
+                        </th>
+                        <th
+                          align="center"
+                          style="border: 3px #ffd382 dashed; width: 210px"
+                        >
+                          評論帳號
+                        </th>
+                        <th
+                          align="center"
+                          style="border: 3px #ffd382 dashed; width: 260px"
+                        >
+                          評論日期
+                        </th>
+                        <th
+                          align="center"
+                          style="border: 3px #ffd382 dashed; width: 160px"
+                        >
+                          評論星等
+                        </th>
+                        <th
+                          align="center"
+                          style="border: 3px #ffd382 dashed; width: 160px"
+                        >
+                          回覆評論
+                        </th>
+                        <!-- <th>編輯</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr align="center">
+                        <td>abc</td>
+                        <td>123</td>
+                        <td>abc</td>
+                        <td>abc</td>
+                        <td>abc</td>
+                        <td>
+                          <button
+                            type="button"
+                            class="btn btn-light"
+                            style="
+                              width: auto;
+                              padding: 2px;
+                              border-radius: 8px;
+                              box-shadow: 3px 3px 1px #ffd382;
+                            "
+                          >
+                            觀看評論
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
-                  <table class="restcommmentList">
+                  <!-- <table
+                    class="restcommmentList"
+                    id="restcommmentList"
+                    style="display: none"
+                  >
                     <thead>
                       <tr>
                         <th>評論對象</th>
@@ -317,7 +440,7 @@
                         </td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> -->
                 </div>
               </div>
             </div>
@@ -456,8 +579,18 @@
     <script src="js/alice.js"></script>
 
     <script>
+      // 取出 sessionStorage 物件。
+      let restaurantMemberVO = JSON.parse(
+        sessionStorage.getItem("restaurantMemberVO")
+      );
+      console.log(restaurantMemberVO);
+      let updateRestaurantNo = restaurantMemberVO.restaurantNo;
+      console.log(updateRestaurantNo);
       const URL = "http://localhost:8080/prodcomment/NotNullComment"; // if 迴圈裡已經直接指定路徑。
       const submit_btn = document.getElementById("submit_btn");
+      const prodcommmentList = document.getElementById("prodcommmentList");
+      const restcommmentList = document.getElementById("restcommmentList");
+
       let resultList;
       submit_btn.addEventListener("click", function () {
         console.log(
@@ -470,7 +603,9 @@
           fetch("http://localhost:8080/restaurantcomment/NotNullComment", {
             method: "POST",
             headers: { "Content-type": "application/json" },
-            body: "",
+            body: JSON.stringify({
+              restaurantNo: updateRestaurantNo,
+            }),
           })
             .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
             .then((data) => {
@@ -478,11 +613,12 @@
               resultList = data;
               document.querySelector("table.restcommmentList tbody").innerHTML =
                 "";
+              restcommmentList.style.display = "block";
               data.forEach(function (element, index) {
                 console.log(element);
                 let tbody_html = document.createElement("tr");
-                let tr_html = `<td class="">商品</td>
-                          <td>評論ID</td>
+                let tr_html = `<td class="">餐廳</td>
+                          <td>${element.name}</td>
                           <td>${element.restaurantCommentTime}</td>
                           <td>${element.commentRating}</td>
                           <td>
@@ -490,7 +626,7 @@
                               class="comment_reply"
                               href="./restaurantbackend_commentreplyrestaurant.html"
                               data-listIndex="${index}"
-                              >修改</a
+                              >回覆評論</a
                             >
                           </td>`;
                 tbody_html.innerHTML = tr_html;
@@ -509,17 +645,20 @@
                     e.target.getAttribute("data-listIndex")
                   );
                   sessionStorage.setItem(
-                    "reservationVO",
+                    "restCommentReplyVO",
                     JSON.stringify(resultList[list_index])
                   );
                 }
               });
             });
         } else if (choice == "商品評論") {
+          console.log(updateRestaurantNo);
           fetch("http://localhost:8080/prodcomment/NotNullComment", {
             method: "POST",
             headers: { "Content-type": "application/json" },
-            body: "",
+            body: JSON.stringify({
+              restaurantNo: updateRestaurantNo,
+            }),
           })
             .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
             .then((data) => {
@@ -527,12 +666,13 @@
               resultList = data;
               document.querySelector("table.prodcommmentList tbody").innerHTML =
                 "";
+              prodcommmentList.style.display = "block";
               data.forEach(function (element, index) {
                 console.log(element);
                 let tbody_html = document.createElement("tr");
                 let tr_html = `<td class="">商品</td>
-                          <td>評論ID</td>
-                          <td>${element.prodNo}</td>
+                          <td>${element.name}</td>
+                          <td>${element.prodName}</td>
                           <td>${element.prodCommentTime}</td>
                           <td>${element.prodCommentRating}</td>
                           <td>
@@ -540,7 +680,7 @@
                               class="comment_reply"
                               href="./restaurantbackend_commentreplyprod.html"
                               data-listIndex="${index}"
-                              >修改</a
+                              >回覆評論</a
                             >
                           </td>`;
                 tbody_html.innerHTML = tr_html;
@@ -559,7 +699,7 @@
                     e.target.getAttribute("data-listIndex")
                   );
                   sessionStorage.setItem(
-                    "prodOrderDetailVO",
+                    "prodCommentReplyVO",
                     JSON.stringify(resultList[list_index])
                   );
                 }

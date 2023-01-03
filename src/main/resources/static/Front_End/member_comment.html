@@ -48,6 +48,112 @@
   </style>
 
   <body>
+    <table
+      id="prodcommmentList"
+      class="prodcommmentList"
+      width="100%"
+      style="table-layout: fixed; display: none"
+    >
+      <thead align="center">
+        <tr>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 100px">
+            評論對象
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 150px">
+            評論帳號
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 300px">
+            評論商品
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 200px">
+            評論日期
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 100px">
+            評論星等
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 100px">
+            回覆評論
+          </th>
+          <!-- <th>編輯</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr align="center">
+          <td>abc</td>
+          <td>123</td>
+          <td>abc</td>
+          <td>abc</td>
+          <td>abc</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-light"
+              style="
+                width: auto;
+                padding: 2px;
+                border-radius: 8px;
+                box-shadow: 3px 3px 1px #ffd382;
+              "
+            >
+              觀看評論
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table
+      id="prodcommmentList"
+      class="prodcommmentList"
+      width="100%"
+      style="table-layout: fixed; display: none"
+    >
+      <thead align="center">
+        <tr>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 100px">
+            評論對象
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 150px">
+            評論帳號
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 300px">
+            評論商品
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 200px">
+            評論日期
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 100px">
+            評論星等
+          </th>
+          <th align="center" style="border: 3px #ffd382 dashed; width: 100px">
+            回覆評論
+          </th>
+          <!-- <th>編輯</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr align="center">
+          <td>abc</td>
+          <td>123</td>
+          <td>abc</td>
+          <td>abc</td>
+          <td>abc</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-light"
+              style="
+                width: auto;
+                padding: 2px;
+                border-radius: 8px;
+                box-shadow: 3px 3px 1px #ffd382;
+              "
+            >
+              觀看評論
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <!-- Page Preloder -->
     <div id="preloder">
       <div class="loader"></div>
@@ -203,7 +309,6 @@
               display: grid;
               justify-content: center;
               height: 10%;
-              background-color: #fdf3ea;
             "
           >
             <h2>評論管理</h2>
@@ -288,39 +393,55 @@
                         >
                           <div class="row d-flex justify-content-center">
                             <table
+                              id="notnullprodcomment"
                               class="notnullprodcomment"
                               width="100%"
-                              style="table-layout: fixed"
+                              style="table-layout: fixed; display: none"
                             >
                               <thead align="center">
                                 <tr>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     訂單編號
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 300px;
+                                    "
                                   >
                                     商品名稱
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 200px;
+                                    "
                                   >
                                     評論日期
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     評論星等
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     商家回覆
                                   </th>
@@ -352,39 +473,55 @@
                               </tbody>
                             </table>
                             <table
+                              id="notnullrestaurantcomment"
                               class="notnullrestaurantcomment"
                               width="100%"
-                              style="table-layout: fixed"
+                              style="table-layout: fixed; display: none"
                             >
                               <thead align="center">
                                 <tr>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     訂位編號
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 300px;
+                                    "
                                   >
                                     餐廳名稱
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 200px;
+                                    "
                                   >
                                     評論日期
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     評論星等
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     商家回覆
                                   </th>
@@ -420,39 +557,55 @@
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
                           <div class="row d-flex justify-content-center">
                             <table
+                              id="nullprodcomment"
                               class="nullprodcomment"
                               width="100%"
-                              style="table-layout: fixed"
+                              style="table-layout: fixed; display: none"
                             >
                               <thead align="center">
                                 <tr>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     訂單編號
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 300px;
+                                    "
                                   >
                                     商品名稱
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 200px;
+                                    "
                                   >
                                     評論日期
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     評論星等
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     商家回覆
                                   </th>
@@ -484,39 +637,55 @@
                               </tbody>
                             </table>
                             <table
+                              id="nullrestaurantcomment"
                               class="nullrestaurantcomment"
                               width="100%"
-                              style="table-layout: fixed"
+                              style="table-layout: fixed; display: none"
                             >
                               <thead align="center">
                                 <tr>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     訂位編號
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 300px;
+                                    "
                                   >
                                     餐廳名稱
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 200px;
+                                    "
                                   >
                                     評論日期
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     評論星等
                                   </th>
                                   <th
                                     align="center"
-                                    style="border: 3px #ffd382 dashed"
+                                    style="
+                                      border: 3px #ffd382 dashed;
+                                      width: 100px;
+                                    "
                                   >
                                     商家回覆
                                   </th>
@@ -679,8 +848,23 @@
     <script src="js/alice.js"></script>
 
     <script>
+      let memberVO = JSON.parse(sessionStorage.getItem("memberVO"));
+      console.log(memberVO);
+      let updateMemberNo = memberVO.memberNo;
+      console.log(updateMemberNo);
       const submit_btn = document.getElementById("submit_btn");
-      let resultList;
+      let notnullrestaurantcommentList;
+      let nullrestaurantcommentList;
+      let notnullprodcommentList;
+      let nullprodcommentList;
+      const notnullrestaurantcomment = document.getElementById(
+        "notnullrestaurantcomment"
+      );
+      const nullrestaurantcomment = document.getElementById(
+        "nullrestaurantcomment"
+      );
+      const notnullprodcomment = document.getElementById("notnullprodcomment");
+      const nullprodcomment = document.getElementById("nullprodcomment");
       submit_btn.addEventListener("click", function () {
         console.log(
           document.querySelector("div.nice-select span.current").innerText
@@ -689,30 +873,37 @@
           "div.nice-select span.current"
         ).innerText;
         if (choice == "餐廳評論") {
-          fetch("http://localhost:8080/restaurantcomment/NotNullComment", {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: "",
-          })
+          fetch(
+            "http://localhost:8080/restaurantcomment/ForMemberNotNullComment",
+            {
+              method: "POST",
+              headers: { "Content-type": "application/json" },
+              body: JSON.stringify({
+                memberNo: updateMemberNo,
+              }),
+            }
+          )
             .then((r) => r.json())
-            .then((data) => {
-              console.log(data);
-              resultList = data;
+            .then((data_ForMemberNotNullComment) => {
+              console.log(data_ForMemberNotNullComment);
+              notnullrestaurantcommentList = data_ForMemberNotNullComment;
               document.querySelector(
                 "table.notnullrestaurantcomment tbody"
               ).innerHTML = "";
-              data.forEach(function (element, index) {
+              notnullrestaurantcomment.style.display = "block";
+
+              data_ForMemberNotNullComment.forEach(function (element, index) {
                 console.log(element);
                 let tbody_html = document.createElement("tr");
                 let tr_html = `
                           <td>${element.reserveNo}</td>
-                          <td>${element.restaurantNo}</td>
+                          <td>${element.restaurantName}</td>
                           <td>${element.restaurantCommentTime}</td>
                           <td>${element.commentRating}</td>
                           <td>是</td>
                           <td>
                             <a
-                              class="comment_reply"
+                              class="a"
                               style="
                                         width: auto;
                                         padding: 2px;
@@ -737,6 +928,8 @@
           console.log(notnullrestaurantcomment_html);
           notnullrestaurantcomment_html.addEventListener("click", function (e) {
             if (e.target.tagName.toLowerCase() === "a") {
+              e.target.classList.contains("a");
+              console.log(e.target.classList.contains("a"));
               // e.preventDefault();
               console.log(e);
               // console.log(e.target.getAttribute("data-listIndex"));
@@ -744,35 +937,42 @@
                 e.target.getAttribute("data-listIndex")
               );
               sessionStorage.setItem(
-                "reservationVO",
-                JSON.stringify(resultList[list_index])
+                "restCommentReplyVO",
+                JSON.stringify(notnullrestaurantcommentList[list_index])
               );
             }
           });
-          fetch("http://localhost:8080/restaurantcomment/NullComment", {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: "",
-          })
+          fetch(
+            "http://localhost:8080/restaurantcomment/ForMemberNullComment",
+            {
+              method: "POST",
+              headers: { "Content-type": "application/json" },
+              body: JSON.stringify({
+                memberNo: updateMemberNo,
+              }),
+            }
+          )
             .then((r) => r.json())
-            .then((data) => {
-              console.log(data);
-              resultList = data;
+            .then((data_ForMemberNullComment) => {
+              console.log(data_ForMemberNullComment);
+              nullrestaurantcommentList = data_ForMemberNullComment;
               document.querySelector(
                 "table.nullrestaurantcomment tbody"
               ).innerHTML = "";
-              data.forEach(function (element, index) {
+              nullrestaurantcomment.style.display = "block";
+
+              data_ForMemberNullComment.forEach(function (element, index) {
                 console.log(element);
                 let tbody_html = document.createElement("tr");
                 let tr_html = `
                           <td>${element.reserveNo}</td>
-                          <td>${element.restaurantNo}</td>
+                          <td>${element.restaurantName}</td>
                           <td>-</td>
                           <td>-</td>
                           <td>-</td>
                           <td>
                             <a
-                              class="comment_reply"
+                              class="b"
                               style="
                                         width: auto;
                                         padding: 2px;
@@ -798,45 +998,52 @@
                 "click",
                 function (e) {
                   if (e.target.tagName.toLowerCase() === "a") {
+                    e.target.classList.contains("b");
+                    console.log(e.target.classList.contains("b"));
                     // e.preventDefault();
                     console.log(e);
-                    // console.log(e.target.getAttribute("data-listIndex"));
+                    console.log(e.target.getAttribute("data-listIndex"));
                     let list_index = parseInt(
                       e.target.getAttribute("data-listIndex")
                     );
+                    console.log(nullrestaurantcommentList);
                     sessionStorage.setItem(
-                      "reservationVO",
-                      JSON.stringify(resultList[list_index])
+                      "restCommentReplyVO",
+                      JSON.stringify(nullrestaurantcommentList[list_index])
                     );
                   }
                 }
               );
             });
         } else if (choice == "商品評論") {
-          fetch("http://localhost:8080/prodcomment/NotNullComment", {
+          fetch("http://localhost:8080/prodcomment/ForMemberNotNullComment", {
             method: "POST",
             headers: { "Content-type": "application/json" },
-            body: "",
+            body: JSON.stringify({
+              memberNo: updateMemberNo,
+            }),
           })
             .then((r) => r.json())
-            .then((data) => {
-              console.log(data);
-              resultList = data;
+            .then((data_ForMemberNotNullComment) => {
+              console.log(data_ForMemberNotNullComment);
+              notnullprodcommentList = data_ForMemberNotNullComment;
               document.querySelector(
                 "table.notnullprodcomment tbody"
               ).innerHTML = "";
-              data.forEach(function (element, index) {
+              notnullprodcomment.style.display = "block";
+
+              data_ForMemberNotNullComment.forEach(function (element, index) {
                 console.log(element);
                 let tbody_html = document.createElement("tr");
                 let tr_html = `
                           <td>${element.prodOrderNo}</td>
-                          <td>${element.prodNo}</td>
+                          <td>${element.prodName}</td>
                           <td>${element.prodCommentTime}</td>
                           <td>${element.prodCommentRating}</td>
                           <td>是</td>
                           <td>
                             <a
-                              class="comment_reply"
+                              class="c"
                               style="
                                         width: auto;
                                         padding: 2px;
@@ -860,6 +1067,7 @@
               console.log(notnullprodcomment_html);
               notnullprodcomment_html.addEventListener("click", function (e) {
                 if (e.target.tagName.toLowerCase() === "a") {
+                  e.target.classList.contains("c");
                   // e.preventDefault();
                   console.log(e);
                   // console.log(e.target.getAttribute("data-listIndex"));
@@ -867,35 +1075,39 @@
                     e.target.getAttribute("data-listIndex")
                   );
                   sessionStorage.setItem(
-                    "prodOrderDetailVO",
-                    JSON.stringify(resultList[list_index])
+                    "prodCommentReplyVO",
+                    JSON.stringify(notnullprodcommentList[list_index])
                   );
                 }
               });
             });
-          fetch("http://localhost:8080/prodcomment/NullComment", {
+          fetch("http://localhost:8080/prodcomment/ForMemberNullComment", {
             method: "POST",
             headers: { "Content-type": "application/json" },
-            body: "",
+            body: JSON.stringify({
+              memberNo: updateMemberNo,
+            }),
           })
             .then((r) => r.json())
-            .then((data) => {
-              console.log(data);
-              resultList = data;
+            .then((data_ForMemberNullComment) => {
+              console.log(data_ForMemberNullComment);
+              nullprodcommentList = data_ForMemberNullComment;
               document.querySelector("table.nullprodcomment tbody").innerHTML =
                 "";
-              data.forEach(function (element, index) {
+              nullprodcomment.style.display = "block";
+
+              data_ForMemberNullComment.forEach(function (element, index) {
                 console.log(element);
                 let tbody_html = document.createElement("tr");
                 let tr_html = `
                           <td>${element.prodOrderNo}</td>
-                          <td>${element.prodNo}</td>
+                          <td>${element.prodName}</td>
                           <td>-</td>
                           <td>-</td>
                           <td>-</td>
                           <td>
                             <a
-                              class="comment_reply"
+                              class="d"
                               style="
                                         width: auto;
                                         padding: 2px;
@@ -919,6 +1131,7 @@
               console.log(nullprodcomment_html);
               nullprodcomment_html.addEventListener("click", function (e) {
                 if (e.target.tagName.toLowerCase() === "a") {
+                  e.target.classList.contains("d");
                   // e.preventDefault();
                   console.log(e);
                   // console.log(e.target.getAttribute("data-listIndex"));
@@ -926,8 +1139,8 @@
                     e.target.getAttribute("data-listIndex")
                   );
                   sessionStorage.setItem(
-                    "prodOrderDetailVO",
-                    JSON.stringify(resultList[list_index])
+                    "prodCommentReplyVO",
+                    JSON.stringify(nullprodcommentList[list_index])
                   );
                 }
               });

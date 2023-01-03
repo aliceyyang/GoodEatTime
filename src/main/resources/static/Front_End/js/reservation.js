@@ -1,6 +1,6 @@
 let send_data = {};
 const restaurantNo = sessionStorage.getItem("restaurantNo");
-
+console.log(sessionStorage.getItem("restaurantTel"));
 // 餐廳資訊
 $("#restaurant").html(sessionStorage.getItem("restaurantName"));
 $("#phone").html(sessionStorage.getItem("restaurantTel"));

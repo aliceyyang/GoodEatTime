@@ -108,7 +108,7 @@
               <div class="header__top__right">
                 <div class="header__top__right__links">
                   <a href="" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
-                  <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+                  <a href="./member_likedRestaurant.html"><img src="img/icon/heart.png" alt="" /></a>
                 </div>
                 <div class="header__top__right__cart">
                   <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
@@ -281,9 +281,9 @@
               <h6>關於我們</h6>
               <div class="footer__social">
                 <!-- @這裡也還不知道要連去哪裡... -->
-                <a href="#">網站介紹<i></i></a>
+                <a href="./AboutUs.html">網站介紹<i></i></a>
                 <br />
-                <a href="#">履歷<i></i></a>
+                <a href="./AboutUs.html">履歷<i></i></a>
               </div>
             </div>
           </div>
@@ -361,7 +361,7 @@
   <!-- <script src="js/alice.js"></script> -->
   <!-- <script src="js/alice_admin2_membership_management_page.js"></script> -->
   <script> // GET
-    const URL = 'http://localhost:8080/admin/restaurant-accounts'
+    const URL = '../admin/restaurant-accounts'
     let resData = [];
     // 抽換資料
     const template = (resNo, account, name, verified) => {
@@ -403,7 +403,7 @@
               icon: "warning",
               button: "OK"
             }).then(() => {
-              sessionStorage.setItem("URL_BEFORE_LOGIN", window.location.assign("http://localhost:8080/Front_End/j_signin_root1.html"))
+              sessionStorage.setItem("URL_BEFORE_LOGIN", window.location.assign("../Front_End/j_signin_root1.html"))
             })
           } else {
             console.log("轉JSON")
@@ -454,7 +454,7 @@
           }
 
           // 點擊確認 -> PUT
-          const URL_PUT = 'http://localhost:8080/admin/restaurant-accounts'; // {restaurantNo}
+          const URL_PUT = '../admin/restaurant-accounts'; // {restaurantNo}
           if (edit_btn.value === '確認') {
             edit_btn.onclick = () => {
               // 審核狀態

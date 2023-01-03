@@ -6,8 +6,10 @@ $.ajax({
   success: function (list) {
     for (let index = 0; index < showcouponPic.length; index++) {
       const coupon = list[index % 6];
+      // console.log(coupon);
       const base64toUrl = getPicUrl(coupon.couponPicStr);
       const img = showcouponPic[index].querySelector("img");
+      // console.log(img);
       img.src = base64toUrl;
       img.dataset.couponNo = coupon.couponNo;
     }
@@ -16,7 +18,7 @@ $.ajax({
 
 $(".btn").on("click", ()=>{
   const searchText = document.querySelector(".main_serch").value;
-  // console.log(searchText)
+  // const restaurantName = sessionStorage.getItem("restaurantName");
   sessionStorage.setItem("searchText", searchText);
   location.href="/Front_End/Search.html";
 })  
