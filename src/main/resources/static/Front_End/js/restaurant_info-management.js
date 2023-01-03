@@ -1,12 +1,12 @@
 // ======================抓出餐廳原本的資料顯示在表單=======================
-let restaurantNo = 3; //先死預防打不開
+let restaurantNo = 3; //先寫死預防打不開
 if (sessionStorage.getItem("restaurantMemberVO") != null) {
   restaurantNo = JSON.parse(
     sessionStorage.getItem("restaurantMemberVO")
   ).restaurantNo;
 }
 
-fetch(`http://localhost:8080/restaurant-read/${restaurantNo}`, {
+fetch(`../restaurant-read/${restaurantNo}`, {
   method: "GET",
   redirect: "follow",
 }).then((resp) => {
@@ -161,7 +161,7 @@ $(function () {
       const restaurantAccount = $("#restaurantAccount").val();
       const restaurantPassword = $("#restaurantPassword").val();
 
-      fetch(`http://localhost:8080/restaurant-update/${restaurantNo}`, {
+      fetch(`../restaurant-update/${restaurantNo}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -183,7 +183,7 @@ $(function () {
 
 // =======================抓出餐廳已上傳的輪播圖片======================
 var quota; //還可上傳的圖片額度
-fetch(`http://localhost:8080/restaurant-readInfo/CarouselPic/${restaurantNo}`)
+fetch(`../restaurant-readInfo/CarouselPic/${restaurantNo}`)
   .then((res) => res.json())
   .then((list) => {
     const carousel_uploaded = document.querySelector("#carousel_uploaded"); //準備裝已上傳圖片的div
@@ -210,12 +210,9 @@ $(document).on("click", ".uploaded_pic", function () {
     quota++;
     carousel_quota.innerHTML = `可再上傳${quota}張輪播圖片`;
   });
-  fetch(
-    `http://localhost:8080/restaurant-deleteInfo/CarouselPic/${carouselPicNo}`,
-    {
-      method: "DELETE",
-    }
-  );
+  fetch(`../restaurant-deleteInfo/CarouselPic/${carouselPicNo}`, {
+    method: "DELETE",
+  });
 });
 
 // =========================輪播圖上傳限制六張==========================
@@ -255,16 +252,13 @@ function readFiles(files) {
       base64arr.push(e.target.result.split(",")[1]); //要截掉前面的data:image/png;base64, 才是圖像編碼
       if (files.length === base64arr.length) {
         //等陣列裝好所有選的圖檔後進來執行
-        fetch(
-          `http://localhost:8080/restaurant-uploadMultiplePics/${restaurantNo}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(base64arr),
-          }
-        );
+        fetch(`../restaurant-uploadMultiplePics/${restaurantNo}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(base64arr),
+        });
       }
     };
   }
@@ -312,7 +306,7 @@ drop_zone.addEventListener("drop", function (e) {
 // ======================抓出餐廳已上傳的菜單======================
 
 var menu_array = []; //準備裝多個菜單物件的陣列
-fetch(`http://localhost:8080/restaurant-readInfo/Menu/${restaurantNo}`)
+fetch(`../restaurant-readInfo/Menu/${restaurantNo}`)
   .then((res) => res.json())
   .then((list) => {
     const menu_uploaded = document.querySelector("#menu_uploaded"); //準備裝已上傳菜單的div
@@ -357,7 +351,7 @@ $(document).on("click", ".edit_menu", function () {
 function editMenu(picStr, pic_remark) {
   //從隱藏標籤拿回此貼文的PK
   const menuNo = document.querySelector('input[name="menuNo"]').value;
-  fetch("http://localhost:8080/restaurant-updateMenu", {
+  fetch("../restaurant-updateMenu", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -379,7 +373,7 @@ function readFile(pic, pic_remark) {
   read.onloadend = function (e) {
     var base64 = e.target.result.split(",")[1]; //要截掉前面的data:image/png;base64, 才是圖像編碼
 
-    fetch("http://localhost:8080/restaurant-uploadMenu", {
+    fetch("../restaurant-uploadMenu", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -423,7 +417,7 @@ $(document).on("click", ".delete_menu", function () {
     .fadeOut(800, function () {
       $(this).remove();
     });
-  fetch(`http://localhost:8080/restaurant-deleteInfo/Menu/${MenuNo}`, {
+  fetch(`../restaurant-deleteInfo/Menu/${MenuNo}`, {
     method: "DELETE",
   });
 });
@@ -479,7 +473,7 @@ drop_zone2.addEventListener("drop", function (e) {
 // ======================抓出餐廳已上傳的貼文======================
 
 var post_array = []; //準備裝多個貼文物件的陣列
-fetch(`http://localhost:8080/restaurant-readInfo/Post/${restaurantNo}`)
+fetch(`../restaurant-readInfo/Post/${restaurantNo}`)
   .then((res) => res.json())
   .then((list) => {
     const post_uploaded = document.querySelector("#post_uploaded"); //準備裝已上傳貼文的div
@@ -546,7 +540,7 @@ function editPost(picStr, post_type, post_title, post_content) {
   const restaurantPostNo = document.querySelector(
     'input[name="restaurantPostNo"]'
   ).value;
-  fetch("http://localhost:8080/restaurant-updatePost", {
+  fetch("../restaurant-updatePost", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -569,7 +563,7 @@ function readPostFile(pic, post_type, post_title, post_content) {
   read.onloadend = function (e) {
     var base64 = e.target.result.split(",")[1]; //要截掉前面的data:image/png;base64, 才是圖像編碼
 
-    fetch("http://localhost:8080/restaurant-uploadPost", {
+    fetch("../restaurant-uploadPost", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -618,12 +612,9 @@ $(document).on("click", ".delete_post", function () {
     .fadeOut(800, function () {
       $(this).remove();
     });
-  fetch(
-    `http://localhost:8080/restaurant-deleteInfo/Post/${restaurantPostNo}`,
-    {
-      method: "DELETE",
-    }
-  );
+  fetch(`../restaurant-deleteInfo/Post/${restaurantPostNo}`, {
+    method: "DELETE",
+  });
 });
 
 // ============================拖曳區+預覽圖處理============================
