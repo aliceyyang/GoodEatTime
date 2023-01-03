@@ -72,12 +72,16 @@ public class CouponServiceImpl implements CouponService {
 
 	@Override
 	public CouponVO insertCoupon(CouponVO couponVO) {
-		final String couponPicStr = couponVO.getCouponPicStr();
-		if (couponPicStr != null && !couponPicStr.isEmpty()) {
-			couponVO.setCouponPic(Base64.getDecoder().decode(couponPicStr));
+		if (couponVO != null) {
+			final String couponPicStr = couponVO.getCouponPicStr();
+			if (couponPicStr != null && !couponPicStr.isEmpty()) {
+				couponVO.setCouponPic(Base64.getDecoder().decode(couponPicStr));
+			}
+			dao.insert(couponVO);
+			return couponVO;
 		}
-		dao.insert(couponVO);
-		return couponVO;
+		System.out.println(couponVO);
+		return null;
 	}
 
 

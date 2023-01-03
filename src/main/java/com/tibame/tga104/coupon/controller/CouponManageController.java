@@ -18,6 +18,7 @@ import com.tibame.tga104.coupon.service.CouponService;
 import com.tibame.tga104.coupon.service.CouponServiceImpl;
 import com.tibame.tga104.coupon.vo.CouponVO;
 import com.tibame.tga104.member.vo.MemberVO;
+import com.tibame.tga104.member.vo.RestaurantMemberVO;
 
 @WebServlet("/coupon/Manage")
 public class CouponManageController extends HttpServlet {
@@ -36,12 +37,12 @@ public class CouponManageController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		MemberVO memberVO = new MemberVO();
-		memberVO = (MemberVO) session.getAttribute("memberVO");
+		RestaurantMemberVO restaurantMemberVO = new RestaurantMemberVO();
+		restaurantMemberVO = (RestaurantMemberVO) session.getAttribute("restaurantMemberVO");
 		
 		// TODO 暫時寫死!!!
 //		System.out.println("AAA");
-		List<CouponVO> list = svc.findByRestaurantNo(memberVO.getMemberNo());
+		List<CouponVO> list = svc.findByRestaurantNo(restaurantMemberVO.getRestaurantNo());
 		Map<String, List> map = new HashMap<String, List>();
 		map.put("data", list);
 		System.out.println(list);

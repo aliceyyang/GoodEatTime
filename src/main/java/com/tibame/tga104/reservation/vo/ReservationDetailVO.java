@@ -1,5 +1,7 @@
 package com.tibame.tga104.reservation.vo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,18 +12,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="v_reservation")
-public class ReservationDetailVO {
+public class ReservationDetailVO implements Serializable{
 	@Id
 	@Column(name = "restaurantNo")
 	private Integer restaurantNo;
 	
 	@Column(name="weekDay")
 	private Integer weekDay;
-	
+	@Id
 	@Column(name="reserveDate")
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone= "GMT+8")
 	private java.sql.Date reserveDate;
-	
+	@Id
 	@Column(name="reserveTime")
 	private String reserveTime;
 	

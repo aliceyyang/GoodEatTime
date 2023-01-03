@@ -233,7 +233,7 @@ carousel_file_el.addEventListener("change", function (e) {
   if (this.files.length <= quota) {
     preview_img(this.files[0]);
   } else {
-    alert("輪播圖片最多共6張，請先刪除不要的圖片再重新選擇!");
+    Swal.fire("輪播圖片最多共6張<br>請先刪除不要的圖片再重新選擇!");
     $("#carousel")[0].reset();
   }
 });
