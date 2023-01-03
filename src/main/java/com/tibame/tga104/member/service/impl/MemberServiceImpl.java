@@ -152,4 +152,24 @@ public class MemberServiceImpl implements MemberService {
 		return mailRessult;
 	}
 
+	@Override
+	public boolean sendVerificationCode(String mail) {
+		String randomCode = dao.verificationCode(mail);
+		String recipients = mail;
+		String mailSubject = "好食光-註冊會員驗證碼";
+		String mailBody="您的驗證碼為" + randomCode +"，驗證碼將於5分鐘後失效，請於5分鐘內輸入驗證碼，謝謝！";
+		try {
+			MailService.sendMail(recipients, mailSubject, mailBody);
+			return true;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public String getVerificationCode(String mail) {
+		return dao.getCode(mail);
+	}
+
 }

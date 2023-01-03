@@ -1,10 +1,14 @@
 package com.tibame.tga104.member.dao.impl;
 
+import java.util.concurrent.TimeUnit;
+
+import javax.annotation.Resource;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.tibame.tga104.member.dao.MemberDAO;
@@ -14,6 +18,9 @@ import com.tibame.tga104.member.vo.MemberVO;
 public class MemberDAOImpl implements MemberDAO {
 	@PersistenceContext
 	private Session session;
+	
+	@Resource(name = "stringRedisTemplate")
+	StringRedisTemplate redisTemplate;
 
 	public Session getSession() {
 		return session;
@@ -124,6 +131,30 @@ public class MemberDAOImpl implements MemberDAO {
 //				return temp;
 //			}
 //		}
+	}
+
+
+
+	@Override
+	public String verificationCode(String mail) {
+		if (mail != null) {
+			String randomCode = "abcdefghijklmnopqrstuvwxyz0123456789";
+			StringBuilder sb = new StringBuilder(6);
+			for (int i = 0; i < 6; i++) {
+				sb.append(randomCode.charAt((int) (randomCode.length() * Math.random())));
+			}
+			redisTemplate.opsForValue().set(mail, sb.toString());
+			redisTemplate.expire(mail, 5, TimeUnit.MINUTES);
+			return redisTemplate.opsForValue().get(mail);
+		}
+		return null;
+	}
+
+
+
+	@Override
+	public String getCode(String mail) {
+		return redisTemplate.opsForValue().get(mail);
 	}
 
 

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tibame.tga104.core.vo.Message;
@@ -53,6 +54,17 @@ public class MemberVO extends Message {
 
 	@Column(name = "memberPic", columnDefinition = "longblob")
 	private byte[] memberPic;
+	
+	@Transient
+	private String VerificationCode;
+
+	public String getVerificationCode() {
+		return VerificationCode;
+	}
+
+	public void setVerificationCode(String verificationCode) {
+		VerificationCode = verificationCode;
+	}
 
 	@Override
 	public String toString() {
