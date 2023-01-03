@@ -27,7 +27,7 @@ public class ProdCommentController {
 	
 	@PostMapping("NotNullComment")
 	public List<ProdCommentReplyVO> notNullComment(@RequestBody ProdCommentReplyVO prodCommentReplyVO){
-		System.out.print(prodCommentReplyVO);
+//		System.out.println(prodCommentService.selectNotNullComment(prodCommentReplyVO));
 		return prodCommentService.selectNotNullComment(prodCommentReplyVO);
 	}
 	

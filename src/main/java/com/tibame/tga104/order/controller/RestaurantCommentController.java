@@ -24,6 +24,7 @@ public class RestaurantCommentController {
 	
 	@PostMapping("NotNullComment")
 	public List<RestCommentReplyVO> NotNullComment(@RequestBody RestCommentReplyVO restCommentReplyVO){
+//		System.out.println(restCommentReplyVO);
 		return restaurantCommmentService.selectNotNullComment(restCommentReplyVO);
 	}
 	

@@ -189,22 +189,13 @@
           <div class="col-lg-12">
             <nav class="header__menu mobile-menu">
               <ul>
-                <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-                <li><a href="./about.html">會員專區</a></li>
-                <li><a href="./shop.html">餐廳</a></li>
-                <li><a href="./blog.html">線上商城</a></li>
-                <li>
-                  <a href="#">關於我們</a>
-                  <ul class="dropdown">
-                    <li><a href="./shop-details.html">Shop Details</a></li>
-                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                    <li><a href="./checkout.html">Check Out</a></li>
-                    <li><a href="./wisslist.html">Wisslist</a></li>
-                    <li><a href="./Class.html">Class</a></li>
-                    <li><a href="./blog-details.html">Blog Details</a></li>
-                  </ul>
-                </li>
-                <li><a href="./contact.html">地點搜尋</a></li>
+                <!-- ===餐廳後台消息通知跑馬燈=== -->
+                <div class="marquee text-white">
+                  <marquee id="marquee" scrollamount="8" direction="left">
+                    [好食光重要通知]防詐騙提醒!近來有不肖業者偽冒好食光客服，蓄意詐騙錢財、竊取資料，請餐飲業者們先聯繫好食光平台查證哦!
+                  </marquee>
+                </div>
+                <!-- ===餐廳後台消息通知跑馬燈=== -->
               </ul>
             </nav>
           </div>
@@ -221,12 +212,22 @@
         <div class="col-lg-2" id="left">
           <nav class="header__menu mobile-menu" id="aaa">
             <ul>
-              <li class=""><a href="http">帳號管理</a></li>
-              <li class=""><a href="http">訂位資訊</a></li>
-              <li class=""><a href="http">商城訂單</a></li>
-              <li class=""><a href="http">我的優惠券</a></li>
-              <li class=""><a href="http">我的最愛</a></li>
-              <li class=""><a href="http">我的評論</a></li>
+              <li><a href="./restaurant_info-management.html">餐廳資訊</a></li>
+              <li><a href="./restaurantbackend_prodinfo.html">商品管理</a></li>
+              <li>
+                <a href="./restaurantbackend_ordersearch.html">訂單管理</a>
+              </li>
+              <li class="active">
+                <a href="./restaurant_reserve-management.html">訂位管理</a>
+              </li>
+              <li><a href="./restaurantbackend_comment.html">評論管理</a></li>
+              <li><a href="./coupon_restaurant.html">優惠券設定</a></li>
+              <li><a href="./G3_alice_adOrder_restaurant.html">廣告訂單</a></li>
+              <li>
+                <a href="./G3_alice_adOrder_purchase_restaurant.html"
+                  >購買廣告</a
+                >
+              </li>
             </ul>
           </nav>
         </div>
@@ -382,22 +383,26 @@
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
       <div class="mask">
-        <div class="container">
+        <div>
           <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="footer__member">
                 <h6>會員專區</h6>
                 <div class="footer__social">
-                  <a href="#">登入會員<i></i></a>
-                  <a href="#">定位管理<i></i></a>
+                  <a href="./j_signin_member3.html">登入會員<i></i></a>
+                  <a href="./member_reservation.html">訂位管理<i></i></a>
                   <br />
-                  <a href="#">加入會員<i></i></a>
-                  <a href="#">定位管理<i></i></a>
+                  <a href="./j_registration_member3.html">加入會員<i></i></a>
+                  <a href="./member_order.html">訂單管理<i></i></a>
                   <br />
-                  <a href="#">優惠券<i></i></a>
-                  <a href="#">我的評論<i></i></a>
+                  <a href="./coupon_member.html"
+                    >優惠券&nbsp&nbsp&nbsp&nbsp<i></i
+                  ></a>
+                  <a href="./member_comment.html">我的評論<i></i></a>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__restaurant">
                 <h6>餐廳</h6>
                 <div class="footer__social">
@@ -407,17 +412,17 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__shopping">
                 <h6>線上商城</h6>
                 <div class="footer__social">
-                  <a href="#">商品搜尋<i></i></a>
+                  <a href="./shopping_mall.html">商品搜尋<i></i></a>
                   <br />
-                  <a href="#">購物車<i></i></a>
+                  <a href="./shopping_cart.html">購物車<i></i></a>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-2 col-md-3 col-sm-3">
               <div class="footer__aboutus">
                 <h6>關於我們</h6>
                 <div class="footer__social">
@@ -426,14 +431,19 @@
                   <a href="#">履歷<i></i></a>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-3 col-md-9 col-sm-12">
               <div class="footer__widget">
                 <h6>好食光</h6>
                 <ul>
                   <li>指導老師：</li>
-                  <li>吳永志老師 吳冠宏老師 郭惠民老師 陳怡榕老師</li>
+                  <li>吳永志老師 &nbsp; | &nbsp; 吳冠宏老師</li>
+                  <li>張互賓老師 &nbsp; | &nbsp; 馬全德老師</li>
+                  <li>郭惠民老師 &nbsp; | &nbsp; 陳怡榕老師</li>
                   <li>組員 :</li>
-                  <li>陳宜瀅 張家銘 楊婕妤</li>
-                  <li>游育碩 黃郁婕 李佳欣 余可凡</li>
+                  <li>陳宜瀅 &nbsp; | &nbsp; 張家銘 &nbsp; | &nbsp; 楊婕妤</li>
+                  <li>游育碩 &nbsp; | &nbsp; 黃郁婕</li>
+                  <li>李佳欣 &nbsp; | &nbsp; 余可凡</li>
                 </ul>
               </div>
             </div>
@@ -492,6 +502,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/logged_restaurant.js"></script>
     <!-- <script src="js/reservation.js"></script> -->
     <!-- <script src="js/alice.js"></script> -->
 
