@@ -1,7 +1,7 @@
 var tbcoupon_insert = document.querySelector("#tbcoupon_insert");
-const restaurantMemberVO = sessionStorage.getItem("restaurantMemberVO");
-console.log(restaurantMemberVO);
-const couponNo = sessionStorage.getItem("restaurantMemberVO", restaurantMemberVO.restaurantNo);
+const couponNo = sessionStorage.getItem("couponNo");
+let restaurantMemberVO = JSON.parse(sessionStorage.getItem("restaurantMemberVO"));
+  var restaurantNo = restaurantMemberVO.restaurantNo
 tbcoupon_insert.innerHTML = Template({restaurantNo : restaurantNo});
 //==========================返回=================================
 function onbackClick() {

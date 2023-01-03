@@ -3,10 +3,6 @@ package com.tibame.tga104.restaurant.dao.impl;
 import java.util.List;
 
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
@@ -34,6 +30,16 @@ public class RestaurantSearchHibernate implements RestaurantSearchDAO {
 			String hql = "from RestaurantSearchVO where restaurantName like '%" + restaurantName + "%'";
 			List<RestaurantSearchVO> result = this.getSession().createQuery(hql, RestaurantSearchVO.class).list();
 			return result;
+		}
+		return null;
+	}
+
+	@Override
+	public List<RestaurantSearchVO> selectByrestaurantNo(Integer restaurantNo) {
+		if (restaurantNo != null) {
+			String hql = "from RestaurantSearchVO where restaurantNo = "+ restaurantNo;
+			List<RestaurantSearchVO> list = this.getSession().createQuery(hql, RestaurantSearchVO.class).list();
+			return list;
 		}
 		return null;
 	}
