@@ -35,15 +35,16 @@
       rel="stylesheet"
       href="css/member_page_overview.css"
       type="text/css"
-      />
-    <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
+    />
+    <link rel="stylesheet" href="css/alice_style.css" type="text/css" />
+    -->
 
     <style>
       .nice-select {
         width: 80%;
       }
       #prodMainPic {
-    display: none;
+        display: none;
       }
 
       .prodPic {
@@ -243,21 +244,33 @@
                 <form action method="POST">
                   <div class="row">
                     <div class="col">
-                      <br>
+                      <br />
                       <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
                             <label for="prodName">商品名稱：</label>
-                            <input type="text" name="prodName" id="prodName" placeholder="此為必填欄位">
+                            <input
+                              type="text"
+                              name="prodName"
+                              id="prodName"
+                              placeholder="此為必填欄位"
+                            />
                           </div>
                         </div>
                       </div>
-                      <br>
+                      <br />
                       <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px;">
+                        <div
+                          class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                          style="margin-bottom: 15px"
+                        >
                           <div class="form-group">
                             <label for="prodCategoryNo">商品類別：</label>
-                            <select required="true" name="prodCategoryNo" id="prodCategoryNo">
+                            <select
+                              required="true"
+                              name="prodCategoryNo"
+                              id="prodCategoryNo"
+                            >
                               <option>此為必填欄位</option>
                               <option value="1">日式料理</option>
                               <option value="2">義式料理</option>
@@ -273,58 +286,96 @@
                           </div>
                         </div>
                       </div>
-                      <br>
+                      <br />
                       <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
                             <label for="prodStock">商品庫存：</label>
-                            <input type="text" name="prodStock" id="prodStock" placeholder="此為必填欄位">
+                            <input
+                              type="text"
+                              name="prodStock"
+                              id="prodStock"
+                              placeholder="此為必填欄位"
+                            />
                           </div>
                         </div>
                       </div>
-                      <br>
+                      <br />
                       <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
                             <label for="prodPrice">商品價格：</label>
-                            <input type="text" name="prodPrice" id="prodPrice" placeholder="此為必填欄位">
+                            <input
+                              type="text"
+                              name="prodPrice"
+                              id="prodPrice"
+                              placeholder="此為必填欄位"
+                            />
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="col">
-                      <br>
+                      <br />
                       <div class="row">
                         <div class="">
                           <div class="form-group">
                             <label for="prodDescription">商品說明：</label>
-                            <textarea name="prodDescription" id="prodDescription" cols="25" rows="5"></textarea>
+                            <textarea
+                              name="prodDescription"
+                              id="prodDescription"
+                              cols="25"
+                              rows="5"
+                            ></textarea>
                           </div>
                         </div>
                       </div>
-                      <br>
+                      <br />
                       <div class="row">
                         <div class="">
                           <div class="form-group">
                             <label for="prodContent">商品規格：</label>
-                            <textarea name="prodContent" id="prodContent" cols="25" rows="5"></textarea>
+                            <textarea
+                              name="prodContent"
+                              id="prodContent"
+                              cols="25"
+                              rows="5"
+                            ></textarea>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="col">
-                      <br>
+                      <br />
                       <div class="row">
                         <div class="form-group">
                           <label class="prodMainPic_text">商品圖片：</label>
-                          <label class="prodPic" for="prodMainPic" tabIndex="0">
+                          <label class="prodPic" for="prodMainPic" tabindex="0">
                             <span class="prodMainPic_image"></span>
                           </label>
-                          <input type="file" name="prodMainPic" id="prodMainPic" multiple accept="image/*">
+                          <input
+                            type="file"
+                            name="prodMainPic"
+                            id="prodMainPic"
+                            multiple
+                            accept="image/*"
+                          />
                         </div>
                         <div class="col-lg-8 submit">
-                          <div class="form-group" style="align-items: center; display: grid;justify-content:right;">
-                            <input type="button" id="submit_btn" class="submit_btn" value="商品資料上傳">
+                          <div
+                            class="form-group"
+                            style="
+                              align-items: center;
+                              display: grid;
+                              justify-content: right;
+                            "
+                          >
+                            <input
+                              type="button"
+                              id="submit_btn"
+                              class="submit_btn"
+                              value="商品資料上傳"
+                            />
                           </div>
                         </div>
                       </div>
@@ -335,7 +386,6 @@
             </div>
             <div class="col-1"></div>
           </div>
-        </div>
         </div>
       </div>
     </section>
@@ -458,69 +508,86 @@
     <!-- <script src="js/reservation.js"></script> -->
     <!-- <script src="js/alice.js"></script> -->
 
-    <script> // 預覽圖片
+    <script>
+      // 預覽圖片
       const inputFile = document.querySelector("#prodMainPic");
       const pictureImage = document.querySelector(".prodMainPic_image");
       const pictureImageTxt = "可以選擇一張圖片";
       pictureImage.innerHTML = pictureImageTxt;
-  
+
       inputFile.addEventListener("change", function (e) {
         const inputTarget = e.target;
         const file = inputTarget.files[0];
-  
+
         if (file) {
           const reader = new FileReader();
-  
+
           reader.addEventListener("load", function (e) {
             const readerTarget = e.target;
-  
+
             const img = document.createElement("img");
             img.src = readerTarget.result;
             img.classList.add("prodMainPic_image");
-  
+
             pictureImage.innerHTML = "";
             pictureImage.appendChild(img);
           });
-  
+
           reader.readAsDataURL(file);
         } else {
           pictureImage.innerHTML = pictureImageTxt;
         }
-      }); 
+      });
     </script>
-    <script> // POST
-      const URL = 'http://localhost:8080/product/addProdInfo';      
+    <script>
+      // POST
+
+      let restaurantMemberVO = JSON.parse(
+        sessionStorage.getItem("restaurantMemberVO")
+      );
+      console.log(restaurantMemberVO);
+
+      const URL = "http://localhost:8080/product/addProdInfo";
       const submit_btn = document.getElementById("submit_btn");
       submit_btn.addEventListener("click", function () {
         let updateName = document.querySelector("#prodName").value;
-        let updateCategoryNo = parseInt(document.querySelector("#prodCategoryNo").value);
+        let updateCategoryNo = parseInt(
+          document.querySelector("#prodCategoryNo").value
+        );
         let updateStock = parseInt(document.querySelector("#prodStock").value);
         let updatePrice = parseInt(document.querySelector("#prodPrice").value);
-        let updateDescription = document.querySelector("#prodDescription").value;
+        let updateDescription =
+          document.querySelector("#prodDescription").value;
         let updateContent = document.querySelector("#prodContent").value;
-        
+        let updateRestaurantNo = restaurantMemberVO.restaurantNo;
+        console.log(updateRestaurantNo);
+
         const fileReader = new FileReader();
         fileReader.onload = (event) => {
           let updateProdMainPicStr = btoa(event.target.result);
           fetch(URL, {
             method: "POST",
-            headers: { 'Content-type': 'application/json', },
+            headers: { "Content-type": "application/json" },
             body: JSON.stringify({
-              restaurantNo: 2,
+              restaurantNo: updateRestaurantNo,
               prodName: updateName,
               prodCategoryNo: updateCategoryNo,
               prodStock: updateStock,
               prodPrice: updatePrice,
               prodDescription: updateDescription,
               prodContent: updateContent,
-              prodMainPicStr: updateProdMainPicStr
+              prodMainPicStr: updateProdMainPicStr,
             }),
           })
             .then((r) => r.json()) // 接收到回傳的物件，再用 .json() analyze資料
-            .then((data) => { console.log(data); alert('成功新增商品 !'); location.reload(); })
-        }
+            .then((data) => {
+              console.log(data);
+              alert("成功新增商品 !");
+              location.reload();
+            });
+        };
         fileReader.readAsBinaryString(inputFile.files[0]);
-        })
+      });
     </script>
   </body>
 </html>

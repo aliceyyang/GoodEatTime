@@ -254,11 +254,11 @@
                       <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
-                            <label for="prodNo">評論商品：</label>
+                            <label for="prodName">評論商品：</label>
                             <input
-                              type="number"
-                              name="prodNo"
-                              id="prodNo"
+                              type="text"
+                              name="prodName"
+                              id="prodName"
                               readonly
                               placeholder="自動顯示"
                             />
@@ -327,6 +327,7 @@
                             <textarea
                               name="prodCommentContent"
                               id="prodCommentContent"
+                              readonly
                               cols="25"
                               rows="7"
                             ></textarea>
@@ -512,11 +513,11 @@
     </script>
 
     <script>
-      let prodOrderDetailVO = JSON.parse(
-        sessionStorage.getItem("prodOrderDetailVO")
+      let prodCommentReplyVO = JSON.parse(
+        sessionStorage.getItem("prodCommentReplyVO")
       );
-      console.log(prodOrderDetailVO);
-      document.getElementById("prodNo").value = prodOrderDetailVO.prodNo;
+      console.log(prodCommentReplyVO);
+      document.getElementById("prodName").value = prodCommentReplyVO.prodName;
     </script>
 
     <script>
@@ -524,8 +525,8 @@
       const URL = "http://localhost:8080/prodcomment/Comment";
       const submit_btn = document.getElementById("submit_btn");
       submit_btn.addEventListener("click", function () {
-        let updateProdOrderNo = prodOrderDetailVO.prodOrderNo;
-        let updateProdNo = prodOrderDetailVO.prodNo;
+        let updateProdOrderNo = prodCommentReplyVO.prodOrderNo;
+        let updateProdNo = prodCommentReplyVO.prodNo;
         let updateProdCommentRating = parseInt(
           document.querySelector("#prodCommentRating").value
         );
@@ -552,6 +553,7 @@
               console.log(data);
               alert("送交訂單成功");
               location.reload();
+              window.history.back(-1);
             });
         };
         fileReader.readAsBinaryString(inputFile.files[0]);

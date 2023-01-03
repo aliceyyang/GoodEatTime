@@ -271,11 +271,11 @@
                       <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
-                            <label for="memberNo">評論帳號：</label>
+                            <label for="name">評論帳號：</label>
                             <input
-                              type="number"
-                              name="memberNo"
-                              id="memberNo"
+                              type="text"
+                              name="name"
+                              id="name"
                               readonly
                               placeholder="自動顯示"
                             />
@@ -323,8 +323,9 @@
                               tabindex="0"
                             >
                               <span class="commentPic_image"></span>
+                              <img id="comment_pic" src="" />
                             </label>
-                            <img id="comment_pic" src="" />
+                            <!-- <img id="comment_pic" src="" /> -->
                             <!-- <input
                               type="file"
                               name="commentPic"
@@ -359,7 +360,7 @@
                                 type="button"
                                 id="submit_btn"
                                 class="submit_btn"
-                                value="評論資料上傳"
+                                value="回覆使用者評論"
                               />
                             </div>
                           </div>
@@ -526,20 +527,23 @@
     </script> -->
 
     <script>
-      let reservationVO = JSON.parse(sessionStorage.getItem("reservationVO"));
-      console.log(reservationVO);
+      let restCommentReplyVO = JSON.parse(
+        sessionStorage.getItem("restCommentReplyVO")
+      );
+      console.log(restCommentReplyVO);
 
       document.getElementById("restaurantCommentTime").value =
-        reservationVO.restaurantCommentTime;
+        restCommentReplyVO.restaurantCommentTime;
+      document.getElementById("name").value = restCommentReplyVO.name;
       document.getElementById("commentRating").value =
-        reservationVO.commentRating;
+        restCommentReplyVO.commentRating;
       document.getElementById("commentContent").value =
-        reservationVO.commentContent;
+        restCommentReplyVO.commentContent;
       document
         .getElementById("comment_pic")
         .setAttribute(
           "src",
-          `../restaurantcomment/ShowCommentPic?reserveNo=${reservationVO.reserveNo}&restaurantNo=${reservationVO.restaurantNo}`
+          `../restaurantcomment/ShowCommentPic?reserveNo=${restCommentReplyVO.reserveNo}&restaurantNo=${restCommentReplyVO.restaurantNo}`
         );
     </script>
     <script>
@@ -554,7 +558,7 @@
       const URL = "http://localhost:8080/restaurantcomment/CommnetReply";
       const submit_btn = document.getElementById("submit_btn");
       submit_btn.addEventListener("click", function () {
-        let updatereserveNo = reservationVO.reserveNo;
+        let updatereserveNo = restCommentReplyVO.reserveNo;
         let updateRestaurantRe = document.querySelector("#restaurantRe").value;
         fetch(URL, {
           method: "POST",
@@ -569,6 +573,7 @@
             console.log(data);
             alert("成功回覆評論 !");
             location.reload();
+            window.history.back(-1);
           });
       });
     </script>

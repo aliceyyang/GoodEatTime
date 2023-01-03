@@ -254,11 +254,11 @@
                       <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
-                            <label for="reserveNo">評論餐廳：</label>
+                            <label for="restaurantName">評論餐廳：</label>
                             <input
-                              type="number"
-                              name="reserveNo"
-                              id="reserveNo"
+                              type="text"
+                              name="restaurantName"
+                              id="restaurantName"
                               readonly
                               placeholder="自動顯示"
                             />
@@ -308,12 +308,13 @@
                               tabindex="0"
                             >
                               <span class="commentPic_image"></span>
+                              <img id="comment_pic" src="" />
                             </label>
-                            <input
+                            <!-- <input
                               type="file"
                               name="commentPic"
                               id="commentPic"
-                            />
+                            /> -->
                           </div>
                         </div>
                       </div>
@@ -323,10 +324,10 @@
                       <div class="row">
                         <div class="">
                           <div class="form-group">
-                            <label for="prodCommentContent">餐廳回覆：</label>
+                            <label for="restaurantRe">餐廳回覆：</label>
                             <textarea
-                              name="prodCommentContent"
-                              id="prodCommentContent"
+                              name="restaurantRe"
+                              id="restaurantRe"
                               readonly
                               cols="25"
                               rows="7"
@@ -345,7 +346,7 @@
                                 type="button"
                                 id="submit_btn"
                                 class="submit_btn"
-                                value="評論資料上傳"
+                                value="回到評論查詢"
                               />
                             </div>
                           </div>
@@ -480,7 +481,7 @@
     <!-- <script src="js/reservation.js"></script> -->
     <!-- <script src="js/alice.js"></script> -->
 
-    <script>
+    <!-- <script>
       // 預覽圖片
       const inputFile = document.querySelector("#commentPic");
       const pictureImage = document.querySelector(".commentPic_image");
@@ -510,21 +511,43 @@
           pictureImage.innerHTML = pictureImageTxt;
         }
       });
+    </script> -->
+
+    <script>
+      let restCommentReplyVO = JSON.parse(
+        sessionStorage.getItem("restCommentReplyVO")
+      );
+      console.log(restCommentReplyVO);
+
+      document.getElementById("restaurantName").value =
+        restCommentReplyVO.restaurantName;
+      document.getElementById("commentContent").value =
+        restCommentReplyVO.commentContent;
+      document.getElementById("commentRating").value =
+        restCommentReplyVO.commentRating;
+      document.getElementById("restaurantRe").value =
+        restCommentReplyVO.restaurantRe;
+      document
+        .getElementById("comment_pic")
+        .setAttribute(
+          "src",
+          `../restaurantcomment/ShowCommentPic?reserveNo=${restCommentReplyVO.reserveNo}&restaurantNo=${restCommentReplyVO.restaurantNo}`
+        );
     </script>
 
     <script>
-      let reservationVO = JSON.parse(sessionStorage.getItem("reservationVO"));
-      console.log(reservationVO);
-
-      document.getElementById("reserveNo").value = reservationVO.reserveNo;
+      const submit_btn = document.getElementById("submit_btn");
+      submit_btn.addEventListener("click", function () {
+        window.history.back(-1);
+      });
     </script>
 
-    <script>
+    <!-- <script>
       // POST
       const URL = "http://localhost:8080/restaurantcomment/Commnet";
       const submit_btn = document.getElementById("submit_btn");
       submit_btn.addEventListener("click", function () {
-        let updateReserveNo = reservationVO.reserveNo;
+        let updateReserveNo = restCommentReplyVO.reserveNo;
         let updateCommentRating = parseInt(
           document.querySelector("#commentRating").value
         );
@@ -549,10 +572,11 @@
               console.log(data);
               alert("送交訂單成功");
               location.reload();
+              window.history.back(-1);
             });
         };
-        fileReader.readAsBinaryString(inputFile.files[0]);
-      });
+        // fileReader.readAsBinaryString(inputFile.files[0]);
+      }); -->
     </script>
   </body>
 </html>

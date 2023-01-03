@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tibame.tga104.order.dao.RestCommentReply_Hibernate;
 import com.tibame.tga104.order.dao.RestaurantCommentDAO_Hibernate;
-import com.tibame.tga104.order.vo.ProdOrderDetailVO;
+import com.tibame.tga104.order.vo.ProdCommentReplyVO;
+import com.tibame.tga104.order.vo.RestCommentReplyVO;
 import com.tibame.tga104.reservation.vo.ReservationVO;
 
 @Service
@@ -18,6 +20,9 @@ public class RestaurantCommmentService {
 	@Autowired
 	private RestaurantCommentDAO_Hibernate dao;
 	
+	@Autowired
+	private RestCommentReply_Hibernate dao_H;
+	
 	public ReservationVO select(Integer reserveNo, Integer restaurantNo) {
 		if(reserveNo == null || restaurantNo == null || reserveNo < 0 || restaurantNo < 0) {
 			return null;
@@ -25,12 +30,20 @@ public class RestaurantCommmentService {
 		return dao.select(reserveNo, restaurantNo);
 	}
 	
-	public List<ReservationVO> selectNotNullComment() {
-		return dao.getNotNullComment();
+	public List<RestCommentReplyVO> selectNotNullComment(RestCommentReplyVO restCommentReplyVO) {
+		return dao_H.getNotNullComment(restCommentReplyVO);
 	}
 	
-	public List<ReservationVO> selectNullComment(){
-		return dao.getNullComment();
+	public List<RestCommentReplyVO> selectNullComment(){
+		return dao_H.getNullComment();
+	}
+	
+	public List<RestCommentReplyVO> selectForMemberNotNullComment(RestCommentReplyVO restCommentReplyVO) {
+		return dao_H.getForMemberNotNullComment(restCommentReplyVO);
+	}
+	
+	public List<RestCommentReplyVO> selectForMemberNullComment(RestCommentReplyVO restCommentReplyVO) {
+		return dao_H.getForMemberNullComment(restCommentReplyVO);
 	}
 	
 	public ReservationVO updateRestaurantComment(ReservationVO reservationVO){
