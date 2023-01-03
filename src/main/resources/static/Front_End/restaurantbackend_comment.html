@@ -153,7 +153,17 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <nav class="header__menu mobile-menu"></nav>
+            <nav class="header__menu mobile-menu">
+              <ul>
+                <!-- ===餐廳後台消息通知跑馬燈=== -->
+                <div class="marquee text-white">
+                  <marquee id="marquee" scrollamount="8" direction="left">
+                    [好食光重要通知]防詐騙提醒!近來有不肖業者偽冒好食光客服，蓄意詐騙錢財、竊取資料，請餐飲業者們先聯繫好食光平台查證哦!
+                  </marquee>
+                </div>
+                <!-- ===餐廳後台消息通知跑馬燈=== -->
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
@@ -168,15 +178,24 @@
         <div class="col-lg-2" id="left">
           <nav class="header__menu mobile-menu" id="aaa">
             <ul>
-              <li class=""><a href="http">餐廳會員首頁</a></li>
-              <li class=""><a href="http">餐廳資訊</a></li>
-              <li class=""><a href="http">訂單管理</a></li>
-              <li class=""><a href="http">訂位管理</a></li>
-              <li class=""><a href="http">評論管理</a></li>
-              <li class=""><a href="http">優惠券設定</a></li>
-              <li class=""><a href="http">商品管理</a></li>
-              <li class=""><a href="http">銷售報表</a></li>
-              <li class=""><a href="http">購買廣告</a></li>
+              <li><a href="./restaurant_info-management.html">餐廳資訊</a></li>
+              <li><a href="./restaurantbackend_prodinfo.html">商品管理</a></li>
+              <li>
+                <a href="./restaurantbackend_ordersearch.html">訂單管理</a>
+              </li>
+              <li>
+                <a href="./restaurant_reserve-management.html">訂位管理</a>
+              </li>
+              <li class="active">
+                <a href="./restaurantbackend_comment.html">評論管理</a>
+              </li>
+              <li><a href="./coupon_restaurant.html">優惠券設定</a></li>
+              <li><a href="./G3_alice_adOrder_restaurant.html">廣告訂單</a></li>
+              <li>
+                <a href="./G3_alice_adOrder_purchase_restaurant.html"
+                  >購買廣告</a
+                >
+              </li>
             </ul>
           </nav>
         </div>
@@ -460,14 +479,15 @@
               <div class="footer__member">
                 <h6>會員專區</h6>
                 <div class="footer__social">
-                  <!-- @Footer連結請更改 -->
                   <a href="./j_signin_member3.html">登入會員<i></i></a>
                   <a href="./member_reservation.html">訂位管理<i></i></a>
                   <br />
                   <a href="./j_registration_member3.html">加入會員<i></i></a>
                   <a href="./member_order.html">訂單管理<i></i></a>
                   <br />
-                  <a href="./coupon_member.html">優惠券<i></i></a>
+                  <a href="./coupon_member.html"
+                    >優惠券&nbsp&nbsp&nbsp&nbsp<i></i
+                  ></a>
                   <a href="./member_comment.html">我的評論<i></i></a>
                 </div>
               </div>
@@ -476,7 +496,6 @@
               <div class="footer__restaurant">
                 <h6>餐廳</h6>
                 <div class="footer__social">
-                  <!-- @這裡不確定要連去哪裡... -->
                   <a href="#">訂位<i></i></a>
                   <br />
                   <a href="#">購物車<i></i></a>
@@ -487,7 +506,6 @@
               <div class="footer__shopping">
                 <h6>線上商城</h6>
                 <div class="footer__social">
-                  <!-- @Footer連結請更改 -->
                   <a href="./shopping_mall.html">商品搜尋<i></i></a>
                   <br />
                   <a href="./shopping_cart.html">購物車<i></i></a>
@@ -498,7 +516,6 @@
               <div class="footer__aboutus">
                 <h6>關於我們</h6>
                 <div class="footer__social">
-                  <!-- @這裡也還不知道要連去哪裡... -->
                   <a href="#">網站介紹<i></i></a>
                   <br />
                   <a href="#">履歷<i></i></a>
@@ -574,6 +591,7 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/logged_restaurant.js"></script>
     <script src="js/main.js"></script>
     <!-- <script src="js/reservation.js"></script> -->
     <script src="js/alice.js"></script>
@@ -619,7 +637,7 @@
                 let tbody_html = document.createElement("tr");
                 let tr_html = `<td class="">餐廳</td>
                           <td>${element.name}</td>
-                          <td>${element.restaurantCommentTime}</td>
+                          <td>${element.restaurantCommentTime ?? "-"}</td>
                           <td>${element.commentRating}</td>
                           <td>
                             <a

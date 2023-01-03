@@ -37,8 +37,10 @@ public class ProdCommentReply_Hibernate implements ProdCommentReply_interface {
 //		typedQuery.setMaxResults(4);
 		List<ProdCommentReplyVO> notNullResult = typedQuery.getResultList();		
 		if (notNullResult!=null && !notNullResult.isEmpty()) {
+			System.out.println("b");
 			return notNullResult;
 		} else {
+			System.out.println("a");
 			return null;
 		}
 	}
