@@ -72,10 +72,10 @@ fetch(`../order/restaurantdetail?prodOrderNo=${prodOrderNo}`)
     });
     $("td > button").on("click", function () {
       let index = $(this).attr("data-index");
-      console.log(orderSearchVOList);
-      console.log(orderSearchVOList[index]);
-      sessionStorage.setItem("orderSearchVOList", orderSearchVOList[index]);
-      window.location.href = "./restaurantbackend_commentreply.html";
+      // console.log(orderSearchVOList);
+      // console.log(orderSearchVOList[index]);
+      // sessionStorage.setItem("orderSearchVOList", orderSearchVOList[index]);
+      window.location.href = "./restaurantbackend_commentreplyprod.html";
     });
     // console.log(data);
   });
