@@ -36,7 +36,21 @@ function getcoupon(e) {
       "couponNo" : couponNo
     }),
     success: function (resp) {
-      alert(resp.successful ? '成功' : '已使用');
+      console.log(resp);
+      if (resp.successful == true) {
+        Swal.fire({
+          icon: 'success',
+          title: '領取成功',
+          text: '快去優惠券查看吧!!',
+        })
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: '領取失敗',
+          text: '已經領取過囉，去優惠券看看吧 !',
+        })
+      }
+      // alert(resp.successful ? '成功' : '已使用');
     },
    })
 }
@@ -51,7 +65,8 @@ $.ajax ({
   restaurantAddr,
   restaurantBusinessHour,
   restauranPicStr,
-  restaurantPic
+  restaurantPic,
+  restaurantNo
 
 $("div.testimonial__slider").remove();
 $("#owl").append('<div class="testimonial__slider owl-carousel">');
@@ -63,12 +78,13 @@ for(i = 0; i < data.length; i++) {
   restaurantAddr = data[i].restaurantAddr;
   restaurantBusinessHour = data[i].restaurantBusinessHour;
   restaurantName = data[i].restaurantName;
+  restaurantNo = data[i].restaurantNo;
 
   let newrestaurant_html = `<div class="col-lg-6">
   <div class="NewRestaurant__item">
       <div class="NewRestaurant__author">
-          <div class="NewRestaurant__author__pic">
-              <img src="${carouselPicUrl}" alt="">
+          <div class="NewRestaurant__author__pic ">
+              <img src="${carouselPicUrl}" onclick="restaurantPage(event)">
           </div>
           <div class="NewRestaurant__author__text">
               <h5>${restaurantName}</h5>
@@ -87,7 +103,12 @@ for(i = 0; i < data.length; i++) {
 </div>`;
 
 $("section.testimonial > div.container > div.row > div.testimonial__slider").append(newrestaurant_html);
+let NewRestaurant__item__pic = document.querySelectorAll("div.NewRestaurant__author__pic ");
+let img = NewRestaurant__item__pic[i].querySelector("img");
+// console.log(img);
+img.dataset.restaurantNo = restaurantNo;
 }
+
 showNewRestaurant();
 
   }
@@ -143,4 +164,12 @@ function getPicUrl(base64Str) {
           
       }
     });
+  }
+
+  function restaurantPage(e) {
+    var restaurantNo = parseInt(e.target.dataset.restaurantNo);
+    console.log(e.target);
+    // alert(restaurantNo);
+    sessionStorage.setItem("restaurantNo",restaurantNo);
+    location.href ="restaurant.html"
   }
