@@ -4,9 +4,9 @@ let restaurantNum = 3; //避免網址直接輸入restaurant.html打不開，這�
 if (sessionStorage.getItem("restaurantNo") != null) {
   restaurantNum = sessionStorage.getItem("restaurantNo");
 }
+console.log(restaurantNum);
 // google map
 function initMap() {
-  var restaurantNumber; //本餐廳編號
   var restaurant_Name;
   fetch(`http://localhost:8080/restaurant-page/${restaurantNum}`) //因為fetch默認GET請求，所以不用特別輸入method:GET
     .then((res) => res.json())
@@ -23,7 +23,6 @@ function initMap() {
       sessionStorage.setItem("restaurantAddr", restaurantAddr);
       sessionStorage.setItem("restaurantTel", restaurantTel);
 
-      restaurantNumber = restaurantNo;
       restaurant_Name = restaurantName;
       document.getElementById("restaurantName").innerHTML = restaurantName;
       document.getElementById("restaurantTel").innerHTML += restaurantTel;
@@ -52,7 +51,7 @@ function initMap() {
       for (const item of list) {
         const { restaurantNo } = item;
         //如果有符合本餐廳編號的，就顯示已收藏
-        if (restaurantNo == restaurantNumber) {
+        if (restaurantNo == restaurantNum) {
           $("#liked").html("已收藏");
           $("#liked").addClass("liked");
         }
@@ -68,7 +67,7 @@ function initMap() {
         },
         body: JSON.stringify({
           memberNo: 0,
-          restaurantNo: restaurantNumber, //本餐廳編號
+          restaurantNo: restaurantNum, //本餐廳編號
         }),
       }).then(function () {
         $("#liked").removeClass("liked");
@@ -84,7 +83,7 @@ function initMap() {
         },
         body: JSON.stringify({
           memberNo: 0,
-          restaurantNo: restaurantNumber, //本餐廳編號
+          restaurantNo: restaurantNum, //本餐廳編號
         }),
       }).then((res) => {
         var redirect_URL = res.url;
@@ -139,7 +138,6 @@ function codeAddress(address) {
 }
 
 // =======================抓出餐廳已上傳的輪播圖片======================
-
 fetch(`http://localhost:8080/restaurant-readInfo/CarouselPic/${restaurantNum}`) //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
   .then((res) => res.json())
   .then((list) => {
@@ -297,14 +295,6 @@ fetch(`/restaurant-comment/${restaurantNum}`)
     }
 
     $("#rating_stars").html(stars);
-  });
-
-// =======================優惠券領取===============================
-
-fetch("../coupon/Manage")
-  .then((resp) => resp.json())
-  .then((list) => {
-    console.log(list);
   });
 
 // ========================================================
