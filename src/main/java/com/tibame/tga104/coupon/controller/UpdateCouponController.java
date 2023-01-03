@@ -15,6 +15,7 @@ import com.google.gson.GsonBuilder;
 import com.tibame.tga104.coupon.service.CouponService;
 import com.tibame.tga104.coupon.service.CouponServiceImpl;
 import com.tibame.tga104.coupon.vo.CouponVO;
+import com.tibame.tga104.member.vo.RestaurantMemberVO;
 
 @WebServlet("/coupon/update")
 public class UpdateCouponController extends HttpServlet {
@@ -41,6 +42,8 @@ public class UpdateCouponController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
+		RestaurantMemberVO restaurantMemberVO = new RestaurantMemberVO();
+		restaurantMemberVO = (RestaurantMemberVO) session.getAttribute("restaurantMemberVO");
 		CouponVO vo = gson.fromJson(req.getReader(), CouponVO.class);
 //		CouponVO vo = new CouponVO();
 //		vo.setCouponName(req.getParameter("couponName"));
@@ -55,6 +58,7 @@ public class UpdateCouponController extends HttpServlet {
 //		byte[] couponPic = (byte[])req.getParameter("couponPic");
 //		byte[] couponPic = 
 //		vo.setCouponPic(Byte.valueOf(req.getParameter("couponPic")));
+		vo.setRestaurantNo(restaurantMemberVO.getRestaurantNo());
 		svc.updateCoupon(vo);
 
 		resp.setContentType("application/json; charset=UTF-8");

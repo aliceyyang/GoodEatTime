@@ -66,7 +66,7 @@ public class InsertCouponController extends HttpServlet {
 //		byte[] couponPic = 
 //		vo.setCouponPic(Byte.valueOf(req.getParameter("couponPic")));
 //		System.out.println(vo);
-		vo.setRestaurantNo(1);
+		vo.setRestaurantNo(restaurantMemberVO.getRestaurantNo());
 		svc.insertCoupon(vo);
 		resp.setContentType("application/json; charset=UTF-8");
 		resp.getWriter().write(gson.toJson(vo));

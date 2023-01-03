@@ -5,7 +5,7 @@ $(document).ready(function() {
       ajax:  "../coupon_member/coupon",
       type: "POST",
       ajax : "../coupon/Manage",
-      type: "GET",
+      // type: "GET",
       
     columns: [
       {

@@ -19,6 +19,15 @@ function onbackClick() {
 function onConfirmClick() {
   const couponStartTime = document.querySelector('#couponStartTime').value;
   const couponEndTime = document.querySelector('#couponEndTime').value;
+  if (!couponStartTime || !couponEndTime) {
+    if(!couponStartTime && !couponEndTime) {
+      console.log(1);
+      document.querySelector("#couponStartTime").setAttribute("placeholder","請選擇活動開始日期");
+      document.querySelector("#couponStartTime").style.border = "2px solid #F6D0C0";
+      document.querySelector('#couponEndTime').setAttribute("placeholder", "請選擇活動開始日期");
+      document.querySelector("#couponEndTime").style.border = "2px solid #F6D0C0";
+    }
+  }
   const couponContent = document.querySelector('#couponContent').value;
   const usageLimitation = parseInt(document.querySelector('#usageLimitation').value);
   const amountOrFold = parseFloat(document.querySelector('#amountOrFold').value);
@@ -101,43 +110,6 @@ function Template({couponNo, couponStartTime, couponEndTime, couponContent, usag
       <button type="button" id="confirmbtn" onclick="onConfirmClick()">確認</button>
     </div>`
 }
-//=================================資料驗證==================================
-$(function () {
-  $("#tbcoupon_update").validate({
-    onkeyup : function (element, event) {
-      var value = this.elementValue(element).replace(/^\s+/g, "");
-      $(element).val(value);
-    },
-    rules: {
-      couponName: {
-        required: true,
-      },
-      couponStartTime: {
-        required: true,
-      },
-      couponEndTime: {
-        required: true,
-      },
-      usageLimitation: {
-        required: true,
-      },
-      amountOrFold : {
-        required: true,
-      },
-      maxIssueQty : {
-        required: true,
-      },
-      couponContent: {
-        required: true,
-      }
-    },
-    messages: {
-      couponName : {
-        required : "必填"
-      }
-    }
-  })
-})
 //==========================顯示圖片=================================
 
 function getPicUrl(base64Str) {
