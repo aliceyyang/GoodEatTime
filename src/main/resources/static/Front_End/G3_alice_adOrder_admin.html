@@ -281,9 +281,9 @@
               <h6>關於我們</h6>
               <div class="footer__social">
                 <!-- @這裡也還不知道要連去哪裡... -->
-                <a href="#">網站介紹<i></i></a>
+                <a href="./AboutUs.html">網站介紹<i></i></a>
                 <br />
-                <a href="#">履歷<i></i></a>
+                <a href="./AboutUs.html">履歷<i></i></a>
               </div>
             </div>
           </div>
@@ -363,7 +363,7 @@
 
   <script> // GET
     // const shipData = document.querySelector('#shipData')
-    const URL = 'http://localhost:8080/adOrders/admin'
+    const URL = '../adOrders/admin'
     let resData = [];
     // 抓登入session手動比對編號
     var adminNoLogin = sessionStorage.getItem("adminVO")
@@ -545,13 +545,13 @@
 
 
           // 點擊確認 -> PUT
-          const URL_PUT = 'http://localhost:8080/adOrders/admin'; // {adOrderNo}
+          const URL_PUT = '../adOrders/admin'; // {adOrderNo}
           if (edit_btn.value === '確認') {
             edit_btn.onclick = () => {
               // 訂單編號
               let editItem = parseInt(document.querySelectorAll(`#orderNo${adOrderNo} > div`)[0].innerHTML.trim());
               // 餐廳編號
-              let res_No = parseInt(document.querySelectorAll(`#restaurantNo2`)[0].innerHTML);
+              let res_No = parseInt(document.querySelectorAll(`#restaurantNo${adOrderNo}`)[0].innerHTML);
               // 管理員編號
               let check_admin_btn = document.querySelector(`#select_adminNo${adOrderNo}`)
               if (!document.querySelector(`#select_adminNo${adOrderNo}`).checked) {
@@ -650,7 +650,7 @@
               location.reload();
             }
           }
-          const URL_DELETE = "http://localhost:8080/adOrders"; // {adOrderNo}
+          const URL_DELETE = "../adOrders"; // {adOrderNo}
           const deleteData = endpoint => {
             fetch(`${URL_DELETE}/${endpoint}`, {
               method: 'DELETE'

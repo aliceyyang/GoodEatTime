@@ -62,7 +62,7 @@
     <div class="offcanvas__cart">
       <div class="offcanvas__cart__links">
         <a href="#" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
-        <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+        <a href="./member_likedRestaurant.html"><img src="img/icon/heart.png" alt="" /></a>
       </div>
       <div class="offcanvas__cart__item">
         <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
@@ -294,9 +294,9 @@
               <h6>關於我們</h6>
               <div class="footer__social">
                 <!-- @這裡也還不知道要連去哪裡... -->
-                <a href="#">網站介紹<i></i></a>
+                <a href="./AboutUs.html">網站介紹<i></i></a>
                 <br />
-                <a href="#">履歷<i></i></a>
+                <a href="./AboutUs.html">履歷<i></i></a>
               </div>
             </div>
           </div>
@@ -377,7 +377,7 @@
 
 
   <script> // GET
-    const URL = 'http://localhost:8080/adOrders/restaurantNo/2'
+    const URL = '../adOrders/restaurantNo/2'
     let resData = [];
     // 抽換資料
     const template = (order_no, rest_no, orderTime, startTime, endTime, price, verified, pic) => {
@@ -1003,7 +1003,7 @@
 
           // PUT
           // api
-          const URL_PUT = 'http://localhost:8080/adOrders/restaurant';
+          const URL_PUT = '../adOrders/restaurant';
           if (edit_btn.value === '確認') {
             edit_btn.onclick = () => {
               // get edit data
@@ -1017,8 +1017,8 @@
                 if (confirm('確定修改訂單?')) {
                   // alert('已成功修改訂單。')
                   swal({
-                    title: "",
-                    text: "已成功修改訂單",
+                    title: "已成功修改訂單！",
+                    text: "",
                     icon: "success",
                     button: "OK",
                   });
@@ -1125,7 +1125,7 @@
               location.reload();
             }
           }
-          const URL3 = "http://localhost:8080/adOrders"; // {adOrderNo}
+          const URL3 = "../adOrders"; // {adOrderNo}
           const deleteData = endpoint => {
             fetch(`${URL3}/${endpoint}`, {
               method: 'DELETE'
