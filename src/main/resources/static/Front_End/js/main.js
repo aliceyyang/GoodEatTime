@@ -233,4 +233,12 @@
         boxzoom: false
       });
 
+    /*-------------------
+		Cart icon change
+	--------------------- */
+    $("div.header__top__right__cart").remove();
+    var cart_icon =
+    '<a href="./shopping_cart.html"><img src="img/icon/cart.png" alt="" /></a>';
+    $("div.header__top__right__links").append(cart_icon);
+
 })(jQuery);
