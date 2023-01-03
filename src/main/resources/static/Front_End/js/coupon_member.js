@@ -1,12 +1,12 @@
 //===========================dataTable================================
 
 $(document).ready(function() {
+  let memberVO = JSON.parse(sessionStorage.getItem("memberVO"));
+  
   $("#coupon_detail").DataTable({
-      ajax:  "../coupon_member/coupon",
-      type: "POST",
-      ajax : "../coupon/Manage",
-      // type: "GET",
-      
+      ajax:  "../coupon/MemberManage",
+      type: "GET",
+      dataType: "json",
     columns: [
       {
         data: "couponNo"
