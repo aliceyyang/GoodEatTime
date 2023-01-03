@@ -254,11 +254,11 @@
                       <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group">
-                            <label for="prodNo">評論商品：</label>
+                            <label for="prodName">評論商品：</label>
                             <input
-                              type="number"
-                              name="prodNo"
-                              id="prodNo"
+                              type="text"
+                              name="prodName"
+                              id="prodName"
                               readonly
                               placeholder="自動顯示"
                             />
@@ -310,12 +310,13 @@
                               tabindex="0"
                             >
                               <span class="prodCommentPic_image"></span>
+                              <img id="comment_pic" src="" />
                             </label>
-                            <input
+                            <!-- <input
                               type="file"
                               name="prodCommentPic"
                               id="prodCommentPic"
-                            />
+                            /> -->
                           </div>
                         </div>
                       </div>
@@ -325,14 +326,31 @@
                       <div class="row">
                         <div class="">
                           <div class="form-group">
-                            <label for="prodCommentContent">餐廳回覆：</label>
+                            <label for="restaurantReply">餐廳回覆：</label>
                             <textarea
-                              name="prodCommentContent"
-                              id="prodCommentContent"
+                              name="restaurantReply"
+                              id="restaurantReply"
                               readonly
                               cols="25"
                               rows="7"
                             ></textarea>
+                          </div>
+                          <div class="col-lg-8 submit">
+                            <div
+                              class="form-group"
+                              style="
+                                align-items: center;
+                                display: grid;
+                                justify-content: right;
+                              "
+                            >
+                              <input
+                                type="button"
+                                id="submit_btn"
+                                class="submit_btn"
+                                value="回到評論查詢"
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -497,15 +515,31 @@
     </script> -->
 
     <script>
-      let prodOrderDetailVO = JSON.parse(
-        sessionStorage.getItem("prodOrderDetailVO")
+      let prodCommentReplyVO = JSON.parse(
+        sessionStorage.getItem("prodCommentReplyVO")
       );
-      console.log(prodOrderDetailVO);
-      document.getElementById("prodNo").value = prodOrderDetailVO.prodNo;
+      console.log(prodCommentReplyVO);
+      document.getElementById("prodName").value = prodCommentReplyVO.prodName;
       document.getElementById("prodCommentContent").value =
-        prodOrderDetailVO.prodCommentContent;
+        prodCommentReplyVO.prodCommentContent;
       document.getElementById("prodCommentRating").value =
-        prodOrderDetailVO.prodCommentRating;
+        prodCommentReplyVO.prodCommentRating;
+      document.getElementById("restaurantReply").value =
+        prodCommentReplyVO.restaurantReply;
+
+      document
+        .getElementById("comment_pic")
+        .setAttribute(
+          "src",
+          `../prodcomment/ShowCommentPic?prodOrderNo=${prodCommentReplyVO.prodOrderNo}&prodNo=${prodCommentReplyVO.prodNo}`
+        );
+    </script>
+
+    <script>
+      const submit_btn = document.getElementById("submit_btn");
+      submit_btn.addEventListener("click", function () {
+        window.history.back(-1);
+      });
     </script>
 
     <!-- <script>

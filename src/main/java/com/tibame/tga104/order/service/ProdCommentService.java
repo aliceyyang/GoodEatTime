@@ -6,8 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.tibame.tga104.order.dao.ProdCommentDAO_Hibernate;
+import com.tibame.tga104.order.dao.ProdCommentReply_Hibernate;
+import com.tibame.tga104.order.vo.ProdCommentReplyVO;
 import com.tibame.tga104.order.vo.ProdOrderDetailVO;
 
 @Service
@@ -17,13 +20,24 @@ public class ProdCommentService {
 	@Autowired
 	private ProdCommentDAO_Hibernate dao;
 	
+	@Autowired
+	private ProdCommentReply_Hibernate dao_H;
+	
 		
-	public List<ProdOrderDetailVO> selectNotNullComment() {
-		return dao.getNotNullComment();
+	public List<ProdCommentReplyVO> selectNotNullComment(ProdCommentReplyVO prodCommentReplyVO) {
+		return dao_H.getNotNullComment(prodCommentReplyVO);
 	}
 	
-	public List<ProdOrderDetailVO> selectNullComment() {
-		return dao.getNullComment();
+	public List<ProdCommentReplyVO> selectNullComment() {
+		return dao_H.getNullComment();
+	}
+	
+	public List<ProdCommentReplyVO> selectForMemberNotNullComment(ProdCommentReplyVO prodCommentReplyVO) {
+		return dao_H.getForMemberNotNullComment(prodCommentReplyVO);
+	}
+	
+	public List<ProdCommentReplyVO> selectForMemberNullComment(ProdCommentReplyVO prodCommentReplyVO) {
+		return dao_H.getForMemberNullComment(prodCommentReplyVO);
 	}
 	
 	public ProdOrderDetailVO updateProdCommnet(ProdOrderDetailVO prodOrderDetailVO) {
