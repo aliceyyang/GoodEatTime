@@ -25,24 +25,24 @@ public class MemberCouponController {
 
 	@Autowired
 	private MemberCouponService memberCouponService;
-//暫時寫死
-	@RequestMapping(value="/coupon", method=RequestMethod.GET)
-	public Map<String, List<MemberCouponVO>> member() {
-		List<MemberCouponVO> list = memberCouponService.getCouponBymemberNo(1);
-		Map<String, List<MemberCouponVO>> map = new HashMap<>();
-		map.put("data",list);
-//		System.out.println(list);
-		return map;
-	}
-//正確
-//	@RequestMapping(value="/dcndetail", method=RequestMethod.GET)
-//	public Map<String, Object> member(HttpSession session) {
-//		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-//		List<MemberCouponVO> list = memberCouponService.getCouponBymemberNo(memberVO.getMemberNo());
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("data", map);
+////暫時寫死
+//	@RequestMapping(value="/coupon", method=RequestMethod.GET)
+//	public Map<String, List<MemberCouponVO>> member() {
+//		List<MemberCouponVO> list = memberCouponService.getCouponBymemberNo(1);
+//		Map<String, List<MemberCouponVO>> map = new HashMap<>();
+//		map.put("data",list);
+////		System.out.println(list);
 //		return map;
 //	}
+//正確
+	@RequestMapping(value="/dcndetail", method=RequestMethod.GET)
+	public Map<String, Object> member(HttpSession session) {
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+		List<MemberCouponVO> list = memberCouponService.getCouponBymemberNo(memberVO.getMemberNo());
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("data", map);
+		return map;
+	}
 //	@GetMapping("/memberCoupon/memberNo/{memberNo}")
 //	public ResponseEntity<List<MemberCouponVO>> getOnememberCoupon(@PathVariable Integer memberNo
 //															,@PathVariable Integer couponNo) {

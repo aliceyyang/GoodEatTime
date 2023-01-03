@@ -6,8 +6,10 @@ $.ajax({
   success: function (list) {
     for (let index = 0; index < showcouponPic.length; index++) {
       const coupon = list[index % 6];
+      // console.log(coupon);
       const base64toUrl = getPicUrl(coupon.couponPicStr);
       const img = showcouponPic[index].querySelector("img");
+      // console.log(img);
       img.src = base64toUrl;
       img.dataset.couponNo = coupon.couponNo;
     }
@@ -16,7 +18,7 @@ $.ajax({
 
 $(".btn").on("click", ()=>{
   const searchText = document.querySelector(".main_serch").value;
-  // console.log(searchText)
+  // const restaurantName = sessionStorage.getItem("restaurantName");
   sessionStorage.setItem("searchText", searchText);
   location.href="/Front_End/Search.html";
 })  
@@ -38,6 +40,58 @@ function getcoupon(e) {
     },
    })
 }
+
+$.ajax ({
+  url: "../search_restaurant/newrestaurant",
+  type: "GET",
+  dataType: "json",
+  success : function(data) {
+    console.log(data);
+  var restaurantName,
+  restaurantAddr,
+  restaurantBusinessHour,
+  restauranPicStr,
+  restaurantPic
+
+$("div.testimonial__slider").remove();
+$("#owl").append('<div class="testimonial__slider owl-carousel">');
+
+
+for(i = 0; i < data.length; i++) {
+  carouselPicStr = data[i].carouselPicStr;
+  carouselPicUrl = getPicUrl(carouselPicStr);
+  restaurantAddr = data[i].restaurantAddr;
+  restaurantBusinessHour = data[i].restaurantBusinessHour;
+  restaurantName = data[i].restaurantName;
+
+  let newrestaurant_html = `<div class="col-lg-6">
+  <div class="NewRestaurant__item">
+      <div class="NewRestaurant__author">
+          <div class="NewRestaurant__author__pic">
+              <img src="${carouselPicUrl}" alt="">
+          </div>
+          <div class="NewRestaurant__author__text">
+              <h5>${restaurantName}</h5>
+              <span>${restaurantBusinessHour}</span>
+          </div>
+      </div>
+      <div class="rating">
+          <span class="icon_star"></span>
+          <span class="icon_star"></span>
+          <span class="icon_star"></span>
+          <span class="icon_star"></span>
+          <span class="icon_star-half_alt"></span>
+      </div>
+      <p>${restaurantAddr}</p>
+  </div>
+</div>`;
+
+$("section.testimonial > div.container > div.row > div.testimonial__slider").append(newrestaurant_html);
+}
+showNewRestaurant();
+
+  }
+})
 // function showPic(list) {
 //   for(let obj of list) {
 //     const picUrl = getPicUrl(obj.couponPicStr);
@@ -70,3 +124,23 @@ function getPicUrl(base64Str) {
     return URL.createObjectURL(blob);
   };
  
+  function showNewRestaurant() {
+    $(".testimonial__slider").owlCarousel({
+      loop: true,
+      margin: 0,
+      items: 2,
+      dots: true,
+      smartSpeed: 1200,
+      autoHeight: false,
+      autoplay: true,
+      responsive: {
+          0: {
+              items: 1
+          },
+          768: {
+              items: 2
+          }
+          
+      }
+    });
+  }

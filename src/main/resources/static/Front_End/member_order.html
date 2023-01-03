@@ -31,12 +31,6 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
     <link rel="stylesheet" href="css/reservation.css" type="text/css" />
-    <link
-      rel="stylesheet"
-      href="css/member_page_overview.css"
-      type="text/css"
-    />
-    <link rel="stylesheet" href="css/alice_style.css" type="text/css" />
 
     <style>
       .nice-select {
@@ -47,6 +41,9 @@
       th,
       td {
         border: 1px solid black;
+      }
+      section {
+        padding-bottom: 100px;
       }
     </style>
   </head>
@@ -186,16 +183,16 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Class Section Begin -->
-    <section class="class">
-      <!-- <div class="container"> -->
-      <div class="row" id="member">
-        <!-- <div class="col-lg-2" id="left"> -->
+  <!-- Class Section Begin -->
+  <section class="class">
+    <!-- <div class="container"> -->
+    <div class="row" id="member">
+      <!-- <div class="col-lg-2" id="left"> -->
         <div class="col-lg-2" id="left">
           <nav class="header__menu mobile-menu" id="aaa">
             <ul>
-               <!-- @會員側邊欄連結修改 -->
-               <li>
+              <!-- @會員側邊欄連結修改 -->
+              <li>
                 <a href="./j_memberfile3.html">帳號管理</a>
               </li>
               <li><a href="./member_reservation.html">訂位資訊</a></li>
@@ -206,95 +203,33 @@
             </ul>
           </nav>
         </div>
-        <!-- 中間空白欄位 -->
-        <!-- 上排 -->
-        <div class="col-lg-10">
-          <div
-            class="row-cols-12"
-            style="
-              align-items: center;
-              display: grid;
-              justify-content: center;
-              height: 15%;
-              background-color: #fdf3ea;
-            "
-          >
-            <h2>訂單管理</h2>
-          </div>
-          <div class="row" style="height: 80%">
-            <div
-              class="row-cols-12"
-              style="background-color: #fdf3ea; margin: 15px; padding: 33px"
-            >
-              <!-- 商城訂單查詢 -->
-              <div class="container" style="height: 90%">
-                <div class="row-cols-12" style="height: 90%">
-                  <form action="http" method="post">
-                    <br />
-                    <label for="prodOrderNo">商城訂單編號：</label>
-                    <input type="number" name="prodOrderNo" id="prodOrderNo" />
-                    <label for="orderStatus">訂單狀態：</label>
-                    <select name="orderStatus" id="orderStatus">
-                      <option value="訂單成立">訂單成立</option>
-                      <option value="已寄出">已寄出</option>
-                      <option value="已到貨">已到貨</option>
-                      <option value="已取貨">已取貨</option>
-                    </select>
-                    <br />
-                    <br />
-                    <br />
-                    <label for="prodNo">商品編號：</label>
-                    <input type="number" name="prodNo" id="prodNo" />
-                    <label for="prodOrderDate">訂單時間：</label>
-                    <input
-                      type="date"
-                      name="prodOrderDate"
-                      id="prodOrderDate"
-                    />
-                    <br />
-                    <label for="prodName">商品名稱： </label>
-                    <input type="text" name="prodName" id="prodName" />
-                    <label for="prodOderDeliverTime">出貨時間：</label>
-                    <input
-                      type="date"
-                      name="prodOderDeliverTime"
-                      id="prodOderDeliverTime"
-                    />
-                    <input type="submit" value="訂單查詢" />
-                  </form>
-                  <div>
-                    _______________________________________________________________________________________________________________________
-                  </div>
-                  <table class="orderList">
-                    <tr>
-                      <th>訂單編號</th>
-                      <th>訂單狀態</th>
-                      <th>訂單時間</th>
-                      <th>出貨時間</th>
-                      <th>修改訂單</th>
-                    </tr>
-                    <tr>
-                      <td>from table: prodOrder</td>
-                      <td>from table: prodOrder</td>
-                      <td>from table: prodOrder</td>
-                      <td>from table: prodOrder</td>
-                      <td>
-                        <a
-                          href="http://127.0.0.1:5500/restaurantbackend_orderdetail.html"
-                          >修改</a
-                        >
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
+      <!-- 訂單資訊 -->
+      <div class="col-lg-10">
+        <div class="table-responsive">
+          <h2>訂單資訊</h2>
+          <table class="table" id="prodOrder" cellspacing="0">
+            <thead>
+              <tr class="header">
+                <th>訂單編號</th>
+                <th>餐廳名稱</th>
+                <th>訂單總金額</th>
+                <th>訂單成立時間</th>
+                <th>收貨人姓名</th>
+                <th>訂單狀態</th>
+                <th>查看</th>
+              </tr>
+            </thead>
+            <!-- <tbody id="tbcoupon_detail">
+            </tbody> -->
+          </table>
         </div>
-      </div>
-    </section>
 
-    <!-- Class Section End -->
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Class Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
@@ -416,11 +351,12 @@
     <script src="js/jquery.nice-select.min.js"></script>
     <script src="js/jquery.barfiller.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/reservation.js"></script>
-    <script src="js/alice.js"></script>
+    <script src="./dataTables/js/jquery.dataTables.js"></script>
+    <script src="./js/member_order.js"></script>
   </body>
 </html>

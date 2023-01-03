@@ -333,6 +333,99 @@ NewRestaurant__slider
 }
 
 /*---------------------
+SearchRestaurant__slider
+-----------------------*/
+.SearchRestaurant__slider {
+
+  padding-top: 90px;
+  padding-bottom: 70px;
+}
+
+.SearchRestaurant__slider .col-lg-6 {
+  max-width: 100%;
+}
+.SearchRestaurant__slider.owl-carousel .owl-dots {
+  text-align: center;
+  padding-top: 35px;
+}
+.SearchRestaurant__slider.owl-carousel .owl-dots button {
+  height: 10px;
+  width: 10px;
+  background: rgba(17, 17, 17, 0.1);
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.SearchRestaurant__slider.owl-carousel .owl-dots button.active {
+  background: rgba(17, 17, 17, 0.5);
+}
+.SearchRestaurant__slider.owl-carousel .owl-dots button:last-child {
+  margin-right: 0;
+}
+
+.SearchRestaurant__item {
+  background: #ffffff;
+  position: relative;
+  
+}
+.SearchRestaurant__author .rating {
+    float: right;
+    border-radius: 5px;
+    /* position: absolute; */
+    /* right: 4px;
+    bottom: 91px; */
+    width: 40%;
+    background: black;
+}
+.SearchRestaurant__item .rating span {
+  font-size: 14px;
+  color: #f0c656;
+  margin-right: -5px;
+  display: inline-block;
+}
+.SearchRestaurant__item p {
+  color: #111111;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.SearchRestaurant__author {
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.SearchRestaurant__author__pic {
+  float: left;
+  margin-right: 26px;
+  height: 30%;
+  width: 30%;
+}
+.SearchRestaurant__author__pic img {
+  display: inline-block;
+  height: 250px;
+  width: 135px;
+}
+
+.SearchRestaurant__author__text {
+  overflow: hidden;
+  padding-top: 12px;
+}
+.SearchRestaurant__author__text h5 {
+  color: #111111;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.SearchRestaurant__author__text span {
+  color: #444444;
+  font-size: 14px;
+}
+
+.SearchRestaurant__author img{
+  width: 260px;
+  height: 135px;
+}
+
+/*---------------------
   Coupon
 -----------------------*/
 .coupon__slider {
@@ -418,5 +511,15 @@ NewRestaurant__slider
   border-radius: 2px;
   margin-bottom: 20px;
   width: 100%;
-  
+}
+
+#restaurant_area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+}
+
+div.ResInfo {
+  display: block;
+  float: left;
 }

@@ -64,18 +64,22 @@
     <div class="offcanvas-menu-wrapper">
       <div class="offcanvas__cart">
         <div class="offcanvas__cart__links">
-          <a href="#" class="search-switch"
+          <a href="./shopping_mall.html" class="search-switch"
             ><img src="img/icon/search.png" alt=""
           /></a>
-          <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+          <a href="./member_likedRestaurant.html"
+            ><img src="img/icon/heart.png" alt=""
+          /></a>
         </div>
         <div class="offcanvas__cart__item">
-          <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
-          <div class="cart__price">Cart: <span>$0.00</span></div>
+          <a href="./shopping_cart.html"
+            ><img src="img/icon/cart.png" alt=""
+          /></a>
+          <!-- <div class="cart__price">Cart: <span>$0.00</span></div> -->
         </div>
       </div>
       <div class="offcanvas__logo">
-        <a href="./index.html"><img src="img/logo.png" alt="" /></a>
+        <a href="./GoodEatTime.html"><img src="img/logo.png" alt="" /></a>
       </div>
       <div id="mobile-menu-wrap"></div>
     </div>
@@ -93,7 +97,7 @@
                     <li>
                       <img class="login_icon" src="./img/Login_icon.png" /><a
                         class="login_text"
-                        href="#"
+                        href="./j_signin_member3.html"
                         >登入</a
                       >
                     </li>
@@ -109,16 +113,18 @@
                 </div>
                 <div class="header__top__right">
                   <div class="header__top__right__links">
-                    <a href="" class="search-switch"
+                    <a href="./shopping_mall.html" class="search-switch"
                       ><img src="img/icon/search.png" alt=""
                     /></a>
-                    <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+                    <a href="./member_likedRestaurant.html"
+                      ><img src="img/icon/heart.png" alt=""
+                    /></a>
                   </div>
                   <div class="header__top__right__cart">
-                    <a href="#"
-                      ><img src="img/icon/cart.png" alt="" /> <span>0</span></a
-                    >
-                    <div class="cart__price">Cart: <span>$0.00</span></div>
+                    <a href="./shopping_cart.html"
+                      ><img src="img/icon/cart.png" alt=""
+                    /></a>
+                    <!-- <div class="cart__price">Cart: <span>$0.00</span></div> -->
                   </div>
                 </div>
               </div>
@@ -132,22 +138,25 @@
           <div class="col-lg-12">
             <nav class="header__menu mobile-menu">
               <ul>
+                <!-- @Header連結請更改~ -->
                 <li><a href="./GoodEatTime.html">首頁</a></li>
-                <li><a href="./about.html">會員專區</a></li>
-                <li class="active"><a href="./shop.html">餐廳</a></li>
-                <li><a href="./blog.html">線上商城</a></li>
                 <li>
-                  <a href="#">關於我們</a>
-                  <ul class="dropdown">
-                    <li><a href="./shop-details.html">Shop Details</a></li>
-                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                    <li><a href="./checkout.html">Check Out</a></li>
-                    <li><a href="./wisslist.html">Wisslist</a></li>
-                    <li><a href="./Class.html">Class</a></li>
-                    <li><a href="./blog-details.html">Blog Details</a></li>
-                  </ul>
+                  <a href="./j_memberfile3.html">會員專區</a>
                 </li>
-                <li><a href="./contact.html">地點搜尋</a></li>
+                <li><a href="./restaurant_search.html">餐廳</a></li>
+                <li><a href="./shopping_mall.html">線上商城</a></li>
+                <li>
+                  <a href="./about_us.html">關於我們</a>
+                  <!-- <ul class="dropdown">
+                  <li><a href="./shop-details.html">Shop Details</a></li>
+                  <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                  <li><a href="./checkout.html">Check Out</a></li>
+                  <li><a href="./wisslist.html">Wisslist</a></li>
+                  <li><a href="./Class.html">Class</a></li>
+                  <li><a href="./blog-details.html">Blog Details</a></li>
+                </ul> -->
+                </li>
+                <!-- <li><a href="./contact.html">地點搜尋</a></li> -->
               </ul>
             </nav>
           </div>
@@ -169,8 +178,8 @@
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="breadcrumb__links">
               <a href="javascript:void(0)" data-id="1">MENU</a>
-              <a href="./index.html" data-id="2">訂位</a>
-              <a href="./index.html" data-id="3">購物</a>
+              <a href="./reservation.html" data-id="2">訂位</a>
+              <a href="./shopping_mall.html" data-id="3" class="toShop">購物</a>
             </div>
           </div>
         </div>
@@ -362,38 +371,38 @@
                   <h3 id="comment_restaurantName" style="color: black">
                     星巴克時代寓所門市
                   </h3>
-                  <h2>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star-half-stroke" color="orange"></i>
-                  </h2>
-                  <span><h2>4.5</h2></span>
+                  <h2 id="restaurant_stars"></h2>
+                  <span><h2 id="comment_avg">4.5</h2></span>
                   <span
-                    ><h5 style="color: gray" href="#" type="button">
+                    ><h5
+                      id="comment_sum"
+                      onclick="window.location.href = './restaurant_comment.html';"
+                    >
                       共6則評論
                     </h5></span
                   >
                   <span><h3 style="color: black">最近一則評論</h3></span>
                   <div id="latest_comment">
-                    <span><h4>會員姓名</h4></span>
-                    <span><h2 style="font-style: italic">5</h2></span>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <i class="fa-solid fa-star" color="orange"></i>
-                    <span
-                      ><h6>
-                        評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容
-                      </h6></span
+                    <h4
+                      id="member_name"
+                      style="color: black; display: inline-block"
                     >
+                      會員姓名
+                    </h4>
+                    <p
+                      id="comment_time"
+                      style="display: inline-block; color: gray"
+                    ></p>
+                    <h2 id="comment_rating" style="font-style: italic">5</h2>
+                    <div id="rating_stars"></div>
+                    <h6 id="comment_content" style="color: black; margin: 8px">
+                      評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容
+                    </h6>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="blog__sidebar__item">
+            <!-- <div class="blog__sidebar__item">
               <h5><i class="fa-solid fa-ticket"></i> 商城優惠券</h5>
               <p>登入好食光會員，即可每日限量領取優惠券!</p>
               <div class="blog__sidebar__item__categories">
@@ -410,7 +419,7 @@
                   <h4>咖啡豆商品8折券</h4>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="blog__sidebar__item">
               <h5><i class="fa-solid fa-heart"></i> 收藏餐廳</h5>
               <p>
@@ -444,14 +453,14 @@
               <div class="footer__member">
                 <h6>會員專區</h6>
                 <div class="footer__social">
-                  <a href="#">登入會員<i></i></a>
-                  <a href="#">訂位管理<i></i></a>
+                  <a href="./j_signin_member3.html">登入會員<i></i></a>
+                  <a href="./member_reservation.html">訂位管理<i></i></a>
                   <br />
-                  <a href="#">加入會員<i></i></a>
-                  <a href="#">定位管理<i></i></a>
+                  <a href="./j_registration_member3.html">加入會員<i></i></a>
+                  <a href="./member_order.html">訂單管理<i></i></a>
                   <br />
-                  <a href="#">優惠券<i></i></a>
-                  <a href="#">我的評論<i></i></a>
+                  <a href="./coupon_member.html">優惠券<i></i></a>
+                  <a href="./member_comment.html">我的評論<i></i></a>
                 </div>
               </div>
             </div>
@@ -459,9 +468,9 @@
               <div class="footer__restaurant">
                 <h6>餐廳</h6>
                 <div class="footer__social">
-                  <a href="#">訂位<i></i></a>
+                  <a href="./reservation.html">訂位<i></i></a>
                   <br />
-                  <a href="#">購物車<i></i></a>
+                  <a href="./shopping_cart.html">購物車<i></i></a>
                 </div>
               </div>
             </div>
@@ -469,9 +478,9 @@
               <div class="footer__shopping">
                 <h6>線上商城</h6>
                 <div class="footer__social">
-                  <a href="#">商品搜尋<i></i></a>
+                  <a href="./shopping_mall.html">商品搜尋<i></i></a>
                   <br />
-                  <a href="#">購物車<i></i></a>
+                  <a href="./shopping_cart.html">購物車<i></i></a>
                 </div>
               </div>
             </div>
@@ -479,9 +488,9 @@
               <div class="footer__aboutus">
                 <h6>關於我們</h6>
                 <div class="footer__social">
-                  <a href="#">網站介紹<i></i></a>
+                  <a href="./AboutUs.html">網站介紹<i></i></a>
                   <br />
-                  <a href="#">履歷<i></i></a>
+                  <a href="./AboutUs.html">履歷<i></i></a>
                 </div>
               </div>
             </div>
@@ -556,7 +565,9 @@
     <script src="js/restaurant.js"></script>
     <script src="js/main.js"></script>
     <script src="js/backtop.js"></script>
+    <script src="js/logged_member.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhgGFoEYFMuq2c4ZJmpFyvabr8i6-u0ok&callback=initMap"></script>
   </body>
 </html>

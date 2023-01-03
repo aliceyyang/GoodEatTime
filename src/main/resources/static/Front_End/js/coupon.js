@@ -7,8 +7,11 @@ function update(couponNo) {
   location.href = "coupon_RESupdate.html";
 }
 function insert() {
-  //要從前一頁取得餐廳編號 暫時寫死
-  sessionStorage.setItem("restaurantNo", 1)
+  //要從前一頁取得餐廳編號
+  // 收到的是物件， 需要利用JSON.parse轉型
+  let restaurantMemberVO = JSON.parse(sessionStorage.getItem("restaurantMemberVO"));
+  var restaurantNo = restaurantMemberVO.restaurantNo
+  sessionStorage.getItem("restaurantMemberVO",restaurantNo);
   location.href = "coupon_RESinsert.html";
 }
 //===========================dataTable================================

@@ -145,25 +145,28 @@
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6">
           <div class="breadcrumb__text" id="reserve_text">
-            <h2>餐廳名稱</h2>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
+            <h2 id="restaurantName"></h2>
+            <div class="ratings">
+              <span class="fas fa-star" id="star_1"></span>
+              <span class="fas fa-star" id="star_2"></span>
+              <span class="fas fa-star" id="star_3"></span>
+              <span class="fas fa-star" id="star_4"></span>
+              <span class="fas fa-star" id="star_5"></span>
+              <span id="rating" style="font-size: large"></span>
+              <!-- <i class="fa-solid fa-user" id="reviews"></i>&nbsp total 2,000 -->
+            </div>
             <p class="addr_phone">
-              <i class="fa-solid fa-map-location-dot"></i>&nbsp台北市大同區承德路一段1號2樓
-              <span>
-                <i class="fa-solid fa-phone"></i>&nbsp02-2559-4846
-              </span>
+              <i class="fa-solid fa-map-location-dot"></i>&nbsp<span id="address"></span>
+              <i class="fa-solid fa-phone">&nbsp</i>
+              <span id="phone"></span>
             </p>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6">
           <div class="breadcrumb__links">
-            <a href="./index.html">Menu</a>
-            <span>線上商城</span>
-            <span>訂位</span>
+            <a href="/restaurant.html" data-id="1">餐廳首頁</a>
+            <a href="#" data-id="2" style="font-weight: bold">訂位</a>
+            <a href="./shopping_mall.html" data-id="3">購物</a>
           </div>
         </div>
       </div>
@@ -351,6 +354,7 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/logged_member.js"></script>
   <script src="js/reservation_confirm.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>

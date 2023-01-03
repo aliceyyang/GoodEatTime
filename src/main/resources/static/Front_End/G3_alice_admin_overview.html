@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="member_reservation" />
+    <meta name="keywords" content="Cake, unica, creative, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>管理員 | 廣告管理</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
+    <link rel="stylesheet" href="css/barfiller.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="css/reservation.css" type="text/css" /> -->
+    <!-- <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" /> -->
+    <!-- <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
+</head>
+<style>
+    .nice-select {
+        width: 80%;
+    }
+
+    /* #marquee2 {
+        background-color: #F08632;
+        width: 50%;
+        font-size: 25px;
+    } */
+</style>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__cart">
+            <div class="offcanvas__cart__links">
+                <a href="#" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
+                <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+            </div>
+            <div class="offcanvas__cart__item">
+                <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
+                <div class="cart__price">Cart: <span>$0.00</span></div>
+            </div>
+        </div>
+        <div class="offcanvas__logo">
+            <a href="./GoodEatTime.html"><img class="GoodEatTimelogo" src="/img/GoodEatTime_smlogo.png" alt="" /></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__option">
+            <ul>
+                <li>
+                    USD <span class="arrow_carrot-down"></span>
+                    <ul>
+                        <li>EUR</li>
+                        <li>USD</li>
+                    </ul>
+                </li>
+                <li>
+                    ENG <span class="arrow_carrot-down"></span>
+                    <ul>
+                        <li>Spanish</li>
+                        <li>ENG</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Sign in</a> <span class="arrow_carrot-down"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header__top__inner">
+                            <div class="header__top__left">
+                                <ul>
+                                    <li>
+                                        <img class="login_icon" src="./img/Login_icon.png" /><a class="login_text"
+                                            href="#"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__logo">
+                                <a href="./GoodEatTime.html"><img class="goodeattime_logo"
+                                        src="img/GoodEatTime_logoright.png" alt="" /></a>
+                            </div>
+                            <div class="header__top__right">
+                                <div class="header__top__right__links">
+                                    <!-- @Header連結請更改~ -->
+                                    <a href="./shopping_mall.html" class="search-switch"><img src="img/icon/search.png"
+                                            alt="" /></a>
+                                    <a href="./shopping_cart.html"><img src="img/icon/heart.png" alt="" /></a>
+                                </div>
+                                <div class="header__top__right__cart">
+                                    <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
+                                    <div class="cart__price">Cart: <span>$0.00</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="active">
+                                <a href="./G3_alice_admin_overview.html">首頁</a>
+                            </li>
+                            <li><a href="./G3_alice_admin_overview.html">管理員</a></li>
+                            <li>
+                                <a href="./G3_alice_admin_userAccount_management_消費者.html">消費者資料審核</a>
+                            </li>
+                            <li>
+                                <a href="./G3_alice_admin_userAccount_management_餐廳.html.html">餐廳資料審核</a>
+                            </li>
+                            <li>
+                                <a href="#">關於我們</a>
+                                <ul class="dropdown">
+                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./wisslist.html">Wisslist</a></li>
+                                    <li><a href="./Class.html">Class</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="./G3_alice_adOrder_admin.html">廣告訂單審核</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Class Section Begin -->
+    <section class="class" style="background-color: white;width:100%;">
+        <!-- <div class="container"> -->
+        <div class="row" id="member" style="width:100%;">
+            <!-- <div class="col-lg-2" id="left"> -->
+            <div class="col-lg-2" id="left">
+                <nav class=" header__menu mobile-menu" id="aaa">
+                    <ul>
+                        <li class=""><a href="./G3_alice_admin_overview.html">總覽</a></li>
+                        <li class=""><a href="./G3_alice_admin_userAccount_management_消費者.html">消費者資料審核</a></li>
+                        <li class=""><a href="./G3_alice_admin_userAccount_management_餐廳.html.html">餐廳會員資料審核</a></li>
+                        <li class=""><a href="./G3_alice_adOrder_admin.html">廣告訂單審核</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-10" style="background-color:white;height:auto;">
+
+                <!-- <div class=" marquee text-white" style="justify-content: center;">
+                    <marquee id="marquee2" scrollamount="8" direction="center" style="">
+                        [好食光]歡迎來到管理員總覽頁面
+                    </marquee>
+                </div> -->
+                <div style="height:30px"></div>
+                <div style="text-align: center;">
+                    <h2>您現在位於管理員總覽頁面！</h2>
+                </div>
+                <div style="text-align: center;">
+                    <h2>後台系統定時維護中</h2>
+                </div>
+                <div class="row-col-12"
+                    style="text-align: center; align-items:center; display: grid;justify-content:left;height:auto; margin-top: 20px;margin-left: 5px;">
+                    <!-- <input type="search" class="membership_search" data-table="userNo-table" placeholder="輸入欲查詢之資料"
+                    style="width: 200px; padding:7px; border-radius: 8px; box-shadow: 5px 5px 2px #FFD382;"> -->
+                    <div style="height:300px">
+
+                    </div>
+                </div>
+                <div class="table-responsive" style="margin-top:20px">
+                    <table class="userNo-table table" width="100%" style="table-layout:fixed;">
+                        <thead align="center">
+                            <tr>
+                                <!-- <th align="center" style="border:3px #FFD382 dashed; width:90px">訂單No</th>
+                                <th align="center" style="border:3px #FFD382 dashed; width:90px">餐廳No</th>
+                                <th align="center" style="border:3px #FFD382 dashed; width:100px">管理員No</th>
+                                <th align="center" style="border:3px #FFD382 dashed; width:200px">申請日期</th>
+                                <th align="center" style="border:3px #FFD382 dashed; width:200px">開始時間</th>
+                                <th align="center" style="border:3px #FFD382 dashed; width:200px">結束時間</th>
+                                <th align="center" style="border:3px #FFD382 dashed; width:100px">訂單價格</th>
+                                <th align="center" style="border:3px #FFD382 dashed; width:105px">審核狀態</th>
+                                <th align="center" style="border:3px #FFD382 dashed; width:200px">審核備註</th>
+                                <th align="center" style="border:0px  dashed; width:200px"></th> -->
+                                <!-- <th align="center" style="border:3px #FFD382 dashed;"></th> -->
+                            </tr>
+                        </thead>
+                        <tbody id="shipData">
+                            <tr align="center">
+                                <!-- <td>1</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>2022-12-01</td>
+                                <td>2023-01-01</td>
+                                <td>2024-01-31</td>
+                                <td>4000</td>
+                                <td>審核通過</td>
+                                <td>餐廳為平台vip</td>
+                                <td>
+                                    <input type="button" id="edit_btn" class="btn btn-light" value="編輯"
+                                        onclick="showButtonEvent()"
+                                        style="width: auto; padding:2px; border-radius: 8px; box-shadow: 3px 3px 1px #FFD382;">
+                                </td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <tbody id="reserve">
+        </tbody>
+        </table>
+        </div>
+
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Class Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
+        <div class="mask">
+            <div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <div class="footer__member">
+                            <h6>會員專區</h6>
+                            <div class="footer__social">
+                                <!-- @Footer連結請更改 -->
+                                <a href="./j_signin_member3.html">登入會員<i></i></a>
+                                <a href="./member_reservation.html">訂位管理<i></i></a>
+                                <br />
+                                <a href="./j_registration_member3.html">加入會員<i></i></a>
+                                <a href="./member_order.html">訂單管理<i></i></a>
+                                <br />
+                                <a href="./coupon_member.html">優惠券<i></i></a>
+                                <a href="./member_comment.html">我的評論<i></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3">
+                        <div class="footer__restaurant">
+                            <h6>餐廳</h6>
+                            <div class="footer__social">
+                                <!-- @這裡不確定要連去哪裡... -->
+                                <a href="#">訂位<i></i></a>
+                                <br />
+                                <a href="#">購物車<i></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3">
+                        <div class="footer__shopping">
+                            <h6>線上商城</h6>
+                            <div class="footer__social">
+                                <!-- @Footer連結請更改 -->
+                                <a href="./shopping_mall.html">商品搜尋<i></i></a>
+                                <br />
+                                <a href="./shopping_cart.html">購物車<i></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3">
+                        <div class="footer__aboutus">
+                            <h6>關於我們</h6>
+                            <div class="footer__social">
+                                <!-- @這裡也還不知道要連去哪裡... -->
+                                <a href="./AboutUs.html">網站介紹<i></i></a>
+                                <br />
+                                <a href="./AboutUs.html">履歷<i></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-9 col-sm-12">
+                        <div class="footer__widget">
+                            <h6>好食光</h6>
+                            <ul>
+                                <li>指導老師：</li>
+                                <li>吳永志老師 &nbsp; | &nbsp; 吳冠宏老師</li>
+                                <li>張互賓老師 &nbsp; | &nbsp; 馬全德老師</li>
+                                <li>郭惠民老師 &nbsp; | &nbsp; 陳怡榕老師</li>
+                                <li>組員 :</li>
+                                <li>陳宜瀅 &nbsp; | &nbsp; 張家銘 &nbsp; | &nbsp; 楊婕妤</li>
+                                <li>游育碩 &nbsp; | &nbsp; 黃郁婕</li>
+                                <li>李佳欣 &nbsp; | &nbsp; 余可凡</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <p class="copyright__text text-white">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            All rights reserved | This template is made with
+                            <i class="fa fa-heart" aria-hidden="true"></i> by
+                            <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="copyright__widget">
+                            <ul>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Site Map</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here....." />
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.barfiller.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- <script src="js/alice_admin2_membership_management_page.js"></script> -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+    <script>
+    </script>
+
+</body>
+
+</html>

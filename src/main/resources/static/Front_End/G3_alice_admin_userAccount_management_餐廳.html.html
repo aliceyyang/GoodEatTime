@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="css/style.css" type="text/css" />
   <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
   <!-- <link rel="stylesheet" href="css/reservation.css" type="text/css" /> -->
-  <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" /> -->
   <!-- <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js'
     integrity='sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=='
@@ -108,7 +108,7 @@
               <div class="header__top__right">
                 <div class="header__top__right__links">
                   <a href="" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
-                  <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+                  <a href="./member_likedRestaurant.html"><img src="img/icon/heart.png" alt="" /></a>
                 </div>
                 <div class="header__top__right__cart">
                   <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
@@ -126,10 +126,16 @@
         <div class="col-lg-12">
           <nav class="header__menu mobile-menu">
             <ul>
-              <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-              <li><a href="./about.html">會員專區</a></li>
-              <li><a href="./shop.html">餐廳</a></li>
-              <li><a href="./blog.html">線上商城</a></li>
+              <li class="active">
+                <a href="./G3_alice_admin_overview.html">首頁</a>
+              </li>
+              <li><a href="./G3_alice_admin_overview.html">管理員</a></li>
+              <li>
+                <a href="./G3_alice_admin_userAccount_management_消費者.html">消費者資料審核</a>
+              </li>
+              <li>
+                <a href="./G3_alice_admin_userAccount_management_餐廳.html.html">餐廳資料審核</a>
+              </li>
               <li>
                 <a href="#">關於我們</a>
                 <ul class="dropdown">
@@ -141,7 +147,9 @@
                   <li><a href="./blog-details.html">Blog Details</a></li>
                 </ul>
               </li>
-              <li><a href="./contact.html">地點搜尋</a></li>
+              <li>
+                <a href="./G3_alice_adOrder_admin.html">廣告訂單審核</a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -151,21 +159,17 @@
   <!-- Header Section End -->
 
   <!-- Class Section Begin -->
-  <section class="class">
+  <section class="class" style="background-color: white;width:100%;">
     <!-- <div class="container"> -->
-    <div class="row" id="member">
+    <div class="row" id="member" style="width:100%;">
       <!-- <div class="col-lg-2" id="left"> -->
       <div class="col-lg-2" id="left"">
         <nav class=" header__menu mobile-menu" id="aaa">
         <ul>
-          <li class=""><a href="">總覽</a></li>
-          <li class=""><a href="">使用者管理</a></li>
+          <li class=""><a href="./G3_alice_admin_overview.html">總覽</a></li>
           <li class=""><a href="./G3_alice_admin_userAccount_management_消費者.html">消費者資料審核</a></li>
           <li class=""><a href="./G3_alice_admin_userAccount_management_餐廳.html.html">餐廳會員資料審核</a></li>
           <li class=""><a href="./G3_alice_adOrder_admin.html">廣告訂單審核</a></li>
-          <li class=""><a href="">客訴處理</a></li>
-          <li class=""><a href="">點數及優惠券設定</a></li>
-          <li class=""><a href="">會員分級設定</a></li>
         </ul>
         </nav>
       </div>
@@ -213,11 +217,11 @@
                   <button id="btnCancel" type="button" class="btn btn-light d-flex" onclick="cancelOrder()"
                     style="float: right;width: auto; padding:2px; border-radius: 8px; box-shadow: 3px 3px 1px #111111;">取消</button>
                 </td>
-                <td>餐廳</td>
-                <td>餐廳編號N</td>
-                <td>restaurant1001</td>
-                <td>薄多義</td>
-                <td>尚未審核</td>
+                <td>讀取中</td>
+                <td>讀取中</td>
+                <td>讀取中</td>
+                <td>讀取中</td>
+                <td>讀取中</td>
               </tr>
             </tbody>
           </table>
@@ -231,22 +235,22 @@
 
   <!-- Footer Section Begin -->
   <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
-    <!-- <button type="button" id="BackTop"></button> -->
     <div class="mask">
-      <div class="container">
+      <div>
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="footer__member">
               <h6>會員專區</h6>
               <div class="footer__social">
-                <a href="#">登入會員<i></i></a>
-                <a href="#">訂位管理<i></i></a>
+                <!-- @Footer連結請更改 -->
+                <a href="./j_signin_member3.html">登入會員<i></i></a>
+                <a href="./member_reservation.html">訂位管理<i></i></a>
                 <br />
-                <a href="#">加入會員<i></i></a>
-                <a href="#">定位管理<i></i></a>
+                <a href="./j_registration_member3.html">加入會員<i></i></a>
+                <a href="./member_order.html">訂單管理<i></i></a>
                 <br />
-                <a href="#">優惠券<i></i></a>
-                <a href="#">我的評論<i></i></a>
+                <a href="./coupon_member.html">優惠券<i></i></a>
+                <a href="./member_comment.html">我的評論<i></i></a>
               </div>
             </div>
           </div>
@@ -254,6 +258,7 @@
             <div class="footer__restaurant">
               <h6>餐廳</h6>
               <div class="footer__social">
+                <!-- @這裡不確定要連去哪裡... -->
                 <a href="#">訂位<i></i></a>
                 <br />
                 <a href="#">購物車<i></i></a>
@@ -264,9 +269,10 @@
             <div class="footer__shopping">
               <h6>線上商城</h6>
               <div class="footer__social">
-                <a href="#">商品搜尋<i></i></a>
+                <!-- @Footer連結請更改 -->
+                <a href="./shopping_mall.html">商品搜尋<i></i></a>
                 <br />
-                <a href="#">購物車<i></i></a>
+                <a href="./shopping_cart.html">購物車<i></i></a>
               </div>
             </div>
           </div>
@@ -274,9 +280,10 @@
             <div class="footer__aboutus">
               <h6>關於我們</h6>
               <div class="footer__social">
-                <a href="#">網站介紹<i></i></a>
+                <!-- @這裡也還不知道要連去哪裡... -->
+                <a href="./AboutUs.html">網站介紹<i></i></a>
                 <br />
-                <a href="#">履歷<i></i></a>
+                <a href="./AboutUs.html">履歷<i></i></a>
               </div>
             </div>
           </div>
@@ -285,12 +292,13 @@
               <h6>好食光</h6>
               <ul>
                 <li>指導老師：</li>
-                <li>吳永志老師 | 吳冠宏老師</li>
-                <li>張互賓老師 | 郭惠民老師</li>
-                <li>陳怡榕老師 | 馬全德老師</li>
+                <li>吳永志老師 &nbsp; | &nbsp; 吳冠宏老師</li>
+                <li>張互賓老師 &nbsp; | &nbsp; 馬全德老師</li>
+                <li>郭惠民老師 &nbsp; | &nbsp; 陳怡榕老師</li>
                 <li>組員 :</li>
-                <li>陳宜瀅 | 張家銘 | 楊婕妤</li>
-                <li>游育碩 | 黃郁婕 | 李佳欣 | 余可凡</li>
+                <li>陳宜瀅 &nbsp; | &nbsp; 張家銘 &nbsp; | &nbsp; 楊婕妤</li>
+                <li>游育碩 &nbsp; | &nbsp; 黃郁婕</li>
+                <li>李佳欣 &nbsp; | &nbsp; 余可凡</li>
               </ul>
             </div>
           </div>
@@ -351,9 +359,9 @@
   <script src="js/main.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- <script src="js/alice.js"></script> -->
-  <script src="js/alice_admin2_membership_management_page.js"></script>
+  <!-- <script src="js/alice_admin2_membership_management_page.js"></script> -->
   <script> // GET
-    const URL = 'http://localhost:8080/admin/restaurant-accounts'
+    const URL = '../admin/restaurant-accounts'
     let resData = [];
     // 抽換資料
     const template = (resNo, account, name, verified) => {
@@ -384,10 +392,10 @@
       // GET
       await fetch(URL, { redirect: "follow" })
         .then((r) => {
-          // console.log("是否重導向")
-          // console.log(r.redirected)
-          // console.log("重導向網址")
-          // console.log(r.url)
+          console.log("是否重導向")
+          console.log(r.redirected)
+          console.log("重導向網址")
+          console.log(r.url)
           if (r.redirected) {
             swal({
               title: "",
@@ -395,7 +403,7 @@
               icon: "warning",
               button: "OK"
             }).then(() => {
-              sessionStorage.setItem("URL_BEFORE_LOGIN", window.location.assign("http://localhost:8080/Front_End/j_signin_root1.html"))
+              sessionStorage.setItem("URL_BEFORE_LOGIN", window.location.assign("../Front_End/j_signin_root1.html"))
             })
           } else {
             console.log("轉JSON")
@@ -446,15 +454,17 @@
           }
 
           // 點擊確認 -> PUT
-          const URL_PUT = 'http://localhost:8080/admin/restaurant-accounts'; // {restaurantNo}
+          const URL_PUT = '../admin/restaurant-accounts'; // {restaurantNo}
           if (edit_btn.value === '確認') {
             edit_btn.onclick = () => {
-              let editItem = parseInt(document.querySelector(`#resNo2`).innerHTML.trim()); // 餐廳編號
               // 審核狀態
               let check_verified_btn = document.querySelector(`#new_verified${restaurantNo}`)
+              // check_verified_btn.value = check_verified_btn.checked ? 'true' : '';
               document.querySelector(`#new_verified${restaurantNo}`).checked ? check_verified_btn.setAttribute("value", "true") : check_verified_btn.setAttribute("value", "");
-              let verified_put = check_verified_btn.value
+              let verified_put = check_verified_btn.value.toString()
+              let editItem = parseInt(document.querySelector(`#resNo${restaurantNo}`).innerHTML.trim()); // 餐廳編號
               if (verified_put === 'true') {
+                console.log(verified_put)
                 if (confirm('確定修改審核狀態?')) {
                   swal({
                     title: "",

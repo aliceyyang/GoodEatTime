@@ -1,29 +1,53 @@
 // ======================抓出餐廳原本的資料顯示在表單=======================
+let restaurantNo = 3; //先寫死預防打不開
+if (sessionStorage.getItem("restaurantMemberVO") != null) {
+  restaurantNo = JSON.parse(
+    sessionStorage.getItem("restaurantMemberVO")
+  ).restaurantNo;
+}
 
-fetch("http://localhost:8080/restaurant-read/3") //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
-  .then((resp) => resp.json())
-  .then((data) => {
-    //輸入需要的屬性取出資料庫中的值
-    const { restaurantName } = data;
-    const { restaurantTel } = data;
-    const { restaurantAddr } = data;
-    const { restaurantBusinessHour } = data;
-    const { restaurantTaxIDNo } = data;
-    const { restaurantAccountInfo } = data;
-    const { restaurantAccount } = data;
-    const { restaurantPassword } = data;
-    //把取出的值塞進表單的input標籤
-    document.getElementById("restaurantName").value = restaurantName;
-    document.getElementById("restaurantTel").value = restaurantTel;
-    document.getElementById("restaurantAddr").value = restaurantAddr;
-    document.getElementById("restaurantBusinessHour").value =
-      restaurantBusinessHour;
-    document.getElementById("restaurantTaxIDNo").value = restaurantTaxIDNo;
-    document.getElementById("restaurantAccountInfo").value =
-      restaurantAccountInfo;
-    document.getElementById("restaurantAccount").value = restaurantAccount;
-    document.getElementById("restaurantPassword").value = restaurantPassword;
-  });
+fetch(`../restaurant-read/${restaurantNo}`, {
+  method: "GET",
+  redirect: "follow",
+}).then((resp) => {
+  if (resp.redirected) {
+    Swal.fire({
+      position: "center",
+      icon: "warning",
+      title: "請先登入",
+      showConfirmButton: false,
+      timer: 1000,
+    }).then(() => {
+      sessionStorage.setItem("URL_before_login", window.location.href);
+      window.location.href = resp.url;
+    });
+  } else {
+    resp.json().then((data) => {
+      //輸入需要的屬性取出資料庫中的值
+      const { restaurantNo } = data;
+      const { restaurantName } = data;
+      const { restaurantTel } = data;
+      const { restaurantAddr } = data;
+      const { restaurantBusinessHour } = data;
+      const { restaurantTaxIDNo } = data;
+      const { restaurantAccountInfo } = data;
+      const { restaurantAccount } = data;
+      const { restaurantPassword } = data;
+      //把取出的值塞進表單的input標籤
+
+      document.getElementById("restaurantName").value = restaurantName;
+      document.getElementById("restaurantTel").value = restaurantTel;
+      document.getElementById("restaurantAddr").value = restaurantAddr;
+      document.getElementById("restaurantBusinessHour").value =
+        restaurantBusinessHour;
+      document.getElementById("restaurantTaxIDNo").value = restaurantTaxIDNo;
+      document.getElementById("restaurantAccountInfo").value =
+        restaurantAccountInfo;
+      document.getElementById("restaurantAccount").value = restaurantAccount;
+      document.getElementById("restaurantPassword").value = restaurantPassword;
+    });
+  }
+});
 
 // ========================看見密碼用的把啾=============================
 
@@ -118,7 +142,16 @@ $(function () {
     },
     submitHandler: function (form) {
       //通過驗證後處理餐廳資料變更
-      form.submit();
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "儲存成功",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setTimeout(function () {
+        form.submit();
+      }, 1500);
       const restaurantName = $("#restaurantName").val();
       const restaurantTel = $("#restaurantTel").val();
       const restaurantAddr = $("#restaurantAddr").val();
@@ -128,32 +161,29 @@ $(function () {
       const restaurantAccount = $("#restaurantAccount").val();
       const restaurantPassword = $("#restaurantPassword").val();
 
-      fetch(
-        "http://localhost:8080/restaurant-update/3", //餐廳編號先寫死測試
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            restaurantName: restaurantName,
-            restaurantTel: restaurantTel,
-            restaurantAddr: restaurantAddr,
-            restaurantBusinessHour: restaurantBusinessHour,
-            restaurantTaxIDNo: restaurantTaxIDNo,
-            restaurantAccountInfo: restaurantAccountInfo,
-            restaurantAccount: restaurantAccount,
-            restaurantPassword: restaurantPassword,
-          }),
-        }
-      );
+      fetch(`../restaurant-update/${restaurantNo}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          restaurantName: restaurantName,
+          restaurantTel: restaurantTel,
+          restaurantAddr: restaurantAddr,
+          restaurantBusinessHour: restaurantBusinessHour,
+          restaurantTaxIDNo: restaurantTaxIDNo,
+          restaurantAccountInfo: restaurantAccountInfo,
+          restaurantAccount: restaurantAccount,
+          restaurantPassword: restaurantPassword,
+        }),
+      });
     },
   });
 });
 
 // =======================抓出餐廳已上傳的輪播圖片======================
 var quota; //還可上傳的圖片額度
-fetch("http://localhost:8080/restaurant-readInfo/CarouselPic/3") //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
+fetch(`../restaurant-readInfo/CarouselPic/${restaurantNo}`)
   .then((res) => res.json())
   .then((list) => {
     const carousel_uploaded = document.querySelector("#carousel_uploaded"); //準備裝已上傳圖片的div
@@ -180,12 +210,9 @@ $(document).on("click", ".uploaded_pic", function () {
     quota++;
     carousel_quota.innerHTML = `可再上傳${quota}張輪播圖片`;
   });
-  fetch(
-    `http://localhost:8080/restaurant-deleteInfo/CarouselPic/${carouselPicNo}`,
-    {
-      method: "DELETE",
-    }
-  );
+  fetch(`../restaurant-deleteInfo/CarouselPic/${carouselPicNo}`, {
+    method: "DELETE",
+  });
 });
 
 // =========================輪播圖上傳限制六張==========================
@@ -195,7 +222,8 @@ var carousel_file_el = document.getElementById("carousel_file");
 carousel_file_el.addEventListener("click", function (e) {
   if (quota == 0) {
     e.preventDefault();
-    alert("輪播圖片最多共6張，請先刪除不要的圖片再重新選擇!");
+    Swal.fire("輪播圖片最多共6張<br>請先刪除不要的圖片再重新選擇!");
+    // alert("輪播圖片最多共6張，請先刪除不要的圖片再重新選擇!");
   }
 });
 
@@ -224,8 +252,7 @@ function readFiles(files) {
       base64arr.push(e.target.result.split(",")[1]); //要截掉前面的data:image/png;base64, 才是圖像編碼
       if (files.length === base64arr.length) {
         //等陣列裝好所有選的圖檔後進來執行
-        fetch("http://localhost:8080/restaurant-uploadMultiplePics/3", {
-          //最後面是餐廳編號，我先寫死測試QAQ
+        fetch(`../restaurant-uploadMultiplePics/${restaurantNo}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -279,7 +306,7 @@ drop_zone.addEventListener("drop", function (e) {
 // ======================抓出餐廳已上傳的菜單======================
 
 var menu_array = []; //準備裝多個菜單物件的陣列
-fetch("http://localhost:8080/restaurant-readInfo/Menu/3")
+fetch(`../restaurant-readInfo/Menu/${restaurantNo}`)
   .then((res) => res.json())
   .then((list) => {
     const menu_uploaded = document.querySelector("#menu_uploaded"); //準備裝已上傳菜單的div
@@ -304,7 +331,6 @@ fetch("http://localhost:8080/restaurant-readInfo/Menu/3")
       menu_uploaded.appendChild(newDiv);
     }
   });
-
 // ===============================菜單編輯==========================
 
 $(document).on("click", ".edit_menu", function () {
@@ -325,7 +351,7 @@ $(document).on("click", ".edit_menu", function () {
 function editMenu(picStr, pic_remark) {
   //從隱藏標籤拿回此貼文的PK
   const menuNo = document.querySelector('input[name="menuNo"]').value;
-  fetch("http://localhost:8080/restaurant-updateMenu", {
+  fetch("../restaurant-updateMenu", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -347,13 +373,13 @@ function readFile(pic, pic_remark) {
   read.onloadend = function (e) {
     var base64 = e.target.result.split(",")[1]; //要截掉前面的data:image/png;base64, 才是圖像編碼
 
-    fetch("http://localhost:8080/restaurant-uploadMenu", {
+    fetch("../restaurant-uploadMenu", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        restaurantNo: 3, //餐廳編號我先寫死測試T_T
+        restaurantNo: restaurantNo,
         menuPicstr: base64, //VO那邊要先建一個String的屬性來裝base64的編碼，過去controller再轉byte陣列
         menuPicRemark: pic_remark,
       }),
@@ -391,7 +417,7 @@ $(document).on("click", ".delete_menu", function () {
     .fadeOut(800, function () {
       $(this).remove();
     });
-  fetch(`http://localhost:8080/restaurant-deleteInfo/Menu/${MenuNo}`, {
+  fetch(`../restaurant-deleteInfo/Menu/${MenuNo}`, {
     method: "DELETE",
   });
 });
@@ -447,7 +473,7 @@ drop_zone2.addEventListener("drop", function (e) {
 // ======================抓出餐廳已上傳的貼文======================
 
 var post_array = []; //準備裝多個貼文物件的陣列
-fetch("http://localhost:8080/restaurant-readInfo/Post/3")
+fetch(`../restaurant-readInfo/Post/${restaurantNo}`)
   .then((res) => res.json())
   .then((list) => {
     const post_uploaded = document.querySelector("#post_uploaded"); //準備裝已上傳貼文的div
@@ -514,7 +540,7 @@ function editPost(picStr, post_type, post_title, post_content) {
   const restaurantPostNo = document.querySelector(
     'input[name="restaurantPostNo"]'
   ).value;
-  fetch("http://localhost:8080/restaurant-updatePost", {
+  fetch("../restaurant-updatePost", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -537,13 +563,13 @@ function readPostFile(pic, post_type, post_title, post_content) {
   read.onloadend = function (e) {
     var base64 = e.target.result.split(",")[1]; //要截掉前面的data:image/png;base64, 才是圖像編碼
 
-    fetch("http://localhost:8080/restaurant-uploadPost", {
+    fetch("../restaurant-uploadPost", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        restaurantNo: 3, //餐廳編號先寫死測試
+        restaurantNo: restaurantNo,
         postType: post_type,
         postPicStr: base64, //VO那邊要先建一個String的屬性來裝base64的編碼，過去controller再轉byte陣列
         postTitle: post_title,
@@ -567,6 +593,7 @@ $("#news").on("submit", function (e) {
   var post_content = document
     .querySelector("#content")
     .value.replace(/\n/g, "<br>");
+
   //判斷是不是在編輯狀態，決定走哪個函式
   if ($("#editing").hasClass("-on")) {
     editPost(picStr, post_type, post_title, post_content); //帶進上方的editPost函式
@@ -585,12 +612,9 @@ $(document).on("click", ".delete_post", function () {
     .fadeOut(800, function () {
       $(this).remove();
     });
-  fetch(
-    `http://localhost:8080/restaurant-deleteInfo/Post/${restaurantPostNo}`,
-    {
-      method: "DELETE",
-    }
-  );
+  fetch(`../restaurant-deleteInfo/Post/${restaurantPostNo}`, {
+    method: "DELETE",
+  });
 });
 
 // ============================拖曳區+預覽圖處理============================

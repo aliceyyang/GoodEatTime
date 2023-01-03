@@ -54,6 +54,11 @@ public class MemberServiceImpl implements MemberService {
 			memberVO.setSuccessful(false);
 			return memberVO;
 		}
+		if (memberVO.getTel() == null || memberVO.getTel().isEmpty()) {
+			memberVO.setMessage("電話必須輸入");
+			memberVO.setSuccessful(false);
+			return memberVO;
+		}
 		final Date birthday = memberVO.getBirthday();
 		if (memberVO.getBirthday() == null || Objects.equals(birthday, "")) {
 			memberVO.setMessage("生日必須輸入");
@@ -75,11 +80,7 @@ public class MemberServiceImpl implements MemberService {
 		if (memberPassString.length() < 6 || memberPassString.length() > 12) {
 			memberVO.setMessage("密碼長度需介於6~12個字元");
 		}
-		if (memberVO.getTel() == null || memberVO.getTel().isEmpty()) {
-			memberVO.setMessage("電話必須輸入");
-			memberVO.setSuccessful(false);
-			return memberVO;
-		}
+		
 		// 判定帳號有無重複
 		if (dao.selectBymail(memberVO.getMail()) != null) {
 			memberVO.setMessage("此帳號重複");
@@ -138,14 +139,37 @@ public class MemberServiceImpl implements MemberService {
 		MemberVO mailRessult = dao.selectBymail(memberVO.getMail());
 		if (mailRessult != null) {
 			final String email = mailRessult.getMail();
+			final String to = "GoodEatTime-忘記密碼";
 			final String password = mailRessult.getMemberPassword();
+			final String name = mailRessult.getName();
+			String messageText = "Hello! " + name + "<br>" + " 請謹記此密碼: " + password;
 			try {
-				MailService.sendMail(email, "GoodEatTime-忘記密碼", password);
+				MailService.sendMail(email, to , messageText);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 		}
 		return mailRessult;
+	}
+
+	@Override
+	public boolean sendVerificationCode(String mail) {
+		String randomCode = dao.verificationCode(mail);
+		String recipients = mail;
+		String mailSubject = "好食光-註冊會員驗證碼";
+		String mailBody="您的驗證碼為" + randomCode +"，驗證碼將於5分鐘後失效，請於5分鐘內輸入驗證碼，謝謝！";
+		try {
+			MailService.sendMail(recipients, mailSubject, mailBody);
+			return true;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public String getVerificationCode(String mail) {
+		return dao.getCode(mail);
 	}
 
 }

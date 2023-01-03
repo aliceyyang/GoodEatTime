@@ -28,12 +28,17 @@
   <link rel="stylesheet" href="css/style.css" type="text/css" />
   <link rel="stylesheet" href="css/fontawesome_6.2.0.css" type="text/css" />
   <!-- <link rel="stylesheet" href="css/reservation.css" type="text/css" /> -->
-  <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="css/member_page_overview.css" type="text/css" /> -->
   <!-- <link rel="stylesheet" href="css/alice_style.css" type="text/css" /> -->
 </head>
 <style>
   .nice-select {
     width: 80%;
+  }
+
+  .table-responsive::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
   }
 </style>
 
@@ -123,10 +128,16 @@
         <div class="col-lg-12">
           <nav class="header__menu mobile-menu">
             <ul>
-              <li class="active"><a href="./GoodEatTime.html">首頁</a></li>
-              <li><a href="./about.html">會員專區</a></li>
-              <li><a href="./shop.html">餐廳</a></li>
-              <li><a href="./blog.html">線上商城</a></li>
+              <li class="active">
+                <a href="./G3_alice_admin_overview.html">首頁</a>
+              </li>
+              <li><a href="./G3_alice_admin_overview.html">管理員</a></li>
+              <li>
+                <a href="./G3_alice_admin_userAccount_management_消費者.html">消費者資料審核</a>
+              </li>
+              <li>
+                <a href="./G3_alice_admin_userAccount_management_餐廳.html.html">餐廳資料審核</a>
+              </li>
               <li>
                 <a href="#">關於我們</a>
                 <ul class="dropdown">
@@ -138,7 +149,9 @@
                   <li><a href="./blog-details.html">Blog Details</a></li>
                 </ul>
               </li>
-              <li><a href="./contact.html">地點搜尋</a></li>
+              <li>
+                <a href="./G3_alice_adOrder_admin.html">廣告訂單審核</a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -155,14 +168,10 @@
       <div class="col-lg-2" id="left">
         <nav class=" header__menu mobile-menu" id="aaa">
           <ul>
-            <li class=""><a href="">總覽</a></li>
-            <li class=""><a href="">使用者管理</a></li>
+            <li class=""><a href="./G3_alice_admin_overview.html">總覽</a></li>
             <li class=""><a href="./G3_alice_admin_userAccount_management_消費者.html">消費者資料審核</a></li>
             <li class=""><a href="./G3_alice_admin_userAccount_management_餐廳.html.html">餐廳會員資料審核</a></li>
             <li class=""><a href="./G3_alice_adOrder_admin.html">廣告訂單審核</a></li>
-            <li class=""><a href="">客訴處理</a></li>
-            <li class=""><a href="">點數及優惠券設定</a></li>
-            <li class=""><a href="">會員分級設定</a></li>
           </ul>
         </nav>
       </div>
@@ -191,15 +200,15 @@
             </thead>
             <tbody id="shipData">
               <tr align="center">
-                <td>1</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2022-12-01</td>
-                <td>2023-01-01</td>
-                <td>2024-01-31</td>
-                <td>4000</td>
-                <td>審核通過</td>
-                <td>餐廳為平台vip</td>
+                <td>讀取中</td>
+                <td>讀取中</td>
+                <td>讀取中</td>
+                <td>讀取中</td>
+                <td>讀取中</td>
+                <td>讀取中</td>
+                <td>讀取中</td>
+                <td>讀取中</td>
+                <td>讀取中</td>
                 <td>
                   <input type="button" id="edit_btn" class="btn btn-light" value="編輯" onclick="showButtonEvent()"
                     style="width: auto; padding:2px; border-radius: 8px; box-shadow: 3px 3px 1px #FFD382;">
@@ -226,22 +235,22 @@
 
   <!-- Footer Section Begin -->
   <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
-    <!-- <button type="button" id="BackTop"></button> -->
     <div class="mask">
-      <div class="container">
+      <div>
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="footer__member">
               <h6>會員專區</h6>
               <div class="footer__social">
-                <a href="#">登入會員<i></i></a>
-                <a href="#">訂位管理<i></i></a>
+                <!-- @Footer連結請更改 -->
+                <a href="./j_signin_member3.html">登入會員<i></i></a>
+                <a href="./member_reservation.html">訂位管理<i></i></a>
                 <br />
-                <a href="#">加入會員<i></i></a>
-                <a href="#">定位管理<i></i></a>
+                <a href="./j_registration_member3.html">加入會員<i></i></a>
+                <a href="./member_order.html">訂單管理<i></i></a>
                 <br />
-                <a href="#">優惠券<i></i></a>
-                <a href="#">我的評論<i></i></a>
+                <a href="./coupon_member.html">優惠券<i></i></a>
+                <a href="./member_comment.html">我的評論<i></i></a>
               </div>
             </div>
           </div>
@@ -249,6 +258,7 @@
             <div class="footer__restaurant">
               <h6>餐廳</h6>
               <div class="footer__social">
+                <!-- @這裡不確定要連去哪裡... -->
                 <a href="#">訂位<i></i></a>
                 <br />
                 <a href="#">購物車<i></i></a>
@@ -259,9 +269,10 @@
             <div class="footer__shopping">
               <h6>線上商城</h6>
               <div class="footer__social">
-                <a href="#">商品搜尋<i></i></a>
+                <!-- @Footer連結請更改 -->
+                <a href="./shopping_mall.html">商品搜尋<i></i></a>
                 <br />
-                <a href="#">購物車<i></i></a>
+                <a href="./shopping_cart.html">購物車<i></i></a>
               </div>
             </div>
           </div>
@@ -269,9 +280,10 @@
             <div class="footer__aboutus">
               <h6>關於我們</h6>
               <div class="footer__social">
-                <a href="#">網站介紹<i></i></a>
+                <!-- @這裡也還不知道要連去哪裡... -->
+                <a href="./AboutUs.html">網站介紹<i></i></a>
                 <br />
-                <a href="#">履歷<i></i></a>
+                <a href="./AboutUs.html">履歷<i></i></a>
               </div>
             </div>
           </div>
@@ -280,12 +292,13 @@
               <h6>好食光</h6>
               <ul>
                 <li>指導老師：</li>
-                <li>吳永志老師 | 吳冠宏老師</li>
-                <li>張互賓老師 | 郭惠民老師</li>
-                <li>陳怡榕老師 | 馬全德老師</li>
+                <li>吳永志老師 &nbsp; | &nbsp; 吳冠宏老師</li>
+                <li>張互賓老師 &nbsp; | &nbsp; 馬全德老師</li>
+                <li>郭惠民老師 &nbsp; | &nbsp; 陳怡榕老師</li>
                 <li>組員 :</li>
-                <li>陳宜瀅 | 張家銘 | 楊婕妤</li>
-                <li>游育碩 | 黃郁婕 | 李佳欣 | 余可凡</li>
+                <li>陳宜瀅 &nbsp; | &nbsp; 張家銘 &nbsp; | &nbsp; 楊婕妤</li>
+                <li>游育碩 &nbsp; | &nbsp; 黃郁婕</li>
+                <li>李佳欣 &nbsp; | &nbsp; 余可凡</li>
               </ul>
             </div>
           </div>
@@ -344,13 +357,13 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/alice_admin2_membership_management_page.js"></script>
+  <!-- <script src="js/alice_admin2_membership_management_page.js"></script> -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
   <script> // GET
     // const shipData = document.querySelector('#shipData')
-    const URL = 'http://localhost:8080/adOrders/admin'
+    const URL = '../adOrders/admin'
     let resData = [];
     // 抓登入session手動比對編號
     var adminNoLogin = sessionStorage.getItem("adminVO")
@@ -532,13 +545,13 @@
 
 
           // 點擊確認 -> PUT
-          const URL_PUT = 'http://localhost:8080/adOrders/admin'; // {adOrderNo}
+          const URL_PUT = '../adOrders/admin'; // {adOrderNo}
           if (edit_btn.value === '確認') {
             edit_btn.onclick = () => {
               // 訂單編號
               let editItem = parseInt(document.querySelectorAll(`#orderNo${adOrderNo} > div`)[0].innerHTML.trim());
               // 餐廳編號
-              let res_No = parseInt(document.querySelectorAll(`#restaurantNo2`)[0].innerHTML);
+              let res_No = parseInt(document.querySelectorAll(`#restaurantNo${adOrderNo}`)[0].innerHTML);
               // 管理員編號
               let check_admin_btn = document.querySelector(`#select_adminNo${adOrderNo}`)
               if (!document.querySelector(`#select_adminNo${adOrderNo}`).checked) {
@@ -637,7 +650,7 @@
               location.reload();
             }
           }
-          const URL_DELETE = "http://localhost:8080/adOrders"; // {adOrderNo}
+          const URL_DELETE = "../adOrders"; // {adOrderNo}
           const deleteData = endpoint => {
             fetch(`${URL_DELETE}/${endpoint}`, {
               method: 'DELETE'
@@ -652,58 +665,6 @@
     }
     window.onload = init
   </script>
-  <!-- <script> // PUT
-    // 管理員身分 -> 僅能修改審核狀態
-    // 參數這邊還沒改可修改管理員編號
-    // const URL2 = 'http://localhost:8080/adOrders'; // {adOrderNo}
-    const updateData = (endpoint, data) => {
-      fetch(`${URL2}/${endpoint}`, {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-      })
-        .then((r) => r.json())
-        .then((data) => console.log(data));
-    };
-
-    // 綁定事件後送出put method請求，抓到改動的資料傳入參數 -> (orderMo, request body data)
-    updateData('2', { /* adminNo:${getAdminNo}, */ verified: true, verificationDetail: '12345678' });
-
-    /* 這邊抓URL路徑中的管理員編號adminNo -> 我在controller中用的註解是 @PathVariable(http://.../5) 而非 @RequestPara (http://....?name=2&id=5....)
-      Get the current URL
-      const currentUrl = window.location.href;
-      Split the URL into an array of path segments
-      const urlSegments = currentUrl.split('/');
-      Get the value of the @PathVariable parameter
-      const pathVariableValue = urlSegments[urlSegments.length - 1];
-     */
-
-
-
-    // 編輯按鈕綁定事件
-    // var content = document.getElementById("edit_btn");
-    // function showButtonEvent() {
-    //   console.log(this);
-    //   if (content.value == '編輯') {
-    //     content.value = '確認'
-    //   } else {
-    //     content.value = '編輯'
-    //   }
-    // }
-
-  </script> -->
-  <!-- <script> // DELETE
-    // const URL3= "http://localhost:8080/adOrders"; // {adOrderNo}
-    const deleteData = endpoint => {
-      fetch(`${URL3}/${endpoint}`, {
-        method: 'DELETE'
-      })
-        .then(response => response.json())
-        .then(data => console.log(data));
-    };
-
-    deleteData('1');
-  </script> -->
 </body>
 
 </html>

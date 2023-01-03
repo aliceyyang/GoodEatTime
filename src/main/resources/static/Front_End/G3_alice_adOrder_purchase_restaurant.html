@@ -99,7 +99,7 @@
     <div class="offcanvas__cart">
       <div class="offcanvas__cart__links">
         <a href="#" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
-        <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+        <a href="./member_likedRestaurant.html"><img src="img/icon/heart.png" alt="" /></a>
       </div>
       <div class="offcanvas__cart__item">
         <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
@@ -189,9 +189,9 @@
   <!-- Header Section End -->
 
   <!-- Class Section Begin -->
-  <section class="class">
+  <section class="class" style="background-color: white;width:100%;">
     <!-- <div class="container"> -->
-    <div class="row" id="member">
+    <div class="row" id="member" style="width:100%;">
       <!-- <div class="col-lg-2" id="left"> -->
       <div class="col-lg-2" id="left">
         <nav class="header__menu mobile-menu" id="aaa">
@@ -199,11 +199,11 @@
             <li><a href="./restaurant_info-management.html">餐廳資訊</a></li>
             <li><a href="./restaurantbackend_prodinfo.html">商品管理</a></li>
             <li><a href="./restaurantbackend_ordersearch.html">訂單管理</a></li>
-            <li class="active"><a href="./restaurant_reserve-management.html">訂位管理</a></li>
+            <li><a href="./restaurant_reserve-management.html">訂位管理</a></li>
             <li><a href="./restaurantbackend_comment.html">評論管理</a></li>
             <li><a href="./coupon_restaurant.html">優惠券設定</a></li>
             <li><a href="./G3_alice_adOrder_restaurant.html">廣告訂單</a></li>
-            <li><a href="./G3_alice_adOrder_purchase_restaurant.html">購買廣告</a></li>
+            <li class="active"><a href="./G3_alice_adOrder_purchase_restaurant.html">購買廣告</a></li>
             </li>
           </ul>
         </nav>
@@ -220,11 +220,11 @@
                     <br>
                     <div class="row">
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <label class="profile_details_text">餐廳編號</label>
                           <input type="" name="account" class="form-control"
                             value="正常不會知道自己編號，但當初table沒設帳號欄位，可能要join餐廳table把帳號加進來，或乾脆就算了^_^">
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                     <div class="row">
@@ -303,22 +303,22 @@
 
   <!-- Footer Section Begin -->
   <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
-    <!-- <button type="button" id="BackTop"></button> -->
     <div class="mask">
-      <div class="container">
+      <div>
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="footer__member">
               <h6>會員專區</h6>
               <div class="footer__social">
-                <a href="#">登入會員<i></i></a>
-                <a href="#">訂位管理<i></i></a>
+                <!-- @Footer連結請更改 -->
+                <a href="./j_signin_member3.html">登入會員<i></i></a>
+                <a href="./member_reservation.html">訂位管理<i></i></a>
                 <br />
-                <a href="#">加入會員<i></i></a>
-                <a href="#">定位管理<i></i></a>
+                <a href="./j_registration_member3.html">加入會員<i></i></a>
+                <a href="./member_order.html">訂單管理<i></i></a>
                 <br />
-                <a href="#">優惠券<i></i></a>
-                <a href="#">我的評論<i></i></a>
+                <a href="./coupon_member.html">優惠券<i></i></a>
+                <a href="./member_comment.html">我的評論<i></i></a>
               </div>
             </div>
           </div>
@@ -326,9 +326,9 @@
             <div class="footer__restaurant">
               <h6>餐廳</h6>
               <div class="footer__social">
-                <a href="#">訂位<i></i></a>
+                <a href="./reservation.html">訂位<i></i></a>
                 <br />
-                <a href="#">購物車<i></i></a>
+                <a href="./shopping_cart.html">購物車<i></i></a>
               </div>
             </div>
           </div>
@@ -336,9 +336,9 @@
             <div class="footer__shopping">
               <h6>線上商城</h6>
               <div class="footer__social">
-                <a href="#">商品搜尋<i></i></a>
+                <a href="./shopping_mall.html">商品搜尋<i></i></a>
                 <br />
-                <a href="#">購物車<i></i></a>
+                <a href="./shopping_cart.html">購物車<i></i></a>
               </div>
             </div>
           </div>
@@ -346,9 +346,9 @@
             <div class="footer__aboutus">
               <h6>關於我們</h6>
               <div class="footer__social">
-                <a href="#">網站介紹<i></i></a>
+                <a href="./AboutUs.html">網站介紹<i></i></a>
                 <br />
-                <a href="#">履歷<i></i></a>
+                <a href="./AboutUs.html">履歷<i></i></a>
               </div>
             </div>
           </div>
@@ -357,12 +357,13 @@
               <h6>好食光</h6>
               <ul>
                 <li>指導老師：</li>
-                <li>吳永志老師 | 吳冠宏老師</li>
-                <li>張互賓老師 | 郭惠民老師</li>
-                <li>陳怡榕老師 | 馬全德老師</li>
+                <li>吳永志老師 &nbsp; | &nbsp; 吳冠宏老師</li>
+                <li>張互賓老師 &nbsp; | &nbsp; 馬全德老師</li>
+                <li>郭惠民老師 &nbsp; | &nbsp; 陳怡榕老師</li>
                 <li>組員 :</li>
-                <li>陳宜瀅 | 張家銘 | 楊婕妤</li>
-                <li>游育碩 | 黃郁婕 | 李佳欣 | 余可凡</li>
+                <li>陳宜瀅 &nbsp; | &nbsp; 張家銘 &nbsp; | &nbsp; 楊婕妤</li>
+                <li>游育碩 &nbsp; | &nbsp; 黃郁婕</li>
+                <li>李佳欣 &nbsp; | &nbsp; 余可凡</li>
               </ul>
             </div>
           </div>
@@ -421,6 +422,7 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/logged_restaurant.js"></script>
   <!-- <script src="js/reservation.js"></script> -->
   <!-- <script src="js/alice.js"></script> -->
   <script> // 預覽圖片
@@ -973,7 +975,7 @@
 
   </script>
   <script> // POST
-    const URL = 'http://localhost:8080/adOrders';
+    const URL = '../adOrders';
     const img = document.querySelector("#picture__input");
     const submit_btn = document.querySelector("#submit_btn");
 
@@ -982,13 +984,15 @@
         || document.querySelector("#ad_end").value == ''
         || total_ad_amount == null
         || img.value == '') {
-        alert("請正確填寫訂單資料！")
+        // alert("請正確填寫訂單資料！")
+        swal("請正確填寫訂單資料！", "", "warning");
       }
     }
 
     img.onchange = (e) => {
-      let ad_start = (document.querySelector("#datePickerId").value + ' 00:00:00');
-      let ad_end = (document.querySelector("#ad_end").value + ' 00:00:00');
+
+      let ad_start = (document.querySelector("#datePickerId").value + ' 00:00:00').toString();
+      let ad_end = (document.querySelector("#ad_end").value + ' 00:00:00').toString();
       let total_ad_amount = parseInt(document.querySelector("#total_ad_amount").value);
 
       let read = new FileReader();

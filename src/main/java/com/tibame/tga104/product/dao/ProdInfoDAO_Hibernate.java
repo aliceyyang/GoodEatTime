@@ -80,4 +80,15 @@ public class ProdInfoDAO_Hibernate implements ProdInfoDAO {
 		return null;
 	}
 
+	@Override
+	public List<ProdInfoVO> findByRestaurant(Integer restaurantNo) {
+		if (restaurantNo == null || restaurantNo < 0 ) {
+			return null;
+		}
+		String hql = "from ProdInfoVO where restaurantNo = :restaurantNo";
+		List<ProdInfoVO> result = this.getSession().createQuery(hql, ProdInfoVO.class)
+				.setParameter("restaurantNo", restaurantNo).list();
+		return result;
+	}
+
 }

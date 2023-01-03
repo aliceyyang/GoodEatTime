@@ -1,0 +1,594 @@
+/*---------------------
+  reservation start-restaurant part
+-----------------------*/
+#book_table {
+  padding-bottom: 50px;
+}
+
+#reserve_form {
+  height: auto;
+  margin-bottom: 50px;
+}
+
+#reservation {
+  padding-top: 60px;
+  margin-bottom: 10px;
+}
+
+#reserve_text h2 {
+  font-style: normal;
+  font-family: "cwTeXYen", sans-serif;
+}
+
+.breadcrumb__text p {
+  color: #000000;
+  font-weight: 500;
+  font-style: normal;
+  font-family: "cwTeXYen", sans-serif;
+  margin-bottom: 0;
+}
+
+section#reserve_check {
+  text-align: center;
+  background-clip: #f08632;
+  padding: 65px 70px 65px;
+  position: relative;
+  height: auto;
+}
+
+#reserve_innercheck {
+  background-color: white;
+  border: 1.5px dashed #f08632;
+  height: auto;
+  padding-top: 15px;
+}
+
+#reserve_checkText {
+  width: auto;
+  height: 275px;
+  margin: 0px;
+}
+
+#reserve_checkText p {
+  font-size: 24px;
+}
+
+#r_name {
+  font-size: 24px;
+  text-transform: none;
+  display: contents;
+  font-weight: bold;
+}
+
+button#btn_cancel {
+  color: #111111;
+  background: #ffffff;
+  border: 1px solid gray;
+  margin-top: 10px;
+}
+
+#reserveConfirm_inf p {
+  font-size: medium;
+  text-align: center;
+}
+
+#reserveConfirm_inf span {
+  color: #f08632;
+  font-size: larger;
+  font-weight: bold;
+}
+
+/* starLevel */
+.checked {
+  color: orange;
+}
+
+#reviews {
+  margin-left: 15px;
+}
+
+/*---------------------
+    reservation start-member part
+  -----------------------*/
+#coupon_search {
+  background-image: url("../img/icon/search.png");
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  flex: 1 1 auto;
+  cursor: pointer;
+}
+
+#coupon_detail {
+  padding: 12px;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+#coupon_detail h3{
+  background-color: #f08632;
+}
+
+#coupon_detail tr {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+#coupon_detail tr.header {
+  background-color: #fee192;
+}
+
+.header th{
+  white-space:nowrap;
+}
+
+#coupon_detail tr:hover {
+  background-color: #fdf8f0;
+}
+
+.table-responsive {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+}
+
+.table-responsive h2 {
+  color: black;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 36px;
+  padding-bottom: 12px;
+}
+
+#member {
+  background-color: rgb(255, 255, 255);
+}
+
+/*-----------------------------------
+    reservation start-restaurant part
+  -------------------------------------*/
+/* 訂位人數設定 */
+.restaurant_reserveinf h2,
+h3, h4{
+  font-size: 20px;
+  text-align: center;
+  padding: 12px;
+  color: rgb(255, 255, 255);
+  background-color: #313131;
+  margin-bottom: 10px;
+  border: 2px solid;
+}
+
+ h5.division{
+  font-size: 10px;
+  text-align: center;
+  padding: 12px;
+  color: rgb(255, 255, 255);
+  background-color: #313131;
+  margin-bottom: 10px;
+  border: 2px solid;
+}
+
+h5.division p {
+  font-size: 10px;
+  color: white;
+}
+
+.reserve_set table,
+td,
+th {
+  text-align: center;
+  padding: 12px;
+  border-collapse: collapse;
+  border: 1px solid #9a9a75;
+  font-size: 18px;
+  table-layout: fixed;
+}
+
+.reserve_set tr {
+  text-align: center;
+}
+
+.reserve_set tr.header {
+  background-color: #fee192;
+}
+
+.reserve_set tr:hover {
+  background-color: #fdf8f0;
+  text-align: center;
+}
+
+.reserve_set input {
+  text-align: center;
+  color: #444444;
+  background: #ffffff;
+  border: none;
+  width: 60%;
+}
+
+#set_store {
+  margin-top: 20px;
+}
+
+#table-responsive {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* 訂位狀況 */
+.tbcoupon_detail table,
+td,
+th {
+  text-align: center;
+  padding: 12px;
+  border-collapse: collapse;
+  border: 1px solid #9a9a75;
+  font-size: 11px;
+}
+
+.reserve_status tr {
+  text-align: center;
+}
+
+.reserve_status tr.header {
+  background-color: #fee192;
+}
+
+.reserve_status tr:hover {
+  background-color: #fdf8f0;
+  text-align: center;
+}
+
+.reserve_status th {
+  font-weight: normal;
+}
+
+/*餐廳訂位明細*/
+#reserveinf tr {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+#reserveinf tr.header {
+  background-color: #fee192;
+}
+
+#reserveinf tr:hover {
+  background-color: #fdf8f0;
+}
+
+.setCouponData {
+  padding: 10px;
+  border: 1px solid #9a9a75;
+  height: 860px;
+  width: 1000px;
+  margin-left: 50px;
+  font-style: inherit;
+  font-size: 22px;
+}
+
+.class__sidebar .updatePic {
+width: 150px;
+height: 150px;
+}
+
+.class__sidebar h3#couponNo {
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 12px;
+  color: black;
+  background-color: #FFEFDE;
+}
+
+.class__sidebar #news_file{
+  display: none;
+  background-color: #fdf3ea;
+  padding-top: 20px;
+  padding-left: 0px;
+} 
+
+.preview input#news_file {
+  display:none;
+}
+
+
+#backbtn {
+  position:absolute; 
+  bottom: 70px;; 
+  right: 20px;
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 20px;
+  min-width: 60px;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 120px;
+  height: 60px;
+  will-change: transform;
+}
+
+label#updatePicdata {
+  margin-top: 10px;
+  display:block;
+  width:45%;
+  height:45px;
+  margin-left: 25%;
+  line-height:50px;
+  text-align:center;
+  background:#f08632;
+  color:rgb(0, 0, 0);
+  font-size:15px;
+  font-family:"Open Sans",sans-serif;
+  text-transform:Uppercase;
+  font-weight:600;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+#backpagebtn{
+  position:absolute; 
+  bottom: 20px;; 
+  right: 150px;
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 20px;
+  min-width: 60px;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 120px;
+  height: 60px;
+  will-change: transform;
+}
+
+#confirmbtn {
+  position:absolute; 
+  bottom: 20px;; 
+  right: 20px;
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 20px;
+  min-width: 60px;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 120px;
+  height: 60px;
+  will-change: transform;
+  }
+
+  #insertbtn{
+  position:relative; 
+  bottom: -63px;; 
+  right: -270px;
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 18px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 20px;
+  min-width: 60px;
+  outline: none;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 110px;
+  height: 37px;
+  will-change: transform;
+  }
+
+#confirmbtn:disabled {
+  pointer-events: none;
+}
+
+
+#backpagebtn:disabled {
+  pointer-events: none;
+}
+
+#insertCoupon:disabled {
+  pointer-events: none;
+}
+
+#confirmbtn:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+#confirmbtn:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+#insertbtn:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+#insertbtn:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+#backpagebtn:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+#backpagebtn:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+#wrapper {
+  width: 500px;
+  border: 1px solid black;
+  overflow: hidden; /* will contain if #first is longer than #second */
+}
+#first {
+  width: 200px;
+  float:left; /* add this */
+}
+#second {
+  width: 150px;
+  overflow: hidden; /* if you don't want #second to wrap below #first */
+  margin-left: 50px;
+}
+
+/*=========================AuoutUs================================*/
+
+ .wrapper .title #aboutus__titel .block .vitae{
+  line-height: 60px;
+  line-height: 60px;
+    font-weight: bold;
+    padding-left: 18px;
+}
+
+#aboutus__titel .block .vitae{
+    line-height: 60px;
+    font-weight: bold;
+    padding-left: 18px;
+    color: white;
+}
+
+.wrapper .block {
+    width: 1200px;
+    height: 60px;
+    background-color: #f08632;
+    border-right: 3px solid #f08632;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper .title{
+  font-weight: bold;
+}
+
+.wrapper .title h1 {
+  font-size: 30px;
+  margin-top: 44px;
+  margin-bottom: 28px;
+}
+
+#aboutus__titel .block h3{
+  font-size: 20px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+.vitae_list {
+display: flex;
+padding-left: 8%;
+padding-top: 15px;
+padding-bottom: 20px;
+max-width: 90%;
+}
+
+.aboutGoodEatTime{
+  display: flex;
+  flex-direction: row;
+}
+
+ .aboutGoodEatTime .aboutus  img{
+padding-bottom: 15px;
+}
+
+.aboutGoodEatTime div div p{
+  font-size: 14px;
+  line-height: 16px;
+  padding: 0 0 0 30px;
+  max-width: 100%;
+}
+.text {
+  float: left;
+}
+
+.aboutus {
+  float: right;
+}
+
+.aboutGoodEatTime div h4{
+  text-align: center;
+  padding: 12px;
+  color: rgb(255, 255, 255);
+  background-color: #313131;
+  margin-bottom: 10px;
+  border: 2px solid;
+  width: 1200px;
+}
+
+
+
+  /*==============================================*/
+
+  
+  

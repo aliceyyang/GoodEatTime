@@ -66,6 +66,9 @@ public class ProdInfoService {
 		return dao.findByProdCategory(prodCategoryNo);
 	}
 	
+	public List<ProdInfoVO> findByRestaurant(Integer restaurantNo) {
+		return dao.findByRestaurant(restaurantNo);
+	}
 	
 	@Transactional
 	public ProdInfoVO addProdInfo(Integer restaurantNo, Integer prodCategoryNo, String prodName,

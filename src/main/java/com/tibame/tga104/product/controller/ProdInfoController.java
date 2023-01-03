@@ -42,23 +42,35 @@ public class ProdInfoController {
 	private ProdInfoService prodInfoService;
 
 	@GetMapping("all")
-	public ShoppingMallWrapper showAll(@SessionAttribute(name = "memberVO", required = false) MemberVO memberVO) {
-//		Map<String, List> map = new HashMap<String, List>();
-//		map.put("prodList", showProdInMallService.getAll());
-//		map.put("prodCategoryList", prodCategoryService.getAll());
-//		return map;
-//		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-//		System.out.println("memberNo="+memberNo);
-		// 目前memberNo還是先寫死
-		ShoppingMallWrapper result = new ShoppingMallWrapper.Builder().setProdList(showProdInMallService.getAll())
+	public ShoppingMallWrapper showAll(
+			@SessionAttribute(name = "memberVO", required = false) MemberVO memberVO,
+			@RequestParam(required = false) Integer restaurantNo, 
+			@RequestParam(required = false) Integer prodCategoryNo, 
+			@RequestParam(required = false) String keyword) {
+
+//		ShoppingMallWrapper result = new ShoppingMallWrapper.Builder().setProdList(showProdInMallService.getAll())
+//				.setProdCategoryList(prodCategoryService.getAll()).build();
+//		
+		
+		ShoppingMallWrapper result = new ShoppingMallWrapper.Builder()
 				.setProdCategoryList(prodCategoryService.getAll()).build();
 		
 		Integer memberNo = null;
 		if (memberVO != null) {
 			memberNo = memberVO.getMemberNo();
-			result.setShoppingCart(shoppingCartService.findByMemberNo(memberNo));
+			result.setShoppingCart(shoppingCartService.findByMemberNo(5));
 		}
 		
+		if (keyword != null && keyword != "") {
+			result.setProdList(showProdInMallService.searchByString(keyword));
+		} else if (restaurantNo != null) {
+			result.setProdList(showProdInMallService.getFromRestaurant(restaurantNo));
+		} else if (prodCategoryNo != null) {
+			result.setProdList(showProdInMallService.getFromProdCategory(prodCategoryNo));
+		} else {
+			result.setProdList(showProdInMallService.getAll());
+		}
+
 		return result;
 	}
 
@@ -69,13 +81,13 @@ public class ProdInfoController {
 		ProdDetailWrapper result = new ProdDetailWrapper();
 		result.setShowProdDetailVO(showProdDetailService.select(prodNo));
 		result.setProdPicList(prodPicService.getPicNoByProdNo(prodNo));
-		
+
 		Integer memberNo = null;
 		if (memberVO != null) {
 			memberNo = memberVO.getMemberNo();
 			result.setShoppingCart(shoppingCartService.findByMemberNo(memberNo));
 		}
-		
+
 		if (result.getShowProdDetailVO() != null) {
 			result.setSimilarProdList(
 					showProdInMallService.select6ByCategory(result.getShowProdDetailVO().getProdCategoryNo()));

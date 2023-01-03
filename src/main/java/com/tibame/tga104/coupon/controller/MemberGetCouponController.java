@@ -24,9 +24,12 @@ public class MemberGetCouponController {
 	@PostMapping("/getCoupon")
 	public Message coupon(HttpSession session, @RequestBody MemberCouponVO memberCouponVO) {
 		MemberVO memberVO = (MemberVO) session.getAttribute("memberVO");
+		if (memberVO != null) {
 		MemberCouponVO vo = memberCouponService.addOneCoupon(memberVO.getMemberNo(), memberCouponVO.getCouponNo());
 		Message message = new Message();
 		message.setSuccessful(vo != null);
 		return message;
+		}
+		return null;
 	}
 }

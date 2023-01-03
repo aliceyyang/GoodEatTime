@@ -483,3 +483,42 @@ label#updatePicdata {
   overflow: hidden; /* if you don't want #second to wrap below #first */
   margin-left: 50px;
 }
+
+/*=========================AuoutUs================================*/
+
+ .wrapper .title #aboutus__titel .block .vitae{
+  line-height: 60px;
+  line-height: 60px;
+    font-weight: bold;
+    padding-left: 18px;
+}
+
+#aboutus__titel .block .vitae{
+  font-size: 20px;
+  text-align: center;
+}
+
+.wrapper .block {
+  width: 100%;
+    height: 60px;
+    background-color: #D25541;
+    border-right: 3px solid #D25541;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper .title{
+  font-weight: bold;
+}
+
+.wrapper .title h1 {
+  font-size: 30px;
+  margin-top: 44px;
+  margin-bottom: 28px;
+}
+
+#aboutus__titel .block h3{
+  font-size: 20px;
+  text-align: center;
+}

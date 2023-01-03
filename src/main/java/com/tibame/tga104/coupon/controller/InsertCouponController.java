@@ -16,6 +16,7 @@ import com.google.gson.GsonBuilder;
 import com.tibame.tga104.coupon.service.CouponService;
 import com.tibame.tga104.coupon.service.CouponServiceImpl;
 import com.tibame.tga104.coupon.vo.CouponVO;
+import com.tibame.tga104.member.vo.RestaurantMemberVO;
 
 @WebServlet("/coupon/insert")
 public class InsertCouponController extends HttpServlet {
@@ -34,8 +35,9 @@ public class InsertCouponController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		Integer restaurantNo = (Integer) session.getAttribute("restaurantNo");
-		CouponVO vo = svc.insertByRestaurantNo(1);
+		RestaurantMemberVO restaurantMemberVO = new RestaurantMemberVO();
+		restaurantMemberVO =  (RestaurantMemberVO) session.getAttribute("restaurantMemberVO");
+		CouponVO vo = svc.insertByRestaurantNo(restaurantMemberVO.getRestaurantNo());
 		
 //		CouponVO vo = gson.fromJson(req.getReader(), CouponVO.class);
 
@@ -46,6 +48,8 @@ public class InsertCouponController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
+		RestaurantMemberVO restaurantMemberVO = new RestaurantMemberVO();
+		restaurantMemberVO = (RestaurantMemberVO) session.getAttribute("restaurantMemberVO");
 //		session.getAttribute("restaurantVO");
 		CouponVO vo = gson.fromJson(req.getReader(), CouponVO.class);
 //		CouponVO vo = new CouponVO();
@@ -62,7 +66,7 @@ public class InsertCouponController extends HttpServlet {
 //		byte[] couponPic = 
 //		vo.setCouponPic(Byte.valueOf(req.getParameter("couponPic")));
 //		System.out.println(vo);
-		vo.setRestaurantNo(1);
+		vo.setRestaurantNo(restaurantMemberVO.getRestaurantNo());
 		svc.insertCoupon(vo);
 		resp.setContentType("application/json; charset=UTF-8");
 		resp.getWriter().write(gson.toJson(vo));
