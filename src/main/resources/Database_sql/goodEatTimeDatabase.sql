@@ -756,8 +756,8 @@ left join restaurantCarouselPic rp
         group by r.restaurantNo, r.restaurantName, r.restaurantTel, r.restaurantAddr, r.restaurantBusinessHour, r.restaurantCommentQuantity, r.totalCommentRating;
 commit;
 
-/*==========================================================================================*/
 /* AdOrder table's data insert sql syntax update 20230102 */
+/*==========================================================================================*/
 /* short-url: https://reurl.cc/GXqloA */
 
 insert into adOrder(restaurantNo, adminNo, adOrderTime, adStartTime, adEndTime, verified, verificationDetail, adOrderPrice, slideshowPic)
@@ -768,6 +768,33 @@ values
 	(4, 2, now(), '2023-02-01', '2023-05-01', null, '春季夏初七五折', 3000, null),
 	(5, null, now(), '2023-02-01', '2024-02-01', null, null, 4000, null);
     
+commit;
+
+--  v_ProdCommentReply
+/*==========================================================================================*/
+create view v_ProdCommentReply as
+select pod.*, pi.prodName, po.restaurantNo, po.memberNo, mb.name
+from
+    prodOrderDetail pod
+    join prodOrder po
+        on pod.prodOrderNo = po.prodOrderNo
+            join prodInfo pi
+                on pod.prodNo = pi.prodNo
+                    join member mb
+                        on po.memberNo = mb.memberNo;
+commit;
+
+--  v_RestCommentReply
+/*==========================================================================================*/
+create view v_RestCommentReply as
+select rese.*, rest.restaurantName, mb.name
+from
+    reservation rese
+    join restaurant rest
+        on rese.restaurantNo = rest.restaurantNo
+            join member mb
+                on rese.memberNo = mb.memberNo;
+                
 commit;
 
 set AUTOCOMMIT = 1;
