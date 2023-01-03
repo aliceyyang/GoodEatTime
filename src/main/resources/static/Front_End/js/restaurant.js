@@ -1,14 +1,14 @@
 // ======================執行Google Map API 同時抓出餐廳的資料=======================
-let restaurantNum = 3; //避免網址直接輸入restaurant_comment.html打不開，這邊先寫死
+let restaurantNum = 3; //避免網址直接輸入restaurant.html打不開，這邊先寫死
 //照理來說是從其他地方連過來，所以會有sessionStorage存的餐廳編號
 if (sessionStorage.getItem("restaurantNo") != null) {
   restaurantNum = sessionStorage.getItem("restaurantNo");
 }
+console.log(restaurantNum);
 // google map
 function initMap() {
-  var restaurantNumber; //本餐廳編號
   var restaurant_Name;
-  fetch(`http://localhost:8080/restaurant-page/${restaurantNum}`) //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
+  fetch(`../restaurant-page/${restaurantNum}`) //因為fetch默認GET請求，所以不用特別輸入method:GET
     .then((res) => res.json())
     .then((data) => {
       //輸入需要的屬性取出資料庫中的值
@@ -23,7 +23,6 @@ function initMap() {
       sessionStorage.setItem("restaurantAddr", restaurantAddr);
       sessionStorage.setItem("restaurantTel", restaurantTel);
 
-      restaurantNumber = restaurantNo;
       restaurant_Name = restaurantName;
       document.getElementById("restaurantName").innerHTML = restaurantName;
       document.getElementById("restaurantTel").innerHTML += restaurantTel;
@@ -46,13 +45,13 @@ function initMap() {
 
   //=========================點選收藏餐廳=================================
   //找到該會員的所有收藏餐廳
-  fetch("http://localhost:8080/LikedRestaurant-list-page/0")
+  fetch("../LikedRestaurant-list-page/0")
     .then((res) => res.json())
     .then((list) => {
       for (const item of list) {
         const { restaurantNo } = item;
         //如果有符合本餐廳編號的，就顯示已收藏
-        if (restaurantNo == restaurantNumber) {
+        if (restaurantNo == restaurantNum) {
           $("#liked").html("已收藏");
           $("#liked").addClass("liked");
         }
@@ -61,14 +60,14 @@ function initMap() {
 
   $("#liked").on("click", function () {
     if ($(this).hasClass("liked")) {
-      fetch("http://localhost:8080/LikedRestaurant-delete", {
+      fetch("../LikedRestaurant-delete", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           memberNo: 0,
-          restaurantNo: restaurantNumber, //本餐廳編號
+          restaurantNo: restaurantNum, //本餐廳編號
         }),
       }).then(function () {
         $("#liked").removeClass("liked");
@@ -76,7 +75,7 @@ function initMap() {
         Swal.fire(`已取消收藏<br>${restaurant_Name}`);
       });
     } else {
-      fetch("http://localhost:8080/LikedRestaurant-add", {
+      fetch("../LikedRestaurant-add", {
         method: "POST",
         redirect: "follow",
         headers: {
@@ -84,10 +83,9 @@ function initMap() {
         },
         body: JSON.stringify({
           memberNo: 0,
-          restaurantNo: restaurantNumber, //本餐廳編號
+          restaurantNo: restaurantNum, //本餐廳編號
         }),
       }).then((res) => {
-        console.log("是否重導向" + res.redirected);
         var redirect_URL = res.url;
         if (res.redirected) {
           Swal.fire({
@@ -97,10 +95,8 @@ function initMap() {
             showConfirmButton: false,
             timer: 1000,
           }).then(() => {
-            sessionStorage.setItem(
-              "resp_login",
-              window.location.assign(redirect_URL)
-            );
+            sessionStorage.setItem("URL_before_login", window.location.href);
+            window.location.href = res.url;
           });
         } else {
           $("#liked").addClass("liked");
@@ -142,8 +138,7 @@ function codeAddress(address) {
 }
 
 // =======================抓出餐廳已上傳的輪播圖片======================
-
-fetch(`http://localhost:8080/restaurant-readInfo/CarouselPic/${restaurantNum}`) //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
+fetch(`../restaurant-readInfo/CarouselPic/${restaurantNum}`) //餐廳編號先寫死測試。因為fetch默認GET請求，所以不用特別輸入method:GET
   .then((res) => res.json())
   .then((list) => {
     const picStr = []; //取得輪播圖list裡的每個base64字串，裝進陣列裡
@@ -187,7 +182,7 @@ fetch(`http://localhost:8080/restaurant-readInfo/CarouselPic/${restaurantNum}`) 
 
 // ======================抓出餐廳已上傳的貼文======================
 
-fetch(`http://localhost:8080/restaurant-readInfo/Post/${restaurantNum}`)
+fetch(`../restaurant-readInfo/Post/${restaurantNum}`)
   .then((res) => res.json())
   .then((list) => {
     var post_uploaded = document.querySelector(".col-lg-8"); //準備裝已上傳貼文的div
@@ -282,10 +277,12 @@ fetch(`/restaurant-comment/${restaurantNum}`)
     const { name } = list[0];
     const { commentRating } = list[0];
     const { commentContent } = list[0];
+    const { restaurantCommentTime } = list[0];
 
     $("#member_name").html(name);
     $("#comment_rating").html(commentRating);
     $("#comment_content").html(commentContent);
+    $("#comment_time").html(restaurantCommentTime);
 
     let stars = "";
     //根據分數來新增等量的黃色星星

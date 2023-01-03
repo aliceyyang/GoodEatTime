@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.tibame.tga104.restaurant.dao.RestaurantSearchDAO;
 import com.tibame.tga104.restaurant.service.RestaurantSearchService;
 import com.tibame.tga104.restaurant.vo.RestaurantSearchVO;
+import com.tibame.tga104.restaurant.vo.RestaurantVO;
 
 @Component
 public class RestaurantSearchImpl implements RestaurantSearchService {
@@ -40,6 +41,7 @@ public class RestaurantSearchImpl implements RestaurantSearchService {
 				vo.setCarouselPic(null);
 			}
 		}
+		System.out.println(list);
 		return list;
 		// if (restaurantName != null) {
 //			return dao.selectByrestaurantName(restaurantName);
@@ -69,6 +71,20 @@ public class RestaurantSearchImpl implements RestaurantSearchService {
 
 		return newlist;
 
+	}
+
+	@Override
+	public List<RestaurantSearchVO> selectByrestaurantNo(Integer restaurantNo) {
+		List<RestaurantSearchVO> list = dao.selectByrestaurantNo(restaurantNo);
+		for (RestaurantSearchVO vo : list) {
+			final byte[] carouselPic = vo.getCarouselPic();
+			if (carouselPic != null && carouselPic.length != 0) {
+				vo.setCarouselPicStr(Base64.getEncoder().encodeToString(carouselPic));
+				vo.setCarouselPic(null);
+		}
+		
+		}
+		return list;
 	}
 
 }

@@ -17,7 +17,7 @@ import com.google.gson.GsonBuilder;
 import com.tibame.tga104.coupon.service.CouponService;
 import com.tibame.tga104.coupon.service.CouponServiceImpl;
 import com.tibame.tga104.coupon.vo.CouponVO;
-import com.tibame.tga104.member.vo.RestaurantMemberVO;
+import com.tibame.tga104.member.vo.MemberVO;
 
 @WebServlet("/coupon/Manage")
 public class CouponManageController extends HttpServlet {
@@ -36,12 +36,12 @@ public class CouponManageController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		RestaurantMemberVO restaurantMemberVO = new RestaurantMemberVO();
-		restaurantMemberVO = (RestaurantMemberVO) session.getAttribute("restaurantMemberVO");
+		MemberVO memberVO = new MemberVO();
+		memberVO = (MemberVO) session.getAttribute("memberVO");
 		
 		// TODO 暫時寫死!!!
 //		System.out.println("AAA");
-		List<CouponVO> list = svc.findByRestaurantNo(restaurantMemberVO.getRestaurantNo());
+		List<CouponVO> list = svc.findByRestaurantNo(memberVO.getMemberNo());
 		Map<String, List> map = new HashMap<String, List>();
 		map.put("data", list);
 		System.out.println(list);

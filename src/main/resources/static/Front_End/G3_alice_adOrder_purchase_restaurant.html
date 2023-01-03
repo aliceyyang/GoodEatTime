@@ -99,7 +99,7 @@
     <div class="offcanvas__cart">
       <div class="offcanvas__cart__links">
         <a href="#" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
-        <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+        <a href="./member_likedRestaurant.html"><img src="img/icon/heart.png" alt="" /></a>
       </div>
       <div class="offcanvas__cart__item">
         <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
@@ -326,10 +326,9 @@
             <div class="footer__restaurant">
               <h6>餐廳</h6>
               <div class="footer__social">
-                <!-- @這裡不確定要連去哪裡... -->
-                <a href="#">訂位<i></i></a>
+                <a href="./reservation.html">訂位<i></i></a>
                 <br />
-                <a href="#">購物車<i></i></a>
+                <a href="./shopping_cart.html">購物車<i></i></a>
               </div>
             </div>
           </div>
@@ -337,7 +336,6 @@
             <div class="footer__shopping">
               <h6>線上商城</h6>
               <div class="footer__social">
-                <!-- @Footer連結請更改 -->
                 <a href="./shopping_mall.html">商品搜尋<i></i></a>
                 <br />
                 <a href="./shopping_cart.html">購物車<i></i></a>
@@ -348,10 +346,9 @@
             <div class="footer__aboutus">
               <h6>關於我們</h6>
               <div class="footer__social">
-                <!-- @這裡也還不知道要連去哪裡... -->
-                <a href="#">網站介紹<i></i></a>
+                <a href="./AboutUs.html">網站介紹<i></i></a>
                 <br />
-                <a href="#">履歷<i></i></a>
+                <a href="./AboutUs.html">履歷<i></i></a>
               </div>
             </div>
           </div>
@@ -425,6 +422,7 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/logged_restaurant.js"></script>
   <!-- <script src="js/reservation.js"></script> -->
   <!-- <script src="js/alice.js"></script> -->
   <script> // 預覽圖片
@@ -977,7 +975,7 @@
 
   </script>
   <script> // POST
-    const URL = 'http://localhost:8080/adOrders';
+    const URL = '../adOrders';
     const img = document.querySelector("#picture__input");
     const submit_btn = document.querySelector("#submit_btn");
 
@@ -986,7 +984,8 @@
         || document.querySelector("#ad_end").value == ''
         || total_ad_amount == null
         || img.value == '') {
-        alert("請正確填寫訂單資料！")
+        // alert("請正確填寫訂單資料！")
+        swal("請正確填寫訂單資料！", "", "warning");
       }
     }
 
