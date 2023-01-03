@@ -27,6 +27,7 @@ public class RestCommentReply_Hibernate implements RestCommentReply_interface {
 	@Override
 	public List<RestCommentReplyVO> getNotNullComment(RestCommentReplyVO restCommentReplyVO) {
 		
+		System.out.println(restCommentReplyVO);
 		CriteriaBuilder criteriaBuilder =  this.getSession().getCriteriaBuilder();
 		CriteriaQuery<RestCommentReplyVO> criteriaQuery = criteriaBuilder.createQuery(RestCommentReplyVO.class);
 		Root<RestCommentReplyVO> root = criteriaQuery.from(RestCommentReplyVO.class);
