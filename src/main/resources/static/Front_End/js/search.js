@@ -201,7 +201,6 @@ Swal.fire({
           icon: 'error',
           title: '抱歉...',
           text: '抱歉找不到相關餐廳!',
-          footer: '<a href="">Why do I have this issue?</a>'
         })
       }
     },
@@ -210,7 +209,6 @@ Swal.fire({
         icon: 'error',
         title: '抱歉...',
         text: '抱歉找不到相關餐廳!',
-        footer: '<a href="">Why do I have this issue?</a>'
       })
     },
     complete: function (data) {
