@@ -1,241 +1,284 @@
 <!DOCTYPE html>
 <html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Cake Template" />
+    <meta name="keywords" content="Cake, unica, creative, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>會員註冊</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="Cake Template" />
-  <meta name="keywords" content="Cake, unica, creative, html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>會員註冊</title>
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
+    <!-- checkEye font-awesome-->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- checkEye font-awesome-->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-  <!-- sweetalert -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
+    <link rel="stylesheet" href="css/barfiller.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <style>
+      .breadcrumb-option {
+        background-color: #ffefde;
+      }
 
-  <!-- Css Styles -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-  <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
-  <link rel="stylesheet" href="css/barfiller.css" type="text/css" />
-  <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
-  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
-  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
-  <link rel="stylesheet" href="css/nice-select.css" type="text/css" />
-  <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
-  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
-  <link rel="stylesheet" href="css/style.css" type="text/css" />
-  <style>
-    .checkout__input_eye input {
-      margin-bottom: 0px;
-    }
+      .checkout__order .site-btnVer {
+        width: 100%;
+        margin-top: 8px;
+        letter-spacing: 0;
+      }
 
-    .GoodEatTime {
-      width: 152px;
-      height: 52px;
-    }
+      .site-btnVer {
+        font-size: 14px;
+        color: #ffffff;
+        background: #111111;
+        font-weight: 600;
+        border: none;
+        text-transform: uppercase;
+        display: inline-block;
+        letter-spacing: 2px;
+        padding: 14px 40px;
+      }
 
-    /* 會員註冊字樣 位置往上調 */
-    .breadcrumb-option {
-      padding-top: 40px;
-    }
+      .checkout__input_eye input {
+        margin-bottom: 0px;
+      }
 
-    /* 會員基本資料(含)以下的資料 位置往上調 */
-    .spad {
-      padding-top: 50px;
-    }
+      .GoodEatTime {
+        width: 152px;
+        height: 52px;
+      }
 
-    /* checkEye位置 */
-    #checkEye {
-      font-size: 20px;
-      position: absolute;
-      bottom: 37px;
-      right: 20px;
-    }
+      /* 會員註冊字樣 位置往上調 */
+      .breadcrumb-option {
+        padding-top: 40px;
+      }
 
-    /* recheckEye位置 */
-    #recheckEye {
-      font-size: 20px;
-      position: absolute;
-      bottom: 37px;
-      right: 20px;
-    }
+      /* 會員基本資料(含)以下的資料 位置往上調 */
+      .spad {
+        padding-top: 50px;
+      }
 
-    /* 因為Form拉掉，用div包，命div class為form */
-    .checkout__input_eye {
-      margin-bottom: 6px;
-    }
+      /* checkEye位置 */
+      #checkEye {
+        font-size: 20px;
+        position: absolute;
+        bottom: 37px;
+        right: 20px;
+      }
 
-    .checkout__input_eye p {
-      color: #444444;
-      font-weight: 500;
-      margin-bottom: 12px;
-    }
+      /* recheckEye位置 */
+      #recheckEye {
+        font-size: 20px;
+        position: absolute;
+        bottom: 37px;
+        right: 20px;
+      }
 
-    .checkout__input_eye p span {
-      color: #f08632;
-    }
+      /* 因為Form拉掉，用div包，命div class為form */
+      .checkout__input_eye {
+        margin-bottom: 6px;
+      }
 
-    .checkout__input_eye input {
-      height: 50px;
-      width: 100%;
-      border: 1px solid #e1e1e1;
-      font-size: 14px;
-      color: #666666;
-      padding-left: 20px;
-      margin-bottom: 20px;
-    }
+      .checkout__input_eye p {
+        color: #444444;
+        font-weight: 500;
+        margin-bottom: 12px;
+      }
 
-    .checkout__input_eye input::-webkit-input-placeholder {
-      color: #666666;
-    }
+      .checkout__input_eye p span {
+        color: #f08632;
+      }
 
-    .checkout__input_eye input::-moz-placeholder {
-      color: #666666;
-    }
+      .checkout__input_eye input {
+        height: 50px;
+        width: 100%;
+        border: 1px solid #e1e1e1;
+        font-size: 14px;
+        color: #666666;
+        padding-left: 20px;
+        margin-bottom: 20px;
+      }
 
-    .checkout__input_eye input:-ms-input-placeholder {
-      color: #666666;
-    }
+      .checkout__input_eye input::-webkit-input-placeholder {
+        color: #666666;
+      }
 
-    .checkout__input_eye input::-ms-input-placeholder {
-      color: #666666;
-    }
+      .checkout__input_eye input::-moz-placeholder {
+        color: #666666;
+      }
 
-    .checkout__input_eye input::placeholder {
-      color: #666666;
-    }
+      .checkout__input_eye input:-ms-input-placeholder {
+        color: #666666;
+      }
 
-    .checkout__input_eye label {
-      font-size: 14px;
-      color: #444444;
-      position: relative;
-      padding-left: 30px;
-      font-weight: 500;
-      cursor: pointer;
-      margin-bottom: 16px;
-      display: block;
-    }
+      .checkout__input_eye input::-ms-input-placeholder {
+        color: #666666;
+      }
 
-    /* input:invalid{
+      .checkout__input_eye input::placeholder {
+        color: #666666;
+      }
+
+      .checkout__input_eye label {
+        font-size: 14px;
+        color: #444444;
+        position: relative;
+        padding-left: 30px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-bottom: 16px;
+        display: block;
+      }
+
+      /* input:invalid{
       border:2px solid red;
       } */
 
-    /* sweetalert */
-    body {
-      font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
-        Arial, sans-serif;
-    }
-  </style>
-</head>
+      /* sweetalert */
+      body {
+        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
+          Arial, sans-serif;
+      }
+    </style>
+  </head>
 
-<body>
-  <!-- Page Preloder -->
-  <div id="preloder">
-    <div class="loader"></div>
-  </div>
+  <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
 
-  <!-- Offcanvas Menu Begin -->
-  <div class="offcanvas-menu-overlay"></div>
-  <div class="offcanvas-menu-wrapper">
-    <div class="offcanvas__cart">
-      <div class="offcanvas__cart__links">
-        <a href="#" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
-        <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+      <div class="offcanvas__cart">
+        <div class="offcanvas__cart__links">
+          <a href="#" class="search-switch"
+            ><img src="img/icon/search.png" alt=""
+          /></a>
+          <a href="#"><img src="img/icon/heart.png" alt="" /></a>
+        </div>
+        <div class="offcanvas__cart__item">
+          <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
+          <div class="cart__price">Cart: <span>$0.00</span></div>
+        </div>
       </div>
-      <div class="offcanvas__cart__item">
-        <a href="#"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
-        <div class="cart__price">Cart: <span>$0.00</span></div>
+      <div class="offcanvas__logo">
+        <a href="./index.html"><img src="img/logo.png" alt="" /></a>
+      </div>
+      <div id="mobile-menu-wrap"></div>
+      <div class="offcanvas__option">
+        <ul>
+          <li>
+            USD <span class="arrow_carrot-down"></span>
+            <ul>
+              <li>EUR</li>
+              <li>USD</li>
+            </ul>
+          </li>
+          <li>
+            ENG <span class="arrow_carrot-down"></span>
+            <ul>
+              <li>Spanish</li>
+              <li>ENG</li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Sign in</a> <span class="arrow_carrot-down"></span>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="offcanvas__logo">
-      <a href="./index.html"><img src="img/logo.png" alt="" /></a>
-    </div>
-    <div id="mobile-menu-wrap"></div>
-    <div class="offcanvas__option">
-      <ul>
-        <li>
-          USD <span class="arrow_carrot-down"></span>
-          <ul>
-            <li>EUR</li>
-            <li>USD</li>
-          </ul>
-        </li>
-        <li>
-          ENG <span class="arrow_carrot-down"></span>
-          <ul>
-            <li>Spanish</li>
-            <li>ENG</li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Sign in</a> <span class="arrow_carrot-down"></span>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- Offcanvas Menu End -->
+    <!-- Offcanvas Menu End -->
 
-  <!-- Header Section Begin -->
-  <header class="header">
-    <div class="header__top">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="header__top__inner">
-              <div class="header__top__left">
-                <ul>
-                  <li>
-                    <img class="login_icon" src="./img/Login_icon.png" /><a class="login_text"
-                      href="./j_signin_member3.html">登入</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="header__logo">
-                <!-- @Header連結請更改~ -->
-                <a href="./GoodEatTime.html"><img class="goodeattime_logo" src="img/GoodEatTime_logoright.png"
-                    alt="" /></a>
-              </div>
-              <div class="header__top__right">
-                <div class="header__top__right__links">
-                  <!-- @Header連結請更改~ -->
-                  <a href="./shopping_mall.html" class="search-switch"><img src="img/icon/search.png" alt="" /></a>
-                  <a href="./shopping_cart.html"><img src="img/icon/heart.png" alt="" /></a>
+    <!-- Header Section Begin -->
+    <header class="header">
+      <div class="header__top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="header__top__inner">
+                <div class="header__top__left">
+                  <ul>
+                    <li>
+                      <img class="login_icon" src="./img/Login_icon.png" /><a
+                        class="login_text"
+                        href="./j_signin_member3.html"
+                        >登入</a
+                      >
+                    </li>
+                  </ul>
                 </div>
-                <div class="header__top__right__cart">
-                  <a href="./shopping_cart.html"><img src="img/icon/cart.png" alt="" /> <span>0</span></a>
-                  <div class="cart__price">Cart: <span>$0.00</span></div>
+                <div class="header__logo">
+                  <!-- @Header連結請更改~ -->
+                  <a href="./GoodEatTime.html"
+                    ><img
+                      class="goodeattime_logo"
+                      src="img/GoodEatTime_logoright.png"
+                      alt=""
+                  /></a>
+                </div>
+                <div class="header__top__right">
+                  <div class="header__top__right__links">
+                    <!-- @Header連結請更改~ -->
+                    <a href="./shopping_mall.html" class="search-switch"
+                      ><img src="img/icon/search.png" alt=""
+                    /></a>
+                    <a href="./shopping_cart.html"
+                      ><img src="img/icon/heart.png" alt=""
+                    /></a>
+                  </div>
+                  <div class="header__top__right__cart">
+                    <a href="./shopping_cart.html"
+                      ><img src="img/icon/cart.png" alt="" /> <span>0</span></a
+                    >
+                    <div class="cart__price">Cart: <span>$0.00</span></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
-        <div class="canvas__open"><i class="fa fa-bars"></i></div>
       </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <nav class="header__menu mobile-menu">
-            <ul>
-              <!-- @Header連結請更改~ -->
-              <li><a href="./GoodEatTime.html">首頁</a></li>
-              <li class="active">
-                <a href="./j_memberfile3.html">會員專區</a>
-              </li>
-              <li><a href="./restaurant_search.html">餐廳</a></li>
-              <li><a href="./shopping_mall.html">線上商城</a></li>
-              <li>
-                <a href="./about_us.html">關於我們</a>
-                <!-- <ul class="dropdown">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="header__menu mobile-menu">
+              <ul>
+                <!-- @Header連結請更改~ -->
+                <li><a href="./GoodEatTime.html">首頁</a></li>
+                <li class="active">
+                  <a href="./j_memberfile3.html">會員專區</a>
+                </li>
+                <li><a href="./Search.html">餐廳</a></li>
+                <li><a href="./shopping_mall.html">線上商城</a></li>
+                <li>
+                  <a href="./About_us.html">關於我們</a>
+                  <!-- <ul class="dropdown">
                     <li><a href="./shop-details.html">Shop Details</a></li>
                     <li><a href="./shoping-cart.html">Shoping Cart</a></li>
                     <li><a href="./checkout.html">Check Out</a></li>
@@ -243,125 +286,210 @@
                     <li><a href="./Class.html">Class</a></li>
                     <li><a href="./blog-details.html">Blog Details</a></li>
                   </ul> -->
-              </li>
-              <!-- <li><a href="./contact.html">地點搜尋</a></li> -->
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- Header Section End -->
-
-  <!-- 會員註冊 開始 -->
-  <section class="class">
-    <div class="breadcrumb-option">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="breadcrumb__text">
-              <h2>會員註冊</h2>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="breadcrumb__links">
-              <!-- <a href="./index.html">Home</a> -->
-              <!-- <span>Checkout</span> -->
-            </div>
+                </li>
+                <!-- <li><a href="./contact.html">地點搜尋</a></li> -->
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
-    </div>
-    <!-- 會員註冊 結束 -->
+    </header>
+    <!-- Header Section End -->
 
-    <!-- 會員基本資料 開始 -->
-    <section class="checkout spad">
-      <div class="container">
-        <div class="checkout__form">
-          <div class="form">
-            <!-- <div class="row"> -->
-            <div class="col-lg-8 col-md-6">
-              <h6 class="checkout__title">會員基本資料</h6>
-              <div class="checkout__input">
-                <p>姓名<span>*</span></p>
-                <input id="name" type="text" class="form-control" required="required" />
+    <!-- 會員註冊 開始 -->
+    <section class="class">
+      <div class="breadcrumb-option">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="breadcrumb__text">
+                <h2>會員註冊</h2>
               </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="breadcrumb__links">
+                <!-- <a href="./index.html">Home</a> -->
+                <!-- <span>Checkout</span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 會員註冊 結束 -->
 
-              <div class="checkout__input">
-                <p>手機<span>*</span></p>
+      <!-- 會員基本資料 開始 -->
+      <section class="checkout spad">
+        <div class="container">
+          <div class="checkout__form">
+            <div class="form">
+              <!-- <div class="row"> -->
+              <h6 class="checkout__title">會員基本資料</h6>
+              <div class="col-lg-8 col-md-6">
+                <div class="checkout__input">
+                  <p>姓名<span>*</span></p>
+                  <input
+                    id="name"
+                    type="text"
+                    class="form-control"
+                    required="required"
+                  />
+                </div>
 
-                <input id="tel" type="text" class="form-control" required="required" maxlength="10" />
+                <div class="checkout__input">
+                  <p>手機<span>*</span></p>
 
-                <label id="telPattern" style="float: right; color: #f66767"></label>
+                  <input
+                    id="tel"
+                    type="text"
+                    class="form-control"
+                    required="required"
+                    maxlength="10"
+                  />
 
-                <!-- 連絡電話格式
+                  <label
+                    id="telPattern"
+                    style="float: right; color: #f66767"
+                  ></label>
+
+                  <!-- 連絡電話格式
                       maxlength="11"
                       pattern="09\d{2}-\d{6}"
                       oninput="setCustomValidity('');"
                       oninvalid="setCustomValidity('請輸入正確的手機號瑪格式，09xx-xxxxxx');" -->
-              </div>
-              <div class="checkout__input">
-                <p>生日<span>*</span></p>
-                <input id="birthday" class="form-control" type="date" min="1900-01-01" max="2021-01-01"
-                  required="required" />
-              </div>
+                </div>
+                <div class="checkout__input">
+                  <p>生日<span>*</span></p>
+                  <input
+                    id="birthday"
+                    class="form-control"
+                    type="date"
+                    min="1900-01-01"
+                    max="2021-01-01"
+                    required="required"
+                  />
+                </div>
 
-              <div class="checkout__input">
-                <p>E-mail<span>*</span></p>
-                <!-- <div class="row"> -->
-                <!-- <div class="col-lg-9"> -->
-                <input id="mail" type="mail" class="form-control" required="required" />
+                <div class="checkout__input">
+                  <p>E-mail<span>*</span></p>
+                  <!-- <div class="row"> -->
+                  <!-- <div class="col-lg-9"> -->
+                  <input
+                    id="mail"
+                    type="mail"
+                    class="form-control"
+                    required="required"
+                  />
 
-                <label id="mailPattern" style="float: right; color: #f66767"></label>
+                  <label
+                    id="mailPattern"
+                    style="float: right; color: #f66767"
+                  ></label>
 
-                <!-- </div> -->
+                  <!-- </div> -->
 
-                <!-- <div class="col-lg-3">
+                  <!-- <div class="col-lg-3">
                       <button type="submit" class="site-btn">取得驗證碼</button>
                     </div> -->
-                <!-- </div> -->
-              </div>
+                  <!-- </div> -->
+                </div>
 
-              <div class="checkout__input_eye">
-                <p>密碼<span>*</span></p>
-                <!-- <div class="row"> -->
-                <!-- <div class="col-lg-11"> -->
-                <input id="memberPassword" type="password" class="form-control" id="checkpw"
-                  placeholder="請輸入密碼，長度須介於6~12字元" required="required" minlength="6" maxlength="12" />
+                <div class="checkout__input">
+                  <!-- <p>
+                    驗證碼
+                    <span>*</span>
+                    <span
+                      >&nbsp&nbsp&nbsp&nbsp&nbsp<button
+                        class="site-btn"
+                        id="send_verifyCode"
+                        style="padding: 10px"
+                      >
+                        發送驗證碼
+                      </button></span
+                    >
+                  </p> -->
+                  <p>驗證碼<span>*</span></p>
+                  <div class="row">
+                    <!-- <div class="row"> -->
+                    <div class="col-lg-9">
+                      <input
+                        id="verifyCode"
+                        type="text"
+                        class="form-control"
+                        required="required"
+                        placeholder="請輸入驗證碼"
+                      />
+                    </div>
+                    <div class="col-lg-3">
+                      <button class="site-btnVer" id="send_verifyCode">
+                        發送驗證碼
+                      </button>
+                    </div>
+                    <!-- <label id="mailPattern" style="float: right; color: #f66767"></label> -->
+                  </div>
+                </div>
 
-                <label id="memberPasswordPattern" style="float: right; color: #f66767"></label>
+                <div class="checkout__input_eye">
+                  <p>密碼<span>*</span></p>
+                  <!-- <div class="row"> -->
+                  <!-- <div class="col-lg-11"> -->
+                  <input
+                    id="memberPassword"
+                    type="password"
+                    class="form-control"
+                    id="checkpw"
+                    placeholder="請輸入密碼，長度須介於6~12字元"
+                    required="required"
+                    minlength="6"
+                    maxlength="12"
+                  />
 
-                <!-- 進階邏輯 
+                  <label
+                    id="memberPasswordPattern"
+                    style="float: right; color: #f66767"
+                  ></label>
+
+                  <!-- 進階邏輯 
                           placeholder="設定密碼格式:含英數至少六個字元"
                           pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$"
                           required="required"
                           oninput="setCustomValidity('');"
                           oninvalid="setCustomValidity('請輸入正確的密碼格式:含英數至少六個字元');"
                         -->
-                <!-- </div> -->
-                <!-- <div class="col-lg-1"> -->
-                <label for="memberPassword">
-                  <i id="checkEye" class="fas fa-eye-slash"></i>
-                </label>
-                <!-- </div> -->
-                <!-- </div> -->
-              </div>
-              <div class="checkout__input_eye">
-                <p>確認密碼<span>*</span></p>
-                <!-- <div class="row"> -->
-                <!-- <div class="col-lg-11"> -->
-                <input type="password" class="form-control" id="recheckpw" placeholder="再次輸入密碼" required="required" />
+                  <!-- </div> -->
+                  <!-- <div class="col-lg-1"> -->
+                  <label for="memberPassword">
+                    <i id="checkEye" class="fas fa-eye-slash"></i>
+                  </label>
+                  <!-- </div> -->
+                  <!-- </div> -->
+                </div>
+                <div class="checkout__input_eye">
+                  <p>確認密碼<span>*</span></p>
+                  <!-- <div class="row"> -->
+                  <!-- <div class="col-lg-11"> -->
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="recheckpw"
+                    placeholder="再次輸入密碼"
+                    required="required"
+                  />
 
-                <label id="recheckpwPattern" style="float: right; color: #f66767"></label>
+                  <label
+                    id="recheckpwPattern"
+                    style="float: right; color: #f66767"
+                  ></label>
 
-                <!-- </div> -->
-                <!-- <div class="col-lg-1"> -->
-                <label for="recheckpw"><i id="recheckEye" class="fas fa-eye-slash"></i></label>
-                <!-- </div> -->
-                <!-- </div> -->
-              </div>
+                  <!-- </div> -->
+                  <!-- <div class="col-lg-1"> -->
+                  <label for="recheckpw"
+                    ><i id="recheckEye" class="fas fa-eye-slash"></i
+                  ></label>
+                  <!-- </div> -->
+                  <!-- </div> -->
+                </div>
 
-              <!-- <div class="checkout__input">
+                <!-- <div class="checkout__input">
                   <p>輸入驗證碼<span>*</span></p>
                   <input
                     type="text"
@@ -370,384 +498,391 @@
                   />
                 </div> -->
 
-              <div class="checkout__input">
-                <p>會員頭貼<span>*</span></p>
+                <div class="checkout__input">
+                  <p>會員頭貼<span>*</span></p>
 
-                <!-- <h4 style="text-align:center">圖片上傳</h4> -->
-                <label>
-                  <input type="file" id="memberPic" accept="image/*" multiple="multiple" required />
-                </label>
-                <img id="imgMemberPic" style="width: 200px" />
-                <!-- <button  type="submit" class="site-btn">上傳</button> -->
-              </div>
-
-              <div class="checkout__input">
-                <p>驗證碼
-                  <span>*</span>
-                  <span>&nbsp&nbsp&nbsp&nbsp&nbsp<button class="site-btn" id="send_verifyCode"
-                      style="padding: 10px">發送驗證碼</button></span>
-                </p>
-                <!-- <div class="row"> -->
-                <!-- <div class="col-lg-9"> -->
-                <input id="verifyCode" type="text" class="form-control" required="required" />
-
-                <!-- <label id="mailPattern" style="float: right; color: #f66767"></label> -->
-
+                  <!-- <h4 style="text-align:center">圖片上傳</h4> -->
+                  <label>
+                    <input
+                      type="file"
+                      id="memberPic"
+                      accept="image/*"
+                      multiple="multiple"
+                      required
+                    />
+                  </label>
+                  <img id="imgMemberPic" style="width: 200px" />
+                  <!-- <button  type="submit" class="site-btn">上傳</button> -->
+                </div>
+                <button id="submitBtn" class="site-btn">送出</button>
               </div>
             </div>
-            <button id="submitBtn" class="site-btn">送出</button>
+            <!-- </div> -->
           </div>
-          <!-- </div> -->
         </div>
-      </div>
+      </section>
     </section>
-  </section>
-  <!-- 會員基本資料 結束 -->
+    <!-- 會員基本資料 結束 -->
 
-  <!-- Footer Section Begin -->
-  <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
-    <div class="mask">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-6">
-            <div class="footer__member">
-              <h6>會員專區</h6>
-              <div class="footer__social">
-                <a href="#">登入會員<i></i></a>
-                <a href="#">定位管理<i></i></a>
-                <br />
-                <a href="#">加入會員<i></i></a>
-                <a href="#">定位管理<i></i></a>
-                <br />
-                <a href="#">優惠券<i></i></a>
-                <a href="#">我的評論<i></i></a>
+    <!-- Footer Section Begin -->
+    <footer class="footer set-bg" data-setbg="img/footer_bg.jpg">
+      <div class="mask">
+        <div>
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <div class="footer__member">
+                <h6>會員專區</h6>
+                <div class="footer__social">
+                  <!-- @Footer連結請更改 -->
+                  <a href="./j_signin_member3.html">登入會員<i></i></a>
+                  <a href="./member_reservation.html">訂位管理<i></i></a>
+                  <br />
+                  <a href="./j_registration_member3.html">加入會員<i></i></a>
+                  <a href="./member_order.html">訂單管理<i></i></a>
+                  <br />
+                  <a href="./coupon_member.html">優惠券<i></i></a>
+                  <a href="./member_comment.html">我的評論<i></i></a>
+                </div>
               </div>
             </div>
-            <div class="footer__restaurant">
-              <h6>餐廳</h6>
-              <div class="footer__social">
-                <a href="#">訂位<i></i></a>
-                <br />
-                <a href="#">購物車<i></i></a>
+            <div class="col-lg-2 col-md-3 col-sm-3">
+              <div class="footer__restaurant">
+                <h6>餐廳</h6>
+                <div class="footer__social">
+                  <!-- @這裡不確定要連去哪裡... -->
+                  <a href="#">訂位<i></i></a>
+                  <br />
+                  <a href="#">購物車<i></i></a>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
-            <div class="footer__shopping">
-              <h6>線上商城</h6>
-              <div class="footer__social">
-                <a href="#">商品搜尋<i></i></a>
-                <br />
-                <a href="#">購物車<i></i></a>
+            <div class="col-lg-2 col-md-3 col-sm-3">
+              <div class="footer__shopping">
+                <h6>線上商城</h6>
+                <div class="footer__social">
+                  <!-- @Footer連結請更改 -->
+                  <a href="./shopping_mall.html">商品搜尋<i></i></a>
+                  <br />
+                  <a href="./shopping_cart.html">購物車<i></i></a>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
-            <div class="footer__aboutus">
-              <h6>關於我們</h6>
-              <div class="footer__social">
-                <a href="#">網站介紹<i></i></a>
-                <br />
-                <a href="#">履歷<i></i></a>
+            <div class="col-lg-2 col-md-3 col-sm-3">
+              <div class="footer__aboutus">
+                <h6>關於我們</h6>
+                <div class="footer__social">
+                  <!-- @這裡也還不知道要連去哪裡... -->
+                  <a href="#">網站介紹<i></i></a>
+                  <br />
+                  <a href="#">履歷<i></i></a>
+                </div>
               </div>
             </div>
-            <div class="footer__widget">
-              <h6>好食光</h6>
-              <ul>
-                <li>指導老師：</li>
-                <li>吳永志老師 吳冠宏老師 郭惠民老師 陳怡榕老師</li>
-                <li>組員 :</li>
-                <li>陳宜瀅 張家銘 楊婕妤</li>
-                <li>游育碩 黃郁婕 李佳欣 余可凡</li>
-              </ul>
+            <div class="col-lg-3 col-md-9 col-sm-12">
+              <div class="footer__widget">
+                <h6>好食光</h6>
+                <ul>
+                  <li>指導老師：</li>
+                  <li>吳永志老師 &nbsp; | &nbsp; 吳冠宏老師</li>
+                  <li>張互賓老師 &nbsp; | &nbsp; 馬全德老師</li>
+                  <li>郭惠民老師 &nbsp; | &nbsp; 陳怡榕老師</li>
+                  <li>組員 :</li>
+                  <li>陳宜瀅 &nbsp; | &nbsp; 張家銘 &nbsp; | &nbsp; 楊婕妤</li>
+                  <li>游育碩 &nbsp; | &nbsp; 黃郁婕</li>
+                  <li>李佳欣 &nbsp; | &nbsp; 余可凡</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="copyright">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7">
-            <p class="copyright__text text-white">
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;
-              <script>
-                document.write(new Date().getFullYear());
-              </script>
-              All rights reserved | This template is made with
-              <i class="fa fa-heart" aria-hidden="true"></i> by
-              <a href="https://colorlib.com" target="_blank">Colorlib</a>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-          </div>
-          <div class="col-lg-5">
-            <div class="copyright__widget">
-              <ul>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-                <li><a href="#">Site Map</a></li>
-              </ul>
+      <div class="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <p class="copyright__text text-white">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                All rights reserved | This template is made with
+                <i class="fa fa-heart" aria-hidden="true"></i> by
+                <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              </p>
+            </div>
+            <div class="col-lg-5">
+              <div class="copyright__widget">
+                <ul>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="#">Site Map</a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+      <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form">
+          <input type="text" id="search-input" placeholder="Search here....." />
+        </form>
+      </div>
     </div>
-  </footer>
-  <!-- Footer Section End -->
+    <!-- Search End -->
 
-  <!-- Search Begin -->
-  <div class="search-model">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-      <div class="search-close-switch">+</div>
-      <form class="search-model-form">
-        <input type="text" id="search-input" placeholder="Search here....." />
-      </form>
-    </div>
-  </div>
-  <!-- Search End -->
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.barfiller.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/main.js"></script>
 
-  <!-- Js Plugins -->
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.nice-select.min.js"></script>
-  <script src="js/jquery.barfiller.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/jquery.slicknav.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.nicescroll.min.js"></script>
-  <script src="js/main.js"></script>
-
-  <script>
-    // checkEye密碼切換遮蔽顯示
-    $("#checkEye").click(function () {
-      if ($(this).hasClass("fa-eye-slash")) {
-        $("#memberPassword").attr("type", "text");
-      } else {
-        $("#memberPassword").attr("type", "password");
-      }
-      $(this).toggleClass("fa-eye").toggleClass("fa-eye-slash");
-    });
-
-    // recheckEye密碼切換遮蔽顯示
-    $("#recheckEye").click(function () {
-      if ($(this).hasClass("fa-eye-slash")) {
-        $("#recheckpw").attr("type", "text");
-      } else {
-        $("#recheckpw").attr("type", "password");
-      }
-      $(this).toggleClass("fa-eye").toggleClass("fa-eye-slash");
-    });
-
-    //先抓到id
-    const name = document.querySelector("#name");
-    const tel = document.querySelector("#tel");
-    const birthday = document.querySelector("#birthday");
-    const memberPassword = document.querySelector("#memberPassword");
-    const recheckpw = document.querySelector("#recheckpw");
-    const mail = document.querySelector("#mail");
-    const memberPic = document.querySelector("#memberPic");
-    const imgMemberPic = document.querySelector("#imgMemberPic");
-    const code = document.querySelector("#verifyCode");
-
-    const submitBtn = document.querySelector("#submitBtn");
-
-    // 送出驗證信
-    $("#send_verifyCode").on("click", () => {
-      $.ajax({
-        url: "../confirm",
-        type: "POST",
-        dataType: "json",
-        contentType: "application/json",
-        data: JSON.stringify({
-          mail: mail.value
-        }),
-        success: function (a) {
-          console.log(a);
-        },
+    <script>
+      // checkEye密碼切換遮蔽顯示
+      $("#checkEye").click(function () {
+        if ($(this).hasClass("fa-eye-slash")) {
+          $("#memberPassword").attr("type", "text");
+        } else {
+          $("#memberPassword").attr("type", "password");
+        }
+        $(this).toggleClass("fa-eye").toggleClass("fa-eye-slash");
       });
-    })
 
+      // recheckEye密碼切換遮蔽顯示
+      $("#recheckEye").click(function () {
+        if ($(this).hasClass("fa-eye-slash")) {
+          $("#recheckpw").attr("type", "text");
+        } else {
+          $("#recheckpw").attr("type", "password");
+        }
+        $(this).toggleClass("fa-eye").toggleClass("fa-eye-slash");
+      });
 
+      //先抓到id
+      const name = document.querySelector("#name");
+      const tel = document.querySelector("#tel");
+      const birthday = document.querySelector("#birthday");
+      const memberPassword = document.querySelector("#memberPassword");
+      const recheckpw = document.querySelector("#recheckpw");
+      const mail = document.querySelector("#mail");
+      const memberPic = document.querySelector("#memberPic");
+      const imgMemberPic = document.querySelector("#imgMemberPic");
+      const code = document.querySelector("#verifyCode");
 
+      const submitBtn = document.querySelector("#submitBtn");
 
-    // =========================驗證密碼長度=========================
-    memberPassword.addEventListener("blur", () => {
-      let memberPasswordPattern = document.getElementById(
-        "memberPasswordPattern"
-      );
-
-      // 檢查這個值 是否符合6~12個字元
-      if (
-        memberPassword.value.length >= 6 &&
-        memberPassword.value.length <= 12
-      ) {
-        memberPasswordPattern.innerHTML = "";
-        memberPassword.style.border = "none";
-      } else {
-        memberPasswordPattern.innerHTML =
-          "<span>*密碼長度需介於6~12個字元</span>";
-        memberPassword.style.border = "2px solid #F6D0C0";
-        success = false;
-      }
-      return;
-    });
-
-    //===========當離開確認密碼的地方觸發驗證密碼及確認密碼是否相同==================
-    recheckpw.addEventListener("blur", () => {
-      let recheckpwPattern = document.getElementById("recheckpwPattern");
-      //先抓到密碼及確認密碼的值
-      const password = memberPassword.value;
-      const checkpassword = recheckpw.value;
-      //判斷確認密碼不可為空
-      //判斷密碼及確認密碼需相同
-      if (password === checkpassword) {
-        recheckpwPattern.innerHTML = "";
-        recheckpw.style.border = "none";
-        // if (memberPassword !== checkpassword) {
-        //   console.log("密碼及確認密碼需相同");
-        // }
-      } else {
-        recheckpwPattern.innerHTML = "<span>*密碼及確認密碼需相同</span>";
-        recheckpw.style.border = "2px solid #F6D0C0";
-        success = false;
-      }
-      return;
-    });
-
-    // console.log("...");
-    // 驗證手機號碼格式
-
-    // telTag.addEventListener("blur", () => {
-    //   // 抓手機號碼的值
-    // let tel = telTag.value;
-    //   console.log(tel);
-    //   // 檢查這個值 是否符合格式
-    //   const regex = /^09\d{2}-\d{6}$/;
-    //   let validResult = regex.test(tel);
-    //   console.log("valiResult+", tel);
-
-    //   if (!validResult) {
-    //     telTag.style.border = "none"
-    //     telPattern.innerText = ""
-    //     console.log("手機號碼格式正確");
-    //   }else{
-    //     telTag.style.border = "1px solid red";
-    //     telPattern.innerText = "手機號碼格式錯誤"
-    //     console.log("手機號碼格式錯誤");
-    //   }
-    // });
-    // =========================驗證電話格式=========================
-    tel.addEventListener("blur", function () {
-      let telPattern = document.getElementById("telPattern");
-      // let tel = tel.value;
-      let pattern = /^09\d{2}\d{6}$/;
-      if (pattern.test(tel.value)) {
-        telPattern.innerHTML = "";
-        tel.style.border = "none";
-      } else {
-        telPattern.innerHTML = "<span>*手機號碼格式錯誤</span>";
-        console.log(tel.value);
-        // telPattern.style = "fload : right;color:#f66767";
-        tel.style.border = "2px solid #F6D0C0";
-        success = false;
-      }
-      return;
-    });
-
-    // =========================驗證信箱格式=========================
-    mail.addEventListener("blur", () => {
-      let mailPattern = document.getElementById("mailPattern");
-      let pattern = /^([\w]+)(.[\w]+)*@([\w]+)(.[\w]{2,3}){1,2}$/;
-      if (pattern.test(mail.value)) {
-        mailPattern.innerHTML = "";
-        mail.style.border = "none";
-      } else {
-        mailPattern.innerHTML = "<span>*信箱格式錯誤</span>";
-        // mailPattern.style = "#f66767";
-        mail.style.border = "2px solid #F6D0C0";
-        success = false;
-      }
-      return;
-    });
-    // formData.append("name", name);
-    // formData.append("tel", tel);
-    // formData.append("birthday", birthday);
-    // formData.append("memberPassword", memberPassword);
-    // formData.append("mail", mail);
-
-    // console.log("formData: ", formData.get("name"));
-    // try {
-    //   const response = await fetch("../register", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-type": "application/json",
-    //     },
-    //     body: JSON.stringify({ "???": formData }),
-    //   });
-    // } catch (error) {
-    //   console.error(error);
-    // }
-
-    document.querySelector("#submitBtn").addEventListener("click", () => {
-      //========================按下click事件後逐項進行判斷=========================
-      let success = true;
-      // 驗證姓名不可為空
-      if (!name) {
-        Swal.fire("姓名需輸入");
-        success = false;
-        return;
-      } else if (memberPassword.value !== recheckpw.value) {
-        Swal.fire("密碼及確認密碼需相同");
-        success = false;
-        return;
-      }
-
-      // if(success){}
-
-      const file = memberPic.files[0];
-      const fileReader = new FileReader();
-      if (success) {
-        fileReader.addEventListener("load", (event) => {
-          const base64Str = btoa(event.target.result);
-          fetch("/register", {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-              name: name.value,
-              tel: tel.value,
-              birthday: birthday.value,
-              memberPassword: memberPassword.value,
-              mail: mail.value,
-              memberPic: base64Str,
-              verificationCode: code.value
-            }),
-          })
-            .then((resp) => resp.json())
-            .then((body) => {
-              if (body.successful) {
-                location = "j_welcome_regis1.html";
-              } else {
-                Swal.fire(body.message);
-              }
-              // alert(body.message);
-            });
+      // 送出驗證信
+      $("#send_verifyCode").on("click", () => {
+        Swal.fire("請至您的信箱收取驗證碼", "", "info");
+        $.ajax({
+          url: "../confirm",
+          type: "POST",
+          dataType: "json",
+          contentType: "application/json",
+          data: JSON.stringify({
+            mail: mail.value,
+          }),
+          success: function (a) {
+            console.log(a);
+          },
         });
-      }
-      fileReader.readAsBinaryString(file);
-    });
+      });
 
-    memberPic.addEventListener("change", () => {
-      const file = memberPic.files[0];
-      if (file) {
-        imgMemberPic.src = URL.createObjectURL(file);
-      } else {
-        imgMemberPic.src = "";
-      }
-    });
-  </script>
-</body>
+      // =========================驗證密碼長度=========================
+      memberPassword.addEventListener("blur", () => {
+        let memberPasswordPattern = document.getElementById(
+          "memberPasswordPattern"
+        );
 
+        // 檢查這個值 是否符合6~12個字元
+        if (
+          memberPassword.value.length >= 6 &&
+          memberPassword.value.length <= 12
+        ) {
+          memberPasswordPattern.innerHTML = "";
+          memberPassword.style.border = "none";
+        } else {
+          memberPasswordPattern.innerHTML =
+            "<span>*密碼長度需介於6~12個字元</span>";
+          memberPassword.style.border = "2px solid #F6D0C0";
+          success = false;
+        }
+        return;
+      });
+
+      //===========當離開確認密碼的地方觸發驗證密碼及確認密碼是否相同==================
+      recheckpw.addEventListener("blur", () => {
+        let recheckpwPattern = document.getElementById("recheckpwPattern");
+        //先抓到密碼及確認密碼的值
+        const password = memberPassword.value;
+        const checkpassword = recheckpw.value;
+        //判斷確認密碼不可為空
+        //判斷密碼及確認密碼需相同
+        if (password === checkpassword) {
+          recheckpwPattern.innerHTML = "";
+          recheckpw.style.border = "none";
+          // if (memberPassword !== checkpassword) {
+          //   console.log("密碼及確認密碼需相同");
+          // }
+        } else {
+          recheckpwPattern.innerHTML = "<span>*密碼及確認密碼需相同</span>";
+          recheckpw.style.border = "2px solid #F6D0C0";
+          success = false;
+        }
+        return;
+      });
+
+      // console.log("...");
+      // 驗證手機號碼格式
+
+      // telTag.addEventListener("blur", () => {
+      //   // 抓手機號碼的值
+      // let tel = telTag.value;
+      //   console.log(tel);
+      //   // 檢查這個值 是否符合格式
+      //   const regex = /^09\d{2}-\d{6}$/;
+      //   let validResult = regex.test(tel);
+      //   console.log("valiResult+", tel);
+
+      //   if (!validResult) {
+      //     telTag.style.border = "none"
+      //     telPattern.innerText = ""
+      //     console.log("手機號碼格式正確");
+      //   }else{
+      //     telTag.style.border = "1px solid red";
+      //     telPattern.innerText = "手機號碼格式錯誤"
+      //     console.log("手機號碼格式錯誤");
+      //   }
+      // });
+      // =========================驗證電話格式=========================
+      tel.addEventListener("blur", function () {
+        let telPattern = document.getElementById("telPattern");
+        // let tel = tel.value;
+        let pattern = /^09\d{2}\d{6}$/;
+        if (pattern.test(tel.value)) {
+          telPattern.innerHTML = "";
+          tel.style.border = "none";
+        } else {
+          telPattern.innerHTML = "<span>*手機號碼格式錯誤</span>";
+          console.log(tel.value);
+          // telPattern.style = "fload : right;color:#f66767";
+          tel.style.border = "2px solid #F6D0C0";
+          success = false;
+        }
+        return;
+      });
+
+      // =========================驗證信箱格式=========================
+      mail.addEventListener("blur", () => {
+        let mailPattern = document.getElementById("mailPattern");
+        let pattern = /^([\w]+)(.[\w]+)*@([\w]+)(.[\w]{2,3}){1,2}$/;
+        if (pattern.test(mail.value)) {
+          mailPattern.innerHTML = "";
+          mail.style.border = "none";
+        } else {
+          mailPattern.innerHTML = "<span>*信箱格式錯誤</span>";
+          // mailPattern.style = "#f66767";
+          mail.style.border = "2px solid #F6D0C0";
+          success = false;
+        }
+        return;
+      });
+      // formData.append("name", name);
+      // formData.append("tel", tel);
+      // formData.append("birthday", birthday);
+      // formData.append("memberPassword", memberPassword);
+      // formData.append("mail", mail);
+
+      // console.log("formData: ", formData.get("name"));
+      // try {
+      //   const response = await fetch("../register", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-type": "application/json",
+      //     },
+      //     body: JSON.stringify({ "???": formData }),
+      //   });
+      // } catch (error) {
+      //   console.error(error);
+      // }
+
+      document.querySelector("#submitBtn").addEventListener("click", () => {
+        //========================按下click事件後逐項進行判斷=========================
+        let success = true;
+        // 驗證姓名不可為空
+        if (!name) {
+          Swal.fire("姓名需輸入");
+          success = false;
+          return;
+        } else if (memberPassword.value !== recheckpw.value) {
+          Swal.fire("密碼及確認密碼需相同");
+          success = false;
+          return;
+        }
+
+        // if(success){}
+
+        const file = memberPic.files[0];
+        const fileReader = new FileReader();
+        if (success) {
+          fileReader.addEventListener("load", (event) => {
+            const base64Str = btoa(event.target.result);
+            fetch("/register", {
+              method: "POST",
+              headers: {
+                "Content-type": "application/json",
+              },
+              body: JSON.stringify({
+                name: name.value,
+                tel: tel.value,
+                birthday: birthday.value,
+                memberPassword: memberPassword.value,
+                mail: mail.value,
+                memberPic: base64Str,
+                verificationCode: code.value,
+              }),
+            })
+              .then((resp) => resp.json())
+              .then((body) => {
+                if (body.successful) {
+                  // location = "j_welcome_regis1.html";
+                  Swal.fire({
+                    title: "註冊成功!",
+                    text: "",
+                    icon: "success",
+                  }).then(function () {
+                    window.location.href = "j_welcome_regis1.html";
+                  });
+                } else {
+                  Swal.fire(body.message);
+                }
+                // alert(body.message);
+              });
+          });
+        }
+        fileReader.readAsBinaryString(file);
+      });
+
+      memberPic.addEventListener("change", () => {
+        const file = memberPic.files[0];
+        if (file) {
+          imgMemberPic.src = URL.createObjectURL(file);
+        } else {
+          imgMemberPic.src = "";
+        }
+      });
+    </script>
+  </body>
 </html>

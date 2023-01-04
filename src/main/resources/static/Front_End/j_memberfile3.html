@@ -259,7 +259,7 @@
                 <li class="active">
                   <a href="./j_memberfile3.html">會員專區</a>
                 </li>
-                <li><a href="./restaurant_search.html">餐廳</a></li>
+                <li><a href="./Search.html">餐廳</a></li>
                 <li><a href="./shopping_mall.html">線上商城</a></li>
                 <li>
                   <a href="./about_us.html">關於我們</a>
@@ -701,6 +701,8 @@
             .then((memberVO) => {
               if (memberVO.successful) {
                 Swal.fire("存檔成功!", "", "success");
+                let memberVO = JSON.stringify(body);
+                sessionStorage.setItem("memberVO", memberVO);
               } else {
                 Swal.fire(memberVO.message);
               }
@@ -713,6 +715,8 @@
           .then((resp) => resp.json())
           .then((body) => {
             if (body.successful) {
+              let memberVO = JSON.stringify(body);
+              sessionStorage.removeItem("memberVO", memberVO);
               // Swal.fire("登出成功!", "", success);
               // location = "GoodEatTime.html";
               Swal.fire({

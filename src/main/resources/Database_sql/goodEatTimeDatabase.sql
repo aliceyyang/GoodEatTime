@@ -229,7 +229,7 @@ INSERT INTO `goodEatTime`.`member` (`memberLevel`, `name`, `birthday`, `mail`, `
 INSERT INTO `goodEatTime`.`member` (`memberLevel`, `name`, `birthday`, `mail`, `memberPassword`, `verificationAccount`, `tel`, `point`) VALUES ('3', 'Chris', '2000-03-05', 'chris2000@gmail.com', 'Chris2000', 1, '0973825638', '50');
 INSERT INTO `goodEatTime`.`member` (`memberLevel`, `name`, `birthday`, `mail`, `memberPassword`, `verificationAccount`, `tel`, `point`) VALUES ('2', 'James', '1999-05-06', 'james0101@gmail.com', 'James1999', 1, '0973526145', '60');
 INSERT INTO `goodEatTime`.`member` (`memberLevel`, `name`, `birthday`, `mail`, `memberPassword`, `verificationAccount`, `tel`, `point`) VALUES ('4', 'Sam', '2003-12-01', 'sammy88@yahoo.com.tw', 'Sam2003', 0, '0976548765', '10');
-INSERT INTO `goodEatTime`.`member` (`memberLevel`, `name`, `birthday`, `mail`, `memberPassword`, `verificationAccount`, `tel`, `point`) VALUES ('3', 'David', '1980-01-01', 'ddavid1980@gmail.com', 'David1980', 0, '0983625174', '30');
+INSERT INTO `goodEatTime`.`member` (`memberLevel`, `name`, `birthday`, `mail`, `memberPassword`, `verificationAccount`, `tel`, `point`) VALUES ('3', 'David', '1980-01-01', 'goodeattimeG3@gmail.com', 'David1980', 0, '0983625174', '30');
 
 commit;
 
@@ -307,22 +307,22 @@ values(5, '12:00', 20, 2), (5, '13:00', 20, 2), (5, '18:00', 25, 2), (5, '19:00'
 (5, '12:00', 20, 5), (5, '13:00', 20, 5), (5, '18:00', 25, 5), (5, '19:00', 25, 5),
 (5, '12:00', 20, 6), (5, '13:00', 20, 6), (5, '18:00', 25, 6), (5, '19:00', 25, 6),
 (3, '12:00', 15, 1), (3, '13:00', 15, 1), (3, '18:00', 15, 1), (3, '19:00', 15, 1),
-(3, '12:00', 15, 0), (3, '13:00', 15, 0), (3, '18:00', 15, 0), (3, '19:00', 15, 0),
+(3, '12:00', 15, 7), (3, '13:00', 15, 7), (3, '18:00', 15, 7), (3, '19:00', 15, 7),
 (3, '12:00', 15, 3), (3, '13:00', 15, 3), (3, '18:00', 15, 3), (3, '19:00', 15, 3),
 (3, '12:00', 15, 4), (3, '13:00', 15, 4), (3, '18:00', 15, 4), (3, '19:00', 15, 4),
 (3, '12:00', 15, 5), (3, '13:00', 15, 5), (3, '18:00', 15, 5), (3, '19:00', 15, 5),
 (3, '12:00', 15, 6), (3, '13:00', 15, 6), (3, '18:00', 15, 6), (3, '19:00', 15, 6),
-(2, '12:00', 20, 0), (2, '13:00', 20, 0), (2, '18:00', 20, 0), (2, '19:00', 20, 0),
+(2, '12:00', 20, 7), (2, '13:00', 20, 7), (2, '18:00', 20, 7), (2, '19:00', 20, 7),
 (2, '12:00', 20, 3), (2, '13:00', 20, 3), (2, '18:00', 20, 3), (2, '19:00', 20, 3),
 (2, '12:00', 20, 4), (2, '13:00', 20, 4), (2, '18:00', 20, 4), (2, '19:00', 20, 4),
 (2, '12:00', 20, 5), (2, '13:00', 20, 5), (2, '18:00', 20, 5), (2, '19:00', 20, 5),
 (2, '12:00', 20, 6), (2, '13:00', 20, 6), (2, '18:00', 20, 6), (2, '19:00', 20, 6),
-(1, '12:00', 15, 0), (1, '13:00', 15, 0), (1, '18:00', 20, 0), (1, '19:00', 20, 0),
+(1, '12:00', 15, 7), (1, '13:00', 15, 7), (1, '18:00', 20, 7), (1, '19:00', 20, 7),
 (1, '12:00', 15, 2), (1, '13:00', 15, 2), (1, '18:00', 20, 2), (1, '19:00', 20, 2),
 (1, '12:00', 15, 4), (1, '13:00', 15, 4), (1, '18:00', 20, 4), (1, '19:00', 20, 4),
 (1, '12:00', 15, 5), (1, '13:00', 15, 5), (1, '18:00', 20, 5), (1, '19:00', 20, 5),
 (1, '12:00', 15, 6), (1, '13:00', 15, 6), (1, '18:00', 20, 6), (1, '19:00', 20, 6),
-(4, '12:00', 10, 0), (4, '13:00', 10, 0), (4, '18:00', 15, 0), (4, '19:00', 15, 0),
+(4, '12:00', 10, 7), (4, '13:00', 10, 7), (4, '18:00', 15, 7), (4, '19:00', 15, 7),
 (4, '12:00', 10, 1), (4, '13:00', 10, 1), (4, '18:00', 15, 1), (4, '19:00', 15, 1),
 (4, '12:00', 10, 2), (4, '13:00', 10, 2), (4, '18:00', 15, 2), (4, '19:00', 15, 2),
 (4, '12:00', 10, 3), (4, '13:00', 10, 3), (4, '18:00', 15, 3), (4, '19:00', 15, 3),
@@ -754,5 +754,47 @@ select r.restaurantNo,  min(rp.carouselPic) as carouselPic, r.restaurantName, r.
 left join restaurantCarouselPic rp
     on rp.restaurantNo = r.restaurantNo
         group by r.restaurantNo, r.restaurantName, r.restaurantTel, r.restaurantAddr, r.restaurantBusinessHour, r.restaurantCommentQuantity, r.totalCommentRating;
+commit;
+
+/* AdOrder table's data insert sql syntax update 20230102 */
+/*==========================================================================================*/
+/* short-url: https://reurl.cc/GXqloA */
+
+insert into adOrder(restaurantNo, adminNo, adOrderTime, adStartTime, adEndTime, verified, verificationDetail, adOrderPrice, slideshowPic)
+values
+	(1, 1, now(), '2023-01-10', '2023-01-18', null, '開幕週廣告(急件)', 1000, null),
+	(2, 2, now(), '2023-01-15', '2023-02-15', null, '開幕月廣告(急件)', 2000, null),
+	(3, 3, now(), '2023-01-15', '2023-01-22', null, '開幕週廣告(急件)', 1000, null),
+	(4, 2, now(), '2023-02-01', '2023-05-01', null, '春季夏初七五折', 3000, null),
+	(5, null, now(), '2023-02-01', '2024-02-01', null, null, 4000, null);
+    
+commit;
+
+--  v_ProdCommentReply
+/*==========================================================================================*/
+create view v_ProdCommentReply as
+select pod.*, pi.prodName, po.restaurantNo, po.memberNo, mb.name
+from
+    prodOrderDetail pod
+    join prodOrder po
+        on pod.prodOrderNo = po.prodOrderNo
+            join prodInfo pi
+                on pod.prodNo = pi.prodNo
+                    join member mb
+                        on po.memberNo = mb.memberNo;
+commit;
+
+--  v_RestCommentReply
+/*==========================================================================================*/
+create view v_RestCommentReply as
+select rese.*, rest.restaurantName, mb.name
+from
+    reservation rese
+    join restaurant rest
+        on rese.restaurantNo = rest.restaurantNo
+            join member mb
+                on rese.memberNo = mb.memberNo;
+                
+commit;
 
 set AUTOCOMMIT = 1;

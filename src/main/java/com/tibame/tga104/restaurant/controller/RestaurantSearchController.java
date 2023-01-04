@@ -10,26 +10,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tibame.tga104.restaurant.service.impl.RestaurantSearchImpl;
 import com.tibame.tga104.restaurant.vo.RestaurantSearchVO;
-import com.tibame.tga104.restaurant.vo.RestaurantVO;
 
 @RestController
 @RequestMapping("/search_restaurant")
 public class RestaurantSearchController {
-	
+
 	@Autowired
 	private RestaurantSearchImpl restaurantSearchImpl;
-	
-	
-	
-	
+
 	@GetMapping("/search")
 	public List<RestaurantSearchVO> search(@RequestParam String restaurantName) {
 		System.out.println(restaurantName);
-		if(restaurantName != null && !restaurantName.equals("")) {
+		if (restaurantName != null && !restaurantName.equals("")) {
 			List<RestaurantSearchVO> list = restaurantSearchImpl.selectByrestaurantName(restaurantName);
+			System.out.println(list);
 			return list;
 		}
-		
+
 //		System.out.println(list);
 //			if (list != null && !list.isEmpty()) {
 //				System.out.println("b");
@@ -42,25 +39,28 @@ public class RestaurantSearchController {
 ////				System.out.println(listAll);
 //				return listAll;
 //			}
-			return null;
+		return null;
 	}
-	
+
 	@GetMapping("/newrestaurant")
 	public List<RestaurantSearchVO> newrestaurant() {
 		List<RestaurantSearchVO> newlist = restaurantSearchImpl.selectNewrestaurant();
 		System.out.println(newlist);
 		return newlist;
 	}
-	
-	@GetMapping("/gorestaurantpage") List<RestaurantSearchVO> searchByrestaurantNo(@RequestParam Integer restaurantNo) {
+
+	@GetMapping("/gorestaurantpage")
+	List<RestaurantSearchVO> searchByrestaurantNo(@RequestParam Integer restaurantNo) {
 		List<RestaurantSearchVO> list = restaurantSearchImpl.selectByrestaurantNo(restaurantNo);
 		System.out.println(list);
 		return list;
 	}
-	@GetMapping("/getAll") List<RestaurantSearchVO> allrestaurant() {
-		List<RestaurantSearchVO> listAll =  restaurantSearchImpl.getAll();
+
+	@GetMapping("/getAll")
+	List<RestaurantSearchVO> allrestaurant() {
+		List<RestaurantSearchVO> listAll = restaurantSearchImpl.getAll();
 //			System.out.println("a");
 //			System.out.println(listAll);
-			return listAll;
+		return listAll;
 	}
 }

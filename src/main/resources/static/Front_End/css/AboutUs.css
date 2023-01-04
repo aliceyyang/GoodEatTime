@@ -154,9 +154,9 @@ button#btn_cancel {
 /* 訂位人數設定 */
 .restaurant_reserveinf h2,
 h3, h4{
-  font-size: 20px;
+  font-size: 26px;
   text-align: center;
-  padding: 12px;
+  padding: 5px;
   color: rgb(255, 255, 255);
   background-color: #313131;
   margin-bottom: 10px;
@@ -547,10 +547,10 @@ ul {
 
 .vitae_list {
 display: flex;
-padding-left: 8%;
+padding-right: 32px;
 padding-top: 15px;
 padding-bottom: 20px;
-max-width: 90%;
+max-width: 100%;
 }
 
 .aboutGoodEatTime{
@@ -586,9 +586,10 @@ padding-bottom: 15px;
   width: 1200px;
 }
 
-
-
-  /*==============================================*/
+  img#pic {
+    height: 55%;
+    width: 100%;
+  }
 
   
   
