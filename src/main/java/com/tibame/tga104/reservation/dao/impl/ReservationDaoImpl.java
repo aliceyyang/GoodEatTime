@@ -112,7 +112,7 @@ public class ReservationDaoImpl implements ReservationDao {
 	public List<MemberReserveInfVO> findByMemeberNo(Integer memberNo) {
 		Query<MemberReserveInfVO> query = getSession().createQuery("from MemberReserveInfVO where memberNo = :memberNo", MemberReserveInfVO.class);
 		query.setParameter("memberNo", memberNo);
-		List<MemberReserveInfVO> memberReserveInfVO = query.setFirstResult(0).setMaxResults(10).list();
+		List<MemberReserveInfVO> memberReserveInfVO = query.list();
 		return memberReserveInfVO;
 	}
 
