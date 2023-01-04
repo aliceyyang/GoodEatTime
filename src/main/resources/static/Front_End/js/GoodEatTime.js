@@ -1,6 +1,6 @@
 const showcouponPic = document.querySelectorAll("div.coupon__item__icon");
 $.ajax({
-  url: "../coupon/Manage",
+  url: "/coupon/Manage",
   type: "POST",
   dataType: "json",
   success: function (list) {

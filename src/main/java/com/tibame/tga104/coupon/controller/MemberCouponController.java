@@ -34,15 +34,15 @@ public class MemberCouponController {
 //		System.out.println(list);
 		return map;
 	}
-//正確
-	@RequestMapping(value="/coupon", method=RequestMethod.GET)
-	public Map<String, Object> member(HttpSession session) {
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-		List<MemberCouponVO> list = memberCouponService.getCouponBymemberNo(memberVO.getMemberNo());
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("data", list);
-		return map;
-	}
+////正確
+//	@RequestMapping(value="/coupon", method=RequestMethod.GET)
+//	public Map<String, Object> member(HttpSession session) {
+//		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+//		List<MemberCouponVO> list = memberCouponService.getCouponBymemberNo(memberVO.getMemberNo());
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("data", list);
+//		return map;
+//	}
 //	@GetMapping("/memberCoupon/memberNo/{memberNo}")
 //	public ResponseEntity<List<MemberCouponVO>> getOnememberCoupon(@PathVariable Integer memberNo
 //															,@PathVariable Integer couponNo) {

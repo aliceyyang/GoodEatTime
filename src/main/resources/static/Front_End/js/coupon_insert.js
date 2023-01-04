@@ -19,6 +19,8 @@ function onConfirmClick() {
   const maxIssueQty = parseInt(document.querySelector('#maxIssueQty').value);
   const news_file = document.querySelector('#news_file');
   const picinput = document.querySelector('input#news_file').value
+
+  const string = String;
   
   console.log(!picinput)
   if (!couponName) {
@@ -45,7 +47,7 @@ function onConfirmClick() {
     document.querySelector("#error_EndTime").style.display = "none";
     document.querySelector("#couponEndTime").style.border = "";
   }
-  if (!usageLimitation) {
+  if (!usageLimitation || usageLimitation !== usageLimitation ) {
     document.querySelector("#error_use").style.display = "";
     document.querySelector("#usageLimitation").style.border = 
     "2px solid #ff0000"
@@ -58,7 +60,7 @@ function onConfirmClick() {
     document.querySelector("#maxIssueQty").style.border = 
     "2px solid #ff0000"
   } else {
-    document.querySelector("#error_use").style.display = "none";
+    document.querySelector("#error_max").style.display = "none";
     document.querySelector("#maxIssueQty").style.border = "";
   }
   if (!couponContent) {
