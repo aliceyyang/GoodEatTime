@@ -122,7 +122,7 @@ if (!picinput) {
           // }
 
           Swal.fire({
-            title: '確定新增此優惠卻嗎?',
+            title: '確定修改此優惠卻嗎?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
