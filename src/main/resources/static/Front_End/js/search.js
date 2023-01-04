@@ -10,6 +10,10 @@ var restaurantNo,
   Allrestauant,
   carouselUrl,
   restaurant;
+  if (searchText !== 0) {
+    sessionStorage.removeItem("searchText");
+  }
+  
 $.ajax({
   url: "/search_restaurant/search",
   type: "GET",
