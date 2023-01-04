@@ -315,4 +315,12 @@ $(function () {
   });
 
   $("div.product__details__option").trigger("click");
+
+  $("#goto_restaruant").on("click", function(e){
+    e.preventDefault();
+    let restaurantNo = prodData.restaurantNo;
+    sessionStorage.setItem("restaurantNo",restaurantNo);
+    location.href ="restaurant.html"
+    // console.log(restaurantNo);
+  });
 });

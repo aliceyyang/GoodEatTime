@@ -10,58 +10,73 @@ var restaurantNo,
   Allrestauant,
   carouselUrl,
   restaurant;
+  if (searchText !== 0) {
+    sessionStorage.removeItem("searchText");
+  }
+  
 $.ajax({
   url: "/search_restaurant/search",
   type: "GET",
   data: { restaurantName: searchText },
   dataType: "json",
   success: function (data) {
-    let timerInterval
-Swal.fire({
-  title: '搜尋中.....',
-  html: '剩餘搜尋時間 <b></b> 秒.',
-  timer: 1000,
-  timerProgressBar: true,
-  didOpen: () => {
-    Swal.showLoading()
-    const b = Swal.getHtmlContainer().querySelector('b')
-    timerInterval = setInterval(() => {
-      b.textContent = Swal.getTimerLeft()
-    }, 100)
-  },
-  willClose: () => {
-    clearInterval(timerInterval)
-  }
-}).then((result) => {
-  /* Read more about handling dismissals below */
-  if (result.dismiss === Swal.DismissReason.timer) {
-    for (i = 0; i < data.length; i++) {
-      restaurant = data[i];
-      // console.log(restaurant);
-      carouselPicStr = data[i].carouselPicStr;
-      carouselUrl = getPicUrl(carouselPicStr);
-      Allrestauant = data.length;
-      restaurantNo = data[i].restaurantNo;
-      // console.log(restaurantNo);
-      restaurantName = data[i].restaurantName;
-      restaurantTel = data[i].restaurantTel;
-      restaurantBusinessHour = data[i].restaurantBusinessHour;
-      restaurantAddr = data[i].restaurantAddr;
-      restaurantCommentQuantity = data[i].restaurantCommentQuantity;
-      totalCommentRating = data[i].totalCommentRating;
-
-      //================有幾筆餐廳資料就顯示幾筆=================
-      showResInfo();
-      let restaurantPic = document.querySelectorAll("div.SearchRestaurant__author");
-      let img = restaurantPic[i].querySelector("img");
-      img.dataset.restaurantNo = restaurant.restaurantNo;
-      console.log(img);
-      if (data.length == i + 1) {
-        break;
+    console.log(data);
+    console.log(!data)
+    if(data.length !== 0){
+      let timerInterval
+      Swal.fire({
+        title: '搜尋中.....',
+        html: '剩餘搜尋時間 <b></b> 秒.',
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading()
+          const b = Swal.getHtmlContainer().querySelector('b')
+          timerInterval = setInterval(() => {
+            b.textContent = Swal.getTimerLeft()
+          }, 100)
+        },
+        willClose: () => {
+          clearInterval(timerInterval)
         }
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          for (i = 0; i < data.length; i++) {
+            restaurant = data[i];
+            // console.log(restaurant);
+            carouselPicStr = data[i].carouselPicStr;
+            carouselUrl = getPicUrl(carouselPicStr);
+            Allrestauant = data.length;
+            restaurantNo = data[i].restaurantNo;
+            // console.log(restaurantNo);
+            restaurantName = data[i].restaurantName;
+            restaurantTel = data[i].restaurantTel;
+            restaurantBusinessHour = data[i].restaurantBusinessHour;
+            restaurantAddr = data[i].restaurantAddr;
+            restaurantCommentQuantity = data[i].restaurantCommentQuantity;
+            totalCommentRating = data[i].totalCommentRating;
+      
+            //================有幾筆餐廳資料就顯示幾筆=================
+            showResInfo();
+            let restaurantPic = document.querySelectorAll("div.SearchRestaurant__author");
+            let img = restaurantPic[i].querySelector("img");
+            img.dataset.restaurantNo = restaurant.restaurantNo;
+            console.log(img);
+            if (data.length == i + 1) {
+              break;
+              }
+          }
+        }
+      })
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: '抱歉...',
+        text: '找不到相關餐廳!',
+      });
     }
-  }
-})
+
     //==============一個一個的取的餐廳資訊==========
     
     // console.log(carouselUrl);
@@ -69,11 +84,7 @@ Swal.fire({
   },
   error: function(a){
     console.log(a)
-    Swal.fire({
-      icon: 'error',
-      title: '抱歉...',
-      text: '找不到相關餐廳!',
-    });
+    
   },
   complete: function (data) {
     $("div.shop__last__text > p").text(`查詢結果共 ${Allrestauant ?? "0"} 筆`);
@@ -128,6 +139,7 @@ restaurant_html
 
 
 $(".searchbtn").on("click",()=>{
+  sessionStorage.removeItem("searchText");
   let timerInterval
 Swal.fire({
   title: '搜尋中......',
@@ -157,10 +169,9 @@ Swal.fire({
     dataType: "json",
     data: {restaurantName : searchText},
     success: function(data) {
-      
-      
-       
-      $("div#restaurant_area.row").remove();
+      console.log(data)
+      if(data.length !== 0){
+        $("div#restaurant_area.row").remove();
       $("div.container").append('<div id="restaurant_area" class="row"></div>');
       for (i = 0; i < data.length; i++) {
         carouselPicStr = data[i].carouselPicStr;
@@ -184,6 +195,14 @@ Swal.fire({
         if (data.length == i + 1) {
           break;
           }
+      }
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: '抱歉...',
+          text: '抱歉找不到相關餐廳!',
+          footer: '<a href="">Why do I have this issue?</a>'
+        })
       }
     },
     error: function () {

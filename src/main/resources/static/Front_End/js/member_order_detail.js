@@ -63,10 +63,10 @@ fetch(`../order/detail?prodOrderNo=${prodOrderNo}`)
     });
     $("td > button").on("click", function () {
       let index = $(this).attr("data-index");
-      console.log(orderSearchVOList);
-      console.log(orderSearchVOList[index]);
-      sessionStorage.setItem("orderSearchVOList", orderSearchVOList[index]);
-      // window.location.href = "./member_commentprod.html";
+      // console.log(orderSearchVOList);
+      // console.log(orderSearchVOList[index]);
+      // sessionStorage.setItem("orderSearchVOList", orderSearchVOList[index]);
+      window.location.href = "./member_commentprod.html";
       });
     console.log(data);
   });
