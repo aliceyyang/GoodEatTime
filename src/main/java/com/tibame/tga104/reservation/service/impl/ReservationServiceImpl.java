@@ -97,7 +97,7 @@ public class ReservationServiceImpl implements ReservationService {
 		RestaurantVO restaurant = restaurantDao.findByPrimaryKey(reservationVO.getRestaurantNo());
 		String to = member.getMail();
 		String subject = "好食光-訂位成功通知";
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/dd/MM");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = reservationVO.getReserveDate();
 		String dateToStr = dateFormat.format(date);
 		String remark = null;
