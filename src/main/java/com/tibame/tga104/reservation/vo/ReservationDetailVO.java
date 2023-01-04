@@ -13,16 +13,21 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 @Table(name="v_reservation")
 public class ReservationDetailVO implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "restaurantNo")
 	private Integer restaurantNo;
 	
 	@Column(name="weekDay")
 	private Integer weekDay;
+	
 	@Id
 	@Column(name="reserveDate")
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone= "GMT+8")
 	private java.sql.Date reserveDate;
+	
 	@Id
 	@Column(name="reserveTime")
 	private String reserveTime;
