@@ -1,4 +1,4 @@
-# API Document 
+# API Documentation 
 
 1. Returns json data about all the ad orders from admin's perspective.
 	
