@@ -17,3 +17,7 @@ the gradually rising number of reservations after Taiwan is gradually lifting lo
 2.	[Ad-Order Management](/ad-order-management)
 
 
+written by [aliceyyang](https://github.com/aliceyyang) on 2023/01/17
+
+
+![](https://img.shields.io/badge/Spring_Boot-2.7.6-181717?style=for-the-badge?style=plastic&logo=springboot&color) ![](https://img.shields.io/badge/MySQL-8.0-181717?style=for-the-badge?style=plastic&logo=mysql&color=blue) ![](https://img.shields.io/badge/Redis-3.2.1-181717?style=for-the-badge?style=plastic&logo=redis&color=red)
