@@ -143,4 +143,4 @@ Restaurants can change their campaign advertise pictures and the start-date mult
 <br>
 
  - Success Response: 200
- - Returns a 404 error if no order is found with the provided adOrderNo.
+ - Returns a 404 error if no order is found with the provided `adOrderNo`.
