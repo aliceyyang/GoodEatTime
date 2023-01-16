@@ -81,7 +81,7 @@ Members have the following format:
 ]	
 ```
 ```JSON
-//_update a member
+// update a member (request body)
 {
 	  "memberLevel"			:2,
 	  "verificationAccount"		:true
@@ -149,7 +149,7 @@ Restaurants have the following format:
 ]	
 ```
 ```JSON
-// update a member
+// update a member (request body)
 {
 	  "restaurantStatus"		:true
 }
