@@ -46,8 +46,8 @@ Members have the following format:
 
 | URL | method | **Description** |
 | :--- | :--- | :--- |
-| /admin/member-accounts | `Get` | get member list |
-| /admin/member-accounts/{memberNo} | `Get` | get single member |
+| /admin/member-accounts | `GET` | get member list |
+| /admin/member-accounts/{memberNo} | `GET` | get single member |
 | /admin/member-accounts/{memberNo} | `PUT` | update a member|
 
 
@@ -111,8 +111,8 @@ Restaurants have the following format:
 
 | URL | method | **Description** |
 | :--- | :--- | :--- |
-| /admin/restaurant-accounts | `Get` | get restaurant list |
-| /admin/restaurant-accounts/{restaurantNo} | `Get` | get single restaurant |
+| /admin/restaurant-accounts | `GET` | get restaurant list |
+| /admin/restaurant-accounts/{restaurantNo} | `GET` | get single restaurant |
 | /admin/restaurant-accounts/{restaurantNo} | `PUT` | update a restaurant|
 
 ```JSON 
