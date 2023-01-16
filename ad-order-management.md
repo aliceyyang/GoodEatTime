@@ -9,6 +9,7 @@ We provide restaurants to promote their specials and center on the homepage in o
 | C | `a season` | $ 3,000
 | D | `a year` | $ 4,000
 <br>
+<br>
 
 Restaurants can change their campaign advertise pictures and the start-time many times before our platform admin verifies the order. After verification has been done, the ad will automatically shows on our homepage.
 <br>
@@ -30,6 +31,7 @@ Restaurants can change their campaign advertise pictures and the start-time many
 	  "slideshowPic"		: null
 }
 ```
+<br>
 <br>
 
 ## AdOrder - Restaurant perspective
@@ -90,7 +92,8 @@ Restaurants can change their campaign advertise pictures and the start-time many
 	  "slideshowPicBase64"		: "[base64]"
 }
 ```
-
+<br>
+<br>
 
 ## AdOrder - Administrator perspective
 | URL | method | **Description** |
