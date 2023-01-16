@@ -13,14 +13,14 @@ Administrators have the following format:
 ```JSON
 
 {
-	  "adminNo"				: 1,
-	  "adminAccount"		: "res_A_11",
-	  "adminPassword"		: "res1_P@ssOrd",
-	  "adminName"			: "小吳",
-	  "modifyAdminData"		: true,
+	  "adminNo"		: 1,
+	  "adminAccount"	: "res_A_11",
+	  "adminPassword"	: "res1_P@ssOrd",
+	  "adminName"		: "小吳",
+	  "modifyAdminData"	: true,
 	  "modifyMemberData"	: true,
 	  "verifyRestaurant"	: true,
-	  "verifyAdCoupon"		: true,
+	  "verifyAdCoupon"	: true,
 }
 ```
 
@@ -30,16 +30,16 @@ Administrators have the following format:
 Members have the following format:
 ```JSON
 {
-	  "memberNo"				: 1,
-	  "memberLevel"				: 3,
-	  "name"					: "Chris",
-	  "birthday"				: null,
-	  "mail"					: "chris2000@gmail.com",
-	  "memberPassword"			: null,
+	  "memberNo"			: 1,
+	  "memberLevel"			: 3,
+	  "name"			: "Chris",
+	  "birthday"			: null,
+	  "mail"			: "chris2000@gmail.com",
+	  "memberPassword"		: null,
 	  "verificationAccount"		: true,
-	  "tel"						: 0912345678,
-	  "point"					: 20,
-	  "memberPic"				: null
+	  "tel"				: 0912345678,
+	  "point"			: 20,
+	  "memberPic"			: null
 }
 ```
 <br>
@@ -55,35 +55,35 @@ Members have the following format:
 // get all members
 [
 	{
-	  "memberNo"				: 1,
-	  "memberLevel"				: 3,
-	  "name"					: "Chris",
-	  "birthday"				: null,
-	  "mail"					: "chris2000@gmail.com",
-	  "memberPassword"			: null,
+	  "memberNo"			: 1,
+	  "memberLevel"			: 3,
+	  "name"			: "Chris",
+	  "birthday"			: null,
+	  "mail"			: "chris2000@gmail.com",
+	  "memberPassword"		: null,
 	  "verificationAccount"		: true,
-	  "tel"						: 0912345678,
-	  "point"					: 20,
-	  "memberPic"				: null
+	  "tel"				: 0912345678,
+	  "point"			: 20,
+	  "memberPic"			: null
 	},
 	{
-	  "memberNo"				: 2,
-	  "memberLevel"				: 2,
-	  "name"					: "David",
-	  "birthday"				: null,
-	  "mail"					: "ddavid1980@gmail.com",
-	  "memberPassword"			: null,
+	  "memberNo"			: 2,
+	  "memberLevel"			: 2,
+	  "name"			: "David",
+	  "birthday"			: null,
+	  "mail"			: "ddavid1980@gmail.com",
+	  "memberPassword"		: null,
 	  "verificationAccount"		: true,
-	  "tel"						: 0983625174,
-	  "point"					: 30,
-	  "memberPic"				: null
+	  "tel"				: 0983625174,
+	  "point"			: 30,
+	  "memberPic"			: null
 	}
 ]	
 ```
 ```JSON
-// update a member
+//_update a member
 {
-	  "memberLevel"				:2,
+	  "memberLevel"			:2,
 	  "verificationAccount"		:true
 }
 ```
@@ -93,17 +93,17 @@ Members have the following format:
 Restaurants have the following format:
 ```JSON
 {
-	  "restaurantNo"				: 1,
-	  "restaurantTel"				: "0229540410",
-	  "restaurantName"				: "薄多義",
+	  "restaurantNo"			: 1,
+	  "restaurantTel"			: "0229540410",
+	  "restaurantName"			: "薄多義",
 	  "restaurantTaxIDNo"			: "53914855",
 	  "restaurantAccountInfo"		: null,
 	  "restaurantBusinessHour"		: "11:00-20:30",
-	  "restaurantAddr"				: "台北市中正區忠孝東路一段150號",
+	  "restaurantAddr"			: "台北市中正區忠孝東路一段150號",
 	  "restaurantStatus"			: true,
 	  "restaurantAccount"			: "restaurant1001@gmail.com",
 	  "restaurantPassword"			: "1001restaurant",
-	  "restaurantCommentQuantity"	: 0,
+	  "restaurantCommentQuantity"		: 0,
 	  "totalCommentRating"			: 0
 }
 ```
@@ -119,31 +119,31 @@ Restaurants have the following format:
 // get all members
 [
 	{
-	  "restaurantNo"				: 1,
-	  "restaurantTel"				: "0229540410",
-	  "restaurantName"				: "薄多義",
+	  "restaurantNo"			: 1,
+	  "restaurantTel"			: "0229540410",
+	  "restaurantName"			: "薄多義",
 	  "restaurantTaxIDNo"			: "53914855",
 	  "restaurantAccountInfo"		: null,
 	  "restaurantBusinessHour"		: "11:00-20:30",
-	  "restaurantAddr"				: "台北市中正區忠孝東路一段150號",
+	  "restaurantAddr"			: "台北市中正區忠孝東路一段150號",
 	  "restaurantStatus"			: true,
 	  "restaurantAccount"			: "restaurant1001@gmail.com",
 	  "restaurantPassword"			: "1001restaurant",
-	  "restaurantCommentQuantity"	: 0,
+	  "restaurantCommentQuantity"		: 0,
 	  "totalCommentRating"			: 0
 	},
 	{
-	  "restaurantNo"				: 2,
-	  "restaurantTel"				: "0225963255",
-	  "restaurantName"				: "欣葉台菜",
+	  "restaurantNo"			: 2,
+	  "restaurantTel"			: "0225963255",
+	  "restaurantName"			: "欣葉台菜",
 	  "restaurantTaxIDNo"			: "12107610",
 	  "restaurantAccountInfo"		: null,
 	  "restaurantBusinessHour"		: "11:00-20:30",
-	  "restaurantAddr"				: "台北市中正區林森南路1號",
+	  "restaurantAddr"			: "台北市中正區林森南路1號",
 	  "restaurantStatus"			: true,
 	  "restaurantAccount"			: "restaurant1002@gmail.com",
 	  "restaurantPassword"			: "1002restaurant",
-	  "restaurantCommentQuantity"	: 0,
+	  "restaurantCommentQuantity"		: 0,
 	  "totalCommentRating"			: 0
 	}
 ]	
