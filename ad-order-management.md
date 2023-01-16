@@ -11,7 +11,7 @@ We provide restaurants to promote their specials and center on the homepage in o
 <br>
 <br>
 
-Restaurants can change their campaign advertise pictures and the start-time many times before our platform admin verifies the order. After verification has been done, the ad will automatically shows on our homepage.
+Restaurants can change their campaign advertise pictures and the start-time multiple times before our platform admin verifies the order. After verification has been done, the ad will automatically shows on our homepage.
 <br>
 
 
