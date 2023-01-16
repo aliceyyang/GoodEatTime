@@ -20,12 +20,12 @@ Restaurants can change their campaign advertise pictures and the start-time many
 {
 	  "adOrderNo"			: 1,
 	  "restaurantNo"		: 1,
-	  "adminNo"				: 3,
+	  "adminNo"			: 3,
 	  "adOrderTime"			: "2022-10-31 15:18:08",
 	  "adStartTime"			: "2022-11-01 00:00:00",
 	  "adEndTime"			: "2022-11-08 00:00:00",
 	  "verified"			: true,
-	  "verificationDetail"	: "開幕廣告(急件)",
+	  "verificationDetail"		: "開幕廣告(急件)",
 	  "adOrderPrice"		: 1000,
 	  "slideshowPic"		: null
 }
@@ -48,46 +48,46 @@ Restaurants can change their campaign advertise pictures and the start-time many
 	  "adStartTime"			: "2023-06-01 00:00:00",
 	  "adEndTime"			: "2023-06-30 00:00:00",
 	  "adOrderPrice"		: 2000,
-	  "slideshowPicBase64"	: [base64]
+	  "slideshowPicBase64"		: "[base64]"
 }
 ```
 ```JSON 
 // get order list of a restaurant
 [
   {
-	    "adOrderNo"				:4,
-	    "restaurantNo"			:4,
-	    "adminNo"				:2,
-	    "adOrderTime"			:"2022-11-10 15:18:08",
-	    "adStartTime"			:"2023-03-01 00:00:00",
-	    "adEndTime"				:"2023-04-01 00:00:00",
-	    "verified"				:true,
-	    "verificationDetail"	:"開幕廣告(月)",
-	    "adOrderPrice"			:2000,
-	    "slideshowPic"			:[base64]
+	    "adOrderNo"			: 4,
+	    "restaurantNo"		: 4,
+	    "adminNo"			: 2,
+	    "adOrderTime"		: "2022-11-10 15:18:08",
+	    "adStartTime"		: "2023-03-01 00:00:00",
+	    "adEndTime"			: "2023-04-01 00:00:00",
+	    "verified"			: true,
+	    "verificationDetail"	: "開幕廣告(月)",
+	    "adOrderPrice"		: 2000,
+	    "slideshowPic"		: "[base64]"
   },
   {
-	    "adOrderNo"				:15,
-	    "restaurantNo"			:4,
-	    "adminNo"				:null,
-	    "adOrderTime"			:"2023-01-02 19:15:34",
-	    "adStartTime"			:"2023-03-03 00:00:00",
-	    "adEndTime"				:"2023-06-03 00:00:00",
-	    "verified"				:null,
-	    "verificationDetail"	:null,
-	    "adOrderPrice"			:3000,
-	    "slideshowPic"			:[base64]
+	    "adOrderNo"			: 15,
+	    "restaurantNo"		: 4,
+	    "adminNo"			: null,
+	    "adOrderTime"		: "2023-01-02 19:15:34",
+	    "adStartTime"		: "2023-03-03 00:00:00",
+	    "adEndTime"			: "2023-06-03 00:00:00",
+	    "verified"			: null,
+	    "verificationDetail"	: null,
+	    "adOrderPrice"		: 3000,
+	    "slideshowPic"		: "[base64]"
   }
 ]
 ```
 ```JSON
 // update an order
 {
-	  "adOrderNo": 15,
-	  "adStartTime": "2024-07-01 00:00:00",
-	  "adEndTime": "2024-10-01 00:00:00",
-	  "adOrderPrice": 3000,
-	  "slideshowPicBase64": [base64]
+	  "adOrderNo"			: 15,
+	  "adStartTime"			: "2024-07-01 00:00:00",
+	  "adEndTime"			: "2024-10-01 00:00:00",
+	  "adOrderPrice"		: 3000,
+	  "slideshowPicBase64"		: "[base64]"
 }
 ```
 
@@ -102,39 +102,39 @@ Restaurants can change their campaign advertise pictures and the start-time many
 // get order list of all restaurants
 [
   {
-	    "adOrderNo"				:1,
-	    "restaurantNo"			:1,
-	    "adminNo"				:3,
-	    "adOrderTime"			:"2022-10-31 15:18:08",
-	    "adStartTime"			:"2022-11-01 00:00:00",
-	    "adEndTime"				:"2022-11-08 00:00:00",
-	    "verified"				:true,
-	    "verificationDetail"	:"開幕廣告(急件)",
-	    "adOrderPrice"			:1000,
-	    "slideshowPic"			:[base64]
+	    "adOrderNo"			: 1,
+	    "restaurantNo"		: 1,
+	    "adminNo"			: 3,
+	    "adOrderTime"		: "2022-10-31 15:18:08",
+	    "adStartTime"		: "2022-11-01 00:00:00",
+	    "adEndTime"			: "2022-11-08 00:00:00",
+	    "verified"			: true,
+	    "verificationDetail"	: "開幕廣告(急件)",
+	    "adOrderPrice"		: 1000,
+	    "slideshowPic"		: "[base64]"
   },
   {
-	    "adOrderNo"				:2,
-	    "restaurantNo"			:2,
-	    "adminNo"				:1,
-	    "adOrderTime"			:"2022-10-31 15:18:08",
-	    "adStartTime"			:"2023-01-01 00:00:00",
-	    "adEndTime"				:"2023-02-01 00:00:00",
-	    "verified"				:true,
-	    "verificationDetail"	:"開幕廣告(月)",
-	    "adOrderPrice"			:2000,
-	    "slideshowPic"			:[base64]
+	    "adOrderNo"			: 2,
+	    "restaurantNo"		: 2,
+	    "adminNo"			: 1,
+	    "adOrderTime"		: "2022-10-31 15:18:08",
+	    "adStartTime"		: "2023-01-01 00:00:00",
+	    "adEndTime"			: "2023-02-01 00:00:00",
+	    "verified"			: true,
+	    "verificationDetail"	: "開幕廣告(月)",
+	    "adOrderPrice"		: 2000,
+	    "slideshowPic"		: "[base64]"
   }
 ]
 ```
 ```JSON
 // update an order
 {
-		"adOrderNo"				: 15,
-		"adminNo"				: 3,
-		"restaurantNo"			: 4,
+		"adOrderNo"		: 15,
+		"adminNo"		: 3,
+		"restaurantNo"		: 4,
 		"verificationDetail"	: "促銷廣告",
-		"verified"				: true
+		"verified"		: true
 }
 ```
 <br>
