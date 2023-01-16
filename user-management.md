@@ -37,7 +37,7 @@ Members have the following format:
 	  "mail"			: "chris2000@gmail.com",
 	  "memberPassword"		: null,
 	  "verificationAccount"		: true,
-	  "tel"				: 0912345678,
+	  "tel"				: "0912345678",
 	  "point"			: 20,
 	  "memberPic"			: null
 }
@@ -62,7 +62,7 @@ Members have the following format:
 	  "mail"			: "chris2000@gmail.com",
 	  "memberPassword"		: null,
 	  "verificationAccount"		: true,
-	  "tel"				: 0912345678,
+	  "tel"				: "0912345678",
 	  "point"			: 20,
 	  "memberPic"			: null
 	},
@@ -74,7 +74,7 @@ Members have the following format:
 	  "mail"			: "ddavid1980@gmail.com",
 	  "memberPassword"		: null,
 	  "verificationAccount"		: true,
-	  "tel"				: 0983625174,
+	  "tel"				: "0983625174",
 	  "point"			: 30,
 	  "memberPic"			: null
 	}
