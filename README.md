@@ -13,8 +13,8 @@ the gradually rising number of reservations after Taiwan is gradually lifting lo
 
 
 ### API Documentations
-1.	[User Management](/user-management)
-2.	[Ad-Order Management](/ad-order-management)
+1.	[User Management](/user-management.md)
+2.	[Ad-Order Management](/ad-order-management.md)
 
 
 written by [aliceyyang](https://github.com/aliceyyang) on 2023/01/17
